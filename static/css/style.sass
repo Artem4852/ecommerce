@@ -1,0 +1,91 @@
+$accent: #E352BA
+$accent-light: #E2A4D0
+$white: #f1f1f1
+$grey: #E0E0E0
+$grey-light: #C8C8C8
+$grey-dark: #999999
+$black: #111
+
+*
+    margin: 0
+    padding: 0
+    box-sizing: border-box
+
+a
+    text-decoration: none
+    color: $accent
+
+    &:hover
+        text-decoration: underline
+
+body
+    background-color: $white
+    color: $black
+    font-family: 'Open-Sans', sans-serif
+    width: 100%
+    height: 2000px
+
+#header
+    background-color: $white
+    width: 100%
+    padding: 30px
+    display: flex
+    flex-direction: row
+    justify-content: space-between
+    align-items: flex-end
+    position: sticky
+    top: 0
+    z-index: 999
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05)
+
+    img
+        width: 300px
+
+    ul
+        display: flex
+        flex-direction: row
+        list-style-type: none
+        margin-left: auto
+
+        li
+            margin-left: 20px
+
+            a
+                font-weight: 700
+
+#hero
+    width: 100%
+    height: 40vw
+
+    display: flex
+    flex-direction: row
+    overflow: hidden
+    position: relative
+
+    .imagecol
+        width: 12.5%
+        display: flex
+        flex-direction: column
+        justify-content: center
+        position: relative
+
+        .img
+            width: 100%
+            height: 0
+            padding-bottom: 100%
+            background-size: cover
+            background-position: center
+
+    .shadow
+        width: 100%
+        height: 100%
+        position: absolute
+        top: 0
+        left: 0
+        z-index: 2
+
+    .shadow.top
+        background: linear-gradient(180deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0) 100%)
+
+    .shadow.bottom
+        background: linear-gradient(0deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0) 100%)
