@@ -1,0 +1,16 @@
+<section class="banner" id="newsletter">
+    <div class="content">
+        <div class="row">
+            <h2>Be the first to find out about the best deals</h2>
+            <h3>Sign up for our newsletter</h3>
+        </div>
+        <div class="row">
+            <input id="newsletter-email" type="email" placeholder="your.email@example.com">
+            <button id="newsletter-button" onclick="newsletterSignUp()">Sign me up</button>
+        </div>
+    </div>
+    <div class="img">
+        <img src="../static/img/discounts.png" alt="">
+    </div>
+</section>
+<script src="{{ url_for('static', filename='js/newsletter.js') }}"></script>

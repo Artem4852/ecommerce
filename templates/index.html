@@ -1,27 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../static/css/style.css">
-    <title>Kids Fashion Store</title>
-</head>
+{% include 'head.html' %}
 <body>
-    <section id="header">
-        <div class="logo">
-            <img src="../static/img/logo_horizontal.png" alt="">
-        </div>
-        <div class="navbar">
-            <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="/shop">Shop</a></li>
-                <li><a href="/faq">FAQ</a></li>
-                <li><a href="/contact">Contact us</a></li>
-                <li><a href="/cart">Cart</a></li>
-                <li><a onclick="showUserMenu()">User</a></li>
-            </ul>
-        </div>
-    </section>
+    {% include 'header.html' %}
     <section id="hero">
         {% for group in index_images %}
             <div class="imagecol">
@@ -43,8 +24,9 @@
         <div class="products">
             {% for product in products_featured %}
             <div class="card">
+                {% if product['discount'] != '0%' %}<h3 class="discount">-{{ product['discount'] }}</h3>{% else %}{% endif %}
                 <div class="img">
-                    <svg class="favorite" xmlns="http://www.w3.org/2000/svg" width="44" height="42" viewBox="0 0 44 42" fill="none">
+                    <svg id="favorite-{{ product['product-number'] }}" onclick="favorite('{{ product['product-number'] }}')" class="favorite-icon {% if product['favorite'] %}favorite{% else %}{% endif %}" xmlns="http://www.w3.org/2000/svg" width="44" height="42" viewBox="0 0 44 42" fill="none">
                         <path
                             d="M43.3626 21C43.3626 32.598 33.8145 42 22.0362 42C10.2579 42 0.709778 32.598 0.709778 21C0.709778 9.40202 10.2579 0 22.0362 0C33.8145 0 43.3626 9.40202 43.3626 21Z"
                             fill="#E0E0E0" />
@@ -84,9 +66,9 @@
         <div class="products">
             {% for product in products_sale %}
             <div class="card">
-                <h3 class="discount">-{{ product['discount'] }}</h3>
+                {% if product['discount'] != '0%' %}<h3 class="discount">-{{ product['discount'] }}</h3>{% else %}{% endif %}
                 <div class="img">
-                    <svg class="favorite" xmlns="http://www.w3.org/2000/svg" width="44" height="42" viewBox="0 0 44 42"
+                    <svg id="favorite-{{ product['product-number'] }}" onclick="favorite('{{ product['product-number'] }}')" class="favorite-icon {% if product['favorite'] %}favorite{% else %}{% endif %}" xmlns="http://www.w3.org/2000/svg" width="44" height="42" viewBox="0 0 44 42"
                         fill="none">
                         <path
                             d="M43.3626 21C43.3626 32.598 33.8145 42 22.0362 42C10.2579 42 0.709778 32.598 0.709778 21C0.709778 9.40202 10.2579 0 22.0362 0C33.8145 0 43.3626 9.40202 43.3626 21Z"
@@ -114,89 +96,9 @@
         </div>
         <a href="/shop" id="view-more">View more</a>
     </section>
-    <section class="banner" id="deals">
-        <div class="content">
-            <div class="row">
-                <h2>Be the first to find out about the best deals</h2>
-                <h3>Sign up for our newsletter</h3>
-            </div>
-            <div class="row">
-                <input type="email" placeholder="your.email@example.com">
-                <button>Sign me up</button>
-            </div>
-        </div>
-        <div class="img">
-            <img src="../static/img/discounts.png" alt="">
-        </div>
-    </section>
-    <section id="footer">
-        <div class="col">
-            <h3>Information</h3>
-                <a href="/faq/shoesize">How to select the right shoe size</a>
-                <a href="/faq/delivery">Delivery information</a>
-                <a href="/faq/replacementsandreturns">Replacements and returns</a>
-        </div>
-        <div class="col">
-            <h3>Legal</h3>
-            <a href="/termsofuse">Terms of use</a>
-            <a href="/privacypolicy">Privacy policy</a>
-            <a href="/cookiespolicy">Cookies policy</a>
-            <a href="/shippingpolicy">Shipping policy</a>
-            <a href="/replacementsandreturnspolicy">Replacements and returns policy</a>
-        </div>
-        <div class="col">
-            <h3>Contact us</h3>
-            <!-- phone +380 69 901 5867 -->
-            <p>Phone number:</p>
-            <a href="tel:+380699015867">+380 69 901 5867</a>
-            <p>Email:</p>
-            <a href="mailto:contact@kidsfashionstore.ua">contact@kidsfashionstore.ua</a>
-        </div>
-        <div class="col">
-            <h3>Our social media</h3>
-            <p>Telegram:</p>
-            <a href="https://t.me/kidsfashionstore" target="_blank">@kidsfashionstore</a>
-            <p>Instagram:</p>
-            <a href="https://instagram.com/kidsfashionstore" target="_blank">@kidsfashionstore</a>
-        </div>
-    </section>
-    <script src="../static/js/home_script.js"></script>
-    <script>
-        // <![CDATA[  <-- For SVG support
-        if ('WebSocket' in window) {
-            (function () {
-                function refreshCSS() {
-                    var sheets = [].slice.call(document.getElementsByTagName("link"));
-                    var head = document.getElementsByTagName("head")[0];
-                    for (var i = 0; i < sheets.length; ++i) {
-                        var elem = sheets[i];
-                        var parent = elem.parentElement || head;
-                        parent.removeChild(elem);
-                        var rel = elem.rel;
-                        if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
-                            var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
-                            elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
-                        }
-                        parent.appendChild(elem);
-                    }
-                }
-                var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
-                var address = protocol + window.location.host + window.location.pathname + '/ws';
-                var socket = new WebSocket(address);
-                socket.onmessage = function (msg) {
-                    if (msg.data == 'reload') window.location.reload();
-                    else if (msg.data == 'refreshcss') refreshCSS();
-                };
-                if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
-                    console.log('Live reload enabled.');
-                    sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
-                }
-            })();
-        }
-        else {
-            console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
-        }
-        // ]]>
-    </script>
+    {% include 'newsletter.html' %}
+    {% include 'footer.html' %}
+    <script src="{{ url_for('static', filename='js/home.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/shop.js') }}"></script>
 </body>
 </html>
