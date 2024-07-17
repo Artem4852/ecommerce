@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300..800&display=swap')
+
 $accent: #E352BA
 $accent-light: #E2A4D0
 $white: #f1f1f1
@@ -10,6 +12,11 @@ $black: #111
     margin: 0
     padding: 0
     box-sizing: border-box
+
+h1, h2
+    font-family: Veronica
+    font-size: 60px
+    color: $accent
 
 a
     text-decoration: none
@@ -24,6 +31,25 @@ body
     font-family: 'Open-Sans', sans-serif
     width: 100%
     height: 2000px
+
+svg.favorite
+    position: absolute
+    top: 10px
+    right: 10px
+    width: 30px
+    height: 30px
+
+    path
+        transition: 0.2s
+
+    &:hover
+        cursor: pointer
+
+        path:first-child
+            fill: $accent-light
+
+        path:last-child
+            fill: $white
 
 #header
     background-color: $white
@@ -56,6 +82,7 @@ body
 #hero
     width: 100%
     height: 40vw
+    margin-bottom: 50px
 
     display: flex
     flex-direction: row
@@ -76,6 +103,28 @@ body
             background-size: cover
             background-position: center
 
+    .text-wrapper
+        width: 100%
+        height: 100%
+        position: absolute
+        top: 0
+        left: 0
+        z-index: 3
+        display: flex
+        flex-direction: column
+        justify-content: center
+        align-items: center
+
+        .text
+            padding: 75px 20px
+            width: 50vw
+            background: radial-gradient(47.07% 47.07% at 50% 50%, rgba(0, 0, 0, 0.40) 0%, rgba(0, 0, 0, 0.00) 100%)
+
+            h2
+                width: 100%
+                text-align: center
+                color: $white
+
     .shadow
         width: 100%
         height: 100%
@@ -89,3 +138,75 @@ body
 
     .shadow.bottom
         background: linear-gradient(0deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0) 100%)
+
+#featured
+    width: 100%
+    padding: 0 50px
+    margin-bottom: 90px
+
+    display: flex
+    flex-direction: column
+    align-items: center
+
+    h2
+        margin-bottom: 20px
+
+    .products
+        width: 100%
+        display: grid
+        grid-template-columns: repeat(auto-fill, minmax(190px, 1fr))
+        gap: 20px
+
+        .card
+            width: 100%
+            min-width: 0
+            padding: 15px
+            border-radius: 20px
+
+            background-color: $grey
+
+            .img
+                position: relative
+                width: 100%
+
+            img
+                width: 100%
+                border-radius: 10px
+                margin-bottom: 15px
+                cursor: pointer
+
+            h3
+                font-size: 24px
+                font-weight: 500
+                margin-bottom: 10px
+
+            h4
+                height: 30px
+                text-align: right
+                line-height: 34px
+                font-weight: 400
+
+            p
+                font-size: 16px
+                font-weight: 500
+
+            .details
+                display: flex
+                flex-direction: row
+                justify-content: space-between
+                margin-bottom: 20px
+
+            button
+                width: 100%
+                background-color: $white
+                border-radius: 30px
+                padding: 8px
+                text-align: center
+                font-size: 16px
+                border: none
+                cursor: pointer
+                transition: 0.2s
+
+                &:hover
+                    background-color: $accent
+                    color: $white

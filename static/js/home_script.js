@@ -1,7 +1,7 @@
 scrolling = []
-strength = 1
+strength = 1.5
 for (let i = 0; i < 8; i++) {
-    if (scrolling[-1] > 0) {
+    if (scrolling[i-1] > 0) {
         scrolling.push(-Math.random() * strength);
     } else {
         scrolling.push(Math.random() * strength);
