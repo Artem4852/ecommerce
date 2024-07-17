@@ -8,6 +8,7 @@
 h1, h2 {
   font-family: Veronica;
   font-size: 60px;
+  font-weight: 400;
   color: #E352BA;
 }
 
@@ -45,6 +46,91 @@ svg.favorite:hover path:first-child {
 }
 svg.favorite:hover path:last-child {
   fill: #f1f1f1;
+}
+
+.products {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 20px;
+}
+.products .card {
+  width: 100%;
+  min-width: 0;
+  padding: 15px;
+  border-radius: 20px;
+  position: relative;
+  background-color: #E0E0E0;
+}
+.products .card .img {
+  position: relative;
+  width: 100%;
+}
+.products .card img {
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+.products .card h3 {
+  font-size: 24px;
+  font-weight: 500;
+  margin-bottom: 10px;
+  line-height: 35px;
+}
+.products .card h4 {
+  height: 30px;
+  text-align: right;
+  line-height: 40px;
+  font-weight: 400;
+}
+.products .card p {
+  font-size: 16px;
+  font-weight: 500;
+}
+.products .card .details {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+.products .card .details .col2 {
+  position: relative;
+}
+.products .card .details .col2 .prev-price {
+  position: absolute;
+  top: 0;
+  right: 0;
+  text-decoration: line-through;
+  font-size: 12px;
+}
+.products .card button {
+  width: 100%;
+  background-color: #f1f1f1;
+  border-radius: 30px;
+  padding: 8px;
+  text-align: center;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.products .card button:hover {
+  background-color: #E352BA;
+  color: #f1f1f1;
+}
+.products .card .discount {
+  width: fit-content;
+  padding: 2px 25px;
+  background-color: #E352BA;
+  color: #f1f1f1;
+  border-radius: 10px;
+  position: absolute;
+  top: -15px;
+  left: -15px;
+  z-index: 2;
+  rotate: -15deg;
+  font-size: 20px;
 }
 
 #header {
@@ -138,8 +224,8 @@ svg.favorite:hover path:last-child {
 
 #featured {
   width: 100%;
-  padding: 0 50px;
-  margin-bottom: 90px;
+  padding: 0 30px;
+  margin-bottom: 50px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -147,64 +233,97 @@ svg.favorite:hover path:last-child {
 #featured h2 {
   margin-bottom: 20px;
 }
-#featured .products {
+
+.banner {
   width: 100%;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
-  gap: 20px;
-}
-#featured .products .card {
-  width: 100%;
-  min-width: 0;
-  padding: 15px;
-  border-radius: 20px;
+  height: 35vw;
   background-color: #E0E0E0;
-}
-#featured .products .card .img {
+  padding: 15px 25px;
   position: relative;
+  font-family: "Veronica", sans-serif;
+  color: #E352BA;
+}
+.banner .img {
   width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
 }
-#featured .products .card img {
+.banner .img img {
+  width: 50%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 0;
+}
+.banner .content {
   width: 100%;
-  border-radius: 10px;
-  margin-bottom: 15px;
-  cursor: pointer;
-}
-#featured .products .card h3 {
-  font-size: 24px;
-  font-weight: 500;
-  margin-bottom: 10px;
-}
-#featured .products .card h4 {
-  height: 30px;
-  text-align: right;
-  line-height: 34px;
-  font-weight: 400;
-}
-#featured .products .card p {
-  font-size: 16px;
-  font-weight: 500;
-}
-#featured .products .card .details {
+  height: 100%;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  align-items: flex-end;
   justify-content: space-between;
-  margin-bottom: 20px;
+  text-align: right;
+  position: relative;
+  z-index: 5;
 }
-#featured .products .card button {
-  width: 100%;
-  background-color: #f1f1f1;
-  border-radius: 30px;
-  padding: 8px;
-  text-align: center;
-  font-size: 16px;
-  border: none;
-  cursor: pointer;
-  transition: 0.2s;
+.banner .content h2 {
+  width: 66vw;
 }
-#featured .products .card button:hover {
+.banner .content h3 {
+  width: 40vw;
+  font-weight: 400;
+  font-size: 32px;
+}
+.banner .content a {
+  width: 40vw;
+  font-size: 20px;
   background-color: #E352BA;
   color: #f1f1f1;
+  border-radius: 20px;
+  font-family: "Open-Sans", sans-serif;
+  padding: 8px;
+  text-align: center;
+  cursor: pointer;
+}
+.banner .content a:hover {
+  text-decoration: none;
+}
+
+#to-shop {
+  margin-bottom: 50px;
+}
+
+#sale {
+  width: 100%;
+  padding: 0 30px;
+  margin-bottom: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#sale h2 {
+  margin-bottom: 20px;
+}
+#sale .products {
+  margin-bottom: 30px;
+}
+#sale a#view-more {
+  width: 40vw;
+  min-width: 200px;
+  padding: 8px;
+  background-color: #E352BA;
+  color: #f1f1f1;
+  border-radius: 20px;
+  font-family: "Open-Sans", sans-serif;
+  font-size: 20px;
+  text-align: center;
+  cursor: pointer;
+}
+#sale a#view-more:hover {
+  text-decoration: none;
 }
 
 /*# sourceMappingURL=style.css.map */

@@ -18,6 +18,7 @@ products = [{
     'price': '1999',
     'img': '../static/img/covers/post_2024-03-06 15h01m26s.jpg',
     'product-number': '123456',
+    'discount': '0%'
 }, {
     'title': 'Sneakers',
     'brand': 'Geox',
@@ -25,6 +26,7 @@ products = [{
     'price': '1999',
     'img': '../static/img/covers/post_2024-03-06 15h01m26s.jpg',
     'product-number': '123456',
+    'discount': '0%'
 }, {
     'title': 'Sneakers',
     'brand': 'Geox',
@@ -32,6 +34,7 @@ products = [{
     'price': '1999',
     'img': '../static/img/covers/post_2024-03-06 15h01m26s.jpg',
     'product-number': '123456',
+    'discount': '0%'
 }, {
     'title': 'Sneakers',
     'brand': 'Geox',
@@ -39,11 +42,50 @@ products = [{
     'price': '1999',
     'img': '../static/img/covers/post_2024-03-06 15h01m26s.jpg',
     'product-number': '123456',
+    'discount': '0%'
+}]
+
+products_sale = [{
+    'title': 'Sneakers',
+    'brand': 'Geox',
+    'size': '24',
+    'price': '1599',
+    'img': '../static/img/covers/post_2024-03-06 15h01m26s.jpg',
+    'product-number': '123456',
+    'discount': '20%',
+    'prev-price': '1999'
+}, {
+    'title': 'Sneakers',
+    'brand': 'Geox',
+    'size': '24',
+    'price': '1799',
+    'img': '../static/img/covers/post_2024-03-06 15h01m26s.jpg',
+    'product-number': '123456',
+    'discount': '10%',
+    'prev-price': '1999'
+}, {
+    'title': 'Sneakers',
+    'brand': 'Geox',
+    'size': '24',
+    'price': '1399',
+    'img': '../static/img/covers/post_2024-03-06 15h01m26s.jpg',
+    'product-number': '123456',
+    'discount': '30%',
+    'prev-price': '1999'
+}, {
+    'title': 'Sneakers',
+    'brand': 'Geox',
+    'size': '24',
+    'price': '1799',
+    'img': '../static/img/covers/post_2024-03-06 15h01m26s.jpg',
+    'product-number': '123456',
+    'discount': '10%',
+    'prev-price': '1999'
 }]
 
 @app.route('/')
 def index():
-    return render_template('index.html', index_images=index_images, products_featured=products)
+    return render_template('index.html', index_images=index_images, products_featured=products, products_sale=products_sale)
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=True, port=8080)

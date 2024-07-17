@@ -16,6 +16,7 @@ $black: #111
 h1, h2
     font-family: Veronica
     font-size: 60px
+    font-weight: 400
     color: $accent
 
 a
@@ -50,6 +51,91 @@ svg.favorite
 
         path:last-child
             fill: $white
+
+.products
+    width: 100%
+    display: grid
+    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr))
+    gap: 20px
+
+    .card
+        width: 100%
+        min-width: 0
+        padding: 15px
+        border-radius: 20px
+        position: relative
+
+        background-color: $grey
+
+        .img
+            position: relative
+            width: 100%
+
+        img
+            width: 100%
+            border-radius: 10px
+            margin-bottom: 10px
+            cursor: pointer
+
+        h3
+            font-size: 24px
+            font-weight: 500
+            margin-bottom: 10px
+            line-height: 35px
+
+        h4
+            height: 30px
+            text-align: right
+            line-height: 40px
+            font-weight: 400
+
+        p
+            font-size: 16px
+            font-weight: 500
+
+        .details
+            display: flex
+            flex-direction: row
+            justify-content: space-between
+            margin-bottom: 20px
+
+            .col2
+                position: relative
+
+                .prev-price
+                    position: absolute
+                    top: 0
+                    right: 0
+                    text-decoration: line-through
+                    font-size: 12px
+
+        button
+            width: 100%
+            background-color: $white
+            border-radius: 30px
+            padding: 8px
+            text-align: center
+            font-size: 16px
+            border: none
+            cursor: pointer
+            transition: 0.2s
+
+            &:hover
+                background-color: $accent
+                color: $white
+
+        .discount
+            width: fit-content
+            padding: 2px 25px
+            background-color: $accent
+            color: $white
+            border-radius: 10px
+            position: absolute
+            top: -15px
+            left: -15px
+            z-index: 2
+            rotate: -15deg
+            font-size: 20px
 
 #header
     background-color: $white
@@ -141,8 +227,82 @@ svg.favorite
 
 #featured
     width: 100%
-    padding: 0 50px
-    margin-bottom: 90px
+    padding: 0 30px
+    margin-bottom: 50px
+
+    display: flex
+    flex-direction: column
+    align-items: center
+
+    h2
+        margin-bottom: 20px
+
+.banner
+    width: 100%
+    height: 35vw
+    background-color: $grey
+    padding: 15px 25px
+
+    position: relative
+
+    font-family: 'Veronica', sans-serif
+    color: $accent
+
+    .img
+        width: 100%
+        height: 100%
+        position: absolute
+        top: 0
+        left: 0
+        z-index: 0
+
+        img
+            width: 50%
+            position: absolute
+            bottom: 0
+            left: 0
+            z-index: 0
+
+    .content
+        width: 100%
+        height: 100%
+        display: flex
+        flex-direction: column
+        align-items: flex-end
+        justify-content: space-between
+        text-align: right
+        position: relative
+        z-index: 5
+
+        h2
+            width: 66vw
+
+        h3
+            width: 40vw
+            font-weight: 400
+            font-size: 32px
+
+        a
+            width: 40vw
+            font-size: 20px
+            background-color: $accent
+            color: $white
+            border-radius: 20px
+            font-family: 'Open-Sans', sans-serif
+            padding: 8px
+            text-align: center
+            cursor: pointer
+
+            &:hover
+                text-decoration: none
+
+#to-shop
+    margin-bottom: 50px
+
+#sale
+    width: 100%
+    padding: 0 30px
+    margin-bottom: 50px
 
     display: flex
     flex-direction: column
@@ -152,61 +312,19 @@ svg.favorite
         margin-bottom: 20px
 
     .products
-        width: 100%
-        display: grid
-        grid-template-columns: repeat(auto-fill, minmax(190px, 1fr))
-        gap: 20px
+        margin-bottom: 30px
 
-        .card
-            width: 100%
-            min-width: 0
-            padding: 15px
-            border-radius: 20px
+    a#view-more
+        width: 40vw
+        min-width: 200px
+        padding: 8px
+        background-color: $accent
+        color: $white
+        border-radius: 20px
+        font-family: 'Open-Sans', sans-serif
+        font-size: 20px
+        text-align: center
+        cursor: pointer
 
-            background-color: $grey
-
-            .img
-                position: relative
-                width: 100%
-
-            img
-                width: 100%
-                border-radius: 10px
-                margin-bottom: 15px
-                cursor: pointer
-
-            h3
-                font-size: 24px
-                font-weight: 500
-                margin-bottom: 10px
-
-            h4
-                height: 30px
-                text-align: right
-                line-height: 34px
-                font-weight: 400
-
-            p
-                font-size: 16px
-                font-weight: 500
-
-            .details
-                display: flex
-                flex-direction: row
-                justify-content: space-between
-                margin-bottom: 20px
-
-            button
-                width: 100%
-                background-color: $white
-                border-radius: 30px
-                padding: 8px
-                text-align: center
-                font-size: 16px
-                border: none
-                cursor: pointer
-                transition: 0.2s
-
-                &:hover
-                    background-color: $accent
-                    color: $white
+        &:hover
+            text-decoration: none
