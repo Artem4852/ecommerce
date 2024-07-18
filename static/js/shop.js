@@ -34,3 +34,14 @@ function addToCart(productNumber) {
             }
         });
 }
+
+function filterShoes(criterion) {
+    const cards = document.getElementsByClassName('card');
+    const criterionValue = document.getElementById(criterion).value;
+    console.log(criterion, criterionValue, cards);
+    for (let i = 0; i < cards.length; i++) {
+        if (String(cards[i].getAttribute('data-'+criterion)) !== String(criterionValue) && String(criterionValue) !== 'any') {
+            cards[i].style.display = 'none';
+        }
+    }
+}

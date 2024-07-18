@@ -1,7 +1,7 @@
 {
   "products": [
     {
-      "title": "Sneakers",
+      "category": "Sneakers",
       "brand": "Geox",
       "size": "24",
       "price": "1999",
@@ -11,7 +11,7 @@
       "tag": "featured"
     },
     {
-      "title": "Sneakers",
+      "category": "Sneakers",
       "brand": "Geox",
       "size": "24",
       "price": "1999",
@@ -21,7 +21,7 @@
       "tag": "featured"
     },
     {
-      "title": "Sneakers",
+      "category": "Sneakers",
       "brand": "Geox",
       "size": "24",
       "price": "1999",
@@ -31,7 +31,7 @@
       "tag": "featured"
     },
     {
-      "title": "Sneakers",
+      "category": "Sneakers",
       "brand": "Geox",
       "size": "24",
       "price": "1999",
@@ -41,7 +41,7 @@
       "tag": "featured"
     },
     {
-      "title": "Sneakers",
+      "category": "Sneakers",
       "brand": "Geox",
       "size": "24",
       "price": "1599",
@@ -52,7 +52,7 @@
       "tag": "sale"
     },
     {
-      "title": "Sneakers",
+      "category": "Sneakers",
       "brand": "Geox",
       "size": "24",
       "price": "1799",
@@ -63,7 +63,7 @@
       "tag": "sale"
     },
     {
-      "title": "Sneakers",
+      "category": "Sneakers",
       "brand": "Geox",
       "size": "24",
       "price": "1399",
@@ -74,7 +74,7 @@
       "tag": "sale"
     },
     {
-      "title": "Sneakers",
+      "category": "Sneakers",
       "brand": "Geox",
       "size": "24",
       "price": "1799",

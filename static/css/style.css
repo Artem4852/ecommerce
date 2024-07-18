@@ -56,10 +56,19 @@ svg.favorite-icon.favorite path:last-child {
   fill: #f1f1f1;
 }
 
+svg.down-arrow {
+  width: 14px;
+  height: 23px;
+  fill: #f1f1f1;
+  position: absolute;
+  top: 5px;
+  right: 8px;
+}
+
 .products {
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 20px;
 }
 .products .card {
@@ -451,6 +460,38 @@ a.view-more:hover {
 #catalogue .products {
   margin-bottom: 30px;
 }
+#catalogue label {
+  font-size: 20px;
+}
+#catalogue select {
+  background-color: #999999;
+  border: none;
+  border-radius: 5px;
+  padding: 4px 32px 4px 8px;
+  font-size: 20px;
+  color: #f1f1f1;
+  position: relative;
+  font-weight: 100;
+  appearance: none;
+}
+#catalogue select:focus {
+  outline: none;
+}
+#catalogue select::after {
+  content: "▼";
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 4px;
+  pointer-events: none;
+}
+#catalogue select::-ms-expand {
+  display: none;
+}
+#catalogue select::-webkit-inner-spin-button, #catalogue select::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
 #catalogue .filtering {
   width: 100%;
   display: flex;
@@ -458,40 +499,14 @@ a.view-more:hover {
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 20px;
-  margin-bottom: 15px;
+  margin-bottom: 40px;
 }
-#catalogue .filtering .filter {
+#catalogue .filtering .filter, #catalogue .filtering .sort {
   display: flex;
   flex-direction: row;
   align-items: center;
   gap: 5px;
-}
-#catalogue .filtering .filter label {
-  font-size: 20px;
-}
-#catalogue .filtering .filter select {
-  background-color: #999999;
-  border: none;
-  border-radius: 5px;
-  padding: 4px;
-  font-size: 20px;
-  color: #f1f1f1;
   position: relative;
-}
-#catalogue .filtering .filter select:focus {
-  outline: none;
-}
-#catalogue .filtering .filter select::after {
-  content: "▼";
-  position: absolute;
-  top: 50%;
-  right: 10px;
-  width: 0;
-  height: 0;
-  border-left: 5px solid transparent;
-  border-right: 5px solid transparent;
-  border-top: 5px solid #f1f1f1;
-  transform: translateY(-50%);
 }
 #catalogue .sorting {
   width: 100%;

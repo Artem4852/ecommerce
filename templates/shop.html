@@ -9,26 +9,36 @@
         <div class="filtering">
             <div class="filter">
                 <label for="brand">Brand</label>
-                <select id="brand" name="brand" value="Any">
+                <select id="brand" name="brand" onchange="filterShoes('brand')">
                     <option value="Any" selected>Any</option>
                     <option value="Ecco">Ecco</option>
                     <option value="Geox">Geox</option>
                     <option value="Superfit">Superfit</option>
                 </select>
+                <svg class="down-arrow" xmlns="http://www.w3.org/2000/svg" width="24" height="14" viewBox="0 0 24 14" fill="none">
+                    <path
+                        d="M0.321533 2.1104L2.36278 -9.16136e-07L11.8215 9.77919L21.2803 -8.92259e-08L23.3215 2.1104L11.8215 14L0.321533 2.1104Z"
+                        fill="#F1F1F1" />
+                </svg>
             </div>
             <div class="filter">
                 <label for="category">Category</label>
-                <select id="category" name="category" value="Any">
+                <select id="category" name="category" onchange="filterShoes('category')">
                     <option value="Any" selected>Any</option>
                     <option value="Sandals">Sandals</option>
                     <option value="Sneakers">Sneakers</option>
                     <option value="Demi">Demi</option>
                     <option value="Boots">Boots</option>
                 </select>
+                <svg class="down-arrow" xmlns="http://www.w3.org/2000/svg" width="24" height="14" viewBox="0 0 24 14" fill="none">
+                    <path
+                        d="M0.321533 2.1104L2.36278 -9.16136e-07L11.8215 9.77919L21.2803 -8.92259e-08L23.3215 2.1104L11.8215 14L0.321533 2.1104Z"
+                        fill="#F1F1F1" />
+                </svg>
             </div>
             <div class="filter">
                 <label for="shoe-size">Shoe size</label>
-                <select id="shoe-size" name="shoe-size">
+                <select id="shoe-size" name="shoe-size" onchange="filterShoes('shoe-size')">
                     <option value="Any" selected>Any</option>
                     <option value="18">18</option>
                     <option value="19">19</option>
@@ -51,9 +61,14 @@
                     <option value="36">36</option>
                     <option value="37">37</option>
                 </select>
+                <svg class="down-arrow" xmlns="http://www.w3.org/2000/svg" width="24" height="14" viewBox="0 0 24 14" fill="none">
+                    <path
+                        d="M0.321533 2.1104L2.36278 -9.16136e-07L11.8215 9.77919L21.2803 -8.92259e-08L23.3215 2.1104L11.8215 14L0.321533 2.1104Z"
+                        fill="#F1F1F1" />
+                </svg>
             </div>
             <div class="filter">
-                <label for="price-range">Price range</label>
+                <label for="price-range" onchange="filterShoes('price-range')">Price range</label>
                 <select id="price-range" name="price-range">
                     <option value="Any" selected>Any</option>
                     <option value="0-500">0-500</option>
@@ -66,23 +81,31 @@
                     <option value="3500-4000">3500-4000</option>
                     <option value="4000-4500">4000+</option>
                 </select>
+                <svg class="down-arrow" xmlns="http://www.w3.org/2000/svg" width="24" height="14" viewBox="0 0 24 14" fill="none">
+                    <path
+                        d="M0.321533 2.1104L2.36278 -9.16136e-07L11.8215 9.77919L21.2803 -8.92259e-08L23.3215 2.1104L11.8215 14L0.321533 2.1104Z"
+                        fill="#F1F1F1" />
+                </svg>
             </div>
-        </div>
-        <div class="sorting">
             <div class="sort">
-                <label for="sort">Sort by</label>
-                <select id="sort" name="sort">
+                <label for="sorting">Sort by</label>
+                <select id="sorting" name="sorting" onchange="sortShoes()">
                     <option value="no-sorting" selected>No sorting</option>
                     <option value="price-asc">Price: low to high</option>
                     <option value="price-desc">Price: high to low</option>
                     <option value="discount-asc">Discount: low to high</option>
                     <option value="discount-desc">Discount: high to low</option>
                 </select>
+                <svg class="down-arrow" xmlns="http://www.w3.org/2000/svg" width="24" height="14" viewBox="0 0 24 14" fill="none">
+                    <path
+                        d="M0.321533 2.1104L2.36278 -9.16136e-07L11.8215 9.77919L21.2803 -8.92259e-08L23.3215 2.1104L11.8215 14L0.321533 2.1104Z"
+                        fill="#F1F1F1" />
+                </svg>
             </div>
         </div>
         <div class="products">
             {% for product in products %}
-            <div class="card">
+            <div class="card" data-brand="{{ product['brand'] }}" data-category="{{ product['category'] }}" data-size="{{ product['size'] }}" data-price="{{ product['price'] }}" data-discount="{{ product['discount'] }}">
                 {% if product['discount'] != '0%' %}<h3 class="discount">-{{ product['discount'] }}</h3>{% else %}{% endif %}
                 <div class="img">
                     <svg id="favorite-{{ product['product-number'] }}" onclick="favorite('{{ product['product-number'] }}')"
@@ -99,7 +122,7 @@
                 </div>
                 <div class="details">
                     <div class="col1">
-                        <h3>{{ product['title'] }}</h3>
+                        <h3>{{ product['category'] }}</h3>
                         <p>Brand: {{ product['brand'] }}</p>
                         <p>Sizes: {{ product['size'] }}</p>
                     </div>
