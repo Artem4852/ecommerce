@@ -1,6 +1,6 @@
 import flask
 from flask import request, jsonify, render_template
-import os, random, json
+import os, random, json, math
 
 app = flask.Flask(__name__)
 
@@ -45,24 +45,24 @@ def shop():
     price_max = int(price_range.split('-')[1]) if price_range else None
     sorting = request.args.get('sorting')
 
-    products_per_page = request.args.get('products-per-page')
-    if not products_per_page: products_per_page = 12
-    page = request.args.get('page')
-    if not page: page = 1
+    if not request.args.get('products-per-page'): products_per_page = 12
+    else: products_per_page = int(request.args.get('products-per-page'))
+    if not request.args.get('page'): page = 1
+    else: page = int(request.args.get('page'))
 
     products = get_products()
     if brand: products = [p for p in products if p['brand'] == brand]
     if category: products = [p for p in products if p['category'] == category]
-    if shoe_size: products = [p for p in products if shoe_size in p['sizes']]
-    if price_range: products = [p for p in products if price_min<=p['price']<=price_max]
+    if shoe_size: products = [p for p in products if int(shoe_size) in p['sizes']]
+    if price_range: products = [p for p in products if price_min<=int(p['price'])<=price_max]
 
     if sorting == 'price-low-to-high': products = sorted(products, key=lambda x: x['price'])
     elif sorting == 'price-high-to-low': products = sorted(products, key=lambda x: x['price'], reverse=True)
 
-    products = products[(int(page)-1)*int(products_per_page):int(page)*int(products_per_page)]
+    products_current = products[(page-1)*products_per_page:page*products_per_page]
 
     users = get_users()
-    return render_template('shop.html', products=products, user_data=users[0], brand=brand, category=category, shoe_size=shoe_size, price_range=price_range, sorting=sorting, products_per_page=products_per_page, page=page)
+    return render_template('shop.html', products=products_current, user_data=users[0], brand=brand, category=category, shoe_size=shoe_size, price_range=price_range, sorting=sorting, products_per_page=products_per_page, page=page, max_pages=math.ceil(len(products)/products_per_page))
 
 @app.route('/newsletter-signup', methods=['POST'])
 def newsletter_signup():

@@ -77,7 +77,6 @@ svg.down-arrow
     .card
         width: 100%
         min-width: 0
-        max-width: 300px
         padding: 15px
         border-radius: 20px
         position: relative
@@ -510,8 +509,12 @@ a.view-more
             gap: 5px
             position: relative
 
-    .sorting
-        width: 100%
-        display: flex
-        flex-direction: row
-        justify-content: flex-start
+    a
+        margin-bottom: 0px
+
+    .pagination
+        a, span.dots
+            color: $grey-dark
+
+        span
+            color: $black

@@ -74,7 +74,6 @@ svg.down-arrow {
 .products .card {
   width: 100%;
   min-width: 0;
-  max-width: 300px;
   padding: 15px;
   border-radius: 20px;
   position: relative;
@@ -509,11 +508,14 @@ a.view-more:hover {
   gap: 5px;
   position: relative;
 }
-#catalogue .sorting {
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
+#catalogue a {
+  margin-bottom: 0px;
+}
+#catalogue .pagination a, #catalogue .pagination span.dots {
+  color: #999999;
+}
+#catalogue .pagination span {
+  color: #111;
 }
 
 /*# sourceMappingURL=style.css.map */
