@@ -1,6 +1,6 @@
-function favorite(productNumber) {
-    console.log(productNumber)
-    fetch('/favorite/' + productNumber, {
+function favorite(productId) {
+    console.log(productId)
+    fetch('/favorite/' + productId, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -9,15 +9,15 @@ function favorite(productNumber) {
         .then(response => response.json())
         .then(data => {
             if (data.success) {
-                const favoriteIcon = document.getElementById('favorite-' + productNumber);
+                const favoriteIcon = document.getElementById('favorite-' + productId);
                 console.log(favoriteIcon)
                 favoriteIcon.setAttribute('class', data.favorite ? 'favorite-icon favorite' : 'favorite-icon');
             }
         });
 }
 
-function addToCart(productNumber) {
-    fetch('/add-to-cart/' + productNumber, {
+function addToCart(productId) {
+    fetch('/add-to-cart/' + productId, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -26,7 +26,7 @@ function addToCart(productNumber) {
         .then(response => response.json())
         .then(data => {
             if (data.success) {
-                const cartButton = document.getElementById('cart-button-' + productNumber);
+                const cartButton = document.getElementById('cart-button-' + productId);
                 cartButton.innerText = "Added to cart!";
                 setTimeout(function () {
                     cartButton.innerHTML = "Add to cart";
@@ -36,12 +36,10 @@ function addToCart(productNumber) {
 }
 
 function filterShoes(criterion) {
-    const cards = document.getElementsByClassName('card');
     const criterionValue = document.getElementById(criterion).value;
-    console.log(criterion, criterionValue, cards);
-    for (let i = 0; i < cards.length; i++) {
-        if (String(cards[i].getAttribute('data-'+criterion)) !== String(criterionValue) && String(criterionValue) !== 'any') {
-            cards[i].style.display = 'none';
-        }
-    }
+    console.log(criterionValue);
+    const url = new URL(window.location.href);
+    if (criterionValue === 'Any') url.searchParams.delete(criterion);
+    else url.searchParams.set(criterion, criterionValue);
+    window.location.href = url.toString();
 }

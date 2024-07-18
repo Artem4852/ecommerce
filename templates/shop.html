@@ -10,10 +10,10 @@
             <div class="filter">
                 <label for="brand">Brand</label>
                 <select id="brand" name="brand" onchange="filterShoes('brand')">
-                    <option value="Any" selected>Any</option>
-                    <option value="Ecco">Ecco</option>
-                    <option value="Geox">Geox</option>
-                    <option value="Superfit">Superfit</option>
+                    <option value="Any" {% if not brand %} selected {% endif %}>Any</option>
+                    <option value="Ecco" {% if brand=="Ecco" %} selected {% endif %}>Ecco</option>
+                    <option value="Geox" {% if brand=="Geox" %} selected {% endif %}>Geox</option>
+                    <option value="Superfit" {% if brand=="Superfit" %} selected {% endif %}>Superfit</option>
                 </select>
                 <svg class="down-arrow" xmlns="http://www.w3.org/2000/svg" width="24" height="14" viewBox="0 0 24 14" fill="none">
                     <path
@@ -24,11 +24,11 @@
             <div class="filter">
                 <label for="category">Category</label>
                 <select id="category" name="category" onchange="filterShoes('category')">
-                    <option value="Any" selected>Any</option>
-                    <option value="Sandals">Sandals</option>
-                    <option value="Sneakers">Sneakers</option>
-                    <option value="Demi">Demi</option>
-                    <option value="Boots">Boots</option>
+                    <option value="Any" {% if not category %} selected {% endif %}>Any</option>
+                    <option value="Sandals" {% if category=="Sandals" %} selected {% endif %}>Sandals</option>
+                    <option value="Sneakers" {% if category=="Sneakers" %} selected {% endif %}>Sneakers</option>
+                    <option value="Demi" {% if category=="Demi" %} selected {% endif %}>Demi</option>
+                    <option value="Boots" {% if category=="Boots" %} selected {% endif %}>Boots</option>
                 </select>
                 <svg class="down-arrow" xmlns="http://www.w3.org/2000/svg" width="24" height="14" viewBox="0 0 24 14" fill="none">
                     <path
@@ -39,27 +39,27 @@
             <div class="filter">
                 <label for="shoe-size">Shoe size</label>
                 <select id="shoe-size" name="shoe-size" onchange="filterShoes('shoe-size')">
-                    <option value="Any" selected>Any</option>
-                    <option value="18">18</option>
-                    <option value="19">19</option>
-                    <option value="20">20</option>
-                    <option value="21">21</option>
-                    <option value="22">22</option>
-                    <option value="23">23</option>
-                    <option value="24">24</option>
-                    <option value="25">25</option>
-                    <option value="26">26</option>
-                    <option value="27">27</option>
-                    <option value="28">28</option>
-                    <option value="29">29</option>
-                    <option value="30">30</option>
-                    <option value="31">31</option>
-                    <option value="32">32</option>
-                    <option value="33">33</option>
-                    <option value="34">34</option>
-                    <option value="35">35</option>
-                    <option value="36">36</option>
-                    <option value="37">37</option>
+                    <option value="Any" {% if not shoe_size %} selected {% endif %}>Any</option>
+                    <option value="18" {% if shoe_size=="18" %} selected {% endif %}>18</option>
+                    <option value="19" {% if shoe_size=="19" %} selected {% endif %}>19</option>
+                    <option value="20" {% if shoe_size=="20" %} selected {% endif %}>20</option>
+                    <option value="21" {% if shoe_size=="21" %} selected {% endif %}>21</option>
+                    <option value="22" {% if shoe_size=="22" %} selected {% endif %}>22</option>
+                    <option value="23" {% if shoe_size=="23" %} selected {% endif %}>23</option>
+                    <option value="24" {% if shoe_size=="24" %} selected {% endif %}>24</option>
+                    <option value="25" {% if shoe_size=="25" %} selected {% endif %}>25</option>
+                    <option value="26" {% if shoe_size=="26" %} selected {% endif %}>26</option>
+                    <option value="27" {% if shoe_size=="27" %} selected {% endif %}>27</option>
+                    <option value="28" {% if shoe_size=="28" %} selected {% endif %}>28</option>
+                    <option value="29" {% if shoe_size=="29" %} selected {% endif %}>29</option>
+                    <option value="30" {% if shoe_size=="30" %} selected {% endif %}>30</option>
+                    <option value="31" {% if shoe_size=="31" %} selected {% endif %}>31</option>
+                    <option value="32" {% if shoe_size=="32" %} selected {% endif %}>32</option>
+                    <option value="33" {% if shoe_size=="33" %} selected {% endif %}>33</option>
+                    <option value="34" {% if shoe_size=="34" %} selected {% endif %}>34</option>
+                    <option value="35" {% if shoe_size=="35" %} selected {% endif %}>35</option>
+                    <option value="36" {% if shoe_size=="36" %} selected {% endif %}>36</option>
+                    <option value="37" {% if shoe_size=="37" %} selected {% endif %}>37</option>
                 </select>
                 <svg class="down-arrow" xmlns="http://www.w3.org/2000/svg" width="24" height="14" viewBox="0 0 24 14" fill="none">
                     <path
@@ -89,7 +89,7 @@
             </div>
             <div class="sort">
                 <label for="sorting">Sort by</label>
-                <select id="sorting" name="sorting" onchange="sortShoes()">
+                <select id="sorting" name="sorting" onchange="filterShoes('sorting')">
                     <option value="no-sorting" selected>No sorting</option>
                     <option value="price-asc">Price: low to high</option>
                     <option value="price-desc">Price: high to low</option>
@@ -105,11 +105,11 @@
         </div>
         <div class="products">
             {% for product in products %}
-            <div class="card" data-brand="{{ product['brand'] }}" data-category="{{ product['category'] }}" data-size="{{ product['size'] }}" data-price="{{ product['price'] }}" data-discount="{{ product['discount'] }}">
-                {% if product['discount'] != '0%' %}<h3 class="discount">-{{ product['discount'] }}</h3>{% else %}{% endif %}
+            <div class="card">
+                {% if product['discount'] != 0 %}<h3 class="discount">-{{ product['discount'] }}%</h3>{% else %}{% endif %}
                 <div class="img">
-                    <svg id="favorite-{{ product['product-number'] }}" onclick="favorite('{{ product['product-number'] }}')"
-                        class="favorite-icon {% if product['product-number'] in user_data['favorites'] %}favorite{% else %}{% endif %}"
+                    <svg id="favorite-{{ product['id'] }}" onclick="favorite('{{ product['id'] }}')"
+                        class="favorite-icon {% if product['id'] in user_data['favorites'] %}favorite{% else %}{% endif %}"
                         xmlns="http://www.w3.org/2000/svg" width="44" height="42" viewBox="0 0 44 42" fill="none">
                         <path
                             d="M43.3626 21C43.3626 32.598 33.8145 42 22.0362 42C10.2579 42 0.709778 32.598 0.709778 21C0.709778 9.40202 10.2579 0 22.0362 0C33.8145 0 43.3626 9.40202 43.3626 21Z"
@@ -118,7 +118,7 @@
                             d="M22.0362 34.1361L20.2692 32.5417C18.2178 30.6815 16.5218 29.0768 15.1813 27.7277C13.8408 26.3785 12.7744 25.1673 11.9823 24.0942C11.1902 23.021 10.6367 22.0347 10.3219 21.1352C10.0071 20.2358 9.84967 19.3159 9.84967 18.3756C9.84967 16.4541 10.4895 14.8494 11.7691 13.5616C13.0486 12.2738 14.643 11.6299 16.5523 11.6299C17.6084 11.6299 18.6138 11.8547 19.5684 12.3045C20.523 12.7542 21.3456 13.3879 22.0362 14.2055C22.7268 13.3879 23.5494 12.7542 24.504 12.3045C25.4586 11.8547 26.464 11.6299 27.5201 11.6299C29.4294 11.6299 31.0238 12.2738 32.3034 13.5616C33.5829 14.8494 34.2227 16.4541 34.2227 18.3756C34.2227 19.3159 34.0653 20.2358 33.7505 21.1352C33.4357 22.0347 32.8822 23.021 32.0901 24.0942C31.298 25.1673 30.2316 26.3785 28.8911 27.7277C27.5506 29.0768 25.8546 30.6815 23.8032 32.5417L22.0362 34.1361ZM22.0362 30.8246C23.986 29.0666 25.5906 27.559 26.8499 26.3019C28.1092 25.0447 29.1044 23.9511 29.8356 23.021C30.5668 22.0909 31.0745 21.263 31.3589 20.5373C31.6432 19.8116 31.7854 19.0911 31.7854 18.3756C31.7854 17.1491 31.3792 16.127 30.5668 15.3094C29.7543 14.4917 28.7388 14.0829 27.5201 14.0829C26.5655 14.0829 25.682 14.3537 24.8696 14.8954C24.0571 15.4371 23.4986 16.127 23.1939 16.9651H20.8785C20.5738 16.127 20.0153 15.4371 19.2028 14.8954C18.3904 14.3537 17.5069 14.0829 16.5523 14.0829C15.3336 14.0829 14.3181 14.4917 13.5056 15.3094C12.6932 16.127 12.287 17.1491 12.287 18.3756C12.287 19.0911 12.4292 19.8116 12.7135 20.5373C12.9979 21.263 13.5056 22.0909 14.2368 23.021C14.968 23.9511 15.9632 25.0447 17.2225 26.3019C18.4818 27.559 20.0864 29.0666 22.0362 30.8246Z"
                             fill="#111111" />
                     </svg>
-                    <a href="/product/{{ product['product-number'] }}"><img src="{{ product['img'] }}" alt=""></a>
+                    <a href="/product/{{ product['id'] }}"><img src="{{ product['img'] }}" alt=""></a>
                 </div>
                 <div class="details">
                     <div class="col1">
@@ -127,10 +127,11 @@
                         <p>Sizes: {{ product['size'] }}</p>
                     </div>
                     <div class="col2">
+                        {% if product['discount'] != 0 %} <p class="prev-price">{{ product['prev-price'] }}₴</p>{% endif %}
                         <h4>{{ product['price'] }} ₴</h4>
                     </div>
                 </div>
-                <button onclick="addToCart('{{ product['product-number'] }}')">Add to cart</button>
+                <button id="cart-button-{{ product['id'] }}" onclick="addToCart('{{ product['id'] }}')">Add to cart</button>
             </div>
             {% endfor %}
         </div>
