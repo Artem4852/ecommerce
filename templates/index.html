@@ -26,7 +26,7 @@
             <div class="card">
                 {% if product['discount'] != '0%' %}<h3 class="discount">-{{ product['discount'] }}</h3>{% else %}{% endif %}
                 <div class="img">
-                    <svg id="favorite-{{ product['product-number'] }}" onclick="favorite('{{ product['product-number'] }}')" class="favorite-icon {% if product['favorite'] %}favorite{% else %}{% endif %}" xmlns="http://www.w3.org/2000/svg" width="44" height="42" viewBox="0 0 44 42" fill="none">
+                    <svg id="favorite-{{ product['product-number'] }}" onclick="favorite('{{ product['product-number'] }}')" class="favorite-icon {% if product['product-number'] in user_data['favorites'] %}favorite{% else %}{% endif %}" xmlns="http://www.w3.org/2000/svg" width="44" height="42" viewBox="0 0 44 42" fill="none">
                         <path
                             d="M43.3626 21C43.3626 32.598 33.8145 42 22.0362 42C10.2579 42 0.709778 32.598 0.709778 21C0.709778 9.40202 10.2579 0 22.0362 0C33.8145 0 43.3626 9.40202 43.3626 21Z"
                             fill="#E0E0E0" />
@@ -46,7 +46,7 @@
                         <h4>{{ product['price'] }} ₴</h4>
                     </div>
                 </div>
-                <button>Add to cart</button>
+                <button onclick="addToCart('{{ product['product-number'] }}')">Add to cart</button>
             </div>
             {% endfor %}
         </div>
@@ -68,7 +68,7 @@
             <div class="card">
                 {% if product['discount'] != '0%' %}<h3 class="discount">-{{ product['discount'] }}</h3>{% else %}{% endif %}
                 <div class="img">
-                    <svg id="favorite-{{ product['product-number'] }}" onclick="favorite('{{ product['product-number'] }}')" class="favorite-icon {% if product['favorite'] %}favorite{% else %}{% endif %}" xmlns="http://www.w3.org/2000/svg" width="44" height="42" viewBox="0 0 44 42"
+                    <svg id="favorite-{{ product['product-number'] }}" onclick="favorite('{{ product['product-number'] }}')" class="favorite-icon {% if product['product-number'] in user_data['favorites'] %}favorite{% else %}{% endif %}" xmlns="http://www.w3.org/2000/svg" width="44" height="42" viewBox="0 0 44 42"
                         fill="none">
                         <path
                             d="M43.3626 21C43.3626 32.598 33.8145 42 22.0362 42C10.2579 42 0.709778 32.598 0.709778 21C0.709778 9.40202 10.2579 0 22.0362 0C33.8145 0 43.3626 9.40202 43.3626 21Z"
@@ -90,11 +90,11 @@
                         <h4>{{ product['price'] }} ₴</h4>
                     </div>
                 </div>
-                <button>Add to cart</button>
+                <button onclick="addToCart('{{ product['product-number'] }}')">Add to cart</button>
             </div>
             {% endfor %}
         </div>
-        <a href="/shop" id="view-more">View more</a>
+        <a href="/shop" class="view-more">View more</a>
     </section>
     {% include 'newsletter.html' %}
     {% include 'footer.html' %}

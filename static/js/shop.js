@@ -15,3 +15,22 @@ function favorite(productNumber) {
             }
         });
 }
+
+function addToCart(productNumber) {
+    fetch('/add-to-cart/' + productNumber, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                const cartButton = document.getElementById('cart-button-' + productNumber);
+                cartButton.innerText = "Added to cart!";
+                setTimeout(function () {
+                    cartButton.innerHTML = "Add to cart";
+                }, 2000);
+            }
+        });
+}
