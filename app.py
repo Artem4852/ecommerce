@@ -65,9 +65,10 @@ def shop():
 
 @app.route('/product/<product_id>')
 def product(product_id):
+    products = get_products()
     product = database.get_product({'id': int(product_id)})
     user = get_user({'username': username})
-    return render_template('product.html', product=product, user_data=user)
+    return render_template('product.html', product=product, user_data=user, products_featured=[p for p in products if p['tag'] == 'featured' and p['discount'] == 0][:4])
 
 @app.route('/newsletter-signup', methods=['POST'])
 def newsletter_signup():

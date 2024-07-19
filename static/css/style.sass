@@ -77,6 +77,9 @@ svg.down-arrow
     gap: 20px
 
     .card
+        display: flex
+        flex-direction: column
+        justify-content: space-between
         width: 100%
         min-width: 0
         padding: 15px
@@ -577,6 +580,7 @@ select
                 position: absolute
                 top: 50%
                 transform: translateY(-50%)
+                opacity: 0.8
 
             svg.left
                 left: 10px
@@ -587,7 +591,7 @@ select
         #others
             width: 100%
             display: grid
-            grid-template: repeat(4, 1fr) / repeat(4, 1fr)
+            grid-template-columns: repeat(4, 1fr)
             gap: 20px
 
             img
@@ -618,8 +622,15 @@ select
             color: $black
             margin-bottom: 20px
 
-        p
+        h2
+            font-family: 'Open-sans', sans-serif
+            font-weight: 400
+            font-size: 30px
+            color: $black
             margin-bottom: 10px
+
+        p
+            margin-bottom: 5px
 
             &.instock
                 color: $green
@@ -659,6 +670,68 @@ select
             border: none
             cursor: pointer
             font-size: 24px
+            margin-bottom: 50px
 
             &:hover
                 background-color: $accent-light
+
+            &.inactive
+                background-color: $accent-light
+                cursor: default
+
+        .additional
+            width: 100%
+
+#product-faq
+    padding: 0 30px
+    display: flex
+    flex-direction: column
+    align-items: flex-start
+    margin-bottom: 20px
+
+    div.info
+        display: flex
+        flex-direction: column
+        align-items: flex-start
+        width: 100%
+
+        .head
+            padding: 15px
+            display: flex
+            flex-direction: row
+            justify-content: flex-start
+            align-items: center
+            gap: 10px
+            cursor: pointer
+            background-color: $grey
+            border-radius: 10px
+            width: 100%
+            margin-bottom: 30px
+
+            h3
+                font-size: 24px
+                font-weight: 400
+
+            svg
+                width: 20px
+                transform: rotate(180deg)
+
+        p
+            margin-top: -20px
+            margin-bottom: 30px
+            display: none
+            font-size: 24px
+
+        a
+            color: $accent
+            text-decoration: none
+
+            &:hover
+                text-decoration: underline
+
+        &.active
+            p
+                display: block
+
+            svg
+                transform: rotate(0deg)

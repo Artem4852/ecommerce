@@ -229,3 +229,8 @@ function selectSize() {
     quantity_select.removeAttribute('disabled');
     console.log(quantity_selects, quantity_select);
 }
+
+function toggleFaq(name) {
+    const faq = document.getElementById('faq-'+name);
+    faq.classList.toggle('active');
+}

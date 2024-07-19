@@ -33,6 +33,7 @@
         </div>
         <div class="information">
             {% set sorted_sizes = product.sizes | sort %}
+            {% set sorted_sizes_cm = product.sizes_cm | dictsort %}
             <h1>{{ product.category }} {{ product.brand }}</h1>
             <div class="row">
                 <div class="col">
@@ -66,9 +67,11 @@
                 <div class="select">
                     <label for="quantity">Quantity:</label>
                     <select class="quantity" id="quantity-{{ sorted_sizes[0] }}" name="quantity">
-                        {% for n in range(product.max_quantities[sorted_sizes[0] | string]) %}
-                            <option value="{{ n+1 }}">{{ n+1 }}</option>
-                        {% endfor %}
+                        {% if product.max_quantities %}
+                            {% for n in range(product.max_quantities[sorted_sizes[0] | string]) %}
+                                <option value="{{ n+1 }}">{{ n+1 }}</option>
+                            {% endfor %}
+                        {% endif %}
                     </select>
                     {% for size in sorted_sizes[1:] %}
                         <select class="quantity" disabled style="display: none;" id="quantity-{{ size }}" name="quantity">
@@ -85,6 +88,63 @@
                 </div>
             </div>
             <button {% if not sorted_sizes %}disabled class="inactive" {% endif %} id="cart-button-{{ product['id'] }}" onclick="addToCart('{{ product['id'] }}')">Add to cart</button>
+            <div class="additional">
+                <h2>Additional information</h2>
+                <p>Sizes (insole lengths): 
+                    {% for size, cm in sorted_sizes_cm %}
+                        {{ size }} ({{ cm }} cm){% if not loop.last %}, {% endif %}
+                    {% endfor %}
+                </p>
+                {% for info, value in product.additional_information.items() %}
+                    <p>{{ info.replace('_', ' ') | capitalize }}: {{ value }}</p>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    <section id="product-faq">
+        <div id="faq-shoe-size" class="info">
+            <div class="head" onclick="toggleFaq('shoe-size')">
+                <svg xmlns="http://www.w3.org/2000/svg" width="33" height="20" viewBox="0 0 33 20" fill="none">
+                    <path d="M-1.31784e-07 3.01486L2.92875 -1.31446e-06L16.5 13.9703L30.0712 -1.2802e-07L33 3.01486L16.5 20L-1.31784e-07 3.01486Z" fill="#111111"/>
+                </svg>
+                <h3>How to select correct shoe size</h3>
+            </div>
+            <p>Ensuring your child wears the right shoe size is crucial for their comfort and foot health. Measure their foot length by
+            tracing it on paper and comparing it to the insole lengths listed for each shoe size on our site. Choose a size slightly
+            larger than their foot length to allow for growth. For the full guide on finding the perfect fit, <a href="/faq/shoe-size">click here</a>.</p>
+        </div>
+        <div id="faq-delivery" class="info">
+            <div class="head" onclick="toggleFaq('delivery')">
+                <svg xmlns="http://www.w3.org/2000/svg" width="33" height="20" viewBox="0 0 33 20" fill="none">
+                    <path
+                        d="M-1.31784e-07 3.01486L2.92875 -1.31446e-06L16.5 13.9703L30.0712 -1.2802e-07L33 3.01486L16.5 20L-1.31784e-07 3.01486Z"
+                        fill="#111111" />
+                </svg>
+                <h3>Delivery information</h3>
+            </div>
+            <p>Understanding our delivery process ensures a smooth shopping experience. We ship across Ukraine and select European
+            countries via Nova Post. Delivery times and costs vary by destination, with processing taking 1-2 business days.
+            Tracking, customs, and accurate address details are crucial. For more information on our shipping policy, <a href="/faq/delivery">click here</a>.</p>
+        </div>
+        <div id="faq-replacements-returns" class="info">
+            <div class="head" onclick="toggleFaq('replacements-returns')">
+                <svg xmlns="http://www.w3.org/2000/svg" width="33" height="20" viewBox="0 0 33 20" fill="none">
+                    <path
+                        d="M-1.31784e-07 3.01486L2.92875 -1.31446e-06L16.5 13.9703L30.0712 -1.2802e-07L33 3.01486L16.5 20L-1.31784e-07 3.01486Z"
+                        fill="#111111" />
+                </svg>
+                <h3>Replacements and returns</h3>
+            </div>
+            <p>If you need to return or replace an item, ensure it's unused and in its original packaging. Initiate your request within
+            one day of receiving your order by emailing customerservice@kidsfashionstore.ua. For the full guide on our replacement and return process, <a href="/faq/replacements-returns">click here</a>.</p>
+        </div>
+    </section>
+    <section id="featured">
+        <h2>You might also like</h2>
+        <div class="products">
+            {% for product in products_featured %}
+            {% include 'card.html' %}
+            {% endfor %}
         </div>
     </section>
     {% include 'newsletter.html' %}

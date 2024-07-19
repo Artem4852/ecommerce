@@ -71,6 +71,9 @@ svg.down-arrow {
   gap: 20px;
 }
 .products .card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   width: 100%;
   min-width: 0;
   padding: 15px;
@@ -575,6 +578,7 @@ select::-webkit-inner-spin-button, select::-webkit-outer-spin-button {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
+  opacity: 0.8;
 }
 #product .images .main-img svg.left {
   left: 10px;
@@ -585,7 +589,7 @@ select::-webkit-inner-spin-button, select::-webkit-outer-spin-button {
 #product .images #others {
   width: 100%;
   display: grid;
-  grid-template: repeat(4, 1fr)/repeat(4, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 20px;
 }
 #product .images #others img {
@@ -615,8 +619,15 @@ select::-webkit-inner-spin-button, select::-webkit-outer-spin-button {
   color: #111;
   margin-bottom: 20px;
 }
-#product .information p {
+#product .information h2 {
+  font-family: "Open-sans", sans-serif;
+  font-weight: 400;
+  font-size: 30px;
+  color: #111;
   margin-bottom: 10px;
+}
+#product .information p {
+  margin-bottom: 5px;
 }
 #product .information p.instock {
   color: #4A8C21;
@@ -656,9 +667,71 @@ select::-webkit-inner-spin-button, select::-webkit-outer-spin-button {
   border: none;
   cursor: pointer;
   font-size: 24px;
+  margin-bottom: 50px;
 }
 #product .information button:hover {
   background-color: #E2A4D0;
+}
+#product .information button.inactive {
+  background-color: #E2A4D0;
+  cursor: default;
+}
+#product .information .additional {
+  width: 100%;
+}
+
+#product-faq {
+  padding: 0 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+#product-faq div.info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+}
+#product-faq div.info .head {
+  padding: 15px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  background-color: #E0E0E0;
+  border-radius: 10px;
+  width: 100%;
+  margin-bottom: 30px;
+}
+#product-faq div.info .head h3 {
+  font-size: 24px;
+  font-weight: 400;
+}
+#product-faq div.info .head svg {
+  width: 20px;
+  transform: rotate(180deg);
+}
+#product-faq div.info p {
+  margin-top: -20px;
+  margin-bottom: 30px;
+  display: none;
+  font-size: 24px;
+}
+#product-faq div.info a {
+  color: #E352BA;
+  text-decoration: none;
+}
+#product-faq div.info a:hover {
+  text-decoration: underline;
+}
+#product-faq div.info.active p {
+  display: block;
+}
+#product-faq div.info.active svg {
+  transform: rotate(0deg);
 }
 
 /*# sourceMappingURL=style.css.map */
