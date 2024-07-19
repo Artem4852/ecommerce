@@ -112,6 +112,7 @@ svg.down-arrow {
   margin-bottom: 20px;
 }
 .products .card .details .col2 {
+  min-width: 55px;
   position: relative;
 }
 .products .card .details .col2 .prev-price {
@@ -509,13 +510,30 @@ a.view-more:hover {
   position: relative;
 }
 #catalogue a {
-  margin-bottom: 0px;
+  margin-bottom: 10px;
+}
+#catalogue .pagination p {
+  font-size: 18px;
+}
+#catalogue .pagination svg {
+  height: 12px;
+  width: 7px;
 }
 #catalogue .pagination a, #catalogue .pagination span.dots {
   color: #999999;
 }
+#catalogue .pagination a:hover, #catalogue .pagination span.dots:hover {
+  text-decoration: none;
+  color: #E352BA;
+}
+#catalogue .pagination a:hover.arrow svg path, #catalogue .pagination span.dots:hover.arrow svg path {
+  fill: #E352BA;
+}
 #catalogue .pagination span {
   color: #111;
+}
+#catalogue .no-products {
+  font-size: 24px;
 }
 
 /*# sourceMappingURL=style.css.map */

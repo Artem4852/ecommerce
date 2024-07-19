@@ -116,6 +116,7 @@ svg.down-arrow
             margin-bottom: 20px
 
             .col2
+                min-width: 55px
                 position: relative
 
                 .prev-price
@@ -510,11 +511,28 @@ a.view-more
             position: relative
 
     a
-        margin-bottom: 0px
+        margin-bottom: 10px
 
     .pagination
+        p
+            font-size: 18px
+
+        svg
+            height: 12px
+            width: 7px
+
         a, span.dots
             color: $grey-dark
 
+            &:hover
+                text-decoration: none
+                color: $accent
+
+                &.arrow svg path
+                    fill: $accent
+
         span
             color: $black
+
+    .no-products
+        font-size: 24px

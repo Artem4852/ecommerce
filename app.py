@@ -1,5 +1,6 @@
 import flask
 from flask import request, jsonify, render_template
+from database import Database
 import os, random, json, math
 
 app = flask.Flask(__name__)
@@ -11,29 +12,21 @@ rows = 10
 index_images = index_images[:columns*rows]
 index_images = [index_images[i:i+rows] for i in range(0, len(index_images), rows)]
 
-def get_products():
-    with open('products.json') as f:
-        products = json.load(f)['products']
-        return products
-    
-def save_products(products):
-    with open('products.json', 'w') as f:
-        json.dump({'products': products}, f)
+database = Database()
 
-def get_users():
-    with open('users.json') as f:
-        users = json.load(f)['users']
-        return users
-    
-def save_users(users):
-    with open('users.json', 'w') as f:
-        json.dump({'users': users}, f)
+username = "test"
+
+def get_products():
+    return database.get_products()
+
+def get_user(_filter):
+    return database.get_user(_filter)
 
 @app.route('/')
 def index():
     products = get_products()
-    users = get_users()
-    return render_template('index.html', index_images=index_images, products_featured=[p for p in products if p['tag'] == 'featured'], products_sale=[p for p in products if p['tag'] == 'sale'], user_data=users[0])
+    user = get_user({'username': username})
+    return render_template('index.html', index_images=index_images, products_featured=[p for p in products if p['tag'] == 'featured' and p['discount'] == 0][:4], products_sale=sorted([p for p in products if p['tag'] == 'sale' and p['discount'] != 0], key=lambda x: x['discount'], reverse=True)[:4], user_data=user)
 
 @app.route('/shop')
 def shop():
@@ -61,30 +54,38 @@ def shop():
 
     products_current = products[(page-1)*products_per_page:page*products_per_page]
 
-    users = get_users()
-    return render_template('shop.html', products=products_current, user_data=users[0], brand=brand, category=category, shoe_size=shoe_size, price_range=price_range, sorting=sorting, products_per_page=products_per_page, page=page, max_pages=math.ceil(len(products)/products_per_page))
+    max_pages = math.ceil(len(products)/products_per_page)
+
+    user = get_user({'username': username})
+
+    for n, p in enumerate(products_current):
+        products_current[n]['sizes'] = sorted(p['sizes'])
+
+    return render_template('shop.html', products=products_current, user_data=user, brand=brand, category=category, shoe_size=shoe_size, price_range=price_range, sorting=sorting, products_per_page=products_per_page, page=page, max_pages=max_pages)
+
+@app.route('/product/<product_id>')
+def product(product_id):
+    product = database.get_product({'id': int(product_id)})
+    user = get_user({'username': username})
+    return render_template('product.html', product=product, user_data=user)
 
 @app.route('/newsletter-signup', methods=['POST'])
 def newsletter_signup():
     email = request.json.get('email')
-    print(email)
+    database.add_to_newsletter(email)
     return jsonify({'success': True})
 
 @app.route('/favorite/<product_number>', methods=['POST'])
 def favorite(product_number):
-    global users
-    users = get_users()
-    if product_number in users[0]["favorites"]: users[0]["favorites"].remove(product_number)
-    else: users[0]["favorites"].append(product_number)
-    save_users(users)
-    return jsonify({'success': True, 'favorite': product_number in users[0]["favorites"]})
+    favorites = database.get_user({'username': username})['favorites']
+    if int(product_number) in favorites: database.update_user({'username': username}, {'$pull': {'favorites': int(product_number)}})
+    else: database.update_user({'username': username}, {'$push': {'favorites': int(product_number)}})
 
-@app.route('/add-to-cart/<product_number>', methods=['POST'])
-def add_to_cart(product_number):
-    global users
-    users = get_users()
-    users[0]['cart'].append(product_number)
-    save_users(users)
+    return jsonify({'success': True, 'favorite': not int(product_number) in favorites})
+
+@app.route('/add-to-cart/<product_id>', methods=['POST'])
+def add_to_cart(product_id):
+    database.update_user({'username': username}, {'$push': {'cart': product_id}})
     return jsonify({'success': True})
 
 if __name__ == "__main__":

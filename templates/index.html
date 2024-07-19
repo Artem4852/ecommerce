@@ -24,7 +24,7 @@
         <div class="products">
             {% for product in products_featured %}
             <div class="card">
-                {% if product['discount'] != '0%' %}<h3 class="discount">-{{ product['discount'] }}</h3>{% else %}{% endif %}
+                {% if product['discount'] != 0 %}<h3 class="discount">-{{ product['discount'] }}%</h3>{% else %}{% endif %}
                 <div class="img">
                     <svg id="favorite-{{ product['product-number'] }}" onclick="favorite('{{ product['product-number'] }}')" class="favorite-icon {% if product['product-number'] in user_data['favorites'] %}favorite{% else %}{% endif %}" xmlns="http://www.w3.org/2000/svg" width="44" height="42" viewBox="0 0 44 42" fill="none">
                         <path
@@ -46,7 +46,7 @@
                         <h4>{{ product['price'] }} ₴</h4>
                     </div>
                 </div>
-                <button onclick="addToCart('{{ product['product-number'] }}')">Add to cart</button>
+                <button id="cart-button-{{ product['id'] }}" onclick="addToCart('{{ product['id'] }}')">Add to cart</button>
             </div>
             {% endfor %}
         </div>
@@ -66,7 +66,7 @@
         <div class="products">
             {% for product in products_sale %}
             <div class="card">
-                {% if product['discount'] != '0%' %}<h3 class="discount">-{{ product['discount'] }}</h3>{% else %}{% endif %}
+                {% if product['discount'] != 0 %}<h3 class="discount">-{{ product['discount'] }}%</h3>{% else %}{% endif %}
                 <div class="img">
                     <svg id="favorite-{{ product['product-number'] }}" onclick="favorite('{{ product['product-number'] }}')" class="favorite-icon {% if product['product-number'] in user_data['favorites'] %}favorite{% else %}{% endif %}" xmlns="http://www.w3.org/2000/svg" width="44" height="42" viewBox="0 0 44 42"
                         fill="none">
@@ -90,7 +90,7 @@
                         <h4>{{ product['price'] }} ₴</h4>
                     </div>
                 </div>
-                <button onclick="addToCart('{{ product['product-number'] }}')">Add to cart</button>
+                <button id="cart-button-{{ product['id'] }}" onclick="addToCart('{{ product['id'] }}')">Add to cart</button>
             </div>
             {% endfor %}
         </div>

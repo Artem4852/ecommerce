@@ -42,6 +42,7 @@ function filterShoes(criterion) {
     if (criterionValue === 'Any') url.searchParams.delete(criterion);
     else url.searchParams.set(criterion, criterionValue);
     url.searchParams.delete('scroll');
+    url.searchParams.delete('page');
     window.location.href = url.toString();
 }
 
