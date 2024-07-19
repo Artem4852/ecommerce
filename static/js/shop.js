@@ -69,3 +69,147 @@ window.addEventListener('load', function () {
         localStorage.removeItem('scrollPosition');
     }
 });
+
+function imgBack() {
+    images = Array.from(document.getElementById('others').children);
+    images.sort((a, b) => parseInt(a.getAttribute('data-index')) - parseInt(b.getAttribute('data-index')))
+
+    for (let i = 0; i < images.length; i++) {
+        document.getElementById('others').removeChild(images[i])
+    }
+    for (let i = 0; i < images.length; i++) {
+        document.getElementById('others').appendChild(images[i])
+    }
+
+    selected = 0
+    for (let i = 0; i < images.length; i++) {
+        if (images[i].classList.contains('selected')) {
+            selected = i
+            break
+        }
+    }
+    let idx = (selected - 1 + images.length) % images.length
+
+    images[idx].classList.add('selected')
+    src = images[idx].src
+    images[selected].classList.remove('selected')
+
+    document.getElementById('main-img').src = src
+
+    after = (idx + 1) % images.length
+    after_2 = (idx + 2) % images.length
+    after_3 = (idx + 3) % images.length
+
+    for (let i = 0; i < images.length; i++) {
+        images[i].classList.add('inactive')
+    }
+    images[idx].classList.remove('inactive')
+    images[after].classList.remove('inactive')
+    images[after_2].classList.remove('inactive')
+    images[after_3].classList.remove('inactive')
+
+    let images_new = [idx, after, after_2, after_3]
+
+    for (let i = 0; i < images_new.length; i++) {
+        document.getElementById('others').removeChild(images[images_new[i]])
+    }
+    for (let i = 0; i < images_new.length; i++) {
+        document.getElementById('others').appendChild(images[images_new[i]])
+    }
+}
+
+function imgForward() {
+    images = Array.from(document.getElementById('others').children);
+    images.sort((a, b) => parseInt(a.getAttribute('data-index')) - parseInt(b.getAttribute('data-index')))
+
+    for (let i = 0; i < images.length; i++) {
+        document.getElementById('others').removeChild(images[i])
+    }
+    for (let i = 0; i < images.length; i++) {
+        document.getElementById('others').appendChild(images[i])
+    }
+
+    selected = 0
+    for (let i = 0; i < images.length; i++) {
+        if (images[i].classList.contains('selected')) {
+            selected = i
+            break
+        }
+    }
+    let idx = (selected + 1) % images.length
+
+    images[idx].classList.add('selected')
+    src = images[idx].src
+    images[selected].classList.remove('selected')
+
+    document.getElementById('main-img').src = src
+
+    after = (idx + 1) % images.length
+    after_2 = (idx + 2) % images.length
+    after_3 = (idx + 3) % images.length
+
+    for (let i = 0; i < images.length; i++) {
+        images[i].classList.add('inactive')
+    }
+    images[idx].classList.remove('inactive')
+    images[after].classList.remove('inactive')
+    images[after_2].classList.remove('inactive')
+    images[after_3].classList.remove('inactive')
+
+    let images_new = [idx, after, after_2, after_3]
+
+    for (let i = 0; i < images_new.length; i++) {
+        document.getElementById('others').removeChild(images[images_new[i]])
+    }
+    for (let i = 0; i < images_new.length; i++) {
+        document.getElementById('others').appendChild(images[images_new[i]])
+    }
+}
+
+function setSelected(imageIdx) {
+    images = Array.from(document.getElementById('others').children);
+    images.sort((a, b) => parseInt(a.getAttribute('data-index')) - parseInt(b.getAttribute('data-index')))
+
+    for (let i = 0; i < images.length; i++) {
+        document.getElementById('others').removeChild(images[i])
+    }
+    for (let i = 0; i < images.length; i++) {
+        document.getElementById('others').appendChild(images[i])
+    }
+
+    selected = 0
+    for (let i = 0; i < images.length; i++) {
+        if (images[i].classList.contains('selected')) {
+            selected = i
+            break
+        }
+    }
+    let idx = imageIdx
+
+    images[idx].classList.add('selected')
+    src = images[idx].src
+    images[selected].classList.remove('selected')
+
+    document.getElementById('main-img').src = src
+
+    after = (idx + 1) % images.length
+    after_2 = (idx + 2) % images.length
+    after_3 = (idx + 3) % images.length
+
+    for (let i = 0; i < images.length; i++) {
+        images[i].classList.add('inactive')
+    }
+    images[idx].classList.remove('inactive')
+    images[after].classList.remove('inactive')
+    images[after_2].classList.remove('inactive')
+    images[after_3].classList.remove('inactive')
+
+    let images_new = [idx, after, after_2, after_3]
+
+    for (let i = 0; i < images_new.length; i++) {
+        document.getElementById('others').removeChild(images[images_new[i]])
+    }
+    for (let i = 0; i < images_new.length; i++) {
+        document.getElementById('others').appendChild(images[images_new[i]])
+    }
+}

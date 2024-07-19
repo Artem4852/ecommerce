@@ -26,13 +26,15 @@ for i in range(100):
         # 'img': f'../static/img/covers/{random.choice(images)}',
         # 'tag': random.choice(tags),
         # 'discount': random.choice(discounts)
-        'images': images,
-        'max_quantities': {str(size): random.randint(1, 5) for size in product['sizes']},
-        'season': random.choice(seasons),
-        'outer_material': random.choice(materials),
-        'inner_material': random.choice(materials),
-        'insole_material': random.choice(materials),
-        'sizes_cm': {str(size): random.randint(10, 30) for size in product['sizes']}
+        # 'images': images,
+        # 'max_quantities': {str(size): random.randint(1, 5) for size in product['sizes']},
+        # 'sizes_cm': {str(size): random.randint(10, 30) for size in product['sizes']}
+        'additional_information': {
+            'season': random.choice(seasons),
+            'outer_material': random.choice(materials),
+            'inner_material': random.choice(materials),
+            'insole_material': random.choice(materials)
+        }
     }
     # p=dp/(1-d)
     # product['price'] = str(round(product['prev-price']*(1-product['discount']/100)))[:-2]+"99"
@@ -43,3 +45,4 @@ for product in products:
     _id = product['id']
     del product['id']
     database.update_product(_id, product)
+    database.remove_fields(_id, ['season', 'inner_material', 'outer_material', 'insole_material'])

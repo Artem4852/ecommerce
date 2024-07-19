@@ -26,6 +26,9 @@ class Database:
     def update_product(self, productId, product):
         print(product)
         self.products_db['product_data'].update_one({'id': productId}, {'$set': product})
+
+    def remove_fields(self, productId, fields):
+        self.products_db['product_data'].update_one({'id': productId}, {'$unset': {field: 1 for field in fields}})
     
     def get_products(self):
         return list(self.products_db['product_data'].find())

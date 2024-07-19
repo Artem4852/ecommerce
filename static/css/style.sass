@@ -536,3 +536,53 @@ a.view-more
 
     .no-products
         font-size: 24px
+
+#product
+    display: flex
+    flex-direction: row
+    justify-content: space-between
+    gap: 20px
+    padding: 30px
+
+    .images
+        width: 45%
+        display: flex
+        flex-direction: column
+        gap: 20px
+
+        .main-img
+            width: 100%
+            position: relative
+
+            img
+                width: 100%
+
+            svg
+                width: 40px
+                height: 40px
+                cursor: pointer
+                position: absolute
+                top: 50%
+                transform: translateY(-50%)
+
+            svg.left
+                left: 10px
+
+            svg.right
+                right: 10px
+
+        #others
+            width: 100%
+            display: grid
+            grid-template: repeat(4, 1fr) / repeat(4, 1fr)
+            gap: 20px
+
+            img
+                width: 100%
+                cursor: pointer
+
+            img.selected
+                filter: brightness(0.7)
+
+            img.inactive
+                display: none

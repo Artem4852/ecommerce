@@ -536,4 +536,55 @@ a.view-more:hover {
   font-size: 24px;
 }
 
+#product {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 30px;
+}
+#product .images {
+  width: 45%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+#product .images .main-img {
+  width: 100%;
+  position: relative;
+}
+#product .images .main-img img {
+  width: 100%;
+}
+#product .images .main-img svg {
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+#product .images .main-img svg.left {
+  left: 10px;
+}
+#product .images .main-img svg.right {
+  right: 10px;
+}
+#product .images #others {
+  width: 100%;
+  display: grid;
+  grid-template: repeat(4, 1fr)/repeat(4, 1fr);
+  gap: 20px;
+}
+#product .images #others img {
+  width: 100%;
+  cursor: pointer;
+}
+#product .images #others img.selected {
+  filter: brightness(0.7);
+}
+#product .images #others img.inactive {
+  display: none;
+}
+
 /*# sourceMappingURL=style.css.map */
