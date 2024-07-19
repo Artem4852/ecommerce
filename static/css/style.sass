@@ -7,6 +7,8 @@ $grey: #E0E0E0
 $grey-light: #C8C8C8
 $grey-dark: #999999
 $black: #111
+$green: #4A8C21
+$red: #B30A0A
 
 *
     margin: 0
@@ -141,6 +143,24 @@ svg.down-arrow
                 background-color: $accent
                 color: $white
 
+        a.view-details
+            display: block
+            width: 100%
+            background-color: $white
+            border-radius: 30px
+            padding: 8px
+            text-align: center
+            font-size: 16px
+            border: none
+            cursor: pointer
+            transition: 0.2s
+            color: $black
+
+            &:hover
+                background-color: $accent
+                color: $white
+                text-decoration: none
+
         .discount
             width: fit-content
             padding: 2px 25px
@@ -169,6 +189,30 @@ a.view-more
     &:hover
         text-decoration: none
 
+label
+    font-size: 20px
+
+select
+    background-color: $grey-dark
+    border: none
+    border-radius: 5px
+    padding: 4px 32px 4px 8px
+    font-size: 20px
+    color: $white
+    position: relative
+    font-weight: 100
+    appearance: none
+
+    &:focus
+        outline: none
+
+    &::-ms-expand
+        display: none
+    &::-webkit-inner-spin-button,
+    &::-webkit-outer-spin-button
+        -webkit-appearance: none
+        margin: 0
+
 #header
     background-color: $white
     width: 100%
@@ -193,6 +237,7 @@ a.view-more
 
         li
             margin-left: 20px
+            font-size: 20px
 
             a
                 font-weight: 700
@@ -462,38 +507,6 @@ a.view-more
     .products
         margin-bottom: 30px
 
-    label
-        font-size: 20px
-
-    select
-        background-color: $grey-dark
-        border: none
-        border-radius: 5px
-        padding: 4px 32px 4px 8px
-        font-size: 20px
-        color: $white
-        position: relative
-        font-weight: 100
-        appearance: none
-
-        &:focus
-            outline: none
-
-        &::after
-            content: '\25BC'
-            position: absolute
-            top: 0
-            right: 0
-            padding: 4px
-            pointer-events: none
-
-        &::-ms-expand
-            display: none
-        &::-webkit-inner-spin-button,
-        &::-webkit-outer-spin-button
-            -webkit-appearance: none
-            margin: 0
-
     .filtering
         width: 100%
         display: flex
@@ -510,7 +523,7 @@ a.view-more
             gap: 5px
             position: relative
 
-    a
+    a:not(.view-details)
         margin-bottom: 10px
 
     .pagination
@@ -545,7 +558,7 @@ a.view-more
     padding: 30px
 
     .images
-        width: 45%
+        width: calc( 50% - 10px )
         display: flex
         flex-direction: column
         gap: 20px
@@ -586,3 +599,66 @@ a.view-more
 
             img.inactive
                 display: none
+
+    .information
+        display: flex
+        flex-direction: column
+        width: calc( 50% - 10px )
+        align-items: center
+
+        color: $black
+        font-size: 24px
+
+        h1
+            width: 100%
+            font-family: 'Open-Sans', sans-serif
+            font-weight: 700
+            font-size: 40px
+            text-align: center
+            color: $black
+            margin-bottom: 20px
+
+        p
+            margin-bottom: 10px
+
+            &.instock
+                color: $green
+
+            &.notinstock
+                color: $red
+
+        .row
+            width: 100%
+            display: flex
+            flex-direction: row
+            justify-content: space-between
+            margin-bottom: 20px
+
+        .select-col
+            width: 100%
+            margin-bottom: 20px
+
+        .select
+            display: flex
+            flex-direction: row
+            gap: 10px
+            align-items: center
+            position: relative
+            margin-bottom: 10px
+            width: fit-content
+
+            label, select
+                font-size: 24px
+
+        button
+            width: 80%
+            background-color: $accent
+            color: $white
+            border-radius: 30px
+            padding: 10px 0
+            border: none
+            cursor: pointer
+            font-size: 24px
+
+            &:hover
+                background-color: $accent-light

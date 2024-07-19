@@ -17,8 +17,11 @@ function favorite(productId) {
 }
 
 function addToCart(productId) {
+    const size = document.getElementById('size').value;
+    const quantity = document.getElementById('quantity-' + size).value;
     fetch('/add-to-cart/' + productId, {
         method: 'POST',
+        body: JSON.stringify({size: size, quantity: quantity}),
         headers: {
             'Content-Type': 'application/json',
         },
@@ -212,4 +215,17 @@ function setSelected(imageIdx) {
     for (let i = 0; i < images_new.length; i++) {
         document.getElementById('others').appendChild(images[images_new[i]])
     }
+}
+
+function selectSize() {
+    const size = document.getElementById('size').value;
+    const quantity_selects = document.getElementsByClassName('quantity');
+    for (let i = 0; i < quantity_selects.length; i++) {
+        quantity_selects[i].style.display = 'none';
+        quantity_selects[i].setAttribute('disabled', 'disabled');
+    }
+    const quantity_select = document.getElementById('quantity-' + size);
+    quantity_select.style.display = 'block';
+    quantity_select.removeAttribute('disabled');
+    console.log(quantity_selects, quantity_select);
 }

@@ -32,19 +32,59 @@
             </div>
         </div>
         <div class="information">
+            {% set sorted_sizes = product.sizes | sort %}
             <h1>{{ product.category }} {{ product.brand }}</h1>
             <div class="row">
-                <div class="basic-information">
+                <div class="col">
                     <p>Product number: {{ product.id }}</p>
                     <p>Brand: {{ product.brand }}</p>
                     <p>Price: {{ product.price }}</p>
                 </div>
-                {% if len(product.sizes) > 0 %}
+                {% if sorted_sizes %}
                     <p class="instock">In stock</p>
                 {% else %}
                     <p class="notinstock">Not in stock</p>
                 {% endif %}
             </div>
+            <div class="select-col">
+                <div class="select">
+                    <label for="size">Size:</label>
+                    <select id="size" name="size" onchange="selectSize()">
+                        {% if sorted_sizes %}
+                            <option value="{{ sorted_sizes[0] }}" selected>{{ sorted_sizes[0] }}</option>
+                        {% endif %}
+                        {% for size in sorted_sizes[1:] %}
+                            <option value="{{ size }}">{{ size }}</option>
+                        {% endfor %}
+                    </select>
+                    <svg class="down-arrow" xmlns="http://www.w3.org/2000/svg" width="24" height="14" viewBox="0 0 24 14" fill="none">
+                        <path
+                            d="M0.321533 2.1104L2.36278 -9.16136e-07L11.8215 9.77919L21.2803 -8.92259e-08L23.3215 2.1104L11.8215 14L0.321533 2.1104Z"
+                            fill="#F1F1F1" />
+                    </svg>
+                </div>
+                <div class="select">
+                    <label for="quantity">Quantity:</label>
+                    <select class="quantity" id="quantity-{{ sorted_sizes[0] }}" name="quantity">
+                        {% for n in range(product.max_quantities[sorted_sizes[0] | string]) %}
+                            <option value="{{ n+1 }}">{{ n+1 }}</option>
+                        {% endfor %}
+                    </select>
+                    {% for size in sorted_sizes[1:] %}
+                        <select class="quantity" disabled style="display: none;" id="quantity-{{ size }}" name="quantity">
+                            {% for n in range(product.max_quantities[size | string]) %}
+                                <option value="{{ n+1 }}">{{ n+1 }}</option>
+                            {% endfor %}
+                        </select>
+                    {% endfor %}
+                    <svg class="down-arrow" xmlns="http://www.w3.org/2000/svg" width="24" height="14" viewBox="0 0 24 14" fill="none">
+                        <path
+                            d="M0.321533 2.1104L2.36278 -9.16136e-07L11.8215 9.77919L21.2803 -8.92259e-08L23.3215 2.1104L11.8215 14L0.321533 2.1104Z"
+                            fill="#F1F1F1" />
+                    </svg>
+                </div>
+            </div>
+            <button {% if not sorted_sizes %}disabled class="inactive" {% endif %} id="cart-button-{{ product['id'] }}" onclick="addToCart('{{ product['id'] }}')">Add to cart</button>
         </div>
     </section>
     {% include 'newsletter.html' %}

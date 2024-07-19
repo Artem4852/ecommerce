@@ -85,7 +85,9 @@ def favorite(product_number):
 
 @app.route('/add-to-cart/<product_id>', methods=['POST'])
 def add_to_cart(product_id):
-    database.update_user({'username': username}, {'$push': {'cart': product_id}})
+    size = request.json.get('size')
+    quantity = request.json.get('quantity')
+    database.update_user({'username': username}, {'$push': {'cart': {'product_id': int(product_id), 'size': int(size), 'quantity': int(quantity)}}})
     return jsonify({'success': True})
 
 if __name__ == "__main__":
