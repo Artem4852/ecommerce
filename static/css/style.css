@@ -988,6 +988,7 @@ select::-webkit-inner-spin-button, select::-webkit-outer-spin-button {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  margin-bottom: 50px;
 }
 #cart h2 {
   width: 100%;
@@ -1059,6 +1060,20 @@ select::-webkit-inner-spin-button, select::-webkit-outer-spin-button {
 }
 #cart .cart-items .card .col.end {
   align-items: flex-end;
+}
+#cart .cart-items .card .select {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  font-size: 18px;
+  gap: 10px;
+  align-items: center;
+  position: relative;
+  margin-bottom: 10px;
+  width: fit-content;
+}
+#cart .cart-items .card .select label, #cart .cart-items .card .select select {
+  font-size: 18px;
 }
 #cart .cart-items button, #cart .cart-items a.button {
   width: calc(50% - 10px);

@@ -73,6 +73,7 @@ def product(product_id):
 @app.route('/cart')
 def cart():
     user = get_user({'username': username})
+    products = get_products()
     print(user['cart'])
     cart_items = []
     subtotal = 0
@@ -80,7 +81,7 @@ def cart():
         product = database.get_product({'id': item['product_id']})
         subtotal += int(product['price'])*int(item['quantity'])
         cart_items.append({'id': item['product_id'], 'size': item['size'], 'quantity': item['quantity'], 'info': product})
-    return render_template('cart.html', user_data=user, cart_items=cart_items, subtotal=subtotal)
+    return render_template('cart.html', user_data=user, cart_items=cart_items, subtotal=subtotal, products_featured=[p for p in products if p['tag'] == 'featured' and p['discount'] == 0][:4])
 
 @app.route('/faq')
 def faq():
@@ -154,6 +155,14 @@ def remove_from_cart(product_id):
     size = request.json.get('size')
     quantity = request.json.get('quantity')
     database.update_user({'username': username}, {'$pull': {'cart': {'product_id': int(product_id), 'size': int(size), 'quantity': int(quantity)}}})
+    return jsonify({'success': True})
+
+@app.route('/edit-cart/<product_id>', methods=['POST'])
+def edit_cart(product_id):
+    size = request.json.get('size')
+    quantity = request.json.get('quantity')
+    database.update_user({'username': username, 'cart.product_id': int(product_id)},
+    {'$set': {'cart.$.size': int(size), 'cart.$.quantity': int(quantity)}})
     return jsonify({'success': True})
 
 if __name__ == "__main__":

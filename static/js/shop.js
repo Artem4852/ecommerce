@@ -54,6 +54,66 @@ function removeFromCart(productId, size, quantity) {
         });
 }
 
+function editCart(productId) {
+    const card = document.getElementById('card-' + productId);
+    const info_size = card.getElementsByClassName('info-size')[0];
+    const info_quantity = card.getElementsByClassName('info-quantity')[0];
+    info_size.style.display = 'none';
+    info_quantity.style.display = 'none';
+
+    const edit_size = card.getElementsByClassName('edit-size')[0];
+    const edit_quantity = card.getElementsByClassName('edit-quantity')[0];
+    edit_size.style.display = 'flex';
+    edit_quantity.style.display = 'flex';
+
+    const button_left = document.getElementById('button-left-' + productId);
+    const button_right = document.getElementById('button-right-' + productId);
+    button_left.setAttribute('onclick', 'saveCart("' + productId + '")');
+    button_left.innerHTML = 'Save';
+    button_right.setAttribute('onclick', 'cancelCart("' + productId + '")');
+    button_right.innerHTML = 'Cancel';
+}
+
+function saveCart(productId) {
+    const card = document.getElementById('card-' + productId);
+    const size = card.getElementsByClassName('edit-size')[0].getElementsByClassName('size')[0].value;
+    const quantity = card.getElementsByClassName('edit-quantity')[0].getElementsByClassName('quantity-' + size)[0].value;
+    console.log(size, quantity)
+    fetch('/edit-cart/' + productId, {
+        method: 'POST',
+        body: JSON.stringify({size: size, quantity: quantity}),
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                location.reload();
+            }
+        });
+}
+
+function cancelCart(productId) {
+    const card = document.getElementById('card-' + productId);
+    const info_size = card.getElementsByClassName('info-size')[0];
+    const info_quantity = card.getElementsByClassName('info-quantity')[0];
+    info_size.style.display = 'flex';
+    info_quantity.style.display = 'flex';
+
+    const edit_size = card.getElementsByClassName('edit-size')[0];
+    const edit_quantity = card.getElementsByClassName('edit-quantity')[0];
+    edit_size.style.display = 'none';
+    edit_quantity.style.display = 'none';
+
+    const button_left = document.getElementById('button-left-' + productId);
+    const button_right = document.getElementById('button-right-' + productId);
+    button_right.setAttribute('onclick', 'editCart("' + productId + '")');
+    button_right.innerHTML = 'Edit';
+    button_left.setAttribute('onclick', `removeFromCart("${productId}", "${info_size.innerHTML.replace('Size: ', '')}", "${info_quantity.innerHTML.replace('Quantity: ', '')}")`);
+    button_left.innerHTML = 'Remove';
+}
+
 function filterShoes(criterion) {
     const criterionValue = document.getElementById(criterion).value;
     console.log(criterionValue);
@@ -235,15 +295,30 @@ function setSelected(imageIdx) {
 
 function selectSize() {
     const size = document.getElementById('size').value;
+    console.log(size)
     const quantity_selects = document.getElementsByClassName('quantity');
     for (let i = 0; i < quantity_selects.length; i++) {
         quantity_selects[i].style.display = 'none';
         quantity_selects[i].setAttribute('disabled', 'disabled');
     }
     const quantity_select = document.getElementById('quantity-' + size);
+    console.log(quantity_select)
     quantity_select.style.display = 'block';
     quantity_select.removeAttribute('disabled');
-    console.log(quantity_selects, quantity_select);
+}
+
+function selectSizeCart(productId) {
+    const size = document.getElementById('size-'+productId).value;
+    console.log(size)
+    const quantity_selects = document.getElementsByClassName('quantity');
+    for (let i = 0; i < quantity_selects.length; i++) {
+        quantity_selects[i].style.display = 'none';
+        quantity_selects[i].setAttribute('disabled', 'disabled');
+    }
+    const quantity_select = document.getElementById('quantity-' + size + '-' + productId);
+    console.log(quantity_select)
+    quantity_select.style.display = 'block';
+    quantity_select.removeAttribute('disabled');
 }
 
 function toggleFaq(name) {
