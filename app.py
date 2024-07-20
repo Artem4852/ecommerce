@@ -70,6 +70,18 @@ def product(product_id):
     user = get_user({'username': username})
     return render_template('product.html', product=product, user_data=user, products_featured=[p for p in products if p['tag'] == 'featured' and p['discount'] == 0][:4])
 
+@app.route('/cart')
+def cart():
+    user = get_user({'username': username})
+    print(user['cart'])
+    cart_items = []
+    subtotal = 0
+    for item in user['cart']:
+        product = database.get_product({'id': item['product_id']})
+        subtotal += int(product['price'])*int(item['quantity'])
+        cart_items.append({'id': item['product_id'], 'size': item['size'], 'quantity': item['quantity'], 'info': product})
+    return render_template('cart.html', user_data=user, cart_items=cart_items, subtotal=subtotal)
+
 @app.route('/faq')
 def faq():
     faq = database.get_faq()
@@ -135,6 +147,13 @@ def add_to_cart(product_id):
     size = request.json.get('size')
     quantity = request.json.get('quantity')
     database.update_user({'username': username}, {'$push': {'cart': {'product_id': int(product_id), 'size': int(size), 'quantity': int(quantity)}}})
+    return jsonify({'success': True})
+
+@app.route('/remove-from-cart/<product_id>', methods=['POST'])
+def remove_from_cart(product_id):
+    size = request.json.get('size')
+    quantity = request.json.get('quantity')
+    database.update_user({'username': username}, {'$pull': {'cart': {'product_id': int(product_id), 'size': int(size), 'quantity': int(quantity)}}})
     return jsonify({'success': True})
 
 if __name__ == "__main__":

@@ -38,6 +38,22 @@ function addToCart(productId) {
         });
 }
 
+function removeFromCart(productId, size, quantity) {
+    fetch('/remove-from-cart/' + productId, {
+        method: 'POST',
+        body: JSON.stringify({size: size, quantity: quantity}),
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                location.reload();
+            }
+        });
+}
+
 function filterShoes(criterion) {
     const criterionValue = document.getElementById(criterion).value;
     console.log(criterionValue);
