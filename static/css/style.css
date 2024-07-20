@@ -237,6 +237,7 @@ select::-webkit-inner-spin-button, select::-webkit-outer-spin-button {
 #header ul li {
   margin-left: 20px;
   font-size: 20px;
+  position: relative;
 }
 #header ul li a {
   font-weight: 700;
@@ -244,6 +245,21 @@ select::-webkit-inner-spin-button, select::-webkit-outer-spin-button {
 #header ul li svg {
   height: 24px;
   cursor: pointer;
+}
+#header #user-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background-color: #E0E0E0;
+  padding: 10px;
+  border-radius: 10px;
+  position: absolute;
+  top: 30px;
+  right: 0;
+  transition: 0.5s;
+}
+#header #user-nav.hidden {
+  right: -200px;
 }
 
 #hero {
@@ -392,6 +408,9 @@ select::-webkit-inner-spin-button, select::-webkit-outer-spin-button {
   text-align: center;
   cursor: pointer;
   border: none;
+}
+.banner .content button:hover {
+  background-color: #E2A4D0;
 }
 .banner .content .row {
   display: flex;

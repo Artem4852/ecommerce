@@ -73,20 +73,23 @@ def product(product_id):
 @app.route('/faq')
 def faq():
     faq = database.get_faq()
-    return render_template('faq.html', faq_posts=faq)
+    user = get_user({'username': username})
+    return render_template('faq.html', faq_posts=faq, user_data=user)
 
 @app.route('/faq/<faq_name>')
 def faq_post(faq_name):
+    user = get_user({'username': username})
     if faq_name == 'shoe-size':
-        return render_template('faq_shoe_size.html')
+        return render_template('faq_shoe_size.html', user_data=user)
     elif faq_name == 'delivery':
-        return render_template('faq_delivery.html')
+        return render_template('faq_delivery.html', user_data=user)
     elif faq_name == 'replacements-returns':
-        return render_template('faq_replacements_returns.html')
+        return render_template('faq_replacements_returns.html', user_data=user)
     
 @app.route('/contact')
 def contact():
-    return render_template('contact.html')
+    user = get_user({'username': username})
+    return render_template('contact.html', user_data=user)
 
 @app.route('/newsletter-signup', methods=['POST'])
 def newsletter_signup():
@@ -96,11 +99,28 @@ def newsletter_signup():
 
 @app.route('/termsofuse')
 def termsofuse():
-    return render_template('legal_tos.html')
+    user = get_user({'username': username})
+    return render_template('legal_tos.html', user_data=user)
 
 @app.route('/privacypolicy')
 def privacypolicy():
-    return render_template('legal_privacypolicy.html')
+    user = get_user({'username': username})
+    return render_template('legal_privacypolicy.html', user_data=user)
+
+@app.route('/cookiespolicy')
+def cookiespolicy():
+    user = get_user({'username': username})
+    return render_template('legal_cookiespolicy.html', user_data=user)
+
+@app.route('/shippingpolicy')
+def shippingpolicy():
+    user = get_user({'username': username})
+    return render_template('legal_shippingpolicy.html', user_data=user)
+
+@app.route('/replacementsandreturnspolicy')
+def replacementsandreturnspolicy():
+    user = get_user({'username': username})
+    return render_template('legal_replacementsandreturnspolicy.html', user_data=user)
 
 @app.route('/favorite/<product_number>', methods=['POST'])
 def favorite(product_number):

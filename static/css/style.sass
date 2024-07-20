@@ -240,6 +240,7 @@ select
         li
             margin-left: 20px
             font-size: 20px
+            position: relative
 
             a
                 font-weight: 700
@@ -248,6 +249,22 @@ select
                 // width: 20px
                 height: 24px
                 cursor: pointer
+
+    #user-nav
+        display: flex
+        flex-direction: column
+        gap: 20px
+        background-color: $grey
+        padding: 10px
+        border-radius: 10px
+        position: absolute
+        top: 30px
+        right: 0
+
+        transition: 0.5s
+
+        &.hidden
+            right: -200px
 
 #hero
     width: 100%
@@ -397,6 +414,9 @@ select
             text-align: center
             cursor: pointer
             border: none
+
+            &:hover
+                background-color: $accent-light
 
         .row
             display: flex

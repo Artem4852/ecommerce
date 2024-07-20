@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+{% include 'head.html' %}
+
+<body>
+    {% include 'header.html' %}
+    <section id="legal-page" class="nolists">
+        <h2>Shipping Policy</h2>
+        <h4>Effective Date: 14 July 2024</h4>
+        <p>Thank you for shopping at Kids Fashion Store. We want you to be completely satisfied with your purchase. If you are not
+        entirely satisfied with your purchase, we're here to help.</p>
+        <h4>1. Eligibility</h4>
+        <p>To be eligible for a replacement or return, your item must be unused and in the same condition that you received it. It
+        must also be in the original packaging.</p>
+        <h4>2. Timeline</h4>
+        <p>You have <b>one day</b> from the date you receive your order (either by picking it up from the post office or receiving it via
+        delivery) to initiate a replacement or return request.</p>
+        <h4>3. How to Initiate a Replacement or Return</h4>
+        <p class="no-margin">To initiate a replacement or return, please follow these steps:</p>
+        <ul>
+            <li>Contact our Customer Service team at <a href="mailto:customerservice@kidsfashionstore.ua">customerservice@kidsfashionstore.ua</a> within the one-day timeframe to notify us of
+            your request.</li>
+            <li>Provide your order number and details about the item you wish to replace or return.</li>
+            <li>Our Customer Service team will guide you through the process and provide you with a return shipping label (if
+            applicable).</li>
+        </ul>
+        <h4>4. Conditions of Replacement or Return</h4>
+        <ul>
+            <li>Items must be unused and in the same condition that you received them.</li>
+            <li>Items must be in their original packaging.</li>
+            <li>Items not eligible for replacement or return include:
+            <ul class="no-margin">
+                <li>Items that are not in their original condition, damaged, or missing parts for reasons not due to our error.</li>
+                <li>Items returned more than one day after delivery.</li>
+            </ul>
+            </li>
+        </ul>
+        <h4>5. Refunds or Replacements</h4>
+        <p class="no-margin">Once your return is received and inspected, we will send you an email to notify you that we have received your returned
+        item. We will also notify you of the approval or rejection of your replacement or refund.</p>
+        <ul>
+            <li>If approved, replacements will be processed based on product availability. If the same product is not available, a
+            similar product of equal value may be offered.</li>
+            <li>If approved, refunds will be processed to the original method of payment within 2 business days.</li>
+        </ul>
+        <h4>6. Shipping Costs</h4>
+        <p>Shipping costs for returns are non-refundable. If you receive a replacement, the cost of return shipping will be
+        deducted from your refund.</p>
+        <h4>7. Contact Us</h4>
+        <p>If you have any questions about our Replacement and Return Policy, please contact us at
+        <a href="mailto:customerservice@kidsfashionstore.ua">customerservice@kidsfashionstore.ua</a>.</p>
+    </section>
+    {% include 'newsletter.html' %}
+    {% include 'footer.html' %}
+    <script src="{{ url_for('static', filename='js/home.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/shop.js') }}"></script>
+</body>
+
+</html>

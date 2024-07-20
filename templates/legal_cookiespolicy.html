@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+{% include 'head.html' %}
+
+<body>
+    {% include 'header.html' %}
+    <section id="legal-page" class="nolists">
+        <h2>Cookies Policy</h2>
+        <h4>Effective Date: 14 July 2024</h4>
+        <p>Kids Fashion Store ("we," "our," "us") uses cookies on <a href="/">https://kidsfashionstore.ua</a> (the "Site"). By using the Site, you
+        consent to the use of cookies in accordance with this Cookies Policy.</p>
+        <h4>1. What Are Cookies?</h4>
+        <p>Cookies are small text files that are placed on your computer or mobile device when you visit a website. They are widely
+        used to make websites work, or work more efficiently, as well as to provide information to the website owners.</p>
+        <h4>2. How We Use Cookies</h4>
+        <p class="no-margin">We use cookies to improve your browsing experience on our Site. The cookies we use do not collect any personal
+        information and are not used to identify you. We do not share any information collected through cookies with third
+        parties. Specifically, we use cookies for the following purposes:</p>
+        <ul>
+            <li>Essential Cookies: These cookies are necessary for the functioning of the Site. They allow you to navigate the Site and use its features, such as accessing secure areas of the Site.</li>
+            <li>Performance Cookies: These cookies collect information about how visitors use the Site, such as which pages are visited most often and if visitors receive error messages from web pages. This information is used to improve the Site’s performance.</li>
+            <li>Functionality Cookies: These cookies allow the Site to remember choices you make (such as your username, language, or region) and provide enhanced, more personalized features.</li>
+        </ul>
+            <h4>3. Types of Cookies We Use</h4>
+            <ul>
+                <li>Session Cookies: These are temporary cookies that remain on your device until you leave the Site. They are deleted from
+                your device once you close your browser.
+                </li>
+                <li>Persistent Cookies: These cookies remain on your device for a longer period or until you manually delete them. The
+                length of time the cookie stays on your device depends on the duration or "lifetime" of the specific cookie and your
+                browser settings.</li>
+            </ul>
+            <h4>4. Managing Cookies</h4>
+            <p>You can manage cookies through your web browser settings. Most browsers allow you to refuse or accept cookies, delete
+            existing cookies, and set preferences for certain websites. Please note that if you disable or refuse cookies, some
+            parts of the Site may become inaccessible or not function properly.</p>
+            <h4>5. Changes to This Cookies Policy</h4>
+            <p>We may update our Cookies Policy from time to time. We will notify you of any changes by posting the new Cookies Policy
+            on this page. You are advised to review this Cookies Policy periodically for any changes. Changes to this Cookies Policy
+            are effective when they are posted on this page.</p>
+            <h4>6. Contact Us</h4>
+            <p>If you have any questions about this Cookies Policy, please contact us at <a href="mailto:contact@kidsfashionstore.ua">contact@kidsfashionstore.ua</a> or <a href="tel:+380689016787">+380 68
+                901 6787</a>.</p>
+        </ul>
+    </section>
+    {% include 'newsletter.html' %}
+    {% include 'footer.html' %}
+    <script src="{{ url_for('static', filename='js/home.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/shop.js') }}"></script>
+</body>
+
+</html>
