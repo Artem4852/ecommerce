@@ -70,6 +70,20 @@ def product(product_id):
     user = get_user({'username': username})
     return render_template('product.html', product=product, user_data=user, products_featured=[p for p in products if p['tag'] == 'featured' and p['discount'] == 0][:4])
 
+@app.route('/faq')
+def faq():
+    faq = database.get_faq()
+    return render_template('faq.html', faq_posts=faq)
+
+@app.route('/faq/<faq_name>')
+def faq_post(faq_name):
+    if faq_name == 'shoe-size':
+        return render_template('faq_shoe_size.html')
+    elif faq_name == 'delivery':
+        return render_template('faq_delivery.html')
+    elif faq_name == 'replacements-returns':
+        return render_template('faq_replacements_returns.html')
+
 @app.route('/newsletter-signup', methods=['POST'])
 def newsletter_signup():
     email = request.json.get('email')

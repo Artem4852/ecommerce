@@ -33,7 +33,6 @@ body
     color: $black
     font-family: 'Open-Sans', sans-serif
     width: 100%
-    height: 2000px
 
 svg.favorite-icon
     position: absolute
@@ -314,6 +313,9 @@ select
     flex-direction: column
     align-items: center
 
+    &.product
+        margin-bottom: 0
+
     h2
         margin-bottom: 20px
 
@@ -406,7 +408,6 @@ select
 #sale
     width: 100%
     padding: 0 30px
-    margin-bottom: 50px
 
     display: flex
     flex-direction: column
@@ -419,6 +420,8 @@ select
         margin-bottom: 30px
 
 #newsletter
+    margin-top: 50px
+
     .img
         padding: 15px
         display: flex
@@ -498,7 +501,6 @@ select
     width: 100%
     padding: 0 30px
     margin-top: 20px
-    margin-bottom: 50px
 
     display: flex
     flex-direction: column
@@ -735,3 +737,135 @@ select
 
             svg
                 transform: rotate(0deg)
+
+#faq
+    margin-top: 20px
+    display: flex
+    flex-direction: column
+    align-items: center
+    width: 100%
+    padding: 0 20px
+
+    .posts
+        width: 100%
+        display: flex
+        flex-direction: row
+        flex-wrap: wrap
+        justify-content: space-between
+        gap: 20px
+
+        .card
+            width: calc(32% - 10px)
+            background-color: $grey
+            border-radius: 20px
+            padding: 15px
+            display: flex
+            flex-direction: column
+            justify-content: space-between
+
+            img
+                width: 100%
+                height: auto
+                aspect-ratio: 3 / 2
+                object-fit: contain
+                border-radius: 10px
+                background-color: #fff
+                margin-bottom: 10px
+
+            h3
+                font-size: 28px
+                font-weight: 400
+                margin-bottom: 15px
+
+            p
+                font-size: 18px
+                font-weight: 400
+                margin-bottom: 20px
+
+            a.button
+                display: block
+                width: 100%
+                background-color: $white
+                color: $black
+                border-radius: 30px
+                padding: 10px
+                text-align: center
+                font-size: 18px
+                transition: 0.2s
+
+                &:hover
+                    background-color: $accent
+                    color: $white
+                    text-decoration: none
+
+#faq-page
+    margin-top: 20px
+    display: flex
+    flex-direction: column
+    align-items: flex-start
+    padding: 0 20px
+
+    h2
+        width: 100%
+        text-align: center
+        margin-bottom: 10px
+
+    h3
+        width: 100%
+        text-align: center
+        margin-bottom: 5px
+        font-family: 'Open Sans', sans-serif
+        color: $black
+        font-size: 24px
+
+    h4
+        width: 100%
+        text-align: left
+        margin-bottom: 5px
+        font-family: 'Open Sans', sans-serif
+        color: $black
+        font-size: 20px
+
+    p
+        font-size: 18px
+
+    p.subheading
+        font-size: 20px
+        font-weight: 400
+        margin-bottom: 20px
+
+    ul
+        margin-bottom: 20px
+
+        li
+            font-size: 18px
+            margin-left: 25px
+
+    .row
+        display: flex
+        flex-direction: row
+        justify-content: space-between
+        align-items: stretch
+        gap: 30px
+
+        img
+            // flex: 0 0 auto
+            width: calc( 35% - 15px )
+            padding: 15px
+            border-radius: 10px
+            background-color: $grey
+            object-fit: contain
+
+        .text
+            // flex: 1
+            // display: flex
+            // flex-direction: column
+            // justify-content: space-between
+            width: calc( 65% - 15px )
+
+            *
+                width: 100%
+
+    &.nolists
+        p
+            margin-bottom: 20px

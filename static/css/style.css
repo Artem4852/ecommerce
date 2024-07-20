@@ -25,7 +25,6 @@ body {
   color: #111;
   font-family: "Open-Sans", sans-serif;
   width: 100%;
-  height: 2000px;
 }
 
 svg.favorite-icon {
@@ -311,6 +310,9 @@ select::-webkit-inner-spin-button, select::-webkit-outer-spin-button {
   flex-direction: column;
   align-items: center;
 }
+#featured.product {
+  margin-bottom: 0;
+}
 #featured h2 {
   margin-bottom: 20px;
 }
@@ -404,7 +406,6 @@ select::-webkit-inner-spin-button, select::-webkit-outer-spin-button {
 #sale {
   width: 100%;
   padding: 0 30px;
-  margin-bottom: 50px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -416,6 +417,9 @@ select::-webkit-inner-spin-button, select::-webkit-outer-spin-button {
   margin-bottom: 30px;
 }
 
+#newsletter {
+  margin-top: 50px;
+}
 #newsletter .img {
   padding: 15px;
   display: flex;
@@ -497,7 +501,6 @@ select::-webkit-inner-spin-button, select::-webkit-outer-spin-button {
   width: 100%;
   padding: 0 30px;
   margin-top: 20px;
-  margin-bottom: 50px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -732,6 +735,134 @@ select::-webkit-inner-spin-button, select::-webkit-outer-spin-button {
 }
 #product-faq div.info.active svg {
   transform: rotate(0deg);
+}
+
+#faq {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 0 20px;
+}
+#faq .posts {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px;
+}
+#faq .posts .card {
+  width: calc(32% - 10px);
+  background-color: #E0E0E0;
+  border-radius: 20px;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+#faq .posts .card img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3/2;
+  object-fit: contain;
+  border-radius: 10px;
+  background-color: #fff;
+  margin-bottom: 10px;
+}
+#faq .posts .card h3 {
+  font-size: 28px;
+  font-weight: 400;
+  margin-bottom: 15px;
+}
+#faq .posts .card p {
+  font-size: 18px;
+  font-weight: 400;
+  margin-bottom: 20px;
+}
+#faq .posts .card a.button {
+  display: block;
+  width: 100%;
+  background-color: #f1f1f1;
+  color: #111;
+  border-radius: 30px;
+  padding: 10px;
+  text-align: center;
+  font-size: 18px;
+  transition: 0.2s;
+}
+#faq .posts .card a.button:hover {
+  background-color: #E352BA;
+  color: #f1f1f1;
+  text-decoration: none;
+}
+
+#faq-page {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0 20px;
+}
+#faq-page h2 {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 10px;
+}
+#faq-page h3 {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 5px;
+  font-family: "Open Sans", sans-serif;
+  color: #111;
+  font-size: 24px;
+}
+#faq-page h4 {
+  width: 100%;
+  text-align: left;
+  margin-bottom: 5px;
+  font-family: "Open Sans", sans-serif;
+  color: #111;
+  font-size: 20px;
+}
+#faq-page p {
+  font-size: 18px;
+}
+#faq-page p.subheading {
+  font-size: 20px;
+  font-weight: 400;
+  margin-bottom: 20px;
+}
+#faq-page ul {
+  margin-bottom: 20px;
+}
+#faq-page ul li {
+  font-size: 18px;
+  margin-left: 25px;
+}
+#faq-page .row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: stretch;
+  gap: 30px;
+}
+#faq-page .row img {
+  width: calc(35% - 15px);
+  padding: 15px;
+  border-radius: 10px;
+  background-color: #E0E0E0;
+  object-fit: contain;
+}
+#faq-page .row .text {
+  width: calc(65% - 15px);
+}
+#faq-page .row .text * {
+  width: 100%;
+}
+#faq-page.nolists p {
+  margin-bottom: 20px;
 }
 
 /*# sourceMappingURL=style.css.map */

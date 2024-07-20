@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+{% include 'head.html' %}
+
+<body>
+    {% include 'header.html' %}
+    <section id="faq-page" class="nolists">
+        <h2>FAQ</h2>
+        <h3>Information about the delivery</h3>
+        <p class="subheading">Ensuring your order arrives safely and promptly is our top priority. Follow these steps to understand our delivery process:</p>
+        <h4>Shipping Areas</h4>
+        <p>We provide shipping across Ukraine and selected countries in Europe through Nova Post (Нова Пошта). Availability,
+        delivery times, and costs vary based on the destination.</p>
+        <h4>Shipping Times</h4>
+        <p>Ukraine: 1 to 3 business days.
+        Europe: Varies by country, specified during checkout.
+        Note: Delivery times are estimates and can be affected by factors such as customs, weather, and holidays.</p>
+        <h4>Shipping Costs</h4>
+        <p>Calculated based on delivery address and package size/weight.
+        Displayed during checkout.
+        Customers are responsible for all shipping costs added to the total order amount.</p>
+        <h4>Order Processing</h4>
+        <p>Orders are processed and shipped within 1 to 2 business days after payment confirmation.
+        A shipping confirmation email with tracking information will be sent once the order is shipped.</p>
+        <h4>Tracking Information</h4>
+        <p>Use the tracking number provided in your shipping confirmation email to track your package.
+        Alternatively, log into your account on our website for tracking.</p>
+        <h4>Customs and Duties</h4>
+        <p>For international shipments, customs duties, taxes, and fees may apply.
+        These charges are the recipient's responsibility and will be collected upon delivery by the local customs authority.</p>
+        <h4>Lost or Damaged Shipments</h4>
+        <p>We are not responsible for lost or damaged shipments.
+        Contact us immediately at <a href="mailto:contact@kidsfashionstore.ua">contact@kidsfashionstore.ua</a> or +380 68 901 5764 for assistance in filing a claim with the
+        shipping carrier.</p>
+        <h4>Address Accuracy</h4>
+        <p>Ensure accurate and complete shipping information.
+        We are not responsible for orders shipped to incorrect or incomplete addresses provided by the customer.
+        Review your shipping address carefully before submitting your order.</p>
+        <h4>Shipping Restrictions</h4>
+        <p>We reserve the right to refuse orders due to shipping restrictions imposed by our carriers.</p>
+       
+        
+        <p>For any further questions about our shipping policy, feel free to contact us at <a href="mailto:contact@kidsfashionstore.ua">contact@kidsfashionstore.ua</a> or <a href="tel:+380689015764">+380 68 901 5764</a>.
+        Happy Shopping!</p>
+    </section>
+    {% include 'newsletter.html' %}
+    {% include 'footer.html' %}
+    <script src="{{ url_for('static', filename='js/home.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/shop.js') }}"></script>
+</body>
+</html>

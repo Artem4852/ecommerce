@@ -10,6 +10,7 @@ class Database:
         self.client = MongoClient(uri)
         self.users_db = self.client['users']
         self.products_db = self.client['products']
+        self.other_db = self.client['other']
     
     def get_user(self, _filter):
         return self.users_db['user_data'].find_one(_filter)
@@ -38,6 +39,9 @@ class Database:
 
     def add_to_newsletter(self, email):
         self.users_db['notifications'].update_one({'_id': ObjectId('6699745baeee92227cd44cfa')}, {'$push': {'newsletter': email}})
+
+    def get_faq(self):
+        return list(self.other_db['faq'].find())
 
 if __name__ == '__main__':
     database = Database()

@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en">
+{% include 'head.html' %}
+<body>
+    {% include 'header.html' %}
+
+    {% include 'newsletter.html' %}
+    {% include 'footer.html' %}
+    <script src="{{ url_for('static', filename='js/home.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/shop.js') }}"></script>
+</body>
+</html>

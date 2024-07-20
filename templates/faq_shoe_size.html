@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+{% include 'head.html' %}
+<body>
+    {% include 'header.html' %}
+    <section id="faq-page">
+        <h2>FAQ</h2>
+        <h3>How to Select the Right Shoe Size for Your Child</h3>
+        <p class="subheading">Choosing the right shoe size for your child is essential for their comfort and foot health. Follow these simple steps to ensure you get the perfect fit.</p>
+        <h4>Step-by-Step Instructions:</h4>
+        <p>1. Prepare the Materials</p>
+        <ul>
+            <li>A piece of paper</li>
+            <li>A pencil</li>
+            <li>A ruler</li>
+        </ul>
+        <div class="row">
+            <div class="text">
+                <p>2. Trace Your Child’s Foot</p>
+                <ul>
+                    <li>Place the piece of paper on a flat, hard surface.</li>
+                    <li>Have your child stand barefoot on the paper.</li>
+                    <li>Ensure your child’s foot is flat and their weight is evenly distributed.</li>
+                    <li>Using the pencil, carefully trace around your child’s foot. Try to keep the pencil as vertical as possible to get an accurate outline.</li>
+                </ul>
+            <p>3. Measure the Foot Length</p>
+            <ul>
+                <li>Remove the paper and use the ruler to measure the longest distance from the heel to the tip of the longest toe.</li>
+                <li>This measurement is your child’s foot length.</li>
+            </ul>
+            </div>
+            <img src="../static/img/feet_measurement.png" alt="">
+        </div>
+        <p>4. Compare with Insole Lengths</p>
+        <ul>
+            <li>On our shop, each shoe size includes the length of the insole.</li>
+            <li>Compare your child’s foot length to the insole lengths provided.</li>
+            <li>Choose the shoe size where the insole length is slightly longer than your child’s foot length, allowing for some growing room.</li>
+        </ul>
+        <p>Additional Tips:</p>
+        <ul>
+            <li>Measure Both Feet: Sometimes one foot is slightly larger than the other. Use the measurement of the larger foot to ensure comfort.</li>
+            <li>Consider Growth: Kids' feet grow quickly, so it’s a good idea to leave a little extra room (about one centimeter) for growth.</li>
+            <li>Try Shoes On: If possible, have your child try on the shoes and walk around to ensure they feel comfortable.</li>
+            <li>The shoes should have enough room at the toes and fit snugly around the heels.</li>
+        </ul>
+        <p>Example:</p>
+        <ul>
+            <li>If your child’s foot length is 18 cm, look for a shoe size with an insole length of around 18.5 - 19 cm.</li>
+        </ul>
+        <p class="final">By following these steps, you can confidently select the correct shoe size for your child, ensuring they have comfortable and well-fitting shoes.
+        Happy Shopping!</p>
+    </section>
+    {% include 'newsletter.html' %}
+    {% include 'footer.html' %}
+    <script src="{{ url_for('static', filename='js/home.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/shop.js') }}"></script>
+</body>
+</html>

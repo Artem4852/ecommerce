@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+{% include 'head.html' %}
+<body>
+    {% include 'header.html' %}
+    <section id="faq">
+        <h2>FAQ</h2>
+        <div class="posts">
+            {% for post in faq_posts %}
+                <div class="card">
+                    <div>
+                        <a href="/faq/{{ post['name'] }}"><img src="{{ post['img'] }}" alt=""></a>
+                        <h3>{{ post['title'] }}</h3>
+                        <p>{{ post['content'] }}</p>
+                    </div>
+                    <a href="/faq/{{ post['name'] }}" class="button">Read on</a>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+    {% include 'newsletter.html' %}
+    {% include 'footer.html' %}
+    <script src="{{ url_for('static', filename='js/home.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/shop.js') }}"></script>
+</body>
+</html>
