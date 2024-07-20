@@ -241,6 +241,10 @@ select::-webkit-inner-spin-button, select::-webkit-outer-spin-button {
 #header ul li a {
   font-weight: 700;
 }
+#header ul li svg {
+  height: 24px;
+  cursor: pointer;
+}
 
 #hero {
   width: 100%;
@@ -798,19 +802,19 @@ select::-webkit-inner-spin-button, select::-webkit-outer-spin-button {
   text-decoration: none;
 }
 
-#faq-page {
+#faq-page, #legal-page {
   margin-top: 20px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   padding: 0 20px;
 }
-#faq-page h2 {
+#faq-page h2, #legal-page h2 {
   width: 100%;
   text-align: center;
   margin-bottom: 10px;
 }
-#faq-page h3 {
+#faq-page h3, #legal-page h3 {
   width: 100%;
   text-align: center;
   margin-bottom: 5px;
@@ -818,7 +822,7 @@ select::-webkit-inner-spin-button, select::-webkit-outer-spin-button {
   color: #111;
   font-size: 24px;
 }
-#faq-page h4 {
+#faq-page h4, #legal-page h4 {
   width: 100%;
   text-align: left;
   margin-bottom: 5px;
@@ -826,43 +830,136 @@ select::-webkit-inner-spin-button, select::-webkit-outer-spin-button {
   color: #111;
   font-size: 20px;
 }
-#faq-page p {
+#faq-page p, #legal-page p {
   font-size: 18px;
 }
-#faq-page p.subheading {
+#faq-page p.subheading, #legal-page p.subheading {
   font-size: 20px;
   font-weight: 400;
   margin-bottom: 20px;
 }
-#faq-page ul {
+#faq-page ul, #legal-page ul {
   margin-bottom: 20px;
 }
-#faq-page ul li {
+#faq-page ul li, #legal-page ul li {
   font-size: 18px;
   margin-left: 25px;
 }
-#faq-page .row {
+#faq-page .row, #legal-page .row {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: stretch;
   gap: 30px;
 }
-#faq-page .row img {
+#faq-page .row img, #legal-page .row img {
   width: calc(35% - 15px);
   padding: 15px;
   border-radius: 10px;
   background-color: #E0E0E0;
   object-fit: contain;
 }
-#faq-page .row .text {
+#faq-page .row .text, #legal-page .row .text {
   width: calc(65% - 15px);
 }
-#faq-page .row .text * {
+#faq-page .row .text *, #legal-page .row .text * {
   width: 100%;
 }
-#faq-page.nolists p {
+#faq-page.nolists p, #legal-page.nolists p {
   margin-bottom: 20px;
+}
+#faq-page.nolists p.no-margin, #legal-page.nolists p.no-margin {
+  margin-bottom: 0;
+}
+#faq-page .no-margin, #legal-page .no-margin {
+  margin-bottom: 0;
+}
+
+#legal-page a {
+  color: #111;
+  text-decoration: underline;
+}
+#legal-page a:hover {
+  color: #E352BA;
+}
+
+#contact {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 20px;
+  margin-top: 20px;
+}
+#contact h4 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+#contact p {
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+#contact .info {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+#contact .row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+#contact .row .col {
+  display: flex;
+  flex-direction: column;
+}
+#contact form {
+  width: calc(50% - 10px);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+#contact form input, #contact form textarea {
+  width: 100%;
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  font-size: 18px;
+  margin-bottom: 15px;
+  background-color: #999999;
+  color: #f1f1f1;
+}
+#contact form input:focus, #contact form textarea:focus {
+  outline: none;
+}
+#contact form input::placeholder, #contact form textarea::placeholder {
+  color: #E0E0E0;
+}
+#contact form textarea {
+  resize: vertical;
+  min-height: 100px;
+  max-height: 300px;
+  font-family: "Open Sans", sans-serif;
+}
+#contact form button {
+  width: 100%;
+  background-color: #E352BA;
+  color: #f1f1f1;
+  border-radius: 30px;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+}
+#contact form button:hover {
+  background-color: #E2A4D0;
+}
+#contact .form p {
+  width: calc(50% - 10px);
 }
 
 /*# sourceMappingURL=style.css.map */

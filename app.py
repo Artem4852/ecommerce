@@ -83,12 +83,24 @@ def faq_post(faq_name):
         return render_template('faq_delivery.html')
     elif faq_name == 'replacements-returns':
         return render_template('faq_replacements_returns.html')
+    
+@app.route('/contact')
+def contact():
+    return render_template('contact.html')
 
 @app.route('/newsletter-signup', methods=['POST'])
 def newsletter_signup():
     email = request.json.get('email')
     database.add_to_newsletter(email)
     return jsonify({'success': True})
+
+@app.route('/termsofuse')
+def termsofuse():
+    return render_template('legal_tos.html')
+
+@app.route('/privacypolicy')
+def privacypolicy():
+    return render_template('legal_privacypolicy.html')
 
 @app.route('/favorite/<product_number>', methods=['POST'])
 def favorite(product_number):

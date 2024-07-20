@@ -244,6 +244,11 @@ select
             a
                 font-weight: 700
 
+            svg
+                // width: 20px
+                height: 24px
+                cursor: pointer
+
 #hero
     width: 100%
     height: 40vw
@@ -798,7 +803,7 @@ select
                     color: $white
                     text-decoration: none
 
-#faq-page
+#faq-page, #legal-page
     margin-top: 20px
     display: flex
     flex-direction: column
@@ -869,3 +874,96 @@ select
     &.nolists
         p
             margin-bottom: 20px
+
+            &.no-margin
+                margin-bottom: 0
+
+    .no-margin
+        margin-bottom: 0
+
+#legal-page
+    a
+        color: $black
+        text-decoration: underline
+
+        &:hover
+            color: $accent
+
+#contact
+    display: flex
+    flex-direction: column
+    align-items: center
+    padding: 0 20px
+    margin-top: 20px
+
+    h4
+        font-size: 24px
+        margin-bottom: 10px
+
+    p
+        font-size: 18px
+        margin-bottom: 5px
+
+    .info
+        width: 100%
+        display: flex
+        flex-direction: column
+        align-items: flex-start
+        margin-bottom: 20px
+
+    .row
+        display: flex
+        flex-direction: row
+        justify-content: space-between
+        width: 100%
+        gap: 20px
+        margin-bottom: 20px
+
+        .col
+            display: flex
+            flex-direction: column
+
+    form
+        width: calc( 50% - 10px )
+        display: flex
+        flex-direction: column
+        align-items: flex-start
+
+        input, textarea
+            width: 100%
+            padding: 10px
+            border-radius: 10px
+            border: none
+            font-size: 18px
+            margin-bottom: 15px
+            background-color: $grey-dark
+            color: $white
+
+            &:focus
+                outline: none
+
+            &::placeholder
+                color: $grey
+
+        textarea
+            resize: vertical
+            min-height: 100px
+            max-height: 300px
+            font-family: 'Open Sans', sans-serif
+
+        button
+            width: 100%
+            background-color: $accent
+            color: $white
+            border-radius: 30px
+            padding: 10px
+            border: none
+            cursor: pointer
+            font-size: 18px
+
+            &:hover
+                background-color: $accent-light
+
+    .form
+        p
+            width: calc( 50% - 10px )
