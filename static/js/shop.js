@@ -9,9 +9,15 @@ function favorite(productId) {
         .then(response => response.json())
         .then(data => {
             if (data.success) {
-                const favoriteIcon = document.getElementById('favorite-' + productId);
-                console.log(favoriteIcon)
-                favoriteIcon.setAttribute('class', data.favorite ? 'favorite-icon favorite' : 'favorite-icon');
+                url = new URL(window.location.href);
+                favoritePage = url.toString().includes('favorites');
+                if (favoritePage) {
+                    const card = document.getElementById('card-' + productId);
+                    card.remove();
+                } else {
+                    const favoriteIcon = document.getElementById('favorite-' + productId);
+                    favoriteIcon.setAttribute('class', data.favorite ? 'favorite-icon favorite' : 'favorite-icon');
+                }
             }
         });
 }

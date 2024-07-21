@@ -107,11 +107,11 @@
                 {% include 'card.html' %}
             {% endfor %}
         </div>
-            {% if page == 1 %} 
+            {% if page == 1 and max_pages != 1 %} 
                 <a onclick="loadMore()" class="view-more">Show more</a>
             {% endif %}
         {% endif %}
-        {% if max_pages != 1 %}
+        {% if products and max_pages != 1 %}
         <div class="pagination">
             <p>Page:
                 {% if page != 1 %}

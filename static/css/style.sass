@@ -264,6 +264,7 @@ select
         transition: 0.5s
 
         &.hidden
+            display: none
             right: -200px
 
 #hero
@@ -1136,3 +1137,109 @@ select
             &:hover
                 background-color: $accent-light
                 text-decoration: none
+
+    .cart-empty
+        width: 100%
+        text-align: center
+        font-size: 24px
+        display: flex
+        flex-direction: column
+        align-items: center
+
+        h4
+            margin-bottom: 10px
+
+        a
+            display: block
+            width: 33%
+            background-color: $accent
+            color: $white
+            border-radius: 30px
+            padding: 10px
+            text-align: center
+            cursor: pointer
+            font-size: 24px
+            transition: 0.2s
+
+            &:hover
+                background-color: $accent-light
+                text-decoration: none
+
+#login-form
+    width: 100%
+    padding: 0 20px
+    display: flex
+    flex-direction: column
+    align-items: center
+    margin-top: 20px
+
+    h2
+        width: 100%
+        text-align: center
+        margin-bottom: 20px
+
+    form
+        width: 50%
+        display: flex
+        flex-direction: column
+        align-items: flex-start
+        padding: 20px
+        background-color: $grey
+        border-radius: 20px
+        margin-bottom: 50px
+
+        .input
+            position: relative
+            width: 100%
+
+            svg
+                position: absolute
+                top: 10px
+                left: 10px
+                height: 20px
+
+        input
+            width: 100%
+            padding: 10px
+            padding-left: 40px
+            border-radius: 10px
+            border: none
+            font-size: 18px
+            margin-bottom: 20px
+            background-color: $grey-dark
+            color: $white
+
+            &:focus
+                outline: none
+
+            &::placeholder
+                color: $grey
+
+            &.password
+                margin-bottom: 10px
+
+        button
+            width: 100%
+            background-color: $accent
+            color: $white
+            border-radius: 30px
+            padding: 10px
+            margin-bottom: 10px
+            border: none
+            cursor: pointer
+            font-size: 18px
+
+            &:hover
+                background-color: $accent-light
+
+    p
+        color: $accent-light
+
+    a
+        color: $accent-light
+        text-decoration: none
+        margin-bottom: 40px
+        text-decoration: underline
+
+        &:hover
+            color: $accent

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+{% include 'head.html' %}
+
+<body>
+    {% include 'header.html' %}
+    <section id="catalogue">
+        <h2>Favorites</h2>
+        {% if favorite_items %}
+        <div class="products">
+            {% for product in favorite_items %}
+                {% include 'card.html' %}
+            {% endfor %}
+        </div>
+        {% endif %}
+        {% if max_pages != 1 %}
+        <div class="pagination">
+            <p>Page:
+                {% if page != 1 %}
+                    <a href="?{% for key, value in request.args.items() if key not in ['page', 'scroll'] %}{{ key }}={{ value }}&{% endfor %}page={{ page-1 }}" class="arrow">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="23" viewBox="0 0 14 23" fill="none">
+                            <path d="M11.8896 -1.84497e-07L14 2.04125L4.22081 11.5L14 20.9587L11.8896 23L5.16875e-08 11.5L11.8896 -1.84497e-07Z" fill="#111111"/>
+                        </svg>
+                    </a>
+                    <a href="?{% for key, value in request.args.items() if key not in ['page', 'scroll'] %}{{ key }}={{ value }}&{% endfor %}">1</a>
+                {% else %}
+                    <span>1</span>
+                {% endif %}
+                {% if page > 3 %}
+                    <span class="dots">...</span>
+                {% endif %}
+                {% for i in range(page-1, page+2) %}
+                    {% if i > 1 and i < max_pages %}
+                        {% if i == page %}
+                            <span>{{ i }}</span>
+                        {% else %}
+                            <a href="?{% for key, value in request.args.items() if key not in ['page', 'scroll'] %}{{ key }}={{ value }}&{% endfor %}page={{ i }}">{{ i }}</a>
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+                {% if page < max_pages-2 %} 
+                    <span class="dots">...</span>
+                {% endif %}
+                {% if page != max_pages %}
+                    <a href="?{% for key, value in request.args.items() if key not in ['page', 'scroll'] %}{{ key }}={{ value }}&{% endfor %}page={{ max_pages }}">{{ max_pages }}</a>
+                    <a href="?{% for key, value in request.args.items() if key not in ['page', 'scroll'] %}{{ key }}={{ value }}&{% endfor %}page={{ page+1 }}" class="arrow">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="23" viewBox="0 0 14 23" fill="none">
+                        <path d="M2.1104 23L0 20.9587L9.77919 11.5L0 2.04125L2.1104 0L14 11.5L2.1104 23Z" fill="#111111"/>
+                    </svg>
+                    </a>
+                {% else %}
+                    <span>{{ max_pages }}</span>
+                {% endif %}
+            </p>
+        </div>
+        {% endif %}
+        {% if not favorite_items %}
+            <h3 class="no-products">No products in favorites.</h3>
+        {% endif %}
+    </section>
+    {% include 'newsletter.html' %}
+    {% include 'footer.html' %}
+    <script src="{{ url_for('static', filename='js/shop.js') }}"></script>
+</body>
+</html>

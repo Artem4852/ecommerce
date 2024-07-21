@@ -259,6 +259,7 @@ select::-webkit-inner-spin-button, select::-webkit-outer-spin-button {
   transition: 0.5s;
 }
 #header #user-nav.hidden {
+  display: none;
   right: -200px;
 }
 
@@ -1129,6 +1130,113 @@ select::-webkit-inner-spin-button, select::-webkit-outer-spin-button {
 #cart .summary a:hover {
   background-color: #E2A4D0;
   text-decoration: none;
+}
+#cart .cart-empty {
+  width: 100%;
+  text-align: center;
+  font-size: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#cart .cart-empty h4 {
+  margin-bottom: 10px;
+}
+#cart .cart-empty a {
+  display: block;
+  width: 33%;
+  background-color: #E352BA;
+  color: #f1f1f1;
+  border-radius: 30px;
+  padding: 10px;
+  text-align: center;
+  cursor: pointer;
+  font-size: 24px;
+  transition: 0.2s;
+}
+#cart .cart-empty a:hover {
+  background-color: #E2A4D0;
+  text-decoration: none;
+}
+
+#login-form {
+  width: 100%;
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+#login-form h2 {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 20px;
+}
+#login-form form {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 20px;
+  background-color: #E0E0E0;
+  border-radius: 20px;
+  margin-bottom: 50px;
+}
+#login-form form .input {
+  position: relative;
+  width: 100%;
+}
+#login-form form .input svg {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  height: 20px;
+}
+#login-form form input {
+  width: 100%;
+  padding: 10px;
+  padding-left: 40px;
+  border-radius: 10px;
+  border: none;
+  font-size: 18px;
+  margin-bottom: 20px;
+  background-color: #999999;
+  color: #f1f1f1;
+}
+#login-form form input:focus {
+  outline: none;
+}
+#login-form form input::placeholder {
+  color: #E0E0E0;
+}
+#login-form form input.password {
+  margin-bottom: 10px;
+}
+#login-form form button {
+  width: 100%;
+  background-color: #E352BA;
+  color: #f1f1f1;
+  border-radius: 30px;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+}
+#login-form form button:hover {
+  background-color: #E2A4D0;
+}
+#login-form p {
+  color: #E2A4D0;
+}
+#login-form a {
+  color: #E2A4D0;
+  text-decoration: none;
+  margin-bottom: 40px;
+  text-decoration: underline;
+}
+#login-form a:hover {
+  color: #E352BA;
 }
 
 /*# sourceMappingURL=style.css.map */

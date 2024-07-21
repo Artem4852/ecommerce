@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const images = col.children;
 
             // console.log(col.getBoundingClientRect().top);
-            if (col.getBoundingClientRect().top <= starts[i]-imgheight) {
+            if (col.offsetTop <= starts[i]-imgheight) {
                 col.appendChild(images[0]);
                 col.style.top = parseFloat(col.style.top.replace('px', '')) + imgheight + 'px';
             }

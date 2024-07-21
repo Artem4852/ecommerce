@@ -14,7 +14,7 @@ index_images = [index_images[i:i+rows] for i in range(0, len(index_images), rows
 
 database = Database()
 
-username = "test"
+username = "test1"
 
 def get_products():
     return database.get_products()
@@ -82,6 +82,23 @@ def cart():
         subtotal += int(product['price'])*int(item['quantity'])
         cart_items.append({'id': item['product_id'], 'size': item['size'], 'quantity': item['quantity'], 'info': product})
     return render_template('cart.html', user_data=user, cart_items=cart_items, subtotal=subtotal, products_featured=[p for p in products if p['tag'] == 'featured' and p['discount'] == 0][:4])
+
+@app.route('/favorites')
+def favorites():
+    if not request.args.get('page'): page = 1
+    else: page = int(request.args.get('page'))
+
+    user = get_user({'username': username})
+    products = get_products()
+    favorite_items = []
+    for item in user['favorites']:
+        product = database.get_product({'id': item})
+        favorite_items.append(product)
+
+    favorite_items = favorite_items[(page-1)*12:page*12]
+    max_pages = math.ceil(len(user['favorites'])/12)
+
+    return render_template('favorites.html', user_data=user, favorite_items=favorite_items, products_featured=[p for p in products if p['tag'] == 'featured' and p['discount'] == 0][:4], page=page, max_pages=max_pages)
 
 @app.route('/faq')
 def faq():
@@ -164,6 +181,21 @@ def edit_cart(product_id):
     database.update_user({'username': username, 'cart.product_id': int(product_id)},
     {'$set': {'cart.$.size': int(size), 'cart.$.quantity': int(quantity)}})
     return jsonify({'success': True})
+
+@app.route('/login', methods=['GET'])
+def login():
+    user_data = {'logged_in': False}
+    return render_template('login.html', user_data=user_data)
+
+@app.route('/login', methods=['POST'])
+def login_post():
+    username = request.form['username']
+    password = request.form['password']
+    user = get_user({'username': username})
+    if user and user['password'] == password:
+        return render_template('login.html', user_data=user)
+    else:
+        return render_template('login.html', user_data={'logged_in': False})
 
 if __name__ == "__main__":
     app.run(debug=True, port=8080)
