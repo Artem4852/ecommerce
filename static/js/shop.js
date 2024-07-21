@@ -1,5 +1,4 @@
 function favorite(productId) {
-    console.log(productId)
     fetch('/favorite/' + productId, {
         method: 'POST',
         headers: {
@@ -16,7 +15,7 @@ function favorite(productId) {
                     card.remove();
                 } else {
                     const favoriteIcon = document.getElementById('favorite-' + productId);
-                    favoriteIcon.setAttribute('class', data.favorite ? 'favorite-icon favorite' : 'favorite-icon');
+                    favoriteIcon.classList.toggle('favorite');
                 }
             }
         });

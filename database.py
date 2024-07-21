@@ -11,6 +11,9 @@ class Database:
         self.users_db = self.client['users']
         self.products_db = self.client['products']
         self.other_db = self.client['other']
+
+    def add_user(self, user):
+        self.users_db['user_data'].insert_one(user)
     
     def get_user(self, _filter):
         return self.users_db['user_data'].find_one(_filter)
