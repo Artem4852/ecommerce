@@ -330,3 +330,39 @@ function toggleFaq(name) {
     const faq = document.getElementById('faq-'+name);
     faq.classList.toggle('active');
 }
+
+function toggleForm(name) {
+    const form = document.getElementById('form-' + name);
+    form.classList.toggle('disabled');
+    const toggle = document.getElementById('toggle-' + name);
+    toggle.classList.toggle('disabled');
+}
+
+
+function selectCountry() {
+    const country = document.getElementById('input-country').value;
+    const cities = deliveryCities[country];
+    const city = document.getElementById('input-city');
+    city.innerHTML = '';
+    let option = new Option('Select city', '', true, true);
+    option.setAttribute('disabled', 'disabled');
+    city.appendChild(option);
+    for (let i = 0; i < cities.length; i++) {
+        let option = new Option(cities[i], cities[i]);
+        city.appendChild(option);
+    }
+}
+
+function selectCity() {
+    const city = document.getElementById('input-city').value;
+    const branches = postOfficeBranches[city];
+    const branch = document.getElementById('input-post-office-branch');
+    branch.innerHTML = '';
+    let option = new Option('Select post office branch', '', true, true);
+    option.setAttribute('disabled', 'disabled');
+    branch.appendChild(option);
+    for (let i = 0; i < branches.length; i++) {
+        let option = new Option(branches[i], branches[i]);
+        branch.appendChild(option);
+    }
+}

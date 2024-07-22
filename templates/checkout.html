@@ -5,67 +5,90 @@
     {% include 'partials/header.html' %}
     <section id="checkout">
         <h2>Checkout</h2>
-        <a href="/cart">
+        <a class="back" href="/cart">
             <svg xmlns="http://www.w3.org/2000/svg" width="12" height="21" viewBox="0 0 12 21" fill="none">
                 <path d="M10.1911 1.74921e-06L12 1.86375L3.61783 10.5L12 19.1362L10.1911 21L-9.8941e-07 10.5L10.1911 1.74921e-06Z"
                     fill="#E352BA" />
             </svg>
             Back
         </a>
-        <div class="shipping-toggle">
-            <svg class="toggle active" xmlns="http://www.w3.org/2000/svg" width="33" height="20" viewBox="0 0 33 20" fill="none">
-                <path d="M33 16.9761L30.0712 19.9905L16.5 6.02256L2.92875 19.9905L3.59519e-08 16.9761L16.5 -0.00613956L33 16.9761Z"
-                    fill="#111111" />
+        <div class="toggle" onclick="toggleForm('shipping')">
+            <svg id="toggle-shipping" xmlns="http://www.w3.org/2000/svg" width="33" height="20" viewBox="0 0 33 20" fill="none">
+                <path
+                    d="M-1.31784e-07 3.01486L2.92875 -1.31446e-06L16.5 13.9703L30.0712 -1.2802e-07L33 3.01486L16.5 20L-1.31784e-07 3.01486Z"
+                    fill="#111111"></path>
             </svg>
             <h4>1. Shipping</h4>
         </div>
-        <div class="shipping">
+        <div id="form-shipping" class="shipping">
             <div class="inputs">
-                <input type="text" placeholder="First name">
-                <input type="text" placeholder="Last name">
-                <select onchange="selectCountry()" name="country" id="input-country">
-                    {% for country in delivery_countries %}
-                        <option value="{{ country }}">{{ country }}</option>
-                    {% endfor %}
-                </select>
-                <select onchange="selectCity()" name="city" id="input-city">
-                    <select name="city-{{ delivery_countries[0] }}" id="input-city-{{ delivery_countries[0] }}">
-                        {% for city in delivery_cities[delivery_countries[0]] %}
-                            <option value="{{ city }}">{{ city }}</option>
+                <input type="text" id="input-first-name" placeholder="First name">
+                <input type="text" id="input-middle-name" placeholder="Middle name">
+                <input type="text" id="input-last-name" placeholder="Last name">
+                <div class="select">
+                    <select onchange="selectCountry()" name="country" id="input-country">
+                        <option value="empty" disabled selected>Select country</option>
+                        {% for country in delivery_countries %}
+                            <option value="{{ country }}">{{ country }}</option>
                         {% endfor %}
                     </select>
-                    {% for country in delivery_countries[1:] %}
-                        <select disabled style="display: none;" name="city-{{ country }}" id="input-city-{{ country }}">
-                            {% for city in delivery_cities[country] %}
-                                <option value="{{ city }}">{{ city }}</option>
-                            {% endfor %}
-                        </select>
-                    {% endfor %}
-                </select>
-                <select onchange="selectDeliveryMethod()" name="delivery-method" id="input-delivery-method">
-                    <option value="address-delivery">Address Delivery</option>
-                    <option value="pick-up-from-post-office">Pick up from Post Office</option>
-                </select>
-                <select name="post-office-branch" id="input-post-office-branch-{{ delivery_countries[0] }}-{{ delivery_cities[delivery_countries[0]][0] }}">
-                    {% for branch in post_office_branches[delivery_countries[0]][delivery_cities[delivery_countries[0]][0] %}
-                        <option value="{{ branch }}">{{ branch }}</option>
-                    {% endfor %}
-                </select>
-                {% for country in delivery_countries %}
-                    {% for city in delivery_cities[country] %}
-                        <select disabled style="display: none;" name="post-office-branch-{{ country }}-{{ city }}" id="input-post-office-branch-{{ country }}-{{ city }}">
-                            {% for branch in post_office_branches[country][city] %}
-                                <option value="{{ branch }}">{{ branch }}</option>
-                            {% endfor %}
-                        </select>
-                    {% endfor %}
-                {% endfor %}
+                    <svg class="down-arrow" xmlns="http://www.w3.org/2000/svg" width="23" height="15" viewBox="0 0 23 15" fill="none">
+                        <path
+                            d="M-9.22487e-08 2.13579L2.04125 0.0253897L11.5 9.80458L20.9587 0.0253905L23 2.13579L11.5 14.0254L-9.22487e-08 2.13579Z"
+                            fill="#F1F1F1" />
+                    </svg>
+                </div>
+                <div class="select">
+                    <select onchange="selectCity()" name="city" id="input-city">
+                        <option value="empty" disabled selected>Select city</option>
+                    </select>
+                    <svg class="down-arrow" xmlns="http://www.w3.org/2000/svg" width="23" height="15" viewBox="0 0 23 15" fill="none">
+                        <path
+                            d="M-9.22487e-08 2.13579L2.04125 0.0253897L11.5 9.80458L20.9587 0.0253905L23 2.13579L11.5 14.0254L-9.22487e-08 2.13579Z"
+                            fill="#F1F1F1" />
+                    </svg>
+                </div>
+                <div class="select">
+                    <select onchange="selectDeliveryMethod()" name="delivery-method" id="input-delivery-method">
+                        <option value="address-delivery">Address Delivery</option>
+                        <option value="pick-up-from-post-office" selected>Pick up from Post Office</option>
+                    </select>
+                    <svg class="down-arrow" xmlns="http://www.w3.org/2000/svg" width="23" height="15" viewBox="0 0 23 15" fill="none">
+                        <path
+                            d="M-9.22487e-08 2.13579L2.04125 0.0253897L11.5 9.80458L20.9587 0.0253905L23 2.13579L11.5 14.0254L-9.22487e-08 2.13579Z"
+                            fill="#F1F1F1" />
+                    </svg>
+                </div>
+                <div class="select">
+                    <select name="post-office-branch" id="input-post-office-branch">
+                        <option value="empty" disabled selected>Select post office branch</option>
+                    </select>
+                    <svg class="down-arrow" xmlns="http://www.w3.org/2000/svg" width="23" height="15" viewBox="0 0 23 15" fill="none">
+                        <path
+                            d="M-9.22487e-08 2.13579L2.04125 0.0253897L11.5 9.80458L20.9587 0.0253905L23 2.13579L11.5 14.0254L-9.22487e-08 2.13579Z"
+                            fill="#F1F1F1" />
+                    </svg>
+                </div>
+                <input style="display: none;" type="text" id="input-address" placeholder="Street Address">
+                <input style="display: none;" type="text" id="input-address-2" placeholder="Apartment, Building, Floor, etc. (Optional)">
+                <input style="display: none;" type="text" name="postal-code" id="input-postal-code" placeholder="ZIP/Postal Code">
+                <div class="checkbox">
+                    <input type="checkbox" checked id="input-save-shipping-data">
+                    <p>Save this data for faster checkout in the future</p>
+                </div>
             </div>
+            <p class="side">If you need your order to be shipped within Ukraine, it is possible to choose between Pick Up from Post Office or
+            Address Delivery, in European countries only Pick Up from Post Office option is available.
+            Address Delivery costs more than Pick Up from Post Office.</p>
         </div>
     </section>
     {% include 'partials/newsletter.html' %}
     {% include 'partials/footer.html' %}
-    <script src="{{ url_for('static', filename='js/home.js') }}"></script>
     <script src="{{ url_for('static', filename='js/shop.js') }}"></script>
+    <script>
+        const deliveryCountries = {{ delivery_countries | tojson }};
+        const deliveryCities = {{ delivery_cities | tojson }};
+        const postOfficeBranches = {{ post_office_branches | tojson }};
+    </script>
 </body>
 </html>

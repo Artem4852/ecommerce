@@ -216,6 +216,25 @@ def edit_cart(product_id):
     {'$set': {'cart.$.size': int(size), 'cart.$.quantity': int(quantity)}})
     return jsonify({'success': True})
 
+@app.route('/checkout', methods=['GET', 'POST'])
+def checkout():
+    logged_in = session.get('logged_in', False)
+    if not logged_in:
+        return redirect('/login?next=checkout')
+    user = get_user({'user_id': session.get('user_id')})
+    products = get_products()
+    cart_items = []
+    subtotal = 0
+    for item in user['cart']:
+        product = database.get_product({'id': item['product_id']})
+        subtotal += int(product['price'])*int(item['quantity'])
+        cart_items.append({'id': item['product_id'], 'size': item['size'], 'quantity': item['quantity'], 'info': product})
+
+    delivery_countries = database.get_delivery_countries()
+    delivery_cities = database.get_delivery_cities()
+    post_office_branched = database.get_post_office_branches()
+    return render_template('checkout.html', user_data=user, cart_items=cart_items, subtotal=subtotal, products_featured=[p for p in products if p['tag'] == 'featured' and p['discount'] == 0][:4], logged_in=logged_in, delivery_countries=delivery_countries, delivery_cities=delivery_cities, post_office_branches=post_office_branched)
+
 # Newsletter route
 @app.route('/newsletter-signup', methods=['POST'])
 def newsletter_signup():

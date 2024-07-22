@@ -1159,6 +1159,120 @@ select::-webkit-inner-spin-button, select::-webkit-outer-spin-button {
   text-decoration: none;
 }
 
+#checkout {
+  width: 100%;
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 50px;
+  margin-top: 20px;
+}
+#checkout h2 {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 20px;
+}
+#checkout a.back {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 5px;
+  width: 100%;
+  text-align: left;
+  color: #E352BA;
+  text-decoration: none;
+  margin-bottom: 20px;
+}
+#checkout a.back svg {
+  height: 15px;
+}
+#checkout a.back:hover {
+  text-decoration: underline;
+}
+#checkout .toggle {
+  padding: 15px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  background-color: #E0E0E0;
+  border-radius: 10px;
+  width: 100%;
+  margin-bottom: 15px;
+}
+#checkout .toggle svg {
+  width: 18px;
+  transform: rotate(180deg);
+}
+#checkout .toggle svg.disabled {
+  transform: rotate(0deg);
+}
+#checkout .toggle h4 {
+  font-weight: 400;
+  width: fit-content;
+}
+#checkout .shipping {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 20px;
+}
+#checkout .shipping .inputs {
+  width: calc(50% - 10px);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  font-size: 18px;
+}
+#checkout .shipping .inputs input {
+  width: 100%;
+  font-size: 18px;
+  padding: 4px 8px;
+  border-radius: 5px;
+  border: none;
+  background-color: #999999;
+  color: #f1f1f1;
+}
+#checkout .shipping .inputs input:focus {
+  outline: none;
+}
+#checkout .shipping .inputs input::placeholder {
+  color: #E0E0E0;
+}
+#checkout .shipping .inputs .select {
+  width: 100%;
+  position: relative;
+}
+#checkout .shipping .inputs .select select {
+  font-size: 18px;
+  width: 100%;
+}
+#checkout .shipping .inputs .checkbox {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+#checkout .shipping .inputs .checkbox input {
+  width: 20px;
+  height: 20px;
+  background-color: #999999;
+  border-radius: 5px;
+  border: none;
+}
+#checkout .shipping .inputs .checkbox p {
+  font-size: 18px;
+}
+#checkout .shipping p.side {
+  width: calc(50% - 10px);
+}
+#checkout .shipping.disabled {
+  display: none;
+}
+
 #login-form, #signup-form {
   width: 100%;
   padding: 0 20px;

@@ -45,6 +45,29 @@ class Database:
 
     def get_faq(self):
         return list(self.other_db['faq'].find())
+    
+    def get_delivery_countries(self):
+        return ['Ukraine', 'Poland', 'Germany']
+    
+    def get_delivery_cities(self):
+        return {
+            'Ukraine': ['Kyiv', 'Khariv', 'Lviv'],
+            'Poland': ['Warsaw', 'Krakow', 'Gdansk'],
+            'Germany': ['Berlin', 'Munich', 'Hamburg']
+        }
+    
+    def get_post_office_branches(self):
+        return {
+            'Kyiv': ['1', '2', '3'],
+            'Khariv': ['4', '5', '6'],
+            'Lviv': ['7', '8', '9'],
+            'Warsaw': ['10', '11', '12'],
+            'Krakow': ['13', '14', '15'],
+            'Gdansk': ['16', '17', '18'],
+            'Berlin': ['19', '20', '21'],
+            'Munich': ['22', '23', '24'],
+            'Hamburg': ['25', '26', '27']
+        }
 
 if __name__ == '__main__':
     database = Database()
