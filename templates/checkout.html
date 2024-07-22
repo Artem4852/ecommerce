@@ -23,23 +23,43 @@
             <div class="inputs">
                 <input type="text" placeholder="First name">
                 <input type="text" placeholder="Last name">
-                <select name="country" id="country">
-                    <option value="Ukraine">Ukraine</option>
-                    <option value="Moldova">Moldova</option>
-                    <option value="Poland">Poland</option>
-                    <option value="Lithuania">Lithuania</option>
-                    <option value="Czech Republic">Czech Republic</option>
-                    <option value="Romania">Romania</option>
-                    <option value="Germany">Germany</option>
-                    <option value="Slovakia">Slovakia</option>
-                    <option value="Estonia">Estonia</option>
-                    <option value="Latvia">Latvia</option>
-                    <option value="Hungary">Hungary</option>
-                    <option value="Italy">Italy</option>
-                    <option value="United Kingdom">United Kingdom</option>
-                    <option value="Spain">Spain</option>
-                    <option value="France">France</option>
+                <select onchange="selectCountry()" name="country" id="input-country">
+                    {% for country in delivery_countries %}
+                        <option value="{{ country }}">{{ country }}</option>
+                    {% endfor %}
                 </select>
+                <select onchange="selectCity()" name="city" id="input-city">
+                    <select name="city-{{ delivery_countries[0] }}" id="input-city-{{ delivery_countries[0] }}">
+                        {% for city in delivery_cities[delivery_countries[0]] %}
+                            <option value="{{ city }}">{{ city }}</option>
+                        {% endfor %}
+                    </select>
+                    {% for country in delivery_countries[1:] %}
+                        <select disabled style="display: none;" name="city-{{ country }}" id="input-city-{{ country }}">
+                            {% for city in delivery_cities[country] %}
+                                <option value="{{ city }}">{{ city }}</option>
+                            {% endfor %}
+                        </select>
+                    {% endfor %}
+                </select>
+                <select onchange="selectDeliveryMethod()" name="delivery-method" id="input-delivery-method">
+                    <option value="address-delivery">Address Delivery</option>
+                    <option value="pick-up-from-post-office">Pick up from Post Office</option>
+                </select>
+                <select name="post-office-branch" id="input-post-office-branch-{{ delivery_countries[0] }}-{{ delivery_cities[delivery_countries[0]][0] }}">
+                    {% for branch in post_office_branches[delivery_countries[0]][delivery_cities[delivery_countries[0]][0] %}
+                        <option value="{{ branch }}">{{ branch }}</option>
+                    {% endfor %}
+                </select>
+                {% for country in delivery_countries %}
+                    {% for city in delivery_cities[country] %}
+                        <select disabled style="display: none;" name="post-office-branch-{{ country }}-{{ city }}" id="input-post-office-branch-{{ country }}-{{ city }}">
+                            {% for branch in post_office_branches[country][city] %}
+                                <option value="{{ branch }}">{{ branch }}</option>
+                            {% endfor %}
+                        </select>
+                    {% endfor %}
+                {% endfor %}
             </div>
         </div>
     </section>
