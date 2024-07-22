@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
-{% include 'head.html' %}
+{% include 'partials/head.html' %}
 
 <body>
-    {% include 'header.html' %}
+    {% include 'partials/header.html' %}
     <section id="catalogue">
         <h2>Favorites</h2>
         {% if favorite_items %}
         <div class="products">
             {% for product in favorite_items %}
-                {% include 'card.html' %}
+                {% include 'partials/card.html' %}
             {% endfor %}
         </div>
         {% endif %}
@@ -58,8 +58,8 @@
             <h3 class="no-products">No products in favorites.</h3>
         {% endif %}
     </section>
-    {% include 'newsletter.html' %}
-    {% include 'footer.html' %}
+    {% include 'partials/newsletter.html' %}
+    {% include 'partials/footer.html' %}
     <script src="{{ url_for('static', filename='js/shop.js') }}"></script>
 </body>
 </html>

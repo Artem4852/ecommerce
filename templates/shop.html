@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-{% include 'head.html' %}
+{% include 'partials/head.html' %}
 
 <body>
-    {% include 'header.html' %}
+    {% include 'partials/header.html' %}
     <section id="catalogue">
         <h2>Catalogue</h2>
         <div class="filtering">
@@ -104,7 +104,7 @@
         {% if products %}
         <div class="products">
             {% for product in products %}
-                {% include 'card.html' %}
+                {% include 'partials/card.html' %}
             {% endfor %}
         </div>
             {% if page == 1 and max_pages != 1 %} 
@@ -156,8 +156,8 @@
             <h3 class="no-products">No products found. Try to change filters.</h3>
         {% endif %}
     </section>
-    {% include 'newsletter.html' %}
-    {% include 'footer.html' %}
+    {% include 'partials/newsletter.html' %}
+    {% include 'partials/footer.html' %}
     <script src="{{ url_for('static', filename='js/shop.js') }}"></script>
 </body>
 </html>

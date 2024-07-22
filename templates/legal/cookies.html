@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-{% include 'head.html' %}
+{% include 'partials/head.html' %}
 
 <body>
-    {% include 'header.html' %}
+    {% include 'partials/header.html' %}
     <section id="legal-page" class="nolists">
         <h2>Cookies Policy</h2>
         <h4>Effective Date: 14 July 2024</h4>
@@ -43,8 +43,8 @@
                 901 6787</a>.</p>
         </ul>
     </section>
-    {% include 'newsletter.html' %}
-    {% include 'footer.html' %}
+    {% include 'partials/newsletter.html' %}
+    {% include 'partials/footer.html' %}
     <script src="{{ url_for('static', filename='js/home.js') }}"></script>
     <script src="{{ url_for('static', filename='js/shop.js') }}"></script>
 </body>

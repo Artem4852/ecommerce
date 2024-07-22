@@ -16,6 +16,8 @@
                 <div class="hidden" id="user-nav">
                     {% if not logged_in %}
                     <a href="/login">Log in</a>
+                    {% else %}
+                    <a href="/logout">Log out</a>
                     {% endif %}
                     <a href="/favorites">Favorites</a>
                     <a href="/orders">Orders</a>

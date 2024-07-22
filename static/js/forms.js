@@ -66,14 +66,16 @@ function signup() {
         document.getElementById("input-password").value = "";
         document.getElementById("input-password-confirm").value = "";
 
-        console.log(output[1], output[2], hashedPassword);
+        const url = new URL(window.location.href);
+        const next = url.searchParams.get("next");
 
         fetch("/signup", {
             method: "POST",
             body: JSON.stringify({
                 email: output[1],
                 phone: output[2],
-                password: hashedPassword
+                password: hashedPassword,
+                next: next
             }),
             headers: {
                 "Content-Type": "application/json"
@@ -86,7 +88,7 @@ function signup() {
             if (data.success) {
                 document.getElementById("signup-button").innerHTML = "Thanks for signing up!";
                 setTimeout(function () {
-                    location.href = "/login";
+                    location.href = "/login?next=" + next;
                 }, 2000);
             }
             else {
@@ -103,6 +105,10 @@ function login() {
     const email = document.getElementById('input-email').value;
     const password = document.getElementById('input-password').value;
     const hashedPassword = CryptoJS.SHA256(password).toString();
+
+    const url = new URL(window.location.href);
+    const next = url.searchParams.get("next");
+
     fetch("/login", {
         method: "POST",
         body: JSON.stringify({
@@ -118,7 +124,8 @@ function login() {
         }
     }).then(data => {
         if (data.success) {
-            location.href = "/";
+            if (next && next != "null") location.href = "/"+next;
+            else location.href = "/";
         }
         else {
             document.getElementById("login-button").innerHTML = data.error;

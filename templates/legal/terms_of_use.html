@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-{% include 'head.html' %}
+{% include 'partials/head.html' %}
 
 <body>
-    {% include 'header.html' %}
+    {% include 'partials/header.html' %}
     <section id="legal-page" class="nolists">
         <h2>Terms of use</h2>
         <h4>Effective Date: 13 July 2024</h4>
@@ -50,8 +50,8 @@
         <p>If you have any questions about these Terms, please contact us at <a href="mailto:contact@kidsfashionstore.ua">contact@kidsfashionstore.ua</a> or <a href="tel:+380689016787">+380 68 901 6787</a>.</p>
         
     </section>
-    {% include 'newsletter.html' %}
-    {% include 'footer.html' %}
+    {% include 'partials/newsletter.html' %}
+    {% include 'partials/footer.html' %}
     <script src="{{ url_for('static', filename='js/home.js') }}"></script>
     <script src="{{ url_for('static', filename='js/shop.js') }}"></script>
 </body>

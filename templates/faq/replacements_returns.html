@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-{% include 'head.html' %}
+{% include 'partials/head.html' %}
 
 <body>
-    {% include 'header.html' %}
+    {% include 'partials/header.html' %}
     <section id="faq-page" class="nolists">
         <h2>FAQ</h2>
         <h3>Information about Replacements and Returns</h3>
@@ -39,8 +39,8 @@
         experience. If you have further questions, feel free to reach out to us at <a href="mailto:customerservice@kidsfashionstore.ua">customerservice@kidsfashionstore.ua</a>.
         We are here to help!</p>
     </section>
-    {% include 'newsletter.html' %}
-    {% include 'footer.html' %}
+    {% include 'partials/newsletter.html' %}
+    {% include 'partials/footer.html' %}
     <script src="{{ url_for('static', filename='js/home.js') }}"></script>
     <script src="{{ url_for('static', filename='js/shop.js') }}"></script>
 </body>
