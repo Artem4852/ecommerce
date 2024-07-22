@@ -1260,7 +1260,21 @@ select
                 display: flex
                 flex-direction: row
                 align-items: center
-                gap: 10px
+                gap: 8px
+
+                .box
+                    width: 20px
+                    height: 20px
+                    background-color: $grey-dark
+                    border-radius: 5px
+                    border: none
+                    display: flex
+                    justify-content: center
+                    align-items: center
+                    cursor: r
+
+                    svg
+                        height: 10px
 
                 input
                     width: 20px
@@ -1275,8 +1289,8 @@ select
         p.side
             width: calc( 50% - 10px )
 
-        &.disabled
-            display: none
+    .disabled
+        display: none
 
 #login-form, #signup-form
     width: 100%

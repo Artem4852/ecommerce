@@ -351,6 +351,12 @@ function selectCountry() {
         let option = new Option(cities[i], cities[i]);
         city.appendChild(option);
     }
+
+    const branch = document.getElementById('input-post-office-branch');
+    branch.innerHTML = '';
+    option = new Option('Select post office branch', '', true, true);
+    option.setAttribute('disabled', 'disabled');
+    branch.appendChild(option);
 }
 
 function selectCity() {
@@ -365,4 +371,23 @@ function selectCity() {
         let option = new Option(branches[i], branches[i]);
         branch.appendChild(option);
     }
+}
+
+function selectDeliveryMethod() {
+    const deliveryMethod = document.getElementById('input-delivery-method').value;
+    if (deliveryMethod === 'pick-up-from-post-office') {
+        document.getElementById('wrapper-input-post-office-branch').classList.remove('disabled');
+        document.getElementById('input-address').classList.add('disabled');
+        document.getElementById('input-address-2').classList.add('disabled');
+        document.getElementById('input-postal-code').classList.add('disabled');
+        return;
+    }
+    document.getElementById('wrapper-input-post-office-branch').classList.add('disabled');
+    document.getElementById('input-address').classList.remove('disabled');
+    document.getElementById('input-address-2').classList.remove('disabled');
+    document.getElementById('input-postal-code').classList.remove('disabled');
+}
+
+function checkSaveShippingData() {
+    document.getElementById('input-check').classList.toggle('disabled');
 }

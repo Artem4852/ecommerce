@@ -50,8 +50,8 @@
                 </div>
                 <div class="select">
                     <select onchange="selectDeliveryMethod()" name="delivery-method" id="input-delivery-method">
-                        <option value="address-delivery">Address Delivery</option>
                         <option value="pick-up-from-post-office" selected>Pick up from Post Office</option>
+                        <option value="address-delivery">Address Delivery</option>
                     </select>
                     <svg class="down-arrow" xmlns="http://www.w3.org/2000/svg" width="23" height="15" viewBox="0 0 23 15" fill="none">
                         <path
@@ -59,7 +59,7 @@
                             fill="#F1F1F1" />
                     </svg>
                 </div>
-                <div class="select">
+                <div class="select" id="wrapper-input-post-office-branch">
                     <select name="post-office-branch" id="input-post-office-branch">
                         <option value="empty" disabled selected>Select post office branch</option>
                     </select>
@@ -69,12 +69,16 @@
                             fill="#F1F1F1" />
                     </svg>
                 </div>
-                <input style="display: none;" type="text" id="input-address" placeholder="Street Address">
-                <input style="display: none;" type="text" id="input-address-2" placeholder="Apartment, Building, Floor, etc. (Optional)">
-                <input style="display: none;" type="text" name="postal-code" id="input-postal-code" placeholder="ZIP/Postal Code">
+                <input class="disabled" type="text" id="input-address" placeholder="Street Address">
+                <input class="disabled" type="text" id="input-address-2" placeholder="Apartment, Building, Floor, etc. (Optional)">
+                <input class="disabled" type="text" name="postal-code" id="input-postal-code" placeholder="ZIP/Postal Code">
                 <div class="checkbox">
-                    <input type="checkbox" checked id="input-save-shipping-data">
-                    <p>Save this data for faster checkout in the future</p>
+                    <div class="box" onclick="checkSaveShippingData()">
+                        <svg id="input-check" xmlns="http://www.w3.org/2000/svg" width="33" height="24" viewBox="0 0 33 24" fill="none">
+                            <path d="M11.5399 24L0 12.6237L2.88497 9.77963L11.5399 18.3118L30.115 0L33 2.84407L11.5399 24Z" fill="#F1F1F1" />
+                        </svg>
+                    </div>
+                    <p>Save this data for fast checkout</p>
                 </div>
             </div>
             <p class="side">If you need your order to be shipped within Ukraine, it is possible to choose between Pick Up from Post Office or

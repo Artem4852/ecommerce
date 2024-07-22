@@ -1254,7 +1254,21 @@ select::-webkit-inner-spin-button, select::-webkit-outer-spin-button {
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
+}
+#checkout .shipping .inputs .checkbox .box {
+  width: 20px;
+  height: 20px;
+  background-color: #999999;
+  border-radius: 5px;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: r;
+}
+#checkout .shipping .inputs .checkbox .box svg {
+  height: 10px;
 }
 #checkout .shipping .inputs .checkbox input {
   width: 20px;
@@ -1269,7 +1283,7 @@ select::-webkit-inner-spin-button, select::-webkit-outer-spin-button {
 #checkout .shipping p.side {
   width: calc(50% - 10px);
 }
-#checkout .shipping.disabled {
+#checkout .disabled {
   display: none;
 }
 
