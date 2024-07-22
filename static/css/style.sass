@@ -1170,7 +1170,7 @@ select
     padding: 0 20px
     display: flex
     flex-direction: column
-    align-items: flex-start
+    align-items: center
     margin-bottom: 50px
     margin-top: 20px
 
@@ -1214,17 +1214,19 @@ select
             transform: rotate(180deg)
 
             &.disabled
+                display: block
                 transform: rotate(0deg)
 
         h4
             font-weight: 400
             width: fit-content
 
-    .shipping
+    .shipping, .payment
         display: flex
         flex-direction: row
         justify-content: space-between
         gap: 20px
+        margin-bottom: 30px
 
         .inputs
             width: calc( 50% - 10px )
@@ -1291,6 +1293,137 @@ select
 
     .disabled
         display: none
+
+    .review
+        width: 100%
+        display: flex
+        flex-direction: column
+        align-items: flex-start
+        gap: 20px
+
+        &.disabled
+            display: none
+
+        h4
+            font-size: 24px
+
+        .cart-row
+            display: flex
+            flex-direction: row
+            justify-content: space-between
+            gap: 20px
+
+        .cart-items
+            width: 100%
+            display: flex
+            flex-direction: column
+            gap: 15px
+
+            .card
+                width: 100%
+                padding: 10px
+                display: flex
+                flex-direction: row
+                justify-content: flex-start
+                align-items: center
+                gap: 20px
+                border-radius: 15px
+                background-color: $grey
+
+                h4
+                    font-size: 24px
+
+                p
+                    font-size: 18px
+
+                .img
+                    width: calc( 15% - 10px )
+                    position: relative
+
+                    img
+                        width: 100%
+                        border-radius: 10px
+
+                .data
+                    display: flex
+                    flex-direction: column
+                    width: calc( 85% - 10px )
+                    align-items: flex-start
+                    justify-content: space-between
+                    padding: 10px 0
+
+                .row
+                    display: flex
+                    flex-direction: row
+                    justify-content: space-between
+                    align-items: center
+                    width: 100%
+
+                .col
+                    display: flex
+                    flex-direction: column
+                    gap: 10px
+
+                    &.start
+                        margin-right: 100px
+
+                    &.end
+                        align-items: flex-start
+
+                .select
+                    display: flex
+                    flex-direction: row
+                    flex-wrap: nowrap
+                    font-size: 18px
+                    gap: 10px
+                    align-items: center
+                    position: relative
+                    margin-bottom: 10px
+                    width: fit-content
+
+                    label, select
+                        font-size: 18px
+
+            button, a.button
+                width: calc( 50% - 10px )
+                background-color: $white
+                color: $black
+                border-radius: 30px
+                padding: 10px
+                border: none
+                cursor: pointer
+                font-size: 18px
+                text-align: center
+
+        .orderinfo
+            width: 100%
+            display: flex
+            flex-direction: row
+            justify-content: space-between
+            gap: 20px
+
+            padding: 10px
+            background-color: $grey
+            border-radius: 10px
+
+            margin-bottom: 30px
+
+            h4
+                font-weight: 400
+                font-size: 18px
+
+    button
+        width: 50%
+        background-color: $accent
+        color: $white
+        border-radius: 30px
+        padding: 10px
+        border: none
+        cursor: pointer
+        font-size: 18px
+
+        &:hover
+            background-color: $accent-light
 
 #login-form, #signup-form
     width: 100%

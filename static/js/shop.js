@@ -389,5 +389,48 @@ function selectDeliveryMethod() {
 }
 
 function checkSaveShippingData() {
-    document.getElementById('input-check').classList.toggle('disabled');
+    document.getElementById('input-check-shipping').classList.toggle('disabled');
+}
+
+function checkSavePaymentData() {
+    document.getElementById('input-check-payment').classList.toggle('disabled');
+}
+
+function checkout() {
+    const data = {
+        "firstName": document.getElementById('input-first-name').value,
+        "lastName": document.getElementById('input-last-name').value,
+        "middleName": document.getElementById('input-middle-name').value,
+        "country": document.getElementById('input-country').value,
+        "city": document.getElementById('input-city').value,
+        "deliveryMethod": document.getElementById('input-delivery-method'),value
+    }
+    if (data['deliveryMethod'] == 'pick-up-from-post-office') {
+        data['postOfficeBranch'] = document.getElementById('input-post-office-branch').value;
+    } else {
+        data['address'] = document.getElementById('input-address').value;
+        data['address2'] = document.getElementById('input-address-2').value;
+        data['postalCode'] = document.getElementById('input-postal-code').value;
+    }
+    data['saveShippingData'] = !document.getElementById('input-check-shipping').classList.contains('disabled');
+
+    data['paymentMethod'] = document.getElementById('input-payment-method').value;
+    data['cardNumber'] = document.getElementById('input-card-number').value;
+    data['cardExpirationDate'] = document.getElementById('input-card-expiration-date').value;
+    data['cardCVV'] = document.getElementById('input-card-cvv').value;
+    data['savePaymentData'] = !document.getElementById('input-check-payment').classList.contains('disabled');
+
+    fetch('/checkout', {
+        method: 'POST',
+        body: JSON.stringify(data),
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                window.location.href = '/order-confirmation';
+            }
+        });
 }

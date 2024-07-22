@@ -74,7 +74,7 @@
                 <input class="disabled" type="text" name="postal-code" id="input-postal-code" placeholder="ZIP/Postal Code">
                 <div class="checkbox">
                     <div class="box" onclick="checkSaveShippingData()">
-                        <svg id="input-check" xmlns="http://www.w3.org/2000/svg" width="33" height="24" viewBox="0 0 33 24" fill="none">
+                        <svg id="input-check-shipping" xmlns="http://www.w3.org/2000/svg" width="33" height="24" viewBox="0 0 33 24" fill="none">
                             <path d="M11.5399 24L0 12.6237L2.88497 9.77963L11.5399 18.3118L30.115 0L33 2.84407L11.5399 24Z" fill="#F1F1F1" />
                         </svg>
                     </div>
@@ -84,6 +84,104 @@
             <p class="side">If you need your order to be shipped within Ukraine, it is possible to choose between Pick Up from Post Office or
             Address Delivery, in European countries only Pick Up from Post Office option is available.
             Address Delivery costs more than Pick Up from Post Office.</p>
+        </div>
+
+        <div class="toggle" onclick="toggleForm('payment')">
+            <svg id="toggle-payment" xmlns="http://www.w3.org/2000/svg" width="33" height="20" viewBox="0 0 33 20" fill="none">
+                <path
+                    d="M-1.31784e-07 3.01486L2.92875 -1.31446e-06L16.5 13.9703L30.0712 -1.2802e-07L33 3.01486L16.5 20L-1.31784e-07 3.01486Z"
+                    fill="#111111"></path>
+            </svg>
+            <h4>2. Payment</h4>
+        </div>
+        <div id="form-payment" class="payment">
+            <div class="inputs">
+                <div class="select">
+                    <select name="payment-method" id="input-payment-method">
+                        <option value="full-prepayment" selected>Full Prepayment</option>
+                        <option value="post-payment">Post Payment</option>
+                    </select>
+                    <svg class="down-arrow" xmlns="http://www.w3.org/2000/svg" width="23" height="15" viewBox="0 0 23 15" fill="none">
+                        <path
+                            d="M-9.22487e-08 2.13579L2.04125 0.0253897L11.5 9.80458L20.9587 0.0253905L23 2.13579L11.5 14.0254L-9.22487e-08 2.13579Z"
+                            fill="#F1F1F1" />
+                    </svg>
+                </div>
+                <input type="text" id="input-card-number" placeholder="Card Number">
+                <input type="text" id="input-expiration-date" placeholder="Expiration Date">
+                <input type="text" id="input-cvv" placeholder="CVV">
+                <input type="text" id="input-promo-code" placeholder="Promo Code (Optional)">
+                <div class="checkbox">
+                    <div class="box" onclick="checkSavePaymentData()">
+                        <svg id="input-check-payment" xmlns="http://www.w3.org/2000/svg" width="33" height="24" viewBox="0 0 33 24" fill="none">
+                            <path d="M11.5399 24L0 12.6237L2.88497 9.77963L11.5399 18.3118L30.115 0L33 2.84407L11.5399 24Z"
+                                fill="#F1F1F1" />
+                        </svg>
+                    </div>
+                    <p>Save this data for fast checkout</p>
+                </div>
+            </div>
+            <p class="side">There are two payment options: <br>
+            1st is full prepayment - you pay full sum and afterwards receive the product. <br>
+            2nd is post payment - before receiving the product you only pay for delivery and upon receiving it you pay the rest. <br>
+            You will not be charged immediately. First, the money on your credit card will be frozen. If an order is confirmed, you will be charged. If an order is not confirmed, the money will be unfrozen.</p>
+        </div>
+
+        <!-- final order review -->
+         <div class="toggle" onclick="toggleForm('review')">
+            <svg id="toggle-review" xmlns="http://www.w3.org/2000/svg" width="33" height="20" viewBox="0 0 33 20" fill="none">
+                <path
+                    d="M-1.31784e-07 3.01486L2.92875 -1.31446e-06L16.5 13.9703L30.0712 -1.2802e-07L33 3.01486L16.5 20L-1.31784e-07 3.01486Z"
+                    fill="#111111"></path>
+            </svg>
+            <h4>3. Final order review</h4>
+         </div>
+         <div id="form-review" class="review">
+            <div class="cart-items">
+                {% for item in cart_items %}
+                {% set sorted_sizes = item.info.sizes | sort %}
+                <div class="card">
+                    <div class="img">
+                        <img src="{{ item.info.img }}" alt="">
+                    </div>
+                    <div class="data">
+                        <div class="row">
+                            <div class="col start" id="card-{{ item.id }}">
+                                <h4>{{ item.info.category }} {{ item.info.brand }}</h4>
+                            </div>
+                            <div class="col">
+                                <p>Product number: {{ item.id }}</p>
+                                <p class="info-size">Size: {{ item.size }}</p>
+                            </div>
+                            <div class="col end">
+                                <p>Price: {{ item.info.price }} uah</p>
+                                <p class="info-quantity">Quantity: {{ item.quantity }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            <div class="orderinfo">
+                <h4>Subtotal: {{ subtotal }}</h4>
+                <h4>Discount: <span id="discount">0</span> uah</h4>
+                <h4>Delivery: <span id="delivery">0</span> uah</h4>
+                <h4>Total: <span id="total">{{ subtotal }}</span> uah</h4>
+            </div>
+         </div>
+
+        <button id="button-checkout" onclick="checkout()">Place order</button>
+    </section>
+    <section id="featured" class="product">
+        {% if cart_items %}
+        <h2>You might also like</h2>
+        {% else %}
+        <h2>Featured products</h2>
+        {% endif %}
+        <div class="products">
+            {% for product in products_featured %}
+            {% include 'partials/card.html' %}
+            {% endfor %}
         </div>
     </section>
     {% include 'partials/newsletter.html' %}

@@ -28,8 +28,13 @@ class Database:
         return self.products_db['product_data'].find_one(_filter)
     
     def update_product(self, productId, product):
-        print(product)
         self.products_db['product_data'].update_one({'id': productId}, {'$set': product})
+
+    def add_order(self, order):
+        self.users_db['orders'].insert_one(order)
+
+    def edit_order(self, orderId, order):
+        self.users_db['orders'].update_one({'_id': ObjectId(orderId)}, {'$set': order})
 
     def remove_fields(self, productId, fields):
         self.products_db['product_data'].update_one({'id': productId}, {'$unset': {field: 1 for field in fields}})
