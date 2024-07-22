@@ -2,6 +2,8 @@ from flask import Flask, request, jsonify, render_template, session, redirect, u
 from flask_mail import Mail, Message
 from database import Database
 import os, random, json, math, dotenv
+from bs4 import BeautifulSoup
+from datetime import datetime
 
 dotenv.load_dotenv()
 
@@ -19,10 +21,16 @@ app.config['MAIL_DEFAULT_SENDER'] = 'noreply@kidsfashionstore.ua'
 mail = Mail(app)
 
 # Helper functions
-def send_email(subject, recipient, body=None, html=None):
+def send_email(subject, recipient, body=None, html=None, data=None):
     with app.app_context():
-        if html: html = render_template('mail/'+html+'.html')
-        msg = Message(subject, recipients=[recipient], body=body if not html else None, html=html if html else None)
+        if html: 
+            html_content = render_template('mail/'+html+'.html', data=data)
+            if not body:
+                soup = BeautifulSoup(html_content, 'html.parser')
+                body = soup.get_text()
+        else:
+            html_content = None
+        msg = Message(subject, recipients=[recipient], body=body, html=html_content)
         mail.send(msg)
 
 def get_products():
@@ -229,7 +237,8 @@ def login():
     user = get_user({'email': email})
 
     if user and user['password'] == password:
-        session['user_id'] = user['id']
+        print(user)
+        session['user_id'] = user['user_id']
         session['logged_in'] = True
         return jsonify({'success': True})
 
@@ -261,9 +270,40 @@ def signup():
     send_email('Welcome to Kids Fashion Store', email, body="Welcome to our store!\nThank you for signing up. You can now log in to your new account.\nHappy shopping!", html='welcome')
     return jsonify({'success': True})
 
+@app.route('/forgot-password', methods=['GET'])
+def forgot_password():
+    logged_in = session.get('logged_in', False)
+    if logged_in:
+        return redirect('/')
+    return render_template('forgot_password.html', logged_in=logged_in)
+
+@app.route('/update-password', methods=['GET'])
+def update_password():
+    logged_in = session.get('logged_in', False)
+    if logged_in:
+        return redirect('/')
+    return render_template('update_password.html', logged_in=logged_in)
+
+@app.route('/reset-password', methods=['POST'])
+def reset_password():
+    email = request.json.get('email')
+    user = get_user({'email': email})
+    if not user:
+        return jsonify({'success': False, 'error': 'User not found'})
+    reset = {
+        'code': random.randint(100000, 999999),
+        'expires': datetime.now().timestamp()+3600
+    }
+    database.update_user({'email': email}, {'$set': {'reset': reset}})
+    send_email('Password reset', email, html='password_reset', data={'code': reset['code']})
+    return jsonify({'success': True})
+
 @app.route('/preview-email/<file>')
 def preview_email(file):
-    return render_template('mail/'+file+'.html')
+    data = {
+        'code': 123456
+    }
+    return render_template('mail/'+file+'.html', data=data)
 
 if __name__ == "__main__":
     # send_email('Welcome to Kids Fashion Store', "test@kids.com", body="Welcome to our store!\nThank you for signing up. You can now log in to your new account.\nHappy shopping!", html='welcome')

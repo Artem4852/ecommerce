@@ -135,3 +135,34 @@ function login() {
         }
     });
 }
+
+function sendResetCode() {
+    const email = document.getElementById('input-email').value;
+
+    fetch("/reset-password", {
+        method: "POST",
+        body: JSON.stringify({
+            email: email
+        }),
+        headers: {
+            "Content-Type": "application/json"
+        }
+    }).then(response => {
+        if (response.ok) {
+            return response.json();
+        }
+    }).then(data => {
+        if (data.success) {
+            document.getElementById("reset-button").innerHTML = "Reset code sent!";
+            setTimeout(function () {
+                location.href = "/update-password?email=" + email;
+            }, 2000);
+        }
+        else {
+            document.getElementById("reset-button").innerHTML = data.error;
+            setTimeout(function () {
+                document.getElementById("reset-button").innerHTML = "Send reset code";
+            }, 5000);
+        }
+    });
+}

@@ -16,12 +16,14 @@
                 <div class="hidden" id="user-nav">
                     {% if not logged_in %}
                     <a href="/login">Log in</a>
-                    {% else %}
-                    <a href="/logout">Log out</a>
+                    <a href="/signup">Sign up</a>
                     {% endif %}
                     <a href="/favorites">Favorites</a>
                     <a href="/orders">Orders</a>
                     <a href="/settings">Settings</a>
+                    {% if logged_in %}
+                    <a href="/logout">Log out</a>
+                    {% endif %}
                 </div>
             </li>
         </ul>

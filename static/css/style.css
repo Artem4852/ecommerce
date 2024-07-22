@@ -1229,6 +1229,9 @@ select::-webkit-inner-spin-button, select::-webkit-outer-spin-button {
 #login-form p, #signup-form p {
   color: #E2A4D0;
 }
+#login-form p.margin, #signup-form p.margin {
+  margin-bottom: 10px;
+}
 #login-form a, #signup-form a {
   color: #E2A4D0;
   text-decoration: none;
