@@ -37,7 +37,7 @@ def get_products():
     return database.get_products()
 
 def get_user(_filter):
-    if not session.get('logged_in', False) and 'id' in _filter:
+    if not session.get('logged_in', False) and 'user_id' in _filter:
         return {'cart': [], 'favorites': []}
     return database.get_user(_filter)
 
@@ -50,7 +50,7 @@ def index():
     index_images = [index_images[i:i+10] for i in range(0, len(index_images), 10)]
     
     products = get_products()
-    user = get_user({'id': session.get('user_id')})
+    user = get_user({'user_id': session.get('user_id')})
     logged_in = session.get('logged_in', False)
     return render_template('index.html', index_images=index_images, products_featured=[p for p in products if p['tag'] == 'featured' and p['discount'] == 0][:4], products_sale=sorted([p for p in products if p['tag'] == 'sale' and p['discount'] != 0], key=lambda x: x['discount'], reverse=True)[:4], user_data=user, logged_in=logged_in)
 
@@ -83,7 +83,7 @@ def shop():
 
     max_pages = math.ceil(len(products)/products_per_page)
 
-    user = get_user({'id': session.get('user_id')})
+    user = get_user({'user_id': session.get('user_id')})
 
     for n, p in enumerate(products_current):
         products_current[n]['sizes'] = sorted(p['sizes'])
@@ -96,7 +96,7 @@ def shop():
 def product(product_id):
     products = get_products()
     product = database.get_product({'id': int(product_id)})
-    user = get_user({'id': session.get('user_id')})
+    user = get_user({'user_id': session.get('user_id')})
     logged_in = session.get('logged_in', False)
     return render_template('product.html', product=product, user_data=user, products_featured=[p for p in products if p['tag'] == 'featured' and p['discount'] == 0][:4], logged_in=logged_in)
 
@@ -158,7 +158,7 @@ def favorites():
     if not request.args.get('page'): page = 1
     else: page = int(request.args.get('page'))
 
-    user = get_user({'id': session.get('user_id')})
+    user = get_user({'user_id': session.get('user_id')})
     products = get_products()
     favorite_items = []
     for item in user['favorites']:
@@ -172,10 +172,10 @@ def favorites():
 
 @app.route('/favorite/<product_number>', methods=['POST'])
 def favorite(product_number):
-    favorites = database.get_user({'id': session.get('user_id')})['favorites']
+    favorites = database.get_user({'user_id': session.get('user_id')})['favorites']
 
-    if int(product_number) in favorites: database.update_user({'id': session.get('user_id')}, {'$pull': {'favorites': int(product_number)}})
-    else: database.update_user({'id': session.get('user_id')}, {'$push': {'favorites': int(product_number)}})
+    if int(product_number) in favorites: database.update_user({'user_id': session.get('user_id')}, {'$pull': {'favorites': int(product_number)}})
+    else: database.update_user({'user_id': session.get('user_id')}, {'$push': {'favorites': int(product_number)}})
 
     return jsonify({'success': True, 'favorite': not int(product_number) in favorites})
 
@@ -184,7 +184,7 @@ def cart():
     logged_in = session.get('logged_in', False)
     if not logged_in:
         return redirect('/login?next=cart')
-    user = get_user({'id': session.get('user_id')})
+    user = get_user({'user_id': session.get('user_id')})
     products = get_products()
     cart_items = []
     subtotal = 0
@@ -198,21 +198,21 @@ def cart():
 def add_to_cart(product_id):
     size = request.json.get('size')
     quantity = request.json.get('quantity')
-    database.update_user({'id': session.get('user_id')}, {'$push': {'cart': {'product_id': int(product_id), 'size': int(size), 'quantity': int(quantity)}}})
+    database.update_user({'user_id': session.get('user_id')}, {'$push': {'cart': {'product_id': int(product_id), 'size': int(size), 'quantity': int(quantity)}}})
     return jsonify({'success': True})
 
 @app.route('/remove-from-cart/<product_id>', methods=['POST'])
 def remove_from_cart(product_id):
     size = request.json.get('size')
     quantity = request.json.get('quantity')
-    database.update_user({'id': session.get('user_id')}, {'$pull': {'cart': {'product_id': int(product_id), 'size': int(size), 'quantity': int(quantity)}}})
+    database.update_user({'user_id': session.get('user_id')}, {'$pull': {'cart': {'product_id': int(product_id), 'size': int(size), 'quantity': int(quantity)}}})
     return jsonify({'success': True})
 
 @app.route('/edit-cart/<product_id>', methods=['POST'])
 def edit_cart(product_id):
     size = request.json.get('size')
     quantity = request.json.get('quantity')
-    database.update_user({'id': session.get('user_id'), 'cart.product_id': int(product_id)},
+    database.update_user({'user_id': session.get('user_id'), 'cart.product_id': int(product_id)},
     {'$set': {'cart.$.size': int(size), 'cart.$.quantity': int(quantity)}})
     return jsonify({'success': True})
 
@@ -296,6 +296,21 @@ def reset_password():
     }
     database.update_user({'email': email}, {'$set': {'reset': reset}})
     send_email('Password reset', email, html='password_reset', data={'code': reset['code']})
+    return jsonify({'success': True})
+
+@app.route('/update-password', methods=['POST'])
+def update_password_post():
+    email = request.json.get('email')
+    code = request.json.get('code').replace("-", "")
+    password = request.json.get('password')
+    print(email, code, password)
+    user = get_user({'email': email})
+    if not user or not user.get('reset'):
+        return jsonify({'success': False, 'error': 'User not found'})
+    if user['reset']['code'] != int(code) or user['reset']['expires'] < datetime.now().timestamp():
+        print(user['reset'])
+        return jsonify({'success': False, 'error': 'Invalid code'})
+    database.update_user({'email': email}, {'$set': {'password': password}})
     return jsonify({'success': True})
 
 @app.route('/preview-email/<file>')

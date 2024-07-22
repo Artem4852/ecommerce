@@ -1,5 +1,6 @@
-document.getElementById('input-phone-number').addEventListener('input', function (e) {
-    let value = e.target.value.replace(/\D/g, '');
+function phoneInput() {
+    phone = document.getElementById('input-phone-number');
+    let value = phone.value.replace(/\D/g, '');
     let formattedValue = '';
 
     if (value.length > 0) {
@@ -15,8 +16,25 @@ document.getElementById('input-phone-number').addEventListener('input', function
         formattedValue += ' ' + value.substring(8, 12);
     }
 
-    e.target.value = formattedValue;
-});
+    phone.target.value = formattedValue;
+}
+
+function codeInput() {
+    code = document.getElementById('input-code');
+    console.log(code);
+    let value_code = code.value.replace(/\D/g, '');
+    let formattedValue_code = '';
+    console.log(value_code);
+
+    if (value_code.length > 0) {
+        formattedValue_code = value_code.substring(0, 3);
+    }
+    if (value_code.length > 2) {
+        formattedValue_code += '-' + value_code.substring(3, 6);
+    }
+
+    code.value = formattedValue_code;
+}
 
 function validateForm() {
     const email = document.getElementById('input-email').value;
@@ -162,6 +180,52 @@ function sendResetCode() {
             document.getElementById("reset-button").innerHTML = data.error;
             setTimeout(function () {
                 document.getElementById("reset-button").innerHTML = "Send reset code";
+            }, 5000);
+        }
+    });
+}
+
+function updatePassword() {
+    url = new URL(window.location.href);
+    const email = url.searchParams.get("email");
+    const code = document.getElementById('input-code').value;
+    const password = document.getElementById('input-password').value;
+    const confirmPassword = document.getElementById('input-password-confirm').value;
+    if (password != confirmPassword) {
+        document.getElementById("reset-button").innerHTML = "Passwords do not match.";
+        setTimeout(function () {
+            document.getElementById("reset-button").innerHTML = "Update password";
+        }, 2000);
+        return;
+    }
+
+    const hashedPassword = CryptoJS.SHA256(password).toString();
+
+    fetch("/update-password", {
+        method: "POST",
+        body: JSON.stringify({
+            email: email,
+            code: code,
+            password: hashedPassword
+        }),
+        headers: {
+            "Content-Type": "application/json"
+        }
+    }).then(response => {
+        if (response.ok) {
+            return response.json();
+        }
+    }).then(data => {
+        if (data.success) {
+            document.getElementById("reset-button").innerHTML = "Password updated!";
+            setTimeout(function () {
+                location.href = "/login";
+            }, 2000);
+        }
+        else {
+            document.getElementById("reset-button").innerHTML = data.error;
+            setTimeout(function () {
+                document.getElementById("reset-button").innerHTML = "Update password";
             }, 5000);
         }
     });
