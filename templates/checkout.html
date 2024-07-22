@@ -27,7 +27,7 @@
                 <input type="text" id="input-last-name" placeholder="Last name">
                 <div class="select">
                     <select onchange="selectCountry()" name="country" id="input-country">
-                        <option value="empty" disabled selected>Select country</option>
+                        <option value="" disabled selected>Select country</option>
                         {% for country in delivery_countries %}
                             <option value="{{ country }}">{{ country }}</option>
                         {% endfor %}
@@ -40,7 +40,7 @@
                 </div>
                 <div class="select">
                     <select onchange="selectCity()" name="city" id="input-city">
-                        <option value="empty" disabled selected>Select city</option>
+                        <option value="" disabled selected>Select city</option>
                     </select>
                     <svg class="down-arrow" xmlns="http://www.w3.org/2000/svg" width="23" height="15" viewBox="0 0 23 15" fill="none">
                         <path
@@ -61,7 +61,7 @@
                 </div>
                 <div class="select" id="wrapper-input-post-office-branch">
                     <select name="post-office-branch" id="input-post-office-branch">
-                        <option value="empty" disabled selected>Select post office branch</option>
+                        <option value="" disabled selected>Select post office branch</option>
                     </select>
                     <svg class="down-arrow" xmlns="http://www.w3.org/2000/svg" width="23" height="15" viewBox="0 0 23 15" fill="none">
                         <path
@@ -98,7 +98,8 @@
             <div class="inputs">
                 <div class="select">
                     <select name="payment-method" id="input-payment-method">
-                        <option value="full-prepayment" selected>Full Prepayment</option>
+                        <option value="" selected disabled>Payment method</option>
+                        <option value="full-prepayment">Full Prepayment</option>
                         <option value="post-payment">Post Payment</option>
                     </select>
                     <svg class="down-arrow" xmlns="http://www.w3.org/2000/svg" width="23" height="15" viewBox="0 0 23 15" fill="none">
@@ -107,9 +108,9 @@
                             fill="#F1F1F1" />
                     </svg>
                 </div>
-                <input type="text" id="input-card-number" placeholder="Card Number">
-                <input type="text" id="input-expiration-date" placeholder="Expiration Date">
-                <input type="text" id="input-cvv" placeholder="CVV">
+                <!-- <input type="text" id="input-card-number" placeholder="Card Number"> -->
+                <!-- <input type="text" id="input-expiration-date" placeholder="Expiration Date"> -->
+                <!-- <input type="text" id="input-cvv" placeholder="CVV"> -->
                 <input type="text" id="input-promo-code" placeholder="Promo Code (Optional)">
                 <div class="checkbox">
                     <div class="box" onclick="checkSavePaymentData()">
@@ -127,6 +128,45 @@
             You will not be charged immediately. First, the money on your credit card will be frozen. If an order is confirmed, you will be charged. If an order is not confirmed, the money will be unfrozen.</p>
         </div>
 
+        <!-- contact info -->
+        <div class="toggle" onclick="toggleForm('contact')">
+            <svg id="toggle-contact" xmlns="http://www.w3.org/2000/svg" width="33" height="20" viewBox="0 0 33 20" fill="none">
+                <path
+                    d="M-1.31784e-07 3.01486L2.92875 -1.31446e-06L16.5 13.9703L30.0712 -1.2802e-07L33 3.01486L16.5 20L-1.31784e-07 3.01486Z"
+                    fill="#111111"></path>
+            </svg>
+            <h4>3. Contact information</h4>
+        </div>
+        <div id="form-contact" class="contact">
+            <div class="inputs">
+                <div class="select">
+                    <select onchange="selectMessenger()" name="messenger" id="input-contact-messenger">
+                        <option value="telegram" selected>Telegram</option>
+                        <option value="instagram">Instagram</option>
+                        <option value="viber">Viber</option>
+                    </select>
+                    <svg class="down-arrow" xmlns="http://www.w3.org/2000/svg" width="23" height="15" viewBox="0 0 23 15" fill="none">
+                        <path
+                            d="M-9.22487e-08 2.13579L2.04125 0.0253897L11.5 9.80458L20.9587 0.0253905L23 2.13579L11.5 14.0254L-9.22487e-08 2.13579Z"
+                            fill="#F1F1F1" />
+                    </svg>
+                </div>
+                <input oninput="phoneInput()" type="text" id="input-phone-number" placeholder="Phone number" value="{{ user_data['phone-number'] }}">
+                <input class="disabled" type="text" id="input-username" placeholder="Your @username">
+
+                <div class="checkbox">
+                    <div class="box" onclick="checkSaveContactData()">
+                        <svg id="input-check-contact" xmlns="http://www.w3.org/2000/svg" width="33" height="24" viewBox="0 0 33 24" fill="none">
+                            <path d="M11.5399 24L0 12.6237L2.88497 9.77963L11.5399 18.3118L30.115 0L33 2.84407L11.5399 24Z"
+                                fill="#F1F1F1" />
+                        </svg>
+                    </div>
+                    <p>Save this data for fast checkout</p>
+                </div>
+            </div>
+            <p class="side">As soon as your order will be processed, we will contact you in the messenger of your choice informing you about the status of the order as well as giving you an option to pay.</p>
+        </div>
+
         <!-- final order review -->
          <div class="toggle" onclick="toggleForm('review')">
             <svg id="toggle-review" xmlns="http://www.w3.org/2000/svg" width="33" height="20" viewBox="0 0 33 20" fill="none">
@@ -134,7 +174,7 @@
                     d="M-1.31784e-07 3.01486L2.92875 -1.31446e-06L16.5 13.9703L30.0712 -1.2802e-07L33 3.01486L16.5 20L-1.31784e-07 3.01486Z"
                     fill="#111111"></path>
             </svg>
-            <h4>3. Final order review</h4>
+            <h4>4. Final order review</h4>
          </div>
          <div id="form-review" class="review">
             <div class="cart-items">
@@ -187,6 +227,7 @@
     {% include 'partials/newsletter.html' %}
     {% include 'partials/footer.html' %}
     <script src="{{ url_for('static', filename='js/shop.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/forms.js') }}"></script>
     <script>
         const deliveryCountries = {{ delivery_countries | tojson }};
         const deliveryCities = {{ delivery_cities | tojson }};

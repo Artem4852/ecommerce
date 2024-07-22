@@ -31,7 +31,7 @@ class Database:
         self.products_db['product_data'].update_one({'id': productId}, {'$set': product})
 
     def add_order(self, order):
-        self.users_db['orders'].insert_one(order)
+        self.products_db['orders'].insert_one(order)
 
     def edit_order(self, orderId, order):
         self.users_db['orders'].update_one({'_id': ObjectId(orderId)}, {'$set': order})

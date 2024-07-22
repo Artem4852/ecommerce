@@ -388,6 +388,18 @@ function selectDeliveryMethod() {
     document.getElementById('input-postal-code').classList.remove('disabled');
 }
 
+function selectMessenger() {
+    const messenger = document.getElementById('input-contact-messenger').value;
+    if (messenger === 'instagram') {
+        document.getElementById('input-phone-number').classList.add('disabled');
+        document.getElementById('input-username').classList.remove('disabled');
+        return;
+    }
+    document.getElementById('input-phone-number').classList.remove('disabled');
+    document.getElementById('input-username').classList.add('disabled');
+
+}
+
 function checkSaveShippingData() {
     document.getElementById('input-check-shipping').classList.toggle('disabled');
 }
@@ -396,14 +408,65 @@ function checkSavePaymentData() {
     document.getElementById('input-check-payment').classList.toggle('disabled');
 }
 
+function checkSaveContactData() {
+    document.getElementById('input-check-contact').classList.toggle('disabled');    
+}
+
+function validateCheckout() {
+    const firstName = document.getElementById('input-first-name').value;
+    const lastName = document.getElementById('input-last-name').value;
+    const middleName = document.getElementById('input-middle-name').value;
+    const country = document.getElementById('input-country').value;
+    const city = document.getElementById('input-city').value;
+    const deliveryMethod = document.getElementById('input-delivery-method').value;
+    const postOfficeBranch = document.getElementById('input-post-office-branch').value;
+    const address = document.getElementById('input-address').value;
+    const address2 = document.getElementById('input-address-2').value;
+    const postalCode = document.getElementById('input-postal-code').value;
+    const paymentMethod = document.getElementById('input-payment-method').value;
+    const promoCode = document.getElementById('input-promo-code').value;
+    const contactMessenger = document.getElementById('input-contact-messenger').value;
+    const username = document.getElementById('input-username').value;
+    const phoneNumber = document.getElementById('input-phone-number').value;
+
+    if (firstName === '' || lastName === '' || middleName === '' || country === '' || city === '') {
+        return('Please fill in all required fields');
+    }
+    if (deliveryMethod === 'pick-up-from-post-office' && postOfficeBranch === '') {
+        return('Please select post office branch');
+    }
+    if (deliveryMethod === 'deliver-to-address' && (address === '' || postalCode === '')) {
+        return('Please fill in all required fields');
+    }
+    if (paymentMethod === '') {
+        return('Please select payment method');
+    }
+    if (contactMessenger === 'instagram' && username === '') {
+        return('Please fill in all required fields');
+    }
+    if (contactMessenger === 'phone' && phoneNumber === '') {
+        return('Please fill in all required fields');
+    }
+    return '';
+}
+
 function checkout() {
+    const error = validateCheckout();
+    if (error !== '') {
+        document.getElementById('button-checkout').innerHTML = error;
+        setTimeout(function () {
+            document.getElementById('button-checkout').innerHTML = 'Checkout';
+        }, 5000);
+        return;
+    }
+
     const data = {
         "firstName": document.getElementById('input-first-name').value,
         "lastName": document.getElementById('input-last-name').value,
         "middleName": document.getElementById('input-middle-name').value,
         "country": document.getElementById('input-country').value,
         "city": document.getElementById('input-city').value,
-        "deliveryMethod": document.getElementById('input-delivery-method'),value
+        "deliveryMethod": document.getElementById('input-delivery-method').value
     }
     if (data['deliveryMethod'] == 'pick-up-from-post-office') {
         data['postOfficeBranch'] = document.getElementById('input-post-office-branch').value;
@@ -415,10 +478,16 @@ function checkout() {
     data['saveShippingData'] = !document.getElementById('input-check-shipping').classList.contains('disabled');
 
     data['paymentMethod'] = document.getElementById('input-payment-method').value;
-    data['cardNumber'] = document.getElementById('input-card-number').value;
-    data['cardExpirationDate'] = document.getElementById('input-card-expiration-date').value;
-    data['cardCVV'] = document.getElementById('input-card-cvv').value;
+    data['promoCode'] = document.getElementById('input-promo-code').value;
     data['savePaymentData'] = !document.getElementById('input-check-payment').classList.contains('disabled');
+
+    data['contactMessenger'] = document.getElementById('input-contact-messenger').value;
+    if (data['contactMessenger'] == 'instagram') {
+        data['username'] = document.getElementById('input-username').value;
+    } else {
+        data['phoneNumber'] = document.getElementById('input-phone-number').value;
+    }
+    data['saveContactData'] = !document.getElementById('input-check-contact').classList.contains('disabled');
 
     fetch('/checkout', {
         method: 'POST',

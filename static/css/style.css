@@ -1215,21 +1215,21 @@ select::-webkit-inner-spin-button, select::-webkit-outer-spin-button {
   font-weight: 400;
   width: fit-content;
 }
-#checkout .shipping, #checkout .payment {
+#checkout .shipping, #checkout .payment, #checkout .contact {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   gap: 20px;
   margin-bottom: 30px;
 }
-#checkout .shipping .inputs, #checkout .payment .inputs {
+#checkout .shipping .inputs, #checkout .payment .inputs, #checkout .contact .inputs {
   width: calc(50% - 10px);
   display: flex;
   flex-direction: column;
   gap: 20px;
   font-size: 18px;
 }
-#checkout .shipping .inputs input, #checkout .payment .inputs input {
+#checkout .shipping .inputs input, #checkout .payment .inputs input, #checkout .contact .inputs input {
   width: 100%;
   font-size: 18px;
   padding: 4px 8px;
@@ -1238,27 +1238,27 @@ select::-webkit-inner-spin-button, select::-webkit-outer-spin-button {
   background-color: #999999;
   color: #f1f1f1;
 }
-#checkout .shipping .inputs input:focus, #checkout .payment .inputs input:focus {
+#checkout .shipping .inputs input:focus, #checkout .payment .inputs input:focus, #checkout .contact .inputs input:focus {
   outline: none;
 }
-#checkout .shipping .inputs input::placeholder, #checkout .payment .inputs input::placeholder {
+#checkout .shipping .inputs input::placeholder, #checkout .payment .inputs input::placeholder, #checkout .contact .inputs input::placeholder {
   color: #E0E0E0;
 }
-#checkout .shipping .inputs .select, #checkout .payment .inputs .select {
+#checkout .shipping .inputs .select, #checkout .payment .inputs .select, #checkout .contact .inputs .select {
   width: 100%;
   position: relative;
 }
-#checkout .shipping .inputs .select select, #checkout .payment .inputs .select select {
+#checkout .shipping .inputs .select select, #checkout .payment .inputs .select select, #checkout .contact .inputs .select select {
   font-size: 18px;
   width: 100%;
 }
-#checkout .shipping .inputs .checkbox, #checkout .payment .inputs .checkbox {
+#checkout .shipping .inputs .checkbox, #checkout .payment .inputs .checkbox, #checkout .contact .inputs .checkbox {
   display: flex;
   flex-direction: row;
   align-items: center;
   gap: 8px;
 }
-#checkout .shipping .inputs .checkbox .box, #checkout .payment .inputs .checkbox .box {
+#checkout .shipping .inputs .checkbox .box, #checkout .payment .inputs .checkbox .box, #checkout .contact .inputs .checkbox .box {
   width: 20px;
   height: 20px;
   background-color: #999999;
@@ -1269,20 +1269,20 @@ select::-webkit-inner-spin-button, select::-webkit-outer-spin-button {
   align-items: center;
   cursor: r;
 }
-#checkout .shipping .inputs .checkbox .box svg, #checkout .payment .inputs .checkbox .box svg {
+#checkout .shipping .inputs .checkbox .box svg, #checkout .payment .inputs .checkbox .box svg, #checkout .contact .inputs .checkbox .box svg {
   height: 10px;
 }
-#checkout .shipping .inputs .checkbox input, #checkout .payment .inputs .checkbox input {
+#checkout .shipping .inputs .checkbox input, #checkout .payment .inputs .checkbox input, #checkout .contact .inputs .checkbox input {
   width: 20px;
   height: 20px;
   background-color: #999999;
   border-radius: 5px;
   border: none;
 }
-#checkout .shipping .inputs .checkbox p, #checkout .payment .inputs .checkbox p {
+#checkout .shipping .inputs .checkbox p, #checkout .payment .inputs .checkbox p, #checkout .contact .inputs .checkbox p {
   font-size: 18px;
 }
-#checkout .shipping p.side, #checkout .payment p.side {
+#checkout .shipping p.side, #checkout .payment p.side, #checkout .contact p.side {
   width: calc(50% - 10px);
 }
 #checkout .disabled {

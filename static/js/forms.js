@@ -1,5 +1,14 @@
-function phoneInput() {
-    phone = document.getElementById('input-phone-number');
+let prev = null;
+function phoneInput(event) {
+    const phone = document.getElementById('input-phone-number');
+
+    if (prev && prev.length > phone.value.length) {
+        phone.value = '';
+        prev = null;
+        return;
+    }
+    prev = phone.value;
+
     let value = phone.value.replace(/\D/g, '');
     let formattedValue = '';
 
@@ -16,7 +25,8 @@ function phoneInput() {
         formattedValue += ' ' + value.substring(8, 12);
     }
 
-    phone.target.value = formattedValue;
+    phone.value = formattedValue;
+    prev = phone.value;
 }
 
 function codeInput() {

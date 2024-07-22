@@ -4,6 +4,9 @@ from database import Database
 import os, random, json, math, dotenv
 from bs4 import BeautifulSoup
 from datetime import datetime
+from string import ascii_letters, digits
+
+characters = ascii_letters + digits
 
 dotenv.load_dotenv()
 
@@ -223,6 +226,8 @@ def checkout():
         if not logged_in:
             return redirect('/login?next=checkout')
         user = get_user({'user_id': session.get('user_id')})
+        if not user['cart']:
+            return redirect('/cart')
         products = get_products()
         cart_items = []
         subtotal = 0
@@ -241,13 +246,14 @@ def checkout():
     elif request.method == 'POST':
         data = request.json
 
-        payment_info = {
-            'card_number': data.get('card-number'),
-            'card_holder': data.get('first-name') + ' ' + data.get('last-name'),
-            'expiration_date': data.get('expiration-date'),
-            'cvv': data.get('cvv'),
-            'amount': data.get('amount')
-        }
+        data["order_id"] = ''.join([random.choice(characters) for _ in range(8)])
+        data["cart"] = get_user({'user_id': session.get('user_id')})['cart']
+        data["user_id"] = session.get('user_id')
+
+        database.add_order(data)
+        database.update_user({'user_id': session.get('user_id')}, {'$set': {'cart': []}})
+
+        return jsonify({'success': True})
 
 # Newsletter route
 @app.route('/newsletter-signup', methods=['POST'])
