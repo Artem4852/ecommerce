@@ -6,6 +6,7 @@ from bs4 import BeautifulSoup
 from datetime import datetime
 from string import ascii_letters, digits
 from novapost import NovaAPI
+from telegramAPI import sendMessage
 
 characters = ascii_letters + digits
 
@@ -243,7 +244,6 @@ def checkout():
         codes_country = {v: k for k, v in country_codes.items()}
         delivery_countries = nova.loadCountries()
         delivery_cities = nova.loadCities()
-        print(country_codes)
 
         featured_products = [p for p in products if p['tag'] == 'featured' and p['discount'] == 0]
 
@@ -259,7 +259,16 @@ def checkout():
         database.add_order(data)
         database.update_user({'user_id': session.get('user_id')}, {'$set': {'cart': []}})
 
-        return jsonify({'success': True})
+        if data['contactMessenger'] == 'telegram':
+            messenger = f"<a href='https://t.me/{data['phoneNumber'].replace('(', '').replace(')', '').replace(' ', '')}'>Telegram</a>"
+        elif data['contactMessenger'] == 'viber':
+            messenger = f"<a href='viber://chat?number={data['phoneNumber'].replace('(', '').replace(')', '').replace(' ', '')}'>Viber</a>"
+        elif data['contactMessenger'] == 'instagram':
+            messenger = f"<a href='https://instagram.com/{data['username']}'>Instagram</a>"
+
+        sendMessage(f"<b>New order: {data['order_id']}</b>. Check it <a href='https://kidsfashionstore.com.ua/orders/{data['order_id']}'>here</a>. Customer: {data['firstName']} {data['lastName']}, contact in " + messenger)
+
+        # return jsonify({'success': True})
 
 @app.route('/get-branches', methods=['POST'])
 def get_branches():
