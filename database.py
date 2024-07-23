@@ -1,6 +1,6 @@
 from pymongo.mongo_client import MongoClient
 from bson.objectid import ObjectId
-import os, dotenv
+import os, dotenv, random
 
 dotenv.load_dotenv()
 
@@ -26,7 +26,10 @@ class Database:
     
     def get_product(self, _filter):
         return self.products_db['product_data'].find_one(_filter)
-    
+
+    def edit_product(self, productId, fields):
+        self.products_db['product_data'].update_one({'id': productId}, {'$unset': {field: 1 for field in fields}})
+
     def update_product(self, productId, product):
         self.products_db['product_data'].update_one({'id': productId}, {'$set': product})
 
@@ -79,4 +82,7 @@ class Database:
 
 if __name__ == '__main__':
     database = Database()
-    print(database.get_users())
+    products = database.get_products()
+    for product in products:
+        print(product)
+        database.update_product(product['id'], {'warehouse': random.choice(['Kyiv', 'Odesa', 'Ternopil', 'Lviv'])})

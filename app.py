@@ -240,12 +240,14 @@ def checkout():
             cart_items.append({'id': item['product_id'], 'size': item['size'], 'quantity': item['quantity'], 'info': product})
 
         country_codes = nova.loadCountryCodes()
+        codes_country = {v: k for k, v in country_codes.items()}
         delivery_countries = nova.loadCountries()
         delivery_cities = nova.loadCities()
+        print(country_codes)
 
         featured_products = [p for p in products if p['tag'] == 'featured' and p['discount'] == 0]
 
-        return render_template('checkout.html', user_data=user, cart_items=cart_items, subtotal=subtotal, products_featured=[p for p in products if p['tag'] == 'featured' and p['discount'] == 0][:4], logged_in=logged_in, delivery_countries=delivery_countries, delivery_cities=delivery_cities, featured_products=featured_products, country_codes=country_codes)
+        return render_template('checkout.html', user_data=user, cart_items=cart_items, subtotal=subtotal, products_featured=[p for p in products if p['tag'] == 'featured' and p['discount'] == 0][:4], logged_in=logged_in, delivery_countries=delivery_countries, delivery_cities=delivery_cities, featured_products=featured_products, country_codes=country_codes, codes_country=codes_country)
     elif request.method == 'POST':
         data = request.json
 
@@ -265,6 +267,7 @@ def get_branches():
     city = request.json.get('city')
     try:
         branches = nova.getBranches(country_code, city)
+        branches = sorted(branches, key=lambda x: int(x['number'].split("/")[-1]))
     except:
         return jsonify({'success': False, 'error': 'Error fetching branches'})
     return jsonify({'success': True, 'branches': branches})

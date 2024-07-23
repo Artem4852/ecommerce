@@ -361,36 +361,43 @@ function selectCountry() {
 
 function selectCity() {
     const city = document.getElementById('input-city').value;
-    const country_code = country_codes[document.getElementById('input-country').value];
+    const country_code = document.getElementById('input-country').value;
+
+    document.getElementById('wrapper-input-post-office-branch').classList.remove('disabled');
+    document.getElementById('input-post-office-branch-noselect').classList.add('disabled');
+    const branch = document.getElementById('input-post-office-branch');
+    branch.innerHTML = '';
+    let option = new Option('Select post office branch', '', true, true);
+    option.setAttribute('disabled', 'disabled');
+    branch.appendChild(option);
+
     fetch('/get-branches', {
         method: 'POST',
-        body: JSON.stringify({city: city, country_code: country_code}),
+        body: JSON.stringify({"city": city, "country_code": country_code}),
         headers: {
             'Content-Type': 'application/json',
         },
     })
         .then(response => response.json())
         .then(data => {
-            if (data.success) {
-                postOfficeBranches = data;
-            } else {
-                postOfficeBranches = {};
+            console.log(data);
+            if (!data.success) {
+                console.log(data.success)
+                document.getElementById('wrapper-input-post-office-branch').classList.remove('disabled');
+                document.getElementById('input-post-office-branch-noselect').classList.add('disabled');
+                return;
+            }
+
+            const branches = data.branches;
+
+            for (let i = 0; i < branches.length; i++) {
+                console.log(branches[i]['number']);
+                shortName = branches[i]['shortName'];
+                if (shortName.includes(" (")) shortName = shortName.substring(0, shortName.indexOf(" ("));
+                let option = new Option(shortName, branches[i]['number']);
+                branch.appendChild(option);
             }
         });
-    
-    if (postOfficeBranches === undefined) {
-        document.getElementById('wrapper-input-post-office-branch').classList.add('disabled');
-        document.getElementById('input-post-office-branch-noselect').classList.remove('disabled');
-    }
-    const branch = document.getElementById('input-post-office-branch');
-    branch.innerHTML = '';
-    let option = new Option('Select post office branch', '', true, true);
-    option.setAttribute('disabled', 'disabled');
-    branch.appendChild(option);
-    for (let i = 0; i < branches.length; i++) {
-        let option = new Option(branches[i], branches[i]);
-        branch.appendChild(option);
-    }
 }
 
 function selectDeliveryMethod() {

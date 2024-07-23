@@ -29,7 +29,7 @@
                     <select onchange="selectCountry()" name="country" id="input-country">
                         <option value="" disabled selected>Select country</option>
                         {% for country in delivery_countries %}
-                            <option value="{{ country }}">{{ country }}</option>
+                            <option value="{{ country }}">{{ codes_country[country] | capitalize }}</option>
                         {% endfor %}
                     </select>
                     <svg class="down-arrow" xmlns="http://www.w3.org/2000/svg" width="23" height="15" viewBox="0 0 23 15" fill="none">
@@ -231,8 +231,9 @@
     <script src="{{ url_for('static', filename='js/forms.js') }}"></script>
     <script>
         const deliveryCountries = {{ delivery_countries | tojson }};
-        const deliveryCities = {{ delivery_cities | tojson }};
         const countryCodes = {{ country_codes | tojson }};
+        const codesCountry = {{ codes_country | tojson }};
+        const deliveryCities = {{ delivery_cities | tojson }};
     </script>
 </body>
 </html>
