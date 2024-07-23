@@ -249,11 +249,39 @@ def checkout():
         data["order_id"] = ''.join([random.choice(characters) for _ in range(8)])
         data["cart"] = get_user({'user_id': session.get('user_id')})['cart']
         data["user_id"] = session.get('user_id')
+        data["status"] = "pending"
 
         database.add_order(data)
         database.update_user({'user_id': session.get('user_id')}, {'$set': {'cart': []}})
 
         return jsonify({'success': True})
+
+@app.route('/order-confirmation')
+def order_confirmation():
+    logged_in = session.get('logged_in', False)
+    if not logged_in:
+        return redirect('/login?next=order-confirmation')
+    user = get_user({'user_id': session.get('user_id')})
+    products = get_products()
+    products_featured = [p for p in products if p['tag'] == 'featured' and p['discount'] == 0]
+    return render_template('order_confirmation.html', user_data=user, logged_in=logged_in, products_featured=products_featured[:4])
+
+@app.route('/orders')
+def orders():
+    logged_in = session.get('logged_in', False)
+    if not logged_in:
+        return redirect('/login?next=orders')
+    user = get_user({'user_id': session.get('user_id')})
+    orders = database.get_orders({'user_id': session.get('user_id')})
+    for order in orders:
+        cart_items = []
+        for item in order['cart']:
+            product = database.get_product({'id': item['product_id']})
+            cart_items.append({'id': item['product_id'], 'size': item['size'], 'quantity': item['quantity'], 'info': product})
+        order['cart'] = cart_items
+    products = get_products()
+    products_featured = [p for p in products if p['tag'] == 'featured' and p['discount'] == 0]
+    return render_template('orders.html', user_data=user, orders=orders, logged_in=logged_in, products_featured=products_featured[:4])
 
 # Newsletter route
 @app.route('/newsletter-signup', methods=['POST'])

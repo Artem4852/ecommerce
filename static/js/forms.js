@@ -1,5 +1,5 @@
 let prev = null;
-function phoneInput(event) {
+function phoneInput() {
     const phone = document.getElementById('input-phone-number');
 
     if (prev && prev.length > phone.value.length) {
@@ -195,7 +195,37 @@ function sendResetCode() {
     });
 }
 
+function validateReset() {
+    const code = document.getElementById('input-code').value;
+    const password = document.getElementById('input-password').value;
+    const confirmPassword = document.getElementById('input-password-confirm').value;
+
+    if (code == "" || code.length < 6) {
+        document.getElementById("reset-button").innerHTML = "Please enter a valid reset code.";
+        setTimeout(function () {
+            document.getElementById("reset-button").innerHTML = "Update password";
+        }, 2000);
+        return false;
+    }
+    else if (password == "" || password.length < 8) {
+        document.getElementById("reset-button").innerHTML = "Password must be at least 8 characters long.";
+        setTimeout(function () {
+            document.getElementById("reset-button").innerHTML = "Update password";
+        }, 2000);
+        return false;
+    }
+    else if (password != confirmPassword) {
+        document.getElementById("reset-button").innerHTML = "Passwords do not match.";
+        setTimeout(function () {
+            document.getElementById("reset-button").innerHTML = "Update password";
+        }, 2000);
+        return false;
+    }
+    return true;
+}
+
 function updatePassword() {
+    if (!validateReset()) return;
     url = new URL(window.location.href);
     const email = url.searchParams.get("email");
     const code = document.getElementById('input-code').value;

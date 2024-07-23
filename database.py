@@ -36,6 +36,9 @@ class Database:
     def edit_order(self, orderId, order):
         self.users_db['orders'].update_one({'_id': ObjectId(orderId)}, {'$set': order})
 
+    def get_orders(self, _filter):
+        return list(self.products_db['orders'].find(_filter))
+
     def remove_fields(self, productId, fields):
         self.products_db['product_data'].update_one({'id': productId}, {'$unset': {field: 1 for field in fields}})
     

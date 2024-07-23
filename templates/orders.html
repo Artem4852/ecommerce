@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+{% include 'partials/head.html' %}
+<body>
+    {% include 'partials/header.html' %}
+    <section id="orders">
+        <h2>Your orders</h2>
+        <div class="orders">
+            {% for order in orders %}
+                {% for item in order.cart %}
+                <div class="card">
+                    <div class="img">
+                        <a href="/orders/{{ order.order_id }}">
+                            <img src="{{ item.info.img }}" alt="">
+                        </a>
+                    </div>
+                    <div class="data">
+                        <div class="row">
+                            <div class="col start" id="card-{{ item.id }}">
+                                <h4>{{ item.info.category }} {{ item.info.brand }}</h4>
+                                <p class="info-size">Size: {{ item.size }}</p>
+                                <p class="info-quantity">Quantity: {{ item.quantity }}</p>
+                            </div>
+                            <div class="col">
+                                <p>Warehouse: {{ item.info.warehouse }}</p>
+                                    <div class="row">
+                                    <p>To: {{ order.city }}</p>
+                                    {% if order.deliveryMethod == "pick-up-from-post-office" %}
+                                    <p>Branch: {{ order.postOfficeBranch }}</p>
+                                    {% endif %}
+                                </div>
+                                {% if order.deliveryMethod == "pick-up-from-post-office" %}
+                                <p>Type: Pick up from Post Office</p>
+                                {% else %}
+                                <p>Type: Address Delivery</p>
+                                {% endif %}
+                            </div>
+                            <div class="col">
+                                <p>Product id: {{ item.id }}</p>
+                                <p>Order id: {{ order.order_id }}</p>
+                                <p>Status: {{ order.status | capitalize }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            {% endfor %}
+        </div>
+    </section>
+    <section id="featured" class="product">
+        <h2>You might also like</h2>
+        <div class="products">
+            {% for product in products_featured %}
+            {% include 'partials/card.html' %}
+            {% endfor %}
+        </div>
+    </section>
+    {% include 'partials/newsletter.html' %}
+    {% include 'partials/footer.html' %}
+</body>
+</html>

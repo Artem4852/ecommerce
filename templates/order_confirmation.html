@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+{% include 'partials/head.html' %}
+<body>
+    {% include 'partials/header.html' %}
+    <section id="cart">
+        <h2>Checkout</h2>
+        <div class="cart-empty">
+            <h4>Thanks! You have successfully placed your order. Wait for a message from us soon!</h4>
+            <a href="/orders">My orders</a>
+        </div>
+    </section>
+    <section id="featured" class="product">
+        <h2>You might also like</h2>
+        <div class="products">
+            {% for product in products_featured %}
+            {% include 'partials/card.html' %}
+            {% endfor %}
+        </div>
+    </section>
+    {% include 'partials/newsletter.html' %}
+    {% include 'partials/footer.html' %}
+</body>
+</html>
