@@ -69,6 +69,7 @@
                             fill="#F1F1F1" />
                     </svg>
                 </div>
+                <input class="disabled" type="text" id="input-post-office-branch-noselect" placeholder="Post Office Branch">
                 <input class="disabled" type="text" id="input-address" placeholder="Street Address">
                 <input class="disabled" type="text" id="input-address-2" placeholder="Apartment, Building, Floor, etc. (Optional)">
                 <input class="disabled" type="text" name="postal-code" id="input-postal-code" placeholder="ZIP/Postal Code">
@@ -231,7 +232,7 @@
     <script>
         const deliveryCountries = {{ delivery_countries | tojson }};
         const deliveryCities = {{ delivery_cities | tojson }};
-        const postOfficeBranches = {{ post_office_branches | tojson }};
+        const countryCodes = {{ country_codes | tojson }};
     </script>
 </body>
 </html>

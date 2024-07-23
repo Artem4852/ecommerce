@@ -361,7 +361,27 @@ function selectCountry() {
 
 function selectCity() {
     const city = document.getElementById('input-city').value;
-    const branches = postOfficeBranches[city];
+    const country_code = country_codes[document.getElementById('input-country').value];
+    fetch('/get-branches', {
+        method: 'POST',
+        body: JSON.stringify({city: city, country_code: country_code}),
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                postOfficeBranches = data;
+            } else {
+                postOfficeBranches = {};
+            }
+        });
+    
+    if (postOfficeBranches === undefined) {
+        document.getElementById('wrapper-input-post-office-branch').classList.add('disabled');
+        document.getElementById('input-post-office-branch-noselect').classList.remove('disabled');
+    }
     const branch = document.getElementById('input-post-office-branch');
     branch.innerHTML = '';
     let option = new Option('Select post office branch', '', true, true);

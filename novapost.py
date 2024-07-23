@@ -31,6 +31,7 @@ class NovaAPI():
         while r.json()['total'] > len(cities):
             r = self.session.get(self.endpoints['europe']+f'divisions?countryCodes[]={country_code}&divisionCategories[]=PostBranch&limit=100&page={len(cities)//100+1}')
             cities += [c['settlement']['name'] for c in r.json()['items']]
+        print(len(cities))
         cities = list(set(cities))
         return cities
 
@@ -46,25 +47,32 @@ class NovaAPI():
     
     def updateNovaPostData(self):
         data = {}
-        data['countries'] = ['UA']
-        # data['countries'] = ['MD', 'PL', 'LT', 'CZ', 'RO', 'DE', 'SK', 'EE', 'LV', 'HU', 'IT', 'GB', 'ES', 'FR']
+        # data['countries'] = ['UA']
+        data['lastUpdate'] = datetime.now().timestamp()
+        data['countryCodes'] = {"ukraine": "UA", "moldova": "MD", "poland": "PL", "lithuania": "LT", "czech": "CZ", "romania": "RO", "germany": "DE", "slovakia": "SK", "estonia": "EE", "latvia": "LV", "hungary": "HU", "italy": "IT", "great_britain": "GB", "spain": "ES", "france": "FR"}
+        data['countries'] = ['UA', 'MD', 'PL', 'LT', 'CZ', 'RO', 'DE', 'SK', 'EE', 'LV', 'HU', 'IT', 'GB', 'ES', 'FR']
         data['cities'] = {}
-        data['branches'] = {}
         for country in data['countries']:
             print(country)
             data['cities'][country] = self.getCities(country)
-            for city in data['cities'][country]:
-                print(city)
-                data['branches'][city] = self.getBranches(country, city)
-        with open('novapostDomestic.json', 'w') as f:
+        with open('novapost.json', 'w') as f:
             json.dump(data, f)
 
     def loadNovaPostData(self):
         with open('novapost.json', 'r') as f:
             return json.load(f)
+        
+    def loadCountryCodes(self):
+        return self.loadNovaPostData()['countryCodes']
+        
+    def loadCountries(self):
+        return self.loadNovaPostData()['countries']
+    
+    def loadCities(self, country_code=None):
+        if country_code == None:
+            return self.loadNovaPostData()['cities']
+        return self.loadNovaPostData()['cities'][country_code]
 
 if __name__ == '__main__':
     nova = NovaAPI()
-    # with open("1.json", "w") as f: 
-        # json.dump(nova.getBranches('LT'), f)
     nova.updateNovaPostData()

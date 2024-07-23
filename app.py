@@ -5,6 +5,7 @@ import os, random, json, math, dotenv
 from bs4 import BeautifulSoup
 from datetime import datetime
 from string import ascii_letters, digits
+from novapost import NovaAPI
 
 characters = ascii_letters + digits
 
@@ -13,6 +14,8 @@ dotenv.load_dotenv()
 app = Flask(__name__)
 app.secret_key = os.getenv('SECRET_KEY')
 database = Database()
+
+nova = NovaAPI()
 
 # Setup mail
 app.config['MAIL_SERVER'] = 'sandbox.smtp.mailtrap.io'
@@ -236,13 +239,13 @@ def checkout():
             subtotal += int(product['price'])*int(item['quantity'])
             cart_items.append({'id': item['product_id'], 'size': item['size'], 'quantity': item['quantity'], 'info': product})
 
-        delivery_countries = database.get_delivery_countries()
-        delivery_cities = database.get_delivery_cities()
-        post_office_branched = database.get_post_office_branches()
+        country_codes = nova.loadCountryCodes()
+        delivery_countries = nova.loadCountries()
+        delivery_cities = nova.loadCities()
 
         featured_products = [p for p in products if p['tag'] == 'featured' and p['discount'] == 0]
 
-        return render_template('checkout.html', user_data=user, cart_items=cart_items, subtotal=subtotal, products_featured=[p for p in products if p['tag'] == 'featured' and p['discount'] == 0][:4], logged_in=logged_in, delivery_countries=delivery_countries, delivery_cities=delivery_cities, post_office_branches=post_office_branched, featured_products=featured_products)
+        return render_template('checkout.html', user_data=user, cart_items=cart_items, subtotal=subtotal, products_featured=[p for p in products if p['tag'] == 'featured' and p['discount'] == 0][:4], logged_in=logged_in, delivery_countries=delivery_countries, delivery_cities=delivery_cities, featured_products=featured_products, country_codes=country_codes)
     elif request.method == 'POST':
         data = request.json
 
@@ -255,6 +258,16 @@ def checkout():
         database.update_user({'user_id': session.get('user_id')}, {'$set': {'cart': []}})
 
         return jsonify({'success': True})
+
+@app.route('/get-branches', methods=['POST'])
+def get_branches():
+    country_code = request.json.get('country_code')
+    city = request.json.get('city')
+    try:
+        branches = nova.getBranches(country_code, city)
+    except:
+        return jsonify({'success': False, 'error': 'Error fetching branches'})
+    return jsonify({'success': True, 'branches': branches})
 
 @app.route('/order-confirmation')
 def order_confirmation():
