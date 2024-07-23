@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+{% include 'partials/head.html' %}
+<body>
+    {% include 'partials/header.html' %}
+    <section id="order">
+        <h2>View order</h2>
+        <div class="row">
+            <div class="col">
+                <h4>Product</h4>
+                <p>Name: {{ order.product.info.category }} {{ order.product.info.brand }}</p>
+                <p>Id: {{ order.product.product_id }}</p>
+                <p>Size: {{ order.product.size }}</p>
+                <p>Quantity: {{ order.product.quantity }}</p>
+            </div>
+            <div class="col">
+                <h4>Order</h4>
+                <p>Order id: {{ order.order_id }}</p>
+                <p>Receiver: {{ order.firstName }} {{ order.lastName }} {{ order.middleName }}</p>
+                <p>Country: {{ order.country }}</p>
+                <p>City: {{ order.city }}</p>
+                <p>Delivery method: {{ order.deliveryMethod.replace('-', ' ') | capitalize }}</p>
+                {% if order.trackingNumber %}
+                    <p>Tracking number: {{ order.trackingNumber }}</p>
+                {% else %}
+                    <p>Tracking number: Not available yet</p>
+                {% endif %}
+                {% if order.deliveryMethod == "pick-up-from-post-office" %}
+                    <p>Post Office branch: {{ order.postOfficeBranch }}</p>
+                {% else %}
+                    <p>Address: {{ order.address }} {{ order.address2 }}</p>
+                    <p>Postal code: {{ order.postalCode }}</p>
+                {% endif %}
+                <p>Payment type: {{ order.paymentMethod.replace('-', ' ') | capitalize }}</p>
+            </div>
+            <div class="col">
+                <h4>Status</h4>
+                <div class="status">
+                    <div class="circle {% if order.status == 'pending' %}active{% endif %}"></div>
+                    <p>Pending</p>
+                </div>
+                <div class="status">
+                    <div class="circle {% if order.status == 'processed' %}active{% endif %}"></div>
+                    <p>Processed</p>
+                </div>
+                <div class="status">
+                    <div class="circle {% if order.status == 'shipped' %}active{% endif %}"></div>
+                    <p>Shipped</p>
+                </div>
+                <div class="status">
+                    <div class="circle {% if order.status == 'arrived' %}active{% endif %}"></div>
+                    <p>Arrived</p>
+                </div>
+                <div class="status">
+                    <div class="circle {% if order.status == 'received' %}active{% endif %}"></div>
+                    <p>Received</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="featured" class="product">
+        <h2>You might also like</h2>
+        <div class="products">
+            {% for product in products_featured %}
+            {% include 'partials/card.html' %}
+            {% endfor %}
+        </div>
+    </section>
+    {% include 'partials/newsletter.html' %}
+    {% include 'partials/footer.html' %}
+    <script src="{{ url_for('static', filename='js/home.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/shop.js') }}"></script>
+</body>
+</html>

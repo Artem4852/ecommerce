@@ -10,7 +10,7 @@
                 {% for item in order.cart %}
                 <div class="card">
                     <div class="img">
-                        <a href="/orders/{{ order.order_id }}">
+                        <a href="/orders/{{ order.order_id }}/{{ item.id }}">
                             <img src="{{ item.info.img }}" alt="">
                         </a>
                     </div>

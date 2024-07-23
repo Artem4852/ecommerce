@@ -245,9 +245,13 @@ def checkout():
         delivery_countries = nova.loadCountries()
         delivery_cities = nova.loadCities()
 
+        shippingData = user['shipping-data']
+        paymentData = user['payment-data']
+        contactData = user['contact-data']
+
         featured_products = [p for p in products if p['tag'] == 'featured' and p['discount'] == 0]
 
-        return render_template('checkout.html', user_data=user, cart_items=cart_items, subtotal=subtotal, products_featured=[p for p in products if p['tag'] == 'featured' and p['discount'] == 0][:4], logged_in=logged_in, delivery_countries=delivery_countries, delivery_cities=delivery_cities, featured_products=featured_products, country_codes=country_codes, codes_country=codes_country)
+        return render_template('checkout.html', user_data=user, cart_items=cart_items, subtotal=subtotal, products_featured=[p for p in products if p['tag'] == 'featured' and p['discount'] == 0][:4], logged_in=logged_in, delivery_countries=delivery_countries, delivery_cities=delivery_cities, featured_products=featured_products, country_codes=country_codes, codes_country=codes_country, shipping_data=shippingData, payment_data=paymentData, contact_data=contactData)
     elif request.method == 'POST':
         data = request.json
 
@@ -259,6 +263,37 @@ def checkout():
         database.add_order(data)
         database.update_user({'user_id': session.get('user_id')}, {'$set': {'cart': []}})
 
+        if data['saveShippingData']: 
+            shippingData = {
+                'firstName': data['firstName'],
+                'lastName': data['lastName'],
+                'middleName': data['middleName'],
+                'country': data['country'],
+                'city': data['city'],
+                'deliveryMethod': data['deliveryMethod'],
+            }
+            if data['deliveryMethod'] == 'pick-up-from-post-office':
+                shippingData['postOfficeBranch'] = data['postOfficeBranch']
+            else:
+                shippingData['address'] = data['address']
+                shippingData['address2'] = data['address2']
+                shippingData['postalCode'] = data['postalCode']
+            database.update_user({'user_id': session.get('user_id')}, {'$set': {'shipping-data': shippingData}})
+        if data['savePaymentData']: 
+            paymentData = {
+                'paymentMethod': data['paymentMethod']
+            }
+            database.update_user({'user_id': session.get('user_id')}, {'$set': {'payment-data': paymentData}})
+        if data['saveContactData']: 
+            contactData = {
+                'contactMessenger': data['contactMessenger']
+            }
+            if data['contactMessenger'] == 'instagram':
+                contactData['username'] = data['username']
+            else:
+                contactData['phoneNumber'] = data['phoneNumber']
+            database.update_user({'user_id': session.get('user_id')}, {'$set': {'contact-data': contactData}})
+
         if data['contactMessenger'] == 'telegram':
             messenger = f"<a href='https://t.me/{data['phoneNumber'].replace('(', '').replace(')', '').replace(' ', '')}'>Telegram</a>"
         elif data['contactMessenger'] == 'viber':
@@ -268,7 +303,7 @@ def checkout():
 
         sendMessage(f"<b>New order: {data['order_id']}</b>. Check it <a href='https://kidsfashionstore.com.ua/orders/{data['order_id']}'>here</a>. Customer: {data['firstName']} {data['lastName']}, contact in " + messenger)
 
-        # return jsonify({'success': True})
+        return jsonify({'success': True})
 
 @app.route('/get-branches', methods=['POST'])
 def get_branches():
@@ -307,6 +342,19 @@ def orders():
     products = get_products()
     products_featured = [p for p in products if p['tag'] == 'featured' and p['discount'] == 0]
     return render_template('orders.html', user_data=user, orders=orders, logged_in=logged_in, products_featured=products_featured[:4])
+
+@app.route('/orders/<order_id>/<product_id>')
+def order(order_id, product_id):
+    logged_in = session.get('logged_in', False)
+    if not logged_in:
+        return redirect('/login?next=orders')
+    user = get_user({'user_id': session.get('user_id')})
+    order = database.get_order({'order_id': order_id})
+    order['product'] = [o for o in order['cart'] if int(o['product_id']) == int(product_id)][0]
+    order['product']['info'] = database.get_product({'id': int(product_id)})
+    products = get_products()
+    products_featured = [p for p in products if p['tag'] == 'featured' and p['discount'] == 0]
+    return render_template('order.html', user_data=user, order=order, logged_in=logged_in, products_featured=products_featured[:4])
 
 # Newsletter route
 @app.route('/newsletter-signup', methods=['POST'])
@@ -358,7 +406,7 @@ def signup():
     if user:
         return jsonify({'success': False, 'error': 'User already exists'})
     
-    database.add_user({'email': email, 'phone-number': phone_number, 'password': password, 'cart': [], 'favorites': [], 'shipping-information': {}, 'billing-information': {}, 'user_id': random.randint(100000, 999999)})
+    database.add_user({'email': email, 'phone-number': phone_number, 'password': password, 'cart': [], 'favorites': [], 'shipping-data': {}, 'payment-data': {}, 'contact-data': {}, 'user_id': random.randint(100000, 999999)})
     send_email('Welcome to Kids Fashion Store', email, body="Welcome to our store!\nThank you for signing up. You can now log in to your new account.\nHappy shopping!", html='welcome')
     return jsonify({'success': True})
 

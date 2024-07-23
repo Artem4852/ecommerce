@@ -1494,6 +1494,66 @@ select::-webkit-inner-spin-button, select::-webkit-outer-spin-button {
   align-items: flex-start;
 }
 
+#order {
+  width: 100%;
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 50px;
+}
+#order h2 {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 20px;
+}
+#order h4 {
+  font-size: 24px;
+  font-weight: 700;
+}
+#order p {
+  font-size: 18px;
+  font-weight: 400;
+}
+#order .row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 150px;
+}
+#order .row .col {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+#order .status {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+}
+#order .status .circle {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #E0E0E0;
+}
+#order .status .circle.active {
+  border: 3px solid #E352BA;
+}
+#order .status .circle.active::before {
+  display: block;
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #E352BA;
+  position: relative;
+  top: 3px;
+  left: 3px;
+}
+
 #login-form, #signup-form {
   width: 100%;
   padding: 0 20px;

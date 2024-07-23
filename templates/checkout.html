@@ -22,12 +22,18 @@
         </div>
         <div id="form-shipping" class="shipping">
             <div class="inputs">
-                <input type="text" id="input-first-name" placeholder="First name">
-                <input type="text" id="input-middle-name" placeholder="Middle name">
-                <input type="text" id="input-last-name" placeholder="Last name">
+                <input type="text" id="input-first-name" placeholder="First name" value="{{ shipping_data.firstName }}">
+                <input type="text" id="input-middle-name" placeholder="Middle name" value="{{ shipping_data.middleName }}">
+                <input type="text" id="input-last-name" placeholder="Last name" value="{{ shipping_data.lastName }}">
                 <div class="select">
                     <select onchange="selectCountry()" name="country" id="input-country">
-                        <option value="" disabled selected>Select country</option>
+                        {% if not shipping_data.country %}
+                            <option value="" disabled selected>Select country</option>
+                        {% else %}
+                            <option value="" disabled>Select country</option>
+                            <option selected value="{{ shipping_data.country }}">{{ codes_country['{{ shipping_data.country }}'] | capitalize }}</option>
+                        {% endif %}
+
                         {% for country in delivery_countries %}
                             <option value="{{ country }}">{{ codes_country[country] | capitalize }}</option>
                         {% endfor %}
@@ -40,7 +46,12 @@
                 </div>
                 <div class="select">
                     <select onchange="selectCity()" name="city" id="input-city">
-                        <option value="" disabled selected>Select city</option>
+                        {% if not shipping_data.city %}
+                            <option value="" disabled selected>Select city</option>
+                        {% else %}
+                            <option value="" disabled>Select city</option>
+                            <option selected value="{{ shipping_data.city }}">{{ shipping_data.city | capitalize }}</option>
+                        {% endif %}
                     </select>
                     <svg class="down-arrow" xmlns="http://www.w3.org/2000/svg" width="23" height="15" viewBox="0 0 23 15" fill="none">
                         <path
@@ -50,8 +61,8 @@
                 </div>
                 <div class="select">
                     <select onchange="selectDeliveryMethod()" name="delivery-method" id="input-delivery-method">
-                        <option value="pick-up-from-post-office" selected>Pick up from Post Office</option>
-                        <option value="address-delivery">Address Delivery</option>
+                        <option value="pick-up-from-post-office" {% if shipping_data.deliveryMethod != "address-delivery" %}selected {% endif %}>Pick up from Post Office</option>
+                        <option value="address-delivery" {% if shipping_data.deliveryMethod == "address-delivery" %}selected {% endif %}>Address Delivery</option>
                     </select>
                     <svg class="down-arrow" xmlns="http://www.w3.org/2000/svg" width="23" height="15" viewBox="0 0 23 15" fill="none">
                         <path
@@ -59,9 +70,14 @@
                             fill="#F1F1F1" />
                     </svg>
                 </div>
-                <div class="select" id="wrapper-input-post-office-branch">
+                <div class="select {% if shipping_data.deliveryMethod == "address-delivery" %}disabled{% endif %}" id="wrapper-input-post-office-branch">
                     <select name="post-office-branch" id="input-post-office-branch">
-                        <option value="" disabled selected>Select post office branch</option>
+                        {% if not shipping_data.postOfficeBranch %}
+                            <option value="" disabled selected>Select post office branch</option>
+                        {% else %}
+                            <option value="" disabled>Select post office branch</option>
+                            <option selected value="{{ shipping_data.postOfficeBranch }}">{{ shipping_data.postOfficeBranch | capitalize }}</option>
+                        {% endif %}
                     </select>
                     <svg class="down-arrow" xmlns="http://www.w3.org/2000/svg" width="23" height="15" viewBox="0 0 23 15" fill="none">
                         <path
@@ -70,11 +86,11 @@
                     </svg>
                 </div>
                 <input class="disabled" type="text" id="input-post-office-branch-noselect" placeholder="Post Office Branch">
-                <input class="disabled" type="text" id="input-address" placeholder="Street Address">
-                <input class="disabled" type="text" id="input-address-2" placeholder="Apartment, Building, Floor, etc. (Optional)">
-                <input class="disabled" type="text" name="postal-code" id="input-postal-code" placeholder="ZIP/Postal Code">
+                <input class="{% if shipping_data.deliveryMethod != "address-delivery" %}disabled{% endif %}" type="text" id="input-address" placeholder="Street Address" value="shipping_data.address">
+                <input class="{% if shipping_data.deliveryMethod != "address-delivery" %}disabled{% endif %}" type="text" id="input-address-2" placeholder="Apartment, Building, Floor, etc. (Optional)" value="shipping_data.address2">
+                <input class="{% if shipping_data.deliveryMethod != "address-delivery" %}disabled{% endif %}" type="text" name="postal-code" id="input-postal-code" placeholder="ZIP/Postal Code" value="shipping_data.postalCode">
                 <div class="checkbox">
-                    <div class="box" onclick="checkSaveShippingData()">
+                    <div class="box" onclick="checkSaveshipping_data()">
                         <svg id="input-check-shipping" xmlns="http://www.w3.org/2000/svg" width="33" height="24" viewBox="0 0 33 24" fill="none">
                             <path d="M11.5399 24L0 12.6237L2.88497 9.77963L11.5399 18.3118L30.115 0L33 2.84407L11.5399 24Z" fill="#F1F1F1" />
                         </svg>
@@ -99,9 +115,9 @@
             <div class="inputs">
                 <div class="select">
                     <select name="payment-method" id="input-payment-method">
-                        <option value="" selected disabled>Payment method</option>
-                        <option value="full-prepayment">Full Prepayment</option>
-                        <option value="post-payment">Post Payment</option>
+                        <option value="" {% if not payment_data.paymentMethod %} selected {% endif %} disabled>Payment method</option>
+                        <option {% if payment_data.paymentMethod=="full-prepayment" %} selected {% endif %} value="full-prepayment">Full Prepayment</option>
+                        <option {% if payment_data.paymentMethod=="post-payment" %} selected {% endif %} value="post-payment">Post Payment</option>
                     </select>
                     <svg class="down-arrow" xmlns="http://www.w3.org/2000/svg" width="23" height="15" viewBox="0 0 23 15" fill="none">
                         <path
@@ -114,7 +130,7 @@
                 <!-- <input type="text" id="input-cvv" placeholder="CVV"> -->
                 <input type="text" id="input-promo-code" placeholder="Promo Code (Optional)">
                 <div class="checkbox">
-                    <div class="box" onclick="checkSavePaymentData()">
+                    <div class="box" onclick="checkSavepayment_data()">
                         <svg id="input-check-payment" xmlns="http://www.w3.org/2000/svg" width="33" height="24" viewBox="0 0 33 24" fill="none">
                             <path d="M11.5399 24L0 12.6237L2.88497 9.77963L11.5399 18.3118L30.115 0L33 2.84407L11.5399 24Z"
                                 fill="#F1F1F1" />
@@ -142,9 +158,9 @@
             <div class="inputs">
                 <div class="select">
                     <select onchange="selectMessenger()" name="messenger" id="input-contact-messenger">
-                        <option value="telegram" selected>Telegram</option>
-                        <option value="instagram">Instagram</option>
-                        <option value="viber">Viber</option>
+                        <option value="telegram" {% if not contact_data.contactMessenger or contact_data.contactMessenger == "telegram" %} selected {% endif %}>Telegram</option>
+                        <option {% if contact_data.contactMessenger == "instagram" %} selected {% endif %} value="instagram">Instagram</option>
+                        <option {% if not contact_data.contactMessenger or contact_data.contactMessenger == "viber" %} selected {% endif %} value="viber">Viber</option>
                     </select>
                     <svg class="down-arrow" xmlns="http://www.w3.org/2000/svg" width="23" height="15" viewBox="0 0 23 15" fill="none">
                         <path
@@ -152,11 +168,11 @@
                             fill="#F1F1F1" />
                     </svg>
                 </div>
-                <input oninput="phoneInput()" type="text" id="input-phone-number" placeholder="Phone number" value="{{ user_data['phone-number'] }}">
-                <input class="disabled" type="text" id="input-username" placeholder="Your @username">
+                <input oninput="phoneInput()" type="text" id="input-phone-number" placeholder="Phone number" value="{% if not contact_data.phoneNumber %}{{ user_data['phone-number'] }}{% else %}{{ contact_data.phoneNumber }}{% endif %}">
+                <input class="disabled" type="text" id="input-username" placeholder="Your @username" value="{{ contact_data.username }}">
 
                 <div class="checkbox">
-                    <div class="box" onclick="checkSaveContactData()">
+                    <div class="box" onclick="checkSavecontact_data()">
                         <svg id="input-check-contact" xmlns="http://www.w3.org/2000/svg" width="33" height="24" viewBox="0 0 33 24" fill="none">
                             <path d="M11.5399 24L0 12.6237L2.88497 9.77963L11.5399 18.3118L30.115 0L33 2.84407L11.5399 24Z"
                                 fill="#F1F1F1" />

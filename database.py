@@ -41,6 +41,9 @@ class Database:
 
     def get_orders(self, _filter):
         return list(self.products_db['orders'].find(_filter))
+    
+    def get_order(self, _filter):
+        return self.products_db['orders'].find_one(_filter)
 
     def remove_fields(self, productId, fields):
         self.products_db['product_data'].update_one({'id': productId}, {'$unset': {field: 1 for field in fields}})
@@ -85,4 +88,4 @@ if __name__ == '__main__':
     products = database.get_products()
     for product in products:
         print(product)
-        database.update_product(product['id'], {'warehouse': random.choice(['Kyiv', 'Odesa', 'Ternopil', 'Lviv'])})
+        database.update_product(product['id'], {'id': random.randint(100000, 999999)})
