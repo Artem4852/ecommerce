@@ -8,84 +8,61 @@ class Database:
     def __init__(self):
         uri = os.getenv('MONGO_URI')
         self.client = MongoClient(uri)
-        self.users_db = self.client['users']
-        self.products_db = self.client['products']
-        self.other_db = self.client['other']
+        self.usersDb = self.client['users']
+        self.productsDb = self.client['products']
+        self.otherDb = self.client['other']
 
-    def add_user(self, user):
-        self.users_db['user_data'].insert_one(user)
+    def addUser(self, user):
+        self.usersDb['users'].insert_one(user)
     
-    def get_user(self, _filter):
-        return self.users_db['user_data'].find_one(_filter)
+    def getUser(self, Filter):
+        return self.usersDb['users'].find_one(Filter)
     
-    def update_user(self, _filter, update):
-        self.users_db['user_data'].update_one(_filter, update)
+    def updateUser(self, Filter, update):
+        self.usersDb['users'].update_one(Filter, update)
     
-    def get_users(self):
-        return list(self.users_db['user_data'].find())
+    def getUsers(self):
+        return list(self.usersDb['users'].find())
     
-    def get_product(self, _filter):
-        return self.products_db['product_data'].find_one(_filter)
+    def getProduct(self, Filter):
+        return self.productsDb['productData'].find_one(Filter)
 
-    def edit_product(self, productId, fields):
-        self.products_db['product_data'].update_one({'id': productId}, {'$unset': {field: 1 for field in fields}})
+    def editProduct(self, productId, fields):
+        self.productsDb['productData'].update_one({'id': productId}, {'$unset': {field: 1 for field in fields}})
 
-    def update_product(self, productId, product):
-        self.products_db['product_data'].update_one({'id': productId}, {'$set': product})
+    def addProduct(self, data):
+        self.productsDb['productData'].insert_one(data)
 
-    def add_order(self, order):
-        self.products_db['orders'].insert_one(order)
+    def updateProduct(self, productId, product):
+        self.productsDb['productData'].update_one({'id': productId}, {'$set': product})
 
-    def edit_order(self, orderId, order):
-        self.users_db['orders'].update_one({'_id': ObjectId(orderId)}, {'$set': order})
+    def addOrder(self, order):
+        self.productsDb['orders'].insert_one(order)
 
-    def get_orders(self, _filter):
-        return list(self.products_db['orders'].find(_filter))
+    def editOrder(self, orderId, order):
+        self.usersDb['orders'].update_one({'Id': ObjectId(orderId)}, {'$set': order})
+
+    def getOrders(self, Filter):
+        return list(self.productsDb['orders'].find(Filter))
     
-    def get_order(self, _filter):
-        return self.products_db['orders'].find_one(_filter)
+    def getOrder(self, Filter):
+        return self.productsDb['orders'].find_one(Filter)
 
-    def remove_fields(self, productId, fields):
-        self.products_db['product_data'].update_one({'id': productId}, {'$unset': {field: 1 for field in fields}})
+    def removeFields(self, productId, fields):
+        self.productsDb['productData'].update_one({'id': productId}, {'$unset': {field: 1 for field in fields}})
     
-    def get_products(self):
-        return list(self.products_db['product_data'].find())
+    def getProducts(self):
+        return list(self.productsDb['productData'].find())
 
-    def new_product(self, product):
-        self.products_db['product_data'].insert_one(product)
+    def newProduct(self, product):
+        self.productsDb['productData'].insert_one(product)
 
-    def add_to_newsletter(self, email):
-        self.users_db['notifications'].update_one({'_id': ObjectId('6699745baeee92227cd44cfa')}, {'$push': {'newsletter': email}})
+    def addToNewsletter(self, email):
+        self.usersDb['notifications'].update_one({'Id': ObjectId('6699745baeee92227cd44cfa')}, {'$push': {'newsletter': email}})
 
-    def get_faq(self):
-        return list(self.other_db['faq'].find())
-    
-    def get_delivery_countries(self):
-        return ['Ukraine', 'Poland', 'Germany']
-    
-    def get_delivery_cities(self):
-        return {
-            'Ukraine': ['Kyiv', 'Khariv', 'Lviv'],
-            'Poland': ['Warsaw', 'Krakow', 'Gdansk'],
-            'Germany': ['Berlin', 'Munich', 'Hamburg']
-        }
-    
-    def get_post_office_branches(self):
-        return {
-            'Kyiv': ['1', '2', '3'],
-            'Khariv': ['4', '5', '6'],
-            'Lviv': ['7', '8', '9'],
-            'Warsaw': ['10', '11', '12'],
-            'Krakow': ['13', '14', '15'],
-            'Gdansk': ['16', '17', '18'],
-            'Berlin': ['19', '20', '21'],
-            'Munich': ['22', '23', '24'],
-            'Hamburg': ['25', '26', '27']
-        }
+    def getFaq(self):
+        return list(self.otherDb['faq'].find())
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     database = Database()
-    products = database.get_products()
-    for product in products:
-        print(product)
-        database.update_product(product['id'], {'id': random.randint(100000, 999999)})
+    products = database.add()

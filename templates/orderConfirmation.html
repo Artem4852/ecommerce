@@ -5,7 +5,7 @@
     {% include 'partials/header.html' %}
     <section id="cart">
         <h2>Checkout</h2>
-        <div class="cart-empty">
+        <div class="cartEmpty">
             <h4>Thanks! You have successfully placed your order. Wait for a message from us soon!</h4>
             <a href="/orders">My orders</a>
         </div>
@@ -13,7 +13,7 @@
     <section id="featured" class="product">
         <h2>You might also like</h2>
         <div class="products">
-            {% for product in products_featured %}
+            {% for product in productsFeatured %}
             {% include 'partials/card.html' %}
             {% endfor %}
         </div>

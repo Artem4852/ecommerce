@@ -21,247 +21,247 @@ nova = NovaAPI()
 # Setup mail
 app.config['MAIL_SERVER'] = 'sandbox.smtp.mailtrap.io'
 app.config['MAIL_PORT'] = 2525
-app.config['MAIL_USE_TLS'] = True
+app.config['MAIL_USETLS'] = True
 app.config['MAIL_USERNAME'] = '49eeff352c2a4d'
 app.config['MAIL_PASSWORD'] = 'edb53d7d51b475'
 app.config['MAIL_DEFAULT_SENDER'] = 'noreply@kidsfashionstore.ua'
 mail = Mail(app)
 
 # Helper functions
-def send_email(subject, recipient, body=None, html=None, data=None):
+def sendEmail(subject, recipient, body=None, html=None, data=None):
     with app.app_context():
         if html: 
-            html_content = render_template('mail/'+html+'.html', data=data)
+            htmlContent = render_template('mail/'+html+'.html', data=data)
             if not body:
-                soup = BeautifulSoup(html_content, 'html.parser')
+                soup = BeautifulSoup(htmlContent, 'html.parser')
                 body = soup.get_text()
         else:
-            html_content = None
-        msg = Message(subject, recipients=[recipient], body=body, html=html_content)
+            htmlContent = None
+        msg = Message(subject, recipients=[recipient], body=body, html=htmlContent)
         mail.send(msg)
 
-def get_products():
-    return database.get_products()
+def getProducts():
+    return database.getProducts()
 
-def get_user(_filter):
-    if not session.get('logged_in', False) and 'user_id' in _filter:
+def getUser(Filter):
+    if not session.get('loggedIn', False) and 'userId' in Filter:
         return {'cart': [], 'favorites': []}
-    return database.get_user(_filter)
+    return database.getUser(Filter)
 
 # Index route
 @app.route('/')
 def index():
-    index_images = [im for im in os.listdir('static/img/covers') if im.endswith('.jpg')]
-    random.shuffle(index_images)
-    index_images = index_images[:8*10]
-    index_images = [index_images[i:i+10] for i in range(0, len(index_images), 10)]
+    indexImages = [im for im in os.listdir('static/img/covers') if im.endswith('.jpg')]
+    random.shuffle(indexImages)
+    indexImages = indexImages[:8*10]
+    indexImages = [indexImages[i:i+10] for i in range(0, len(indexImages), 10)]
     
-    products = get_products()
-    user = get_user({'user_id': session.get('user_id')})
-    logged_in = session.get('logged_in', False)
-    return render_template('index.html', index_images=index_images, products_featured=[p for p in products if p['tag'] == 'featured' and p['discount'] == 0][:4], products_sale=sorted([p for p in products if p['tag'] == 'sale' and p['discount'] != 0], key=lambda x: x['discount'], reverse=True)[:4], user_data=user, logged_in=logged_in)
+    products = getProducts()
+    user = getUser({'userId': session.get('userId')})
+    loggedIn = session.get('loggedIn', False)
+    return render_template('index.html', indexImages=indexImages, productsFeatured=[p for p in products if p['tag'] == 'featured' and p['discount'] == 0][:4], productsSale=sorted([p for p in products if p['tag'] == 'sale' and p['discount'] != 0], key=lambda x: x['discount'], reverse=True)[:4], userData=user, loggedIn=loggedIn)
 
 # Shop routes
 @app.route('/shop')
 def shop():
     brand = request.args.get('brand')
     category = request.args.get('category')
-    shoe_size = request.args.get('shoe-size')
-    price_range = request.args.get('price-range')
-    price_min = int(price_range.split('-')[0]) if price_range else None
-    price_max = int(price_range.split('-')[1]) if price_range else None
+    shoeSize = request.args.get('shoeSize')
+    priceRange = request.args.get('priceRange')
+    priceMin = int(priceRange.split('-')[0]) if priceRange else None
+    priceMax = int(priceRange.split('-')[1]) if priceRange else None
     sorting = request.args.get('sorting')
 
-    if not request.args.get('products-per-page'): products_per_page = 12
-    else: products_per_page = int(request.args.get('products-per-page'))
+    if not request.args.get('productsPerPage'): productsPerPage = 12
+    else: productsPerPage = int(request.args.get('productsPerPage'))
     if not request.args.get('page'): page = 1
     else: page = int(request.args.get('page'))
 
-    products = get_products()
+    products = getProducts()
     if brand: products = [p for p in products if p['brand'] == brand]
     if category: products = [p for p in products if p['category'] == category]
-    if shoe_size: products = [p for p in products if int(shoe_size) in p['sizes']]
-    if price_range: products = [p for p in products if price_min<=int(p['price'])<=price_max]
+    if shoeSize: products = [p for p in products if int(shoeSize) in p['sizes']]
+    if priceRange: products = [p for p in products if priceMin<=int(p['price'])<=priceMax]
 
-    if sorting == 'price-low-to-high': products = sorted(products, key=lambda x: x['price'])
-    elif sorting == 'price-high-to-low': products = sorted(products, key=lambda x: x['price'], reverse=True)
+    if sorting == 'priceLowToHigh': products = sorted(products, key=lambda x: x['price'])
+    elif sorting == 'priceHighToLow': products = sorted(products, key=lambda x: x['price'], reverse=True)
 
-    products_current = products[(page-1)*products_per_page:page*products_per_page]
+    productsCurrent = products[(page-1)*productsPerPage:page*productsPerPage]
 
-    max_pages = math.ceil(len(products)/products_per_page)
+    maxPages = math.ceil(len(products)/productsPerPage)
 
-    user = get_user({'user_id': session.get('user_id')})
+    user = getUser({'userId': session.get('userId')})
 
-    for n, p in enumerate(products_current):
-        products_current[n]['sizes'] = sorted(p['sizes'])
+    for n, p in enumerate(productsCurrent):
+        productsCurrent[n]['sizes'] = sorted(p['sizes'])
 
-    logged_in = session.get('logged_in', False)
+    loggedIn = session.get('loggedIn', False)
 
-    return render_template('shop.html', products=products_current, user_data=user, brand=brand, category=category, shoe_size=shoe_size, price_range=price_range, sorting=sorting, products_per_page=products_per_page, page=page, max_pages=max_pages, logged_in=logged_in)
+    return render_template('shop.html', products=productsCurrent, userData=user, brand=brand, category=category, shoeSize=shoeSize, priceRange=priceRange, sorting=sorting, productsPerPage=productsPerPage, page=page, maxPages=maxPages, loggedIn=loggedIn)
 
-@app.route('/product/<product_id>')
-def product(product_id):
-    products = get_products()
-    product = database.get_product({'id': int(product_id)})
-    user = get_user({'user_id': session.get('user_id')})
-    logged_in = session.get('logged_in', False)
-    return render_template('product.html', product=product, user_data=user, products_featured=[p for p in products if p['tag'] == 'featured' and p['discount'] == 0][:4], logged_in=logged_in)
+@app.route('/product/<productId>')
+def product(productId):
+    products = getProducts()
+    product = database.getProduct({'id': int(productId)})
+    user = getUser({'userId': session.get('userId')})
+    loggedIn = session.get('loggedIn', False)
+    return render_template('product.html', product=product, userData=user, productsFeatured=[p for p in products if p['tag'] == 'featured' and p['discount'] == 0][:4], loggedIn=loggedIn)
 
 # Static pages
 @app.route('/faq')
 def faq():
-    logged_in = session.get('logged_in', False)
-    faq = database.get_faq()
-    return render_template('faq.html', faq_posts=faq, logged_in=logged_in)
+    loggedIn = session.get('loggedIn', False)
+    faq = database.getFaq()
+    return render_template('faq.html', faqPosts=faq, loggedIn=loggedIn)
 
-@app.route('/faq/<faq_name>')
-def faq_post(faq_name):
-    logged_in = session.get('logged_in', False)
-    if faq_name == 'shoe-size':
-        return render_template('faq/shoe_size.html', logged_in=logged_in)
-    elif faq_name == 'delivery':
-        return render_template('faq/delivery.html', logged_in=logged_in)
-    elif faq_name == 'replacements-returns':
-        return render_template('faq/replacements_returns.html', logged_in=logged_in)
+@app.route('/faq/<faqName>')
+def faqPost(faqName):
+    loggedIn = session.get('loggedIn', False)
+    if faqName == 'shoeSize':
+        return render_template('faq/shoeSize.html', loggedIn=loggedIn)
+    elif faqName == 'delivery':
+        return render_template('faq/delivery.html', loggedIn=loggedIn)
+    elif faqName == 'replacementsReturns':
+        return render_template('faq/replacementsReturns.html', loggedIn=loggedIn)
     
 @app.route('/contact')
 def contact():
-    logged_in = session.get('logged_in', False)
-    return render_template('contact.html', logged_in=logged_in)
+    loggedIn = session.get('loggedIn', False)
+    return render_template('contact.html', loggedIn=loggedIn)
 
 # Legal routes
 @app.route('/termsofuse')
 def termsofuse():
-    logged_in = session.get('logged_in', False)
-    return render_template('legal/terms_of_use.html', logged_in=logged_in)
+    loggedIn = session.get('loggedIn', False)
+    return render_template('legal/termsOfUse.html', loggedIn=loggedIn)
 
 @app.route('/privacypolicy')
 def privacypolicy():
-    logged_in = session.get('logged_in', False)
-    return render_template('legal/privacy.html', logged_in=logged_in)
+    loggedIn = session.get('loggedIn', False)
+    return render_template('legal/privacy.html', loggedIn=loggedIn)
 
 @app.route('/cookiespolicy')
 def cookiespolicy():
-    logged_in = session.get('logged_in', False)
-    return render_template('legal/cookies.html', logged_in=logged_in)
+    loggedIn = session.get('loggedIn', False)
+    return render_template('legal/cookies.html', loggedIn=loggedIn)
 
 @app.route('/shippingpolicy')
 def shippingpolicy():
-    logged_in = session.get('logged_in', False)
-    return render_template('legal/shipping.html', logged_in=logged_in)
+    loggedIn = session.get('loggedIn', False)
+    return render_template('legal/shipping.html', loggedIn=loggedIn)
 
 @app.route('/replacementsandreturnspolicy')
 def replacementsandreturnspolicy():
-    logged_in = session.get('logged_in', False)
-    return render_template('legal/replacements_and_returns.html', logged_in=logged_in)
+    loggedIn = session.get('loggedIn', False)
+    return render_template('legal/replacementsAndReturns.html', loggedIn=loggedIn)
 
 # Cart + favorites routes
 @app.route('/favorites')
 def favorites():
-    logged_in = session.get('logged_in', False)
-    if not logged_in:
+    loggedIn = session.get('loggedIn', False)
+    if not loggedIn:
         return redirect('/login?next=favorites')
     
     if not request.args.get('page'): page = 1
     else: page = int(request.args.get('page'))
 
-    user = get_user({'user_id': session.get('user_id')})
-    products = get_products()
-    favorite_items = []
+    user = getUser({'userId': session.get('userId')})
+    products = getProducts()
+    favoriteItems = []
     for item in user['favorites']:
-        product = database.get_product({'id': item})
-        favorite_items.append(product)
+        product = database.getProduct({'id': item})
+        favoriteItems.append(product)
 
-    favorite_items = favorite_items[(page-1)*12:page*12]
-    max_pages = math.ceil(len(user['favorites'])/12)
+    favoriteItems = favoriteItems[(page-1)*12:page*12]
+    maxPages = math.ceil(len(user['favorites'])/12)
 
-    return render_template('favorites.html', user_data=user, favorite_items=favorite_items, products_featured=[p for p in products if p['tag'] == 'featured' and p['discount'] == 0][:4], page=page, max_pages=max_pages, logged_in=logged_in)
+    return render_template('favorites.html', userData=user, favoriteItems=favoriteItems, productsFeatured=[p for p in products if p['tag'] == 'featured' and p['discount'] == 0][:4], page=page, maxPages=maxPages, loggedIn=loggedIn)
 
-@app.route('/favorite/<product_number>', methods=['POST'])
-def favorite(product_number):
-    favorites = database.get_user({'user_id': session.get('user_id')})['favorites']
+@app.route('/favorite/<productNumber>', methods=['POST'])
+def favorite(productNumber):
+    favorites = database.getUser({'userId': session.get('userId')})['favorites']
 
-    if int(product_number) in favorites: database.update_user({'user_id': session.get('user_id')}, {'$pull': {'favorites': int(product_number)}})
-    else: database.update_user({'user_id': session.get('user_id')}, {'$push': {'favorites': int(product_number)}})
+    if int(productNumber) in favorites: database.updateUser({'userId': session.get('userId')}, {'$pull': {'favorites': int(productNumber)}})
+    else: database.updateUser({'userId': session.get('userId')}, {'$push': {'favorites': int(productNumber)}})
 
-    return jsonify({'success': True, 'favorite': not int(product_number) in favorites})
+    return jsonify({'success': True, 'favorite': not int(productNumber) in favorites})
 
 @app.route('/cart')
 def cart():
-    logged_in = session.get('logged_in', False)
-    if not logged_in:
+    loggedIn = session.get('loggedIn', False)
+    if not loggedIn:
         return redirect('/login?next=cart')
-    user = get_user({'user_id': session.get('user_id')})
-    products = get_products()
-    cart_items = []
+    user = getUser({'userId': session.get('userId')})
+    products = getProducts()
+    cartItems = []
     subtotal = 0
     for item in user['cart']:
-        product = database.get_product({'id': item['product_id']})
+        product = database.getProduct({'id': item['productId']})
         subtotal += int(product['price'])*int(item['quantity'])
-        cart_items.append({'id': item['product_id'], 'size': item['size'], 'quantity': item['quantity'], 'info': product})
-    return render_template('cart.html', user_data=user, cart_items=cart_items, subtotal=subtotal, products_featured=[p for p in products if p['tag'] == 'featured' and p['discount'] == 0][:4], logged_in=logged_in)
+        cartItems.append({'id': item['productId'], 'size': item['size'], 'quantity': item['quantity'], 'info': product})
+    return render_template('cart.html', userData=user, cartItems=cartItems, subtotal=subtotal, productsFeatured=[p for p in products if p['tag'] == 'featured' and p['discount'] == 0][:4], loggedIn=loggedIn)
 
-@app.route('/add-to-cart/<product_id>', methods=['POST'])
-def add_to_cart(product_id):
+@app.route('/addToCart/<productId>', methods=['POST'])
+def addToCart(productId):
     size = request.json.get('size')
     quantity = request.json.get('quantity')
-    database.update_user({'user_id': session.get('user_id')}, {'$push': {'cart': {'product_id': int(product_id), 'size': int(size), 'quantity': int(quantity)}}})
+    database.updateUser({'userId': session.get('userId')}, {'$push': {'cart': {'productId': int(productId), 'size': int(size), 'quantity': int(quantity)}}})
     return jsonify({'success': True})
 
-@app.route('/remove-from-cart/<product_id>', methods=['POST'])
-def remove_from_cart(product_id):
+@app.route('/removeFromCart/<productId>', methods=['POST'])
+def removeFromCart(productId):
     size = request.json.get('size')
     quantity = request.json.get('quantity')
-    database.update_user({'user_id': session.get('user_id')}, {'$pull': {'cart': {'product_id': int(product_id), 'size': int(size), 'quantity': int(quantity)}}})
+    database.updateUser({'userId': session.get('userId')}, {'$pull': {'cart': {'productId': int(productId), 'size': int(size), 'quantity': int(quantity)}}})
     return jsonify({'success': True})
 
-@app.route('/edit-cart/<product_id>', methods=['POST'])
-def edit_cart(product_id):
+@app.route('/editCart/<productId>', methods=['POST'])
+def editCart(productId):
     size = request.json.get('size')
     quantity = request.json.get('quantity')
-    database.update_user({'user_id': session.get('user_id'), 'cart.product_id': int(product_id)},
+    database.updateUser({'userId': session.get('userId'), 'cart.productId': int(productId)},
     {'$set': {'cart.$.size': int(size), 'cart.$.quantity': int(quantity)}})
     return jsonify({'success': True})
 
 @app.route('/checkout', methods=['GET', 'POST'])
 def checkout():
     if request.method == 'GET':
-        logged_in = session.get('logged_in', False)
-        if not logged_in:
+        loggedIn = session.get('loggedIn', False)
+        if not loggedIn:
             return redirect('/login?next=checkout')
-        user = get_user({'user_id': session.get('user_id')})
+        user = getUser({'userId': session.get('userId')})
         if not user['cart']:
             return redirect('/cart')
-        products = get_products()
-        cart_items = []
+        products = getProducts()
+        cartItems = []
         subtotal = 0
         for item in user['cart']:
-            product = database.get_product({'id': item['product_id']})
+            product = database.getProduct({'id': item['productId']})
             subtotal += int(product['price'])*int(item['quantity'])
-            cart_items.append({'id': item['product_id'], 'size': item['size'], 'quantity': item['quantity'], 'info': product})
+            cartItems.append({'id': item['productId'], 'size': item['size'], 'quantity': item['quantity'], 'info': product})
 
-        country_codes = nova.loadCountryCodes()
-        codes_country = {v: k for k, v in country_codes.items()}
-        delivery_countries = nova.loadCountries()
-        delivery_cities = nova.loadCities()
+        countryCodes = nova.loadCountryCodes()
+        codesCountry = {v: k for k, v in countryCodes.items()}
+        deliveryCountries = nova.loadCountries()
+        deliveryCities = nova.loadCities()
 
-        shippingData = user['shipping-data']
-        paymentData = user['payment-data']
-        contactData = user['contact-data']
+        shippingData = user['shippingData']
+        paymentData = user['paymentData']
+        contactData = user['contactData']
 
-        featured_products = [p for p in products if p['tag'] == 'featured' and p['discount'] == 0]
+        featuredProducts = [p for p in products if p['tag'] == 'featured' and p['discount'] == 0]
 
-        return render_template('checkout.html', user_data=user, cart_items=cart_items, subtotal=subtotal, products_featured=[p for p in products if p['tag'] == 'featured' and p['discount'] == 0][:4], logged_in=logged_in, delivery_countries=delivery_countries, delivery_cities=delivery_cities, featured_products=featured_products, country_codes=country_codes, codes_country=codes_country, shipping_data=shippingData, payment_data=paymentData, contact_data=contactData)
+        return render_template('checkout.html', userData=user, cartItems=cartItems, subtotal=subtotal, productsFeatured=[p for p in products if p['tag'] == 'featured' and p['discount'] == 0][:4], loggedIn=loggedIn, deliveryCountries=deliveryCountries, deliveryCities=deliveryCities, featuredProducts=featuredProducts, countryCodes=countryCodes, codesCountry=codesCountry, shippingData=shippingData, paymentData=paymentData, contactData=contactData)
     elif request.method == 'POST':
         data = request.json
 
-        data["order_id"] = ''.join([random.choice(characters) for _ in range(8)])
-        data["cart"] = get_user({'user_id': session.get('user_id')})['cart']
-        data["user_id"] = session.get('user_id')
+        data["orderId"] = ''.join([random.choice(characters) for _ in range(8)])
+        data["cart"] = getUser({'userId': session.get('userId')})['cart']
+        data["userId"] = session.get('userId')
         data["status"] = "pending"
 
-        database.add_order(data)
-        database.update_user({'user_id': session.get('user_id')}, {'$set': {'cart': []}})
+        database.addOrder(data)
+        database.updateUser({'userId': session.get('userId')}, {'$set': {'cart': []}})
 
         if data['saveShippingData']: 
             shippingData = {
@@ -272,18 +272,18 @@ def checkout():
                 'city': data['city'],
                 'deliveryMethod': data['deliveryMethod'],
             }
-            if data['deliveryMethod'] == 'pick-up-from-post-office':
+            if data['deliveryMethod'] == 'pickUpFromPostOffice':
                 shippingData['postOfficeBranch'] = data['postOfficeBranch']
             else:
                 shippingData['address'] = data['address']
                 shippingData['address2'] = data['address2']
                 shippingData['postalCode'] = data['postalCode']
-            database.update_user({'user_id': session.get('user_id')}, {'$set': {'shipping-data': shippingData}})
+            database.updateUser({'userId': session.get('userId')}, {'$set': {'shippingData': shippingData}})
         if data['savePaymentData']: 
             paymentData = {
                 'paymentMethod': data['paymentMethod']
             }
-            database.update_user({'user_id': session.get('user_id')}, {'$set': {'payment-data': paymentData}})
+            database.updateUser({'userId': session.get('userId')}, {'$set': {'paymentData': paymentData}})
         if data['saveContactData']: 
             contactData = {
                 'contactMessenger': data['contactMessenger']
@@ -292,7 +292,7 @@ def checkout():
                 contactData['username'] = data['username']
             else:
                 contactData['phoneNumber'] = data['phoneNumber']
-            database.update_user({'user_id': session.get('user_id')}, {'$set': {'contact-data': contactData}})
+            database.updateUser({'userId': session.get('userId')}, {'$set': {'contactData': contactData}})
 
         if data['contactMessenger'] == 'telegram':
             messenger = f"<a href='https://t.me/{data['phoneNumber'].replace('(', '').replace(')', '').replace(' ', '')}'>Telegram</a>"
@@ -301,153 +301,153 @@ def checkout():
         elif data['contactMessenger'] == 'instagram':
             messenger = f"<a href='https://instagram.com/{data['username']}'>Instagram</a>"
 
-        sendMessage(f"<b>New order: {data['order_id']}</b>. Check it <a href='https://kidsfashionstore.com.ua/orders/{data['order_id']}'>here</a>. Customer: {data['firstName']} {data['lastName']}, contact in " + messenger)
+        sendMessage(f"<b>New order: {data['orderId']}</b>. Check it <a href='https://kidsfashionstore.com.ua/orders/{data['orderId']}'>here</a>. Customer: {data['firstName']} {data['lastName']}, contact in " + messenger)
 
         return jsonify({'success': True})
 
-@app.route('/get-branches', methods=['POST'])
-def get_branches():
-    country_code = request.json.get('country_code')
+@app.route('/getBranches', methods=['POST'])
+def getBranches():
+    countryCode = request.json.get('countryCode')
     city = request.json.get('city')
     try:
-        branches = nova.getBranches(country_code, city)
+        branches = nova.getBranches(countryCode, city)
         branches = sorted(branches, key=lambda x: int(x['number'].split("/")[-1]))
     except:
         return jsonify({'success': False, 'error': 'Error fetching branches'})
     return jsonify({'success': True, 'branches': branches})
 
-@app.route('/order-confirmation')
-def order_confirmation():
-    logged_in = session.get('logged_in', False)
-    if not logged_in:
-        return redirect('/login?next=order-confirmation')
-    user = get_user({'user_id': session.get('user_id')})
-    products = get_products()
-    products_featured = [p for p in products if p['tag'] == 'featured' and p['discount'] == 0]
-    return render_template('order_confirmation.html', user_data=user, logged_in=logged_in, products_featured=products_featured[:4])
+@app.route('/orderConfirmation')
+def orderConfirmation():
+    loggedIn = session.get('loggedIn', False)
+    if not loggedIn:
+        return redirect('/login?next=orderConfirmation')
+    user = getUser({'userId': session.get('userId')})
+    products = getProducts()
+    productsFeatured = [p for p in products if p['tag'] == 'featured' and p['discount'] == 0]
+    return render_template('orderConfirmation.html', userData=user, loggedIn=loggedIn, productsFeatured=productsFeatured[:4])
 
 @app.route('/orders')
 def orders():
-    logged_in = session.get('logged_in', False)
-    if not logged_in:
+    loggedIn = session.get('loggedIn', False)
+    if not loggedIn:
         return redirect('/login?next=orders')
-    user = get_user({'user_id': session.get('user_id')})
-    orders = database.get_orders({'user_id': session.get('user_id')})
+    user = getUser({'userId': session.get('userId')})
+    orders = database.getOrders({'userId': session.get('userId')})
     for order in orders:
-        cart_items = []
+        cartItems = []
         for item in order['cart']:
-            product = database.get_product({'id': item['product_id']})
-            cart_items.append({'id': item['product_id'], 'size': item['size'], 'quantity': item['quantity'], 'info': product})
-        order['cart'] = cart_items
-    products = get_products()
-    products_featured = [p for p in products if p['tag'] == 'featured' and p['discount'] == 0]
-    return render_template('orders.html', user_data=user, orders=orders, logged_in=logged_in, products_featured=products_featured[:4])
+            product = database.getProduct({'id': item['productId']})
+            cartItems.append({'id': item['productId'], 'size': item['size'], 'quantity': item['quantity'], 'info': product})
+        order['cart'] = cartItems
+    products = getProducts()
+    productsFeatured = [p for p in products if p['tag'] == 'featured' and p['discount'] == 0]
+    return render_template('orders.html', userData=user, orders=orders, loggedIn=loggedIn, productsFeatured=productsFeatured[:4])
 
-@app.route('/orders/<order_id>/<product_id>')
-def order(order_id, product_id):
-    logged_in = session.get('logged_in', False)
-    if not logged_in:
+@app.route('/orders/<orderId>/<productId>')
+def order(orderId, productId):
+    loggedIn = session.get('loggedIn', False)
+    if not loggedIn:
         return redirect('/login?next=orders')
-    user = get_user({'user_id': session.get('user_id')})
-    order = database.get_order({'order_id': order_id})
-    order['product'] = [o for o in order['cart'] if int(o['product_id']) == int(product_id)][0]
-    order['product']['info'] = database.get_product({'id': int(product_id)})
-    products = get_products()
-    products_featured = [p for p in products if p['tag'] == 'featured' and p['discount'] == 0]
+    user = getUser({'userId': session.get('userId')})
+    order = database.getOrder({'orderId': orderId})
+    order['product'] = [o for o in order['cart'] if int(o['productId']) == int(productId)][0]
+    order['product']['info'] = database.getProduct({'id': int(productId)})
+    products = getProducts()
+    productsFeatured = [p for p in products if p['tag'] == 'featured' and p['discount'] == 0]
 
-    country_codes = nova.loadCountryCodes()
-    codes_country = {v: k for k, v in country_codes.items()}
+    countryCodes = nova.loadCountryCodes()
+    codesCountry = {v: k for k, v in countryCodes.items()}
 
-    return render_template('order.html', user_data=user, order=order, logged_in=logged_in, products_featured=products_featured[:4], codes_country=codes_country)
+    return render_template('order.html', userData=user, order=order, loggedIn=loggedIn, productsFeatured=productsFeatured[:4], codesCountry=codesCountry)
 
 # Settings
 @app.route('/settings')
 def settings():
-    logged_in = session.get('logged_in', False)
-    if not logged_in:
+    loggedIn = session.get('loggedIn', False)
+    if not loggedIn:
         return redirect('/login?next=settings')
-    user = get_user({'user_id': session.get('user_id')})
+    user = getUser({'userId': session.get('userId')})
 
-    delivery_countries = nova.loadCountries()
-    delivery_cities = nova.loadCities()
-    codes_country = {v: k for k, v in nova.loadCountryCodes().items()}
+    deliveryCountries = nova.loadCountries()
+    deliveryCities = nova.loadCities()
+    codesCountry = {v: k for k, v in nova.loadCountryCodes().items()}
 
-    return render_template('settings.html', userData=user, logged_in=logged_in, codes_country=codes_country, delivery_countries=delivery_countries, delivery_cities=delivery_cities)
+    return render_template('settings.html', userData=user, loggedIn=loggedIn, codesCountry=codesCountry, deliveryCountries=deliveryCountries, deliveryCities=deliveryCities)
 
-@app.route('/update-settings', methods=['POST'])
-def update_settings():
+@app.route('/updateSettings', methods=['POST'])
+def updateSettings():
     data = request.json
     for key, value in data.items():
         if key == "messengerUsername": key="username"
         elif key == "messenger": key="contactMessenger"
 
-        if key in ['firstName', 'lastName', 'middleName', 'country', 'city', 'address', 'address2', 'postalCode', 'deliveryMethod', 'postOfficeBranch']: key = 'shipping-data.'+key
-        elif key in ['paymentMethod']: key = 'payment-data.'+key
-        elif key in ['contactMessenger', 'username', 'phoneNumber']: key = 'contact-data.'+key
+        if key in ['firstName', 'lastName', 'middleName', 'country', 'city', 'address', 'address2', 'postalCode', 'deliveryMethod', 'postOfficeBranch']: key = 'shippingData.'+key
+        elif key in ['paymentMethod']: key = 'paymentData.'+key
+        elif key in ['contactMessenger', 'username', 'phoneNumber']: key = 'contactData.'+key
         elif key in ['newDeals', 'seasonalSales', 'discounts', 'promoCode']: key = 'notifications.'+key
-        database.update_user({'user_id': session.get('user_id')}, {'$set': {key: value}})  
+        database.updateUser({'userId': session.get('userId')}, {'$set': {key: value}})  
     return jsonify({'success': True})
 
 # Newsletter route
-@app.route('/newsletter-signup', methods=['POST'])
-def newsletter_signup():
+@app.route('/newsletterSignup', methods=['POST'])
+def newsletterSignup():
     email = request.json.get('email')
-    database.add_to_newsletter(email)
+    database.addToNewsletter(email)
     return jsonify({'success': True})
 
 # Auth routes
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'GET':
-        logged_in = session.get('logged_in', False)
-        if logged_in:
+        loggedIn = session.get('loggedIn', False)
+        if loggedIn:
             return redirect('/')
-        return render_template('login.html', logged_in=logged_in)
+        return render_template('login.html', loggedIn=loggedIn)
         
     email = request.json.get('email')
     password = request.json.get('password')
-    user = get_user({'email': email})
+    user = getUser({'email': email})
 
     if user and user['password'] == password:
         print(user)
-        session['user_id'] = user['user_id']
-        session['logged_in'] = True
+        session['userId'] = user['userId']
+        session['loggedIn'] = True
         return jsonify({'success': True})
 
     return jsonify({'success': False, 'error': 'Incorrect email or password'})
 
 @app.route('/logout')
 def logout():
-    session.pop('user_id', None)
-    session.pop('logged_in', None)
+    session.pop('userId', None)
+    session.pop('loggedIn', None)
     return redirect('/')
 
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
     if request.method == 'GET':
-        logged_in = session.get('logged_in', False)
-        if logged_in:
+        loggedIn = session.get('loggedIn', False)
+        if loggedIn:
             return redirect('/')
-        return render_template('signup.html', logged_in=logged_in)
+        return render_template('signup.html', loggedIn=loggedIn)
     
     email = request.json.get('email')
-    phone_number = request.json.get('phone')
+    phoneNumber = request.json.get('phone')
     password = request.json.get('password')
 
-    user = get_user({'email': email})
+    user = getUser({'email': email})
     if user:
         return jsonify({'success': False, 'error': 'User already exists'})
     
-    database.add_user({
+    database.addUser({
         'email': email, 
-        'phone-number': phone_number, 
+        'phoneNumber': phoneNumber, 
         'password': password, 
         'cart': [], 
         'favorites': [], 
-        'shipping-data': {}, 
-        'payment-data': {}, 
-        'contact-data': {}, 
-        'user_id': random.randint(100000, 999999),
+        'shippingData': {}, 
+        'paymentData': {}, 
+        'contactData': {}, 
+        'userId': random.randint(100000, 999999),
         'promoCode': ''.join([random.choice(characters) for _ in range(8)]),
         'notifications': {
             'newDeals': True,
@@ -457,59 +457,59 @@ def signup():
         },
         'discount': 0
     })
-    send_email('Welcome to Kids Fashion Store', email, body="Welcome to our store!\nThank you for signing up. You can now log in to your new account.\nHappy shopping!", html='welcome')
+    sendEmail('Welcome to Kids Fashion Store', email, body="Welcome to our store!\nThank you for signing up. You can now log in to your new account.\nHappy shopping!", html='welcome')
     return jsonify({'success': True})
 
-@app.route('/forgot-password', methods=['GET'])
-def forgot_password():
-    logged_in = session.get('logged_in', False)
-    if logged_in:
+@app.route('/forgotPassword', methods=['GET'])
+def forgotPassword():
+    loggedIn = session.get('loggedIn', False)
+    if loggedIn:
         return redirect('/')
-    return render_template('forgot_password.html', logged_in=logged_in)
+    return render_template('forgotPassword.html', loggedIn=loggedIn)
 
-@app.route('/update-password', methods=['GET'])
-def update_password():
-    logged_in = session.get('logged_in', False)
-    if logged_in:
+@app.route('/updatePassword', methods=['GET'])
+def updatePassword():
+    loggedIn = session.get('loggedIn', False)
+    if loggedIn:
         return redirect('/')
-    return render_template('update_password.html', logged_in=logged_in)
+    return render_template('updatePassword.html', loggedIn=loggedIn)
 
-@app.route('/reset-password', methods=['POST'])
-def reset_password():
+@app.route('/resetPassword', methods=['POST'])
+def resetPassword():
     email = request.json.get('email')
-    user = get_user({'email': email})
+    user = getUser({'email': email})
     if not user:
         return jsonify({'success': False, 'error': 'User not found'})
     reset = {
         'code': random.randint(100000, 999999),
         'expires': datetime.now().timestamp()+3600
     }
-    database.update_user({'email': email}, {'$set': {'reset': reset}})
-    send_email('Password reset', email, html='password_reset', data={'code': reset['code']})
+    database.updateUser({'email': email}, {'$set': {'reset': reset}})
+    sendEmail('Password reset', email, html='passwordReset', data={'code': reset['code']})
     return jsonify({'success': True})
 
-@app.route('/update-password', methods=['POST'])
-def update_password_post():
+@app.route('/updatePassword', methods=['POST'])
+def updatePasswordPost():
     email = request.json.get('email')
     code = request.json.get('code').replace("-", "")
     password = request.json.get('password')
     print(email, code, password)
-    user = get_user({'email': email})
+    user = getUser({'email': email})
     if not user or not user.get('reset'):
         return jsonify({'success': False, 'error': 'User not found'})
     if user['reset']['code'] != int(code) or user['reset']['expires'] < datetime.now().timestamp():
         print(user['reset'])
         return jsonify({'success': False, 'error': 'Invalid code'})
-    database.update_user({'email': email}, {'$set': {'password': password}})
+    database.updateUser({'email': email}, {'$set': {'password': password}})
     return jsonify({'success': True})
 
-@app.route('/preview-email/<file>')
-def preview_email(file):
+@app.route('/previewEmail/<file>')
+def previewEmail(file):
     data = {
         'code': 123456
     }
     return render_template('mail/'+file+'.html', data=data)
 
 if __name__ == "__main__":
-    # send_email('Welcome to Kids Fashion Store', "test@kids.com", body="Welcome to our store!\nThank you for signing up. You can now log in to your new account.\nHappy shopping!", html='welcome')
+    # sendEmail('Welcome to Kids Fashion Store', "test@kids.com", body="Welcome to our store!\nThank you for signing up. You can now log in to your new account.\nHappy shopping!", html='welcome')
     app.run(debug=True, port=8080)

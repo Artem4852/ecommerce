@@ -1,9 +1,9 @@
-<div class="card" id="card-{{ product['id'] }}">
-    {% if product['discount'] != 0 %}<h3 class="discount">-{{ product['discount'] }}%</h3>{% else %}{% endif %}
+<div class="card" id="card{{ product['id'] }}">
+    {% if product['discount'] != 0 %}<h3 class="discount">{{ product['discount'] }}%</h3>{% else %}{% endif %}
     <div class="data">
         <div class="img">
-            <svg id="favorite-{{ product['id'] }}" onclick="favorite('{{ product['id'] }}')"
-                class="favorite-icon {% if product['id'] in user_data['favorites'] %}favorite{% endif %}"
+            <svg id="favorite{{ product['id'] }}" onclick="favorite('{{ product['id'] }}')"
+                class="favoriteIcon {% if product['id'] in userData['favorites'] %}favorite{% endif %}"
                 xmlns="http://www.w3.org/2000/svg" width="44" height="42" viewBox="0 0 44 42" fill="none">
                 <path
                     d="M43.3626 21C43.3626 32.598 33.8145 42 22.0362 42C10.2579 42 0.709778 32.598 0.709778 21C0.709778 9.40202 10.2579 0 22.0362 0C33.8145 0 43.3626 9.40202 43.3626 21Z"
@@ -23,11 +23,11 @@
                 <p>Sizes: {{ product['sizes'][0] }}{% for size in product['sizes'][1:] %}, {{ size }}{% endfor %}</p>
             </div>
             <div class="col2">
-                {% if product['discount'] != 0 %} <p class="prev-price">{{ product['prev-price'] }}₴</p>{% endif %}
+                {% if product['discount'] != 0 %} <p class="prevPrice">{{ product['prevPrice'] }}₴</p>{% endif %}
                 <h4>{{ product['price'] }} ₴</h4>
             </div>
         </div>
     </div>
-    <!-- <button id="cart-button-{{ product['id'] }}" onclick="addToCart('{{ product['id'] }}')">Add to cart</button> -->
-    <a class="view-details" href="/product/{{ product['id'] }}">View details</a>
+    <!-- <button id="cartButton{{ product['id'] }}" onclick="addToCart('{{ product['id'] }}')">Add to cart</button> -->
+    <a class="viewDetails" href="/product/{{ product['id'] }}">View details</a>
 </div>

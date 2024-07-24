@@ -9,15 +9,15 @@
             <div class="col">
                 <h4>Product</h4>
                 <p>Name: {{ order.product.info.category }} {{ order.product.info.brand }}</p>
-                <p>Id: {{ order.product.product_id }}</p>
+                <p>Id: {{ order.product.productId }}</p>
                 <p>Size: {{ order.product.size }}</p>
                 <p>Quantity: {{ order.product.quantity }}</p>
             </div>
             <div class="col">
                 <h4>Order</h4>
-                <p>Order id: {{ order.order_id }}</p>
+                <p>Order id: {{ order.orderId }}</p>
                 <p>Receiver: {{ order.firstName }} {{ order.lastName }} {{ order.middleName }}</p>
-                <p>Country: {{ codes_country[order.country] | capitalize }}</p>
+                <p>Country: {{ codesCountry[order.country] | capitalize }}</p>
                 <p>City: {{ order.city }}</p>
                 <p>Delivery method: {{ order.deliveryMethod.replace('-', ' ') | capitalize }}</p>
                 {% if order.trackingNumber %}
@@ -25,7 +25,7 @@
                 {% else %}
                     <p>Tracking number: Not available yet</p>
                 {% endif %}
-                {% if order.deliveryMethod == "pick-up-from-post-office" %}
+                {% if order.deliveryMethod == "pickUpFromPostOffice" %}
                     <p>Post Office branch: {{ order.postOfficeBranch }}</p>
                 {% else %}
                     <p>Address: {{ order.address }} {{ order.address2 }}</p>
@@ -61,7 +61,7 @@
     <section id="featured" class="product">
         <h2>You might also like</h2>
         <div class="products">
-            {% for product in products_featured %}
+            {% for product in productsFeatured %}
             {% include 'partials/card.html' %}
             {% endfor %}
         </div>

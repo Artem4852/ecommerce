@@ -6,14 +6,14 @@
     {% include 'partials/header.html' %}
     <section id="catalogue">
         <h2>Favorites</h2>
-        {% if favorite_items %}
+        {% if favoriteItems %}
         <div class="products">
-            {% for product in favorite_items %}
+            {% for product in favoriteItems %}
                 {% include 'partials/card.html' %}
             {% endfor %}
         </div>
         {% endif %}
-        {% if max_pages != 1 %}
+        {% if maxPages != 1 %}
         <div class="pagination">
             <p>Page:
                 {% if page != 1 %}
@@ -30,7 +30,7 @@
                     <span class="dots">...</span>
                 {% endif %}
                 {% for i in range(page-1, page+2) %}
-                    {% if i > 1 and i < max_pages %}
+                    {% if i > 1 and i < maxPages %}
                         {% if i == page %}
                             <span>{{ i }}</span>
                         {% else %}
@@ -38,24 +38,24 @@
                         {% endif %}
                     {% endif %}
                 {% endfor %}
-                {% if page < max_pages-2 %} 
+                {% if page < maxPages-2 %} 
                     <span class="dots">...</span>
                 {% endif %}
-                {% if page != max_pages %}
-                    <a href="?{% for key, value in request.args.items() if key not in ['page', 'scroll'] %}{{ key }}={{ value }}&{% endfor %}page={{ max_pages }}">{{ max_pages }}</a>
+                {% if page != maxPages %}
+                    <a href="?{% for key, value in request.args.items() if key not in ['page', 'scroll'] %}{{ key }}={{ value }}&{% endfor %}page={{ maxPages }}">{{ maxPages }}</a>
                     <a href="?{% for key, value in request.args.items() if key not in ['page', 'scroll'] %}{{ key }}={{ value }}&{% endfor %}page={{ page+1 }}" class="arrow">
                     <svg xmlns="http://www.w3.org/2000/svg" width="14" height="23" viewBox="0 0 14 23" fill="none">
                         <path d="M2.1104 23L0 20.9587L9.77919 11.5L0 2.04125L2.1104 0L14 11.5L2.1104 23Z" fill="#111111"/>
                     </svg>
                     </a>
                 {% else %}
-                    <span>{{ max_pages }}</span>
+                    <span>{{ maxPages }}</span>
                 {% endif %}
             </p>
         </div>
         {% endif %}
-        {% if not favorite_items %}
-            <h3 class="no-products">No products in favorites.</h3>
+        {% if not favoriteItems %}
+            <h3 class="noProducts">No products in favorites.</h3>
         {% endif %}
     </section>
     {% include 'partials/newsletter.html' %}

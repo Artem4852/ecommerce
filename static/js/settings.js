@@ -8,8 +8,7 @@ inputs.forEach(input => {
         name = name.replace(/-./g, match => match.charAt(1).toUpperCase());
         const data = { [name]: value };
 
-        console.log(data);
-        fetch('/update-settings', {
+        fetch('/updateSettings', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -26,8 +25,7 @@ selects.forEach(select => {
         name = name.replace(/-./g, match => match.charAt(1).toUpperCase());
         const data = { [name]: value };
 
-        console.log(data);
-        fetch('/update-settings', {
+        fetch('/updateSettings', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -36,3 +34,18 @@ selects.forEach(select => {
         });
     });
 });
+
+function check(id) {
+    document.getElementById(id).classList.toggle('disabled');
+    const checked = !document.getElementById(id).classList.contains('disabled');
+    const name = id.replace('inputCheck-', '').replace(/-./g, match => match.charAt(1).toUpperCase());
+    const data = { [name]: checked };
+
+    fetch('/updateSettings', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    });
+}

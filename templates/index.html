@@ -4,14 +4,14 @@
 <body>
     {% include 'partials/header.html' %}
     <section id="hero">
-        {% for group in index_images %}
+        {% for group in indexImages %}
             <div class="imagecol">
                 {% for image in group %}
-                    <div class="img" style="background-image: url('../static/img/covers/{{ image }}')"></div>
+                    <div class="img" style="backgroundImage: url('../static/img/covers/{{ image }}')"></div>
                 {% endfor %}
             </div>
         {% endfor %}
-        <div class="text-wrapper">
+        <div class="textWrapper">
             <div class="text">
                 <h2>The biggest variety of brand shoes in Ukraine</h2>
             </div>
@@ -22,12 +22,12 @@
     <section id="featured">
         <h2>Featured</h2>
         <div class="products">
-            {% for product in products_featured %}
+            {% for product in productsFeatured %}
                 {% include 'partials/card.html' %}
             {% endfor %}
         </div>
     </section>
-    <section class="banner" id="to-shop">
+    <section class="banner" id="toShop">
         <div class="content">
             <h2>Find a perfect pair of shoes for your child</h2>
             <h3>Choose among popular brands, like Ecco, Geox, and Superfit</h3>
@@ -40,11 +40,11 @@
     <section id="sale">
         <h2>Summer sale</h2>
         <div class="products">
-            {% for product in products_sale %}
+            {% for product in productsSale %}
                 {% include 'partials/card.html' %}
             {% endfor %}
         </div>
-        <a href="/shop" class="view-more">View more</a>
+        <a href="/shop" class="viewMore">View more</a>
     </section>
     {% include 'partials/newsletter.html' %}
     {% include 'partials/footer.html' %}

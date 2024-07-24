@@ -10,26 +10,26 @@
                 {% for item in order.cart %}
                 <div class="card">
                     <div class="img">
-                        <a href="/orders/{{ order.order_id }}/{{ item.id }}">
+                        <a href="/orders/{{ order.orderId }}/{{ item.id }}">
                             <img src="{{ item.info.img }}" alt="">
                         </a>
                     </div>
                     <div class="data">
                         <div class="row">
-                            <div class="col start" id="card-{{ item.id }}">
+                            <div class="col start" id="card{{ item.id }}">
                                 <h4>{{ item.info.category }} {{ item.info.brand }}</h4>
-                                <p class="info-size">Size: {{ item.size }}</p>
-                                <p class="info-quantity">Quantity: {{ item.quantity }}</p>
+                                <p class="infoSize">Size: {{ item.size }}</p>
+                                <p class="infoQuantity">Quantity: {{ item.quantity }}</p>
                             </div>
                             <div class="col">
                                 <p>Warehouse: {{ item.info.warehouse }}</p>
                                     <div class="row">
                                     <p>To: {{ order.city }}</p>
-                                    {% if order.deliveryMethod == "pick-up-from-post-office" %}
+                                    {% if order.deliveryMethod == "pickUpFromPostOffice" %}
                                     <p>Branch: {{ order.postOfficeBranch }}</p>
                                     {% endif %}
                                 </div>
-                                {% if order.deliveryMethod == "pick-up-from-post-office" %}
+                                {% if order.deliveryMethod == "pickUpFromPostOffice" %}
                                 <p>Type: Pick up from Post Office</p>
                                 {% else %}
                                 <p>Type: Address Delivery</p>
@@ -37,7 +37,7 @@
                             </div>
                             <div class="col">
                                 <p>Product id: {{ item.id }}</p>
-                                <p>Order id: {{ order.order_id }}</p>
+                                <p>Order id: {{ order.orderId }}</p>
                                 <p>Status: {{ order.status | capitalize }}</p>
                             </div>
                         </div>
@@ -50,7 +50,7 @@
     <section id="featured" class="product">
         <h2>You might also like</h2>
         <div class="products">
-            {% for product in products_featured %}
+            {% for product in productsFeatured %}
             {% include 'partials/card.html' %}
             {% endfor %}
         </div>

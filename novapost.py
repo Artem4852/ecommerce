@@ -4,44 +4,44 @@ from datetime import datetime, timedelta
 dotenv.load_dotenv()
 
 class NovaAPI():
-    def __init__(self):
-        self.api_key = os.getenv('NOVA_API_KEY')
+    def _Init__(self):
+        self.apiKey = os.getenv('NOVA_API_KEY')
         self.endpoints = {
             'ukraine': 'https://api.novaposhta.ua/v.1.0/',
             'europe': 'https://api.novapost.com/v.1.0/'
         }
         self.session = requests.Session()
-        self.token_expiration = None
+        self.tokenExpiration = None
         self.updateToken()
 
     def updateToken(self):
-        if self.token_expiration and self.token_expiration < datetime.now():
+        if self.tokenExpiration and self.tokenExpiration < datetime.now():
             return self.token
         
-        r = requests.get('https://api.novaposhta.ua/v.1.0/clients/authorization?apiKey='+self.api_key)
-        self.token_expiration = datetime.now()+timedelta(hours=1)
+        r = requests.get('https://api.novaposhta.ua/v.1.0/clients/authorization?apiKey='+self.apiKey)
+        self.tokenExpiration = datetime.now()+timedelta(hours=1)
 
         self.session.headers.update({'Authorization': r.json()['jwt']})
 
-    def getCities(self, country_code):
+    def getCities(self, countryCode):
         self.updateToken()
         cities = []
-        r = self.session.get(self.endpoints['europe']+f'divisions?countryCodes[]={country_code}&divisionCategories[]=PostBranch&limit=100&page=1')
+        r = self.session.get(self.endpoints['europe']+f'divisions?countryCodes[]={countryCode}&divisionCategories[]=PostBranch&limit=100&page=1')
         cities += [c['settlement']['name'] for c in r.json()['items']]
         while r.json()['total'] > len(cities):
-            r = self.session.get(self.endpoints['europe']+f'divisions?countryCodes[]={country_code}&divisionCategories[]=PostBranch&limit=100&page={len(cities)//100+1}')
+            r = self.session.get(self.endpoints['europe']+f'divisions?countryCodes[]={countryCode}&divisionCategories[]=PostBranch&limit=100&page={len(cities)//100+1}')
             cities += [c['settlement']['name'] for c in r.json()['items']]
         print(len(cities))
         cities = list(set(cities))
         return cities
 
-    def getBranches(self, country_code, city=None):
+    def getBranches(self, countryCode, city=None):
         self.updateToken()
         branches = []
-        r = self.session.get(self.endpoints['europe']+f'divisions?countryCodes[]={country_code}&divisionCategories[]=PostBranch&limit=100&page=1' + (f'&textSearch={city}' if city else ''))
+        r = self.session.get(self.endpoints['europe']+f'divisions?countryCodes[]={countryCode}&divisionCategories[]=PostBranch&limit=100&page=1' + (f'&textSearch={city}' if city else ''))
         branches += r.json()['items']
         while r.json()['total'] > len(branches):
-            r = self.session.get(self.endpoints['europe']+f'divisions?countryCodes[]={country_code}&divisionCategories[]=PostBranch&limit=100&page={len(branches)//100+1}' + (f'&textSearch={city}' if city else ''))
+            r = self.session.get(self.endpoints['europe']+f'divisions?countryCodes[]={countryCode}&divisionCategories[]=PostBranch&limit=100&page={len(branches)//100+1}' + (f'&textSearch={city}' if city else ''))
             branches += r.json()['items']
         return branches
     
@@ -49,7 +49,7 @@ class NovaAPI():
         data = {}
         # data['countries'] = ['UA']
         data['lastUpdate'] = datetime.now().timestamp()
-        data['countryCodes'] = {"ukraine": "UA", "moldova": "MD", "poland": "PL", "lithuania": "LT", "czech": "CZ", "romania": "RO", "germany": "DE", "slovakia": "SK", "estonia": "EE", "latvia": "LV", "hungary": "HU", "italy": "IT", "great_britain": "GB", "spain": "ES", "france": "FR"}
+        data['countryCodes'] = {"ukraine": "UA", "moldova": "MD", "poland": "PL", "lithuania": "LT", "czech": "CZ", "romania": "RO", "germany": "DE", "slovakia": "SK", "estonia": "EE", "latvia": "LV", "hungary": "HU", "italy": "IT", "greatBritain": "GB", "spain": "ES", "france": "FR"}
         data['countries'] = ['UA', 'MD', 'PL', 'LT', 'CZ', 'RO', 'DE', 'SK', 'EE', 'LV', 'HU', 'IT', 'GB', 'ES', 'FR']
         data['cities'] = {}
         for country in data['countries']:
@@ -68,11 +68,11 @@ class NovaAPI():
     def loadCountries(self):
         return self.loadNovaPostData()['countries']
     
-    def loadCities(self, country_code=None):
-        if country_code == None:
+    def loadCities(self, countryCode=None):
+        if countryCode == None:
             return self.loadNovaPostData()['cities']
-        return self.loadNovaPostData()['cities'][country_code]
+        return self.loadNovaPostData()['cities'][countryCode]
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     nova = NovaAPI()
     nova.updateNovaPostData()

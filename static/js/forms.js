@@ -1,6 +1,6 @@
 let prev = null;
 function phoneInput() {
-    const phone = document.getElementById('input-phone-number');
+    const phone = document.getElementById('inputPhoneNumber');
 
     if (prev && prev.length > phone.value.length) {
         phone.value = '';
@@ -30,53 +30,53 @@ function phoneInput() {
 }
 
 function codeInput() {
-    code = document.getElementById('input-code');
+    code = document.getElementById('inputCode');
     console.log(code);
-    let value_code = code.value.replace(/\D/g, '');
-    let formattedValue_code = '';
-    console.log(value_code);
+    let valueCode = code.value.replace(/\D/g, '');
+    let formattedValueCode = '';
+    console.log(valueCode);
 
-    if (value_code.length > 0) {
-        formattedValue_code = value_code.substring(0, 3);
+    if (valueCode.length > 0) {
+        formattedValueCode = valueCode.substring(0, 3);
     }
-    if (value_code.length > 2) {
-        formattedValue_code += '-' + value_code.substring(3, 6);
+    if (valueCode.length > 2) {
+        formattedValueCode += '-' + valueCode.substring(3, 6);
     }
 
-    code.value = formattedValue_code;
+    code.value = formattedValueCode;
 }
 
 function validateForm() {
-    const email = document.getElementById('input-email').value;
-    const phone = document.getElementById('input-phone-number').value;
-    const password = document.getElementById('input-password').value;
-    const confirmPassword = document.getElementById('input-password-confirm').value;
+    const email = document.getElementById('inputEmail').value;
+    const phone = document.getElementById('inputPhoneNumber').value;
+    const password = document.getElementById('inputPassword').value;
+    const confirmPassword = document.getElementById('inputPasswordConfirm').value;
 
     if (email == "" || !email.includes("@") || !email.includes(".")) {
-        document.getElementById("signup-button").innerHTML = "Please enter a valid email address.";
+        document.getElementById("signupButton").innerHTML = "Please enter a valid email address.";
         setTimeout(function () {
-            document.getElementById("signup-button").innerHTML = "Sign up";
+            document.getElementById("signupButton").innerHTML = "Sign up";
         }, 2000);
         return false;
     }
     else if (phone == "" || phone.length < 12) {
-        document.getElementById("signup-button").innerHTML = "Please enter a valid phone number.";
+        document.getElementById("signupButton").innerHTML = "Please enter a valid phone number.";
         setTimeout(function () {
-            document.getElementById("signup-button").innerHTML = "Sign up";
+            document.getElementById("signupButton").innerHTML = "Sign up";
         }, 2000);
         return false;
     }
     else if (password == "" || password.length < 8) {
-        document.getElementById("signup-button").innerHTML = "Password must be at least 8 characters long.";
+        document.getElementById("signupButton").innerHTML = "Password must be at least 8 characters long.";
         setTimeout(function () {
-            document.getElementById("signup-button").innerHTML = "Sign up";
+            document.getElementById("signupButton").innerHTML = "Sign up";
         }, 2000);
         return false;
     }
     else if (password != confirmPassword) {
-        document.getElementById("signup-button").innerHTML = "Passwords do not match.";
+        document.getElementById("signupButton").innerHTML = "Passwords do not match.";
         setTimeout(function () {
-            document.getElementById("signup-button").innerHTML = "Sign up";
+            document.getElementById("signupButton").innerHTML = "Sign up";
         }, 2000);
         return false;
     }
@@ -88,11 +88,11 @@ function signup() {
     if (output[0]) {
         const hashedPassword = CryptoJS.SHA256(output[3]).toString();
 
-        document.getElementById("signup-button").innerHTML = "Sign up";
-        document.getElementById("input-email").value = "";
-        document.getElementById("input-phone-number").value = "";
-        document.getElementById("input-password").value = "";
-        document.getElementById("input-password-confirm").value = "";
+        document.getElementById("signupButton").innerHTML = "Sign up";
+        document.getElementById("inputEmail").value = "";
+        document.getElementById("inputPhoneNumber").value = "";
+        document.getElementById("inputPassword").value = "";
+        document.getElementById("inputPasswordConfirm").value = "";
 
         const url = new URL(window.location.href);
         const next = url.searchParams.get("next");
@@ -114,15 +114,15 @@ function signup() {
             }
         }).then(data => {
             if (data.success) {
-                document.getElementById("signup-button").innerHTML = "Thanks for signing up!";
+                document.getElementById("signupButton").innerHTML = "Thanks for signing up!";
                 setTimeout(function () {
                     location.href = "/login?next=" + next;
                 }, 2000);
             }
             else {
-                document.getElementById("signup-button").innerHTML = data.error;
+                document.getElementById("signupButton").innerHTML = data.error;
                 setTimeout(function () {
-                    document.getElementById("signup-button").innerHTML = "Sign up";
+                    document.getElementById("signupButton").innerHTML = "Sign up";
                 }, 5000);
             }
         })
@@ -130,8 +130,8 @@ function signup() {
 }
 
 function login() {
-    const email = document.getElementById('input-email').value;
-    const password = document.getElementById('input-password').value;
+    const email = document.getElementById('inputEmail').value;
+    const password = document.getElementById('inputPassword').value;
     const hashedPassword = CryptoJS.SHA256(password).toString();
 
     const url = new URL(window.location.href);
@@ -156,18 +156,18 @@ function login() {
             else location.href = "/";
         }
         else {
-            document.getElementById("login-button").innerHTML = data.error;
+            document.getElementById("loginButton").innerHTML = data.error;
             setTimeout(function () {
-                document.getElementById("login-button").innerHTML = "Log in";
+                document.getElementById("loginButton").innerHTML = "Log in";
             }, 5000);
         }
     });
 }
 
 function sendResetCode() {
-    const email = document.getElementById('input-email').value;
+    const email = document.getElementById('inputEmail').value;
 
-    fetch("/reset-password", {
+    fetch("/resetPassword", {
         method: "POST",
         body: JSON.stringify({
             email: email
@@ -181,43 +181,43 @@ function sendResetCode() {
         }
     }).then(data => {
         if (data.success) {
-            document.getElementById("reset-button").innerHTML = "Reset code sent!";
+            document.getElementById("resetButton").innerHTML = "Reset code sent!";
             setTimeout(function () {
-                location.href = "/update-password?email=" + email;
+                location.href = "/updatePassword?email=" + email;
             }, 2000);
         }
         else {
-            document.getElementById("reset-button").innerHTML = data.error;
+            document.getElementById("resetButton").innerHTML = data.error;
             setTimeout(function () {
-                document.getElementById("reset-button").innerHTML = "Send reset code";
+                document.getElementById("resetButton").innerHTML = "Send reset code";
             }, 5000);
         }
     });
 }
 
 function validateReset() {
-    const code = document.getElementById('input-code').value;
-    const password = document.getElementById('input-password').value;
-    const confirmPassword = document.getElementById('input-password-confirm').value;
+    const code = document.getElementById('inputCode').value;
+    const password = document.getElementById('inputPassword').value;
+    const confirmPassword = document.getElementById('inputPasswordConfirm').value;
 
     if (code == "" || code.length < 6) {
-        document.getElementById("reset-button").innerHTML = "Please enter a valid reset code.";
+        document.getElementById("resetButton").innerHTML = "Please enter a valid reset code.";
         setTimeout(function () {
-            document.getElementById("reset-button").innerHTML = "Update password";
+            document.getElementById("resetButton").innerHTML = "Update password";
         }, 2000);
         return false;
     }
     else if (password == "" || password.length < 8) {
-        document.getElementById("reset-button").innerHTML = "Password must be at least 8 characters long.";
+        document.getElementById("resetButton").innerHTML = "Password must be at least 8 characters long.";
         setTimeout(function () {
-            document.getElementById("reset-button").innerHTML = "Update password";
+            document.getElementById("resetButton").innerHTML = "Update password";
         }, 2000);
         return false;
     }
     else if (password != confirmPassword) {
-        document.getElementById("reset-button").innerHTML = "Passwords do not match.";
+        document.getElementById("resetButton").innerHTML = "Passwords do not match.";
         setTimeout(function () {
-            document.getElementById("reset-button").innerHTML = "Update password";
+            document.getElementById("resetButton").innerHTML = "Update password";
         }, 2000);
         return false;
     }
@@ -228,20 +228,20 @@ function updatePassword() {
     if (!validateReset()) return;
     url = new URL(window.location.href);
     const email = url.searchParams.get("email");
-    const code = document.getElementById('input-code').value;
-    const password = document.getElementById('input-password').value;
-    const confirmPassword = document.getElementById('input-password-confirm').value;
+    const code = document.getElementById('inputCode').value;
+    const password = document.getElementById('inputPassword').value;
+    const confirmPassword = document.getElementById('inputPasswordConfirm').value;
     if (password != confirmPassword) {
-        document.getElementById("reset-button").innerHTML = "Passwords do not match.";
+        document.getElementById("resetButton").innerHTML = "Passwords do not match.";
         setTimeout(function () {
-            document.getElementById("reset-button").innerHTML = "Update password";
+            document.getElementById("resetButton").innerHTML = "Update password";
         }, 2000);
         return;
     }
 
     const hashedPassword = CryptoJS.SHA256(password).toString();
 
-    fetch("/update-password", {
+    fetch("/updatePassword", {
         method: "POST",
         body: JSON.stringify({
             email: email,
@@ -257,15 +257,15 @@ function updatePassword() {
         }
     }).then(data => {
         if (data.success) {
-            document.getElementById("reset-button").innerHTML = "Password updated!";
+            document.getElementById("resetButton").innerHTML = "Password updated!";
             setTimeout(function () {
                 location.href = "/login";
             }, 2000);
         }
         else {
-            document.getElementById("reset-button").innerHTML = data.error;
+            document.getElementById("resetButton").innerHTML = data.error;
             setTimeout(function () {
-                document.getElementById("reset-button").innerHTML = "Update password";
+                document.getElementById("resetButton").innerHTML = "Update password";
             }, 5000);
         }
     });
