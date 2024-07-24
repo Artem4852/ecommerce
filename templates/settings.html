@@ -6,37 +6,40 @@
     <section id="settings">
         <h2>Account settings</h2>
         <div class="row">
-            <div class="col">
+            <div class="col col1">
                 <div class="group">
                     <h4>Personal information</h4>
                     <div class="input">
                         <label for="input-first-name">First Name</label>
-                        <input name="input-first-name" type="text" id="input-first-name" value="{{ userData['shipping-data'].firstName }}">
+                        <input placeholder="First name" name="first-name" type="text" id="input-first-name" value="{{ userData['shipping-data'].firstName }}">
                     </div>
                     <div class="input">
                         <label for="input-last-name">Last Name</label>
-                        <input name="input-last-name" type="text" id="input-last-name" value="{{ userData['shipping-data'].lastName }}">
+                        <input placeholder="Last name" name="last-name" type="text" id="input-last-name" value="{{ userData['shipping-data'].lastName }}">
                     </div>
                     <div class="input">
                         <label for="input-middle-name">Middle Name</label>
-                        <input name="input-middle-name" type="text" id="input-middle-name" value="{{ userData['shipping-data'].middleName }}">
+                        <input placeholder="Middle name" name="middle-name" type="text" id="input-middle-name" value="{{ userData['shipping-data'].middleName }}">
                     </div>
                 </div>
-                <!-- contact info -> email, preferred messenger (teleg, viber, inst) -> inst username, phone number -->
                 <div class="group">
                     <h4>Contact information</h4>
                     <div class="input">
                         <label for="input-email">Email</label>
-                        <input name="input-email" type="email" id="input-email" value="{{ userData.email }}">
+                        <input name="email" type="email" id="input-email" value="{{ userData.email }}">
                     </div>
                     <div class="input">
                         <label for="input-phone">Phone number</label>
-                        <input name="input-phone-number" onchange="phoneInput()" type="tel" id="input-phone-number" value="{{ userData['contact-data'].phoneNumber }}">
+                        {% if userData['contact-data'].phoneNumber %}
+                            <input name="phone-number" onchange="phoneInput()" type="tel" id="input-phone-number" value="{{ userData['contact-data'].phoneNumber }}">
+                        {% else %}
+                            <input name="phone-number" onchange="phoneInput()" type="tel" id="input-phone-number" value="{{ userData['phone-number'] }}">
+                        {% endif %}
                     </div>
                     <div class="input">
                         <label for="input-messenger">Preferred messenger</label>
                         <div class="select">
-                            <select name="input-messenger" id="input-messenger">
+                            <select name="messenger" id="input-messenger">
                                 <option value="telegram" {% if userData['contact-data'].contactMessenger == "telegram" %} selected {% endif %}>Telegram</option>
                                 <option value="viber" {% if userData['contact-data'].contactMessenger == "viber" %} selected {% endif %}>Viber</option>
                                 <option value="instagram" {% if userData['contact-data'].contactMessenger == "instagram" %} selected {% endif %}>Instagram</option>
@@ -50,9 +53,9 @@
                     </div>
                     <div class="input">
                         <label for="input-messenger-username">Instagram username</label>
-                        <input name="input-messenger-username" type="text" id="input-messenger-username" value="{{ userData['shipping-data'].username }}">
+                        <input placeholder="@username" name="messenger-username" type="text" id="input-messenger-username" value="{{ userData['contact-data'].username }}">
                     </div>
-                <!-- shipping information -->
+                </div>
                 <div class="group">
                     <h4>Shipping information</h4>
                     <div class="input">
@@ -102,7 +105,7 @@
                     <div class="input">
                         <label for="input-delivery-method">Delivery method</label>
                         <div class="select">
-                            <select name="input-delivery-method" id="input-delivery-method">
+                            <select name="delivery-method" id="input-delivery-method">
                                 <option value="pick-up-from-post-office" {% if userData['shipping-data'].deliveryMethod !="address-delivery" %}selected {% endif %}>Pick up from Post Office</option>
                                 <option value="address-delivery" {% if userData['shipping-data'].deliveryMethod=="address-delivery" %}selected {% endif %}>
                                     Address Delivery</option>
@@ -114,7 +117,7 @@
                             </svg>
                         </div>
                     </div>
-                    <div class="input">
+                    <div id="wrapper-input-post-office-branch" class="input">
                         <label for="input-post-office-branch">Post Office Branch</label>
                         <div class="select">
                             <select name="post-office-branch" id="input-post-office-branch">
@@ -134,20 +137,92 @@
                         </div>
                         <input class="disabled" type="text" id="input-post-office-branch-noselect" placeholder="Post Office Branch">
                     </div>
-                
-                <div class="input">
-                    <label for="input-address">Street Address</label>
-                    <input type="text" id="input-address" value="{{ userData['shipping-data'].address }}">
+                    <div class="input">
+                        <label for="input-address">Street Address</label>
+                        <input placeholder="Street Address" name="address" type="text" id="input-address" value="{{ userData['shipping-data'].address }}">
+                    </div>
+                    <div class="input">
+                        <label for="input-address-2">Address line 2</label>
+                        <input placeholder="Apartment, Building, Floor, etc. (Optional)" type="text" name="address2" id="input-address-2" value="{{ userData['shipping-data'].address2 }}">
+                    </div>
+                    <div class="input">
+                        <label for="input-postal-code">ZIP/Postal Code</label>
+                        <input placeholder="ZIP/Postal Code" type="text" name="postalCode" id="input-postal-code" value="{{ userData['shipping-data'].postalCode }}">
+                    </div>
                 </div>
-                <div class="input">
-                    <label for="input-address-2">Apartment, Building, Floor, etc. (Optional)</label>
-                    <input type="text" id="input-address-2" value="{{ userData['shipping-data'].address2 }}">
-                </div>
-                <div class="input">
-                    <label for="input-postal-code">ZIP/Postal Code</label>
-                    <input type="text" id="input-postal-code" value="{{ userData['shipping-data'].postalCode }}">
+                <div class="group">
+                    <h4>Payment information</h4>
+                    <div class="input">
+                        <label for="input-payment-method">Preferred payment method</label>
+                        <div class="select">
+                            <select name="payment-method" id="input-payment-method">
+                                <option value="" {% if not userData['payment-data'].paymentMethod %} selected {% endif %} disabled>Payment method</option>
+                                <option {% if userData['payment-data'].paymentMethod=="full-prepayment" %} selected {% endif %} value="full-prepayment">Full Prepayment</option>
+                                <option {% if userData['payment-data'].paymentMethod=="post-payment" %} selected {% endif %} value="post-payment">Post Payment</option>
+                            </select>
+                            <svg class="down-arrow" xmlns="http://www.w3.org/2000/svg" width="23" height="15" viewBox="0 0 23 15"
+                                fill="none">
+                                <path
+                                    d="M-9.22487e-08 2.13579L2.04125 0.0253897L11.5 9.80458L20.9587 0.0253905L23 2.13579L11.5 14.0254L-9.22487e-08 2.13579Z"
+                                    fill="#F1F1F1" />
+                            </svg>
+                        </div>
+                    </div>
                 </div>
             </div>
+            <div class="col col2">
+                <!-- group1 notifications new deals, seasonal sales, discounts on favorite products, people using their promo code -->
+                 <!-- group2 promo code -->
+                <div class="group">
+                    <h4>Notification settings</h4>
+                    <p>Inform me about...</p>
+                    <div class="checkbox">
+                        <div class="box" onclick="check('input-check-new-deals')">
+                            <svg class="{% if not userData.notifications.newDeals %}disabled{% endif %}" id="input-check-new-deals" xmlns="http://www.w3.org/2000/svg" width="33" height="24" viewBox="0 0 33 24"
+                                fill="none">
+                                <path d="M11.5399 24L0 12.6237L2.88497 9.77963L11.5399 18.3118L30.115 0L33 2.84407L11.5399 24Z"
+                                    fill="#F1F1F1" />
+                            </svg>
+                        </div>
+                        <p>New deals</p>
+                    </div>
+                    <div class="checkbox">
+                        <div class="box" onclick="check('input-check-seasonal-sales')">
+                            <svg class="{% if not userData.notifications.seasonalSales %}disabled{% endif %}" id="input-check-seasonal-sales" xmlns="http://www.w3.org/2000/svg" width="33" height="24" viewBox="0 0 33 24"
+                                fill="none">
+                                <path d="M11.5399 24L0 12.6237L2.88497 9.77963L11.5399 18.3118L30.115 0L33 2.84407L11.5399 24Z"
+                                    fill="#F1F1F1" />
+                            </svg>
+                        </div>
+                        <p>Seasonal sales</p>
+                    </div>
+                    <div class="checkbox">
+                        <div class="box" onclick="check('input-check-discounts')">
+                            <svg class="{% if not userData.notifications.discounts %}disabled{% endif %}" id="input-check-discounts" xmlns="http://www.w3.org/2000/svg" width="33" height="24" viewBox="0 0 33 24"
+                                fill="none">
+                                <path d="M11.5399 24L0 12.6237L2.88497 9.77963L11.5399 18.3118L30.115 0L33 2.84407L11.5399 24Z"
+                                    fill="#F1F1F1" />
+                            </svg>
+                        </div>
+                        <p>Discounts on my favorite products</p>
+                    </div>
+                    <div class="checkbox">
+                        <div class="box" onclick="check('input-check-promo-code')">
+                            <svg class="{% if not userData.notifications.promoCode %}disabled{% endif %}" id="input-check-promo-code" xmlns="http://www.w3.org/2000/svg" width="33" height="24" viewBox="0 0 33 24"
+                                fill="none">
+                                <path d="M11.5399 24L0 12.6237L2.88497 9.77963L11.5399 18.3118L30.115 0L33 2.84407L11.5399 24Z"
+                                    fill="#F1F1F1" />
+                            </svg>
+                        </div>
+                        <p>People using my promo code</p>
+                    </div>
+                </div>
+                <div class="group">
+                    <h4>Promo code</h4>
+                    <p>Your promo code is <span class="promoCode">{{ userData.promoCode }}</span></p>
+                    <p>Have your friend apply this promo code at checkout and you will both get a one-time 1% discount! The more friends you bring, the bigger discount you will have on your next purchase.</p>
+                    <p>Current accumulated discount: <b>{{ userData.discount }}%</b></p>
+                </div>
             </div>
         </div>
     </section>
@@ -155,6 +230,7 @@
     {% include 'partials/footer.html' %}
     <script src="{{ url_for('static', filename='js/forms.js') }}"></script>
     <script src="{{ url_for('static', filename='js/shop.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/settings.js') }}"></script>
     <script>
         const deliveryCountries = {{ delivery_countries | tojson }};
         const deliveryCities = {{ delivery_cities | tojson }};

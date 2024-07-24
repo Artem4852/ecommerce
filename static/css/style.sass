@@ -1641,3 +1641,83 @@ select
 
         &:hover
             color: $accent
+
+#settings
+    width: 100%
+    padding: 0 20px
+    display: flex
+    flex-direction: column
+    align-items: center
+    margin-top: 20px
+    margin-bottom: 50px
+
+    h2
+        width: 100%
+        text-align: center
+        margin-bottom: 20px
+
+    h4
+        font-size: 24px
+        font-weight: 700
+        margin-bottom: 5px
+
+    p, label, select
+        font-size: 18px
+        font-weight: 400
+
+    .disabled
+        display: none
+
+    .row
+        width: 100%
+        display: flex
+        flex-direction: row
+        justify-content: space-between
+        gap: 50px
+
+        .col
+            display: flex
+            flex-direction: column
+            gap: 20px
+            align-items: flex-start
+
+            &.col1
+                width: calc( 60% - 25px )
+
+            &.col2
+                width: calc( 40% - 25px )
+
+    .group
+        width: 100%
+
+    .input
+        width: 100%
+        display: flex
+        flex-direction: row
+        justify-content: space-between
+        align-items: center
+        margin-bottom: 10px
+
+        input
+            width: 50%
+            padding: 4px 8px
+            border-radius: 5px
+            border: none
+            font-size: 18px
+            background-color: $grey-dark
+            color: $white
+
+            &:focus
+                outline: none
+
+            &::placeholder
+                color: $grey
+
+    .select
+        position: relative
+
+        select
+            width: 100%
+
+    input, .select
+        width: 50%

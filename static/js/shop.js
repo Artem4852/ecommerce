@@ -439,6 +439,10 @@ function checkSaveContactData() {
     document.getElementById('input-check-contact').classList.toggle('disabled');    
 }
 
+function check(id) {
+    document.getElementById(id).classList.toggle('disabled');
+}
+
 function validateCheckout() {
     const firstName = document.getElementById('input-first-name').value;
     const lastName = document.getElementById('input-last-name').value;

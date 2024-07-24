@@ -374,6 +374,20 @@ def settings():
 
     return render_template('settings.html', userData=user, logged_in=logged_in, codes_country=codes_country, delivery_countries=delivery_countries, delivery_cities=delivery_cities)
 
+@app.route('/update-settings', methods=['POST'])
+def update_settings():
+    data = request.json
+    for key, value in data.items():
+        if key == "messengerUsername": key="username"
+        elif key == "messenger": key="contactMessenger"
+
+        if key in ['firstName', 'lastName', 'middleName', 'country', 'city', 'address', 'address2', 'postalCode', 'deliveryMethod', 'postOfficeBranch']: key = 'shipping-data.'+key
+        elif key in ['paymentMethod']: key = 'payment-data.'+key
+        elif key in ['contactMessenger', 'username', 'phoneNumber']: key = 'contact-data.'+key
+        elif key in ['newDeals', 'seasonalSales', 'discounts', 'promoCode']: key = 'notifications.'+key
+        database.update_user({'user_id': session.get('user_id')}, {'$set': {key: value}})  
+    return jsonify({'success': True})
+
 # Newsletter route
 @app.route('/newsletter-signup', methods=['POST'])
 def newsletter_signup():
@@ -424,7 +438,25 @@ def signup():
     if user:
         return jsonify({'success': False, 'error': 'User already exists'})
     
-    database.add_user({'email': email, 'phone-number': phone_number, 'password': password, 'cart': [], 'favorites': [], 'shipping-data': {}, 'payment-data': {}, 'contact-data': {}, 'user_id': random.randint(100000, 999999)})
+    database.add_user({
+        'email': email, 
+        'phone-number': phone_number, 
+        'password': password, 
+        'cart': [], 
+        'favorites': [], 
+        'shipping-data': {}, 
+        'payment-data': {}, 
+        'contact-data': {}, 
+        'user_id': random.randint(100000, 999999),
+        'promoCode': ''.join([random.choice(characters) for _ in range(8)]),
+        'notifications': {
+            'newDeals': True,
+            'seasonalSales': True,
+            'discounts': True,
+            'promoCode': True
+        },
+        'discount': 0
+    })
     send_email('Welcome to Kids Fashion Store', email, body="Welcome to our store!\nThank you for signing up. You can now log in to your new account.\nHappy shopping!", html='welcome')
     return jsonify({'success': True})
 

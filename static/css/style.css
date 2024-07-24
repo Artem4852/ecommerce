@@ -1637,4 +1637,85 @@ select::-webkit-inner-spin-button, select::-webkit-outer-spin-button {
   color: #E352BA;
 }
 
+#settings {
+  width: 100%;
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 50px;
+}
+#settings h2 {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 20px;
+}
+#settings h4 {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+#settings p, #settings label, #settings select {
+  font-size: 18px;
+  font-weight: 400;
+}
+#settings .disabled {
+  display: none;
+}
+#settings .row {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 50px;
+}
+#settings .row .col {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: flex-start;
+}
+#settings .row .col.col1 {
+  width: calc(60% - 25px);
+}
+#settings .row .col.col2 {
+  width: calc(40% - 25px);
+}
+#settings .group {
+  width: 100%;
+}
+#settings .input {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+#settings .input input {
+  width: 50%;
+  padding: 4px 8px;
+  border-radius: 5px;
+  border: none;
+  font-size: 18px;
+  background-color: #999999;
+  color: #f1f1f1;
+}
+#settings .input input:focus {
+  outline: none;
+}
+#settings .input input::placeholder {
+  color: #E0E0E0;
+}
+#settings .select {
+  position: relative;
+}
+#settings .select select {
+  width: 100%;
+}
+#settings input, #settings .select {
+  width: 50%;
+}
+
 /*# sourceMappingURL=style.css.map */
