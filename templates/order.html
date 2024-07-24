@@ -17,7 +17,7 @@
                 <h4>Order</h4>
                 <p>Order id: {{ order.order_id }}</p>
                 <p>Receiver: {{ order.firstName }} {{ order.lastName }} {{ order.middleName }}</p>
-                <p>Country: {{ order.country }}</p>
+                <p>Country: {{ codes_country[order.country] | capitalize }}</p>
                 <p>City: {{ order.city }}</p>
                 <p>Delivery method: {{ order.deliveryMethod.replace('-', ' ') | capitalize }}</p>
                 {% if order.trackingNumber %}

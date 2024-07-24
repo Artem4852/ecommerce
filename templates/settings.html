@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+{% include 'partials/head.html' %}
+<body>
+    {% include 'partials/header.html' %}
+    <section id="settings">
+        <h2>Account settings</h2>
+        <div class="row">
+            <div class="col">
+                <div class="group">
+                    <h4>Personal information</h4>
+                    <div class="input">
+                        <label for="input-first-name">First Name</label>
+                        <input name="input-first-name" type="text" id="input-first-name" value="{{ userData['shipping-data'].firstName }}">
+                    </div>
+                    <div class="input">
+                        <label for="input-last-name">Last Name</label>
+                        <input name="input-last-name" type="text" id="input-last-name" value="{{ userData['shipping-data'].lastName }}">
+                    </div>
+                    <div class="input">
+                        <label for="input-middle-name">Middle Name</label>
+                        <input name="input-middle-name" type="text" id="input-middle-name" value="{{ userData['shipping-data'].middleName }}">
+                    </div>
+                </div>
+                <!-- contact info -> email, preferred messenger (teleg, viber, inst) -> inst username, phone number -->
+                <div class="group">
+                    <h4>Contact information</h4>
+                    <div class="input">
+                        <label for="input-email">Email</label>
+                        <input name="input-email" type="email" id="input-email" value="{{ userData.email }}">
+                    </div>
+                    <div class="input">
+                        <label for="input-phone">Phone number</label>
+                        <input name="input-phone-number" onchange="phoneInput()" type="tel" id="input-phone-number" value="{{ userData['contact-data'].phoneNumber }}">
+                    </div>
+                    <div class="input">
+                        <label for="input-messenger">Preferred messenger</label>
+                        <div class="select">
+                            <select name="input-messenger" id="input-messenger">
+                                <option value="telegram" {% if userData['contact-data'].contactMessenger == "telegram" %} selected {% endif %}>Telegram</option>
+                                <option value="viber" {% if userData['contact-data'].contactMessenger == "viber" %} selected {% endif %}>Viber</option>
+                                <option value="instagram" {% if userData['contact-data'].contactMessenger == "instagram" %} selected {% endif %}>Instagram</option>
+                            </select>
+                            <svg class="down-arrow" xmlns="http://www.w3.org/2000/svg" width="23" height="15" viewBox="0 0 23 15" fill="none">
+                                <path
+                                    d="M-9.22487e-08 2.13579L2.04125 0.0253897L11.5 9.80458L20.9587 0.0253905L23 2.13579L11.5 14.0254L-9.22487e-08 2.13579Z"
+                                    fill="#F1F1F1" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="input">
+                        <label for="input-messenger-username">Instagram username</label>
+                        <input name="input-messenger-username" type="text" id="input-messenger-username" value="{{ userData['shipping-data'].username }}">
+                    </div>
+                <!-- shipping information -->
+                <div class="group">
+                    <h4>Shipping information</h4>
+                    <div class="input">
+                        <label for="input-country">Country</label>
+                        <div class="select">
+                            <select onchange="selectCountry()" name="country" id="input-country">
+                                {% if not userData['shipping-data'].country %}
+                                    <option value="" disabled selected>Select country</option>
+                                {% else %}
+                                    <option value="" disabled>Select country</option>
+                                    <option selected value="{{ userData['shipping-data'].country }}">{{ codes_country[userData['shipping-data'].country] | capitalize }}
+                                    </option>
+                                {% endif %}
+                            
+                                {% for country in delivery_countries %}
+                                    {% if country != userData['shipping-data'].country %}
+                                        <option value="{{ country }}">{{ codes_country[country] | capitalize }}</option>
+                                    {% endif %}
+                                {% endfor %}
+                            </select>
+                            <svg class="down-arrow" xmlns="http://www.w3.org/2000/svg" width="23" height="15" viewBox="0 0 23 15" fill="none">
+                                <path
+                                    d="M-9.22487e-08 2.13579L2.04125 0.0253897L11.5 9.80458L20.9587 0.0253905L23 2.13579L11.5 14.0254L-9.22487e-08 2.13579Z"
+                                    fill="#F1F1F1" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="input">
+                        <label for="input-city">City</label>
+                        <div class="select">
+                            <select name="city" onchange="selectCity()" id="input-city">
+                                {% if not userData['shipping-data'].city %}
+                                    <option value="" disabled selected>Select city</option>
+                                {% else %}
+                                    <option value="" disabled>Select city</option>
+                                    <option selected value="{{ userData['shipping-data'].city }}">{{ userData['shipping-data'].city | capitalize }}
+                                    </option>
+                                {% endif %}
+                            </select>
+                            <svg class="down-arrow" xmlns="http://www.w3.org/2000/svg" width="23" height="15" viewBox="0 0 23 15" fill="none">
+                            <path
+                                d="M-9.22487e-08 2.13579L2.04125 0.0253897L11.5 9.80458L20.9587 0.0253905L23 2.13579L11.5 14.0254L-9.22487e-08 2.13579Z"
+                                fill="#F1F1F1" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="input">
+                        <label for="input-delivery-method">Delivery method</label>
+                        <div class="select">
+                            <select name="input-delivery-method" id="input-delivery-method">
+                                <option value="pick-up-from-post-office" {% if userData['shipping-data'].deliveryMethod !="address-delivery" %}selected {% endif %}>Pick up from Post Office</option>
+                                <option value="address-delivery" {% if userData['shipping-data'].deliveryMethod=="address-delivery" %}selected {% endif %}>
+                                    Address Delivery</option>
+                            </select>
+                            <svg class="down-arrow" xmlns="http://www.w3.org/2000/svg" width="23" height="15" viewBox="0 0 23 15" fill="none">
+                                <path
+                                    d="M-9.22487e-08 2.13579L2.04125 0.0253897L11.5 9.80458L20.9587 0.0253905L23 2.13579L11.5 14.0254L-9.22487e-08 2.13579Z"
+                                    fill="#F1F1F1" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="input">
+                        <label for="input-post-office-branch">Post Office Branch</label>
+                        <div class="select">
+                            <select name="post-office-branch" id="input-post-office-branch">
+                                {% if not userData['shipping-data'].postOfficeBranch %}
+                                <option value="" disabled selected>Select post office branch</option>
+                                {% else %}
+                                <option value="" disabled>Select post office branch</option>
+                                <option selected value="{{ userData['shipping-data'].postOfficeBranch }}">{{ userData['shipping-data'].postOfficeBranch | capitalize }}
+                                </option>
+                                {% endif %}
+                            </select>
+                            <svg class="down-arrow" xmlns="http://www.w3.org/2000/svg" width="23" height="15" viewBox="0 0 23 15" fill="none">
+                                <path
+                                    d="M-9.22487e-08 2.13579L2.04125 0.0253897L11.5 9.80458L20.9587 0.0253905L23 2.13579L11.5 14.0254L-9.22487e-08 2.13579Z"
+                                    fill="#F1F1F1" />
+                            </svg>
+                        </div>
+                        <input class="disabled" type="text" id="input-post-office-branch-noselect" placeholder="Post Office Branch">
+                    </div>
+                
+                <div class="input">
+                    <label for="input-address">Street Address</label>
+                    <input type="text" id="input-address" value="{{ userData['shipping-data'].address }}">
+                </div>
+                <div class="input">
+                    <label for="input-address-2">Apartment, Building, Floor, etc. (Optional)</label>
+                    <input type="text" id="input-address-2" value="{{ userData['shipping-data'].address2 }}">
+                </div>
+                <div class="input">
+                    <label for="input-postal-code">ZIP/Postal Code</label>
+                    <input type="text" id="input-postal-code" value="{{ userData['shipping-data'].postalCode }}">
+                </div>
+            </div>
+            </div>
+        </div>
+    </section>
+    {% include 'partials/newsletter.html' %}
+    {% include 'partials/footer.html' %}
+    <script src="{{ url_for('static', filename='js/forms.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/shop.js') }}"></script>
+    <script>
+        const deliveryCountries = {{ delivery_countries | tojson }};
+        const deliveryCities = {{ delivery_cities | tojson }};
+        const codesCountry = {{ codes_country | tojson }};
+    </script>
+</body>
+</html>

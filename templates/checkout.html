@@ -31,11 +31,13 @@
                             <option value="" disabled selected>Select country</option>
                         {% else %}
                             <option value="" disabled>Select country</option>
-                            <option selected value="{{ shipping_data.country }}">{{ codes_country['{{ shipping_data.country }}'] | capitalize }}</option>
+                            <option selected value="{{ shipping_data.country }}">{{ codes_country[shipping_data.country] | capitalize }}</option>
                         {% endif %}
 
                         {% for country in delivery_countries %}
-                            <option value="{{ country }}">{{ codes_country[country] | capitalize }}</option>
+                            {% if country != shipping_data.country %}
+                                <option value="{{ country }}">{{ codes_country[country] | capitalize }}</option>
+                            {% endif %}
                         {% endfor %}
                     </select>
                     <svg class="down-arrow" xmlns="http://www.w3.org/2000/svg" width="23" height="15" viewBox="0 0 23 15" fill="none">
@@ -90,7 +92,7 @@
                 <input class="{% if shipping_data.deliveryMethod != "address-delivery" %}disabled{% endif %}" type="text" id="input-address-2" placeholder="Apartment, Building, Floor, etc. (Optional)" value="shipping_data.address2">
                 <input class="{% if shipping_data.deliveryMethod != "address-delivery" %}disabled{% endif %}" type="text" name="postal-code" id="input-postal-code" placeholder="ZIP/Postal Code" value="shipping_data.postalCode">
                 <div class="checkbox">
-                    <div class="box" onclick="checkSaveshipping_data()">
+                    <div class="box" onclick="checkSaveshippingData()">
                         <svg id="input-check-shipping" xmlns="http://www.w3.org/2000/svg" width="33" height="24" viewBox="0 0 33 24" fill="none">
                             <path d="M11.5399 24L0 12.6237L2.88497 9.77963L11.5399 18.3118L30.115 0L33 2.84407L11.5399 24Z" fill="#F1F1F1" />
                         </svg>
@@ -130,7 +132,7 @@
                 <!-- <input type="text" id="input-cvv" placeholder="CVV"> -->
                 <input type="text" id="input-promo-code" placeholder="Promo Code (Optional)">
                 <div class="checkbox">
-                    <div class="box" onclick="checkSavepayment_data()">
+                    <div class="box" onclick="checkSavepaymentData()">
                         <svg id="input-check-payment" xmlns="http://www.w3.org/2000/svg" width="33" height="24" viewBox="0 0 33 24" fill="none">
                             <path d="M11.5399 24L0 12.6237L2.88497 9.77963L11.5399 18.3118L30.115 0L33 2.84407L11.5399 24Z"
                                 fill="#F1F1F1" />
@@ -172,7 +174,7 @@
                 <input class="disabled" type="text" id="input-username" placeholder="Your @username" value="{{ contact_data.username }}">
 
                 <div class="checkbox">
-                    <div class="box" onclick="checkSavecontact_data()">
+                    <div class="box" onclick="checkSavecontactData()">
                         <svg id="input-check-contact" xmlns="http://www.w3.org/2000/svg" width="33" height="24" viewBox="0 0 33 24" fill="none">
                             <path d="M11.5399 24L0 12.6237L2.88497 9.77963L11.5399 18.3118L30.115 0L33 2.84407L11.5399 24Z"
                                 fill="#F1F1F1" />

@@ -354,7 +354,25 @@ def order(order_id, product_id):
     order['product']['info'] = database.get_product({'id': int(product_id)})
     products = get_products()
     products_featured = [p for p in products if p['tag'] == 'featured' and p['discount'] == 0]
-    return render_template('order.html', user_data=user, order=order, logged_in=logged_in, products_featured=products_featured[:4])
+
+    country_codes = nova.loadCountryCodes()
+    codes_country = {v: k for k, v in country_codes.items()}
+
+    return render_template('order.html', user_data=user, order=order, logged_in=logged_in, products_featured=products_featured[:4], codes_country=codes_country)
+
+# Settings
+@app.route('/settings')
+def settings():
+    logged_in = session.get('logged_in', False)
+    if not logged_in:
+        return redirect('/login?next=settings')
+    user = get_user({'user_id': session.get('user_id')})
+
+    delivery_countries = nova.loadCountries()
+    delivery_cities = nova.loadCities()
+    codes_country = {v: k for k, v in nova.loadCountryCodes().items()}
+
+    return render_template('settings.html', userData=user, logged_in=logged_in, codes_country=codes_country, delivery_countries=delivery_countries, delivery_cities=delivery_cities)
 
 # Newsletter route
 @app.route('/newsletter-signup', methods=['POST'])
