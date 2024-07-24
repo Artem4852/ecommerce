@@ -78,6 +78,10 @@ def shop():
     else: page = int(request.args.get('page'))
 
     products = getProducts()
+    brands = sorted(list(set([p['brand'] for p in products])))
+    categories = sorted(list(set([p['category'] for p in products])))
+    sizes = sorted(list(set([size for p in products for size in p['sizes']])))
+
     if brand: products = [p for p in products if p['brand'] == brand]
     if category: products = [p for p in products if p['category'] == category]
     if shoeSize: products = [p for p in products if int(shoeSize) in p['sizes']]
@@ -85,6 +89,8 @@ def shop():
 
     if sorting == 'priceLowToHigh': products = sorted(products, key=lambda x: x['price'])
     elif sorting == 'priceHighToLow': products = sorted(products, key=lambda x: x['price'], reverse=True)
+    elif sorting == 'discountLowToHigh': products = sorted(products, key=lambda x: x['discount'])
+    elif sorting == 'discountHighToLow': products = sorted(products, key=lambda x: x['discount'], reverse=True)
 
     productsCurrent = products[(page-1)*productsPerPage:page*productsPerPage]
 
@@ -97,7 +103,7 @@ def shop():
 
     loggedIn = session.get('loggedIn', False)
 
-    return render_template('shop.html', products=productsCurrent, userData=user, brand=brand, category=category, shoeSize=shoeSize, priceRange=priceRange, sorting=sorting, productsPerPage=productsPerPage, page=page, maxPages=maxPages, loggedIn=loggedIn)
+    return render_template('shop.html', products=productsCurrent, userData=user, brand=brand, category=category, shoeSize=shoeSize, priceRange=priceRange, sorting=sorting, productsPerPage=productsPerPage, page=page, maxPages=maxPages, loggedIn=loggedIn, brands=brands, categories=categories, sizes=sizes)
 
 @app.route('/product/<productId>')
 def product(productId):

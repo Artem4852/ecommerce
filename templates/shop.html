@@ -11,9 +11,9 @@
                 <label for="brand">Brand</label>
                 <select id="brand" name="brand" onchange="filterShoes('brand')">
                     <option value="Any" {% if not brand %} selected {% endif %}>Any</option>
-                    <option value="Ecco" {% if brand=="Ecco" %} selected {% endif %}>Ecco</option>
-                    <option value="Geox" {% if brand=="Geox" %} selected {% endif %}>Geox</option>
-                    <option value="Superfit" {% if brand=="Superfit" %} selected {% endif %}>Superfit</option>
+                    {% for brand_option in brands %}
+                        <option value="{{ brand_option }}" {% if brand_option==brand %} selected {% endif %}>{{ brand_option }}</option>
+                    {% endfor %}
                 </select>
                 <svg class="downArrow" xmlns="http://www.w3.org/2000/svg" width="24" height="14" viewBox="0 0 24 14" fill="none">
                     <path
@@ -25,10 +25,9 @@
                 <label for="category">Category</label>
                 <select id="category" name="category" onchange="filterShoes('category')">
                     <option value="Any" {% if not category %} selected {% endif %}>Any</option>
-                    <option value="Sandals" {% if category=="Sandals" %} selected {% endif %}>Sandals</option>
-                    <option value="Sneakers" {% if category=="Sneakers" %} selected {% endif %}>Sneakers</option>
-                    <option value="DemiSeason" {% if category=="DemiSeason" %} selected {% endif %}>DemiSeason</option>
-                    <option value="Boots" {% if category=="Boots" %} selected {% endif %}>Boots</option>
+                    {% for category_option in categories %}
+                        <option value="{{ category_option }}" {% if category_option==category %} selected {% endif %}>{{ category_option }}</option>
+                    {% endfor %}
                 </select>
                 <svg class="downArrow" xmlns="http://www.w3.org/2000/svg" width="24" height="14" viewBox="0 0 24 14" fill="none">
                     <path
@@ -40,26 +39,9 @@
                 <label for="shoeSize">Shoe size</label>
                 <select id="shoeSize" name="shoeSize" onchange="filterShoes('shoeSize')">
                     <option value="Any" {% if not shoeSize %} selected {% endif %}>Any</option>
-                    <option value="18" {% if shoeSize=="18" %} selected {% endif %}>18</option>
-                    <option value="19" {% if shoeSize=="19" %} selected {% endif %}>19</option>
-                    <option value="20" {% if shoeSize=="20" %} selected {% endif %}>20</option>
-                    <option value="21" {% if shoeSize=="21" %} selected {% endif %}>21</option>
-                    <option value="22" {% if shoeSize=="22" %} selected {% endif %}>22</option>
-                    <option value="23" {% if shoeSize=="23" %} selected {% endif %}>23</option>
-                    <option value="24" {% if shoeSize=="24" %} selected {% endif %}>24</option>
-                    <option value="25" {% if shoeSize=="25" %} selected {% endif %}>25</option>
-                    <option value="26" {% if shoeSize=="26" %} selected {% endif %}>26</option>
-                    <option value="27" {% if shoeSize=="27" %} selected {% endif %}>27</option>
-                    <option value="28" {% if shoeSize=="28" %} selected {% endif %}>28</option>
-                    <option value="29" {% if shoeSize=="29" %} selected {% endif %}>29</option>
-                    <option value="30" {% if shoeSize=="30" %} selected {% endif %}>30</option>
-                    <option value="31" {% if shoeSize=="31" %} selected {% endif %}>31</option>
-                    <option value="32" {% if shoeSize=="32" %} selected {% endif %}>32</option>
-                    <option value="33" {% if shoeSize=="33" %} selected {% endif %}>33</option>
-                    <option value="34" {% if shoeSize=="34" %} selected {% endif %}>34</option>
-                    <option value="35" {% if shoeSize=="35" %} selected {% endif %}>35</option>
-                    <option value="36" {% if shoeSize=="36" %} selected {% endif %}>36</option>
-                    <option value="37" {% if shoeSize=="37" %} selected {% endif %}>37</option>
+                    {% for size_option in sizes %}
+                        <option value="{{ size_option }}" {% if size_option==shoeSize %} selected {% endif %}>{{ size_option }}</option>
+                    {% endfor %}
                 </select>
                 <svg class="downArrow" xmlns="http://www.w3.org/2000/svg" width="24" height="14" viewBox="0 0 24 14" fill="none">
                     <path
@@ -93,6 +75,8 @@
                     <option value="noSorting" {% if not sorting %} selected {% endif %}>No sorting</option>
                     <option value="priceLowToHigh" {% if sorting=="priceLowToHigh" %} selected {% endif %}>Price: low to high</option>
                     <option value="priceHighToLow" {% if sorting=="priceHighToLow" %} selected {% endif %}>Price: high to low</option>
+                    <option value="discountHighToLow" {% if sorting=="discountHighToLow" %} selected {% endif %}>Discount: high to low</option>
+                    <option value="discountLowToHigh" {% if sorting=="discountLowToHigh" %} selected {% endif %}>Discount: low to high</option>
                 </select>
                 <svg class="downArrow" xmlns="http://www.w3.org/2000/svg" width="24" height="14" viewBox="0 0 24 14" fill="none">
                     <path

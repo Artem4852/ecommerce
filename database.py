@@ -33,6 +33,9 @@ class Database:
     def addProduct(self, data):
         self.productsDb['productData'].insert_one(data)
 
+    def removeProduct(self, productId):
+        self.productsDb['productData'].delete_one({'id': productId})
+
     def updateProduct(self, productId, product):
         self.productsDb['productData'].update_one({'id': productId}, {'$set': product})
 
@@ -65,4 +68,11 @@ class Database:
 
 if __name__ == "__main__":
     database = Database()
-    products = database.add()
+    products = database.getProducts()
+    for product in products:
+        database.updateProduct(product['id'], {'prevPrice': product['prev-price'], 'maxQuantities': product['max_quantities'], 'sizesCm': product['sizes_cm']})
+        database.editProduct(product['id'], ['prev-price', 'max_quantities', 'sizes_cm'])
+    #     img = product['img']
+    #     if not os.path.exists(f"static/{img}"):
+    #         database.removeProduct(product['id'])
+        # database.updateProduct(product['id'], {'img': product['img'].replace('../static/', '')})
