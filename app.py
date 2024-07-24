@@ -118,7 +118,11 @@ def product(productId):
     product = database.getProduct({'id': int(productId)})
     user = getUser({'userId': session.get('userId')})
     loggedIn = session.get('loggedIn', False)
-    return render_template('product.html', product=product, userData=user, productsFeatured=[p for p in products if p['tag'] == 'featured' and p['discount'] == 0][:4], loggedIn=loggedIn)
+
+    productsFeatured = [p for p in products if p['tag'] == 'Featured']
+    random.shuffle(productsFeatured)
+
+    return render_template('product.html', product=product, userData=user, productsFeatured=productsFeatured[:4], loggedIn=loggedIn)
 
 # Static pages
 @app.route('/faq')
@@ -188,7 +192,10 @@ def favorites():
     favoriteItems = favoriteItems[(page-1)*12:page*12]
     maxPages = math.ceil(len(user['favorites'])/12)
 
-    return render_template('favorites.html', userData=user, favoriteItems=favoriteItems, productsFeatured=[p for p in products if p['tag'] == 'featured' and p['discount'] == 0][:4], page=page, maxPages=maxPages, loggedIn=loggedIn)
+    productsFeatured = [p for p in products if p['tag'] == 'Featured']
+    random.shuffle(productsFeatured)
+
+    return render_template('favorites.html', userData=user, favoriteItems=favoriteItems, productsFeatured=productsFeatured[:4], page=page, maxPages=maxPages, loggedIn=loggedIn)
 
 @app.route('/favorite/<productNumber>', methods=['POST'])
 def favorite(productNumber):
@@ -212,7 +219,12 @@ def cart():
         product = database.getProduct({'id': item['productId']})
         subtotal += int(product['price'])*int(item['quantity'])
         cartItems.append({'id': item['productId'], 'size': item['size'], 'quantity': item['quantity'], 'info': product})
-    return render_template('cart.html', userData=user, cartItems=cartItems, subtotal=subtotal, productsFeatured=[p for p in products if p['tag'] == 'featured' and p['discount'] == 0][:4], loggedIn=loggedIn)
+
+    productsFeatured = [p for p in products if p['tag'] == 'Featured']
+
+    print(productsFeatured)
+
+    return render_template('cart.html', userData=user, cartItems=cartItems, subtotal=subtotal, productsFeatured=productsFeatured[:4], loggedIn=loggedIn)
 
 @app.route('/addToCart/<productId>', methods=['POST'])
 def addToCart(productId):
@@ -235,6 +247,19 @@ def editCart(productId):
     database.updateUser({'userId': session.get('userId'), 'cart.productId': int(productId)},
     {'$set': {'cart.$.size': int(size), 'cart.$.quantity': int(quantity)}})
     return jsonify({'success': True})
+
+@app.route('/checkPromoCode', methods=['POST'])
+def checkPromoCode():
+    promoCode = request.json.get('promoCode')
+    current_user = getUser({'userId': session.get('userId')})
+    if current_user['promoCodeUsed']: return jsonify({'success': False, 'error': 'You have already used a promo code'})
+    user = getUser({'promoCode': promoCode})
+    if not user: return jsonify({'success': False, 'error': 'Invalid promo code'})
+    else:
+        # database.updateUser({'userId': session.get('userId')}, {'$set': {'promoCodeUsed': True}})
+        # database.updateUser({'promoCode': promoCode}, {'$set': {'discount': int(user['discount']+1)}})
+        return jsonify({'success': True, 'discount': 1})
+    # cxAiihvK
 
 @app.route('/checkout', methods=['GET', 'POST'])
 def checkout():
@@ -262,9 +287,10 @@ def checkout():
         paymentData = user['paymentData']
         contactData = user['contactData']
 
-        featuredProducts = [p for p in products if p['tag'] == 'featured' and p['discount'] == 0]
+        productsFeatured = [p for p in products if p['tag'] == 'Featured']
+        random.shuffle(productsFeatured)
 
-        return render_template('checkout.html', userData=user, cartItems=cartItems, subtotal=subtotal, productsFeatured=[p for p in products if p['tag'] == 'featured' and p['discount'] == 0][:4], loggedIn=loggedIn, deliveryCountries=deliveryCountries, deliveryCities=deliveryCities, featuredProducts=featuredProducts, countryCodes=countryCodes, codesCountry=codesCountry, shippingData=shippingData, paymentData=paymentData, contactData=contactData)
+        return render_template('checkout.html', userData=user, cartItems=cartItems, subtotal=subtotal, productsFeatured=productsFeatured[:4], loggedIn=loggedIn, deliveryCountries=deliveryCountries, deliveryCities=deliveryCities, featuredProducts=productsFeatured, countryCodes=countryCodes, codesCountry=codesCountry, shippingData=shippingData, paymentData=paymentData, contactData=contactData)
     elif request.method == 'POST':
         data = request.json
 
@@ -274,7 +300,11 @@ def checkout():
         data["status"] = "pending"
 
         database.addOrder(data)
-        database.updateUser({'userId': session.get('userId')}, {'$set': {'cart': []}})
+        database.updateUser({'userId': session.get('userId')}, {'$set': {'cart': [], 'promoCodeUsed': True}})
+
+        if data['promoCode']:
+            user = getUser({'promoCode': data['promoCode']})
+            database.updateUser({'promoCode': data['promoCode']}, {'$set': {'discount': int(user['discount']+1)}})
 
         if data['saveShippingData']: 
             shippingData = {
@@ -335,8 +365,11 @@ def orderConfirmation():
     if not loggedIn:
         return redirect('/login?next=orderConfirmation')
     user = getUser({'userId': session.get('userId')})
+
     products = getProducts()
-    productsFeatured = [p for p in products if p['tag'] == 'featured' and p['discount'] == 0]
+    productsFeatured = [p for p in products if p['tag'] == 'Featured']
+    random.shuffle(productsFeatured)
+
     return render_template('orderConfirmation.html', userData=user, loggedIn=loggedIn, productsFeatured=productsFeatured[:4])
 
 @app.route('/orders')
@@ -352,8 +385,11 @@ def orders():
             product = database.getProduct({'id': item['productId']})
             cartItems.append({'id': item['productId'], 'size': item['size'], 'quantity': item['quantity'], 'info': product})
         order['cart'] = cartItems
+
     products = getProducts()
-    productsFeatured = [p for p in products if p['tag'] == 'featured' and p['discount'] == 0]
+    productsFeatured = [p for p in products if p['tag'] == 'Featured']
+    random.shuffle(productsFeatured)
+
     return render_template('orders.html', userData=user, orders=orders, loggedIn=loggedIn, productsFeatured=productsFeatured[:4])
 
 @app.route('/orders/<orderId>/<productId>')
@@ -366,10 +402,12 @@ def order(orderId, productId):
     order['product'] = [o for o in order['cart'] if int(o['productId']) == int(productId)][0]
     order['product']['info'] = database.getProduct({'id': int(productId)})
     products = getProducts()
-    productsFeatured = [p for p in products if p['tag'] == 'featured' and p['discount'] == 0]
 
     countryCodes = nova.loadCountryCodes()
     codesCountry = {v: k for k, v in countryCodes.items()}
+
+    productsFeatured = [p for p in products if p['tag'] == 'Featured']
+    random.shuffle(productsFeatured)
 
     return render_template('order.html', userData=user, order=order, loggedIn=loggedIn, productsFeatured=productsFeatured[:4], codesCountry=codesCountry)
 
@@ -468,7 +506,8 @@ def signup():
             'discounts': True,
             'promoCode': True
         },
-        'discount': 0
+        'discount': 0,
+        'promoCodeUsed': False
     })
     sendEmail('Welcome to Kids Fashion Store', email, body="Welcome to our store!\nThank you for signing up. You can now log in to your new account.\nHappy shopping!", html='welcome')
     return jsonify({'success': True})

@@ -441,7 +441,34 @@ function checkSaveContactData() {
     document.getElementById('inputCheckContact').classList.toggle('disabled');    
 }
 
-function validateCheckout() {
+async function checkPromoCode() {
+    const promoCode = document.getElementById('inputPromoCode').value;
+    console.log(promoCode);
+    if (promoCode === '') return Promise.resolve(undefined);
+    
+    const response = await fetch('/checkPromoCode', {
+        method: 'POST',
+        body: JSON.stringify({ "promoCode": promoCode }),
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    });
+    const data = await response.json();
+    if (!data.success) {
+        console.log("E2", data.error);
+        return data.error;
+    }
+    subtotal = parseInt(document.getElementById('subtotal').innerHTML);
+    delivery = parseInt(document.getElementById('delivery').innerHTML);
+    discount = (subtotal * data.discount / 100).toFixed(2);
+    document.getElementById('discount').innerHTML = discount;
+    document.getElementById('total').innerHTML = subtotal - discount + delivery;
+    return;
+}
+
+document.getElementById('inputPromoCode').addEventListener('blur', checkPromoCode);
+
+async function validateCheckout() {
     const firstName = document.getElementById('inputFirstName').value;
     const lastName = document.getElementById('inputLastName').value;
     const middleName = document.getElementById('inputMiddleName').value;
@@ -450,10 +477,8 @@ function validateCheckout() {
     const deliveryMethod = document.getElementById('inputDeliveryMethod').value;
     const postOfficeBranch = document.getElementById('inputPostOfficeBranch').value;
     const address = document.getElementById('inputAddress').value;
-    const address2 = document.getElementById('inputAddress-2').value;
     const postalCode = document.getElementById('inputPostalCode').value;
     const paymentMethod = document.getElementById('inputPaymentMethod').value;
-    const promoCode = document.getElementById('inputPromoCode').value;
     const contactMessenger = document.getElementById('inputContactMessenger').value;
     const username = document.getElementById('inputUsername').value;
     const phoneNumber = document.getElementById('inputPhoneNumber').value;
@@ -476,11 +501,15 @@ function validateCheckout() {
     if (contactMessenger === 'phone' && phoneNumber === '') {
         return('Please fill in all required fields');
     }
+    const promoCodeError = await checkPromoCode();
+    if (promoCodeError !== undefined) {
+        return promoCodeError;
+    }
     return '';
 }
 
-function checkout() {
-    const error = validateCheckout();
+async function checkout() {
+    const error = await validateCheckout();
     if (error !== '') {
         document.getElementById('buttonCheckout').innerHTML = error;
         setTimeout(function () {

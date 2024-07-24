@@ -162,7 +162,7 @@
                     <select onchange="selectMessenger()" name="messenger" id="inputContactMessenger">
                         <option value="telegram" {% if not contactData.contactMessenger or contactData.contactMessenger == "telegram" %} selected {% endif %}>Telegram</option>
                         <option {% if contactData.contactMessenger == "instagram" %} selected {% endif %} value="instagram">Instagram</option>
-                        <option {% if not contactData.contactMessenger or contactData.contactMessenger == "viber" %} selected {% endif %} value="viber">Viber</option>
+                        <option {% if contactData.contactMessenger == "viber" %} selected {% endif %} value="viber">Viber</option>
                     </select>
                     <svg class="downArrow" xmlns="http://www.w3.org/2000/svg" width="23" height="15" viewBox="0 0 23 15" fill="none">
                         <path
@@ -170,8 +170,8 @@
                             fill="#F1F1F1" />
                     </svg>
                 </div>
-                <input oninput="phoneInput()" type="text" id="inputPhoneNumber" placeholder="Phone number" value="{% if not contactData.phoneNumber %}{{ userData['phoneNumber'] }}{% else %}{{ contactData.phoneNumber }}{% endif %}">
-                <input class="disabled" type="text" id="inputUsername" placeholder="Your @username" value="{{ contactData.username }}">
+                <input {% if contactData.contactMessenger == "instagram" %}class="disabled"{% endif %} oninput="phoneInput()" type="text" id="inputPhoneNumber" placeholder="Phone number" value="{% if not contactData.phoneNumber %}{{ userData['phoneNumber'] }}{% else %}{{ contactData.phoneNumber }}{% endif %}">
+                <input {% if contactData.contactMessenger != "instagram" %}class="disabled"{% endif %} type="text" id="inputUsername" placeholder="Your @username" value="{{ contactData.username }}">
 
                 <div class="checkbox">
                     <div class="box" onclick="checkSavecontactData()">
@@ -222,7 +222,7 @@
                 {% endfor %}
             </div>
             <div class="orderinfo">
-                <h4>Subtotal: {{ subtotal }}</h4>
+                <h4>Subtotal: <span id="subtotal">{{ subtotal }}</span> uah</h4>
                 <h4>Discount: <span id="discount">0</span> uah</h4>
                 <h4>Delivery: <span id="delivery">0</span> uah</h4>
                 <h4>Total: <span id="total">{{ subtotal }}</span> uah</h4>
