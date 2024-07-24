@@ -201,7 +201,7 @@
                 {% set sortedSizes = item.info.sizes | sort %}
                 <div class="card">
                     <div class="img">
-                        <img src="{{ item.info.img }}" alt="">
+                        <img src="{{ url_for('static', filename=item.info.img) }}" alt="">
                     </div>
                     <div class="data">
                         <div class="row">

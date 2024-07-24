@@ -19,7 +19,7 @@
                 <p>Receiver: {{ order.firstName }} {{ order.lastName }} {{ order.middleName }}</p>
                 <p>Country: {{ codesCountry[order.country] | capitalize }}</p>
                 <p>City: {{ order.city }}</p>
-                <p>Delivery method: {{ order.deliveryMethod.replace('-', ' ') | capitalize }}</p>
+                <p>Delivery method: {% if order.deliveryMethod == 'pickUpFromPostOffice' %}Pick up from Post Office{% else %}Address delivery{% endif %}</p>
                 {% if order.trackingNumber %}
                     <p>Tracking number: {{ order.trackingNumber }}</p>
                 {% else %}
@@ -31,7 +31,7 @@
                     <p>Address: {{ order.address }} {{ order.address2 }}</p>
                     <p>Postal code: {{ order.postalCode }}</p>
                 {% endif %}
-                <p>Payment type: {{ order.paymentMethod.replace('-', ' ') | capitalize }}</p>
+                <p>Payment type: {% if order.paymentMethod == 'fullPrepayment' %}Full Prepayment{% else %}Post Payment{% endif %}</p>
             </div>
             <div class="col">
                 <h4>Status</h4>

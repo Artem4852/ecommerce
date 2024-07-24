@@ -11,7 +11,7 @@
                 <div class="card">
                     <div class="img">
                         <a href="/orders/{{ order.orderId }}/{{ item.id }}">
-                            <img src="{{ item.info.img }}" alt="">
+                            <img src="{{ url_for('static', filename=item.info.img) }}" alt="">
                         </a>
                     </div>
                     <div class="data">

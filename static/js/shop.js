@@ -241,6 +241,8 @@ function imgForward() {
     images[after_3].classList.remove('inactive')
 
     let imagesNew = [idx, after, after_2, after_3]
+    if (images.length < 4) imagesNew.pop()
+    if (images.length < 3) imagesNew.pop()
 
     for (let i = 0; i < imagesNew.length; i++) {
         document.getElementById('others').removeChild(images[imagesNew[i]])
@@ -313,7 +315,7 @@ function selectSize() {
 }
 
 function selectSizeCart(productId) {
-    const size = document.getElementById('size-'+productId).value;
+    const size = document.getElementById('size'+productId).value;
     console.log(size)
     const quantitySelects = document.getElementsByClassName('quantity');
     for (let i = 0; i < quantitySelects.length; i++) {
@@ -327,7 +329,7 @@ function selectSizeCart(productId) {
 }
 
 function toggleFaq(name) {
-    const faq = document.getElementById('faq-'+name);
+    const faq = document.getElementById('faq'+name);
     faq.classList.toggle('active');
 }
 

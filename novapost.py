@@ -4,7 +4,7 @@ from datetime import datetime, timedelta
 dotenv.load_dotenv()
 
 class NovaAPI():
-    def _Init__(self):
+    def __init__(self):
         self.apiKey = os.getenv('NOVA_API_KEY')
         self.endpoints = {
             'ukraine': 'https://api.novaposhta.ua/v.1.0/',

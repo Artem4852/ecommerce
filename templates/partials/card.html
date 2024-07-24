@@ -20,7 +20,11 @@
             <div class="col1">
                 <h3>{{ product['category'] }}</h3>
                 <p>Brand: {{ product['brand'] }}</p>
-                <p>Sizes: {{ product['sizes'][0] }}{% for size in product['sizes'][1:] %}, {{ size }}{% endfor %}</p>
+                {% if product['sizes'] %}
+                    <p>Sizes: {{ product['sizes'][0] }}{% for size in product['sizes'][1:] %}, {{ size }}{% endfor %}</p>
+                {% else %}
+                    <p>Not in stock</p>
+                {% endif %}
             </div>
             <div class="col2">
                 {% if product['discount'] != 0 %} <p class="prevPrice">{{ product['prevPrice'] }}₴</p>{% endif %}

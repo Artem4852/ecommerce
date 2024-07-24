@@ -69,9 +69,9 @@ class Database:
 if __name__ == "__main__":
     database = Database()
     products = database.getProducts()
-    for product in products:
-        database.updateProduct(product['id'], {'prevPrice': product['prev-price'], 'maxQuantities': product['max_quantities'], 'sizesCm': product['sizes_cm']})
-        database.editProduct(product['id'], ['prev-price', 'max_quantities', 'sizes_cm'])
+    for n, product in enumerate(products):
+        print(f"Editing {n+1}/{len(products)}")
+        database.updateProduct(product['id'], {'images': sorted(product['images'])})
     #     img = product['img']
     #     if not os.path.exists(f"static/{img}"):
     #         database.removeProduct(product['id'])

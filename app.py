@@ -59,7 +59,14 @@ def index():
     products = getProducts()
     user = getUser({'userId': session.get('userId')})
     loggedIn = session.get('loggedIn', False)
-    return render_template('index.html', indexImages=indexImages, productsFeatured=[p for p in products if p['tag'] == 'featured' and p['discount'] == 0][:4], productsSale=sorted([p for p in products if p['tag'] == 'sale' and p['discount'] != 0], key=lambda x: x['discount'], reverse=True)[:4], userData=user, loggedIn=loggedIn)
+
+    featured = [p for p in products if p['tag'] == 'Featured' and p['discount'] == 0 and len(p['sizes']) > 0]
+    random.shuffle(featured)
+
+    sale = [p for p in products if p['tag'] == 'Sale' and p['discount'] != 0 and len(p['sizes']) > 0]
+    random.shuffle(sale)
+
+    return render_template('index.html', indexImages=indexImages, productsFeatured=featured[:4], productsSale=sale[:4], userData=user, loggedIn=loggedIn)
 
 # Shop routes
 @app.route('/shop')

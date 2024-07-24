@@ -27,7 +27,7 @@
                     <img onclick="setSelected({{ product.images.index(image) }})" dataIndex="{{ product.images.index(image) }}" src="{{ url_for('static', filename=image) }}" alt="">
                 {% endfor %}
                 {% for image in product.images[4:] %}
-                    <img onclick="setSelected({{ product.images.index(image) }})"  dataIndex="{{ product.images.index(image) }}" class="inactive" src="{{ url_for('static', filename=image) }}" alt="">
+                    <img onclick="setSelected({{ product.images.index(image) }})" dataIndex="{{ product.images.index(image) }}" class="inactive" src="{{ url_for('static', filename=image) }}" alt="">
                 {% endfor %}
             </div>
         </div>
@@ -39,7 +39,7 @@
                 <div class="col">
                     <p>Product number: {{ product.id }}</p>
                     <p>Brand: {{ product.brand }}</p>
-                    <p>Price: {{ product.price }}</p>
+                    <p>Price: {{ product.price }} uah</p>
                 </div>
                 {% if sortedSizes %}
                     <p class="instock">In stock</p>
@@ -103,7 +103,7 @@
     </section>
     <section id="productFaq">
         <div id="faqShoeSize" class="info">
-            <div class="head" onclick="toggleFaq('shoeSize')">
+            <div class="head" onclick="toggleFaq('ShoeSize')">
                 <svg xmlns="http://www.w3.org/2000/svg" width="33" height="20" viewBox="0 0 33 20" fill="none">
                     <path d="M-1.31784e-07 3.01486L2.92875 -1.31446e-06L16.5 13.9703L30.0712 -1.2802e-07L33 3.01486L16.5 20L-1.31784e-07 3.01486Z" fill="#111111"/>
                 </svg>
@@ -114,7 +114,7 @@
             larger than their foot length to allow for growth. For the full guide on finding the perfect fit, <a href="/faq/shoeSize">click here</a>.</p>
         </div>
         <div id="faqDelivery" class="info">
-            <div class="head" onclick="toggleFaq('delivery')">
+            <div class="head" onclick="toggleFaq('Delivery')">
                 <svg xmlns="http://www.w3.org/2000/svg" width="33" height="20" viewBox="0 0 33 20" fill="none">
                     <path
                         d="M-1.31784e-07 3.01486L2.92875 -1.31446e-06L16.5 13.9703L30.0712 -1.2802e-07L33 3.01486L16.5 20L-1.31784e-07 3.01486Z"
@@ -127,7 +127,7 @@
             Tracking, customs, and accurate address details are crucial. For more information on our shipping policy, <a href="/faq/delivery">click here</a>.</p>
         </div>
         <div id="faqReplacementsReturns" class="info">
-            <div class="head" onclick="toggleFaq('replacementsReturns')">
+            <div class="head" onclick="toggleFaq('ReplacementsReturns')">
                 <svg xmlns="http://www.w3.org/2000/svg" width="33" height="20" viewBox="0 0 33 20" fill="none">
                     <path
                         d="M-1.31784e-07 3.01486L2.92875 -1.31446e-06L16.5 13.9703L30.0712 -1.2802e-07L33 3.01486L16.5 20L-1.31784e-07 3.01486Z"
