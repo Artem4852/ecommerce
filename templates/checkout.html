@@ -27,16 +27,13 @@
                 <input type="text" id="inputLastName" placeholder="Last name" value="{{ shippingData.lastName }}">
                 <div class="select">
                     <select onchange="selectCountry()" name="country" id="inputCountry">
-                        {% if not shippingData.country %}
-                            <option value="" disabled selected>Select country</option>
-                        {% else %}
-                            <option value="" disabled>Select country</option>
-                            <option selected value="{{ shippingData.country }}">{{ codesCountry[shippingData.country] | capitalize }}</option>
-                        {% endif %}
+                        <option value="" disabled {% if not shippingData.country %} selected {% endif %}>Select country</option>
 
                         {% for country in deliveryCountries %}
                             {% if country != shippingData.country %}
                                 <option value="{{ country }}">{{ codesCountry[country] | capitalize }}</option>
+                            {% else %}
+                                <option value="{{ country }}" selected>{{ codesCountry[country] | capitalize }}</option>
                             {% endif %}
                         {% endfor %}
                     </select>
@@ -48,12 +45,7 @@
                 </div>
                 <div class="select">
                     <select onchange="selectCity()" name="city" id="inputCity">
-                        {% if not shippingData.city %}
-                            <option value="" disabled selected>Select city</option>
-                        {% else %}
-                            <option value="" disabled>Select city</option>
-                            <option selected value="{{ shippingData.city }}">{{ shippingData.city | capitalize }}</option>
-                        {% endif %}
+                        <option value="" disabled selected>Select city</option>
                     </select>
                     <svg class="downArrow" xmlns="http://www.w3.org/2000/svg" width="23" height="15" viewBox="0 0 23 15" fill="none">
                         <path
@@ -249,20 +241,15 @@
         const countryCodes = {{ countryCodes | tojson }};
         const codesCountry = {{ codesCountry | tojson }};
         const cart = {{ cartItems | tojson }};
-        const deliveryCities = {{ deliveryCities | tojson }};
         updateShippingPrice();
-        {% if shippingData.country %}
-            selectCountry();
-            document.getElementById('inputCountry').appendChild(new Option('{{ codesCountry[shippingData.country] | capitalize }}', '{{ shippingData.country }}', true, true));
-        {% endif %}
-        {% if shippingData.city %}
-            selectCity();
-            document.getElementById('inputCity').appendChild(new Option('{{ shippingData.city | capitalize }}', '{{ shippingData.city }}', true, true));
-        {% endif %}
-        {% if shippingData.deliveryMethod %}
-            selectDeliveryMethod();
-            document.getElementById('inputPostOfficeBranch').appendChild(new Option('{{ shippingData.postOfficeBranch | capitalize }}', '{{ shippingData.postOfficeBranch }}', true, true));
-        {% endif %}
+        
+        const default_city = '{{ shippingData.city }}';
+        const default_branch = '{{ shippingData.postOfficeBranch }}';
+
+        const deliveryCities = {{ deliveryCities | tojson }};
+        selectCountry();
+        selectCity();
+        selectDeliveryMethod();
     </script>
 </body>
 </html>

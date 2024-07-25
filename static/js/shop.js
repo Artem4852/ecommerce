@@ -349,10 +349,14 @@ function selectCountry() {
     let option = new Option('Select city', '', true, true);
     option.setAttribute('disabled', 'disabled');
     city.appendChild(option);
+
+    let execute = false;
     for (let i = 0; i < cities.length; i++) {
-        let option = new Option(cities[i], cities[i]);
+        if (cities[i] === default_city) execute = true;
+        let option = new Option(cities[i], cities[i], cities[i] === default_city, cities[i] === default_city);
         city.appendChild(option);
     }
+    if (execute) selectCity();
 
     const branch = document.getElementById('inputPostOfficeBranch');
     branch.innerHTML = '';
@@ -396,7 +400,8 @@ function selectCity() {
                 console.log(branches[i]['number']);
                 shortName = branches[i]['shortName'];
                 if (shortName.includes(" (")) shortName = shortName.substring(0, shortName.indexOf(" ("));
-                let option = new Option(shortName, branches[i]['number']);
+                let option = new Option(shortName, branches[i]['number'], branches[i]['number'] === default_branch, branches[i]['number'] === default_branch);
+                option.setAttribute('data-name', shortName);
                 branch.appendChild(option);
             }
         });
@@ -568,6 +573,7 @@ async function checkout() {
     }
     if (data['deliveryMethod'] == 'pickUpFromPostOffice') {
         data['postOfficeBranch'] = document.getElementById('inputPostOfficeBranch').value;
+        data['postOfficeBranchName'] = document.getElementById('inputPostOfficeBranch').selectedOptions[0].getAttribute('data-name');
     } else {
         data['address'] = document.getElementById('inputAddress').value;
         data['address2'] = document.getElementById('inputAddress-2').value;

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+{% include 'partials/head.html' %}
+<body>
+    {% include 'partials/header.html' %}
+    <section id="admin">
+        <h2>Control Panel</h2>
+        <div class="group">
+            <h4>Activity</h4>
+            <div class="data">
+                <div class="row">
+                    <div class="col">
+                        <p>Requests today: 4</p>
+                        <p>Unique visits today: 24</p>
+                    </div>
+                    <div class="col">
+                        <p>Average daily requests: 453</p>
+                        <p>Average unique visits: 24</p>
+                    </div>
+                </div>
+                <div class="chart">
+                    <h4>Daily requests:</h4>
+                    <canvas id="requestsChart"></canvas>
+                </div>
+            </div>
+        </div><div class="group">
+            <h4>Products</h4>
+            <div class="data">
+                <div class="row">
+                    <div class="col">
+                        <p>Items on site: 25</p>
+                        <p>Most popular category: Sandals</p>
+                    </div>
+                    <div class="col">
+                        <p>In stock: 45</p>
+                        <p>Most common size: 27</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <a href="/admin/products">Edit products</a>
+                    <a href="/admin/products/add">Add product</a>
+                </div>
+            </div>
+        </div>
+        <div class="group">
+            <h4>Orders</h4>
+            <div class="data">
+                <div class="row">
+                    <div class="col">
+                        <p>Awaiting processing: 25</p>
+                        <p>Replacements: 3</p>
+                    </div>
+                    <div class="col">
+                        <p>Shipping: 45</p>
+                        <p>Returns: 2</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <a href="/admin/products">View orders</a>
+                    <a href="/admin/products/add">View replacements and returns</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    {% include 'partials/footer.html' %}
+</body>
+</html>

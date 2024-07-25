@@ -528,7 +528,8 @@ def signup():
             'promoCode': True
         },
         'discount': 0,
-        'promoCodeUsed': False
+        'promoCodeUsed': False,
+        "tags": []
     })
     sendEmail('Welcome to Kids Fashion Store', email, body="Welcome to our store!\nThank you for signing up. You can now log in to your new account.\nHappy shopping!", html='welcome')
     return jsonify({'success': True})
@@ -582,6 +583,63 @@ def previewEmail(file):
         'code': 123456
     }
     return render_template('mail/'+file+'.html', data=data)
+
+# admin
+@app.route('/admin')
+def admin():
+    loggedIn = session.get('loggedIn', False)
+    if not loggedIn:
+        return redirect('/login?next=admin')
+    user = getUser({'userId': session.get('userId')})
+    if not "admin" in user['tags']:
+        return redirect('/')
+    return render_template('admin.html', userData=user, loggedIn=loggedIn)
+
+@app.route('/admin/products')
+def adminProducts():
+    loggedIn = session.get('loggedIn', False)
+    if not loggedIn:
+        return redirect('/login?next=admin/products')
+    user = getUser({'userId': session.get('userId')})
+    if not "admin" in user['tags']:
+        return redirect('/')
+    
+    brand = request.args.get('brand')
+    category = request.args.get('category')
+    shoeSize = request.args.get('shoeSize')
+    sorting = request.args.get('sorting')
+
+    if not request.args.get('productsPerPage'): productsPerPage = 12
+    else: productsPerPage = int(request.args.get('productsPerPage'))
+    if not request.args.get('page'): page = 1
+    else: page = int(request.args.get('page'))
+
+    products = getProducts()
+    brands = sorted(list(set([p['brand'] for p in products])))
+    categories = sorted(list(set([p['category'] for p in products])))
+    sizes = sorted(list(set([size for p in products for size in p['sizes']])))
+
+    if brand: products = [p for p in products if p['brand'] == brand]
+    if category: products = [p for p in products if p['category'] == category]
+    if shoeSize: products = [p for p in products if int(shoeSize) in p['sizes']]
+
+    if sorting == 'priceLowToHigh': products = sorted(products, key=lambda x: x['price'])
+    elif sorting == 'priceHighToLow': products = sorted(products, key=lambda x: x['price'], reverse=True)
+    elif sorting == 'discountLowToHigh': products = sorted(products, key=lambda x: x['discount'])
+    elif sorting == 'discountHighToLow': products = sorted(products, key=lambda x: x['discount'], reverse=True)
+
+    productsCurrent = products[(page-1)*productsPerPage:page*productsPerPage]
+
+    maxPages = math.ceil(len(products)/productsPerPage)
+
+    user = getUser({'userId': session.get('userId')})
+
+    for n, p in enumerate(productsCurrent):
+        productsCurrent[n]['sizes'] = sorted(p['sizes'])
+
+    print(brand, category, shoeSize, sorting, productsPerPage, page, maxPages, brands, categories, sizes)
+
+    return render_template('adminProducts.html', userData=user, loggedIn=loggedIn, products=productsCurrent, brand=brand, category=category, shoeSize=shoeSize, sorting=sorting, productsPerPage=productsPerPage, page=page, maxPages=maxPages, brands=brands, categories=categories, sizes=sizes)
 
 if __name__ == "__main__":
     # sendEmail('Welcome to Kids Fashion Store', "test@kids.com", body="Welcome to our store!\nThank you for signing up. You can now log in to your new account.\nHappy shopping!", html='welcome')

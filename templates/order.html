@@ -26,7 +26,7 @@
                     <p>Tracking number: Not available yet</p>
                 {% endif %}
                 {% if order.deliveryMethod == "pickUpFromPostOffice" %}
-                    <p>Post Office branch: {{ order.postOfficeBranch }}</p>
+                    <p>Post Office branch: {{ order.postOfficeBranchName }}</p>
                 {% else %}
                     <p>Address: {{ order.address }} {{ order.address2 }}</p>
                     <p>Postal code: {{ order.postalCode }}</p>

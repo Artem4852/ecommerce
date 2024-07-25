@@ -22,7 +22,10 @@
                     <a href="/orders">Orders</a>
                     <a href="/settings">Settings</a>
                     {% if loggedIn %}
-                    <a href="/logout">Log out</a>
+                        <a href="/logout">Log out</a>
+                        {% if "admin" in userData.tags %}
+                        <a href="/admin">Admin</a>
+                        {% endif %}
                     {% endif %}
                 </div>
             </li>

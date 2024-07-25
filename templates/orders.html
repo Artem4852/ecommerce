@@ -25,9 +25,9 @@
                                 <p>Warehouse: {{ item.info.warehouse }}</p>
                                     <div class="row">
                                     <p>To: {{ order.city }}</p>
-                                    {% if order.deliveryMethod == "pickUpFromPostOffice" %}
+                                    <!-- {% if order.deliveryMethod == "pickUpFromPostOffice" %}
                                     <p>Branch: {{ order.postOfficeBranch }}</p>
-                                    {% endif %}
+                                    {% endif %} -->
                                 </div>
                                 {% if order.deliveryMethod == "pickUpFromPostOffice" %}
                                 <p>Type: Pick up from Post Office</p>
