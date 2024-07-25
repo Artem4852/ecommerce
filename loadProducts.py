@@ -29,7 +29,7 @@ sizes_cm = {
 }
 seasons = ['Winter', 'Spring', 'Summer', 'Autumn']
 materials = ['Leather', 'Textile', 'Synthetic', 'Rubber', 'Fur', 'Faux fur', 'Faux leather', 'Eco leather', 'Eco textile', 'Eco rubber']
-warehouses = ['Kyiv', 'Lviv', 'Ternopil', 'Odesa', 'Vinnitsa', 'Dnipro', 'Ivano-Frankivsk']
+warehouses = ['Kyiv', 'Poltava', 'Ternopil', 'Odesa', 'Ivano-Frankivsk']
 
 posts = [f for f in os.listdir('static/img/posts') if os.path.isdir('static/img/posts/' + f)]
 products = database.getProducts()

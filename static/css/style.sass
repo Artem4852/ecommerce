@@ -216,6 +216,23 @@ a.viewMore
     &:hover
         text-decoration: none
 
+a.back
+    display: flex
+    flex-direction: row
+    align-items: center
+    gap: 5px
+    width: 100%
+    text-align: left
+    color: $accent
+    text-decoration: none
+    margin-bottom: 20px
+
+    svg
+        height: 15px
+
+    &:hover
+        text-decoration: underline
+
 label
     font-size: 20px
 
@@ -223,7 +240,7 @@ select
     background-color: $grey-dark
     border: none
     border-radius: 5px
-    padding: 4px 32px 4px 8px
+    padding: 4px 28px 4px 8px
     font-size: 20px
     color: $white
     position: relative
@@ -1200,23 +1217,6 @@ select
         text-align: center
         margin-bottom: 20px
 
-    a.back
-        display: flex
-        flex-direction: row
-        align-items: center
-        gap: 5px
-        width: 100%
-        text-align: left
-        color: $accent
-        text-decoration: none
-        margin-bottom: 20px
-
-        svg
-            height: 15px
-
-        &:hover
-            text-decoration: underline
-
     .toggle
         padding: 15px
         display: flex
@@ -1844,3 +1844,78 @@ select
                     display: flex
                     flex-direction: column
                     gap: 20px
+
+#catalogue.admin
+    a.back
+        margin-bottom: 20px
+
+    input
+        width: fit-content
+        padding: 4px 8px
+        border-radius: 5px
+        border: none
+        font-size: 18px
+        background-color: $grey-dark
+        color: $white
+
+        &:focus
+            outline: none
+
+        &::placeholder
+            color: $grey
+
+#adminProduct
+    width: 100%
+    padding: 0 20px
+    display: flex
+    flex-direction: column
+    align-items: center
+    margin-top: 20px
+    margin-bottom: 50px
+
+    h2
+        width: 100%
+        text-align: center
+        margin-bottom: 20px
+
+    h4
+        font-size: 24px
+        font-weight: 700
+
+    label, input
+        font-size: 18px
+        font-weight: 400
+
+    input
+        width: 50%
+        padding: 4px 8px
+        border-radius: 5px
+        border: none
+        font-size: 18px
+        background-color: $grey-dark
+        color: $white
+
+        &:focus
+            outline: none
+
+        &::placeholder
+            color: $grey
+
+    .input
+        width: 100%
+        display: flex
+        flex-direction: row
+        justify-content: space-between
+
+    .row
+        display: flex
+        flex-direction: row
+        justify-content: space-between
+        gap: 20px
+        width: 100%
+
+    .col
+        display: flex
+        flex-direction: column
+        gap: 20px
+        width: calc( 50% - 10px )

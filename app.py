@@ -411,6 +411,8 @@ def orders():
     productsFeatured = [p for p in products if p['tag'] == 'Featured']
     random.shuffle(productsFeatured)
 
+    print(orders[0]['cart'])
+
     return render_template('orders.html', userData=user, orders=orders, loggedIn=loggedIn, productsFeatured=productsFeatured[:4])
 
 @app.route('/orders/<orderId>/<productId>')
@@ -589,7 +591,7 @@ def previewEmail(file):
 def admin():
     loggedIn = session.get('loggedIn', False)
     if not loggedIn:
-        return redirect('/login?next=admin')
+        return redirect('/login')
     user = getUser({'userId': session.get('userId')})
     if not "admin" in user['tags']:
         return redirect('/')
@@ -599,7 +601,7 @@ def admin():
 def adminProducts():
     loggedIn = session.get('loggedIn', False)
     if not loggedIn:
-        return redirect('/login?next=admin/products')
+        return redirect('/login')
     user = getUser({'userId': session.get('userId')})
     if not "admin" in user['tags']:
         return redirect('/')
@@ -637,9 +639,23 @@ def adminProducts():
     for n, p in enumerate(productsCurrent):
         productsCurrent[n]['sizes'] = sorted(p['sizes'])
 
-    print(brand, category, shoeSize, sorting, productsPerPage, page, maxPages, brands, categories, sizes)
-
     return render_template('adminProducts.html', userData=user, loggedIn=loggedIn, products=productsCurrent, brand=brand, category=category, shoeSize=shoeSize, sorting=sorting, productsPerPage=productsPerPage, page=page, maxPages=maxPages, brands=brands, categories=categories, sizes=sizes)
+
+@app.route('/admin/products/edit/<productId>')
+def adminProductEdit(productId):
+    loggedIn = session.get('loggedIn', False)
+    if not loggedIn:
+        return redirect('/login')
+    user = getUser({'userId': session.get('userId')})
+    if not "admin" in user['tags']:
+        return redirect('/')
+    product = database.getProduct({'id': int(productId)})
+    return render_template('adminProductEdit.html', userData=user, loggedIn=loggedIn, product=product)
+
+    
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template('404.html'), 404
 
 if __name__ == "__main__":
     # sendEmail('Welcome to Kids Fashion Store', "test@kids.com", body="Welcome to our store!\nThank you for signing up. You can now log in to your new account.\nHappy shopping!", html='welcome')

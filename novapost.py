@@ -77,11 +77,11 @@ class NovaAPI():
     def calculateShippingPrice(self, warehouse, destination, products):
         print(warehouse, destination, products)
         divisionNumber = None
-        if warehouse == 'Kyiv': divisionNumber = "11/99"
-        elif warehouse == 'Poltava': divisionNumber = "91/3"
-        elif warehouse == 'Ternopil': divisionNumber = "602/15"
-        elif warehouse == 'Odesa': divisionNumber = "55/60"
-        elif warehouse == 'Ivano-Frankivsk': divisionNumber = "77/3"
+        if warehouse.lower() == 'kyiv': divisionNumber = "11/99"
+        elif warehouse.lower() == 'poltava': divisionNumber = "91/3"
+        elif warehouse.lower() == 'ternopil': divisionNumber = "602/15"
+        elif warehouse.lower() == 'odesa': divisionNumber = "55/60"
+        elif warehouse.lower() == 'ivano-frankivsk': divisionNumber = "77/3"
 
         totalDeliveryCost = 0
         form = {

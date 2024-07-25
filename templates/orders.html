@@ -22,7 +22,7 @@
                                 <p class="infoQuantity">Quantity: {{ item.quantity }}</p>
                             </div>
                             <div class="col">
-                                <p>Warehouse: {{ item.info.warehouse }}</p>
+                                <p>Warehouse: {{ item.info.warehouses[item.size | string] }}</p>
                                     <div class="row">
                                     <p>To: {{ order.city }}</p>
                                     <!-- {% if order.deliveryMethod == "pickUpFromPostOffice" %}

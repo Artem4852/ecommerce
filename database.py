@@ -69,10 +69,23 @@ class Database:
 if __name__ == "__main__":
     database = Database()
     products = database.getProducts()
+
+    warehouses_names = ['Kyiv', 'Poltava', 'Ternopil', 'Odesa', 'Ivano-Frankivsk']
+
     for n, product in enumerate(products):
         print(f"Editing {n+1}/{len(products)}")
-        if product['warehouse'] in ['Lviv', 'Vinnitsa', 'Dnipro']:
-            database.updateProduct(product['id'], {'warehouse': 'Kyiv'})
+        sizes = product['sizes']
+        warehouses = {}
+        sizes1 = sizes[:len(sizes)//2]
+        sizes2 = sizes[len(sizes)//2:]
+        warehouse1 = random.choice(warehouses_names)
+        warehouse2 = random.choice(warehouses_names)
+        for size in sizes1:
+            warehouses[str(size)] = warehouse1
+        for size in sizes2:
+            warehouses[str(size)] = warehouse2
+        database.updateProduct(product['id'], {'warehouses': warehouses})
+        database.editProduct(product['id'], ['warehouse'])
     #     img = product['img']
     #     if not os.path.exists(f"static/{img}"):
     #         database.removeProduct(product['id'])

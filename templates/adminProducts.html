@@ -4,8 +4,16 @@
 
 <body>
     {% include 'partials/header.html' %}
-    <section id="catalogue">
+    <section id="catalogue" class="admin">
         <h2>Products Panel</h2>
+        <a class="back" href="/admin">
+            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="21" viewBox="0 0 12 21" fill="none">
+                <path
+                    d="M10.1911 1.74921e-06L12 1.86375L3.61783 10.5L12 19.1362L10.1911 21L-9.8941e-07 10.5L10.1911 1.74921e-06Z"
+                    fill="#E352BA" />
+            </svg>
+            Back
+        </a>
         <div class="filtering">
             <div class="filter">
                 <label for="brand">Brand</label>
@@ -126,5 +134,6 @@
     {% include 'partials/newsletter.html' %}
     {% include 'partials/footer.html' %}
     <script src="{{ url_for('static', filename='js/shop.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/admin.js') }}"></script>
 </body>
 </html>

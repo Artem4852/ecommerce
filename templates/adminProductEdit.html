@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+{% include 'partials/head.html' %}
+
+<body>
+    {% include 'partials/header.html' %}
+    <section id="adminProduct">
+        <h2>Edit product</h2>
+        <a class="back" href="/admin">
+            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="21" viewBox="0 0 12 21" fill="none">
+                <path
+                    d="M10.1911 1.74921e-06L12 1.86375L3.61783 10.5L12 19.1362L10.1911 21L-9.8941e-07 10.5L10.1911 1.74921e-06Z"
+                    fill="#E352BA" />
+            </svg>
+            Back
+        </a>
+        <div class="row">
+            <div class="col">
+                <h4>Information</h4>
+                <div class="input">
+                    <label for="inputProductId">Product id</label>
+                    <input type="number" value="{{ product.id }}" disabled>
+                </div>
+                <div class="input">
+                    <label for="inputCategory">Category</label>
+                    <input type="text" value="{{ product.category }}">
+                </div>
+                <div class="input">
+                    <label for="inputBrand">Brand</label>
+                    <input type="text" value="{{ product.brand }}">
+                </div>
+                <div class="input">
+                    <label for="inputSizes">sizes</label>
+                    <input type="text" value="{{ product.sizes[0] }}{% for size in product.sizes[1:] %}, {{ size }}{% endfor %}">
+                </div>
+                <div class="input">
+                    <label for="inputSeason">Season</label>
+                    <input type="text" value="{{ product.additionalInformation.season }}">
+                </div>
+                <div class="input">
+                    <label for="inputMaterialOuter">Outer material</label>
+                    <input type="text" value="{{ product.additionalInformation.outerMaterial }}">
+                </div>
+                <div class="input">
+                    <label for="inputMaterialInner">Inner material</label>
+                    <input type="text" value="{{ product.additionalInformation.innerMaterial }}">
+                </div>
+                <div class="input">
+                    <label for="inputMaterialInsole">Insole material</label>
+                    <input type="text" value="{{ product.additionalInformation.insoleMaterial }}">
+                </div>
+                <div class="input">
+                    <label for="inputInsoleLengths">Insole lengths</label>
+                    <input type="text" value="{% for key, value in product.sizesCm.items() %}{{ key }} ({{ value }} cm){% if not loop.last %}, {% endif %}{% endfor %}">
+                </div>
+                <div class="input">
+                    <label for="inputQuantitiesLeft">Quantities</label>
+                    <input type="text" value="{% for key, value in product.maxQuantities.items() %}{{ key }} ({{ value }}){% if not loop.last %}, {% endif %}{% endfor %}">
+                </div>
+                <div class="input">
+                    <label for="inputQuantitiesLeft">Warehouses</label>
+                    <input type="text" value="{% for key, value in product.warehouses.items() %}{{ key }} ({{ value }}){% if not loop.last %}, {% endif %}{% endfor %}">
+                </div>
+            </div>
+            <div class="col">
+                <h4>Images</h4>
+                <div class="images">
+                    {% for img in product.images %}
+                    <div class="image">
+                        <img src="{{ url_for('static', filename=img) }}" alt="">
+                    </div>
+                    {% endfor %}
+                    <div class="add" onclick="triggerInput()">
+                        +
+                        <input type="file" id="inputNewImg" style="display: none;" onchange="addImg()">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    {% include 'partials/newsletter.html' %}
+    {% include 'partials/footer.html' %}
+    <script src="{{ url_for('static', filename='js/shop.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/admin.js') }}"></script>
+</body>
+</html>

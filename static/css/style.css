@@ -211,6 +211,24 @@ a.viewMore:hover {
   text-decoration: none;
 }
 
+a.back {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 5px;
+  width: 100%;
+  text-align: left;
+  color: #E352BA;
+  text-decoration: none;
+  margin-bottom: 20px;
+}
+a.back svg {
+  height: 15px;
+}
+a.back:hover {
+  text-decoration: underline;
+}
+
 label {
   font-size: 20px;
 }
@@ -219,7 +237,7 @@ select {
   background-color: #999999;
   border: none;
   border-radius: 5px;
-  padding: 4px 32px 4px 8px;
+  padding: 4px 28px 4px 8px;
   font-size: 20px;
   color: #f1f1f1;
   position: relative;
@@ -1199,23 +1217,6 @@ select::-webkit-inner-spin-button, select::-webkit-outer-spin-button {
   text-align: center;
   margin-bottom: 20px;
 }
-#checkout a.back {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 5px;
-  width: 100%;
-  text-align: left;
-  color: #E352BA;
-  text-decoration: none;
-  margin-bottom: 20px;
-}
-#checkout a.back svg {
-  height: 15px;
-}
-#checkout a.back:hover {
-  text-decoration: underline;
-}
 #checkout .toggle {
   padding: 15px;
   display: flex;
@@ -1845,6 +1846,82 @@ select::-webkit-inner-spin-button, select::-webkit-outer-spin-button {
   display: flex;
   flex-direction: column;
   gap: 20px;
+}
+
+#catalogue.admin a.back {
+  margin-bottom: 20px;
+}
+#catalogue.admin input {
+  width: fit-content;
+  padding: 4px 8px;
+  border-radius: 5px;
+  border: none;
+  font-size: 18px;
+  background-color: #999999;
+  color: #f1f1f1;
+}
+#catalogue.admin input:focus {
+  outline: none;
+}
+#catalogue.admin input::placeholder {
+  color: #E0E0E0;
+}
+
+#adminProduct {
+  width: 100%;
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 50px;
+}
+#adminProduct h2 {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 20px;
+}
+#adminProduct h4 {
+  font-size: 24px;
+  font-weight: 700;
+}
+#adminProduct label, #adminProduct input {
+  font-size: 18px;
+  font-weight: 400;
+}
+#adminProduct input {
+  width: 50%;
+  padding: 4px 8px;
+  border-radius: 5px;
+  border: none;
+  font-size: 18px;
+  background-color: #999999;
+  color: #f1f1f1;
+}
+#adminProduct input:focus {
+  outline: none;
+}
+#adminProduct input::placeholder {
+  color: #E0E0E0;
+}
+#adminProduct .input {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+#adminProduct .row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 20px;
+  width: 100%;
+}
+#adminProduct .col {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: calc(50% - 10px);
 }
 
 /*# sourceMappingURL=style.css.map */
