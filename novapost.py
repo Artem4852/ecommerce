@@ -8,7 +8,8 @@ class NovaAPI():
         self.apiKey = os.getenv('NOVA_API_KEY')
         self.endpoints = {
             'ukraine': 'https://api.novaposhta.ua/v.1.0/',
-            'europe': 'https://api.novapost.com/v.1.0/'
+            'europe': 'https://api.novapost.com/v.1.0/',
+            'new': 'https://api.novaposhta.ua/v2.0/json/'
         }
         self.session = requests.Session()
         self.tokenExpiration = None
@@ -73,20 +74,26 @@ class NovaAPI():
             return self.loadNovaPostData()['cities']
         return self.loadNovaPostData()['cities'][countryCode]
     
-    def calculateShippingPrice(self, warehouse, destination):
+    def calculateShippingPrice(self, warehouse, destination, products):
         divisionNumber = None
-        if warehouse == 'Kyiv': divisionNumber = "11/159"
+        if warehouse == 'Kyiv': divisionNumber = "11/99"
+        elif warehouse == 'Poltava': divisionNumber = "91/3"
+        elif warehouse == 'Ternopil': divisionNumber = "602/15"
+        elif warehouse == 'Odesa': divisionNumber = "55/60"
+        elif warehouse == 'Ivano-Frankivsk': divisionNumber = "77/3"
+
+        totalDeliveryCost = 0
         form = {
             "parcels": [
                 {
                     "cargoCategory": "parcel",
-                    "insuranceCost": "1",
+                    "insuranceCost": 0,
                     "rowNumber": 1,
-                    "width": 100,
-                    "length": 200,
+                    "width": 230,
+                    "length": 160,
                     "height": 100,
-                    "actualWeight": 1000,
-                    "volumetricWeight": 1000
+                    "actualWeight": 0,
+                    "volumetricWeight": 0,
                 }
             ],
             "sender": {
@@ -98,13 +105,28 @@ class NovaAPI():
                 "divisionNumber": destination['divisionNumber']
             }
         }
-        r = self.session.post(self.endpoints['ukraine']+'shipments/calculations', json=form)
-        print(r.json())
+        for product in products:
+            form['parcels'][0]['insuranceCost'] = product['price']
+            form['parcels'][0]['actualWeight'] = 1000 if product['category'] in ['Sandals', 'Sneakers'] else 2000
+            form['parcels'][0]['volumetricWeight'] = 1000 if product['category'] in ['Sandals', 'Sneakers'] else 2000
+            form['parcels'][0]['width'] = 230 if product['category'] in ['Sandals', 'Sneakers'] else 330
+            form['parcels'][0]['length'] = 160 if product['category'] in ['Sandals', 'Sneakers'] else 230
+
+            r = self.session.post(self.endpoints['ukraine']+'shipments/calculations', json=form)
+
+            totalDeliveryCost += r.json()['services'][0]['cost']
+        return totalDeliveryCost
 
 
 if __name__ == "__main__":
     nova = NovaAPI()
-    # nova.updateNovaPostData()
-    # with open('divisionsKyiv', 'w') as f:
-        # json.dump(nova.getBranches('PL', 'Wroclaw'), f)
-    nova.calculateShippingPrice('Kyiv', {'countryCode': 'PL', 'divisionNumber': '50/1'})
+    # print(nova.getBranches('PL', 'Wrockl'))
+    # city = 'Poltava'
+    # with open(f'divisions{city}.json', 'w') as f:
+    #     json.dump(nova.getBranches('UA', city), f)
+    price = nova.calculateShippingPrice('Kyiv', {'countryCode': 'UA', 'divisionNumber': '12/8'}, 
+                                        [
+                                            # {'category': 'Sandals', 'price': 2199}, 
+                                            {'category': 'Boots', 'price': 1999}
+                                        ])
+    print(price)
