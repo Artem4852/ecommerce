@@ -13,7 +13,7 @@
                 <div class="card">
                     <div class="img">
                         <a href="/product/{{ item.info.id }}">
-                        <img src="{{ url_for('static', filename=item.info.img) }}" alt="">
+                        <img src="{{ url_for('static', filename='img/products/'+item.id|string+'/'+item.info.img) }}" alt="">
                         </a>
                         <svg id="favorite{{ item['id'] }}" onclick="favorite('{{ item['id'] }}')"
                             class="favoriteIcon {% if item['id'] in userData['favorites'] %}favorite{% endif %}"

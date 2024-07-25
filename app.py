@@ -652,6 +652,22 @@ def adminProductEdit(productId):
     product = database.getProduct({'id': int(productId)})
     return render_template('adminProductEdit.html', userData=user, loggedIn=loggedIn, product=product)
 
+@app.route('/admin/product/image', methods=['POST'])
+def adminProductImage():
+    file = request.files['file']
+    productId = request.args.get('productId')
+    if not file or not productId:
+        return jsonify({'success': False, 'error': 'No file or product id'})
+    existing = sorted([im.split('.')[0] for im in os.listdir(f'static/img/products/{productId}') if im.endswith('.jpg')])
+    if existing:
+        new = str(int(existing[-1])+1)
+    else:
+        new = '1'
+    file.save(f'static/img/products/{productId}/{new}.jpg')
+    product = database.getProduct({'id': int(productId)})
+    images = product['images'] + [f'{new}.jpg']
+    database.updateProduct(int(productId), {'images': images})
+    return jsonify({'success': True, 'image': f'{new}.jpg'})
     
 @app.errorhandler(404)
 def page_not_found(e):

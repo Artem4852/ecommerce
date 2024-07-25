@@ -19,7 +19,7 @@ class NovaAPI():
         if self.tokenExpiration and self.tokenExpiration < datetime.now():
             return self.token
         
-        r = requests.get('https://api.novaposhta.ua/v.1.0/clients/authorization?apiKey='+self.apiKey)
+        r = requests.get(self.endpoints['ukraine'] + 'clients/authorization?apiKey='+self.apiKey)
         self.tokenExpiration = datetime.now()+timedelta(hours=1)
 
         self.session.headers.update({'Authorization': r.json()['jwt']})
