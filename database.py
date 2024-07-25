@@ -71,8 +71,9 @@ if __name__ == "__main__":
     products = database.getProducts()
     for n, product in enumerate(products):
         print(f"Editing {n+1}/{len(products)}")
-        database.updateProduct(product['id'], {'images': sorted(product['images'])})
+        if product['warehouse'] in ['Lviv', 'Vinnitsa', 'Dnipro']:
+            database.updateProduct(product['id'], {'warehouse': 'Kyiv'})
     #     img = product['img']
     #     if not os.path.exists(f"static/{img}"):
     #         database.removeProduct(product['id'])
-        # database.updateProduct(product['id'], {'img': product['img'].replace('../static/', '')})
+        # database.updateProduct(product['id'], {'img': product['img'].replace('../static/', '')})D

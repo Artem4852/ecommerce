@@ -275,6 +275,7 @@ def checkout():
         subtotal = 0
         for item in user['cart']:
             product = database.getProduct({'id': item['productId']})
+            del product['_id']
             subtotal += int(product['price'])*int(item['quantity'])
             cartItems.append({'id': item['productId'], 'size': item['size'], 'quantity': item['quantity'], 'info': product})
 
@@ -358,6 +359,26 @@ def getBranches():
     except:
         return jsonify({'success': False, 'error': 'Error fetching branches'})
     return jsonify({'success': True, 'branches': branches})
+
+@app.route('/getShippingPrice', methods=['POST'])
+def getShippingPrice():
+    countryCode = request.json.get('countryCode')
+    branch = request.json.get('branch')
+    cart = request.json.get('cart')
+
+    warehouses = {}
+    for product in cart:
+        warehouse = product['info']['warehouse']
+        if warehouse not in warehouses:
+            warehouses[warehouse] = []
+        warehouses[warehouse].append(product)
+
+    total = 0
+    for warehouse, products in warehouses.items():
+        price = nova.calculateShippingPrice(warehouse, {'countryCode': countryCode, 'branch': branch}, products)
+        total += price
+
+    return jsonify({'success': True, 'price': total})
 
 @app.route('/orderConfirmation')
 def orderConfirmation():

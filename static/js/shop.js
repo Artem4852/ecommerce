@@ -404,6 +404,7 @@ function selectCity() {
 
 function selectDeliveryMethod() {
     const deliveryMethod = document.getElementById('inputDeliveryMethod').value;
+    updateShippingPrice();
     if (deliveryMethod === 'pickUpFromPostOffice') {
         document.getElementById('wrapperInputPostOfficeBranch').classList.remove('disabled');
         document.getElementById('inputAddress').classList.add('disabled');
@@ -464,6 +465,45 @@ async function checkPromoCode() {
     document.getElementById('discount').innerHTML = discount;
     document.getElementById('total').innerHTML = subtotal - discount + delivery;
     return;
+}
+
+function updateShippingPrice() {
+    const countryCode = document.getElementById('inputCountry').value;
+    const city = document.getElementById('inputCity').value;
+    const deliveryMethod = document.getElementById('inputDeliveryMethod').value;
+
+    let price = 0;
+    if (countryCode == 'UA') {
+        if (city.includes('city')) {
+            if (deliveryMethod == 'pickUpFromPostOffice') price = 80;
+            else price = 110;
+        }
+        else
+            if (deliveryMethod == 'pickUpFromPostOffice') price = 110;
+            else price = 140;
+    }
+    else price = 600;
+    document.getElementById('delivery').innerHTML = price;
+    document.getElementById('total').innerHTML = parseInt(document.getElementById('subtotal').innerHTML) - parseInt(document.getElementById('discount').innerHTML) + parseInt(price);
+
+    // fetch('/getShippingPrice', {
+    //     method: 'POST',
+    //     body: JSON.stringify({ "countryCode": countryCode, "branch": branch, "cart": cart }),
+    //     headers: {
+    //         'Content-Type': 'application/json',
+    //     },
+    // })
+    //     .then(response => response.json())
+    //     .then(data => {
+    //         if (data.success) {
+    //             price = data.price;
+    //         } else {
+    //             if (countryCode == 'UA') price = 100;
+    //             else price = 400;
+    //         }
+    //         document.getElementById('delivery').innerHTML = price;
+    //         document.getElementById('total').innerHTML = parseInt(document.getElementById('subtotal').innerHTML) - parseInt(document.getElementById('discount').innerHTML) + parseInt(data.price);
+    //     });
 }
 
 document.getElementById('inputPromoCode').addEventListener('blur', checkPromoCode);

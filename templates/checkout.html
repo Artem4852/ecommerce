@@ -88,9 +88,9 @@
                     </svg>
                 </div>
                 <input class="disabled" type="text" id="inputPostOfficeBranchNoselect" placeholder="Post Office Branch">
-                <input class="{% if shippingData.deliveryMethod != "addressDelivery" %}disabled{% endif %}" type="text" id="inputAddress" placeholder="Street Address" value="shippingData.address">
-                <input class="{% if shippingData.deliveryMethod != "addressDelivery" %}disabled{% endif %}" type="text" id="inputAddress-2" placeholder="Apartment, Building, Floor, etc. (Optional)" value="shippingData.address2">
-                <input class="{% if shippingData.deliveryMethod != "addressDelivery" %}disabled{% endif %}" type="text" name="postalCode" id="inputPostalCode" placeholder="ZIP/Postal Code" value="shippingData.postalCode">
+                <input class="{% if shippingData.deliveryMethod != "addressDelivery" %}disabled{% endif %}" type="text" id="inputAddress" placeholder="Street Address" value="{{ shippingData.address }}">
+                <input class="{% if shippingData.deliveryMethod != "addressDelivery" %}disabled{% endif %}" type="text" id="inputAddress-2" placeholder="Apartment, Building, Floor, etc. (Optional)" value="{{ shippingData.address2 }}">
+                <input class="{% if shippingData.deliveryMethod != "addressDelivery" %}disabled{% endif %}" type="text" name="postalCode" id="inputPostalCode" placeholder="ZIP/Postal Code" value="{{ shippingData.postalCode }}">
                 <div class="checkbox">
                     <div class="box" onclick="checkSaveshippingData()">
                         <svg id="inputCheckShipping" xmlns="http://www.w3.org/2000/svg" width="33" height="24" viewBox="0 0 33 24" fill="none">
@@ -100,9 +100,7 @@
                     <p>Save this data for fast checkout</p>
                 </div>
             </div>
-            <p class="side">If you need your order to be shipped within Ukraine, it is possible to choose between Pick Up from Post Office or
-            Address Delivery, in European countries only Pick Up from Post Office option is available.
-            Address Delivery costs more than Pick Up from Post Office.</p>
+            <p class="side">If you need your order to be shipped within Ukraine, it is possible to choose between Pick Up from Post Office or Address Delivery, in European countries only Pick Up from Post Office option is available. <br>Address Delivery costs more than Pick Up from Post Office.<br><br>Approximate delivery prices: <br>Within Ukraine - pick up from post office: 80 uah / 110 uah (city / village); address devliery: 110 uah / 140 uah (city / village)<br>Outside Ukraine - pick up from post office: 400-600 uah</p>
         </div>
 
         <div class="toggle" onclick="toggleForm('payment')">
@@ -143,8 +141,7 @@
             </div>
             <p class="side">There are two payment options: <br>
             1st is full prepayment - you pay full sum and afterwards receive the product. <br>
-            2nd is post payment - before receiving the product you only pay for delivery and upon receiving it you pay the rest. <br>
-            You will not be charged immediately. First, the money on your credit card will be frozen. If an order is confirmed, you will be charged. If an order is not confirmed, the money will be unfrozen.</p>
+            2nd is post payment - before receiving the product you only pay for delivery and upon receiving it you pay the rest.</p>
         </div>
 
         <!-- contact info -->
@@ -224,7 +221,7 @@
             <div class="orderinfo">
                 <h4>Subtotal: <span id="subtotal">{{ subtotal }}</span> uah</h4>
                 <h4>Discount: <span id="discount">0</span> uah</h4>
-                <h4>Delivery: <span id="delivery">0</span> uah</h4>
+                <h4>Delivery (approx.): <span id="delivery">0</span> uah</h4>
                 <h4>Total: <span id="total">{{ subtotal }}</span> uah</h4>
             </div>
          </div>
@@ -251,7 +248,21 @@
         const deliveryCountries = {{ deliveryCountries | tojson }};
         const countryCodes = {{ countryCodes | tojson }};
         const codesCountry = {{ codesCountry | tojson }};
+        const cart = {{ cartItems | tojson }};
         const deliveryCities = {{ deliveryCities | tojson }};
+        updateShippingPrice();
+        {% if shippingData.country %}
+            selectCountry();
+            document.getElementById('inputCountry').appendChild(new Option('{{ codesCountry[shippingData.country] | capitalize }}', '{{ shippingData.country }}', true, true));
+        {% endif %}
+        {% if shippingData.city %}
+            selectCity();
+            document.getElementById('inputCity').appendChild(new Option('{{ shippingData.city | capitalize }}', '{{ shippingData.city }}', true, true));
+        {% endif %}
+        {% if shippingData.deliveryMethod %}
+            selectDeliveryMethod();
+            document.getElementById('inputPostOfficeBranch').appendChild(new Option('{{ shippingData.postOfficeBranch | capitalize }}', '{{ shippingData.postOfficeBranch }}', true, true));
+        {% endif %}
     </script>
 </body>
 </html>

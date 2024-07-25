@@ -1221,6 +1221,7 @@ select::-webkit-inner-spin-button, select::-webkit-outer-spin-button {
   width: fit-content;
 }
 #checkout .shipping, #checkout .payment, #checkout .contact {
+  width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;

@@ -75,6 +75,7 @@ class NovaAPI():
         return self.loadNovaPostData()['cities'][countryCode]
     
     def calculateShippingPrice(self, warehouse, destination, products):
+        print(warehouse, destination, products)
         divisionNumber = None
         if warehouse == 'Kyiv': divisionNumber = "11/99"
         elif warehouse == 'Poltava': divisionNumber = "91/3"
@@ -102,18 +103,20 @@ class NovaAPI():
             },
             "recipient": {
                 "countryCode": destination['countryCode'],
-                "divisionNumber": destination['divisionNumber']
+                "divisionNumber": destination['branch']
             }
         }
-        for product in products:
-            form['parcels'][0]['insuranceCost'] = product['price']
-            form['parcels'][0]['actualWeight'] = 1000 if product['category'] in ['Sandals', 'Sneakers'] else 2000
-            form['parcels'][0]['volumetricWeight'] = 1000 if product['category'] in ['Sandals', 'Sneakers'] else 2000
-            form['parcels'][0]['width'] = 230 if product['category'] in ['Sandals', 'Sneakers'] else 330
-            form['parcels'][0]['length'] = 160 if product['category'] in ['Sandals', 'Sneakers'] else 230
+        groups = [products[i:i+2] for i in range(0, len(products), 2)]
+        for group in groups:
+            form['parcels'][0]['insuranceCost'] = sum([product['info']['price'] for product in group])
+            form['parcels'][0]['actualWeight'] = 1000 * len(group)
+            form['parcels'][0]['volumetricWeight'] = 1000 * len(group)
+            form['parcels'][0]['width'] = 230 if form['parcels'][0]['volumetricWeight'] == 1000 else 330
+            form['parcels'][0]['length'] = 160 if form['parcels'][0]['volumetricWeight'] == 1000 else 230
 
             r = self.session.post(self.endpoints['ukraine']+'shipments/calculations', json=form)
 
+            print(r.json())
             totalDeliveryCost += r.json()['services'][0]['cost']
         return totalDeliveryCost
 
@@ -124,9 +127,9 @@ if __name__ == "__main__":
     # city = 'Poltava'
     # with open(f'divisions{city}.json', 'w') as f:
     #     json.dump(nova.getBranches('UA', city), f)
-    price = nova.calculateShippingPrice('Kyiv', {'countryCode': 'UA', 'divisionNumber': '12/8'}, 
+    price = nova.calculateShippingPrice('Kyiv', {'countryCode': 'UA', 'branch': '12/8'}, 
                                         [
-                                            # {'category': 'Sandals', 'price': 2199}, 
-                                            {'category': 'Boots', 'price': 1999}
+                                            {'info': {'category': 'Sandals', 'price': 2199}}, 
+                                            {'info': {'category': 'Boots', 'price': 1999}}
                                         ])
     print(price)
