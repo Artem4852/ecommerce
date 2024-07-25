@@ -1,0 +1,350 @@
+[
+  {
+    "id": 1,
+    "name": "WROCŁAW 1",
+    "shortName": "WROCŁAW 1",
+    "externalId": "cf909742-1bee-4c97-8d0e-16de519c3220",
+    "source": "NPAX",
+    "countryCode": "PL",
+    "settlement": {
+      "id": 26061,
+      "name": "Wroclaw",
+      "region": {
+        "id": 344,
+        "name": "Wrocław County",
+        "parent": {
+          "id": 2,
+          "name": "Lower Silesian voivodeship"
+        }
+      }
+    },
+    "address": "50-231, Polska, Województwo dolnośląskie, Wrocław County, Wrocław, Trzebnicka, 50/1A",
+    "number": "50/1",
+    "status": "Working",
+    "customerServiceAvailable": true,
+    "divisionCategory": "PostBranch",
+    "publicPhones": [],
+    "internalPhones": [],
+    "responsiblePerson": "Tykhonskyi Maksym",
+    "partner": null,
+    "ownerDivision": null,
+    "latitude": 51.1271131131,
+    "longitude": 17.0360840848,
+    "distance": null,
+    "maxWeightPlaceSender": 200000,
+    "maxLengthPlaceSender": 3000,
+    "maxWidthPlaceSender": 1700,
+    "maxHeightPlaceSender": 1700,
+    "maxWeightPlaceRecipient": 200000,
+    "maxLengthPlaceRecipient": 3000,
+    "maxWidthPlaceRecipient": 1700,
+    "maxHeightPlaceRecipient": 1700,
+    "prohibitedSending": false,
+    "prohibitedIssuance": false,
+    "maxCostPlace": 999999,
+    "maxDeclaredCostPlace": 999999,
+    "workSchedule": [
+      {
+        "day": "sunday",
+        "from": "09:00",
+        "to": "18:00",
+        "breakFrom": null,
+        "breakTo": null
+      },
+      {
+        "day": "monday",
+        "from": "08:00",
+        "to": "20:00",
+        "breakFrom": null,
+        "breakTo": null
+      },
+      {
+        "day": "tuesday",
+        "from": "08:00",
+        "to": "20:00",
+        "breakFrom": null,
+        "breakTo": null
+      },
+      {
+        "day": "wednesday",
+        "from": "08:00",
+        "to": "20:00",
+        "breakFrom": null,
+        "breakTo": null
+      },
+      {
+        "day": "thursday",
+        "from": "08:00",
+        "to": "20:00",
+        "breakFrom": null,
+        "breakTo": null
+      },
+      {
+        "day": "friday",
+        "from": "08:00",
+        "to": "20:00",
+        "breakFrom": null,
+        "breakTo": null
+      },
+      {
+        "day": "saturday",
+        "from": "09:00",
+        "to": "18:00",
+        "breakFrom": null,
+        "breakTo": null
+      }
+    ],
+    "settings": [
+      {
+        "id": 57514,
+        "divisionId": 1,
+        "from": "2024-05-02T07:22:33.038593Z",
+        "to": "3023-05-02T07:22:33.038607Z",
+        "name": "divisionsWithinOneLocation",
+        "value": "1860229",
+        "createdAt": "2022-09-29T12:40:39.000000Z",
+        "updatedAt": "2024-05-15T12:40:11.810057Z",
+        "deletedAt": null
+      }
+    ],
+    "createdAt": "2022-09-29T12:40:39.000000Z",
+    "updatedAt": "2024-05-15T12:40:12.892541Z",
+    "deletedAt": null,
+    "fullAddress": {
+      "country": "Poland",
+      "settlement": "Wrocław",
+      "street": "Trzebnicka",
+      "building": "50/1A",
+      "note": "",
+      "zipcode": "50-231"
+    }
+  },
+  {
+    "id": 948361,
+    "name": "WROCŁAW 2",
+    "shortName": "WROCŁAW 2",
+    "externalId": "c2c82ff0-240a-49d3-941b-038e997a8607",
+    "source": "NPAX",
+    "countryCode": "PL",
+    "settlement": {
+      "id": 26061,
+      "name": "Wroclaw",
+      "region": {
+        "id": 344,
+        "name": "Wrocław County",
+        "parent": {
+          "id": 2,
+          "name": "Lower Silesian voivodeship"
+        }
+      }
+    },
+    "address": "53-033, Polska, Województwo dolnośląskie, Wrocław County, Wrocław, Zwycięska, 35",
+    "number": "53/2",
+    "status": "Working",
+    "customerServiceAvailable": true,
+    "divisionCategory": "PostBranch",
+    "publicPhones": [],
+    "internalPhones": [],
+    "responsiblePerson": "Tykhonskyi Maksym",
+    "partner": null,
+    "ownerDivision": null,
+    "latitude": 51.0601165383,
+    "longitude": 17.0059991118,
+    "distance": null,
+    "maxWeightPlaceSender": 200000,
+    "maxLengthPlaceSender": 3000,
+    "maxWidthPlaceSender": 1700,
+    "maxHeightPlaceSender": 1700,
+    "maxWeightPlaceRecipient": 200000,
+    "maxLengthPlaceRecipient": 3000,
+    "maxWidthPlaceRecipient": 1700,
+    "maxHeightPlaceRecipient": 1700,
+    "prohibitedSending": false,
+    "prohibitedIssuance": false,
+    "maxCostPlace": 999999,
+    "maxDeclaredCostPlace": 999999,
+    "workSchedule": [
+      {
+        "day": "sunday",
+        "from": "09:00",
+        "to": "18:00",
+        "breakFrom": null,
+        "breakTo": null
+      },
+      {
+        "day": "monday",
+        "from": "08:00",
+        "to": "20:00",
+        "breakFrom": null,
+        "breakTo": null
+      },
+      {
+        "day": "tuesday",
+        "from": "08:00",
+        "to": "20:00",
+        "breakFrom": null,
+        "breakTo": null
+      },
+      {
+        "day": "wednesday",
+        "from": "08:00",
+        "to": "20:00",
+        "breakFrom": null,
+        "breakTo": null
+      },
+      {
+        "day": "thursday",
+        "from": "08:00",
+        "to": "20:00",
+        "breakFrom": null,
+        "breakTo": null
+      },
+      {
+        "day": "friday",
+        "from": "08:00",
+        "to": "20:00",
+        "breakFrom": null,
+        "breakTo": null
+      },
+      {
+        "day": "saturday",
+        "from": "09:00",
+        "to": "18:00",
+        "breakFrom": null,
+        "breakTo": null
+      }
+    ],
+    "settings": [
+      {
+        "id": 59279,
+        "divisionId": 948361,
+        "from": "2024-06-18T11:20:11.336912Z",
+        "to": "3023-06-18T11:20:11.336924Z",
+        "name": "divisionsWithinOneLocation",
+        "value": "1862788",
+        "createdAt": "2022-12-23T13:10:01.195246Z",
+        "updatedAt": "2024-06-18T11:20:11.452977Z",
+        "deletedAt": null
+      }
+    ],
+    "createdAt": "2022-12-23T13:10:01.195246Z",
+    "updatedAt": "2024-06-18T11:20:12.503174Z",
+    "deletedAt": null,
+    "fullAddress": {
+      "country": "Poland",
+      "settlement": "Wrocław",
+      "street": "Zwycięska",
+      "building": "35",
+      "note": "",
+      "zipcode": "53-033"
+    }
+  },
+  {
+    "id": 1911369,
+    "name": "WROCŁAW 3",
+    "shortName": "WROCŁAW 3",
+    "externalId": "c329d958-d6c0-4142-8621-dd76df7fac87",
+    "source": "NPAX",
+    "countryCode": "PL",
+    "settlement": {
+      "id": 26061,
+      "name": "Wroclaw",
+      "region": {
+        "id": 344,
+        "name": "Wrocław County",
+        "parent": {
+          "id": 2,
+          "name": "Lower Silesian voivodeship"
+        }
+      }
+    },
+    "address": "53-659, Polska, Województwo dolnośląskie, Wrocław County, Wrocław, Gen. Władysława Sikorskiego, 5j",
+    "number": "53/3",
+    "status": "Working",
+    "customerServiceAvailable": true,
+    "divisionCategory": "PostBranch",
+    "publicPhones": [],
+    "internalPhones": [],
+    "responsiblePerson": "Oloviannikov Oleh",
+    "partner": null,
+    "ownerDivision": null,
+    "latitude": 51.1141008042,
+    "longitude": 17.0212769649,
+    "distance": null,
+    "maxWeightPlaceSender": 200000,
+    "maxLengthPlaceSender": 3000,
+    "maxWidthPlaceSender": 1700,
+    "maxHeightPlaceSender": 1700,
+    "maxWeightPlaceRecipient": 200000,
+    "maxLengthPlaceRecipient": 3000,
+    "maxWidthPlaceRecipient": 1700,
+    "maxHeightPlaceRecipient": 1700,
+    "prohibitedSending": false,
+    "prohibitedIssuance": false,
+    "maxCostPlace": 99999,
+    "maxDeclaredCostPlace": 99999,
+    "workSchedule": [
+      {
+        "day": "sunday",
+        "from": "09:00",
+        "to": "18:00",
+        "breakFrom": null,
+        "breakTo": null
+      },
+      {
+        "day": "monday",
+        "from": "08:00",
+        "to": "20:00",
+        "breakFrom": null,
+        "breakTo": null
+      },
+      {
+        "day": "tuesday",
+        "from": "08:00",
+        "to": "20:00",
+        "breakFrom": null,
+        "breakTo": null
+      },
+      {
+        "day": "wednesday",
+        "from": "08:00",
+        "to": "20:00",
+        "breakFrom": null,
+        "breakTo": null
+      },
+      {
+        "day": "thursday",
+        "from": "08:00",
+        "to": "20:00",
+        "breakFrom": null,
+        "breakTo": null
+      },
+      {
+        "day": "friday",
+        "from": "08:00",
+        "to": "20:00",
+        "breakFrom": null,
+        "breakTo": null
+      },
+      {
+        "day": "saturday",
+        "from": "09:00",
+        "to": "18:00",
+        "breakFrom": null,
+        "breakTo": null
+      }
+    ],
+    "settings": [],
+    "createdAt": "2024-06-04T09:30:21.689823Z",
+    "updatedAt": "2024-07-08T11:05:43.485885Z",
+    "deletedAt": null,
+    "fullAddress": {
+      "country": "Poland",
+      "settlement": "Wrocław",
+      "street": "Gen. Władysława Sikorskiego",
+      "building": "5j",
+      "note": "",
+      "zipcode": "53-659"
+    }
+  }
+]

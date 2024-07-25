@@ -72,7 +72,39 @@ class NovaAPI():
         if countryCode == None:
             return self.loadNovaPostData()['cities']
         return self.loadNovaPostData()['cities'][countryCode]
+    
+    def calculateShippingPrice(self, warehouse, destination):
+        divisionNumber = None
+        if warehouse == 'Kyiv': divisionNumber = "11/159"
+        form = {
+            "parcels": [
+                {
+                    "cargoCategory": "parcel",
+                    "insuranceCost": "1",
+                    "rowNumber": 1,
+                    "width": 100,
+                    "length": 200,
+                    "height": 100,
+                    "actualWeight": 1000,
+                    "volumetricWeight": 1000
+                }
+            ],
+            "sender": {
+                "countryCode": "UA",
+                "divisionNumber": divisionNumber,
+            },
+            "recipient": {
+                "countryCode": destination['countryCode'],
+                "divisionNumber": destination['divisionNumber']
+            }
+        }
+        r = self.session.post(self.endpoints['ukraine']+'shipments/calculations', json=form)
+        print(r.json())
+
 
 if __name__ == "__main__":
     nova = NovaAPI()
-    nova.updateNovaPostData()
+    # nova.updateNovaPostData()
+    # with open('divisionsKyiv', 'w') as f:
+        # json.dump(nova.getBranches('PL', 'Wroclaw'), f)
+    nova.calculateShippingPrice('Kyiv', {'countryCode': 'PL', 'divisionNumber': '50/1'})
