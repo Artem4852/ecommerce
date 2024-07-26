@@ -5,7 +5,7 @@
 <body>
     {% include 'partials/header.html' %}
     <section id="adminProduct">
-        <h2>Edit product</h2>
+        <h2>Add product</h2>
         <a class="back" href="/admin">
             <svg xmlns="http://www.w3.org/2000/svg" width="12" height="21" viewBox="0 0 12 21" fill="none">
                 <path
@@ -14,80 +14,61 @@
             </svg>
             Back
         </a>
-        {% set sortedSizes = product.sizes | sort %}
-        {% set sortedSizesCm = product.sizesCm | dictsort %}
-        {% set sortedMaxQuantities = product.maxQuantities | dictsort %}
-        {% set sortedWarehouses = product.warehouses | dictsort %}
         <div class="row">
             <div class="col">
                 <h4>Information</h4>
                 <div class="input">
                     <label for="inputProductId">Product id</label>
-                    <input type="number" value="{{ product.id }}" disabled>
+                    <input type="number" value="{{ newId }}" disabled>
                 </div>
                 <div class="input">
                     <label for="inputCategory">Category</label>
-                    <input id="inputCategory" type="text" value="{{ product.category }}">
+                    <input id="inputCategory" type="text" placeholder="Sandals">
                 </div>
                 <div class="input">
                     <label for="inputBrand">Brand</label>
-                    <input id="inputBrand" type="text" value="{{ product.brand }}">
+                    <input id="inputBrand" type="text" placeholder="Geox">
                 </div>
                 <div class="input">
                     <label for="inputPrice">Price</label>
-                    <input id="inputPrice" type="text" value="{{ product.price }}">
+                    <input id="inputPrice" type="text" placeholder="2999">
                 </div>
                 <div class="input">
                     <label for="inputSizes">Sizes</label>
-                    <input id="inputSizes" type="text" value="{{ sortedSizes[0] }}{% for size in sortedSizes[1:] %}, {{ size }}{% endfor %}">
+                    <input id="inputSizes" type="text" placeholder="33, 34, 35">
                 </div>
                 <div class="input">
                     <label for="inputSeason">Season</label>
-                    <input id="inputSeason" type="text" value="{{ product.additionalInformation.season }}">
+                    <input id="inputSeason" type="text" placeholder="Summer/Autumn">
                 </div>
                 <div class="input">
                     <label for="inputMaterialOuter">Outer material</label>
-                    <input id="inputMaterialOuter" type="text" value="{{ product.additionalInformation.outerMaterial }}">
+                    <input id="inputMaterialOuter" type="text" placeholder="Leather">
                 </div>
                 <div class="input">
                     <label for="inputMaterialInner">Inner material</label>
-                    <input id="inputMaterialInner" type="text" value="{{ product.additionalInformation.innerMaterial }}">
+                    <input id="inputMaterialInner" type="text" placeholder="Fur">
                 </div>
                 <div class="input">
                     <label for="inputMaterialInsole">Insole material</label>
-                    <input id="inputMaterialInsole" type="text" value="{{ product.additionalInformation.insoleMaterial }}">
+                    <input id="inputMaterialInsole" type="text" placeholder="Leather">
                 </div>
                 <div class="input">
                     <label for="inputInsoleLengths">Insole lengths</label>
-                    <input id="inputInsoleLengths" type="text" value="{% for key, value in sortedSizesCm %}{{ key }} ({{ value }} cm){% if not loop.last %}, {% endif %}{% endfor %}">
+                    <input id="inputInsoleLengths" type="text" placeholder="33 (20.5 cm), 34 (21 cm), 35 (21.5 cm)">
                 </div>
                 <div class="input">
                     <label for="inputQuantitiesLeft">Quantities</label>
-                    <input id="inputQuantitiesLeft" type="text" value="{% for key, value in sortedMaxQuantities %}{{ key }} ({{ value }}){% if not loop.last %}, {% endif %}{% endfor %}">
+                    <input id="inputQuantitiesLeft" type="text" placeholder="33 (1), 34 (2), 35 (2)">
                 </div>
                 <div class="input">
                     <label for="inputWarehouses">Warehouses</label>
-                    <input id="inputWarehouses" type="text" value="{% for key, value in sortedWarehouses %}{{ key }} ({{ value }}){% if not loop.last %}, {% endif %}{% endfor %}">
+                    <input id="inputWarehouses" type="text" placeholder="33 (Kyiv), 34 (Ternopil), 35 (Odesa)">
                 </div>
             </div>
             <div class="col">
                 <h4>Images</h4>
                 <div class="images" id="images">
-                    {% for img in product.images %}
-                    <div class="imageWrapper" id="image{{ img }}">
-                        <div class="image">
-                            <svg onclick="deleteImage('{{ img }}')" class="favoriteIcon" xmlns="http://www.w3.org/2000/svg" width="36" height="35" viewBox="0 0 36 35" fill="none">
-                                <path
-                                    d="M36 17.5C36 27.165 27.9411 35 18 35C8.05887 35 0 27.165 0 17.5C0 7.83502 8.05887 0 18 0C27.9411 0 36 7.83502 36 17.5Z"
-                                    fill="#E0E0E0" />
-                                <path
-                                    d="M12.7681 28.3332C12.1885 28.3332 11.6924 28.1338 11.2797 27.7349C10.867 27.3359 10.6607 26.8564 10.6607 26.2962V13.0555H9.60697V11.0184H14.8755V9.9999H21.1976V11.0184H26.4661V13.0555H25.4124V26.2962C25.4124 26.8564 25.2061 27.3359 24.7934 27.7349C24.3807 28.1338 23.8846 28.3332 23.305 28.3332H12.7681ZM23.305 13.0555H12.7681V26.2962H23.305V13.0555ZM14.8755 24.2592H16.9829V15.0925H14.8755V24.2592ZM19.0903 24.2592H21.1976V15.0925H19.0903V24.2592Z"
-                                    fill="#1C1B1F" />
-                            </svg>
-                            <img src="{{ url_for('static', filename='img/products/'+product.id|string+'/'+img) }}" alt="">
-                        </div>
-                    </div>
-                    {% endfor %}
                     <div id="addImage" class="add" onclick="triggerInput()">
                         <div class="plus">
                             +
@@ -97,7 +78,7 @@
                 </div>
             </div>
         </div>
-        <button id="buttonUpdateProduct" onclick="updateProduct()">Update product</button>
+        <button id="buttonUpdateProduct" onclick="updateProduct()">Add product</button>
     </section>
     <svg id="deleteIcon" class="favoriteIcon" xmlns="http://www.w3.org/2000/svg" width="36" height="35"
         viewBox="0 0 36 35" fill="none">
@@ -112,8 +93,7 @@
     <script src="{{ url_for('static', filename='js/shop.js') }}"></script>
     <script src="{{ url_for('static', filename='js/admin.js') }}"></script>
     <script>
-        const images = {{ product.images | tojson }};
-        const productId = {{ product.id }};
+        const productId = {{ newId }};
     </script>
 </body>
 </html>

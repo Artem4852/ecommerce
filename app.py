@@ -658,6 +658,9 @@ def adminProductImage():
     productId = request.args.get('productId')
     if not file or not productId:
         return jsonify({'success': False, 'error': 'No file or product id'})
+    
+    os.makedirs(f'static/img/products/{productId}', exist_ok=True)
+
     existing = sorted([im.split('.')[0] for im in os.listdir(f'static/img/products/{productId}') if im.endswith('.jpg')])
     if existing:
         new = str(int(existing[-1])+1)
@@ -685,9 +688,81 @@ def adminProductDeleteImage():
 @app.route('/admin/product/update', methods=['POST'])
 def adminProductUpdate():
     productData = request.json.get('data')
-    # database.updateProduct(int(productId), data)
-    print(productData)
+    productData['sizes'] = [int(size) for size in productData['sizes'].split(',')]
+    productData['maxQuantities'] = {quantity.strip().split(" ")[0].strip(): int(quantity.strip().split(" ")[1].replace("(", "").replace(")", "").strip()) for quantity in productData['maxQuantities'].split(',')}
+    productData['sizesCm'] = {size.strip().split(" ")[0].strip(): float(size.strip().split(" ")[1].replace("cm", "").replace("(", "").replace(")", "").strip()) for size in productData['sizesCm'].split(',')}
+    productData['warehouses'] = {warehouse.strip().split(" ")[0].strip(): warehouse.strip().split(" ")[1].replace("(", "").replace(")", "").strip() for warehouse in productData['warehouses'].split(',')}
+
+    productData['additionalInformation'] = {
+        "innerMaterial": productData['innerMaterial'],
+        "insoleMaterial": productData['insoleMaterial'],
+        "outerMaterial": productData['outerMaterial'],
+        "season": productData['season'],
+    }
+    del productData['innerMaterial']
+    del productData['insoleMaterial']
+    del productData['outerMaterial']
+    del productData['season']
+
+    database.updateProduct(int(productData['id']), productData)
     return jsonify({'success': True})
+
+@app.route('/admin/products/add', methods=['GET', 'POST'])
+def adminProductAdd():
+    loggedIn = session.get('loggedIn', False)
+    if not loggedIn:
+        return redirect('/login')
+    user = getUser({'userId': session.get('userId')})
+    if not "admin" in user['tags']:
+        return redirect('/')
+    if request.method == 'GET':
+        products = getProducts()
+        ids = [p['id'] for p in products]
+        newId = random.randint(100000, 999999)
+        while newId in ids:
+            newId = random.randint(100000, 999999)
+        product = {
+            "id": newId,
+            "brand": "",
+            "category": "",
+            "price": "",
+            "discount": 0,
+            "sizes": [],
+            "tag": "",
+            "images": [],
+            "additionalInformation": {
+                "innerMaterial": "",
+                "insoleMaterial": "",
+                "outerMaterial": "",
+                "season": "",
+            },
+            "maxQuantities": {},
+            "sizesCm": {},
+            "warehouses": {},
+        }
+        database.addProduct(product)
+        return render_template('adminProductAdd.html', userData=user, loggedIn=loggedIn, newId=newId)
+    elif request.method == 'POST':
+        productData = request.json.get('data')
+        productData['sizes'] = [int(size) for size in productData['sizes'].split(',')]
+        productData['maxQuantities'] = {quantity.strip().split(" ")[0].strip(): int(quantity.strip().split(" ")[1].replace("(", "").replace(")", "").strip()) for quantity in productData['maxQuantities'].split(',')}
+        productData['sizesCm'] = {size.strip().split(" ")[0].strip(): float(size.strip().split(" ")[1].replace("cm", "").replace("(", "").replace(")", "").strip()) for size in productData['sizesCm'].split(',')}
+        productData['warehouses'] = {warehouse.strip().split(" ")[0].strip(): warehouse.strip().split(" ")[1].replace("(", "").replace(")", "").strip() for warehouse in productData['warehouses'].split(',')}
+
+        productData['additionalInformation'] = {
+            "innerMaterial": productData['innerMaterial'],
+            "insoleMaterial": productData['insoleMaterial'],
+            "outerMaterial": productData['outerMaterial'],
+            "season": productData['season'],
+        }
+        del productData['innerMaterial']
+        del productData['insoleMaterial']
+        del productData['outerMaterial']
+        del productData['season']
+
+        database.addProduct(productData)
+        return jsonify({'success': True})
+
 
 @app.errorhandler(404)
 def page_not_found(e):

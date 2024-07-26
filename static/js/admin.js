@@ -86,18 +86,6 @@ function validateProduct() {
     const sizes = document.getElementById('inputSizes').value;
     if (sizes === '') return 'Invalid sizes';
 
-    const season = document.getElementById('inputSeason').value;
-    if (season === '') return 'Invalid season';
-
-    const outerMaterial = document.getElementById('inputMaterialOuter').value;
-    if (outerMaterial === '') return 'Invalid outer material';
-
-    const innerMaterial = document.getElementById('inputMaterialInner').value;
-    if (innerMaterial === '') return 'Invalid inner material';
-
-    const insoleMaterial = document.getElementById('inputMaterialInsole').value;
-    if (insoleMaterial === '') return 'Invalid insole material';
-
     const insoleLengths = document.getElementById('inputInsoleLengths').value;
     if (insoleLengths === '') return 'Invalid insole lengths';
 
@@ -131,8 +119,8 @@ function updateProduct() {
         outerMaterial: document.getElementById('inputMaterialOuter').value,
         innerMaterial: document.getElementById('inputMaterialInner').value,
         insoleMaterial: document.getElementById('inputMaterialInsole').value,
-        insoleLengths: document.getElementById('inputInsoleLengths').value,
-        quantities: document.getElementById('inputQuantitiesLeft').value,
+        sizesCm: document.getElementById('inputInsoleLengths').value,
+        maxQuantities: document.getElementById('inputQuantitiesLeft').value,
         warehouses: document.getElementById('inputWarehouses').value
     };
 
@@ -146,7 +134,7 @@ function updateProduct() {
         .then(response => response.json())
         .then(data => {
             if (data.success) {
-                console.log('Product updated');
+                window.location.href = '/product/' + productId;
             }
             else {
                 console.log(data.error);
