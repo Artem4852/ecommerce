@@ -746,6 +746,23 @@ select::-webkit-inner-spin-button, select::-webkit-outer-spin-button {
   background-color: #E2A4D0;
   cursor: default;
 }
+#product .information a {
+  display: block;
+  width: 80%;
+  background-color: #E352BA;
+  color: #f1f1f1;
+  border-radius: 30px;
+  padding: 10px 0;
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 50px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+#product .information a:hover {
+  background-color: #E2A4D0;
+  text-decoration: none;
+}
 #product .information .additional {
   width: 100%;
 }
@@ -1937,20 +1954,40 @@ select::-webkit-inner-spin-button, select::-webkit-outer-spin-button {
   background-color: #E0E0E0;
   border-radius: 10px;
   position: relative;
-  overflow: hidden;
 }
 #adminProduct .images .image {
   width: 100%;
   padding-top: 100%;
   position: relative;
   background-color: #E0E0E0;
-  border-radius: 10px;
-  overflow: hidden;
+  border-radius: 5px;
 }
 #adminProduct .images .image svg {
-  z-index: 9;
-  top: 5px;
-  right: 5px;
+  z-index: 10;
+  right: -5px;
+  opacity: 0.8;
+}
+#adminProduct .images .image svg path:first-child {
+  fill: #999999;
+}
+#adminProduct .images .image svg path:last-child {
+  fill: #f1f1f1;
+}
+#adminProduct .images .image svg.delete {
+  top: -5px;
+}
+#adminProduct .images .image svg.arrow {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  position: absolute;
+  bottom: -5px;
+}
+#adminProduct .images .image svg.left {
+  left: -5px;
+}
+#adminProduct .images .image svg.right {
+  right: -5px;
 }
 #adminProduct .images .image img {
   border-radius: 5px;

@@ -141,3 +141,44 @@ function updateProduct() {
             }
         });
 }
+
+const inputs = ['Sizes', 'InsoleLengths', 'QuantitiesLeft', 'Warehouses'];
+inputs.forEach(input => {
+    document.getElementById('input' + input).addEventListener('blur', () => {
+        const sizes = document.getElementById('input' + input).value.trim();
+        if (sizes === '') return;
+
+        let sizesArray;
+
+        if (input === 'Sizes') {
+            sizesArray = sizes.split(',').map(size => size.trim())
+        } else {
+            sizesArray = sizes.split(',').map(size => size.trim().split(' ')[0].trim());
+        }
+
+        let currentInputs = inputs.filter(i => i !== input);
+
+        currentInputs.forEach(currentInput => {
+            const input = document.getElementById('input' + currentInput);
+            const toAdd = [];
+            sizesArray.forEach(size => {
+                if (size === '' || size === '()') return;
+                if (!input.value.includes(size)) {
+                    if (currentInput === 'Sizes') {
+                        toAdd.push(size);
+                    } else if (currentInput === 'InsoleLengths') {
+                        toAdd.push(`${size} ( cm)`);
+                    } else {
+                        toAdd.push(`${size} ()`);
+                    }
+                }
+            });
+
+            if (input.value === '' && toAdd.length > 0) {
+                input.value += toAdd.join(', ');
+            } else if (toAdd.length > 0) {
+                input.value += ', ' + toAdd.join(', ');
+            }
+        });
+    });
+});

@@ -87,7 +87,11 @@
                     </svg>
                 </div>
             </div>
-            <button {% if not sortedSizes %}disabled class="inactive" {% endif %} id="cartButton{{ product['id'] }}" onclick="addToCart('{{ product['id'] }}')">Add to cart</button>
+            {% if loggedIn and 'admin' in userData.tags %}
+                <a href="/admin/products/edit/{{ product['id'] }}">Edit product</a>
+            {% else %}
+                <button {% if not sortedSizes %}disabled class="inactive" {% endif %} id="cartButton{{ product['id'] }}" onclick="addToCart('{{ product['id'] }}')">Add to cart</button>
+            {% endif %}
             <div class="additional">
                 <h2>Additional information</h2>
                 <p>Sizes (insole lengths): 

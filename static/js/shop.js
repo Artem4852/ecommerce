@@ -193,6 +193,8 @@ function imgBack() {
     images[after_3].classList.remove('inactive')
 
     let imagesNew = [idx, after, after_2, after_3]
+    if (images.length < 4) imagesNew.pop()
+    if (images.length < 3) imagesNew.pop()
 
     for (let i = 0; i < imagesNew.length; i++) {
         document.getElementById('others').removeChild(images[imagesNew[i]])
@@ -291,6 +293,8 @@ function setSelected(imageIdx) {
     images[after_3].classList.remove('inactive')
 
     let imagesNew = [idx, after, after_2, after_3]
+    if (images.length < 4) imagesNew.pop()
+    if (images.length < 3) imagesNew.pop()
 
     for (let i = 0; i < imagesNew.length; i++) {
         document.getElementById('others').removeChild(images[imagesNew[i]])

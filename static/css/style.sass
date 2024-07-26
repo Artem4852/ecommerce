@@ -749,6 +749,23 @@ select
                 background-color: $accent-light
                 cursor: default
 
+        a
+            display: block
+            width: 80%
+            background-color: $accent
+            color: $white
+            border-radius: 30px
+            padding: 10px 0
+            text-align: center
+            font-size: 24px
+            margin-bottom: 50px
+            cursor: pointer
+            transition: 0.2s
+
+            &:hover
+                background-color: $accent-light
+                text-decoration: none
+
         .additional
             width: 100%
 
@@ -1934,20 +1951,40 @@ select
             background-color: $grey
             border-radius: 10px
             position: relative
-            overflow: hidden
 
         .image
             width: 100%
             padding-top: 100%
             position: relative
             background-color: $grey
-            border-radius: 10px
-            overflow: hidden
+            border-radius: 5px
 
             svg
-                z-index: 9
-                top: 5px
-                right: 5px
+                z-index: 10
+                right: -5px
+                opacity: 0.8
+
+                path:first-child
+                    fill: $grey-dark
+
+                path:last-child
+                    fill: $white
+
+            svg.delete
+                top: -5px
+
+            svg.arrow
+                width: 30px
+                height: 30px
+                cursor: pointer
+                position: absolute
+                bottom: -5px
+
+            svg.left
+                left: -5px
+
+            svg.right
+                right: -5px
 
             img
                 border-radius: 5px
