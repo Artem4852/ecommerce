@@ -1947,6 +1947,11 @@ select::-webkit-inner-spin-button, select::-webkit-outer-spin-button {
   border-radius: 10px;
   overflow: hidden;
 }
+#adminProduct .images .image svg {
+  z-index: 9;
+  top: 5px;
+  right: 5px;
+}
 #adminProduct .images .image img {
   border-radius: 5px;
   position: absolute;
@@ -1958,6 +1963,7 @@ select::-webkit-inner-spin-button, select::-webkit-outer-spin-button {
 }
 #adminProduct .add {
   width: calc(25% - 15px);
+  aspect-ratio: 1/1;
   font-size: 48px;
   background-color: #E0E0E0;
   padding: 10px;
@@ -1972,6 +1978,20 @@ select::-webkit-inner-spin-button, select::-webkit-outer-spin-button {
   align-items: center;
   justify-content: center;
   border-radius: 5px;
+}
+#adminProduct button {
+  margin-top: 20px;
+  width: 50%;
+  background-color: #E352BA;
+  color: #f1f1f1;
+  border-radius: 30px;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+}
+#adminProduct button:hover {
+  background-color: #E2A4D0;
 }
 
 #page404 {

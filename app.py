@@ -669,6 +669,26 @@ def adminProductImage():
     database.updateProduct(int(productId), {'images': images})
     return jsonify({'success': True, 'image': f'{new}.jpg'})
     
+@app.route('/admin/product/deleteImage', methods=['POST'])
+def adminProductDeleteImage():
+    productId = request.json.get('productId')
+    image = request.json.get('image')
+    if not productId or not image:
+        return jsonify({'success': False, 'error': 'No product id or image'})
+    os.remove(f'static/img/products/{productId}/{image}')
+    product = database.getProduct({'id': int(productId)})
+    images = product['images']
+    images.remove(image)
+    database.updateProduct(int(productId), {'images': images})
+    return jsonify({'success': True})
+
+@app.route('/admin/product/update', methods=['POST'])
+def adminProductUpdate():
+    productData = request.json.get('data')
+    # database.updateProduct(int(productId), data)
+    print(productData)
+    return jsonify({'success': True})
+
 @app.errorhandler(404)
 def page_not_found(e):
     return render_template('404.html'), 404

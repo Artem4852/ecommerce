@@ -23,51 +23,63 @@
                 </div>
                 <div class="input">
                     <label for="inputCategory">Category</label>
-                    <input type="text" value="{{ product.category }}">
+                    <input id="inputCategory" type="text" value="{{ product.category }}">
                 </div>
                 <div class="input">
                     <label for="inputBrand">Brand</label>
-                    <input type="text" value="{{ product.brand }}">
+                    <input id="inputBrand" type="text" value="{{ product.brand }}">
                 </div>
                 <div class="input">
-                    <label for="inputSizes">sizes</label>
-                    <input type="text" value="{{ product.sizes[0] }}{% for size in product.sizes[1:] %}, {{ size }}{% endfor %}">
+                    <label for="inputPrice">Price</label>
+                    <input id="inputPrice" type="text" value="{{ product.price }}">
+                </div>
+                <div class="input">
+                    <label for="inputSizes">Sizes</label>
+                    <input id="inputSizes" type="text" value="{{ product.sizes[0] }}{% for size in product.sizes[1:] %}, {{ size }}{% endfor %}">
                 </div>
                 <div class="input">
                     <label for="inputSeason">Season</label>
-                    <input type="text" value="{{ product.additionalInformation.season }}">
+                    <input id="inputSeason" type="text" value="{{ product.additionalInformation.season }}">
                 </div>
                 <div class="input">
                     <label for="inputMaterialOuter">Outer material</label>
-                    <input type="text" value="{{ product.additionalInformation.outerMaterial }}">
+                    <input id="inputMaterialOuter" type="text" value="{{ product.additionalInformation.outerMaterial }}">
                 </div>
                 <div class="input">
                     <label for="inputMaterialInner">Inner material</label>
-                    <input type="text" value="{{ product.additionalInformation.innerMaterial }}">
+                    <input id="inputMaterialInner" type="text" value="{{ product.additionalInformation.innerMaterial }}">
                 </div>
                 <div class="input">
                     <label for="inputMaterialInsole">Insole material</label>
-                    <input type="text" value="{{ product.additionalInformation.insoleMaterial }}">
+                    <input id="inputMaterialInsole" type="text" value="{{ product.additionalInformation.insoleMaterial }}">
                 </div>
                 <div class="input">
                     <label for="inputInsoleLengths">Insole lengths</label>
-                    <input type="text" value="{% for key, value in product.sizesCm.items() %}{{ key }} ({{ value }} cm){% if not loop.last %}, {% endif %}{% endfor %}">
+                    <input id="inputInsoleLengths" type="text" value="{% for key, value in product.sizesCm.items() %}{{ key }} ({{ value }} cm){% if not loop.last %}, {% endif %}{% endfor %}">
                 </div>
                 <div class="input">
                     <label for="inputQuantitiesLeft">Quantities</label>
-                    <input type="text" value="{% for key, value in product.maxQuantities.items() %}{{ key }} ({{ value }}){% if not loop.last %}, {% endif %}{% endfor %}">
+                    <input id="inputQuantitiesLeft" type="text" value="{% for key, value in product.maxQuantities.items() %}{{ key }} ({{ value }}){% if not loop.last %}, {% endif %}{% endfor %}">
                 </div>
                 <div class="input">
-                    <label for="inputQuantitiesLeft">Warehouses</label>
-                    <input type="text" value="{% for key, value in product.warehouses.items() %}{{ key }} ({{ value }}){% if not loop.last %}, {% endif %}{% endfor %}">
+                    <label for="inputWarehouses">Warehouses</label>
+                    <input id="inputWarehouses" type="text" value="{% for key, value in product.warehouses.items() %}{{ key }} ({{ value }}){% if not loop.last %}, {% endif %}{% endfor %}">
                 </div>
             </div>
             <div class="col">
                 <h4>Images</h4>
                 <div class="images" id="images">
                     {% for img in product.images %}
-                    <div class="imageWrapper">
+                    <div class="imageWrapper" id="image{{ img }}">
                         <div class="image">
+                            <svg onclick="deleteImage('{{ img }}')" class="favoriteIcon" xmlns="http://www.w3.org/2000/svg" width="36" height="35" viewBox="0 0 36 35" fill="none">
+                                <path
+                                    d="M36 17.5C36 27.165 27.9411 35 18 35C8.05887 35 0 27.165 0 17.5C0 7.83502 8.05887 0 18 0C27.9411 0 36 7.83502 36 17.5Z"
+                                    fill="#E0E0E0" />
+                                <path
+                                    d="M12.7681 28.3332C12.1885 28.3332 11.6924 28.1338 11.2797 27.7349C10.867 27.3359 10.6607 26.8564 10.6607 26.2962V13.0555H9.60697V11.0184H14.8755V9.9999H21.1976V11.0184H26.4661V13.0555H25.4124V26.2962C25.4124 26.8564 25.2061 27.3359 24.7934 27.7349C24.3807 28.1338 23.8846 28.3332 23.305 28.3332H12.7681ZM23.305 13.0555H12.7681V26.2962H23.305V13.0555ZM14.8755 24.2592H16.9829V15.0925H14.8755V24.2592ZM19.0903 24.2592H21.1976V15.0925H19.0903V24.2592Z"
+                                    fill="#1C1B1F" />
+                            </svg>
                             <img src="{{ url_for('static', filename='img/products/'+product.id|string+'/'+img) }}" alt="">
                         </div>
                     </div>
@@ -81,7 +93,17 @@
                 </div>
             </div>
         </div>
+        <button id="buttonUpdateProduct" onclick="updateProduct()">Update product</button>
     </section>
+    <svg id="deleteIcon" class="favoriteIcon" xmlns="http://www.w3.org/2000/svg" width="36" height="35"
+        viewBox="0 0 36 35" fill="none">
+        <path
+            d="M36 17.5C36 27.165 27.9411 35 18 35C8.05887 35 0 27.165 0 17.5C0 7.83502 8.05887 0 18 0C27.9411 0 36 7.83502 36 17.5Z"
+            fill="#E0E0E0" />
+        <path
+            d="M12.7681 28.3332C12.1885 28.3332 11.6924 28.1338 11.2797 27.7349C10.867 27.3359 10.6607 26.8564 10.6607 26.2962V13.0555H9.60697V11.0184H14.8755V9.9999H21.1976V11.0184H26.4661V13.0555H25.4124V26.2962C25.4124 26.8564 25.2061 27.3359 24.7934 27.7349C24.3807 28.1338 23.8846 28.3332 23.305 28.3332H12.7681ZM23.305 13.0555H12.7681V26.2962H23.305V13.0555ZM14.8755 24.2592H16.9829V15.0925H14.8755V24.2592ZM19.0903 24.2592H21.1976V15.0925H19.0903V24.2592Z"
+            fill="#1C1B1F" />
+    </svg>
     {% include 'partials/newsletter.html' %}
     {% include 'partials/footer.html' %}
     <script src="{{ url_for('static', filename='js/shop.js') }}"></script>
