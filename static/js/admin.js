@@ -1,10 +1,9 @@
 function getProduct() {
     const product = document.getElementById('inputProductNumber').value;
-    const url = '/admin/product/' + product;
+    const url = '/admin/products/edit/' + product;
     window.location.href = url;
 }
 
-// allows to insert a new image
 function triggerInput() {
     document.getElementById('inputImage').click();
 }
@@ -32,14 +31,23 @@ function addImg() {
             }
             const wrapper = document.createElement('div');
             wrapper.className = 'imageWrapper';
-            wrapper.id = 'image'+data['image'];
+            wrapper.id = 'image' + data['image'];
+            wrapper.setAttribute('data-index', data['index']);
 
             const image = document.createElement('div');
             image.className = 'image';
 
             const svg = document.getElementById('deleteIcon').cloneNode(true);
-
+            svg.setAttribute("id", "");
             svg.setAttribute("onclick", `deleteImage('${data['image']}')`);
+
+            const svgBack = document.getElementById('backIcon').cloneNode(true);
+            svgBack.setAttribute("id", "");
+            svgBack.setAttribute("onclick", `imageBack('${data['image']}')`);
+
+            const svgForward = document.getElementById('forwardIcon').cloneNode(true);
+            svgForward.setAttribute("id", "");
+            svgForward.setAttribute("onclick", `imageForward('${data['image']}')`);
 
             const img = document.createElement('img');
             img.src = '/static/img/products/'+productId+'/'+data.image;
@@ -47,6 +55,8 @@ function addImg() {
 
             image.appendChild(img);
             image.appendChild(svg);
+            image.appendChild(svgBack);
+            image.appendChild(svgForward);
             wrapper.appendChild(image);
 
             document.getElementById('images').appendChild(wrapper);
@@ -71,6 +81,42 @@ function deleteImage(img) {
                 console.log(data.error);
             }
         });
+}
+
+function imageForward(img) {
+    let images = document.getElementsByClassName('imageWrapper');
+    images = Array.from(images).sort((a, b) => {
+        return parseInt(a.getAttribute('data-index')) - parseInt(b.getAttribute('data-index'));
+    });
+    const currentIdx = parseInt(document.getElementById('image'+img).getAttribute('data-index'));
+    if (currentIdx === images.length - 1) return;
+    else {
+        const next = images[currentIdx + 1];
+        const current = images[currentIdx];
+        const nextIndex = next.getAttribute('data-index');
+        const currentIndex = current.getAttribute('data-index');
+        next.setAttribute('data-index', currentIndex);
+        current.setAttribute('data-index', nextIndex);
+        document.getElementById('images').insertBefore(next, current);
+    }
+}
+
+function imageBack(img) {
+    let images = document.getElementsByClassName('imageWrapper');
+    images = Array.from(images).sort((a, b) => {
+        return parseInt(a.getAttribute('data-index')) - parseInt(b.getAttribute('data-index'));
+    });
+    const currentIdx = parseInt(document.getElementById('image'+img).getAttribute('data-index'));
+    if (currentIdx === 0) return;
+    else {
+        const previous = images[currentIdx - 1];
+        const current = images[currentIdx];
+        const previousIndex = previous.getAttribute('data-index');
+        const currentIndex = current.getAttribute('data-index');
+        previous.setAttribute('data-index', currentIndex);
+        current.setAttribute('data-index', previousIndex);
+        document.getElementById('images').insertBefore(current, previous);
+    }
 }
 
 function validateProduct() {
@@ -182,3 +228,11 @@ inputs.forEach(input => {
         });
     });
 });
+
+document.getElementById('inputInstagramUrl').addEventListener('blur', () => {
+    const url = document.getElementById('inputInstagramUrl').value;
+    if (url === '') return;
+
+    const username = url.split('/').pop();
+    document.getElementById('inputInstagramUsername').value = username;
+}

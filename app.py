@@ -1,12 +1,14 @@
-from flask import Flask, request, jsonify, render_template, session, redirect, url_for
+from flask import Flask, request, jsonify, render_template, session, redirect
 from flask_mail import Mail, Message
 from database import Database
-import os, random, json, math, dotenv
+import os, random, math, dotenv
 from bs4 import BeautifulSoup
 from datetime import datetime
 from string import ascii_letters, digits
+
 from novapost import NovaAPI
 from telegramAPI import sendMessage
+from instagram import getPost
 
 characters = ascii_letters + digits
 
@@ -74,6 +76,7 @@ def shop():
     brand = request.args.get('brand')
     category = request.args.get('category')
     shoeSize = request.args.get('shoeSize')
+    if shoeSize: shoeSize = int(shoeSize)
     priceRange = request.args.get('priceRange')
     priceMin = int(priceRange.split('-')[0]) if priceRange else None
     priceMax = int(priceRange.split('-')[1]) if priceRange else None
@@ -85,19 +88,19 @@ def shop():
     else: page = int(request.args.get('page'))
 
     products = getProducts()
-    brands = sorted(list(set([p['brand'] for p in products])))
-    categories = sorted(list(set([p['category'] for p in products])))
-    sizes = sorted(list(set([size for p in products for size in p['sizes']])))
+    brands = sorted(list(set([p['brand'] for p in products if p['brand'] != ""])))
+    categories = sorted(list(set([p['category'] for p in products if p['category'] != ""])))
+    sizes = sorted(list(set([size for p in products for size in p['sizes'] if size != ""])))
 
     if brand: products = [p for p in products if p['brand'] == brand]
     if category: products = [p for p in products if p['category'] == category]
     if shoeSize: products = [p for p in products if int(shoeSize) in p['sizes']]
     if priceRange: products = [p for p in products if priceMin<=int(p['price'])<=priceMax]
 
-    if sorting == 'priceLowToHigh': products = sorted(products, key=lambda x: x['price'])
-    elif sorting == 'priceHighToLow': products = sorted(products, key=lambda x: x['price'], reverse=True)
-    elif sorting == 'discountLowToHigh': products = sorted(products, key=lambda x: x['discount'])
-    elif sorting == 'discountHighToLow': products = sorted(products, key=lambda x: x['discount'], reverse=True)
+    if sorting == 'priceLowToHigh': products = sorted(products, key=lambda x: int(x['price']))
+    elif sorting == 'priceHighToLow': products = sorted(products, key=lambda x: int(x['price']), reverse=True)
+    elif sorting == 'discountLowToHigh': products = sorted(products, key=lambda x: int(x['discount']))
+    elif sorting == 'discountHighToLow': products = sorted(products, key=lambda x: int(x['discount']), reverse=True)
 
     productsCurrent = products[(page-1)*productsPerPage:page*productsPerPage]
 
@@ -129,48 +132,80 @@ def product(productId):
 def faq():
     loggedIn = session.get('loggedIn', False)
     faq = database.getFaq()
-    return render_template('faq.html', faqPosts=faq, loggedIn=loggedIn)
+    if loggedIn:
+        userData = getUser({'userId': session.get('userId')})
+    else:
+        userData = {}
+    return render_template('faq.html', faqPosts=faq, loggedIn=loggedIn, userData=userData)
 
 @app.route('/faq/<faqName>')
 def faqPost(faqName):
     loggedIn = session.get('loggedIn', False)
+    if loggedIn: 
+        userData = getUser({'userId': session.get('userId')})
+    else:
+        userData = {}
     if faqName == 'shoeSize':
-        return render_template('faq/shoeSize.html', loggedIn=loggedIn)
+        return render_template('faq/shoeSize.html', loggedIn=loggedIn, userData=userData)
     elif faqName == 'delivery':
-        return render_template('faq/delivery.html', loggedIn=loggedIn)
+        return render_template('faq/delivery.html', loggedIn=loggedIn, userData=userData)
     elif faqName == 'replacementsReturns':
-        return render_template('faq/replacementsReturns.html', loggedIn=loggedIn)
+        return render_template('faq/replacementsReturns.html', loggedIn=loggedIn, userData=userData)
     
 @app.route('/contact')
 def contact():
     loggedIn = session.get('loggedIn', False)
-    return render_template('contact.html', loggedIn=loggedIn)
+    if loggedIn:
+        userData = getUser({'userId': session.get('userId')})
+    else:
+        userData = {}
+    return render_template('contact.html', loggedIn=loggedIn, userData=userData)
 
 # Legal routes
 @app.route('/termsofuse')
 def termsofuse():
     loggedIn = session.get('loggedIn', False)
-    return render_template('legal/termsOfUse.html', loggedIn=loggedIn)
+    if loggedIn:
+        userData = getUser({'userId': session.get('userId')})
+    else:
+        userData = {}
+    return render_template('legal/termsOfUse.html', loggedIn=loggedIn, userData=userData)
 
 @app.route('/privacypolicy')
 def privacypolicy():
     loggedIn = session.get('loggedIn', False)
-    return render_template('legal/privacy.html', loggedIn=loggedIn)
+    if loggedIn:
+        userData = getUser({'userId': session.get('userId')})
+    else:
+        userData = {}
+    return render_template('legal/privacy.html', loggedIn=loggedIn, userData=userData)
 
 @app.route('/cookiespolicy')
 def cookiespolicy():
     loggedIn = session.get('loggedIn', False)
-    return render_template('legal/cookies.html', loggedIn=loggedIn)
+    if loggedIn:
+        userData = getUser({'userId': session.get('userId')})
+    else:
+        userData = {}
+    return render_template('legal/cookies.html', loggedIn=loggedIn, userData=userData)
 
 @app.route('/shippingpolicy')
 def shippingpolicy():
     loggedIn = session.get('loggedIn', False)
-    return render_template('legal/shipping.html', loggedIn=loggedIn)
+    if loggedIn:
+        userData = getUser({'userId': session.get('userId')})
+    else:
+        userData = {}
+    return render_template('legal/shipping.html', loggedIn=loggedIn, userData=userData)
 
 @app.route('/replacementsandreturnspolicy')
 def replacementsandreturnspolicy():
     loggedIn = session.get('loggedIn', False)
-    return render_template('legal/replacementsAndReturns.html', loggedIn=loggedIn)
+    if loggedIn:
+        userData = getUser({'userId': session.get('userId')})
+    else:
+        userData = {}
+    return render_template('legal/replacementsAndReturns.html', loggedIn=loggedIn, userData=userData)
 
 # Cart + favorites routes
 @app.route('/favorites')
@@ -617,18 +652,18 @@ def adminProducts():
     else: page = int(request.args.get('page'))
 
     products = getProducts()
-    brands = sorted(list(set([p['brand'] for p in products])))
-    categories = sorted(list(set([p['category'] for p in products])))
-    sizes = sorted(list(set([size for p in products for size in p['sizes']])))
+    brands = sorted(list(set([p['brand'] for p in products if p['brand'] != ""])))
+    categories = sorted(list(set([p['category'] for p in products if p['category'] != ""])))
+    sizes = sorted(list(set([size for p in products for size in p['sizes'] if size != ""])))
 
     if brand: products = [p for p in products if p['brand'] == brand]
     if category: products = [p for p in products if p['category'] == category]
     if shoeSize: products = [p for p in products if int(shoeSize) in p['sizes']]
 
-    if sorting == 'priceLowToHigh': products = sorted(products, key=lambda x: x['price'])
-    elif sorting == 'priceHighToLow': products = sorted(products, key=lambda x: x['price'], reverse=True)
-    elif sorting == 'discountLowToHigh': products = sorted(products, key=lambda x: x['discount'])
-    elif sorting == 'discountHighToLow': products = sorted(products, key=lambda x: x['discount'], reverse=True)
+    if sorting == 'priceLowToHigh': products = sorted(products, key=lambda x: int(x['price']))
+    elif sorting == 'priceHighToLow': products = sorted(products, key=lambda x: int(x['price']), reverse=True)
+    elif sorting == 'discountLowToHigh': products = sorted(products, key=lambda x: int(x['discount']))
+    elif sorting == 'discountHighToLow': products = sorted(products, key=lambda x: int(x['discount']), reverse=True)
 
     productsCurrent = products[(page-1)*productsPerPage:page*productsPerPage]
 
@@ -650,6 +685,8 @@ def adminProductEdit(productId):
     if not "admin" in user['tags']:
         return redirect('/')
     product = database.getProduct({'id': int(productId)})
+    if not product:
+        return redirect('/admin/products')
     return render_template('adminProductEdit.html', userData=user, loggedIn=loggedIn, product=product)
 
 @app.route('/admin/product/image', methods=['POST'])
@@ -669,8 +706,9 @@ def adminProductImage():
     file.save(f'static/img/products/{productId}/{new}.jpg')
     product = database.getProduct({'id': int(productId)})
     images = product['images'] + [f'{new}.jpg']
+    index = len(images)-1
     database.updateProduct(int(productId), {'images': images})
-    return jsonify({'success': True, 'image': f'{new}.jpg'})
+    return jsonify({'success': True, 'image': f'{new}.jpg', 'index': index})
     
 @app.route('/admin/product/deleteImage', methods=['POST'])
 def adminProductDeleteImage():
@@ -684,6 +722,14 @@ def adminProductDeleteImage():
     images.remove(image)
     database.updateProduct(int(productId), {'images': images})
     return jsonify({'success': True})
+
+@app.route('/admin/product/load', methods=['POST'])
+def adminProductLoad():
+    productId = request.json.get('productId')
+    instagramUrl = request.json.get('instagramUrl')
+    if not productId or not instagramUrl:
+        return jsonify({'success': False, 'error': 'No product id or instagram url'})
+    sizes, sizesCm, price = getPost(instagramUrl)
 
 @app.route('/admin/product/update', methods=['POST'])
 def adminProductUpdate():
@@ -741,7 +787,7 @@ def adminProductAdd():
             "warehouses": {},
         }
         database.addProduct(product)
-        return render_template('adminProductAdd.html', userData=user, loggedIn=loggedIn, newId=newId)
+        return render_template('adminProductEdit.html', userData=user, loggedIn=loggedIn, product=product)
     elif request.method == 'POST':
         productData = request.json.get('data')
         productData['sizes'] = [int(size) for size in productData['sizes'].split(',')]
