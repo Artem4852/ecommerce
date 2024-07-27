@@ -1595,10 +1595,11 @@ select::-webkit-inner-spin-button, select::-webkit-outer-spin-button {
   color: #E0E0E0;
 }
 #order .row {
+  width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  gap: 150px;
+  gap: 15%;
 }
 #order .row .col {
   display: flex;
@@ -2052,6 +2053,27 @@ select::-webkit-inner-spin-button, select::-webkit-outer-spin-button {
 
 #order.admin .status {
   cursor: pointer;
+}
+#order.admin a:not(.back) {
+  color: #111;
+  text-decoration: underline;
+}
+#order.admin a:not(.back):hover {
+  color: #E352BA;
+}
+#order.admin button {
+  width: 50%;
+  margin-top: 20px;
+  background-color: #E352BA;
+  color: #f1f1f1;
+  border-radius: 30px;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+}
+#order.admin button:hover {
+  background-color: #E2A4D0;
 }
 
 #page404 {

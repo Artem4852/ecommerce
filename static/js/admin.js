@@ -334,15 +334,54 @@ function filterOrders(criterion) {
 function setStatus(status) {
     statusWrapper = document.getElementById('status' + status);
 
-    statusWrappers = document.getElementsByClassName('status');
-    Array.from(statusWrappers).forEach(wrapper => {
-        wrapper.children[0].classList.remove('active');
-    });
+    fetch('/admin/order/status', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ orderId: orderId, status: status }),
+    })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                statusWrappers = document.getElementsByClassName('status');
+                Array.from(statusWrappers).forEach(wrapper => {
+                    wrapper.children[0].classList.remove('active');
+                });
 
-    statusWrapper.children[0].classList.add('active');
+                statusWrapper.children[0].classList.add('active');
+            }
+            else {
+                console.log(data.error);
+            }
+        });
 }
 
-function deleteOrder(orderId, productId) {
+function setTrackingNumber() {
+    const trackingNumber = document.getElementById('inputTrackingNumber').value;
+    if (trackingNumber === '') return;
+    fetch('/admin/order/trackingNumber', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ orderId: orderId, trackingNumber: trackingNumber }),
+    })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                document.getElementById('inputTrackingNumber').value = 'Saved!';
+                setTimeout(() => {
+                    document.getElementById('inputTrackingNumber').value = trackingNumber;
+                }, 2000);
+            }
+            else {
+                console.log(data.error);
+            }
+        });
+}
+
+function deleteOrder(productId) {
     fetch('/admin/order/delete', {
         method: 'POST',
         headers: {

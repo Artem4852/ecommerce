@@ -28,7 +28,7 @@
                 <p>Country: {{ codesCountry[order.country] | capitalize }}</p>
                 <p>City: {{ order.city }}</p>
                 <p>Delivery method: {% if order.deliveryMethod == 'pickUpFromPostOffice' %}Pick up from Post Office{% else %}Address delivery{% endif %}</p>
-                <p>Tracking number: <input value="{{ order.trackingNumber }}" {% if not order.trackingNumber %} placeholder="Tracking number" {% endif %}></p>
+                <p>Tracking number: <input id="inputTrackingNumber" onblur="setTrackingNumber()" value="{{ order.trackingNumber }}" {% if not order.trackingNumber %} placeholder="Tracking number" {% endif %}></p>
                 {% if order.deliveryMethod == "pickUpFromPostOffice" %}
                     <p>Post Office branch: {{ order.postOfficeBranchName }}</p>
                 {% else %}
@@ -61,9 +61,12 @@
                 </div>
             </div>
         </div>
-        <button onclick="deleteOrder('{{ order.orderId }}', '{{ order.product.productId }}')">Delete order</button>
+        <button onclick="deleteOrder('{{ order.product.productId }}')">Delete order</button>
     </section>
     {% include 'partials/footer.html' %}
     <script src="{{ url_for('static', filename='js/admin.js') }}"></script>
+    <script>
+        const orderId = '{{ order.orderId }}';
+    </script>
 </body>
 </html>

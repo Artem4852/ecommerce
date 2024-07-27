@@ -1593,11 +1593,11 @@ select
             color: $grey
 
     .row
-        // width: 100%
+        width: 100%
         display: flex
         flex-direction: row
         justify-content: space-between
-        gap: 150px
+        gap: 15%
 
         .col
             display: flex
@@ -2047,6 +2047,27 @@ select
 #order.admin
     .status
         cursor: pointer
+
+    a:not(.back)
+        color: $black
+        text-decoration: underline
+
+        &:hover
+            color: $accent
+
+    button
+        width: 50%
+        margin-top: 20px
+        background-color: $accent
+        color: $white
+        border-radius: 30px
+        padding: 10px
+        border: none
+        cursor: pointer
+        font-size: 18px
+
+        &:hover
+            background-color: $accent-light
 
 #page404
     width: 100%

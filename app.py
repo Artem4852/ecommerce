@@ -1,7 +1,7 @@
 from flask import Flask, request, abort, jsonify, render_template, session, redirect
 from flask_mail import Mail, Message
 from database import Database
-import os, random, math, dotenv
+import os, random, math, dotenv, requests, difflib
 from bs4 import BeautifulSoup
 from datetime import datetime
 from string import ascii_letters, digits
@@ -49,6 +49,56 @@ def getUser(Filter):
     if not session.get('loggedIn', False) and 'userId' in Filter:
         return {'cart': [], 'favorites': []}
     return database.getUser(Filter)
+
+def log(page, request=None, ip=None):
+    if ip: userIp = ip
+    elif request.headers.get('X-Forwarded-For'): userIp = request.headers.get('X-Forwarded-For').split(',')[0]
+    else: userIp = request.remote_addr
+    ip_data = requests.get(f'http://ipinfo.io/{userIp}/json').json()
+    if "bogon" in ip_data: return
+
+    now = datetime.now()
+    day = now.strftime("%d.%m.%Y")
+    hour = now.strftime("%d.%m.%Y %H:00")
+
+    city = ip_data['city']
+    region = ip_data['region']
+
+    regions = {
+        'crimea': 'south',
+        'vinnytsia': 'west',
+        'volyn': 'west',
+        'dnipropetrovsk': 'east',
+        'donetsk': 'east',
+        'zhytomyr': 'central',
+        'zakarpattia': 'west',
+        'zaporizhzhia': 'south',
+        'ivano-frankivsk': 'west',
+        'kyiv': 'central',
+        'kirovohrad': 'central',
+        'luhansk': 'east',
+        'lviv': 'west',
+        'mykolaiv': 'south',
+        'odesa': 'south',
+        'poltava': 'central',
+        'rivne': 'west',
+        'sumy': 'central',
+        'ternopil': 'west',
+        'kharkiv': 'east',
+        'kherson': 'south',
+        'khmelnytskyi': 'west',
+        'cherkasy': 'central',
+        'chernivtsi': 'west',
+        'chernihiv': 'central',
+    }
+
+    closest_match = difflib.get_close_matches(region, regions.keys(), n=1, cutoff=0.5)
+    if closest_match:
+        matchedRegion = regions[closest_match[0]]
+    else:
+        matchedRegion = 'central'
+
+    print(city, region, matchedRegion)
 
 # Index route
 @app.route('/')
@@ -381,7 +431,7 @@ def checkout():
         elif data['contactMessenger'] == 'instagram':
             messenger = f"<a href='https://instagram.com/{data['username']}'>Instagram</a>"
 
-        sendMessage(f"<b>New order: {data['orderId']}</b>. Check it <a href='https://kidsfashionstore.com.ua/orders/{data['orderId']}'>here</a>. Customer: {data['firstName']} {data['lastName']}, contact in " + messenger)
+        sendMessage(f"<b>New order: {data['orderId']}</b>. Check it <a href='https://kidsfashionstore.com.ua/admin/orders?orderId={data['orderId']}'>here</a>. Customer: {data['firstName']} {data['lastName']}, contact in " + messenger)
 
         return jsonify({'success': True})
 
@@ -850,10 +900,25 @@ def adminOrder(orderId, productId):
     if not "admin" in user['tags']:
         abort(404)
     order = database.getOrder({'orderId': orderId})
-    order['product'] = [o for o in order['cart'] if int(o['productId']) == int(productId)][0]
+    try: order['product'] = [o for o in order['cart'] if int(o['productId']) == int(productId)][0]
+    except: return redirect('/admin/orders')
     order['product']['info'] = database.getProduct({'id': int(productId)})
     codesCountry = {v: k for k, v in nova.loadCountryCodes().items()}
     return render_template('adminOrder.html', userData=user, loggedIn=loggedIn, order=order, codesCountry=codesCountry)
+
+@app.route('/admin/order/status', methods=['POST'])
+def updateOrderStatus():
+    orderId = request.json.get('orderId')
+    status = request.json.get('status')
+    database.updateOrder(orderId, {'$set': {'status': status.lower()}})
+    return jsonify({'success': True})
+
+@app.route('/admin/order/trackingNumber', methods=['POST'])
+def updateOrderTrackingNumber():
+    orderId = request.json.get('orderId')
+    trackingNumber = request.json.get('trackingNumber')
+    database.updateOrder(orderId, {'$set': {'trackingNumber': trackingNumber}})
+    return jsonify({'success': True})
 
 @app.route('/admin/order/delete', methods=['POST'])
 def deleteOrder():
@@ -873,4 +938,5 @@ def page_not_found(e):
 
 if __name__ == "__main__":
     # sendEmail('Welcome to Kids Fashion Store', "test@kids.com", body="Welcome to our store!\nThank you for signing up. You can now log in to your new account.\nHappy shopping!", html='welcome')
-    app.run(debug=True, port=8080)
+    # app.run(debug=True, port=8080)
+    log(None, None, "31.129.253.30")
