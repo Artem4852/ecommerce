@@ -17,7 +17,7 @@
             {% endif %}
             {% endif %}
             <a href="/product/{{ product['id'] }}">
-                <img src="{{ url_for('static', filename='img/products/'+product.id|string+'/'+product.img) }}" alt="">
+                <img src="{{ url_for('static', filename='img/products/'+product.id|string+'/'+product.images[0]) }}" alt="">
             </a>
         </div>
         <div class="details">

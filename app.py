@@ -88,6 +88,7 @@ def shop():
     else: page = int(request.args.get('page'))
 
     products = getProducts()
+    products = [p for p in products if p['price'] != ""]
     brands = sorted(list(set([p['brand'] for p in products if p['brand'] != ""])))
     categories = sorted(list(set([p['category'] for p in products if p['category'] != ""])))
     sizes = sorted(list(set([size for p in products for size in p['sizes'] if size != ""])))
@@ -726,10 +727,11 @@ def adminProductDeleteImage():
 @app.route('/admin/product/load', methods=['POST'])
 def adminProductLoad():
     productId = request.json.get('productId')
-    instagramUrl = request.json.get('instagramUrl')
+    instagramUrl = request.json.get('url')
     if not productId or not instagramUrl:
         return jsonify({'success': False, 'error': 'No product id or instagram url'})
-    sizes, sizesCm, price = getPost(instagramUrl)
+    sizes, category, brand, sizesCm, price, imagesSrcs = getPost(instagramUrl, productId)
+    return jsonify({'success': True, 'sizes': sizes, 'category': category, 'brand': brand, 'sizesCm': sizesCm, 'price': price, 'images': imagesSrcs})
 
 @app.route('/admin/product/update', methods=['POST'])
 def adminProductUpdate():

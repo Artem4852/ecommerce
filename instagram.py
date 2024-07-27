@@ -6,53 +6,70 @@ import dotenv, os, random, json, requests
 def parsePost(caption):
     sizes = []
     for line in caption.split("\n"):
-        if line.startswith("#kids_fashion_store_eu_"):
-            sizes.append(line.split("_")[-1])
+        if "Розмір" in line:
+            sizes.append(line.split(" ")[1])
 
-    sizesCm = []
+    sizesCm = {}
     for size in sizes:
         for line in caption.split("\n"):
             if (f'Розмір ' + size) in line:
-                sizesCm.append({str(size): line.split(" ")[-2].replace("(", "")})
+                sizesCm[str(size)] = line.split(" ")[-2].replace("(", "")
 
     price = 0
     for line in caption.split("\n"):
         if line.startswith("Ціна"):
             if int(line.split(" ")[1]) > price:
                 price = int(line.split(" ")[1])
-    return sizes, sizesCm, price
 
-def loadImage(url, productId):
+    category = ""
+    if "демі" in caption.split("\n")[0].lower(): category = "Demi"
+    elif "кросівки" in caption.split("\n")[0].lower(): category = "Sneakers"
+    elif "кеди" in caption.split("\n")[0].lower(): category = "Sneakers"
+    elif "черевики" in caption.split("\n")[0].lower(): category = "Boots"
+    elif "босоніжки" in caption.split("\n")[0].lower(): category = "Sandals"
+    elif "сандалі" in caption.split("\n")[0].lower(): category = "Sandals"
+
+    brand = ""
+    if "італійського" in caption.split("\n")[0].lower(): brand = "Geox"
+    elif "австрійського" in caption.split("\n")[0].lower(): brand = "Superfit"
+    return sizes, category, brand, sizesCm, price
+
+def loadImage(url, productId, index):
     os.makedirs(f'static/img/products/{productId}', exist_ok=True)
-    existing = sorted([im.split('.')[0] for im in os.listdir(f'static/img/products/{productId}') if im.endswith('.jpg')])
-    if existing:
-        new = str(int(existing[-1])+1)
+    if not index:
+        existing = sorted([im.split('.')[0] for im in os.listdir(f'static/img/products/{productId}') if im.endswith('.jpg')])
+        if existing:
+            new = str(int(existing[-1])+1)
+        else:
+            new = '0'
     else:
-        new = '1'
+        new = str(index)
  
     response = requests.get(url)
     with open(f'static/img/products/{productId}/{new}.jpg', 'wb') as f:
         f.write(response.content)
+    return f'{new}.jpg'
 
 def getPost(link, productId):
     dotenv.load_dotenv()
     token = random.choice(os.getenv("ROCKET_TOKENS").split(","))
     rocket = InstagramAPI(token)
     shortCode = link.split("/")[-2]
-    post = rocket.get_media_info_by_shortcode(link)
+    post = rocket.get_media_info_by_shortcode(shortCode)
     with open(f"post_{productId}.json", "w") as f:
         json.dump(post, f)
     caption = post["items"][0]['caption']['text']
-    sizes, sizesCm, price = parsePost(caption)
+    sizes, category, brand, sizesCm, price = parsePost(caption)
 
     images = []
     for image in post['items'][0]['carousel_media']:
         images.append(image['image_versions2']['candidates'][0]['url'])
     
-    for image in images:
-        loadImage(image, productId)
+    imagesSrcs = []
+    for n, image in enumerate(images):
+        imagesSrcs.append(loadImage(image, productId, n))
     
-    return sizes, sizesCm, price
+    return sizes, category, brand, sizesCm, price, imagesSrcs
 
 if __name__ == "__main__":
-    getPost("C95Svt0NLGg", 1)
+    print(getPost("https://www.instagram.com/p/C95Svt0NLGg/?img_index=1", 1))

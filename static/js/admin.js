@@ -167,7 +167,10 @@ function updateProduct() {
         insoleMaterial: document.getElementById('inputMaterialInsole').value,
         sizesCm: document.getElementById('inputInsoleLengths').value,
         maxQuantities: document.getElementById('inputQuantitiesLeft').value,
-        warehouses: document.getElementById('inputWarehouses').value
+        warehouses: document.getElementById('inputWarehouses').value,
+        images: Array.from(document.getElementsByClassName('imageWrapper'))
+            .sort((a, b) => parseInt(a.getAttribute('data-index')) - parseInt(b.getAttribute('data-index')))
+            .map(wrapper => wrapper.id.substring(5)),
     };
 
     fetch('/admin/product/update', {
@@ -214,6 +217,8 @@ inputs.forEach(input => {
                         toAdd.push(size);
                     } else if (currentInput === 'InsoleLengths') {
                         toAdd.push(`${size} ( cm)`);
+                    } else if (currentInput === 'QuantitiesLeft') {
+                        toAdd.push(`${size} (1)`);
                     } else {
                         toAdd.push(`${size} ()`);
                     }
@@ -231,8 +236,85 @@ inputs.forEach(input => {
 
 document.getElementById('inputInstagramUrl').addEventListener('blur', () => {
     const url = document.getElementById('inputInstagramUrl').value;
+    console.log(productId, url)
     if (url === '') return;
 
-    const username = url.split('/').pop();
-    document.getElementById('inputInstagramUsername').value = username;
-}
+    fetch('/admin/product/load', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ productId: productId, url: url }),
+    })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+            if (data.success) {
+                document.getElementById('inputSizes').value = data.sizes.join(', ');
+                document.getElementById('inputInsoleLengths').value = Object.entries(data.sizesCm)
+                    .map(([size, value]) => `${size} (${value} cm)`)
+                    .join(', ');
+                document.getElementById('inputSizes').dispatchEvent(new Event('blur'));
+                document.getElementById('inputPrice').value = data.price;
+                document.getElementById('inputBrand').value = data.brand;
+                document.getElementById('inputCategory').value = data.category;
+                // delete previous images
+                document.getElementById('images').innerHTML = '';
+                for (let i = 0; i < data.images.length; i++) {
+                    const wrapper = document.createElement('div');
+                    wrapper.className = 'imageWrapper';
+                    wrapper.id = 'image' + data.images[i];
+                    wrapper.setAttribute('data-index', i);
+
+                    const image = document.createElement('div');
+                    image.className = 'image';
+
+                    const svg = document.getElementById('deleteIcon').cloneNode(true);
+                    svg.setAttribute("id", "");
+                    svg.setAttribute("onclick", `deleteImage('${data.images[i]}')`);
+
+                    const svgBack = document.getElementById('backIcon').cloneNode(true);
+                    svgBack.setAttribute("id", "");
+                    svgBack.setAttribute("onclick", `imageBack('${data.images[i]}')`);
+
+                    const svgForward = document.getElementById('forwardIcon').cloneNode(true);
+                    svgForward.setAttribute("id", "");
+                    svgForward.setAttribute("onclick", `imageForward('${data.images[i]}')`);
+
+                    const img = document.createElement('img');
+                    img.src = '/static/img/products/'+productId+'/'+data.images[i];
+                    img.alt = '';
+
+                    image.appendChild(img);
+                    image.appendChild(svg);
+                    image.appendChild(svgBack);
+                    image.appendChild(svgForward);
+                    wrapper.appendChild(image);
+
+                    document.getElementById('images').appendChild(wrapper);
+                }
+
+                const addImage = document.createElement('div');
+                addImage.id = 'addImage';
+                addImage.className = 'add';
+                addImage.setAttribute('onclick', 'triggerInput()');
+
+                const plus = document.createElement('div');
+                plus.className = 'plus';
+                plus.innerText = '+';
+
+                const input = document.createElement('input');
+                input.type = 'file';
+                input.id = 'inputImage';
+                input.style.display = 'none';
+                input.addEventListener('change', addImg);
+                
+                addImage.appendChild(plus);
+                addImage.appendChild(input);
+                document.getElementById('images').appendChild(addImage);
+            }
+            else {
+                console.log(data.error);
+            }
+        });
+});
