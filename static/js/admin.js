@@ -1,5 +1,6 @@
 function getProduct() {
     const product = document.getElementById('inputProductNumber').value;
+    if (product === '') return;
     const url = '/admin/products/edit/' + product;
     window.location.href = url;
 }
@@ -318,3 +319,44 @@ document.getElementById('inputInstagramUrl').addEventListener('blur', () => {
             }
         });
 });
+
+function filterOrders(criterion) {
+    const criterionValue = document.getElementById(criterion).value;
+    console.log(criterionValue);
+    const url = new URL(window.location.href);
+    if (criterionValue === 'Any' || criterionValue === '') url.searchParams.delete(criterion);
+    else url.searchParams.set(criterion, criterionValue);
+    url.searchParams.delete('scroll');
+    url.searchParams.delete('page');
+    window.location.href = url.toString();
+}
+
+function setStatus(status) {
+    statusWrapper = document.getElementById('status' + status);
+
+    statusWrappers = document.getElementsByClassName('status');
+    Array.from(statusWrappers).forEach(wrapper => {
+        wrapper.children[0].classList.remove('active');
+    });
+
+    statusWrapper.children[0].classList.add('active');
+}
+
+function deleteOrder(orderId, productId) {
+    fetch('/admin/order/delete', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ orderId: orderId, productId: productId }),
+    })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                window.location.url = '/admin/orders';
+            }
+            else {
+                console.log(data.error);
+            }
+        });
+}

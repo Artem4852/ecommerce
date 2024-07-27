@@ -568,6 +568,37 @@ select
         &:nth-child(4)
             width: 25%
 
+.filtering
+    width: 100%
+    display: flex
+    flex-direction: row
+    justify-content: space-between
+    flex-wrap: wrap
+    gap: 15px
+    margin-bottom: 40px
+
+    .filter, .sort
+        display: flex
+        flex-direction: row
+        align-items: center
+        gap: 5px
+        position: relative
+
+    input
+        width: fit-content
+        padding: 4px 8px
+        border-radius: 5px
+        border: none
+        font-size: 18px
+        background-color: $grey-dark
+        color: $white
+
+        &:focus
+            outline: none
+
+        &::placeholder
+            color: $grey
+
 #catalogue
     width: 100%
     padding: 0 30px
@@ -582,22 +613,6 @@ select
 
     .products
         margin-bottom: 30px
-
-    .filtering
-        width: 100%
-        display: flex
-        flex-direction: row
-        justify-content: space-between
-        flex-wrap: wrap
-        gap: 15px
-        margin-bottom: 40px
-
-        .filter, .sort
-            display: flex
-            flex-direction: row
-            align-items: center
-            gap: 5px
-            position: relative
 
     a:not(.viewDetails)
         margin-bottom: 10px
@@ -1407,7 +1422,7 @@ select
                     gap: 10px
 
                     &.start
-                        margin-right: 100px
+                        margin-right: 10%
 
                     &.end
                         align-items: flex-start
@@ -1536,7 +1551,7 @@ select
                 gap: 10px
 
                 &.start
-                    margin-right: 100px
+                    margin-right: 10%
 
                 &.end
                     align-items: flex-start
@@ -1562,6 +1577,20 @@ select
     p
         font-size: 18px
         font-weight: 400
+
+    input
+        padding: 4px 8px
+        border-radius: 5px
+        border: none
+        font-size: 18px
+        background-color: $grey-dark
+        color: $white
+
+        &:focus
+            outline: none
+
+        &::placeholder
+            color: $grey
 
     .row
         // width: 100%
@@ -1869,21 +1898,6 @@ select
     a.back
         margin-bottom: 20px
 
-    input
-        width: fit-content
-        padding: 4px 8px
-        border-radius: 5px
-        border: none
-        font-size: 18px
-        background-color: $grey-dark
-        color: $white
-
-        &:focus
-            outline: none
-
-        &::placeholder
-            color: $grey
-
 #adminProduct
     width: 100%
     padding: 0 20px
@@ -2029,6 +2043,10 @@ select
 
         &:hover
             background-color: $accent-light
+
+#order.admin
+    .status
+        cursor: pointer
 
 #page404
     width: 100%

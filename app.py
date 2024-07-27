@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify, render_template, session, redirect
+from flask import Flask, request, abort, jsonify, render_template, session, redirect
 from flask_mail import Mail, Message
 from database import Database
 import os, random, math, dotenv
@@ -458,6 +458,7 @@ def order(orderId, productId):
         return redirect('/login?next=orders')
     user = getUser({'userId': session.get('userId')})
     order = database.getOrder({'orderId': orderId})
+    if order['userId'] != user['userId']: return redirect('/orders')
     order['product'] = [o for o in order['cart'] if int(o['productId']) == int(productId)][0]
     order['product']['info'] = database.getProduct({'id': int(productId)})
     products = getProducts()
@@ -630,7 +631,7 @@ def admin():
         return redirect('/login')
     user = getUser({'userId': session.get('userId')})
     if not "admin" in user['tags']:
-        return redirect('/')
+        abort(404)
     return render_template('admin.html', userData=user, loggedIn=loggedIn)
 
 @app.route('/admin/products')
@@ -640,7 +641,7 @@ def adminProducts():
         return redirect('/login')
     user = getUser({'userId': session.get('userId')})
     if not "admin" in user['tags']:
-        return redirect('/')
+        abort(404)
     
     brand = request.args.get('brand')
     category = request.args.get('category')
@@ -684,7 +685,7 @@ def adminProductEdit(productId):
         return redirect('/login')
     user = getUser({'userId': session.get('userId')})
     if not "admin" in user['tags']:
-        return redirect('/')
+        abort(404)
     product = database.getProduct({'id': int(productId)})
     if not product:
         return redirect('/admin/products')
@@ -762,7 +763,7 @@ def adminProductAdd():
         return redirect('/login')
     user = getUser({'userId': session.get('userId')})
     if not "admin" in user['tags']:
-        return redirect('/')
+        abort(404)
     if request.method == 'GET':
         products = getProducts()
         ids = [p['id'] for p in products]
@@ -811,6 +812,60 @@ def adminProductAdd():
         database.addProduct(productData)
         return jsonify({'success': True})
 
+@app.route('/admin/orders')
+def adminOrders():
+    loggedIn = session.get('loggedIn', False)
+    if not loggedIn:
+        return redirect('/login')
+    user = getUser({'userId': session.get('userId')})
+    if not "admin" in user['tags']:
+        abort(404)
+    orders = database.getOrders({})
+    statuses = sorted(list(set([o['status'] for o in orders])))
+
+    page_size = 20
+    page = request.args.get('page')
+    if not page: page = 1
+    status = request.args.get('orderStatus')
+    if status: orders = [o for o in orders if o['status'] == status]
+    orderId = request.args.get('orderId')
+    if orderId: orders = [o for o in orders if o['orderId'] == orderId]
+    orders = orders[(int(page)-1)*page_size:int(page)*page_size]
+
+    for order in orders:
+        cartItems = []
+        for item in order['cart']:
+            print(item)
+            product = database.getProduct({'id': item['productId']})
+            cartItems.append({'id': item['productId'], 'size': item['size'], 'quantity': item['quantity'], 'info': product})
+        order['cart'] = cartItems
+    return render_template('adminOrders.html', userData=user, loggedIn=loggedIn, orders=orders, statuses=statuses, status=status, orderId=orderId, page=int(page))
+
+@app.route('/admin/orders/<orderId>/<productId>')
+def adminOrder(orderId, productId):
+    loggedIn = session.get('loggedIn', False)
+    if not loggedIn:
+        return redirect('/login')
+    user = getUser({'userId': session.get('userId')})
+    if not "admin" in user['tags']:
+        abort(404)
+    order = database.getOrder({'orderId': orderId})
+    order['product'] = [o for o in order['cart'] if int(o['productId']) == int(productId)][0]
+    order['product']['info'] = database.getProduct({'id': int(productId)})
+    codesCountry = {v: k for k, v in nova.loadCountryCodes().items()}
+    return render_template('adminOrder.html', userData=user, loggedIn=loggedIn, order=order, codesCountry=codesCountry)
+
+@app.route('/admin/order/delete', methods=['POST'])
+def deleteOrder():
+    orderId = request.json.get('orderId')
+    productId = request.json.get('productId')
+
+    orderCart = database.getOrder({'orderId': orderId})['cart']
+    if len(orderCart) == 1:
+        database.removeOrder(orderId)
+    else:
+        database.updateOrder(orderId, {'$pull': {'cart': {'productId': int(productId)}}})
+    return jsonify({'success': True})
 
 @app.errorhandler(404)
 def page_not_found(e):

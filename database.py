@@ -42,8 +42,14 @@ class Database:
     def addOrder(self, order):
         self.productsDb['orders'].insert_one(order)
 
+    def updateOrder(self, orderId, change):
+        self.productsDb['orders'].update_one({'orderId': orderId}, change)
+
     def editOrder(self, orderId, order):
-        self.usersDb['orders'].update_one({'Id': ObjectId(orderId)}, {'$set': order})
+        self.usersDb['orders'].update_one({'orderId': orderId}, {'$set': order})
+
+    def removeOrder(self, orderId):
+        self.productsDb['orders'].delete_one({'orderId': orderId})
 
     def getOrders(self, Filter):
         return list(self.productsDb['orders'].find(Filter))

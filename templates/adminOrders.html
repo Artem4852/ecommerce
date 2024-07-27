@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+{% include 'partials/head.html' %}
+
+<body>
+    {% include 'partials/header.html' %}
+    <section id="orders" class="admin">
+        <h2>Orders Panel</h2>
+        <a class="back" href="/admin">
+            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="21" viewBox="0 0 12 21" fill="none">
+                <path
+                    d="M10.1911 1.74921e-06L12 1.86375L3.61783 10.5L12 19.1362L10.1911 21L-9.8941e-07 10.5L10.1911 1.74921e-06Z"
+                    fill="#E352BA" />
+            </svg>
+            Back
+        </a>
+        <div class="filtering">
+            <div class="filter">
+                <input type="text" id="orderId" placeholder="Order id" onblur="filterOrders('orderId')" value="{% if orderId %}{{ orderId }}{% endif %}">
+            </div>
+            <div class="filter">
+                <label for="status">Status</label>
+                <select id="orderStatus" name="status" onchange="filterOrders('orderStatus')">
+                    <option value="Any" {% if not shoeSize %} selected {% endif %}>Any</option>
+                    {% for status_option in statuses %}
+                    <option value="{{ status_option }}" {% if status_option==status %} selected {% endif %}>{{ status_option | capitalize }}</option>
+                    {% endfor %}
+                </select>
+                <svg class="downArrow" xmlns="http://www.w3.org/2000/svg" width="24" height="14" viewBox="0 0 24 14" fill="none">
+                    <path
+                        d="M0.321533 2.1104L2.36278 -9.16136e-07L11.8215 9.77919L21.2803 -8.92259e-08L23.3215 2.1104L11.8215 14L0.321533 2.1104Z"
+                        fill="#F1F1F1" />
+                </svg>
+            </div>
+        </div>
+        <div class="orders">
+            {% for order in orders %}
+                {% for item in order.cart %}
+                <div class="card">
+                    <div class="img">
+                        <a href="/admin/orders/{{ order.orderId }}/{{ item.id }}">
+                            <img src="{{ url_for('static', filename='img/products/'+item.id|string+'/'+item.info.img) }}" alt="">
+                        </a>
+                    </div>
+                    <div class="data">
+                        <div class="row">
+                            <div class="col start" id="card{{ item.id }}">
+                                <h4>{{ item.info.category }} {{ item.info.brand }}</h4>
+                                <p class="infoSize">Size: {{ item.size }}</p>
+                                <p class="infoQuantity">Quantity: {{ item.quantity }}</p>
+                            </div>
+                            <div class="col">
+                                <p>Warehouse: {{ item.info.warehouses[item.size | string] }}</p>
+                                <div class="row">
+                                    <p>To: {{ order.city }}</p>
+                                    <!-- {% if order.deliveryMethod == "pickUpFromPostOffice" %}
+                                                    <p>Branch: {{ order.postOfficeBranch }}</p>
+                                                    {% endif %} -->
+                                </div>
+                                {% if order.deliveryMethod == "pickUpFromPostOffice" %}
+                                <p>Type: Pick up from Post Office</p>
+                                {% else %}
+                                <p>Type: Address Delivery</p>
+                                {% endif %}
+                            </div>
+                            <div class="col">
+                                <p>Product id: {{ item.id }}</p>
+                                <p>Order id: {{ order.orderId }}</p>
+                                <p>Status: {{ order.status | capitalize }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+                {% endfor %}
+        </div>
+        {% if products and maxPages != 1 %}
+        <div class="pagination">
+            <p>Page:
+                {% if page != 1 %}
+                    <a href="?{% for key, value in request.args.items() if key not in ['page', 'scroll'] %}{{ key }}={{ value }}&{% endfor %}page={{ page-1 }}" class="arrow">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="23" viewBox="0 0 14 23" fill="none">
+                            <path d="M11.8896 -1.84497e-07L14 2.04125L4.22081 11.5L14 20.9587L11.8896 23L5.16875e-08 11.5L11.8896 -1.84497e-07Z" fill="#111111"/>
+                        </svg>
+                    </a>
+                    <a href="?{% for key, value in request.args.items() if key not in ['page', 'scroll'] %}{{ key }}={{ value }}&{% endfor %}">1</a>
+                {% else %}
+                    <span>1</span>
+                {% endif %}
+                {% if page > 3 %}
+                    <span class="dots">...</span>
+                {% endif %}
+                {% for i in range(page-1, page+2) %}
+                    {% if i > 1 and i < maxPages %}
+                        {% if i == page %}
+                            <span>{{ i }}</span>
+                        {% else %}
+                            <a href="?{% for key, value in request.args.items() if key not in ['page', 'scroll'] %}{{ key }}={{ value }}&{% endfor %}page={{ i }}">{{ i }}</a>
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+                {% if page < maxPages-2 %} 
+                    <span class="dots">...</span>
+                {% endif %}
+                {% if page != maxPages %}
+                    <a href="?{% for key, value in request.args.items() if key not in ['page', 'scroll'] %}{{ key }}={{ value }}&{% endfor %}page={{ maxPages }}">{{ maxPages }}</a>
+                    <a href="?{% for key, value in request.args.items() if key not in ['page', 'scroll'] %}{{ key }}={{ value }}&{% endfor %}page={{ page+1 }}" class="arrow">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="23" viewBox="0 0 14 23" fill="none">
+                        <path d="M2.1104 23L0 20.9587L9.77919 11.5L0 2.04125L2.1104 0L14 11.5L2.1104 23Z" fill="#111111"/>
+                    </svg>
+                    </a>
+                {% else %}
+                    <span>{{ maxPages }}</span>
+                {% endif %}
+            </p>
+        </div>
+        {% endif %}
+        {% if not orders %}
+            <h3 class="noProducts">No orders found. Try to change filters.</h3>
+        {% endif %}
+    </section>
+    {% include 'partials/footer.html' %}
+    <script src="{{ url_for('static', filename='js/shop.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/admin.js') }}"></script>
+</body>
+</html>

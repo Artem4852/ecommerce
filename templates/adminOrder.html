@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+{% include 'partials/head.html' %}
+<body>
+    {% include 'partials/header.html' %}
+    <section id="order" class="admin">
+        <h2>View order</h2>
+        <a class="back" href="/admin/orders">
+            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="21" viewBox="0 0 12 21" fill="none">
+                <path
+                    d="M10.1911 1.74921e-06L12 1.86375L3.61783 10.5L12 19.1362L10.1911 21L-9.8941e-07 10.5L10.1911 1.74921e-06Z"
+                    fill="#E352BA" />
+            </svg>
+            Back
+        </a>
+        <div class="row">
+            <div class="col">
+                <h4>Product</h4>
+                <p>Name: {{ order.product.info.category }} {{ order.product.info.brand }}</p>
+                <p>Id: <a href="/product/{{ order.product.productId }}">{{ order.product.productId }}</a></p>
+                <p>Size: {{ order.product.size }}</p>
+                <p>Quantity: {{ order.product.quantity }}</p>
+            </div>
+            <div class="col">
+                <h4>Order</h4>
+                <p>Order id: {{ order.orderId }}</p>
+                <p>Receiver: {{ order.firstName }} {{ order.lastName }} {{ order.middleName }}</p>
+                <p>Country: {{ codesCountry[order.country] | capitalize }}</p>
+                <p>City: {{ order.city }}</p>
+                <p>Delivery method: {% if order.deliveryMethod == 'pickUpFromPostOffice' %}Pick up from Post Office{% else %}Address delivery{% endif %}</p>
+                <p>Tracking number: <input value="{{ order.trackingNumber }}" {% if not order.trackingNumber %} placeholder="Tracking number" {% endif %}></p>
+                {% if order.deliveryMethod == "pickUpFromPostOffice" %}
+                    <p>Post Office branch: {{ order.postOfficeBranchName }}</p>
+                {% else %}
+                    <p>Address: {{ order.address }} {{ order.address2 }}</p>
+                    <p>Postal code: {{ order.postalCode }}</p>
+                {% endif %}
+                <p>Payment type: {% if order.paymentMethod == 'fullPrepayment' %}Full Prepayment{% else %}Post Payment{% endif %}</p>
+            </div>
+            <div class="col">
+                <h4>Status</h4>
+                <div class="status" onclick="setStatus('Pending')" id="statusPending">
+                    <div class="circle {% if order.status == 'pending' %}active{% endif %}"></div>
+                    <p>Pending</p>
+                </div>
+                <div class="status" onclick="setStatus('Processed')" id="statusProcessed">
+                    <div class="circle {% if order.status == 'processed' %}active{% endif %}"></div>
+                    <p>Processed</p>
+                </div>
+                <div class="status" onclick="setStatus('Shipped')" id="statusShipped">
+                    <div class="circle {% if order.status == 'shipped' %}active{% endif %}"></div>
+                    <p>Shipped</p>
+                </div>
+                <div class="status" onclick="setStatus('Arrived')" id="statusArrived">
+                    <div class="circle {% if order.status == 'arrived' %}active{% endif %}"></div>
+                    <p>Arrived</p>
+                </div>
+                <div class="status" onclick="setStatus('Received')" id="statusReceived">
+                    <div class="circle {% if order.status == 'received' %}active{% endif %}"></div>
+                    <p>Received</p>
+                </div>
+            </div>
+        </div>
+        <button onclick="deleteOrder('{{ order.orderId }}', '{{ order.product.productId }}')">Delete order</button>
+    </section>
+    {% include 'partials/footer.html' %}
+    <script src="{{ url_for('static', filename='js/admin.js') }}"></script>
+</body>
+</html>
