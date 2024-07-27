@@ -73,7 +73,6 @@ class Database:
         return list(self.otherDb['faq'].find())
     
     def updateStats(self, statName, fieldName):
-        # adds +1 to data's fieldName
         existing = self.otherDb['statistics'].find_one({'name': statName})
         existing['data'][fieldName] += 1
         self.otherDb['statistics'].update_one({'name': statName}, existing)
