@@ -69,6 +69,8 @@ def index():
     sale = [p for p in products if p['tag'] == 'Sale' and p['discount'] != 0 and len(p['sizes']) > 0]
     random.shuffle(sale)
 
+    logResponse = log('home', request=request);
+    if logResponse: return logResponse
     return render_template('index.html', indexImages=indexImages, productsFeatured=featured[:4], productsSale=sale[:4], userData=user, loggedIn=loggedIn)
 
 # Shop routes
@@ -115,6 +117,8 @@ def shop():
 
     loggedIn = session.get('loggedIn', False)
 
+    logResponse = log('shop', request=request);
+    if logResponse: return logResponse
     return render_template('shop.html', products=productsCurrent, userData=user, brand=brand, category=category, shoeSize=shoeSize, priceRange=priceRange, sorting=sorting, productsPerPage=productsPerPage, page=page, maxPages=maxPages, loggedIn=loggedIn, brands=brands, categories=categories, sizes=sizes)
 
 @app.route('/product/<productId>')
@@ -127,6 +131,8 @@ def product(productId):
     productsFeatured = [p for p in products if p['tag'] == 'Featured']
     random.shuffle(productsFeatured)
 
+    logResponse = log('product', request=request);
+    if logResponse: return logResponse
     return render_template('product.html', product=product, userData=user, productsFeatured=productsFeatured[:4], loggedIn=loggedIn)
 
 # Static pages
@@ -138,6 +144,8 @@ def faq():
         userData = getUser({'userId': session.get('userId')})
     else:
         userData = {}
+    logResponse = log('faq', request=request);
+    if logResponse: return logResponse
     return render_template('faq.html', faqPosts=faq, loggedIn=loggedIn, userData=userData)
 
 @app.route('/faq/<faqName>')
@@ -147,6 +155,8 @@ def faqPost(faqName):
         userData = getUser({'userId': session.get('userId')})
     else:
         userData = {}
+    logResponse = log('faq', request=request);
+    if logResponse: return logResponse
     if faqName == 'shoeSize':
         return render_template('faq/shoeSize.html', loggedIn=loggedIn, userData=userData)
     elif faqName == 'delivery':
@@ -161,6 +171,8 @@ def contact():
         userData = getUser({'userId': session.get('userId')})
     else:
         userData = {}
+    logResponse = log('contact', request=request);
+    if logResponse: return logResponse
     return render_template('contact.html', loggedIn=loggedIn, userData=userData)
 
 # Legal routes
@@ -171,6 +183,8 @@ def termsofuse():
         userData = getUser({'userId': session.get('userId')})
     else:
         userData = {}
+    logResponse = log('legal', request=request);
+    if logResponse: return logResponse
     return render_template('legal/termsOfUse.html', loggedIn=loggedIn, userData=userData)
 
 @app.route('/privacypolicy')
@@ -180,6 +194,8 @@ def privacypolicy():
         userData = getUser({'userId': session.get('userId')})
     else:
         userData = {}
+    logResponse = log('legal', request=request);
+    if logResponse: return logResponse
     return render_template('legal/privacy.html', loggedIn=loggedIn, userData=userData)
 
 @app.route('/cookiespolicy')
@@ -189,6 +205,8 @@ def cookiespolicy():
         userData = getUser({'userId': session.get('userId')})
     else:
         userData = {}
+    logResponse = log('legal', request=request);
+    if logResponse: return logResponse
     return render_template('legal/cookies.html', loggedIn=loggedIn, userData=userData)
 
 @app.route('/shippingpolicy')
@@ -198,6 +216,8 @@ def shippingpolicy():
         userData = getUser({'userId': session.get('userId')})
     else:
         userData = {}
+    logResponse = log('legal', request=request);
+    if logResponse: return logResponse
     return render_template('legal/shipping.html', loggedIn=loggedIn, userData=userData)
 
 @app.route('/replacementsandreturnspolicy')
@@ -207,6 +227,8 @@ def replacementsandreturnspolicy():
         userData = getUser({'userId': session.get('userId')})
     else:
         userData = {}
+    logResponse = log('legal', request=request);
+    if logResponse: return logResponse
     return render_template('legal/replacementsAndReturns.html', loggedIn=loggedIn, userData=userData)
 
 # Cart + favorites routes
@@ -232,6 +254,8 @@ def favorites():
     productsFeatured = [p for p in products if p['tag'] == 'Featured']
     random.shuffle(productsFeatured)
 
+    logResponse = log('shop', request=request);
+    if logResponse: return logResponse
     return render_template('favorites.html', userData=user, favoriteItems=favoriteItems, productsFeatured=productsFeatured[:4], page=page, maxPages=maxPages, loggedIn=loggedIn)
 
 @app.route('/favorite/<productNumber>', methods=['POST'])
@@ -259,8 +283,8 @@ def cart():
 
     productsFeatured = [p for p in products if p['tag'] == 'Featured']
 
-    print(productsFeatured)
-
+    logResponse = log('shop', request=request);
+    if logResponse: return logResponse
     return render_template('cart.html', userData=user, cartItems=cartItems, subtotal=subtotal, productsFeatured=productsFeatured[:4], loggedIn=loggedIn)
 
 @app.route('/addToCart/<productId>', methods=['POST'])
@@ -328,6 +352,8 @@ def checkout():
         productsFeatured = [p for p in products if p['tag'] == 'Featured']
         random.shuffle(productsFeatured)
 
+        logResponse = log('shop', request=request);
+        if logResponse: return logResponse
         return render_template('checkout.html', userData=user, cartItems=cartItems, subtotal=subtotal, productsFeatured=productsFeatured[:4], loggedIn=loggedIn, deliveryCountries=deliveryCountries, deliveryCities=deliveryCities, featuredProducts=productsFeatured, countryCodes=countryCodes, codesCountry=codesCountry, shippingData=shippingData, paymentData=paymentData, contactData=contactData)
     elif request.method == 'POST':
         data = request.json
@@ -428,6 +454,8 @@ def orderConfirmation():
     productsFeatured = [p for p in products if p['tag'] == 'Featured']
     random.shuffle(productsFeatured)
 
+    logResponse = log('shop', request=request);
+    if logResponse: return logResponse
     return render_template('orderConfirmation.html', userData=user, loggedIn=loggedIn, productsFeatured=productsFeatured[:4])
 
 @app.route('/orders')
@@ -448,8 +476,8 @@ def orders():
     productsFeatured = [p for p in products if p['tag'] == 'Featured']
     random.shuffle(productsFeatured)
 
-    print(orders[0]['cart'])
-
+    logResponse = log('orders', request=request);
+    if logResponse: return logResponse
     return render_template('orders.html', userData=user, orders=orders, loggedIn=loggedIn, productsFeatured=productsFeatured[:4])
 
 @app.route('/orders/<orderId>/<productId>')
@@ -470,6 +498,8 @@ def order(orderId, productId):
     productsFeatured = [p for p in products if p['tag'] == 'Featured']
     random.shuffle(productsFeatured)
 
+    logResponse = log('orders', request=request);
+    if logResponse: return logResponse
     return render_template('order.html', userData=user, order=order, loggedIn=loggedIn, productsFeatured=productsFeatured[:4], codesCountry=codesCountry)
 
 # Settings
@@ -484,6 +514,8 @@ def settings():
     deliveryCities = nova.loadCities()
     codesCountry = {v: k for k, v in nova.loadCountryCodes().items()}
 
+    logResponse = log('home', request=request);
+    if logResponse: return logResponse
     return render_template('settings.html', userData=user, loggedIn=loggedIn, codesCountry=codesCountry, deliveryCountries=deliveryCountries, deliveryCities=deliveryCities)
 
 @app.route('/updateSettings', methods=['POST'])
@@ -629,17 +661,24 @@ def previewEmail(file):
 def admin():
     loggedIn = session.get('loggedIn', False)
     if not loggedIn:
-        return redirect('/login')
+        abort(404)
     user = getUser({'userId': session.get('userId')})
     if not "admin" in user['tags']:
         abort(404)
-    return render_template('admin.html', userData=user, loggedIn=loggedIn)
+
+    dailyRequests = database.getStats('dailyRequests')['data']
+    averageDailyRequests = int(sum(dailyRequests.values())/len(dailyRequests))
+
+    sortedDailyRequests = sorted(dailyRequests, key=lambda x: x)
+    dailyRequests = {n: dailyRequests[n] for n in sortedDailyRequests[-7:]}
+
+    return render_template('admin.html', userData=user, loggedIn=loggedIn, averageDailyRequests=averageDailyRequests, dailyRequests=dailyRequests)
 
 @app.route('/admin/products')
 def adminProducts():
     loggedIn = session.get('loggedIn', False)
     if not loggedIn:
-        return redirect('/login')
+        abort(404)
     user = getUser({'userId': session.get('userId')})
     if not "admin" in user['tags']:
         abort(404)
@@ -683,7 +722,7 @@ def adminProducts():
 def adminProductEdit(productId):
     loggedIn = session.get('loggedIn', False)
     if not loggedIn:
-        return redirect('/login')
+        abort(404)
     user = getUser({'userId': session.get('userId')})
     if not "admin" in user['tags']:
         abort(404)
@@ -761,7 +800,7 @@ def adminProductUpdate():
 def adminProductAdd():
     loggedIn = session.get('loggedIn', False)
     if not loggedIn:
-        return redirect('/login')
+        abort(404)
     user = getUser({'userId': session.get('userId')})
     if not "admin" in user['tags']:
         abort(404)
@@ -817,7 +856,7 @@ def adminProductAdd():
 def adminOrders():
     loggedIn = session.get('loggedIn', False)
     if not loggedIn:
-        return redirect('/login')
+        abort(404)
     user = getUser({'userId': session.get('userId')})
     if not "admin" in user['tags']:
         abort(404)
@@ -846,7 +885,7 @@ def adminOrders():
 def adminOrder(orderId, productId):
     loggedIn = session.get('loggedIn', False)
     if not loggedIn:
-        return redirect('/login')
+        abort(404)
     user = getUser({'userId': session.get('userId')})
     if not "admin" in user['tags']:
         abort(404)
@@ -889,5 +928,5 @@ def page_not_found(e):
 
 if __name__ == "__main__":
     # sendEmail('Welcome to Kids Fashion Store', "test@kids.com", body="Welcome to our store!\nThank you for signing up. You can now log in to your new account.\nHappy shopping!", html='welcome')
-    # app.run(debug=True, port=8080)
-    log('home', None, "31.129.253.30")
+    app.run(debug=True, port=8080)
+    # logResponse = log('home', None)

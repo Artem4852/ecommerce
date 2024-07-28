@@ -14,13 +14,13 @@
                         <p>Unique visits today: 24</p>
                     </div>
                     <div class="col">
-                        <p>Average daily requests: 453</p>
+                        <p>Average daily requests: {{ averageDailyRequests }}</p>
                         <p>Average unique visits: 24</p>
                     </div>
                 </div>
                 <div class="chart">
                     <h4>Daily requests:</h4>
-                    <canvas id="requestsChart"></canvas>
+                    <canvas id="requestsChart" height="400"></canvas>
                 </div>
             </div>
         </div><div class="group">
@@ -63,5 +63,10 @@
         </div>
     </section>
     {% include 'partials/footer.html' %}
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        const dailyRequests = {{ dailyRequests | tojson }};
+    </script>
+    <script src="{{ url_for('static', filename='js/adminCharts.js') }}"></script>
 </body>
 </html>

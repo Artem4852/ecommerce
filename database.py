@@ -80,31 +80,7 @@ class Database:
 
 if __name__ == "__main__":
     database = Database()
-    products = database.getProducts()
-
-    for n, product in enumerate(products):
-        print(f"Editing {n+1}/{len(products)}")
-        # images = product['images']
-        # images = [i.split('/')[-1] for i in images]
-        database.updateProduct(product['id'], {'img': product['img'].split('/')[-1]})
-
-    # warehouses_names = ['Kyiv', 'Poltava', 'Ternopil', 'Odesa', 'Ivano-Frankivsk']
-
-    # for n, product in enumerate(products):
-    #     print(f"Editing {n+1}/{len(products)}")
-    #     sizes = product['sizes']
-    #     warehouses = {}
-    #     sizes1 = sizes[:len(sizes)//2]
-    #     sizes2 = sizes[len(sizes)//2:]
-    #     warehouse1 = random.choice(warehouses_names)
-    #     warehouse2 = random.choice(warehouses_names)
-    #     for size in sizes1:
-    #         warehouses[str(size)] = warehouse1
-    #     for size in sizes2:
-    #         warehouses[str(size)] = warehouse2
-    #     database.updateProduct(product['id'], {'warehouses': warehouses})
-    #     database.editProduct(product['id'], ['warehouse'])
-    #     img = product['img']
-    #     if not os.path.exists(f"static/{img}"):
-    #         database.removeProduct(product['id'])
-        # database.updateProduct(product['id'], {'img': product['img'].replace('../static/', '')})D
+    for i in range(22, 29):
+        data = database.getStats('dailyRequests')['data']
+        data[f'{i}.07.2024'] = random.randint(300, 900)
+        database.updateStats('dailyRequests', {'data': data})
