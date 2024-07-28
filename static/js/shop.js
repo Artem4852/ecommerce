@@ -21,12 +21,36 @@ function favorite(productId) {
         });
 }
 
+function showQuickOrderMenu() {
+    document.getElementById('quickOrderMenu').classList.remove('hidden');
+    document.getElementById('buttonShowMenu').classList.add('hidden');
+}
+
+function hideQuickOrderMenu() {
+    document.getElementById('quickOrderMenu').classList.add('hidden');
+    document.getElementById('buttonShowMenu').classList.remove('hidden');
+}
+
 function quickOrder(productId) {
     const size = document.getElementById('size').value;
     const quantity = document.getElementById('quantity' + size).value;
+    const contactMessenger = document.getElementById('inputContactMessenger').value;
+    const phoneNumber = document.getElementById('inputPhoneNumber').value;
+
+    if (contactMessenger !== 'instagram') {
+        if (phoneNumber == "" || phoneNumber.length < 12) {
+        document.getElementById("buttonQuickOrder").innerHTML = "Invalid phone number";
+        setTimeout(function () {
+            document.getElementById("buttonQuickOrder").innerHTML = "Quick order";
+        }, 2000);
+            return;
+    }
+    }
+
+    const username = document.getElementById('inputUsername').value;
     fetch('/quickOrder', {
         method: 'POST',
-        body: JSON.stringify({productId: productId, size: size, quantity: quantity}),
+        body: JSON.stringify({productId: productId, size: size, quantity: quantity, contactMessenger: contactMessenger, phoneNumber: phoneNumber, username: username}),
         headers: {
             'Content-Type': 'application/json',
         },
@@ -34,10 +58,11 @@ function quickOrder(productId) {
         .then(response => response.json())
         .then(data => {
             if (data.success) {
-                const cartButton = document.getElementById('quickOrder' + productId);
+                const cartButton = document.getElementById('buttonQuickOrder');
                 cartButton.innerText = "Ordered!";
                 setTimeout(function () {
                     cartButton.innerHTML = "Quick order";
+                    hideQuickOrderMenu();
                 }, 2000);
             }
         });
@@ -453,11 +478,15 @@ function selectMessenger() {
     const messenger = document.getElementById('inputContactMessenger').value;
     if (messenger === 'instagram') {
         document.getElementById('inputPhoneNumber').classList.add('disabled');
+        document.getElementById('labelPhoneNumber').classList.add('disabled');
         document.getElementById('inputUsername').classList.remove('disabled');
+        document.getElementById('labelUsername').classList.remove('disabled');
         return;
     }
     document.getElementById('inputPhoneNumber').classList.remove('disabled');
+    document.getElementById('labelPhoneNumber').classList.remove('disabled');
     document.getElementById('inputUsername').classList.add('disabled');
+    document.getElementById('labelUsername').classList.add('disabled');
 
 }
 

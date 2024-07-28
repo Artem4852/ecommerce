@@ -90,7 +90,34 @@
             {% if loggedIn and 'admin' in userData.tags %}
                 <a href="/admin/products/edit/{{ product['id'] }}">Edit product</a>
             {% else %}
-                <button {% if not sortedSizes %}disabled class="inactive" {% endif %} id="quickOrder{{ product['id'] }}" onclick="quickOrder('{{ product['id'] }}')">Quick order</button>
+                <!-- <button {% if not sortedSizes %}disabled class="inactive" {% endif %} id="buttonShowMenu" onclick="showQuickOrderMenu()">Quick order</button> -->
+                <div id="quickOrderMenu" class="quickorder hidden">
+                    <h4>How can we contact you?</h4>
+                    <div class="select">
+                        <label for="">Messenger:</label>
+                        <select onchange="selectMessenger()" name="messenger" id="inputContactMessenger">
+                            <option value="telegram" {% if not contactData.contactMessenger or contactData.contactMessenger=="telegram" %}
+                                selected {% endif %}>Telegram</option>
+                            <option {% if contactData.contactMessenger=="instagram" %} selected {% endif %} value="instagram">Instagram
+                            </option>
+                            <option {% if contactData.contactMessenger=="viber" %} selected {% endif %} value="viber">Viber</option>
+                        </select>
+                        <svg class="downArrow" xmlns="http://www.w3.org/2000/svg" width="23" height="15" viewBox="0 0 23 15" fill="none">
+                            <path
+                                d="M-9.22487e-08 2.13579L2.04125 0.0253897L11.5 9.80458L20.9587 0.0253905L23 2.13579L11.5 14.0254L-9.22487e-08 2.13579Z"
+                                fill="#F1F1F1" />
+                        </svg>
+                    </div>
+                    <div class="input">
+                        <label id="labelPhoneNumber">Phone number:</label>
+                        <input {% if contactData.contactMessenger=="instagram" %}class="disabled" {% endif %} oninput="phoneInput()" type="text" id="inputPhoneNumber" placeholder="Phone number" value="{% if not contactData.phoneNumber %}{{ userData['phoneNumber'] }}{% else %}{{ contactData.phoneNumber }}{% endif %}">
+                        <label {% if contactData.contactMessenger !="instagram" %}class="disabled" {% endif %} id="labelUsername" >Username:</label>
+                        <input {% if contactData.contactMessenger !="instagram" %}class="disabled" {% endif %} type="text" id="inputUsername" placeholder="@username" value="{{ contactData.username }}">
+                    </div>
+                    <button {% if not sortedSizes %}disabled class="inactive" {% endif %} id="buttonShowMenu"
+                        onclick="showQuickOrderMenu()">Quick order</button>
+                    <button {% if not sortedSizes %}disabled class="inactive" {% endif %} id="buttonQuickOrder" onclick="quickOrder('{{ product['id'] }}')">Quick order</button>
+                </div>
                 <!-- <button {% if not sortedSizes %}disabled class="inactive" {% endif %} id="cartButton{{ product['id'] }}" onclick="addToCart('{{ product['id'] }}')">Add to cart</button> -->
             {% endif %}
             <div class="additional">
@@ -155,5 +182,6 @@
     {% include 'partials/newsletter.html' %}
     {% include 'partials/footer.html' %}
     <script src="{{ url_for('static', filename='js/shop.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/forms.js') }}"></script>
 </body>
 </html>

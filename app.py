@@ -137,9 +137,12 @@ def product(productId):
     productsFeatured = [p for p in products if 'featured' in p['tags'] and len(p['sizes']) > 0 and p['id'] != int(productId)]
     random.shuffle(productsFeatured)
 
-    logResponse = log('product', request=request)
-    if logResponse: return logResponse
-    return render_template('product.html', product=product, userData=user, productsFeatured=productsFeatured[:4], loggedIn=loggedIn)
+    if loggedIn: contactData = user['contactData']
+    else: contactData = {}
+
+    # logResponse = log('product', request=request)
+    # if logResponse: return logResponse
+    return render_template('product.html', product=product, userData=user, productsFeatured=productsFeatured[:4], loggedIn=loggedIn, contactData=contactData)
 
 # Static pages
 @app.route('/faq')
@@ -272,6 +275,55 @@ def favorite(productNumber):
     else: database.updateUser({'userId': session.get('userId')}, {'$push': {'favorites': int(productNumber)}})
 
     return jsonify({'success': True, 'favorite': not int(productNumber) in favorites})
+
+@app.route('/quickOrder', methods=['POST'])
+def quickOrder():
+    productId = request.json.get('productId')
+    size = request.json.get('size')
+    quantity = request.json.get('quantity')
+    contactMessenger = request.json.get('contactMessenger')
+    phoneNumber = request.json.get('phoneNumber')
+    username = request.json.get('username')
+    username = username.replace('@', '')
+
+    data = {
+        'orderId': ''.join([random.choice(characters) for _ in range(8)]),
+        'cart': [{'productId': int(productId), 'size': int(size), 'quantity': int(quantity)}],
+        'userId': session.get('userId', None),
+        'status': 'pending',
+        'contactMessenger': contactMessenger
+    }
+    if contactMessenger in ['telegram', 'viber']:
+        data['phoneNumber'] = phoneNumber
+    elif contactMessenger == 'instagram':
+        data['username'] = username
+
+    database.addOrder(data)
+    database.updateUser({'userId': session.get('userId')}, {'$set': {'cart': [], 'promoCodeUsed': True}})
+
+    loggedIn = session.get('loggedIn', False)
+    if loggedIn:
+        userData = getUser({'userId': session.get('userId')})
+        contactData = userData['contactData']
+        contactData['contactMessenger'] = contactMessenger
+        if contactMessenger in ['telegram', 'viber']:
+            contactData['phoneNumber'] = phoneNumber
+        elif contactMessenger == 'instagram':
+            contactData['username'] = username
+        database.updateUser({'userId': session.get('userId')}, {'$set': {'contactData': contactData}})
+
+    if contactMessenger == 'telegram':
+        messenger = f"<a href='https://t.me/{data['phoneNumber'].replace('(', '').replace(')', '').replace(' ', '')}'>Telegram</a>"
+    elif contactMessenger == 'viber':
+        messenger = f"<a href='viber://chat?number={phoneNumber.replace('(', '').replace(')', '').replace(' ', '')}'>Viber</a>"
+    elif contactMessenger == 'instagram':
+        messenger = f"<a href='https://instagram.com/{username}'>Instagram</a>"
+    
+    contactInfo = phoneNumber if contactMessenger in ['telegram', 'viber'] else username
+
+    sendMessage(f"<b>New quick order: {data['orderId']}</b>. Check it <a href='https://kidsfashionstore.com.ua/admin/orders?orderId={data['orderId']}'>here</a>. Product id: <a href='https://kidsfashionstore.com.ua/product/{productId}'>{productId}</a>. Size: {size}, quantity: {quantity}. Contact customer: on {messenger}, {contactInfo}.")
+
+    return jsonify({'success': True})
 
 # @app.route('/cart')
 def cart():
@@ -414,7 +466,7 @@ def checkout():
         elif data['contactMessenger'] == 'instagram':
             messenger = f"<a href='https://instagram.com/{data['username']}'>Instagram</a>"
 
-        sendMessage(f"<b>New order: {data['orderId']}</b>. Check it <a href='https://kidsfashionstore.com.ua/admin/orders?orderId={data['orderId']}'>here</a>. Customer: {data['firstName']} {data['lastName']}, contact in " + messenger)
+        sendMessage(f"<b>New order: {data['orderId']}</b>. Check it <a href='https://kidsfashionstore.com.ua/admin/orders?orderId={data['orderId']}'>here</a>. Customer: {data['firstName']} {data['lastName']}, on " + messenger)
 
         return jsonify({'success': True})
 

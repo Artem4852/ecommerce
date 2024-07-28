@@ -757,7 +757,6 @@ select::-webkit-inner-spin-button, select::-webkit-outer-spin-button {
   border: none;
   cursor: pointer;
   font-size: 24px;
-  margin-bottom: 50px;
 }
 #product .information button:hover {
   background-color: #E2A4D0;
@@ -765,6 +764,9 @@ select::-webkit-inner-spin-button, select::-webkit-outer-spin-button {
 #product .information button.inactive {
   background-color: #E2A4D0;
   cursor: default;
+}
+#product .information button.hidden {
+  display: none;
 }
 #product .information a {
   display: block;
@@ -775,7 +777,6 @@ select::-webkit-inner-spin-button, select::-webkit-outer-spin-button {
   padding: 10px 0;
   text-align: center;
   font-size: 24px;
-  margin-bottom: 50px;
   cursor: pointer;
   transition: 0.2s;
 }
@@ -784,7 +785,80 @@ select::-webkit-inner-spin-button, select::-webkit-outer-spin-button {
   text-decoration: none;
 }
 #product .information .additional {
+  margin-top: 50px;
   width: 100%;
+}
+#product .information .quickorder {
+  width: 80%;
+  height: 205px;
+  background-color: #E0E0E0;
+  border-radius: 30px;
+  padding-top: 20px;
+  color: #111;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  transition: 0.5s ease-out;
+  overflow: hidden;
+}
+#product .information .quickorder.hidden {
+  height: 47.5px;
+  padding-top: 0;
+}
+#product .information .quickorder.hidden button#buttonShowMenu {
+  display: block;
+}
+#product .information .quickorder.hidden button#buttonQuickOrder {
+  display: none;
+}
+#product .information .quickorder h4 {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 20px;
+}
+#product .information .quickorder .disabled {
+  display: none;
+}
+#product .information .quickorder .input {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+#product .information .quickorder .input, #product .information .quickorder .select {
+  width: calc(100% - 40px);
+  justify-content: space-between;
+}
+#product .information .quickorder button {
+  width: 100%;
+}
+#product .information .quickorder button#buttonShowMenu {
+  display: none;
+}
+#product .information .quickorder button#buttonQuickOrder {
+  display: block;
+}
+#product .information .quickorder input {
+  width: 100%;
+  padding: 4px 8px;
+  border-radius: 5px;
+  border: none;
+  font-size: 18px;
+  background-color: #999999;
+  color: #f1f1f1;
+}
+#product .information .quickorder input:focus {
+  outline: none;
+}
+#product .information .quickorder input::placeholder {
+  color: #E0E0E0;
+}
+#product .information .quickorder label, #product .information .quickorder select, #product .information .quickorder input {
+  font-size: 20px;
+}
+#product .information .quickorder input, #product .information .quickorder select {
+  width: 50%;
 }
 
 #productFaq {
