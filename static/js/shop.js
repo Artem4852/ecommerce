@@ -21,6 +21,28 @@ function favorite(productId) {
         });
 }
 
+function quickOrder(productId) {
+    const size = document.getElementById('size').value;
+    const quantity = document.getElementById('quantity' + size).value;
+    fetch('/quickOrder', {
+        method: 'POST',
+        body: JSON.stringify({productId: productId, size: size, quantity: quantity}),
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                const cartButton = document.getElementById('quickOrder' + productId);
+                cartButton.innerText = "Ordered!";
+                setTimeout(function () {
+                    cartButton.innerHTML = "Quick order";
+                }, 2000);
+            }
+        });
+}
+
 function addToCart(productId) {
     const size = document.getElementById('size').value;
     const quantity = document.getElementById('quantity' + size).value;

@@ -90,7 +90,8 @@
             {% if loggedIn and 'admin' in userData.tags %}
                 <a href="/admin/products/edit/{{ product['id'] }}">Edit product</a>
             {% else %}
-                <button {% if not sortedSizes %}disabled class="inactive" {% endif %} id="cartButton{{ product['id'] }}" onclick="addToCart('{{ product['id'] }}')">Add to cart</button>
+                <button {% if not sortedSizes %}disabled class="inactive" {% endif %} id="quickOrder{{ product['id'] }}" onclick="quickOrder('{{ product['id'] }}')">Quick order</button>
+                <!-- <button {% if not sortedSizes %}disabled class="inactive" {% endif %} id="cartButton{{ product['id'] }}" onclick="addToCart('{{ product['id'] }}')">Add to cart</button> -->
             {% endif %}
             <div class="additional">
                 <h2>Additional information</h2>

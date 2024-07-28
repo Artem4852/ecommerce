@@ -1,0 +1,10 @@
+flask
+flask_mail
+bs4
+pymongo
+python-dotenv
+rocketapi
+requests
+shapely
+werkzeug
+telegram

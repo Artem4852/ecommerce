@@ -10,12 +10,12 @@
             <div class="data">
                 <div class="row">
                     <div class="col">
-                        <p>Requests today: 4</p>
-                        <p>Unique visits today: 24</p>
+                        <p>Requests today: {{ requestsToday }}</p>
+                        <p>Unique visits today: {{ uniqueVisitsToday }}</p>
                     </div>
                     <div class="col">
                         <p>Average daily requests: {{ averageDailyRequests }}</p>
-                        <p>Average unique visits: 24</p>
+                        <p>Average unique visits: {{ averageDailyUniqueVisits }}</p>
                     </div>
                 </div>
                 <div class="chart">
@@ -28,11 +28,11 @@
             <div class="data">
                 <div class="row">
                     <div class="col">
-                        <p>Items on site: 25</p>
+                        <p>Items on site: {{ totalProducts }}</p>
                         <p>Most popular category: Sandals</p>
                     </div>
                     <div class="col">
-                        <p>In stock: 45</p>
+                        <p>In stock: {{ inStock }}</p>
                         <p>Most common size: 27</p>
                     </div>
                 </div>

@@ -54,6 +54,13 @@ def log(page, request=None, ip=None):
     dailyRequests['data'][day] += 1
     db.updateStats('dailyRequests', dailyRequests)
 
+    dailyUniqueVisits = db.getStats('dailyUniqueVisits')
+    if not day in dailyUniqueVisits['data']:
+        dailyUniqueVisits['data'][day] = []
+    if not userIp in dailyUniqueVisits['data'][day]:
+        dailyUniqueVisits['data'][day].append(userIp)
+    db.updateStats('dailyUniqueVisits', dailyUniqueVisits)
+
     hourlyRequests = db.getStats('hourlyRequests')
     if not hour in hourlyRequests['data']:
         hourlyRequests['data'][hour] = 0

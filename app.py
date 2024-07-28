@@ -1,7 +1,7 @@
 from flask import Flask, request, abort, jsonify, render_template, session, redirect
 from flask_mail import Mail, Message
 from database import Database
-import os, random, math, dotenv, requests, difflib
+import os, random, math, dotenv, re
 from bs4 import BeautifulSoup
 from datetime import datetime
 from string import ascii_letters, digits
@@ -63,13 +63,13 @@ def index():
     user = getUser({'userId': session.get('userId')})
     loggedIn = session.get('loggedIn', False)
 
-    featured = [p for p in products if p['tag'] == 'Featured' and p['discount'] == 0 and len(p['sizes']) > 0]
+    featured = [p for p in products if 'featured' in p['tags'] and p['discount'] == 0 and len(p['sizes']) > 0]
     random.shuffle(featured)
 
-    sale = [p for p in products if p['tag'] == 'Sale' and p['discount'] != 0 and len(p['sizes']) > 0]
+    sale = [p for p in products if 'sale' in p['tags'] and len(p['sizes']) > 0]
     random.shuffle(sale)
 
-    logResponse = log('home', request=request);
+    logResponse = log('home', request=request)
     if logResponse: return logResponse
     return render_template('index.html', indexImages=indexImages, productsFeatured=featured[:4], productsSale=sale[:4], userData=user, loggedIn=loggedIn)
 
@@ -117,7 +117,7 @@ def shop():
 
     loggedIn = session.get('loggedIn', False)
 
-    logResponse = log('shop', request=request);
+    logResponse = log('shop', request=request)
     if logResponse: return logResponse
     return render_template('shop.html', products=productsCurrent, userData=user, brand=brand, category=category, shoeSize=shoeSize, priceRange=priceRange, sorting=sorting, productsPerPage=productsPerPage, page=page, maxPages=maxPages, loggedIn=loggedIn, brands=brands, categories=categories, sizes=sizes)
 
@@ -125,13 +125,19 @@ def shop():
 def product(productId):
     products = getProducts()
     product = database.getProduct({'id': int(productId)})
+
+    additionalInformation = product['additionalInformation'].copy()
+    for key, value in additionalInformation.items():
+        product['additionalInformation'][re.sub(r'([a-z])([A-Z])', r'\1 \2', key)] = value
+        del product['additionalInformation'][key]
+
     user = getUser({'userId': session.get('userId')})
     loggedIn = session.get('loggedIn', False)
 
-    productsFeatured = [p for p in products if p['tag'] == 'Featured']
+    productsFeatured = [p for p in products if 'featured' in p['tags'] and len(p['sizes']) > 0 and p['id'] != int(productId)]
     random.shuffle(productsFeatured)
 
-    logResponse = log('product', request=request);
+    logResponse = log('product', request=request)
     if logResponse: return logResponse
     return render_template('product.html', product=product, userData=user, productsFeatured=productsFeatured[:4], loggedIn=loggedIn)
 
@@ -144,7 +150,7 @@ def faq():
         userData = getUser({'userId': session.get('userId')})
     else:
         userData = {}
-    logResponse = log('faq', request=request);
+    logResponse = log('faq', request=request)
     if logResponse: return logResponse
     return render_template('faq.html', faqPosts=faq, loggedIn=loggedIn, userData=userData)
 
@@ -155,7 +161,7 @@ def faqPost(faqName):
         userData = getUser({'userId': session.get('userId')})
     else:
         userData = {}
-    logResponse = log('faq', request=request);
+    logResponse = log('faq', request=request)
     if logResponse: return logResponse
     if faqName == 'shoeSize':
         return render_template('faq/shoeSize.html', loggedIn=loggedIn, userData=userData)
@@ -171,7 +177,7 @@ def contact():
         userData = getUser({'userId': session.get('userId')})
     else:
         userData = {}
-    logResponse = log('contact', request=request);
+    logResponse = log('contact', request=request)
     if logResponse: return logResponse
     return render_template('contact.html', loggedIn=loggedIn, userData=userData)
 
@@ -183,7 +189,7 @@ def termsofuse():
         userData = getUser({'userId': session.get('userId')})
     else:
         userData = {}
-    logResponse = log('legal', request=request);
+    logResponse = log('legal', request=request)
     if logResponse: return logResponse
     return render_template('legal/termsOfUse.html', loggedIn=loggedIn, userData=userData)
 
@@ -194,7 +200,7 @@ def privacypolicy():
         userData = getUser({'userId': session.get('userId')})
     else:
         userData = {}
-    logResponse = log('legal', request=request);
+    logResponse = log('legal', request=request)
     if logResponse: return logResponse
     return render_template('legal/privacy.html', loggedIn=loggedIn, userData=userData)
 
@@ -205,7 +211,7 @@ def cookiespolicy():
         userData = getUser({'userId': session.get('userId')})
     else:
         userData = {}
-    logResponse = log('legal', request=request);
+    logResponse = log('legal', request=request)
     if logResponse: return logResponse
     return render_template('legal/cookies.html', loggedIn=loggedIn, userData=userData)
 
@@ -216,7 +222,7 @@ def shippingpolicy():
         userData = getUser({'userId': session.get('userId')})
     else:
         userData = {}
-    logResponse = log('legal', request=request);
+    logResponse = log('legal', request=request)
     if logResponse: return logResponse
     return render_template('legal/shipping.html', loggedIn=loggedIn, userData=userData)
 
@@ -227,7 +233,7 @@ def replacementsandreturnspolicy():
         userData = getUser({'userId': session.get('userId')})
     else:
         userData = {}
-    logResponse = log('legal', request=request);
+    logResponse = log('legal', request=request)
     if logResponse: return logResponse
     return render_template('legal/replacementsAndReturns.html', loggedIn=loggedIn, userData=userData)
 
@@ -251,10 +257,10 @@ def favorites():
     favoriteItems = favoriteItems[(page-1)*12:page*12]
     maxPages = math.ceil(len(user['favorites'])/12)
 
-    productsFeatured = [p for p in products if p['tag'] == 'Featured']
+    productsFeatured = [p for p in products if 'featured' in p['tags'] and len(p['sizes']) > 0]
     random.shuffle(productsFeatured)
 
-    logResponse = log('shop', request=request);
+    logResponse = log('shop', request=request)
     if logResponse: return logResponse
     return render_template('favorites.html', userData=user, favoriteItems=favoriteItems, productsFeatured=productsFeatured[:4], page=page, maxPages=maxPages, loggedIn=loggedIn)
 
@@ -267,7 +273,7 @@ def favorite(productNumber):
 
     return jsonify({'success': True, 'favorite': not int(productNumber) in favorites})
 
-@app.route('/cart')
+# @app.route('/cart')
 def cart():
     loggedIn = session.get('loggedIn', False)
     if not loggedIn:
@@ -281,27 +287,27 @@ def cart():
         subtotal += int(product['price'])*int(item['quantity'])
         cartItems.append({'id': item['productId'], 'size': item['size'], 'quantity': item['quantity'], 'info': product})
 
-    productsFeatured = [p for p in products if p['tag'] == 'Featured']
+    productsFeatured = [p for p in products if 'featured' in p['tags'] and len(p['sizes']) > 0]
 
-    logResponse = log('shop', request=request);
+    logResponse = log('shop', request=request)
     if logResponse: return logResponse
     return render_template('cart.html', userData=user, cartItems=cartItems, subtotal=subtotal, productsFeatured=productsFeatured[:4], loggedIn=loggedIn)
 
-@app.route('/addToCart/<productId>', methods=['POST'])
+# @app.route('/addToCart/<productId>', methods=['POST'])
 def addToCart(productId):
     size = request.json.get('size')
     quantity = request.json.get('quantity')
     database.updateUser({'userId': session.get('userId')}, {'$push': {'cart': {'productId': int(productId), 'size': int(size), 'quantity': int(quantity)}}})
     return jsonify({'success': True})
 
-@app.route('/removeFromCart/<productId>', methods=['POST'])
+# @app.route('/removeFromCart/<productId>', methods=['POST'])
 def removeFromCart(productId):
     size = request.json.get('size')
     quantity = request.json.get('quantity')
     database.updateUser({'userId': session.get('userId')}, {'$pull': {'cart': {'productId': int(productId), 'size': int(size), 'quantity': int(quantity)}}})
     return jsonify({'success': True})
 
-@app.route('/editCart/<productId>', methods=['POST'])
+# @app.route('/editCart/<productId>', methods=['POST'])
 def editCart(productId):
     size = request.json.get('size')
     quantity = request.json.get('quantity')
@@ -309,7 +315,7 @@ def editCart(productId):
     {'$set': {'cart.$.size': int(size), 'cart.$.quantity': int(quantity)}})
     return jsonify({'success': True})
 
-@app.route('/checkPromoCode', methods=['POST'])
+# @app.route('/checkPromoCode', methods=['POST'])
 def checkPromoCode():
     promoCode = request.json.get('promoCode')
     current_user = getUser({'userId': session.get('userId')})
@@ -322,7 +328,7 @@ def checkPromoCode():
         return jsonify({'success': True, 'discount': 1})
     # cxAiihvK
 
-@app.route('/checkout', methods=['GET', 'POST'])
+# @app.route('/checkout', methods=['GET', 'POST'])
 def checkout():
     if request.method == 'GET':
         loggedIn = session.get('loggedIn', False)
@@ -349,10 +355,10 @@ def checkout():
         paymentData = user['paymentData']
         contactData = user['contactData']
 
-        productsFeatured = [p for p in products if p['tag'] == 'Featured']
+        productsFeatured = [p for p in products if 'featured' in p['tags'] and len(p['sizes']) > 0]
         random.shuffle(productsFeatured)
 
-        logResponse = log('shop', request=request);
+        logResponse = log('shop', request=request)
         if logResponse: return logResponse
         return render_template('checkout.html', userData=user, cartItems=cartItems, subtotal=subtotal, productsFeatured=productsFeatured[:4], loggedIn=loggedIn, deliveryCountries=deliveryCountries, deliveryCities=deliveryCities, featuredProducts=productsFeatured, countryCodes=countryCodes, codesCountry=codesCountry, shippingData=shippingData, paymentData=paymentData, contactData=contactData)
     elif request.method == 'POST':
@@ -412,7 +418,7 @@ def checkout():
 
         return jsonify({'success': True})
 
-@app.route('/getBranches', methods=['POST'])
+# @app.route('/getBranches', methods=['POST'])
 def getBranches():
     countryCode = request.json.get('countryCode')
     city = request.json.get('city')
@@ -423,7 +429,7 @@ def getBranches():
         return jsonify({'success': False, 'error': 'Error fetching branches'})
     return jsonify({'success': True, 'branches': branches})
 
-@app.route('/getShippingPrice', methods=['POST'])
+# @app.route('/getShippingPrice', methods=['POST'])
 def getShippingPrice():
     countryCode = request.json.get('countryCode')
     branch = request.json.get('branch')
@@ -443,7 +449,7 @@ def getShippingPrice():
 
     return jsonify({'success': True, 'price': total})
 
-@app.route('/orderConfirmation')
+# @app.route('/orderConfirmation')
 def orderConfirmation():
     loggedIn = session.get('loggedIn', False)
     if not loggedIn:
@@ -451,10 +457,10 @@ def orderConfirmation():
     user = getUser({'userId': session.get('userId')})
 
     products = getProducts()
-    productsFeatured = [p for p in products if p['tag'] == 'Featured']
+    productsFeatured = [p for p in products if 'featured' in p['tags'] and len(p['sizes']) > 0]
     random.shuffle(productsFeatured)
 
-    logResponse = log('shop', request=request);
+    logResponse = log('shop', request=request)
     if logResponse: return logResponse
     return render_template('orderConfirmation.html', userData=user, loggedIn=loggedIn, productsFeatured=productsFeatured[:4])
 
@@ -473,10 +479,10 @@ def orders():
         order['cart'] = cartItems
 
     products = getProducts()
-    productsFeatured = [p for p in products if p['tag'] == 'Featured']
+    productsFeatured = [p for p in products if 'featured' in p['tags'] and len(p['sizes']) > 0]
     random.shuffle(productsFeatured)
 
-    logResponse = log('orders', request=request);
+    logResponse = log('orders', request=request)
     if logResponse: return logResponse
     return render_template('orders.html', userData=user, orders=orders, loggedIn=loggedIn, productsFeatured=productsFeatured[:4])
 
@@ -495,10 +501,10 @@ def order(orderId, productId):
     countryCodes = nova.loadCountryCodes()
     codesCountry = {v: k for k, v in countryCodes.items()}
 
-    productsFeatured = [p for p in products if p['tag'] == 'Featured']
+    productsFeatured = [p for p in products if 'featured' in p['tags'] and len(p['sizes']) > 0]
     random.shuffle(productsFeatured)
 
-    logResponse = log('orders', request=request);
+    logResponse = log('orders', request=request)
     if logResponse: return logResponse
     return render_template('order.html', userData=user, order=order, loggedIn=loggedIn, productsFeatured=productsFeatured[:4], codesCountry=codesCountry)
 
@@ -514,7 +520,7 @@ def settings():
     deliveryCities = nova.loadCities()
     codesCountry = {v: k for k, v in nova.loadCountryCodes().items()}
 
-    logResponse = log('home', request=request);
+    logResponse = log('home', request=request)
     if logResponse: return logResponse
     return render_template('settings.html', userData=user, loggedIn=loggedIn, codesCountry=codesCountry, deliveryCountries=deliveryCountries, deliveryCities=deliveryCities)
 
@@ -672,7 +678,17 @@ def admin():
     sortedDailyRequests = sorted(dailyRequests, key=lambda x: x)
     dailyRequests = {n: dailyRequests[n] for n in sortedDailyRequests[-7:]}
 
-    return render_template('admin.html', userData=user, loggedIn=loggedIn, averageDailyRequests=averageDailyRequests, dailyRequests=dailyRequests)
+    requestsToday = dailyRequests[sortedDailyRequests[-1]]
+
+    dailyUniqueVisits = database.getStats('dailyUniqueVisits')['data']
+    uniqueVisitsToday = len(dailyUniqueVisits[datetime.now().strftime('%d.%m.%Y')])
+    averageDailyUniqueVisits = int(sum([len(v) for v in dailyUniqueVisits.values()])/len(dailyUniqueVisits))
+
+    products = getProducts()
+    totalProducts = len(products)
+    inStock = len([p for p in products if len(p['sizes']) > 0])
+
+    return render_template('admin.html', userData=user, loggedIn=loggedIn, averageDailyRequests=averageDailyRequests, dailyRequests=dailyRequests, requestsToday=requestsToday, averageDailyUniqueVisits=averageDailyUniqueVisits, uniqueVisitsToday=uniqueVisitsToday, totalProducts=totalProducts, inStock=inStock)
 
 @app.route('/admin/products')
 def adminProducts():
