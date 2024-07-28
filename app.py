@@ -9,6 +9,7 @@ from string import ascii_letters, digits
 from novapost import NovaAPI
 from telegramAPI import sendMessage
 from instagram import getPost
+from siteStatistics import log
 
 characters = ascii_letters + digits
 
@@ -49,56 +50,6 @@ def getUser(Filter):
     if not session.get('loggedIn', False) and 'userId' in Filter:
         return {'cart': [], 'favorites': []}
     return database.getUser(Filter)
-
-def log(page, request=None, ip=None):
-    if ip: userIp = ip
-    elif request.headers.get('X-Forwarded-For'): userIp = request.headers.get('X-Forwarded-For').split(',')[0]
-    else: userIp = request.remote_addr
-    ip_data = requests.get(f'http://ipinfo.io/{userIp}/json').json()
-    if "bogon" in ip_data: return
-
-    now = datetime.now()
-    day = now.strftime("%d.%m.%Y")
-    hour = now.strftime("%d.%m.%Y %H:00")
-
-    city = ip_data['city']
-    region = ip_data['region']
-
-    regions = {
-        'crimea': 'south',
-        'vinnytsia': 'west',
-        'volyn': 'west',
-        'dnipropetrovsk': 'east',
-        'donetsk': 'east',
-        'zhytomyr': 'central',
-        'zakarpattia': 'west',
-        'zaporizhzhia': 'south',
-        'ivano-frankivsk': 'west',
-        'kyiv': 'central',
-        'kirovohrad': 'central',
-        'luhansk': 'east',
-        'lviv': 'west',
-        'mykolaiv': 'south',
-        'odesa': 'south',
-        'poltava': 'central',
-        'rivne': 'west',
-        'sumy': 'central',
-        'ternopil': 'west',
-        'kharkiv': 'east',
-        'kherson': 'south',
-        'khmelnytskyi': 'west',
-        'cherkasy': 'central',
-        'chernivtsi': 'west',
-        'chernihiv': 'central',
-    }
-
-    closest_match = difflib.get_close_matches(region, regions.keys(), n=1, cutoff=0.5)
-    if closest_match:
-        matchedRegion = regions[closest_match[0]]
-    else:
-        matchedRegion = 'central'
-
-    print(city, region, matchedRegion)
 
 # Index route
 @app.route('/')
@@ -939,4 +890,4 @@ def page_not_found(e):
 if __name__ == "__main__":
     # sendEmail('Welcome to Kids Fashion Store', "test@kids.com", body="Welcome to our store!\nThank you for signing up. You can now log in to your new account.\nHappy shopping!", html='welcome')
     # app.run(debug=True, port=8080)
-    log(None, None, "31.129.253.30")
+    log('home', None, "31.129.253.30")

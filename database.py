@@ -72,10 +72,11 @@ class Database:
     def getFaq(self):
         return list(self.otherDb['faq'].find())
     
-    def updateStats(self, statName, fieldName):
-        existing = self.otherDb['statistics'].find_one({'name': statName})
-        existing['data'][fieldName] += 1
-        self.otherDb['statistics'].update_one({'name': statName}, existing)
+    def getStats(self, statName):
+        return self.otherDb['statistics'].find_one({'name': statName})
+
+    def updateStats(self, statName, data):
+        self.otherDb['statistics'].update_one({'name': statName}, {'$set': data})
 
 if __name__ == "__main__":
     database = Database()
