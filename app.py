@@ -91,7 +91,7 @@ def shop():
     else: page = int(request.args.get('page'))
 
     products = getProducts()
-    products = [p for p in products if p['price'] != ""]
+    products = [p for p in products if p['price'] != "" and len(p['images']) > 0]
     brands = sorted(list(set([p['brand'] for p in products if p['brand'] != ""])))
     categories = sorted(list(set([p['category'] for p in products if p['category'] != ""])))
     sizes = sorted(list(set([size for p in products for size in p['sizes'] if size != ""])))

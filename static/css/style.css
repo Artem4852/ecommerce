@@ -71,6 +71,10 @@ svg.downArrow {
   right: 8px;
 }
 
+.mobileOnly {
+  display: none;
+}
+
 #deleteIcon, #backIcon, #forwardIcon {
   display: none;
 }
@@ -308,6 +312,7 @@ select::-webkit-inner-spin-button, select::-webkit-outer-spin-button {
 #header .navbar.mobile {
   display: none;
   position: fixed;
+  width: 50vw;
   height: 100vh;
   top: 0;
   right: 0;
@@ -348,6 +353,7 @@ select::-webkit-inner-spin-button, select::-webkit-outer-spin-button {
 #hero {
   width: 100%;
   height: 40vw;
+  min-height: 300px;
   margin-bottom: 50px;
   display: flex;
   flex-direction: row;
@@ -687,6 +693,18 @@ select::-webkit-inner-spin-button, select::-webkit-outer-spin-button {
   gap: 20px;
   padding: 30px;
 }
+#product h1 {
+  width: 100%;
+  font-family: "Open-Sans", sans-serif;
+  font-weight: 700;
+  font-size: 40px;
+  text-align: center;
+  color: #111;
+  margin-bottom: 20px;
+}
+#product h1.mobileOnly {
+  margin-bottom: 0;
+}
 #product .images {
   width: calc(50% - 10px);
   display: flex;
@@ -738,15 +756,6 @@ select::-webkit-inner-spin-button, select::-webkit-outer-spin-button {
   align-items: center;
   color: #111;
   font-size: 24px;
-}
-#product .information h1 {
-  width: 100%;
-  font-family: "Open-Sans", sans-serif;
-  font-weight: 700;
-  font-size: 40px;
-  text-align: center;
-  color: #111;
-  margin-bottom: 20px;
 }
 #product .information h2 {
   font-family: "Open-sans", sans-serif;
@@ -826,6 +835,9 @@ select::-webkit-inner-spin-button, select::-webkit-outer-spin-button {
 #product .information .additional {
   margin-top: 50px;
   width: 100%;
+}
+#product .information .additional p {
+  font-size: 24px;
 }
 #product .information .quickorder {
   width: 80%;
@@ -971,6 +983,7 @@ select::-webkit-inner-spin-button, select::-webkit-outer-spin-button {
   gap: 20px;
 }
 #faq .posts .card {
+  min-width: 250px;
   width: calc(32% - 10px);
   background-color: #E0E0E0;
   border-radius: 20px;
@@ -1121,10 +1134,10 @@ select::-webkit-inner-spin-button, select::-webkit-outer-spin-button {
 #contact .row {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   justify-content: space-between;
   width: 100%;
   gap: 20px;
-  margin-bottom: 20px;
 }
 #contact .row .col {
   display: flex;
@@ -1132,6 +1145,7 @@ select::-webkit-inner-spin-button, select::-webkit-outer-spin-button {
 }
 #contact form {
   width: calc(50% - 10px);
+  min-width: 250px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -1172,6 +1186,7 @@ select::-webkit-inner-spin-button, select::-webkit-outer-spin-button {
   background-color: #E2A4D0;
 }
 #contact .form p {
+  min-width: 250px;
   width: calc(50% - 10px);
 }
 
@@ -2226,11 +2241,17 @@ select::-webkit-inner-spin-button, select::-webkit-outer-spin-button {
 }
 
 @media screen and (max-width: 800px) {
+  .mobileOnly {
+    display: block;
+  }
+  .desktopOnly {
+    display: none;
+  }
   #header {
     padding: 4vw;
   }
   #header .logo {
-    width: 50%;
+    width: 70%;
   }
   #header img {
     width: 100%;
@@ -2249,6 +2270,82 @@ select::-webkit-inner-spin-button, select::-webkit-outer-spin-button {
   }
   #footer {
     gap: 30px;
+  }
+  h2 {
+    font-size: 40px;
+    text-align: center;
+  }
+  #hero .imagecol {
+    width: 25%;
+  }
+  #hero .imagecol:nth-child(4), #hero .imagecol:nth-child(5), #hero .imagecol:nth-child(6), #hero .imagecol:nth-child(7) {
+    display: none;
+  }
+  #hero .textWrapper .text {
+    width: 90vw;
+  }
+  #product {
+    flex-direction: column;
+  }
+  #product p, #product label, #product select, #product input {
+    font-size: 18px;
+  }
+  #product .images, #product .information {
+    width: 100%;
+  }
+  #product .information .select {
+    position: relative;
+  }
+  #product .information .select label, #product .information .select select {
+    font-size: 18px;
+  }
+  #product .information .quickorder {
+    width: 100%;
+  }
+  #product .information .additional h2 {
+    text-align: left;
+    font-size: 28px;
+  }
+  #product .information .additional p {
+    font-size: 18px;
+  }
+  #product .information .quickorder label, #product .information .quickorder select, #product .information .quickorder input {
+    font-size: 18px;
+  }
+  #productFaq div.info .head h3 {
+    font-size: 18px;
+  }
+  #productFaq div.info p {
+    font-size: 18px;
+  }
+  #faq .posts {
+    align-items: center;
+  }
+  #faq .posts .card {
+    width: 100%;
+  }
+  #faqPage .row {
+    margin-bottom: 20px;
+    flex-direction: column;
+    gap: 0;
+  }
+  #faqPage .row .text, #faqPage .row img {
+    width: 100%;
+  }
+  #faqPage .row .text *, #faqPage .row img * {
+    width: auto;
+  }
+  #contact form {
+    width: 100%;
+  }
+  #contact .form p {
+    width: 100%;
+  }
+  #loginForm form, #signupForm form {
+    width: 100%;
+  }
+  #legalPage a {
+    word-break: break-word;
   }
 }
 

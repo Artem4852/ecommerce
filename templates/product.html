@@ -5,6 +5,7 @@
 <body>
     {% include 'partials/header.html' %}
     <section id="product">
+        <h1 class="mobileOnly">{{ product.category }} {{ product.brand }}</h1>
         <div class="images">
             <div class="mainImg">
                 <img id="mainImg" src="{{ url_for('static', filename='img/products/'+product.id|string+'/'+product.images[0]) }}" alt="{{ product.name }}">
@@ -34,17 +35,22 @@
         <div class="information">
             {% set sortedSizes = product.sizes | sort %}
             {% set sortedSizesCm = product.sizesCm | dictsort %}
-            <h1>{{ product.category }} {{ product.brand }}</h1>
+            <h1 class="desktopOnly">{{ product.category }} {{ product.brand }}</h1>
             <div class="row">
                 <div class="col">
                     <p>Product number: {{ product.id }}</p>
                     <p>Brand: {{ product.brand }}</p>
                     <p>Price: {{ product.price }} uah</p>
+                    {% if sortedSizes %}
+                        <p class="mobileOnly instock">In stock</p>
+                    {% else %}
+                        <p class="mobileOnly notinstock">Not in stock</p>
+                    {% endif %}
                 </div>
                 {% if sortedSizes %}
-                    <p class="instock">In stock</p>
+                    <p class="desktopOnly instock">In stock</p>
                 {% else %}
-                    <p class="notinstock">Not in stock</p>
+                    <p class="desktopOnly notinstock">Not in stock</p>
                 {% endif %}
             </div>
             <div class="selectCol">
@@ -154,9 +160,9 @@
                 </svg>
                 <h3>Delivery information</h3>
             </div>
-            <p>Understanding our delivery process ensures a smooth shopping experience. We ship across Ukraine and select European
+            <p>Understanding our delivery process ensures a smooth shopping experience. We ship across Ukraine and selected European
             countries via Nova Post. Delivery times and costs vary by destination, with processing taking 1-2 business days.
-            Tracking, customs, and accurate address details are crucial. For more information on our shipping policy, <a href="/faq/delivery">click here</a>.</p>
+            Tracking, customs, and accurate address details are crucial. For more information on shipping, <a href="/faq/delivery">click here</a>.</p>
         </div>
         <div id="faqReplacementsReturns" class="info">
             <div class="head" onclick="toggleFaq('ReplacementsReturns')">

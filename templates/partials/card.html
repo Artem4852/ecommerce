@@ -1,5 +1,5 @@
 <div class="card" id="card{{ product['id'] }}">
-    {% if product['discount'] != 0 %}<h3 class="discount">{{ product['discount'] }}%</h3>{% else %}{% endif %}
+    {% if product['discount'] != 0 %}<h3 class="discount">-{{ product['discount'] }}%</h3>{% else %}{% endif %}
     <div class="data">
         <div class="img">
             {% if loggedIn %}
