@@ -51,16 +51,17 @@
                             </div>
                             <div class="col">
                                 <p>Warehouse: {{ item.info.warehouses[item.size | string] }}</p>
-                                <div class="row">
-                                    <p>To: {{ order.city }}</p>
-                                    <!-- {% if order.deliveryMethod == "pickUpFromPostOffice" %}
-                                                    <p>Branch: {{ order.postOfficeBranch }}</p>
-                                                    {% endif %} -->
-                                </div>
-                                {% if order.deliveryMethod == "pickUpFromPostOffice" %}
-                                <p>Type: Pick up from Post Office</p>
+                                {% if order.city %}
+                                    <div class="row">
+                                        <p>To: {{ order.city }}</p>
+                                    </div>
+                                    {% if order.deliveryMethod == "pickUpFromPostOffice" %}
+                                    <p>Type: Pick up from Post Office</p>
+                                    {% else %}
+                                    <p>Type: Address Delivery</p>
+                                    {% endif %}
                                 {% else %}
-                                <p>Type: Address Delivery</p>
+                                    <p>Quick order</p>
                                 {% endif %}
                             </div>
                             <div class="col">

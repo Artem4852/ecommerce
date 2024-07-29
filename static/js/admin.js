@@ -392,7 +392,7 @@ function deleteOrder(productId) {
         .then(response => response.json())
         .then(data => {
             if (data.success) {
-                window.location.url = '/admin/orders';
+                window.location.href = '/admin/orders';
             }
             else {
                 console.log(data.error);

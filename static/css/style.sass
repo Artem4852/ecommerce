@@ -10,13 +10,21 @@ $black: #111
 $green: #4A8C21
 $red: #B30A0A
 
+@font-face
+    font-family: 'Veronica'
+    src: url('../../static/fonts/veronica-script.otf') format('opentype')
+
+@font-face
+    font-family: 'IntroScript'
+    src: url('../../static/fonts/introscript.ttf') format('truetype')
+
 *
     margin: 0
     padding: 0
     box-sizing: border-box
 
 h1, h2
-    font-family: Veronica
+    font-family: 'Veronica', sans-serif
     font-size: 5vw
     font-weight: 400
     color: $accent
@@ -297,6 +305,7 @@ select
 
     #userNav
         display: flex
+        width: fit-content
         flex-direction: column
         gap: 20px
         background-color: $grey
@@ -311,6 +320,9 @@ select
         &.hidden
             display: none
             right: -200px
+
+        a
+            white-space: nowrap
 
 #hero
     width: 100%
@@ -895,7 +907,7 @@ select
 
             svg
                 width: 20px
-                transform: rotate(180deg)
+                transform: rotate(0deg)
 
         p
             margin-top: -20px
@@ -915,7 +927,7 @@ select
                 display: block
 
             svg
-                transform: rotate(0deg)
+                transform: rotate(180deg)
 
 #faq
     margin-top: 20px
@@ -1100,8 +1112,8 @@ select
 
         input, textarea
             width: 100%
-            padding: 10px
-            border-radius: 10px
+            padding: 4px 8px
+            border-radius: 5px
             border: none
             font-size: 18px
             margin-bottom: 15px

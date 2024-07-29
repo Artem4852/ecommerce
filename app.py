@@ -140,8 +140,8 @@ def product(productId):
     if loggedIn: contactData = user['contactData']
     else: contactData = {}
 
-    # logResponse = log('product', request=request)
-    # if logResponse: return logResponse
+    logResponse = log('product', request=request)
+    if logResponse: return logResponse
     return render_template('product.html', product=product, userData=user, productsFeatured=productsFeatured[:4], loggedIn=loggedIn, contactData=contactData)
 
 # Static pages
@@ -298,6 +298,8 @@ def quickOrder():
     elif contactMessenger == 'instagram':
         data['username'] = username
 
+    data['timestamp'] = datetime.now().timestamp()
+
     database.addOrder(data)
     database.updateUser({'userId': session.get('userId')}, {'$set': {'cart': [], 'promoCodeUsed': True}})
 
@@ -321,7 +323,7 @@ def quickOrder():
     
     contactInfo = phoneNumber if contactMessenger in ['telegram', 'viber'] else username
 
-    sendMessage(f"<b>New quick order: {data['orderId']}</b>. Check it <a href='https://kidsfashionstore.com.ua/admin/orders?orderId={data['orderId']}'>here</a>. Product id: <a href='https://kidsfashionstore.com.ua/product/{productId}'>{productId}</a>. Size: {size}, quantity: {quantity}. Contact customer: on {messenger}, {contactInfo}.")
+    sendMessage(f"<b>New order:</b> <a href='https://kidsfashionstore.com.ua/admin/orders?orderId={data['orderId']}'>{data['orderId']}</a>. Product id: <a href='https://kidsfashionstore.com.ua/product/{productId}'>{productId}</a>. Size: {size}, quantity: {quantity}. Contact customer: on {messenger}, {contactInfo}.")
 
     return jsonify({'success': True})
 
@@ -421,6 +423,8 @@ def checkout():
         data["userId"] = session.get('userId')
         data["status"] = "pending"
 
+        data["timestamp"] = datetime.now().timestamp()
+
         database.addOrder(data)
         database.updateUser({'userId': session.get('userId')}, {'$set': {'cart': [], 'promoCodeUsed': True}})
 
@@ -466,7 +470,7 @@ def checkout():
         elif data['contactMessenger'] == 'instagram':
             messenger = f"<a href='https://instagram.com/{data['username']}'>Instagram</a>"
 
-        sendMessage(f"<b>New order: {data['orderId']}</b>. Check it <a href='https://kidsfashionstore.com.ua/admin/orders?orderId={data['orderId']}'>here</a>. Customer: {data['firstName']} {data['lastName']}, on " + messenger)
+        sendMessage(f"<b>New order:</b> <a href='https://kidsfashionstore.com.ua/admin/orders?orderId={data['orderId']}'>{data['orderId']}</a>. Customer: {data['firstName']} {data['lastName']}, on " + messenger)
 
         return jsonify({'success': True})
 
@@ -516,7 +520,7 @@ def orderConfirmation():
     if logResponse: return logResponse
     return render_template('orderConfirmation.html', userData=user, loggedIn=loggedIn, productsFeatured=productsFeatured[:4])
 
-@app.route('/orders')
+# @app.route('/orders')
 def orders():
     loggedIn = session.get('loggedIn', False)
     if not loggedIn:
@@ -538,7 +542,7 @@ def orders():
     if logResponse: return logResponse
     return render_template('orders.html', userData=user, orders=orders, loggedIn=loggedIn, productsFeatured=productsFeatured[:4])
 
-@app.route('/orders/<orderId>/<productId>')
+# @app.route('/orders/<orderId>/<productId>')
 def order(orderId, productId):
     loggedIn = session.get('loggedIn', False)
     if not loggedIn:
@@ -930,6 +934,7 @@ def adminOrders():
         abort(404)
     orders = database.getOrders({})
     statuses = sorted(list(set([o['status'] for o in orders])))
+    orders = sorted(orders, key=lambda x: x['timestamp'], reverse=True)
 
     page_size = 20
     page = request.args.get('page')

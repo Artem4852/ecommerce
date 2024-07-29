@@ -24,18 +24,27 @@
             <div class="col">
                 <h4>Order</h4>
                 <p>Order id: {{ order.orderId }}</p>
-                <p>Receiver: {{ order.firstName }} {{ order.lastName }} {{ order.middleName }}</p>
-                <p>Country: {{ codesCountry[order.country] | capitalize }}</p>
-                <p>City: {{ order.city }}</p>
-                <p>Delivery method: {% if order.deliveryMethod == 'pickUpFromPostOffice' %}Pick up from Post Office{% else %}Address delivery{% endif %}</p>
-                <p>Tracking number: <input id="inputTrackingNumber" onblur="setTrackingNumber()" value="{{ order.trackingNumber }}" {% if not order.trackingNumber %} placeholder="Tracking number" {% endif %}></p>
-                {% if order.deliveryMethod == "pickUpFromPostOffice" %}
-                    <p>Post Office branch: {{ order.postOfficeBranchName }}</p>
+                {% if order.city %}
+                    <p>Receiver: {{ order.firstName }} {{ order.lastName }} {{ order.middleName }}</p>
+                    <p>Country: {{ codesCountry[order.country] | capitalize }}</p>
+                    <p>City: {{ order.city }}</p>
+                    <p>Delivery method: {% if order.deliveryMethod == 'pickUpFromPostOffice' %}Pick up from Post Office{% else %}Address delivery{% endif %}</p>
+                    <p>Tracking number: <input id="inputTrackingNumber" onblur="setTrackingNumber()" value="{{ order.trackingNumber }}" {% if not order.trackingNumber %} placeholder="Tracking number" {% endif %}></p>
+                    {% if order.deliveryMethod == "pickUpFromPostOffice" %}
+                        <p>Post Office branch: {{ order.postOfficeBranchName }}</p>
+                    {% else %}
+                        <p>Address: {{ order.address }} {{ order.address2 }}</p>
+                        <p>Postal code: {{ order.postalCode }}</p>
+                    {% endif %}
+                    <p>Payment type: {% if order.paymentMethod == 'fullPrepayment' %}Full Prepayment{% else %}Post Payment{% endif %}</p>
                 {% else %}
-                    <p>Address: {{ order.address }} {{ order.address2 }}</p>
-                    <p>Postal code: {{ order.postalCode }}</p>
+                    <p>Contact messenger: {{ order.contactMessenger | capitalize }}</p>
+                    {% if order.contactMessenger == "instagram" %}
+                        <p>Username: {{ order.username }}</p>
+                    {% else %}
+                        <p>Phone number: {{ order.phoneNumber }}</p>
+                    {% endif %}
                 {% endif %}
-                <p>Payment type: {% if order.paymentMethod == 'fullPrepayment' %}Full Prepayment{% else %}Post Payment{% endif %}</p>
             </div>
             <div class="col">
                 <h4>Status</h4>
@@ -51,14 +60,14 @@
                     <div class="circle {% if order.status == 'shipped' %}active{% endif %}"></div>
                     <p>Shipped</p>
                 </div>
-                <div class="status" onclick="setStatus('Arrived')" id="statusArrived">
+                <!-- <div class="status" onclick="setStatus('Arrived')" id="statusArrived">
                     <div class="circle {% if order.status == 'arrived' %}active{% endif %}"></div>
                     <p>Arrived</p>
                 </div>
                 <div class="status" onclick="setStatus('Received')" id="statusReceived">
                     <div class="circle {% if order.status == 'received' %}active{% endif %}"></div>
-                    <p>Received</p>
-                </div>
+                    <p>Received</p> -->
+                <!-- </div> -->
             </div>
         </div>
         <button onclick="deleteOrder('{{ order.product.productId }}')">Delete order</button>

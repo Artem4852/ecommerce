@@ -1,4 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300..800&display=swap");
+@font-face {
+  font-family: "Veronica";
+  src: url("../../static/fonts/veronica-script.otf") format("opentype");
+}
+@font-face {
+  font-family: "IntroScript";
+  src: url("../../static/fonts/introscript.ttf") format("truetype");
+}
 * {
   margin: 0;
   padding: 0;
@@ -6,7 +14,7 @@
 }
 
 h1, h2 {
-  font-family: Veronica;
+  font-family: "Veronica", sans-serif;
   font-size: 5vw;
   font-weight: 400;
   color: #E352BA;
@@ -295,6 +303,7 @@ select::-webkit-inner-spin-button, select::-webkit-outer-spin-button {
 }
 #header #userNav {
   display: flex;
+  width: fit-content;
   flex-direction: column;
   gap: 20px;
   background-color: #E0E0E0;
@@ -308,6 +317,9 @@ select::-webkit-inner-spin-button, select::-webkit-outer-spin-button {
 #header #userNav.hidden {
   display: none;
   right: -200px;
+}
+#header #userNav a {
+  white-space: nowrap;
 }
 
 #hero {
@@ -893,7 +905,7 @@ select::-webkit-inner-spin-button, select::-webkit-outer-spin-button {
 }
 #productFaq div.info .head svg {
   width: 20px;
-  transform: rotate(180deg);
+  transform: rotate(0deg);
 }
 #productFaq div.info p {
   margin-top: -20px;
@@ -912,7 +924,7 @@ select::-webkit-inner-spin-button, select::-webkit-outer-spin-button {
   display: block;
 }
 #productFaq div.info.active svg {
-  transform: rotate(0deg);
+  transform: rotate(180deg);
 }
 
 #faq {
@@ -1099,8 +1111,8 @@ select::-webkit-inner-spin-button, select::-webkit-outer-spin-button {
 }
 #contact form input, #contact form textarea {
   width: 100%;
-  padding: 10px;
-  border-radius: 10px;
+  padding: 4px 8px;
+  border-radius: 5px;
   border: none;
   font-size: 18px;
   margin-bottom: 15px;
