@@ -274,7 +274,7 @@ select::-webkit-inner-spin-button, select::-webkit-outer-spin-button {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: flex-end;
+  align-items: center;
   position: sticky;
   top: 0;
   z-index: 999;
@@ -300,6 +300,29 @@ select::-webkit-inner-spin-button, select::-webkit-outer-spin-button {
 #header ul li svg {
   height: 24px;
   cursor: pointer;
+}
+#header .navButton {
+  display: none;
+  width: 5%;
+}
+#header .navbar.mobile {
+  display: none;
+  position: fixed;
+  height: 100vh;
+  top: 0;
+  right: 0;
+  padding: 4vw;
+  background-color: #f1f1f1;
+  opacity: 0.9;
+  transition: 0.5s ease-out;
+}
+#header .navbar.mobile ul {
+  flex-direction: column;
+  gap: 30px;
+  align-items: flex-end;
+}
+#header .navbar.mobile ul li {
+  margin-left: 0;
 }
 #header #userNav {
   display: flex;
@@ -568,15 +591,19 @@ select::-webkit-inner-spin-button, select::-webkit-outer-spin-button {
   flex-direction: column;
 }
 #footer .col:nth-child(1) {
+  min-width: fit-content;
   width: 18%;
 }
 #footer .col:nth-child(2) {
+  min-width: fit-content;
   width: 18%;
 }
 #footer .col:nth-child(3) {
+  min-width: fit-content;
   width: 25%;
 }
 #footer .col:nth-child(4) {
+  min-width: fit-content;
   width: 25%;
 }
 
@@ -2196,6 +2223,33 @@ select::-webkit-inner-spin-button, select::-webkit-outer-spin-button {
 #page404 a:hover {
   background-color: #E2A4D0;
   text-decoration: none;
+}
+
+@media screen and (max-width: 800px) {
+  #header {
+    padding: 4vw;
+  }
+  #header .logo {
+    width: 50%;
+  }
+  #header img {
+    width: 100%;
+  }
+  #header .navButton {
+    display: block;
+  }
+  #header .navbar.desktop {
+    display: none;
+  }
+  #header .navbar.mobile {
+    display: flex;
+  }
+  #header .navbar.mobile.hidden {
+    right: -100%;
+  }
+  #footer {
+    gap: 30px;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */

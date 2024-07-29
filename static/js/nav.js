@@ -9,3 +9,7 @@ addEventListener("click", function (event) {
         userMenu.classList.add("hidden");
     }
 });
+
+function toggleMobileNav() {
+    document.getElementById("mobileNav").classList.toggle("hidden");
+}

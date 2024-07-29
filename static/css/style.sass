@@ -275,7 +275,7 @@ select
     display: flex
     flex-direction: row
     justify-content: space-between
-    align-items: flex-end
+    align-items: center
     position: sticky
     top: 0
     z-index: 999
@@ -302,6 +302,30 @@ select
                 // width: 20px
                 height: 24px
                 cursor: pointer
+
+    .navButton
+        display: none
+        width: 5%
+
+    .navbar.mobile
+        display: none
+        position: fixed
+        height: 100vh
+        top: 0
+        right: 0
+        padding: 4vw
+        background-color: $white
+        opacity: 0.9
+        transition: 0.5s ease-out
+
+        ul
+            flex-direction: column
+            gap: 30px
+            align-items: flex-end
+
+            li
+                // width: 100%
+                margin-left: 0
 
     #userNav
         display: flex
@@ -569,15 +593,19 @@ select
         flex-direction: column
 
         &:nth-child(1)
+            min-width: fit-content
             width: 18%
 
         &:nth-child(2)
+            min-width: fit-content
             width: 18%
 
         &:nth-child(3)
+            min-width: fit-content
             width: 25%
 
         &:nth-child(4)
+            min-width: fit-content
             width: 25%
 
 .filtering
@@ -2191,3 +2219,30 @@ select
         &:hover
             background-color: $accent-light
             text-decoration: none
+
+@media screen and (max-width: 800px)
+    #header
+        padding: 4vw
+
+        .logo
+            width: 50%
+
+        img
+            width: 100%
+
+        .navButton
+            display: block
+
+        .navbar
+
+            &.desktop
+                display: none
+
+            &.mobile
+                display: flex
+
+                &.hidden
+                    right: -100%
+
+    #footer
+        gap: 30px

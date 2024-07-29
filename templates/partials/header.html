@@ -2,7 +2,7 @@
     <div class="logo">
         <img src="{{ url_for('static', filename='img/logoHorizontal.png') }}" alt="">
     </div>
-    <div class="navbar">
+    <div class="navbar desktop">
         <ul>
             <li><a href="/">Home</a></li>
             <li><a href="/shop">Shop</a></li>
@@ -30,6 +30,34 @@
                     {% endif %}
                 </div>
             </li>
+        </ul>
+    </div>
+    <svg class="navButton" onclick="toggleMobileNav()" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 20" fill="none">
+        <path d="M0 20V16.6667H30V20H0ZM0 11.6667V8.33333H30V11.6667H0ZM0 3.33333V0H30V3.33333H0Z" fill="#1C1B1F"/>
+    </svg>
+    <div id="mobileNav" class="navbar mobile hidden">
+        <ul>
+            <svg onclick="toggleMobileNav()" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M2 20L0 18L8 10L0 2L2 0L10 8L18 0L20 2L12 10L20 18L18 20L10 12L2 20Z" fill="#1C1B1F" />
+            </svg>
+            <li><a href="/">Home</a></li>
+            <li><a href="/shop">Shop</a></li>
+            <li><a href="/faq">FAQ</a></li>
+            <li><a href="/contact">Contact us</a></li>
+            <!-- <li><a href="/cart">Cart</a></li> -->
+            {% if not loggedIn %}
+                <li><a href="/login">Log in</a></li>
+                <li><a href="/signup">Sign up</a></li>
+            {% else %}
+                {% if "admin" in userData.tags %}
+                    <li><a href="/admin">Admin</a></li>
+                {% endif %}
+    
+                <li><a href="/favorites">Favorites</a></li>
+                <!-- <a href="/orders">Orders</a> -->
+                <li><a href="/settings">Settings</a></li>
+                <li><a href="/logout">Log out</a></li>
+            {% endif %}
         </ul>
     </div>
 </section>
