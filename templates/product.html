@@ -115,7 +115,7 @@
                         </svg>
                     </div>
                     <div class="input">
-                        <label id="labelPhoneNumber">Phone number:</label>
+                        <label {% if contactData.contactMessenger=="instagram" %}class="disabled" {% endif %} id="labelPhoneNumber">Phone number:</label>
                         <input {% if contactData.contactMessenger=="instagram" %}class="disabled" {% endif %} oninput="phoneInput()" type="text" id="inputPhoneNumber" placeholder="Phone number" value="{% if not contactData.phoneNumber %}{{ userData['phoneNumber'] }}{% else %}{{ contactData.phoneNumber }}{% endif %}">
                         <label {% if contactData.contactMessenger !="instagram" %}class="disabled" {% endif %} id="labelUsername" >Username:</label>
                         <input {% if contactData.contactMessenger !="instagram" %}class="disabled" {% endif %} type="text" id="inputUsername" placeholder="@username" value="{{ contactData.username }}">

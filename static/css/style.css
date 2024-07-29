@@ -573,10 +573,8 @@ select::-webkit-inner-spin-button, select::-webkit-outer-spin-button {
 
 #footer {
   padding: 25px;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   background-color: #999999;
   color: #f1f1f1;
 }
@@ -652,6 +650,9 @@ select::-webkit-inner-spin-button, select::-webkit-outer-spin-button {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+#catalogue.admin {
+  margin-bottom: 50px;
 }
 #catalogue h2 {
   margin-bottom: 20px;
@@ -1874,12 +1875,14 @@ select::-webkit-inner-spin-button, select::-webkit-outer-spin-button {
   width: 100%;
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   justify-content: space-between;
   gap: 50px;
 }
 #settings .row .col {
   display: flex;
   flex-direction: column;
+  min-width: 250px;
   gap: 20px;
   align-items: flex-start;
 }
@@ -1896,9 +1899,13 @@ select::-webkit-inner-spin-button, select::-webkit-outer-spin-button {
   width: 100%;
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 10px;
+}
+#settings .input label, #settings .input input, #settings .input .select {
+  min-width: 200px;
 }
 #settings .input input {
   width: 50%;
@@ -2005,6 +2012,7 @@ select::-webkit-inner-spin-button, select::-webkit-outer-spin-button {
   cursor: pointer;
   font-size: 18px;
   transition: 0.2s;
+  min-width: 250px;
 }
 #admin .group .data a:hover {
   background-color: #E2A4D0;
@@ -2019,10 +2027,12 @@ select::-webkit-inner-spin-button, select::-webkit-outer-spin-button {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
+  flex-wrap: wrap;
   gap: 20px;
   align-items: flex-start;
 }
 #admin .group .data .row .col {
+  min-width: 250px;
   width: calc(50% - 10px);
   display: flex;
   flex-direction: column;
@@ -2079,6 +2089,7 @@ select::-webkit-inner-spin-button, select::-webkit-outer-spin-button {
 #adminProduct .row {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   justify-content: space-between;
   gap: 20px;
   width: 100%;
@@ -2087,6 +2098,7 @@ select::-webkit-inner-spin-button, select::-webkit-outer-spin-button {
   display: flex;
   flex-direction: column;
   gap: 20px;
+  min-width: 250px;
   width: calc(50% - 10px);
 }
 #adminProduct .images {
@@ -2346,6 +2358,67 @@ select::-webkit-inner-spin-button, select::-webkit-outer-spin-button {
   }
   #legalPage a {
     word-break: break-word;
+  }
+  #newsletter, #toShop {
+    padding: 0;
+  }
+  #newsletter .content, #toShop .content {
+    padding: 25px;
+    align-items: center;
+    width: 100%;
+  }
+  #newsletter .content .row, #toShop .content .row {
+    width: 100%;
+    margin-bottom: 30px;
+  }
+  #newsletter .content h2, #toShop .content h2 {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  #newsletter .content h3, #toShop .content h3 {
+    width: 100%;
+    font-size: 32px;
+    text-align: center;
+  }
+  #newsletter .content input, #newsletter .content button, #newsletter .content a, #toShop .content input, #toShop .content button, #toShop .content a {
+    width: 100%;
+    font-size: 18px;
+  }
+  #newsletter .img, #toShop .img {
+    position: relative;
+  }
+  #newsletter .img img, #toShop .img img {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    margin-bottom: -5px;
+  }
+  #settings .input label, #settings .input input, #settings .input .select {
+    min-width: 100%;
+  }
+  #settings .row {
+    gap: 20px;
+  }
+  #settings .row .col.col1, #settings .row .col.col2 {
+    width: 100%;
+  }
+  #admin .group .data a {
+    width: 100%;
+  }
+  #admin .group .data .row .col {
+    width: 100%;
+  }
+  #adminProduct .col {
+    width: 100%;
+  }
+  #adminProduct .images .imageWrapper {
+    width: calc(50% - 10px);
+  }
+  #adminProduct .add {
+    width: calc(50% - 10px);
+  }
+  #adminProduct button {
+    width: 100%;
   }
 }
 

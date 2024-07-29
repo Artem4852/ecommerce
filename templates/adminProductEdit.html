@@ -5,7 +5,7 @@
 <body>
     {% include 'partials/header.html' %}
     <section id="adminProduct">
-        <h2>Edit product</h2>
+        <h2>{% if pageType == 'edit' %}Edit{% else %}Add{% endif %} product</h2>
         <a class="back" href="/admin/products">
             <svg xmlns="http://www.w3.org/2000/svg" width="12" height="21" viewBox="0 0 12 21" fill="none">
                 <path
@@ -115,7 +115,7 @@
                 </div>
             </div>
         </div>
-        <button id="buttonUpdateProduct" onclick="updateProduct()">Update product</button>
+        <button id="buttonUpdateProduct" onclick="updateProduct()">{% if pageType == 'edit' %}Update{% else %}Add{% endif %} product</button>
     </section>
     <svg id="deleteIcon" class="arrow delete" xmlns="http://www.w3.org/2000/svg" width="36" height="35"
         viewBox="0 0 36 35" fill="none">

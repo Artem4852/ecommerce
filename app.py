@@ -801,7 +801,7 @@ def adminProductEdit(productId):
     product = database.getProduct({'id': int(productId)})
     if not product:
         return redirect('/admin/products')
-    return render_template('adminProductEdit.html', userData=user, loggedIn=loggedIn, product=product)
+    return render_template('adminProductEdit.html', userData=user, loggedIn=loggedIn, product=product, pageType='add')
 
 @app.route('/admin/product/image', methods=['POST'])
 def adminProductImage():
@@ -902,7 +902,7 @@ def adminProductAdd():
             "warehouses": {},
         }
         database.addProduct(product)
-        return render_template('adminProductEdit.html', userData=user, loggedIn=loggedIn, product=product)
+        return render_template('adminProductEdit.html', userData=user, loggedIn=loggedIn, product=product, pageType='add')
     elif request.method == 'POST':
         productData = request.json.get('data')
         productData['sizes'] = [int(size) for size in productData['sizes'].split(',')]
