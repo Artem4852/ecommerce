@@ -20,8 +20,12 @@
 h1, h2 {
   font-family: "Veronica", sans-serif;
   font-size: 5vw;
-  font-weight: 400;
+  font-weight: 500;
   color: #E352BA;
+}
+
+h4 {
+  font-weight: 500;
 }
 
 p {
@@ -82,6 +86,14 @@ svg.downArrow {
   position: absolute;
   top: 5px;
   right: 8px;
+}
+
+.notinstock {
+  color: #B30A0A;
+}
+
+.hidden {
+  display: none;
 }
 
 #deleteIcon, #backIcon, #forwardIcon {
@@ -150,7 +162,6 @@ svg.downArrow {
   height: 30px;
   text-align: right;
   line-height: 40px;
-  font-weight: 400;
 }
 .products .card p {
   font-size: 16px;
@@ -267,7 +278,7 @@ select {
   font-size: 20px;
   color: #f1f1f1;
   position: relative;
-  font-weight: 400;
+  font-weight: 500;
   appearance: none;
 }
 select:focus {
@@ -484,7 +495,7 @@ select::-webkit-inner-spin-button, select::-webkit-outer-spin-button {
 }
 .banner .content h3 {
   width: 40vw;
-  font-weight: 400;
+  font-weight: 500;
   font-size: 2.6vw;
 }
 .banner .content a {
@@ -791,9 +802,6 @@ select::-webkit-inner-spin-button, select::-webkit-outer-spin-button {
 #product .information p.instock {
   color: #4A8C21;
 }
-#product .information p.notinstock {
-  color: #B30A0A;
-}
 #product .information .row {
   width: 100%;
   display: flex;
@@ -961,7 +969,7 @@ select::-webkit-inner-spin-button, select::-webkit-outer-spin-button {
 }
 #productFaq div.info .head h3 {
   font-size: 24px;
-  font-weight: 400;
+  font-weight: 500;
 }
 #productFaq div.info .head svg {
   width: 20px;
@@ -1024,12 +1032,12 @@ select::-webkit-inner-spin-button, select::-webkit-outer-spin-button {
 }
 #faq .posts .card h3 {
   font-size: 28px;
-  font-weight: 400;
+  font-weight: 500;
   margin-bottom: 15px;
 }
 #faq .posts .card p {
   font-size: 18px;
-  font-weight: 400;
+  font-weight: 500;
   margin-bottom: 20px;
 }
 #faq .posts .card a.button {
@@ -1082,7 +1090,7 @@ select::-webkit-inner-spin-button, select::-webkit-outer-spin-button {
 }
 #faqPage p.subheading, #legalPage p.subheading {
   font-size: 20px;
-  font-weight: 400;
+  font-weight: 500;
   margin-bottom: 20px;
 }
 #faqPage ul, #legalPage ul {
@@ -1425,7 +1433,6 @@ select::-webkit-inner-spin-button, select::-webkit-outer-spin-button {
   transform: rotate(0deg);
 }
 #checkout .toggle h4 {
-  font-weight: 400;
   width: fit-content;
 }
 #checkout .shipping, #checkout .payment, #checkout .contact {
@@ -1615,7 +1622,6 @@ select::-webkit-inner-spin-button, select::-webkit-outer-spin-button {
   margin-bottom: 30px;
 }
 #checkout .review .orderinfo h4 {
-  font-weight: 400;
   font-size: 18px;
 }
 #checkout button {
@@ -1727,7 +1733,7 @@ select::-webkit-inner-spin-button, select::-webkit-outer-spin-button {
 }
 #order p {
   font-size: 18px;
-  font-weight: 400;
+  font-weight: 500;
 }
 #order input {
   padding: 4px 8px;
@@ -2084,7 +2090,7 @@ select::-webkit-inner-spin-button, select::-webkit-outer-spin-button {
 }
 #adminProduct label, #adminProduct input {
   font-size: 18px;
-  font-weight: 400;
+  font-weight: 500;
 }
 #adminProduct input {
   width: 60%;
@@ -2114,6 +2120,9 @@ select::-webkit-inner-spin-button, select::-webkit-outer-spin-button {
   justify-content: space-between;
   gap: 20px;
   width: 100%;
+}
+#adminProduct .row.buttons {
+  margin-top: 20px;
 }
 #adminProduct .col {
   display: flex;
@@ -2196,8 +2205,7 @@ select::-webkit-inner-spin-button, select::-webkit-outer-spin-button {
   border-radius: 5px;
 }
 #adminProduct button {
-  margin-top: 20px;
-  width: 50%;
+  width: calc(50% - 10px);
   background-color: #E352BA;
   color: #f1f1f1;
   border-radius: 30px;

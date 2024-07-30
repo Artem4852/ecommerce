@@ -1,5 +1,7 @@
-<div class="card" id="card{{ product['id'] }}">
-    {% if product['discount'] != 0 %}<h3 class="discount">-{{ product['discount'] }}%</h3>{% else %}{% endif %}
+<div class="card {% if 'archived' in product['tags'] %}archived{% endif %}" id="card{{ product['id'] }}">
+    {% if product['discount'] != 0 %}
+        <h3 class="discount">-{{ product['discount'] }}%</h3>
+    {% endif %}
     <div class="data">
         <div class="img">
             {% if loggedIn %}
@@ -24,10 +26,11 @@
             <div class="col1">
                 <h3>{{ product['category'] }}</h3>
                 <p>Brand: {{ product['brand'] }}</p>
+                <p id="archived{{ product['id'] }}" class="notinstock {% if not 'archived' in product['tags'] %}hidden{% endif %}">Archived</p>
                 {% if product['sizes'] %}
-                    <p>Sizes: {{ product['sizes'][0] }}{% for size in product['sizes'][1:] %}, {{ size }}{% endfor %}</p>
+                    <p id="sizes{{ product['id'] }}" class="{% if 'archived' in product['tags'] %}hidden{% endif %}">Sizes: {{ product['sizes'][0] }}{% for size in product['sizes'][1:] %}, {{ size }}{% endfor %}</p>
                 {% else %}
-                    <p>Not in stock</p>
+                    <p id="sizes{{ product['id'] }}" class="{% if 'archived' in product['tags'] %}hidden{% endif %}">Not in stock</p>
                 {% endif %}
             </div>
             <div class="col2">
@@ -41,7 +44,8 @@
         {% if 'admin' in userData.tags %}
         <div class="links">
             <a class="viewDetails" href="/admin/products/edit/{{ product['id'] }}">Edit</a>
-            <a class="viewDetails" onclick="deleteProduct('{{ product['id'] }}')">Delete</a>
+            <button id="buttonArchiveProduct{{ product['id'] }}" onclick="archiveProductNoForm('{{ product['id'] }}')">{% if
+            'archived' in product['tags'] %}Una{% else %}A{% endif %}rchive</button>
         </div>
         {% endif %}
     {% endif %}

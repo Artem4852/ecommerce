@@ -52,11 +52,11 @@
             {% else %}
                 {% if "admin" in userData.tags %}
                     <li><a href="/admin">Admin</a></li>
+                {% else %}
+                    <li><a href="/favorites">Favorites</a></li>
+                    <!-- <a href="/orders">Orders</a> -->
+                    <li><a href="/settings">Settings</a></li>
                 {% endif %}
-    
-                <li><a href="/favorites">Favorites</a></li>
-                <!-- <a href="/orders">Orders</a> -->
-                <li><a href="/settings">Settings</a></li>
                 <li><a href="/logout">Log out</a></li>
             {% endif %}
         </ul>

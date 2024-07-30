@@ -27,7 +27,7 @@
                 </div>
                 <div class="input">
                     <label for="inputTags">Tags</label>
-                    <input type="number" value="{{ product.tags[0] }}{% for tag in product.tags[1:] %}, {{ tag }}{% endfor %}" placeholder="featured, sale">
+                    <input id="inputTags" type="text" value="{{ product.tags[0] }}{% for tag in product.tags[1:] %}, {{ tag }}{% endfor %}" placeholder="featured, sale">
                 </div>
                 <div class="input">
                     <label for="inputCategory">Category</label>
@@ -119,7 +119,10 @@
                 </div>
             </div>
         </div>
-        <button id="buttonUpdateProduct" onclick="updateProduct()">{% if pageType == 'edit' %}Update{% else %}Add{% endif %} product</button>
+        <div class="row buttons">
+            <button id="buttonUpdateProduct" onclick="updateProduct()">{% if pageType == 'edit' %}Update{% else %}Add{% endif %} product</button>
+            <button id="buttonArchiveProduct" onclick="{% if 'archived' in product['tags'] %}un{% endif %}archiveProduct()">{% if 'archived' in product['tags'] %}Una{% else %}A{% endif %}rchive product</button>
+        </div>
     </section>
     <svg id="deleteIcon" class="arrow delete" xmlns="http://www.w3.org/2000/svg" width="36" height="35"
         viewBox="0 0 36 35" fill="none">

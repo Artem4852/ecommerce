@@ -41,13 +41,17 @@
                     <p>Product number: {{ product.id }}</p>
                     <p>Brand: {{ product.brand }}</p>
                     <p>Price: {{ product.price }} uah</p>
-                    {% if sortedSizes %}
+                    {% if 'archived' in product.tags %}
+                        <p class="mobileOnly notinstock">Archived</p>
+                    {% elif sortedSizes %}
                         <p class="mobileOnly instock">In stock</p>
                     {% else %}
                         <p class="mobileOnly notinstock">Not in stock</p>
                     {% endif %}
                 </div>
-                {% if sortedSizes %}
+                {% if 'archived' in product.tags %}
+                    <p class="desktopOnly notinstock">Archived</p>
+                {% elif sortedSizes %}
                     <p class="desktopOnly instock">In stock</p>
                 {% else %}
                     <p class="desktopOnly notinstock">Not in stock</p>
@@ -191,5 +195,6 @@
     {% include 'partials/footer.html' %}
     <script src="{{ url_for('static', filename='js/shop.js') }}"></script>
     <script src="{{ url_for('static', filename='js/forms.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/admin.js') }}"></script>
 </body>
 </html>

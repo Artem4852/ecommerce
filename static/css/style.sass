@@ -30,8 +30,11 @@ $red: #B30A0A
 h1, h2
     font-family: 'Veronica', sans-serif
     font-size: 5vw
-    font-weight: 400
+    font-weight: 500
     color: $accent
+
+h4
+    font-weight: 500
 
 p
     font-weight: 500
@@ -87,6 +90,12 @@ svg.downArrow
     position: absolute
     top: 5px
     right: 8px
+
+.notinstock
+    color: $red
+
+.hidden
+    display: none
 
 #deleteIcon, #backIcon, #forwardIcon
     display: none
@@ -154,7 +163,6 @@ svg.downArrow
             height: 30px
             text-align: right
             line-height: 40px
-            font-weight: 400
 
         p
             font-size: 16px
@@ -267,7 +275,7 @@ select
     font-size: 20px
     color: $white
     position: relative
-    font-weight: 400
+    font-weight: 500
     appearance: none
 
     &:focus
@@ -487,7 +495,7 @@ select
 
         h3
             width: 40vw
-            font-weight: 400
+            font-weight: 500
             font-size: 2.6vw
 
         a
@@ -794,9 +802,6 @@ select
             &.instock
                 color: $green
 
-            &.notinstock
-                color: $red
-
         .row
             width: 100%
             display: flex
@@ -965,7 +970,7 @@ select
 
             h3
                 font-size: 24px
-                font-weight: 400
+                font-weight: 500
 
             svg
                 width: 20px
@@ -1028,12 +1033,12 @@ select
 
             h3
                 font-size: 28px
-                font-weight: 400
+                font-weight: 500
                 margin-bottom: 15px
 
             p
                 font-size: 18px
-                font-weight: 400
+                font-weight: 500
                 margin-bottom: 20px
 
             a.button
@@ -1085,7 +1090,7 @@ select
 
     p.subheading
         font-size: 20px
-        font-weight: 400
+        font-weight: 500
         margin-bottom: 20px
 
     ul
@@ -1427,7 +1432,6 @@ select
                 transform: rotate(0deg)
 
         h4
-            font-weight: 400
             width: fit-content
 
     .shipping, .payment, .contact
@@ -1619,7 +1623,6 @@ select
             margin-bottom: 30px
 
             h4
-                font-weight: 400
                 font-size: 18px
 
     button
@@ -1729,7 +1732,7 @@ select
 
     p
         font-size: 18px
-        font-weight: 400
+        font-weight: 500
 
     input
         padding: 4px 8px
@@ -2082,7 +2085,7 @@ select
 
     label, input
         font-size: 18px
-        font-weight: 400
+        font-weight: 500
 
     input
         width: 60%
@@ -2112,6 +2115,9 @@ select
         justify-content: space-between
         gap: 20px
         width: 100%
+
+        &.buttons
+            margin-top: 20px
 
     .col
         display: flex
@@ -2195,8 +2201,8 @@ select
             border-radius: 5px
 
     button
-        margin-top: 20px
-        width: 50%
+        // margin-top: 20px
+        width: calc( 50% - 10px )
         background-color: $accent
         color: $white
         border-radius: 30px

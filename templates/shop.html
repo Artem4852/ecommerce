@@ -142,6 +142,9 @@
     </section>
     {% include 'partials/newsletter.html' %}
     {% include 'partials/footer.html' %}
+    {% if 'admin' in userData['tags'] %}
+    <script src="{{ url_for('static', filename='js/admin.js') }}"></script>
+    {% endif %}
     <script src="{{ url_for('static', filename='js/shop.js') }}"></script>
 </body>
 </html>

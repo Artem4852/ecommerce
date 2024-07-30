@@ -91,7 +91,7 @@ def shop():
     else: page = int(request.args.get('page'))
 
     products = getProducts()
-    products = [p for p in products if p['price'] != "" and len(p['images']) > 0]
+    products = [p for p in products if p['price'] != "" and len(p['images']) > 0 and 'tags' in p and (not 'archived' in p['tags'] or 'admin' in getUser({'userId': session.get('userId')})['tags'])]
     brands = sorted(list(set([p['brand'] for p in products if p['brand'] != ""])))
     categories = sorted(list(set([p['category'] for p in products if p['category'] != ""])))
     sizes = sorted(list(set([size for p in products for size in p['sizes'] if size != ""])))
@@ -125,6 +125,7 @@ def shop():
 def product(productId):
     products = getProducts()
     product = database.getProduct({'id': int(productId)})
+    if not product or not 'tags' in product or ('archived' in product['tags'] and not 'admin' in getUser({'userId': session.get('userId')})['tags']): return abort(404)
 
     additionalInformation = product['additionalInformation'].copy()
     for key, value in additionalInformation.items():
@@ -771,6 +772,7 @@ def adminProducts():
     brand = request.args.get('brand')
     category = request.args.get('category')
     shoeSize = request.args.get('shoeSize')
+    tag = request.args.get('tag')
     sorting = request.args.get('sorting')
 
     if not request.args.get('productsPerPage'): productsPerPage = 12
@@ -783,10 +785,12 @@ def adminProducts():
     brands = sorted(list(set([p['brand'] for p in products if p['brand'] != ""])))
     categories = sorted(list(set([p['category'] for p in products if p['category'] != ""])))
     sizes = sorted(list(set([size for p in products for size in p['sizes'] if size != ""])))
+    tags = sorted(list(set([tag for p in products for tag in p['tags'] if tag != ""])))
 
     if brand: products = [p for p in products if p['brand'] == brand]
     if category: products = [p for p in products if p['category'] == category]
     if shoeSize: products = [p for p in products if int(shoeSize) in p['sizes']]
+    if tag: products = [p for p in products if tag in p['tags']]
 
     if sorting == 'priceLowToHigh': products = sorted(products, key=lambda x: int(x['price']))
     elif sorting == 'priceHighToLow': products = sorted(products, key=lambda x: int(x['price']), reverse=True)
@@ -802,7 +806,7 @@ def adminProducts():
     for n, p in enumerate(productsCurrent):
         productsCurrent[n]['sizes'] = sorted(p['sizes'])
 
-    return render_template('adminProducts.html', userData=user, loggedIn=loggedIn, products=productsCurrent, brand=brand, category=category, shoeSize=shoeSize, sorting=sorting, productsPerPage=productsPerPage, page=page, maxPages=maxPages, brands=brands, categories=categories, sizes=sizes)
+    return render_template('adminProducts.html', userData=user, loggedIn=loggedIn, products=productsCurrent, brand=brand, category=category, shoeSize=shoeSize, sorting=sorting, productsPerPage=productsPerPage, page=page, maxPages=maxPages, brands=brands, categories=categories, sizes=sizes, tags=tags, tag=tag)
 
 @app.route('/admin/products/edit/<productId>')
 def adminProductEdit(productId):
@@ -941,6 +945,18 @@ def adminProductAdd():
 
         database.addProduct(productData)
         return jsonify({'success': True})
+    
+@app.route('/admin/product/archive', methods=['POST'])
+def adminProductArchive():
+    productId = request.json.get('productId')
+    product = database.getProduct({'id': int(productId)})
+    tags = [t for t in product['tags'] if t != ""]
+    if 'archived' in tags:
+        tags.remove('archived')
+    else:
+        tags.append('archived')
+    database.updateProduct(int(productId), {'tags': tags})
+    return jsonify({'success': True})
 
 @app.route('/admin/orders')
 def adminOrders():

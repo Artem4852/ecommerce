@@ -34,7 +34,8 @@ def log(page, request=None, ip=None):
     if ip: userIp = ip
     elif request.headers.get('X-Forwarded-For'): userIp = request.headers.get('X-Forwarded-For').split(',')[0]
     else: userIp = request.remote_addr
-    ipData = requests.get(f'http://ipinfo.io/{userIp}/json').json()
+    try: ipData = requests.get(f'http://ipinfo.io/{userIp}/json').json()
+    except: return
     if "bogon" in ipData: return
 
     now = datetime.now()

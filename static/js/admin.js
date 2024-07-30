@@ -193,6 +193,54 @@ function updateProduct() {
         });
 }
 
+function archiveProduct() {
+    const inputTags = document.getElementById('inputTags');
+    inputTags.value = 'archived, ' + inputTags.value;
+    const buttonArchiveProduct = document.getElementById('buttonArchiveProduct');
+    buttonArchiveProduct.innerText = 'Archived!';
+    setTimeout(() => {
+        buttonArchiveProduct.innerText = 'Unarchive product';
+        buttonArchiveProduct.setAttribute('onclick', 'unarchiveProduct()');
+    }, 2000);
+}
+
+function unarchiveProduct() {
+    const inputTags = document.getElementById('inputTags');
+    inputTags.value = inputTags.value.replace('archived, ', '').replace(', archived', '');
+    const buttonArchiveProduct = document.getElementById('buttonArchiveProduct');
+    buttonArchiveProduct.innerText = 'Unarchived!';
+    setTimeout(() => {
+        buttonArchiveProduct.innerText = 'Archive product';
+        buttonArchiveProduct.setAttribute('onclick', 'archiveProduct()');
+    }, 2000);
+}
+
+function archiveProductNoForm(productId) {
+    fetch('/admin/product/archive', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({productId: productId}),
+    })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                document.getElementById('archived'+productId).classList.toggle('hidden');
+                document.getElementById('sizes'+productId).classList.toggle('hidden');
+                button = document.getElementById('buttonArchiveProduct'+productId);
+                if (button.innerText === 'Archive') {
+                    button.innerText = 'Unarchive';
+                } else {
+                    button.innerText = 'Archive';
+                }
+            }
+            else {
+                console.log(data.error);
+            }
+        });
+}
+
 const inputs = ['Sizes', 'InsoleLengths', 'QuantitiesLeft', 'Warehouses'];
 inputs.forEach(input => {
     document.getElementById('input' + input).addEventListener('blur', () => {
