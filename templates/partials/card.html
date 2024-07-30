@@ -25,17 +25,17 @@
         <div class="details">
             <div class="col1">
                 <h3>{{ product['category'] }}</h3>
-                <p>Brand: {{ product['brand'] }}</p>
-                <p id="archived{{ product['id'] }}" class="notinstock {% if not 'archived' in product['tags'] %}hidden{% endif %}">Archived</p>
+                <p>{{ _('Brand') }}: {{ product['brand'] }}</p>
+                <p id="archived{{ product['id'] }}" class="notinstock {% if not 'archived' in product['tags'] %}hidden{% endif %}">{{ _('Archived') }}</p>
                 {% if product['sizes'] %}
-                    <p id="sizes{{ product['id'] }}" class="{% if 'archived' in product['tags'] %}hidden{% endif %}">Sizes: {{ product['sizes'][0] }}{% for size in product['sizes'][1:] %}, {{ size }}{% endfor %}</p>
+                    <p id="sizes{{ product['id'] }}" class="{% if 'archived' in product['tags'] %}hidden{% endif %}">{{ _('Sizes') }}: {{ product['sizes'][0] }}{% for size in product['sizes'][1:] %}, {{ size }}{% endfor %}</p>
                 {% else %}
-                    <p id="sizes{{ product['id'] }}" class="{% if 'archived' in product['tags'] %}hidden{% endif %}">Not in stock</p>
+                    <p id="sizes{{ product['id'] }}" class="{% if 'archived' in product['tags'] %}hidden{% endif %}">{{ _('Not in stock') }}</p>
                 {% endif %}
             </div>
             <div class="col2">
-                {% if product['discount'] != 0 %} <p class="prevPrice">{{ product['prevPrice'] }}₴</p>{% endif %}
-                <h4>{{ product['price'] }} ₴</h4>
+                {% if product['discount'] != 0 %} <p class="prevPrice">{{ product['prevPrice'] }}{{ _('₴') }}</p>{% endif %}
+                <h4>{{ product['price'] }} {{ _('₴') }}</h4>
             </div>
         </div>
     </div>
@@ -50,6 +50,6 @@
         {% endif %}
     {% endif %}
     {% if not loggedIn or not 'admin' in userData.tags %}
-        <a class="viewDetails" href="/product/{{ product['id'] }}">View details</a>
+        <a class="viewDetails" href="/product/{{ product['id'] }}">{{ _('View details') }}</a>
     {% endif %}
 </div>

@@ -5,13 +5,13 @@
 <body>
     {% include 'partials/header.html' %}
     <section id="contact">
-        <h2>Contact us</h2>
+        <h2>{{ _('Contact us') }}</h2>
         <div class="info">
-            <h4>Get in touch</h4>
+            <h4>{{ _('Get in touch') }}</h4>
             <div class="row">
                 <div class="col">
-                    <p>Phone number: <a href="tel:+3809015687">+380 901 5687</a></p>
-                    <p>Email: <a href="mailto:contact@kidsfashionstore.ua">contact@kidsfashionstore.ua</a></p>
+                    <p>{{ _('Phone number') }}: <a href="tel:+3809015687">+380 901 5687</a></p>
+                    <p>{{ _('Email') }}: <a href="mailto:contact@kidsfashionstore.ua">contact@kidsfashionstore.ua</a></p>
                 </div>
                 <div class="col">
                     <p>Telegram: <a href="https://t.me/kidsfashionstore" target="_blank">@kidsfashionstore</a></p>
@@ -24,19 +24,19 @@
             </div>
         </div>
         <div class="form">
-            <h4>Message us</h4>
+            <h4>{{ _('Message us') }}</h4>
             <div class="row">
                 <form>
-                    <input id="inputName" type="text" placeholder="Your Name" required form="contact">
-                    <input id="inputEmail" type="email" placeholder="Your Email" required form="contact">
-                    <input id="inputSubject" type="text" placeholder="Subject" required form="contact">
-                    <textarea id="inputMessage" type="text" placeholder="Message" required form="contact"></textarea>
+                    <input id="inputName" type="text" placeholder="{{ _('Your Name') }}" required form="contact">
+                    <input id="inputEmail" type="email" placeholder="{{ _('Your Email') }}" required form="contact">
+                    <input id="inputSubject" type="text" placeholder="{{ _('Subject') }}" required form="contact">
+                    <textarea id="inputMessage" type="text" placeholder="{{ _('Message') }}" required form="contact"></textarea>
                     <button id="formContactButton" onclick="submitMessage()">Send</button>
                 </form>
-                <p>If you have any questions/suggestions, don’t hesitate to message us.
+                <p>{{ _('If you have any questions/suggestions, don’t hesitate to message us.
                 Kids Fashion Store always aims to help the customer and make your shopping experience as good as possible.
                 If your question is related to cancelation/replacement of the order or you need help with selecting the correct shoe
-                size, please message us on Instagram or Telegram.</p>
+                size, please message us on Instagram or Telegram.') }}</p>
             </div>
         </div>
     </section>

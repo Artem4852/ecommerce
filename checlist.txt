@@ -1,0 +1,36 @@
+
+404.html 
+
+admin.html 
+adminOrder.html 
+adminOrders.html 
+adminProductAdd.html 
+adminProductEdit.html 
+adminProducts.html 
+
+index.html +
+shop.html +
+product.html 
+contact.html +
+faq.html +-
+favorites.html 
+signup.html 
+login.html 
+forgotPassword.html 
+updatePassword.html
+settings.html 
+newsletterUnsubscribe.html 
+
+partials/base.html +
+partials/card.html +
+partials/footer.html +
+partials/head.html +
+partials/header.html +
+partials/newsletter.html +
+
+
+cart.html 
+checkout.html 
+order.html 
+orderConfirmation.html 
+orders.html 

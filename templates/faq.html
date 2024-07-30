@@ -4,7 +4,7 @@
 <body>
     {% include 'partials/header.html' %}
     <section id="faq">
-        <h2>FAQ</h2>
+        <h2>{{ _('FAQ') }}</h2>
         <div class="posts">
             {% for post in faqPosts %}
                 <div class="card">
@@ -13,7 +13,7 @@
                         <h3>{{ post['title'] }}</h3>
                         <p>{{ post['content'] }}</p>
                     </div>
-                    <a href="/faq/{{ post['name'] }}" class="button">Read on</a>
+                    <a href="/faq/{{ post['name'] }}" class="button">{{ _('Read on') }}</a>
                 </div>
             {% endfor %}
         </div>

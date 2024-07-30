@@ -23,7 +23,7 @@ app = Flask(__name__)
 app.secret_key = os.getenv('SECRET_KEY')
 
 # babel
-app.config['BABEL_DEFAULT_LOCALE'] = 'en'
+app.config['BABEL_DEFAULT_LOCALE'] = 'uk'
 app.config['BABEL_TRANSLATION_DIRECTORIES'] = 'translations'
 
 babel = Babel(app, locale_selector=get_locale)

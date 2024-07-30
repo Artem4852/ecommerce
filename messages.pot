@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-07-30 19:29+0200\n"
+"POT-Creation-Date: 2024-07-30 20:50+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,6 +16,62 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.14.0\n"
+
+#: templates/contact.html:8 templates/partials/footer.html:17
+#: templates/partials/header.html:10 templates/partials/header.html:46
+msgid "Contact us"
+msgstr ""
+
+#: templates/contact.html:10
+msgid "Get in touch"
+msgstr ""
+
+#: templates/contact.html:13 templates/partials/footer.html:18
+msgid "Phone number"
+msgstr ""
+
+#: templates/contact.html:14 templates/partials/footer.html:20
+msgid "Email"
+msgstr ""
+
+#: templates/contact.html:27
+msgid "Message us"
+msgstr ""
+
+#: templates/contact.html:30
+msgid "Your Name"
+msgstr ""
+
+#: templates/contact.html:31
+msgid "Your Email"
+msgstr ""
+
+#: templates/contact.html:32
+msgid "Subject"
+msgstr ""
+
+#: templates/contact.html:33
+msgid "Message"
+msgstr ""
+
+#: templates/contact.html:36
+msgid ""
+"If you have any questions/suggestions, don’t hesitate to message us.\n"
+"                Kids Fashion Store always aims to help the customer and "
+"make your shopping experience as good as possible.\n"
+"                If your question is related to cancelation/replacement of"
+" the order or you need help with selecting the correct shoe\n"
+"                size, please message us on Instagram or Telegram."
+msgstr ""
+
+#: templates/faq.html:7 templates/partials/header.html:9
+#: templates/partials/header.html:45
+msgid "FAQ"
+msgstr ""
+
+#: templates/faq.html:16
+msgid "Read on"
+msgstr ""
 
 #: templates/index.html:16
 msgid "The biggest variety of brand shoes in Ukraine"
@@ -43,6 +99,159 @@ msgstr ""
 
 #: templates/index.html:47
 msgid "View more"
+msgstr ""
+
+#: templates/shop.html:8
+msgid "Catalogue"
+msgstr ""
+
+#: templates/partials/card.html:28 templates/shop.html:11
+msgid "Brand"
+msgstr ""
+
+#: templates/shop.html:13 templates/shop.html:27 templates/shop.html:41
+#: templates/shop.html:55
+msgid "Any"
+msgstr ""
+
+#: templates/shop.html:25
+msgid "Category"
+msgstr ""
+
+#: templates/shop.html:39
+msgid "Shoe size"
+msgstr ""
+
+#: templates/shop.html:53
+msgid "Price range"
+msgstr ""
+
+#: templates/shop.html:73
+msgid "Sort by"
+msgstr ""
+
+#: templates/shop.html:75
+msgid "No sorting"
+msgstr ""
+
+#: templates/shop.html:76
+msgid "Price: low to high"
+msgstr ""
+
+#: templates/shop.html:77
+msgid "Price: high to low"
+msgstr ""
+
+#: templates/shop.html:78
+msgid "Discount: high to low"
+msgstr ""
+
+#: templates/shop.html:79
+msgid "Discount: low to high"
+msgstr ""
+
+#: templates/shop.html:95
+msgid "Show more"
+msgstr ""
+
+#: templates/shop.html:140
+msgid "No products found. Try to change filters."
+msgstr ""
+
+#: templates/partials/card.html:29
+msgid "Archived"
+msgstr ""
+
+#: templates/partials/card.html:31
+msgid "Sizes"
+msgstr ""
+
+#: templates/partials/card.html:33
+msgid "Not in stock"
+msgstr ""
+
+#: templates/partials/card.html:37 templates/partials/card.html:38
+msgid "₴"
+msgstr ""
+
+#: templates/partials/card.html:53
+msgid "View details"
+msgstr ""
+
+#: templates/partials/footer.html:3
+msgid "Information"
+msgstr ""
+
+#: templates/partials/footer.html:4
+msgid "Foot measurement"
+msgstr ""
+
+#: templates/partials/footer.html:5
+msgid "Delivery information"
+msgstr ""
+
+#: templates/partials/footer.html:6
+msgid "Replacements and returns"
+msgstr ""
+
+#: templates/partials/footer.html:9
+msgid "Legal"
+msgstr ""
+
+#: templates/partials/footer.html:10
+msgid "Terms of use"
+msgstr ""
+
+#: templates/partials/footer.html:11
+msgid "Privacy policy"
+msgstr ""
+
+#: templates/partials/footer.html:12
+msgid "Cookies policy"
+msgstr ""
+
+#: templates/partials/footer.html:13
+msgid "Shipping policy"
+msgstr ""
+
+#: templates/partials/footer.html:14
+msgid "Replacements and returns policy"
+msgstr ""
+
+#: templates/partials/footer.html:24
+msgid "Our social media"
+msgstr ""
+
+#: templates/partials/header.html:7 templates/partials/header.html:43
+msgid "Home"
+msgstr ""
+
+#: templates/partials/header.html:8 templates/partials/header.html:44
+msgid "Shop"
+msgstr ""
+
+#: templates/partials/header.html:19 templates/partials/header.html:50
+msgid "Log in"
+msgstr ""
+
+#: templates/partials/header.html:20 templates/partials/header.html:51
+msgid "Sign up"
+msgstr ""
+
+#: templates/partials/header.html:23 templates/partials/header.html:54
+msgid "Admin"
+msgstr ""
+
+#: templates/partials/header.html:26 templates/partials/header.html:56
+msgid "Favorites"
+msgstr ""
+
+#: templates/partials/header.html:28 templates/partials/header.html:58
+msgid "Settings"
+msgstr ""
+
+#: templates/partials/header.html:29 templates/partials/header.html:60
+msgid "Log out"
 msgstr ""
 
 #: templates/partials/newsletter.html:4
