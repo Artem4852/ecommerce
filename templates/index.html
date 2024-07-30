@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ get_locale() }}">
 {% include 'partials/head.html' %}
 <body>
     {% include 'partials/header.html' %}
@@ -13,14 +13,14 @@
         {% endfor %}
         <div class="textWrapper">
             <div class="text">
-                <h2>The biggest variety of brand shoes in Ukraine</h2>
+                <h2>{{ _('The biggest variety of brand shoes in Ukraine') }}</h2>
             </div>
         </div>
         <div class="shadow top"></div>
         <div class="shadow bottom"></div>
     </section>
     <section id="featured">
-        <h2>Featured</h2>
+        <h2>{{ _('Featured') }}</h2>
         <div class="products">
             {% for product in productsFeatured %}
                 {% include 'partials/card.html' %}
@@ -29,22 +29,22 @@
     </section>
     <section class="banner" id="toShop">
         <div class="content">
-            <h2>Find a perfect pair of shoes for your child</h2>
-            <h3>Choose among popular brands, like Ecco, Geox, and Superfit</h3>
-            <a href="/shop">Visit shop</a>
+            <h2>{{ _('Find a perfect pair of shoes for your child') }}</h2>
+            <h3>{{ _('Choose among popular brands, like Ecco, Geox, and Superfit') }}</h3>
+            <a href="/shop">{{ _('Visit shop') }}</a>
         </div>
         <div class="img">
             <img src="../static/img/shopping.png" alt="">
         </div>
     </section>
     <section id="sale">
-        <h2>Summer sale</h2>
+        <h2>{{ _('Summer sale') }}</h2>
         <div class="products">
             {% for product in productsSale %}
                 {% include 'partials/card.html' %}
             {% endfor %}
         </div>
-        <a href="/shop" class="viewMore">View more</a>
+        <a href="/shop" class="viewMore">{{ _('View more') }}</a>
     </section>
     {% include 'partials/newsletter.html' %}
     {% include 'partials/footer.html' %}

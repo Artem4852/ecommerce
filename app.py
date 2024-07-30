@@ -1,4 +1,5 @@
 from flask import Flask, request, abort, jsonify, render_template, session, redirect
+from flask_babel import Babel, gettext
 from flask_mail import Mail, Message
 from database import Database
 import os, random, math, dotenv, re
@@ -15,8 +16,19 @@ characters = ascii_letters + digits
 
 dotenv.load_dotenv()
 
+def get_locale():
+    return request.accept_languages.best_match(['uk'])
+
 app = Flask(__name__)
 app.secret_key = os.getenv('SECRET_KEY')
+
+# babel
+app.config['BABEL_DEFAULT_LOCALE'] = 'en'
+app.config['BABEL_TRANSLATION_DIRECTORIES'] = 'translations'
+
+babel = Babel(app, locale_selector=get_locale)
+
+# Database
 database = Database()
 
 nova = NovaAPI()
@@ -60,9 +72,19 @@ def notifyFavorites(productId, brand, category, price):
     for user in toSend:
         sendEmail('New discount on your favorite product', user['email'], html='saleFavorite', data={'productId': productId, 'name': f"{category} {brand}", 'price': price})
 
+# Babel
+@app.context_processor
+def inject_translations():
+    return dict(_=gettext)
+
+@app.context_processor
+def inject_locale():
+    return dict(get_locale=get_locale)
+
 # Index route
 @app.route('/')
 def index():
+    session['lang'] = request.args.get('lang', 'uk')
     indexImages = [im for im in os.listdir('static/img/covers') if im.endswith('.jpg')]
     random.shuffle(indexImages)
     indexImages = indexImages[:8*10]

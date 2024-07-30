@@ -1,0 +1,56 @@
+# English translations for PROJECT.
+# Copyright (C) 2024 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2024.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2024-07-30 19:29+0200\n"
+"PO-Revision-Date: 2024-07-30 18:44+0200\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.14.0\n"
+
+#: templates/index.html:16
+msgid "The biggest variety of brand shoes in Ukraine"
+msgstr "The biggest variety of brand shoes in Ukraine"
+
+#: templates/index.html:23
+msgid "Featured"
+msgstr "Featured"
+
+#: templates/index.html:32
+msgid "Find a perfect pair of shoes for your child"
+msgstr "Find a perfect pair of shoes for your child"
+
+#: templates/index.html:33
+msgid "Choose among popular brands, like Ecco, Geox, and Superfit"
+msgstr "Choose among popular brands, like Ecco, Geox, and Superfit"
+
+#: templates/index.html:34
+msgid "Visit shop"
+msgstr "Visit shop"
+
+#: templates/index.html:41
+msgid "Summer sale"
+msgstr "Summer sale"
+
+#: templates/index.html:47
+msgid "View more"
+msgstr "View more"
+
+#: templates/partials/newsletter.html:4
+msgid "Be the first to find out about the best deals"
+msgstr "Be the first to find out about the best deals"
+
+#: templates/partials/newsletter.html:5
+msgid "Sign up for our newsletter"
+msgstr "Sign up for our newsletter"
+
