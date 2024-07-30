@@ -1,15 +1,15 @@
 function newsletterSignUp() {
-    email = document.getElementById("newsletter-email").value;
+    email = document.getElementById("newsletterEmail").value;
     if (email == "" || !email.includes("@") || !email.includes(".")) {
-        document.getElementById("newsletter-button").innerHTML = "Please enter a valid email address.";
+        document.getElementById("newsletterButton").innerHTML = "Please enter a valid email address.";
         setTimeout(function () {
-            document.getElementById("newsletter-button").innerHTML = "Sign me up";
+            document.getElementById("newsletterButton").innerHTML = "Sign me up";
         }, 2000);
     }
     else {
-        document.getElementById("newsletter-button").innerHTML = "Sign me up";
-        document.getElementById("newsletter-email").value = "";
-        fetch("/newsletter-signup", {
+        document.getElementById("newsletterButton").innerHTML = "Sign me up";
+        document.getElementById("newsletterEmail").value = "";
+        fetch("/newsletterSignup", {
             method: "POST",
             body: JSON.stringify({ email: email }),
             headers: {
@@ -22,9 +22,9 @@ function newsletterSignUp() {
             throw new Error("Request failed.");
         }).then(data => {
             if (data.success) {
-                document.getElementById("newsletter-button").innerHTML = "Thanks for subscribing!";
+                document.getElementById("newsletterButton").innerHTML = "Thanks for subscribing!";
                 setTimeout(function () {
-                    document.getElementById("newsletter-button").innerHTML = "Sign me up";
+                    document.getElementById("newsletterButton").innerHTML = "Sign me up";
                 }, 2000);
             }
         })

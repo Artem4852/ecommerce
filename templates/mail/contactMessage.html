@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=deviceWidth, initialScale=1.0">
+    <title>Contact Us Kids Fashion Store</title>
+</head>
+<body>
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300..800&display=swap");
+    
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: borderBox;
+        }
+    
+        div.main {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            background-color: #eee;
+            padding: 50px;
+        }
+    
+        img {
+            width: 200px;
+            margin: 20px;
+        }
+    
+        h1 {
+            font-family: Veronica;
+            font-size: 48px;
+            font-weight: 400;
+            color: #E352BA;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+    
+        p {
+            font-family: "Open Sans", sansSerif;
+            font-size: 16px;
+            font-weight: 400;
+            color: #333;
+            width: 100%;
+        }
+    
+        .content {
+            padding: 20px;
+            background-color: #E0E0E0;
+            text-align: center;
+            border-radius: 20px;
+        }
+    
+        a {
+            color: #E352BA;
+            text-decoration: none;
+        }
+    
+        a:hover {
+            text-decoration: underline;
+        }
+    
+        div.code {
+            font-family: "Open Sans", sansSerif;
+            font-size: 18px;
+            font-weight: 700;
+            color: #E352BA;
+            background-color: #fff;
+            padding: 10px;
+            border-radius: 10px;
+            margin: 20px;
+        }
+    </style>
+    <div class="main">
+        <div class="content">
+            <h1>New contact request</h1>
+            <p>From: {{ data.from }}</p>
+            <p>Email: {{ data.email }}</p>
+            <p>Subject: {{ data.subject }}</p>
+            <p>Message: {{ data.message }}</p>
+        </div>
+    </div>
+</body>
+</html>

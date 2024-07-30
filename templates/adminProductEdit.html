@@ -42,8 +42,12 @@
                     <input id="inputBrand" type="text" value="{{ product.brand }}" placeholder="Geox">
                 </div>
                 <div class="input">
-                    <label for="inputPrice">Price</label>
-                    <input id="inputPrice" type="text" value="{{ product.price }}" placeholder="2999">
+                    <label for="inputPrice">Original Price</label>
+                    <input id="inputPrice" type="text" value="{{ product.prevPrice }}" placeholder="2999">
+                </div>
+                <div class="input">
+                    <label for="inputDiscount">Discount</label>
+                    <input id="inputDiscount" type="text" value="{{ product.discount }}%" placeholder="30%">
                 </div>
                 <div class="input">
                     <label for="inputSizes">Sizes</label>

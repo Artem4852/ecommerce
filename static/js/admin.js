@@ -15,12 +15,6 @@ function addImg() {
     const formData = new FormData();
     formData.append('file', img);
 
-    // <div class="imageWrapper">
-    //     <div class="image">
-    //         <img src="{{ url_for('static', filename='img/products/'+product.id|string+'/'+img) }}" alt="">
-    //     </div>
-    // </div>
-
     fetch('/admin/product/image?productId='+productId, {
         method: 'POST',
         body: formData
@@ -146,7 +140,6 @@ function validateProduct() {
 }
 
 function updateProduct() {
-    // product id, category, brand, price, sizes, season, outer material, inner material, insole material, insole lengths, quantities, warehouses
     const error = validateProduct();
     if (error !== '') {
         document.getElementById('buttonUpdateProduct').innerText = error;
@@ -161,7 +154,8 @@ function updateProduct() {
         tags: document.getElementById('inputTags').value,
         category: document.getElementById('inputCategory').value,
         brand: document.getElementById('inputBrand').value,
-        price: document.getElementById('inputPrice').value,
+        prevPrice: document.getElementById('inputPrice').value,
+        discount: document.getElementById('inputDiscount').value,
         sizes: document.getElementById('inputSizes').value,
         season: document.getElementById('inputSeason').value,
         outerMaterial: document.getElementById('inputMaterialOuter').value,

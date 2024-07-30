@@ -2,6 +2,9 @@ from pymongo.mongo_client import MongoClient
 from bson.objectid import ObjectId
 import os, dotenv, random
 
+from string import ascii_letters, digits
+characters = ascii_letters + digits
+
 dotenv.load_dotenv()
 
 class Database:
@@ -69,7 +72,20 @@ class Database:
         self.productsDb['productData'].insert_one(product)
 
     def addToNewsletter(self, email):
-        self.usersDb['notifications'].update_one({'Id': ObjectId('6699745baeee92227cd44cfa')}, {'$push': {'newsletter': email}})
+        token = ''.join(random.choices(characters, k=32))
+        user = self.usersDb['notifications'].find_one({'email': email})
+        if user:
+            return user['token']
+        self.usersDb['notifications'].insert_one({'email': email, 'token': token})
+        return token
+        # self.usersDb['notifications'].update_one({'Id': ObjectId('6699745baeee92227cd44cfa')}, {'$push': {'newsletter': email}})
+
+    def removeFromNewsletter(self, token):
+        user = self.usersDb['notifications'].find_one({'token': token})
+        if user:
+            self.usersDb['notifications'].delete_one({'token': token})
+            return True
+        return False
 
     def getFaq(self):
         return list(self.otherDb['faq'].find())

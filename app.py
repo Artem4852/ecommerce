@@ -51,6 +51,15 @@ def getUser(Filter):
         return {'cart': [], 'favorites': []}
     return database.getUser(Filter)
 
+def notifyFavorites(productId, brand, category, price):
+    users = database.getUsers()
+    toSend = []
+    for user in users:
+        if 'favorites' in user and productId in user['favorites'] and user['notifications']['discounts']:
+            toSend.append(user)
+    for user in toSend:
+        sendEmail('New discount on your favorite product', user['email'], html='saleFavorite', data={'productId': productId, 'name': f"{category} {brand}", 'price': price})
+
 # Index route
 @app.route('/')
 def index():
@@ -601,8 +610,20 @@ def updateSettings():
 @app.route('/newsletterSignup', methods=['POST'])
 def newsletterSignup():
     email = request.json.get('email')
-    database.addToNewsletter(email)
+    token = database.addToNewsletter(email)
+    sendEmail('Kids Fashion Store Newsletter', email, html='newsletterSignup', data={'unsubscribeToken': token})
     return jsonify({'success': True})
+
+@app.route('/newsletterUnsubscribe/<unsubscribeToken>', methods=['GET'])
+def newsletterUnsubscribe(unsubscribeToken):
+    if database.removeFromNewsletter(unsubscribeToken):
+        loggedIn = session.get('loggedIn', False)
+        if loggedIn:
+            user = getUser({'userId': session.get('userId')})
+        else:
+            user = {}
+        return render_template('newsletterUnsubscribe.html', loggedIn=loggedIn, userData=user)
+    return abort(404)
 
 # Auth routes
 @app.route('/login', methods=['GET', 'POST'])
@@ -874,6 +895,9 @@ def adminProductUpdate():
     productData['sizesCm'] = {size.strip().split(" ")[0].strip(): float(size.strip().split(" ")[1].replace("cm", "").replace("(", "").replace(")", "").strip()) for size in productData['sizesCm'].split(',')}
     productData['warehouses'] = {warehouse.strip().split(" ")[0].strip(): warehouse.strip().split(" ")[1].replace("(", "").replace(")", "").strip() for warehouse in productData['warehouses'].split(',')}
 
+    productData['discount'] = int(productData['discount'].replace("%", ""))
+    productData['price'] = str(int(productData['prevPrice']) * (1 - productData['discount'] / 100))[:2]+'99'
+
     productData['additionalInformation'] = {
         "innerMaterial": productData['innerMaterial'],
         "insoleMaterial": productData['insoleMaterial'],
@@ -884,6 +908,9 @@ def adminProductUpdate():
     del productData['insoleMaterial']
     del productData['outerMaterial']
     del productData['season']
+
+    if productData['discount'] != 0:
+        notifyFavorites(productData['id'], productData['brand'], productData['category'], productData['price'])
 
     database.updateProduct(int(productData['id']), productData)
     return jsonify({'success': True})
@@ -907,6 +934,7 @@ def adminProductAdd():
             "brand": "",
             "category": "",
             "price": "",
+            "prevPrice": "",
             "discount": 0,
             "sizes": [],
             "tags": [],

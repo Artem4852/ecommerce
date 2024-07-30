@@ -3,11 +3,9 @@ function phoneInput() {
     const phone = document.getElementById('inputPhoneNumber');
 
     if (prev && prev.length > phone.value.length) {
-        phone.value = '';
-        prev = null;
-        return;
+        let value = phone.value.replace(/\D/g, '');
+        phone.value = value.substring(0, value.length - 1);
     }
-    prev = phone.value;
 
     let value = phone.value.replace(/\D/g, '');
     let formattedValue = '';
