@@ -47,17 +47,17 @@
             <div class="data">
                 <div class="row">
                     <div class="col">
-                        <p>Awaiting processing: 25</p>
-                        <p>Replacements: 3</p>
+                        <p>Total: {{ ordersTotal }}</p>
+                        <p>Pending: {{ ordersPending }}</p>
                     </div>
                     <div class="col">
-                        <p>Shipping: 45</p>
-                        <p>Returns: 2</p>
+                        <p>Today: {{ ordersToday }}</p>
+                        <p>Average: {{ ordersDailyAverage }}</p>
                     </div>
                 </div>
                 <div class="row">
                     <a href="/admin/orders">View orders</a>
-                    <a href="/admin/orders?status=processing">View pending</a>
+                    <a href="/admin/orders?orderStatus=pending">View pending</a>
                 </div>
             </div>
         </div>

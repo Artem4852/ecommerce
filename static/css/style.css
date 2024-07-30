@@ -31,9 +31,14 @@ p {
 a {
   text-decoration: none;
   color: #E352BA;
+  font-weight: 500;
 }
 a:hover {
   text-decoration: underline;
+}
+
+button {
+  font-weight: 500;
 }
 
 body {
@@ -77,10 +82,6 @@ svg.downArrow {
   position: absolute;
   top: 5px;
   right: 8px;
-}
-
-.mobileOnly {
-  display: none;
 }
 
 #deleteIcon, #backIcon, #forwardIcon {
@@ -1746,6 +1747,7 @@ select::-webkit-inner-spin-button, select::-webkit-outer-spin-button {
   width: 100%;
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   justify-content: space-between;
   gap: 15%;
 }
@@ -2268,12 +2270,17 @@ select::-webkit-inner-spin-button, select::-webkit-outer-spin-button {
   text-decoration: none;
 }
 
+@media screen and (min-width: 801px) {
+  .mobileOnly {
+    display: none !important;
+  }
+}
 @media screen and (max-width: 800px) {
   .mobileOnly {
     display: block;
   }
   .desktopOnly {
-    display: none;
+    display: none !important;
   }
   #header {
     padding: 4vw;
@@ -2459,6 +2466,22 @@ select::-webkit-inner-spin-button, select::-webkit-outer-spin-button {
   }
   .filtering .filter input, .filtering .sort input {
     width: 100%;
+  }
+  #orders .orders .card {
+    flex-direction: column;
+    gap: 0;
+  }
+  #orders .orders .card .img {
+    width: 50%;
+  }
+  #orders .orders .card .data {
+    width: 100%;
+  }
+  #order .row {
+    gap: 30px;
+  }
+  #order .row .col {
+    gap: 10px;
   }
 }
 

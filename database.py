@@ -51,7 +51,9 @@ class Database:
     def removeOrder(self, orderId):
         self.productsDb['orders'].delete_one({'orderId': orderId})
 
-    def getOrders(self, Filter):
+    def getOrders(self, Filter=None):
+        if not Filter:
+            return list(self.productsDb['orders'].find())
         return list(self.productsDb['orders'].find(Filter))
     
     def getOrder(self, Filter):

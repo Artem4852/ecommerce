@@ -26,6 +26,10 @@
                     <input type="number" value="{{ product.id }}" disabled>
                 </div>
                 <div class="input">
+                    <label for="inputTags">Tags</label>
+                    <input type="number" value="{{ product.tags[0] }}{% for tag in product.tags[1:] %}, {{ tag }}{% endfor %}" placeholder="featured, sale">
+                </div>
+                <div class="input">
                     <label for="inputCategory">Category</label>
                     <input id="inputCategory" type="text" value="{{ product.category }}" placeholder="Sandals">
                 </div>

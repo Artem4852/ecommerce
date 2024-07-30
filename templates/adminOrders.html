@@ -37,14 +37,26 @@
             {% for order in orders %}
                 {% for item in order.cart %}
                 <div class="card">
-                    <div class="img">
+                    <div class="img desktopOnly">
                         <a href="/admin/orders/{{ order.orderId }}/{{ item.id }}">
                             <img src="{{ url_for('static', filename='img/products/'+item.id|string+'/'+item.info.img) }}" alt="">
                         </a>
                     </div>
+                    <div class="row mobileOnly">
+                        <div class="img">
+                            <a href="/admin/orders/{{ order.orderId }}/{{ item.id }}">
+                                <img src="{{ url_for('static', filename='img/products/'+item.id|string+'/'+item.info.img) }}" alt="">
+                            </a>
+                        </div>
+                        <div class="col start" id="card{{ item.id }}">
+                            <h4>{{ item.info.category }} {{ item.info.brand }}</h4>
+                            <p class="infoSize">Size: {{ item.size }}</p>
+                            <p class="infoQuantity">Quantity: {{ item.quantity }}</p>
+                        </div>
+                    </div>
                     <div class="data">
                         <div class="row">
-                            <div class="col start" id="card{{ item.id }}">
+                            <div class="col start desktopOnly" id="card{{ item.id }}">
                                 <h4>{{ item.info.category }} {{ item.info.brand }}</h4>
                                 <p class="infoSize">Size: {{ item.size }}</p>
                                 <p class="infoQuantity">Quantity: {{ item.quantity }}</p>
@@ -63,11 +75,12 @@
                                 {% else %}
                                     <p>Quick order</p>
                                 {% endif %}
+                                <p class="mobileOnly">Status: {{ order.status | capitalize }}</p>
                             </div>
                             <div class="col">
                                 <p>Product id: {{ item.id }}</p>
                                 <p>Order id: {{ order.orderId }}</p>
-                                <p>Status: {{ order.status | capitalize }}</p>
+                                <p class="desktopOnly">Status: {{ order.status | capitalize }}</p>
                             </div>
                         </div>
                     </div>

@@ -158,6 +158,7 @@ function updateProduct() {
 
     const product = {
         id: productId,
+        tags: document.getElementById('inputTags').value,
         category: document.getElementById('inputCategory').value,
         brand: document.getElementById('inputBrand').value,
         price: document.getElementById('inputPrice').value,

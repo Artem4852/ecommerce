@@ -592,7 +592,7 @@ def updateSettings():
         elif key in ['paymentMethod']: key = 'paymentData.'+key
         elif key in ['contactMessenger', 'username', 'phoneNumber']: key = 'contactData.'+key
         elif key in ['newDeals', 'seasonalSales', 'discounts', 'promoCode']: key = 'notifications.'+key
-        print(key, value)
+        # print(key, value)
         database.updateUser({'userId': session.get('userId')}, {'$set': {key: value}})  
     return jsonify({'success': True})
 
@@ -617,7 +617,7 @@ def login():
     user = getUser({'email': email})
 
     if user and user['password'] == password:
-        print(user)
+        # print(user)
         session['userId'] = user['userId']
         session['loggedIn'] = True
         return jsonify({'success': True})
@@ -703,12 +703,12 @@ def updatePasswordPost():
     email = request.json.get('email')
     code = request.json.get('code').replace("-", "")
     password = request.json.get('password')
-    print(email, code, password)
+    # print(email, code, password)
     user = getUser({'email': email})
     if not user or not user.get('reset'):
         return jsonify({'success': False, 'error': 'User not found'})
     if user['reset']['code'] != int(code) or user['reset']['expires'] < datetime.now().timestamp():
-        print(user['reset'])
+        # print(user['reset'])
         return jsonify({'success': False, 'error': 'Invalid code'})
     database.updateUser({'email': email}, {'$set': {'password': password}})
     return jsonify({'success': True})
@@ -746,7 +746,18 @@ def admin():
     totalProducts = len(products)
     inStock = len([p for p in products if len(p['sizes']) > 0])
 
-    return render_template('admin.html', userData=user, loggedIn=loggedIn, averageDailyRequests=averageDailyRequests, dailyRequests=dailyRequests, requestsToday=requestsToday, averageDailyUniqueVisits=averageDailyUniqueVisits, uniqueVisitsToday=uniqueVisitsToday, totalProducts=totalProducts, inStock=inStock)
+    orders = database.getOrders()
+    ordersTotal = sum([len(o['cart']) for o in database.getOrders()])
+    ordersPending = sum([len(o['cart']) for o in database.getOrders({'status': 'pending'})])
+    ordersToday = len([o for o in orders if datetime.fromtimestamp(o['timestamp']).strftime('%d.%m.%Y') == datetime.now().strftime('%d.%m.%Y')])
+    days = []
+    for o in orders:
+        day = datetime.fromtimestamp(o['timestamp']).strftime('%d.%m.%Y')
+        if day not in days:
+            days.append(day)
+    ordersDailyAverage = len(orders)//len(days)
+
+    return render_template('admin.html', userData=user, loggedIn=loggedIn, averageDailyRequests=averageDailyRequests, dailyRequests=dailyRequests, requestsToday=requestsToday, averageDailyUniqueVisits=averageDailyUniqueVisits, uniqueVisitsToday=uniqueVisitsToday, totalProducts=totalProducts, inStock=inStock, orders=orders, ordersTotal=ordersTotal, ordersPending=ordersPending, ordersToday=ordersToday, ordersDailyAverage=ordersDailyAverage)
 
 @app.route('/admin/products')
 def adminProducts():
@@ -853,6 +864,7 @@ def adminProductLoad():
 @app.route('/admin/product/update', methods=['POST'])
 def adminProductUpdate():
     productData = request.json.get('data')
+    productData['tags'] = [tag.strip() for tag in productData['tags'].split(',')]
     productData['sizes'] = [int(size) for size in productData['sizes'].split(',')]
     productData['maxQuantities'] = {quantity.strip().split(" ")[0].strip(): int(quantity.strip().split(" ")[1].replace("(", "").replace(")", "").strip()) for quantity in productData['maxQuantities'].split(',')}
     productData['sizesCm'] = {size.strip().split(" ")[0].strip(): float(size.strip().split(" ")[1].replace("cm", "").replace("(", "").replace(")", "").strip()) for size in productData['sizesCm'].split(',')}
@@ -904,6 +916,7 @@ def adminProductAdd():
             "maxQuantities": {},
             "sizesCm": {},
             "warehouses": {},
+            "addedBy": user['userId']
         }
         database.addProduct(product)
         return render_template('adminProductEdit.html', userData=user, loggedIn=loggedIn, product=product, pageType='add')
@@ -913,6 +926,7 @@ def adminProductAdd():
         productData['maxQuantities'] = {quantity.strip().split(" ")[0].strip(): int(quantity.strip().split(" ")[1].replace("(", "").replace(")", "").strip()) for quantity in productData['maxQuantities'].split(',')}
         productData['sizesCm'] = {size.strip().split(" ")[0].strip(): float(size.strip().split(" ")[1].replace("cm", "").replace("(", "").replace(")", "").strip()) for size in productData['sizesCm'].split(',')}
         productData['warehouses'] = {warehouse.strip().split(" ")[0].strip(): warehouse.strip().split(" ")[1].replace("(", "").replace(")", "").strip() for warehouse in productData['warehouses'].split(',')}
+        productData['addedBy'] = user['userId']
 
         productData['additionalInformation'] = {
             "innerMaterial": productData['innerMaterial'],
@@ -952,7 +966,7 @@ def adminOrders():
     for order in orders:
         cartItems = []
         for item in order['cart']:
-            print(item)
+            # print(item)
             product = database.getProduct({'id': item['productId']})
             cartItems.append({'id': item['productId'], 'size': item['size'], 'quantity': item['quantity'], 'info': product})
         order['cart'] = cartItems
