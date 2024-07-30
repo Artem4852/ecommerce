@@ -1,11 +1,15 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300..800&display=swap");
 @font-face {
+  font-family: "Open-Sans";
+  src: url("../../static/fonts/openSans.ttf") format("truetype");
+}
+@font-face {
   font-family: "Veronica";
-  src: url("../../static/fonts/veronica-script.otf") format("opentype");
+  src: url("../../static/fonts/veronicaScript.otf") format("opentype");
 }
 @font-face {
   font-family: "IntroScript";
-  src: url("../../static/fonts/introscript.ttf") format("truetype");
+  src: url("../../static/fonts/introScript.ttf") format("truetype");
 }
 * {
   margin: 0;
@@ -18,6 +22,10 @@ h1, h2 {
   font-size: 5vw;
   font-weight: 400;
   color: #E352BA;
+}
+
+p {
+  font-weight: 500;
 }
 
 a {
@@ -247,6 +255,7 @@ a.back:hover {
 
 label {
   font-size: 20px;
+  font-weight: 500;
 }
 
 select {
@@ -257,7 +266,7 @@ select {
   font-size: 20px;
   color: #f1f1f1;
   position: relative;
-  font-weight: 100;
+  font-weight: 400;
   appearance: none;
 }
 select:focus {
@@ -319,12 +328,18 @@ select::-webkit-inner-spin-button, select::-webkit-outer-spin-button {
   padding: 4vw;
   background-color: #f1f1f1;
   opacity: 0.9;
-  transition: 0.5s ease-out;
+  transition: 0.8s ease-in-out;
 }
 #header .navbar.mobile ul {
   flex-direction: column;
+  width: 100%;
   gap: 30px;
   align-items: flex-end;
+}
+#header .navbar.mobile ul .divider {
+  width: 100%;
+  height: 2px;
+  background-color: #E352BA;
 }
 #header .navbar.mobile ul li {
   margin-left: 0;
@@ -718,6 +733,8 @@ select::-webkit-inner-spin-button, select::-webkit-outer-spin-button {
 }
 #product .images .mainImg img {
   width: 100%;
+  aspect-ratio: 1/1;
+  object-fit: cover;
 }
 #product .images .mainImg svg {
   width: 40px;
@@ -743,6 +760,8 @@ select::-webkit-inner-spin-button, select::-webkit-outer-spin-button {
 #product .images #others img {
   width: 100%;
   cursor: pointer;
+  aspect-ratio: 1/1;
+  object-fit: cover;
 }
 #product .images #others img.selected {
   filter: brightness(0.7);
@@ -760,10 +779,10 @@ select::-webkit-inner-spin-button, select::-webkit-outer-spin-button {
 }
 #product .information h2 {
   font-family: "Open-sans", sans-serif;
-  font-weight: 400;
+  font-weight: 600;
   font-size: 30px;
   color: #111;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
 }
 #product .information p {
   margin-bottom: 5px;
@@ -1866,7 +1885,7 @@ select::-webkit-inner-spin-button, select::-webkit-outer-spin-button {
 }
 #settings p, #settings label, #settings select {
   font-size: 18px;
-  font-weight: 400;
+  font-weight: 500;
 }
 #settings .disabled {
   display: none;
@@ -2118,7 +2137,7 @@ select::-webkit-inner-spin-button, select::-webkit-outer-spin-button {
 }
 #adminProduct .images .image {
   width: 100%;
-  padding-top: 100%;
+  aspect-ratio: 1/1;
   position: relative;
   background-color: #E0E0E0;
   border-radius: 5px;
@@ -2152,16 +2171,12 @@ select::-webkit-inner-spin-button, select::-webkit-outer-spin-button {
 }
 #adminProduct .images .image img {
   border-radius: 5px;
-  position: absolute;
-  top: 0;
-  left: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 #adminProduct .add {
   width: calc(25% - 15px);
-  aspect-ratio: 1/1;
   font-size: 48px;
   background-color: #E0E0E0;
   padding: 10px;
@@ -2170,6 +2185,7 @@ select::-webkit-inner-spin-button, select::-webkit-outer-spin-button {
 }
 #adminProduct .add .plus {
   background-color: #f1f1f1;
+  aspect-ratio: 1/1;
   width: 100%;
   height: 100%;
   display: flex;
@@ -2305,6 +2321,9 @@ select::-webkit-inner-spin-button, select::-webkit-outer-spin-button {
   #product .images, #product .information {
     width: 100%;
   }
+  #product .information a {
+    width: 100%;
+  }
   #product .information .select {
     position: relative;
   }
@@ -2359,6 +2378,9 @@ select::-webkit-inner-spin-button, select::-webkit-outer-spin-button {
   #legalPage a {
     word-break: break-word;
   }
+  #sale a {
+    width: 100%;
+  }
   #newsletter, #toShop {
     padding: 0;
   }
@@ -2384,6 +2406,9 @@ select::-webkit-inner-spin-button, select::-webkit-outer-spin-button {
     width: 100%;
     font-size: 18px;
   }
+  #newsletter .content a, #toShop .content a {
+    margin-top: 20px;
+  }
   #newsletter .img, #toShop .img {
     position: relative;
   }
@@ -2395,6 +2420,9 @@ select::-webkit-inner-spin-button, select::-webkit-outer-spin-button {
   }
   #settings .input label, #settings .input input, #settings .input .select {
     min-width: 100%;
+  }
+  #settings .input label {
+    margin-bottom: 5px;
   }
   #settings .row {
     gap: 20px;
@@ -2418,6 +2446,18 @@ select::-webkit-inner-spin-button, select::-webkit-outer-spin-button {
     width: calc(50% - 10px);
   }
   #adminProduct button {
+    width: 100%;
+  }
+  .filtering .filter, .filtering .sort {
+    width: 100%;
+  }
+  .filtering .filter label, .filtering .sort label {
+    width: 40%;
+  }
+  .filtering .filter select, .filtering .sort select {
+    width: 60%;
+  }
+  .filtering .filter input, .filtering .sort input {
     width: 100%;
   }
 }

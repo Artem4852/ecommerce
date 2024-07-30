@@ -134,7 +134,9 @@
                     {% endfor %}
                 </p>
                 {% for info, value in product.additionalInformation.items() %}
-                    <p>{{ info.replace('_', ' ') | capitalize }}: {{ value }}</p>
+                    {% if value != '' %}
+                        <p>{{ info.replace('_', ' ') | capitalize }}: {{ value }}</p>
+                    {% endif %}
                 {% endfor %}
             </div>
         </div>

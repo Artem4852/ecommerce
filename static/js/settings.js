@@ -38,7 +38,7 @@ selects.forEach(select => {
 function check(id) {
     document.getElementById(id).classList.toggle('disabled');
     const checked = !document.getElementById(id).classList.contains('disabled');
-    const name = id.replace('inputCheck-', '').replace(/-./g, match => match.charAt(1).toUpperCase());
+    const name = id.replace('inputCheck', '').replace(/-./g, match => match.charAt(1).toUpperCase());
     const data = { [name]: checked };
 
     fetch('/updateSettings', {

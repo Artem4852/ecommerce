@@ -63,10 +63,10 @@ def index():
     user = getUser({'userId': session.get('userId')})
     loggedIn = session.get('loggedIn', False)
 
-    featured = [p for p in products if 'featured' in p['tags'] and p['discount'] == 0 and len(p['sizes']) > 0]
+    featured = [p for p in products if 'tags' in p and 'featured' in p['tags'] and p['discount'] == 0 and len(p['sizes']) > 0]
     random.shuffle(featured)
 
-    sale = [p for p in products if 'sale' in p['tags'] and len(p['sizes']) > 0]
+    sale = [p for p in products if 'tags' in p and 'sale' in p['tags'] and len(p['sizes']) > 0]
     random.shuffle(sale)
 
     logResponse = log('home', request=request)
@@ -134,7 +134,7 @@ def product(productId):
     user = getUser({'userId': session.get('userId')})
     loggedIn = session.get('loggedIn', False)
 
-    productsFeatured = [p for p in products if 'featured' in p['tags'] and len(p['sizes']) > 0 and p['id'] != int(productId)]
+    productsFeatured = [p for p in products if 'tags' in p and 'featured' in p['tags'] and len(p['sizes']) > 0 and p['id'] != int(productId)]
     random.shuffle(productsFeatured)
 
     if loggedIn: contactData = user['contactData']
@@ -260,7 +260,7 @@ def favorites():
     favoriteItems = favoriteItems[(page-1)*12:page*12]
     maxPages = math.ceil(len(user['favorites'])/12)
 
-    productsFeatured = [p for p in products if 'featured' in p['tags'] and len(p['sizes']) > 0]
+    productsFeatured = [p for p in products if 'tags' in p and 'featured' in p['tags'] and len(p['sizes']) > 0]
     random.shuffle(productsFeatured)
 
     logResponse = log('shop', request=request)
@@ -341,7 +341,7 @@ def cart():
         subtotal += int(product['price'])*int(item['quantity'])
         cartItems.append({'id': item['productId'], 'size': item['size'], 'quantity': item['quantity'], 'info': product})
 
-    productsFeatured = [p for p in products if 'featured' in p['tags'] and len(p['sizes']) > 0]
+    productsFeatured = [p for p in products if 'tags' in p and 'featured' in p['tags'] and len(p['sizes']) > 0]
 
     logResponse = log('shop', request=request)
     if logResponse: return logResponse
@@ -409,7 +409,7 @@ def checkout():
         paymentData = user['paymentData']
         contactData = user['contactData']
 
-        productsFeatured = [p for p in products if 'featured' in p['tags'] and len(p['sizes']) > 0]
+        productsFeatured = [p for p in products if 'tags' in p and 'featured' in p['tags'] and len(p['sizes']) > 0]
         random.shuffle(productsFeatured)
 
         logResponse = log('shop', request=request)
@@ -513,7 +513,7 @@ def orderConfirmation():
     user = getUser({'userId': session.get('userId')})
 
     products = getProducts()
-    productsFeatured = [p for p in products if 'featured' in p['tags'] and len(p['sizes']) > 0]
+    productsFeatured = [p for p in products if 'tags' in p and 'featured' in p['tags'] and len(p['sizes']) > 0]
     random.shuffle(productsFeatured)
 
     logResponse = log('shop', request=request)
@@ -535,7 +535,7 @@ def orders():
         order['cart'] = cartItems
 
     products = getProducts()
-    productsFeatured = [p for p in products if 'featured' in p['tags'] and len(p['sizes']) > 0]
+    productsFeatured = [p for p in products if 'tags' in p and 'featured' in p['tags'] and len(p['sizes']) > 0]
     random.shuffle(productsFeatured)
 
     logResponse = log('orders', request=request)
@@ -557,7 +557,7 @@ def order(orderId, productId):
     countryCodes = nova.loadCountryCodes()
     codesCountry = {v: k for k, v in countryCodes.items()}
 
-    productsFeatured = [p for p in products if 'featured' in p['tags'] and len(p['sizes']) > 0]
+    productsFeatured = [p for p in products if 'tags' in p and 'featured' in p['tags'] and len(p['sizes']) > 0]
     random.shuffle(productsFeatured)
 
     logResponse = log('orders', request=request)
@@ -584,6 +584,7 @@ def settings():
 def updateSettings():
     data = request.json
     for key, value in data.items():
+        key = key[0].lower()+key[1:]
         if key == "messengerUsername": key="username"
         elif key == "messenger": key="contactMessenger"
 
@@ -591,6 +592,7 @@ def updateSettings():
         elif key in ['paymentMethod']: key = 'paymentData.'+key
         elif key in ['contactMessenger', 'username', 'phoneNumber']: key = 'contactData.'+key
         elif key in ['newDeals', 'seasonalSales', 'discounts', 'promoCode']: key = 'notifications.'+key
+        print(key, value)
         database.updateUser({'userId': session.get('userId')}, {'$set': {key: value}})  
     return jsonify({'success': True})
 
@@ -766,6 +768,7 @@ def adminProducts():
     else: page = int(request.args.get('page'))
 
     products = getProducts()
+    products = [p for p in products if p['price'] != "" and len(p['images']) > 0]
     brands = sorted(list(set([p['brand'] for p in products if p['brand'] != ""])))
     categories = sorted(list(set([p['category'] for p in products if p['category'] != ""])))
     sizes = sorted(list(set([size for p in products for size in p['sizes'] if size != ""])))
@@ -801,7 +804,7 @@ def adminProductEdit(productId):
     product = database.getProduct({'id': int(productId)})
     if not product:
         return redirect('/admin/products')
-    return render_template('adminProductEdit.html', userData=user, loggedIn=loggedIn, product=product, pageType='add')
+    return render_template('adminProductEdit.html', userData=user, loggedIn=loggedIn, product=product, pageType='edit')
 
 @app.route('/admin/product/image', methods=['POST'])
 def adminProductImage():
@@ -833,7 +836,8 @@ def adminProductDeleteImage():
     os.remove(f'static/img/products/{productId}/{image}')
     product = database.getProduct({'id': int(productId)})
     images = product['images']
-    images.remove(image)
+    try: images.remove(image)
+    except: pass
     database.updateProduct(int(productId), {'images': images})
     return jsonify({'success': True})
 
@@ -889,7 +893,7 @@ def adminProductAdd():
             "price": "",
             "discount": 0,
             "sizes": [],
-            "tag": "",
+            "tags": [],
             "images": [],
             "additionalInformation": {
                 "innerMaterial": "",
