@@ -21,11 +21,11 @@ msgstr ""
 
 #: templates/404.html:7
 msgid "404 Page not found"
-msgstr ""
+msgstr "404 Сторінку не знайдено"
 
 #: templates/404.html:8
 msgid "Strange, we couldn't find the page you were looking for"
-msgstr ""
+msgstr "Дивно, ми не змогли знайти таку сторінку"
 
 #: templates/404.html:9 templates/newsletterUnsubscribe.html:9
 msgid "Go to homepage"
@@ -33,7 +33,7 @@ msgstr "На головну"
 
 #: templates/admin.html:7 templates/adminActivity.html:7
 msgid "Control Panel"
-msgstr ""
+msgstr "Панель контролю"
 
 #: templates/admin.html:9
 #, fuzzy
@@ -42,37 +42,35 @@ msgstr "Кількість"
 
 #: templates/admin.html:13
 msgid "Requests today"
-msgstr ""
+msgstr "Запити сьогодні"
 
 #: templates/admin.html:14
 msgid "Unique visits today"
-msgstr ""
+msgstr "Особливі відвідування сьогодні"
 
 #: templates/admin.html:17
 msgid "Average daily requests"
-msgstr ""
+msgstr "В середньому запитів на день"
 
 #: templates/admin.html:18
 msgid "Average unique visits"
-msgstr ""
+msgstr "В середньоому особливих відвідувань на день"
 
 #: templates/admin.html:22 templates/adminActivity.html:9
 msgid "Daily requests"
-msgstr ""
+msgstr "Щоденні запити"
 
 #: templates/admin.html:27
-#, fuzzy
 msgid "Products"
-msgstr "Змінити продукт"
+msgstr "Товари"
 
 #: templates/admin.html:31
-#, fuzzy
 msgid "Items on site"
-msgstr "Умови використання"
+msgstr "Товарів на сайті"
 
 #: templates/admin.html:32
 msgid "Most popular category"
-msgstr ""
+msgstr "Найпопулярніша категорія"
 
 #: templates/admin.html:35 templates/product.html:47 templates/product.html:55
 msgid "In stock"
@@ -80,94 +78,88 @@ msgstr "В наявності"
 
 #: templates/admin.html:36
 msgid "Most common size"
-msgstr ""
+msgstr "Найчастіший розмір"
 
 #: templates/admin.html:40
-#, fuzzy
 msgid "View products"
-msgstr "Змінити продукт"
+msgstr "Переглянути товари"
 
 #: templates/admin.html:41
-#, fuzzy
 msgid "Add product"
-msgstr "Змінити продукт"
+msgstr "Додати товар"
 
 #: templates/admin.html:46
 msgid "Orders"
-msgstr ""
+msgstr "Замовлення"
 
 #: templates/admin.html:50
 msgid "Total"
-msgstr ""
+msgstr "Всього"
 
 #: templates/admin.html:51 templates/adminOrder.html:53
 msgid "Pending"
-msgstr ""
+msgstr "Необроблені"
 
 #: templates/admin.html:54
 msgid "Today"
-msgstr ""
+msgstr "Сьогодні"
 
 #: templates/admin.html:55
 msgid "Average"
-msgstr ""
+msgstr "В середньому"
 
 #: templates/admin.html:59
-#, fuzzy
 msgid "View orders"
-msgstr "Переглянути ще"
+msgstr "Переглянути замовлення"
 
 #: templates/admin.html:60
 msgid "View pending"
-msgstr ""
+msgstr "Переглянути необроблені"
 
 #: templates/adminActivity.html:17
 msgid "Unique requests"
-msgstr ""
+msgstr "Особливі відвідування"
 
 #: templates/adminActivity.html:25
 msgid "Hourly requests"
-msgstr ""
+msgstr "Погодинні запити"
 
 #: templates/adminActivity.html:34
 msgid "Utm sources"
-msgstr ""
+msgstr "Джерела utm"
 
 #: templates/adminActivity.html:42
 msgid "Page visits"
-msgstr ""
+msgstr "Відвідування сторінок"
 
 #: templates/adminActivity.html:52
 msgid "Region distribution"
-msgstr ""
+msgstr "Поділ за регіонами"
 
 #: templates/adminActivity.html:60
 msgid "City distribution"
-msgstr ""
+msgstr "Поділ за містами"
 
 #: templates/adminOrder.html:7
-#, fuzzy
 msgid "View order"
-msgstr "Переглянути ще"
+msgstr "Переглянути замовлення"
 
 #: templates/adminOrder.html:14 templates/adminOrders.html:15
 #: templates/adminProductEdit.html:15 templates/adminProducts.html:15
 msgid "Back"
-msgstr ""
+msgstr "Назад"
 
 #: templates/adminOrder.html:18
-#, fuzzy
 msgid "Product"
-msgstr "Змінити продукт"
+msgstr "Товар"
 
 #: templates/adminOrder.html:19
-#, fuzzy
 msgid "Name"
-msgstr "Юзернейм"
+msgstr "Імʼя"
 
 #: templates/adminOrder.html:20
 msgid "Id"
-msgstr ""
+msgstr "Id"
 
 #: templates/adminOrder.html:21 templates/adminOrders.html:53
 #: templates/adminOrders.html:61 templates/product.html:62
@@ -180,26 +172,24 @@ msgid "Quantity"
 msgstr "Кількість"
 
 #: templates/adminOrder.html:25
-#, fuzzy
 msgid "Order"
-msgstr "Швидке замовлення"
+msgstr "Замовлення"
 
 #: templates/adminOrder.html:26 templates/adminOrders.html:82
 msgid "Order id"
-msgstr ""
+msgstr "Id замовлення"
 
 #: templates/adminOrder.html:28
-#, fuzzy
 msgid "Receiver"
-msgstr "Заархівовано"
+msgstr "Отримувач"
 
 #: templates/adminOrder.html:29
 msgid "Country"
-msgstr ""
+msgstr "Країна"
 
 #: templates/adminOrder.html:30
 msgid "City"
-msgstr ""
+msgstr "Місто"
 
 #: templates/adminOrder.html:31
 msgid "Delivery method"
