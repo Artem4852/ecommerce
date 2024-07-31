@@ -10,8 +10,8 @@
                 <div class="card">
                     <div>
                         <a href="/faq/{{ post['name'] }}"><img src="{{ post['img'] }}" alt=""></a>
-                        <h3>{{ post['title'] }}</h3>
-                        <p>{{ post['content'] }}</p>
+                        <h3>{{ post['title'][get_locale()] }}</h3>
+                        <p>{{ post['content'][get_locale()] }}</p>
                     </div>
                     <a href="/faq/{{ post['name'] }}" class="button">{{ _('Read on') }}</a>
                 </div>

@@ -86,6 +86,9 @@ class Database:
             self.usersDb['notifications'].delete_one({'token': token})
             return True
         return False
+    
+    def updateFaq(self, faq):
+        self.otherDb['faq'].update_one({'name': faq['name']}, {'$set': faq}, upsert=True)
 
     def getFaq(self):
         return list(self.otherDb['faq'].find())

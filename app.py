@@ -201,6 +201,11 @@ def faqPost(faqName):
         userData = {}
     logResponse = log('faq', request=request)
     if logResponse: return logResponse
+    faq = database.getFaq()
+    posts = [post for post in faq if faqName in post['name']]
+    if not posts: return abort(404)
+    else: return render_template('faqPage.html', faq=posts[0], loggedIn=loggedIn, userData=userData)
+
     if faqName == 'shoeSize':
         return render_template('faq/shoeSize.html', loggedIn=loggedIn, userData=userData)
     elif faqName == 'delivery':
