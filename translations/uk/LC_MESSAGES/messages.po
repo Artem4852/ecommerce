@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-07-31 09:34+0200\n"
+"POT-Creation-Date: 2024-07-31 11:39+0200\n"
 "PO-Revision-Date: 2024-07-30 18:44+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: uk\n"
@@ -19,6 +19,304 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.14.0\n"
 
+#: templates/404.html:7
+msgid "404 Page not found"
+msgstr ""
+
+#: templates/404.html:8
+msgid "Strange, we couldn't find the page you were looking for"
+msgstr ""
+
+#: templates/404.html:9 templates/newsletterUnsubscribe.html:9
+msgid "Go to homepage"
+msgstr "На головну"
+
+#: templates/admin.html:7 templates/adminActivity.html:7
+msgid "Control Panel"
+msgstr ""
+
+#: templates/admin.html:9
+#, fuzzy
+msgid "Activity"
+msgstr "Кількість"
+
+#: templates/admin.html:13
+msgid "Requests today"
+msgstr ""
+
+#: templates/admin.html:14
+msgid "Unique visits today"
+msgstr ""
+
+#: templates/admin.html:17
+msgid "Average daily requests"
+msgstr ""
+
+#: templates/admin.html:18
+msgid "Average unique visits"
+msgstr ""
+
+#: templates/admin.html:22 templates/adminActivity.html:9
+msgid "Daily requests"
+msgstr ""
+
+#: templates/admin.html:27
+#, fuzzy
+msgid "Products"
+msgstr "Змінити продукт"
+
+#: templates/admin.html:31
+#, fuzzy
+msgid "Items on site"
+msgstr "Умови використання"
+
+#: templates/admin.html:32
+msgid "Most popular category"
+msgstr ""
+
+#: templates/admin.html:35 templates/product.html:47 templates/product.html:55
+msgid "In stock"
+msgstr "В наявності"
+
+#: templates/admin.html:36
+msgid "Most common size"
+msgstr ""
+
+#: templates/admin.html:40
+#, fuzzy
+msgid "View products"
+msgstr "Змінити продукт"
+
+#: templates/admin.html:41
+#, fuzzy
+msgid "Add product"
+msgstr "Змінити продукт"
+
+#: templates/admin.html:46
+msgid "Orders"
+msgstr ""
+
+#: templates/admin.html:50
+msgid "Total"
+msgstr ""
+
+#: templates/admin.html:51 templates/adminOrder.html:53
+msgid "Pending"
+msgstr ""
+
+#: templates/admin.html:54
+msgid "Today"
+msgstr ""
+
+#: templates/admin.html:55
+msgid "Average"
+msgstr ""
+
+#: templates/admin.html:59
+#, fuzzy
+msgid "View orders"
+msgstr "Переглянути ще"
+
+#: templates/admin.html:60
+msgid "View pending"
+msgstr ""
+
+#: templates/adminActivity.html:17
+msgid "Hourly requests"
+msgstr ""
+
+#: templates/adminActivity.html:26
+msgid "Utm sources"
+msgstr ""
+
+#: templates/adminActivity.html:34
+msgid "Page visits"
+msgstr ""
+
+#: templates/adminActivity.html:44
+msgid "Region distribution"
+msgstr ""
+
+#: templates/adminActivity.html:52
+msgid "City distribution"
+msgstr ""
+
+#: templates/adminOrder.html:7
+#, fuzzy
+msgid "View order"
+msgstr "Переглянути ще"
+
+#: templates/adminOrder.html:14 templates/adminOrders.html:15
+msgid "Back"
+msgstr ""
+
+#: templates/adminOrder.html:18
+#, fuzzy
+msgid "Product"
+msgstr "Змінити продукт"
+
+#: templates/adminOrder.html:19
+#, fuzzy
+msgid "Name"
+msgstr "Юзернейм"
+
+#: templates/adminOrder.html:20
+msgid "Id"
+msgstr ""
+
+#: templates/adminOrder.html:21 templates/adminOrders.html:53
+#: templates/adminOrders.html:61 templates/product.html:62
+msgid "Size"
+msgstr "Розмір"
+
+#: templates/adminOrder.html:22 templates/adminOrders.html:54
+#: templates/adminOrders.html:62 templates/product.html:78
+msgid "Quantity"
+msgstr "Кількість"
+
+#: templates/adminOrder.html:25
+#, fuzzy
+msgid "Order"
+msgstr "Швидке замовлення"
+
+#: templates/adminOrder.html:26 templates/adminOrders.html:82
+msgid "Order id"
+msgstr ""
+
+#: templates/adminOrder.html:28
+#, fuzzy
+msgid "Receiver"
+msgstr "Заархівовано"
+
+#: templates/adminOrder.html:29
+msgid "Country"
+msgstr ""
+
+#: templates/adminOrder.html:30
+msgid "City"
+msgstr ""
+
+#: templates/adminOrder.html:31
+msgid "Delivery method"
+msgstr ""
+
+#: templates/adminOrder.html:31
+msgid "Pick up from Post Office"
+msgstr ""
+
+#: templates/adminOrder.html:31
+msgid "Address delivery"
+msgstr ""
+
+#: templates/adminOrder.html:32
+#, fuzzy
+msgid "Tracking number"
+msgstr "Артикул"
+
+#: templates/adminOrder.html:34
+msgid "Post Office branch"
+msgstr ""
+
+#: templates/adminOrder.html:36
+msgid "Address"
+msgstr ""
+
+#: templates/adminOrder.html:37
+#, fuzzy
+msgid "Postal code"
+msgstr "Код скидання"
+
+#: templates/adminOrder.html:39
+msgid "Payment type"
+msgstr ""
+
+#: templates/adminOrder.html:39
+msgid "Full Prepayment"
+msgstr ""
+
+#: templates/adminOrder.html:39
+msgid "Post Payment"
+msgstr ""
+
+#: templates/adminOrder.html:41
+#, fuzzy
+msgid "Contact messenger"
+msgstr "Месенджер"
+
+#: templates/adminOrder.html:43 templates/product.html:124
+msgid "Username"
+msgstr "Юзернейм"
+
+#: templates/adminOrder.html:45 templates/contact.html:13
+#: templates/partials/footer.html:18 templates/product.html:122
+#: templates/settings.html:32 templates/signup.html:23
+msgid "Phone number"
+msgstr "Телефон"
+
+#: templates/adminOrder.html:50 templates/adminOrders.html:22
+#: templates/adminOrders.html:78 templates/adminOrders.html:83
+#, fuzzy
+msgid "Status"
+msgstr "Звʼязатися"
+
+#: templates/adminOrder.html:57
+msgid "Processed"
+msgstr ""
+
+#: templates/adminOrder.html:61
+msgid "Shipped"
+msgstr ""
+
+#: templates/adminOrder.html:73
+#, fuzzy
+msgid "Delete order"
+msgstr "Код скидання"
+
+#: templates/adminOrders.html:8
+msgid "Orders Panel"
+msgstr ""
+
+#: templates/adminOrders.html:24 templates/shop.html:13 templates/shop.html:27
+#: templates/shop.html:41 templates/shop.html:55
+msgid "Any"
+msgstr "Будь-який"
+
+#: templates/adminOrders.html:65
+msgid "Warehouse"
+msgstr ""
+
+#: templates/adminOrders.html:68
+msgid "To"
+msgstr ""
+
+#: templates/adminOrders.html:71
+msgid "Type: Pick up from Post Office"
+msgstr ""
+
+#: templates/adminOrders.html:73
+msgid "Type: Address Delivery"
+msgstr ""
+
+#: templates/adminOrders.html:76 templates/product.html:128
+#: templates/product.html:129
+msgid "Quick order"
+msgstr "Швидке замовлення"
+
+#: templates/adminOrders.html:81
+#, fuzzy
+msgid "Product id"
+msgstr "Артикул"
+
+#: templates/adminOrders.html:93 templates/favorites.html:18
+#: templates/shop.html:100
+msgid "Page"
+msgstr "Сторінка"
+
+#: templates/adminOrders.html:133
+#, fuzzy
+msgid "No orders found. Try to change filters"
+msgstr "Продукту не знайдено. Спробуйте змінити фільтри."
+
 #: templates/contact.html:8 templates/partials/footer.html:17
 #: templates/partials/header.html:10 templates/partials/header.html:46
 msgid "Contact us"
@@ -27,12 +325,6 @@ msgstr "Звʼязатися"
 #: templates/contact.html:10
 msgid "Get in touch"
 msgstr "Звʼязатися"
-
-#: templates/contact.html:13 templates/partials/footer.html:18
-#: templates/product.html:122 templates/settings.html:32
-#: templates/signup.html:23
-msgid "Phone number"
-msgstr "Телефон"
 
 #: templates/contact.html:14 templates/forgotPassword.html:15
 #: templates/login.html:15 templates/partials/footer.html:20
@@ -89,10 +381,6 @@ msgstr "Читати"
 #: templates/partials/header.html:56
 msgid "Favorites"
 msgstr "Улюблені"
-
-#: templates/favorites.html:18 templates/shop.html:100
-msgid "Page"
-msgstr "Сторінка"
 
 #: templates/favorites.html:58
 msgid "No products in favorites."
@@ -170,10 +458,6 @@ msgstr "Вашу підписку скасовано"
 msgid "We are sorry to see you go"
 msgstr "Нам шкода, що ви відписались"
 
-#: templates/newsletterUnsubscribe.html:9
-msgid "Go to homepage"
-msgstr "На головну"
-
 #: templates/product.html:41
 msgid "Product number"
 msgstr "Артикул"
@@ -197,22 +481,10 @@ msgstr "грн"
 msgid "Archived"
 msgstr "Заархівовано"
 
-#: templates/product.html:47 templates/product.html:55
-msgid "In stock"
-msgstr "В наявності"
-
 #: templates/partials/card.html:33 templates/product.html:49
 #: templates/product.html:57
 msgid "Not in stock"
 msgstr "Не в наявності"
-
-#: templates/product.html:62
-msgid "Size"
-msgstr "Розмір"
-
-#: templates/product.html:78
-msgid "Quantity"
-msgstr "Кількість"
 
 #: templates/product.html:101
 msgid "Edit product"
@@ -225,14 +497,6 @@ msgstr "Як з вами зв'язатися?"
 #: templates/product.html:107
 msgid "Messenger"
 msgstr "Месенджер"
-
-#: templates/product.html:124
-msgid "Username"
-msgstr "Юзернейм"
-
-#: templates/product.html:128 templates/product.html:129
-msgid "Quick order"
-msgstr "Швидке замовлення"
 
 #: templates/product.html:134
 msgid "Additional information"
@@ -258,11 +522,12 @@ msgid ""
 "site. Choose a size slightly larger than their foot length to allow for "
 "growth. For the full guide on finding the perfect fit,"
 msgstr ""
-"Важливо переконатись, що ваша дитина носить правильний розмір взуття, задля її "
-"комфорту та здоровʼя її ніг. Виміряйте довжину стопи, обкресливши її на папері"
-" та порівнявши з довжиною устілок, указаною для кожного розміру взуття на нашому 
-"сайті. Обирайте трохи більший розмір за довжину стопи, адже ніжки швидко ростуть. "
-"Перегляньте повну інструкцію із пошуку ідеального розміру"
+"Важливо переконатись, що ваша дитина носить правильний розмір взуття, "
+"задля її комфорту та здоровʼя її ніг. Виміряйте довжину стопи, "
+"обкресливши її на папері та порівнявши з довжиною устілок, указаною для "
+"кожного розміру взуття на нашомсайті. Обирайте трохи більший розмір за "
+"довжину стопи, адже ніжки швидко ростуть. Перегляньте повну інструкцію із"
+" пошуку ідеального розміру"
 
 #: templates/product.html:156 templates/product.html:167
 #: templates/product.html:178
@@ -277,10 +542,10 @@ msgid ""
 "business days. Tracking, customs, and accurate address details are "
 "crucial. For more information on shipping,"
 msgstr ""
-"Кожен покупець має розуміти наш процесу доставки."
-"Ми відправляємо взуття по Україні та в окремі країни Європи Новою поштою. "
-"Час і вартість доставки залежать від пункту призначення, обробка займає 1-2 "
-"робочі дні. Дізнайтесь більше про доставку"
+"Кожен покупець має розуміти наш процесу доставки.Ми відправляємо взуття "
+"по Україні та в окремі країни Європи Новою поштою. Час і вартість "
+"доставки залежать від пункту призначення, обробка займає 1-2 робочі дні. "
+"Дізнайтесь більше про доставку"
 
 #: templates/partials/footer.html:6 templates/product.html:176
 msgid "Replacements and returns"
@@ -294,9 +559,10 @@ msgid ""
 "guide on our replacement and return process,"
 msgstr ""
 "Якщо вам потрібно повернути або замінити товар, переконайтеся, що він не "
-"використовувався та в є оригінальній упаковці. Надішліть запит протягом одного "
-"дня з моменту отримання замовлення на адресу customerservice@kidsfashionstore.ua. "
-" Дізнайтесь більше про обмін та повернення"
+"використовувався та в є оригінальній упаковці. Надішліть запит протягом "
+"одного дня з моменту отримання замовлення на адресу "
+"customerservice@kidsfashionstore.ua.  Дізнайтесь більше про обмін та "
+"повернення"
 
 #: templates/product.html:182
 msgid "You might also like"
@@ -370,11 +636,6 @@ msgstr "Знижки на мої улюблені товари"
 #: templates/shop.html:8
 msgid "Catalogue"
 msgstr "Каталог"
-
-#: templates/shop.html:13 templates/shop.html:27 templates/shop.html:41
-#: templates/shop.html:55
-msgid "Any"
-msgstr "Будь-який"
 
 #: templates/shop.html:25
 msgid "Category"

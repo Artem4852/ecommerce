@@ -2067,6 +2067,21 @@ select::-webkit-inner-spin-button, select::-webkit-outer-spin-button {
   gap: 20px;
 }
 
+#admin.activity .row {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 20px;
+  height: fit-content;
+}
+#admin.activity .row:last-child .group {
+  margin-bottom: 0;
+}
+#admin.activity .row .group {
+  width: calc(50% - 10px);
+}
+
 #catalogue.admin a.back {
   margin-bottom: 20px;
 }

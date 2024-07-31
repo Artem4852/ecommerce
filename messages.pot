@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-07-31 09:34+0200\n"
+"POT-Creation-Date: 2024-07-31 11:39+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,286 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.14.0\n"
 
+#: templates/404.html:7
+msgid "404 Page not found"
+msgstr ""
+
+#: templates/404.html:8
+msgid "Strange, we couldn't find the page you were looking for"
+msgstr ""
+
+#: templates/404.html:9 templates/newsletterUnsubscribe.html:9
+msgid "Go to homepage"
+msgstr ""
+
+#: templates/admin.html:7 templates/adminActivity.html:7
+msgid "Control Panel"
+msgstr ""
+
+#: templates/admin.html:9
+msgid "Activity"
+msgstr ""
+
+#: templates/admin.html:13
+msgid "Requests today"
+msgstr ""
+
+#: templates/admin.html:14
+msgid "Unique visits today"
+msgstr ""
+
+#: templates/admin.html:17
+msgid "Average daily requests"
+msgstr ""
+
+#: templates/admin.html:18
+msgid "Average unique visits"
+msgstr ""
+
+#: templates/admin.html:22 templates/adminActivity.html:9
+msgid "Daily requests"
+msgstr ""
+
+#: templates/admin.html:27
+msgid "Products"
+msgstr ""
+
+#: templates/admin.html:31
+msgid "Items on site"
+msgstr ""
+
+#: templates/admin.html:32
+msgid "Most popular category"
+msgstr ""
+
+#: templates/admin.html:35 templates/product.html:47 templates/product.html:55
+msgid "In stock"
+msgstr ""
+
+#: templates/admin.html:36
+msgid "Most common size"
+msgstr ""
+
+#: templates/admin.html:40
+msgid "View products"
+msgstr ""
+
+#: templates/admin.html:41
+msgid "Add product"
+msgstr ""
+
+#: templates/admin.html:46
+msgid "Orders"
+msgstr ""
+
+#: templates/admin.html:50
+msgid "Total"
+msgstr ""
+
+#: templates/admin.html:51 templates/adminOrder.html:53
+msgid "Pending"
+msgstr ""
+
+#: templates/admin.html:54
+msgid "Today"
+msgstr ""
+
+#: templates/admin.html:55
+msgid "Average"
+msgstr ""
+
+#: templates/admin.html:59
+msgid "View orders"
+msgstr ""
+
+#: templates/admin.html:60
+msgid "View pending"
+msgstr ""
+
+#: templates/adminActivity.html:17
+msgid "Hourly requests"
+msgstr ""
+
+#: templates/adminActivity.html:26
+msgid "Utm sources"
+msgstr ""
+
+#: templates/adminActivity.html:34
+msgid "Page visits"
+msgstr ""
+
+#: templates/adminActivity.html:44
+msgid "Region distribution"
+msgstr ""
+
+#: templates/adminActivity.html:52
+msgid "City distribution"
+msgstr ""
+
+#: templates/adminOrder.html:7
+msgid "View order"
+msgstr ""
+
+#: templates/adminOrder.html:14 templates/adminOrders.html:15
+msgid "Back"
+msgstr ""
+
+#: templates/adminOrder.html:18
+msgid "Product"
+msgstr ""
+
+#: templates/adminOrder.html:19
+msgid "Name"
+msgstr ""
+
+#: templates/adminOrder.html:20
+msgid "Id"
+msgstr ""
+
+#: templates/adminOrder.html:21 templates/adminOrders.html:53
+#: templates/adminOrders.html:61 templates/product.html:62
+msgid "Size"
+msgstr ""
+
+#: templates/adminOrder.html:22 templates/adminOrders.html:54
+#: templates/adminOrders.html:62 templates/product.html:78
+msgid "Quantity"
+msgstr ""
+
+#: templates/adminOrder.html:25
+msgid "Order"
+msgstr ""
+
+#: templates/adminOrder.html:26 templates/adminOrders.html:82
+msgid "Order id"
+msgstr ""
+
+#: templates/adminOrder.html:28
+msgid "Receiver"
+msgstr ""
+
+#: templates/adminOrder.html:29
+msgid "Country"
+msgstr ""
+
+#: templates/adminOrder.html:30
+msgid "City"
+msgstr ""
+
+#: templates/adminOrder.html:31
+msgid "Delivery method"
+msgstr ""
+
+#: templates/adminOrder.html:31
+msgid "Pick up from Post Office"
+msgstr ""
+
+#: templates/adminOrder.html:31
+msgid "Address delivery"
+msgstr ""
+
+#: templates/adminOrder.html:32
+msgid "Tracking number"
+msgstr ""
+
+#: templates/adminOrder.html:34
+msgid "Post Office branch"
+msgstr ""
+
+#: templates/adminOrder.html:36
+msgid "Address"
+msgstr ""
+
+#: templates/adminOrder.html:37
+msgid "Postal code"
+msgstr ""
+
+#: templates/adminOrder.html:39
+msgid "Payment type"
+msgstr ""
+
+#: templates/adminOrder.html:39
+msgid "Full Prepayment"
+msgstr ""
+
+#: templates/adminOrder.html:39
+msgid "Post Payment"
+msgstr ""
+
+#: templates/adminOrder.html:41
+msgid "Contact messenger"
+msgstr ""
+
+#: templates/adminOrder.html:43 templates/product.html:124
+msgid "Username"
+msgstr ""
+
+#: templates/adminOrder.html:45 templates/contact.html:13
+#: templates/partials/footer.html:18 templates/product.html:122
+#: templates/settings.html:32 templates/signup.html:23
+msgid "Phone number"
+msgstr ""
+
+#: templates/adminOrder.html:50 templates/adminOrders.html:22
+#: templates/adminOrders.html:78 templates/adminOrders.html:83
+msgid "Status"
+msgstr ""
+
+#: templates/adminOrder.html:57
+msgid "Processed"
+msgstr ""
+
+#: templates/adminOrder.html:61
+msgid "Shipped"
+msgstr ""
+
+#: templates/adminOrder.html:73
+msgid "Delete order"
+msgstr ""
+
+#: templates/adminOrders.html:8
+msgid "Orders Panel"
+msgstr ""
+
+#: templates/adminOrders.html:24 templates/shop.html:13 templates/shop.html:27
+#: templates/shop.html:41 templates/shop.html:55
+msgid "Any"
+msgstr ""
+
+#: templates/adminOrders.html:65
+msgid "Warehouse"
+msgstr ""
+
+#: templates/adminOrders.html:68
+msgid "To"
+msgstr ""
+
+#: templates/adminOrders.html:71
+msgid "Type: Pick up from Post Office"
+msgstr ""
+
+#: templates/adminOrders.html:73
+msgid "Type: Address Delivery"
+msgstr ""
+
+#: templates/adminOrders.html:76 templates/product.html:128
+#: templates/product.html:129
+msgid "Quick order"
+msgstr ""
+
+#: templates/adminOrders.html:81
+msgid "Product id"
+msgstr ""
+
+#: templates/adminOrders.html:93 templates/favorites.html:18
+#: templates/shop.html:100
+msgid "Page"
+msgstr ""
+
+#: templates/adminOrders.html:133
+msgid "No orders found. Try to change filters"
+msgstr ""
+
 #: templates/contact.html:8 templates/partials/footer.html:17
 #: templates/partials/header.html:10 templates/partials/header.html:46
 msgid "Contact us"
@@ -24,12 +304,6 @@ msgstr ""
 
 #: templates/contact.html:10
 msgid "Get in touch"
-msgstr ""
-
-#: templates/contact.html:13 templates/partials/footer.html:18
-#: templates/product.html:122 templates/settings.html:32
-#: templates/signup.html:23
-msgid "Phone number"
 msgstr ""
 
 #: templates/contact.html:14 templates/forgotPassword.html:15
@@ -80,10 +354,6 @@ msgstr ""
 #: templates/favorites.html:8 templates/partials/header.html:26
 #: templates/partials/header.html:56
 msgid "Favorites"
-msgstr ""
-
-#: templates/favorites.html:18 templates/shop.html:100
-msgid "Page"
 msgstr ""
 
 #: templates/favorites.html:58
@@ -161,10 +431,6 @@ msgstr ""
 msgid "We are sorry to see you go"
 msgstr ""
 
-#: templates/newsletterUnsubscribe.html:9
-msgid "Go to homepage"
-msgstr ""
-
 #: templates/product.html:41
 msgid "Product number"
 msgstr ""
@@ -187,21 +453,9 @@ msgstr ""
 msgid "Archived"
 msgstr ""
 
-#: templates/product.html:47 templates/product.html:55
-msgid "In stock"
-msgstr ""
-
 #: templates/partials/card.html:33 templates/product.html:49
 #: templates/product.html:57
 msgid "Not in stock"
-msgstr ""
-
-#: templates/product.html:62
-msgid "Size"
-msgstr ""
-
-#: templates/product.html:78
-msgid "Quantity"
 msgstr ""
 
 #: templates/product.html:101
@@ -214,14 +468,6 @@ msgstr ""
 
 #: templates/product.html:107
 msgid "Messenger"
-msgstr ""
-
-#: templates/product.html:124
-msgid "Username"
-msgstr ""
-
-#: templates/product.html:128 templates/product.html:129
-msgid "Quick order"
 msgstr ""
 
 #: templates/product.html:134
@@ -345,11 +591,6 @@ msgstr ""
 
 #: templates/shop.html:8
 msgid "Catalogue"
-msgstr ""
-
-#: templates/shop.html:13 templates/shop.html:27 templates/shop.html:41
-#: templates/shop.html:55
-msgid "Any"
 msgstr ""
 
 #: templates/shop.html:25

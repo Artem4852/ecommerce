@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-07-31 09:34+0200\n"
+"POT-Creation-Date: 2024-07-31 11:39+0200\n"
 "PO-Revision-Date: 2024-07-30 18:44+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -18,6 +18,288 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.14.0\n"
 
+#: templates/404.html:7
+msgid "404 Page not found"
+msgstr "404 Page not found"
+
+#: templates/404.html:8
+msgid "Strange, we couldn't find the page you were looking for"
+msgstr "Strange, we couldn't find the page you were looking for"
+
+#: templates/404.html:9 templates/newsletterUnsubscribe.html:9
+msgid "Go to homepage"
+msgstr "Go to homepage"
+
+#: templates/admin.html:7 templates/adminActivity.html:7
+msgid "Control Panel"
+msgstr "Control Panel"
+
+#: templates/admin.html:9
+msgid "Activity"
+msgstr "Activity"
+
+#: templates/admin.html:13
+msgid "Requests today"
+msgstr "Requests today"
+
+#: templates/admin.html:14
+msgid "Unique visits today"
+msgstr "Unique visits today"
+
+#: templates/admin.html:17
+msgid "Average daily requests"
+msgstr "Average daily requests"
+
+#: templates/admin.html:18
+msgid "Average unique visits"
+msgstr "Average unique visits"
+
+#: templates/admin.html:22 templates/adminActivity.html:9
+msgid "Daily requests"
+msgstr "Daily requests"
+
+#: templates/admin.html:27
+msgid "Products"
+msgstr "Products"
+
+#: templates/admin.html:31
+msgid "Items on site"
+msgstr "Items on site"
+
+#: templates/admin.html:32
+msgid "Most popular category"
+msgstr "Most popular category"
+
+#: templates/admin.html:35 templates/product.html:47 templates/product.html:55
+msgid "In stock"
+msgstr "In stock"
+
+#: templates/admin.html:36
+msgid "Most common size"
+msgstr "Most common size"
+
+#: templates/admin.html:40
+msgid "View products"
+msgstr "View products"
+
+#: templates/admin.html:41
+msgid "Add product"
+msgstr "Add product"
+
+#: templates/admin.html:46
+msgid "Orders"
+msgstr "Orders"
+
+#: templates/admin.html:50
+msgid "Total"
+msgstr "Total"
+
+#: templates/admin.html:51 templates/adminOrder.html:53
+msgid "Pending"
+msgstr "Pending"
+
+#: templates/admin.html:54
+msgid "Today"
+msgstr "Today"
+
+#: templates/admin.html:55
+msgid "Average"
+msgstr "Average"
+
+#: templates/admin.html:59
+msgid "View orders"
+msgstr "View orders"
+
+#: templates/admin.html:60
+msgid "View pending"
+msgstr "View pending"
+
+#: templates/adminActivity.html:17
+msgid "Hourly requests"
+msgstr "Hourly requests"
+
+#: templates/adminActivity.html:26
+msgid "Utm sources"
+msgstr "Utm sources"
+
+#: templates/adminActivity.html:34
+msgid "Page visits"
+msgstr "Page visits"
+
+#: templates/adminActivity.html:44
+msgid "Region distribution"
+msgstr "Region distribution"
+
+#: templates/adminActivity.html:52
+msgid "City distribution"
+msgstr "City distribution"
+
+#: templates/adminOrder.html:7
+msgid "View order"
+msgstr "View order"
+
+#: templates/adminOrder.html:14 templates/adminOrders.html:15
+msgid "Back"
+msgstr "Back"
+
+#: templates/adminOrder.html:18
+msgid "Product"
+msgstr "Product"
+
+#: templates/adminOrder.html:19
+msgid "Name"
+msgstr "Name"
+
+#: templates/adminOrder.html:20
+msgid "Id"
+msgstr "Id"
+
+#: templates/adminOrder.html:21 templates/adminOrders.html:53
+#: templates/adminOrders.html:61 templates/product.html:62
+msgid "Size"
+msgstr "Size"
+
+#: templates/adminOrder.html:22 templates/adminOrders.html:54
+#: templates/adminOrders.html:62 templates/product.html:78
+msgid "Quantity"
+msgstr "Quantity"
+
+#: templates/adminOrder.html:25
+msgid "Order"
+msgstr "Order"
+
+#: templates/adminOrder.html:26 templates/adminOrders.html:82
+msgid "Order id"
+msgstr "Order id"
+
+#: templates/adminOrder.html:28
+msgid "Receiver"
+msgstr "Receiver"
+
+#: templates/adminOrder.html:29
+msgid "Country"
+msgstr "Country"
+
+#: templates/adminOrder.html:30
+msgid "City"
+msgstr "City"
+
+#: templates/adminOrder.html:31
+msgid "Delivery method"
+msgstr "Delivery method"
+
+#: templates/adminOrder.html:31
+msgid "Pick up from Post Office"
+msgstr "Pick up from Post Office"
+
+#: templates/adminOrder.html:31
+msgid "Address delivery"
+msgstr "Address delivery"
+
+#: templates/adminOrder.html:32
+msgid "Tracking number"
+msgstr "Tracking number"
+
+#: templates/adminOrder.html:34
+msgid "Post Office branch"
+msgstr "Post Office branch"
+
+#: templates/adminOrder.html:36
+msgid "Address"
+msgstr "Address"
+
+#: templates/adminOrder.html:37
+msgid "Postal code"
+msgstr "Postal code"
+
+#: templates/adminOrder.html:39
+msgid "Payment type"
+msgstr "Payment type"
+
+#: templates/adminOrder.html:39
+msgid "Full Prepayment"
+msgstr "Full Prepayment"
+
+#: templates/adminOrder.html:39
+msgid "Post Payment"
+msgstr "Post Payment"
+
+#: templates/adminOrder.html:41
+msgid "Contact messenger"
+msgstr "Contact messenger"
+
+#: templates/adminOrder.html:43 templates/product.html:124
+msgid "Username"
+msgstr "Username"
+
+#: templates/adminOrder.html:45 templates/contact.html:13
+#: templates/partials/footer.html:18 templates/product.html:122
+#: templates/settings.html:32 templates/signup.html:23
+msgid "Phone number"
+msgstr "Phone number"
+
+#: templates/adminOrder.html:50 templates/adminOrders.html:22
+#: templates/adminOrders.html:78 templates/adminOrders.html:83
+msgid "Status"
+msgstr "Status"
+
+#: templates/adminOrder.html:57
+msgid "Processed"
+msgstr "Processed"
+
+#: templates/adminOrder.html:61
+msgid "Shipped"
+msgstr "Shipped"
+
+#: templates/adminOrder.html:73
+msgid "Delete order"
+msgstr "Delete order"
+
+#: templates/adminOrders.html:8
+msgid "Orders Panel"
+msgstr "Orders Panel"
+
+#: templates/adminOrders.html:24 templates/shop.html:13 templates/shop.html:27
+#: templates/shop.html:41 templates/shop.html:55
+msgid "Any"
+msgstr "Any"
+
+#: templates/adminOrders.html:65
+msgid "Warehouse"
+msgstr "Warehouse"
+
+#: templates/adminOrders.html:68
+msgid "To"
+msgstr "To"
+
+#: templates/adminOrders.html:71
+msgid "Type: Pick up from Post Office"
+msgstr "Type: Pick up from Post Office"
+
+#: templates/adminOrders.html:73
+msgid "Type: Address Delivery"
+msgstr "Type: Address Delivery"
+
+#: templates/adminOrders.html:76 templates/product.html:128
+#: templates/product.html:129
+msgid "Quick order"
+msgstr "Quick order"
+
+#: templates/adminOrders.html:81
+#, fuzzy
+msgid "Product id"
+msgstr "Product id"
+
+#: templates/adminOrders.html:93 templates/favorites.html:18
+#: templates/shop.html:100
+msgid "Page"
+msgstr "Page"
+
+#: templates/adminOrders.html:133
+#, fuzzy
+msgid "No orders found. Try to change filters"
+msgstr "No products found. Try to change filters."
+
 #: templates/contact.html:8 templates/partials/footer.html:17
 #: templates/partials/header.html:10 templates/partials/header.html:46
 msgid "Contact us"
@@ -26,12 +308,6 @@ msgstr "Contact us"
 #: templates/contact.html:10
 msgid "Get in touch"
 msgstr "Get in touch"
-
-#: templates/contact.html:13 templates/partials/footer.html:18
-#: templates/product.html:122 templates/settings.html:32
-#: templates/signup.html:23
-msgid "Phone number"
-msgstr "Phone number"
 
 #: templates/contact.html:14 templates/forgotPassword.html:15
 #: templates/login.html:15 templates/partials/footer.html:20
@@ -88,10 +364,6 @@ msgstr "Read on"
 #: templates/partials/header.html:56
 msgid "Favorites"
 msgstr "Favorites"
-
-#: templates/favorites.html:18 templates/shop.html:100
-msgid "Page"
-msgstr "Page"
 
 #: templates/favorites.html:58
 msgid "No products in favorites."
@@ -169,10 +441,6 @@ msgstr "You were unsubscribed"
 msgid "We are sorry to see you go"
 msgstr "We are sorry to see you go"
 
-#: templates/newsletterUnsubscribe.html:9
-msgid "Go to homepage"
-msgstr "Go to homepage"
-
 #: templates/product.html:41
 msgid "Product number"
 msgstr "Product number"
@@ -195,22 +463,10 @@ msgstr "uah"
 msgid "Archived"
 msgstr "Archived"
 
-#: templates/product.html:47 templates/product.html:55
-msgid "In stock"
-msgstr "In stock"
-
 #: templates/partials/card.html:33 templates/product.html:49
 #: templates/product.html:57
 msgid "Not in stock"
 msgstr "Not in stock"
-
-#: templates/product.html:62
-msgid "Size"
-msgstr "Size"
-
-#: templates/product.html:78
-msgid "Quantity"
-msgstr "Quantity"
 
 #: templates/product.html:101
 msgid "Edit product"
@@ -224,15 +480,6 @@ msgstr "How can we contact you?"
 #, fuzzy
 msgid "Messenger"
 msgstr "Message"
-
-#: templates/product.html:124
-#, fuzzy
-msgid "Username"
-msgstr "Your Name"
-
-#: templates/product.html:128 templates/product.html:129
-msgid "Quick order"
-msgstr "Quick order"
 
 #: templates/product.html:134
 msgid "Additional information"
@@ -370,11 +617,6 @@ msgstr "Discounts on my favorite products"
 #: templates/shop.html:8
 msgid "Catalogue"
 msgstr "Catalogue"
-
-#: templates/shop.html:13 templates/shop.html:27 templates/shop.html:41
-#: templates/shop.html:55
-msgid "Any"
-msgstr "Any"
 
 #: templates/shop.html:25
 msgid "Category"

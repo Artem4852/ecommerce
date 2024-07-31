@@ -17,13 +17,13 @@ characters = ascii_letters + digits
 dotenv.load_dotenv()
 
 def get_locale():
-    return request.accept_languages.best_match(['uk'])
+    return request.accept_languages.best_match(['en'])
 
 app = Flask(__name__)
 app.secret_key = os.getenv('SECRET_KEY')
 
 # babel
-app.config['BABEL_DEFAULT_LOCALE'] = 'uk'
+app.config['BABEL_DEFAULT_LOCALE'] = 'en'
 app.config['BABEL_TRANSLATION_DIRECTORIES'] = 'translations'
 
 babel = Babel(app, locale_selector=get_locale)
@@ -807,6 +807,38 @@ def admin():
     ordersDailyAverage = len(orders)//len(days)
 
     return render_template('admin.html', userData=user, loggedIn=loggedIn, averageDailyRequests=averageDailyRequests, dailyRequests=dailyRequests, requestsToday=requestsToday, averageDailyUniqueVisits=averageDailyUniqueVisits, uniqueVisitsToday=uniqueVisitsToday, totalProducts=totalProducts, inStock=inStock, orders=orders, ordersTotal=ordersTotal, ordersPending=ordersPending, ordersToday=ordersToday, ordersDailyAverage=ordersDailyAverage)
+
+@app.route('/admin/activity')
+def adminActivity():
+    loggedIn = session.get('loggedIn', False)
+    if not loggedIn:
+        abort(404)
+    user = getUser({'userId': session.get('userId')})
+    if not "admin" in user['tags']:
+        abort(404)
+
+    dailyRequests = database.getStats('dailyRequests')['data']
+    sortedDailyRequests = sorted(dailyRequests, key=lambda x: x)
+    dailyRequests = {n: dailyRequests[n] for n in sortedDailyRequests[-7:]}
+
+    dailyUniqueVisits = database.getStats('dailyUniqueVisits')['data']
+    sortedDailyUniqueVisits = sorted(dailyUniqueVisits, key=lambda x: x)
+    dailyUniqueVisits = {n: len(dailyUniqueVisits[n]) for n in sortedDailyUniqueVisits[-7:]}
+
+    hourlyRequests = database.getStats('hourlyRequests')['data']
+    print(hourlyRequests)
+    hourlyRequestsSorted = sorted(hourlyRequests, key=lambda x: x)
+    hourlyRequests = {n: hourlyRequests[n] for n in hourlyRequestsSorted}
+
+    utmSources = database.getStats('utmSources')['data']
+    
+    pageDistribution = database.getStats('pageDistribution')['data']
+
+    regionDistribution = database.getStats('regionDistribution')['data']
+
+    cityDistribution = database.getStats('cityDistribution')['data']
+
+    return render_template('adminActivity.html', userData=user, loggedIn=loggedIn, dailyRequests=dailyRequests, dailyUniqueVisits=dailyUniqueVisits, hourlyRequests=hourlyRequests, utmSources=utmSources, pageDistribution=pageDistribution, regionDistribution=regionDistribution, cityDistribution=cityDistribution)
 
 @app.route('/admin/products')
 def adminProducts():

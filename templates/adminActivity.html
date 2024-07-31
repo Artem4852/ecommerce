@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="{{ get_locale() }}">
+{% include 'partials/head.html' %}
+<body>
+    {% include 'partials/header.html' %}
+    <section id="admin" class="activity">
+        <h2>{{ _('Control Panel') }}</h2>
+        <div class="group">
+            <h4>{{ _('Daily requests') }}</h4>
+            <div class="data">
+                <div class="chart">
+                    <canvas id="requestsChart" height="400"></canvas>
+                </div>
+            </div>
+        </div>
+        <div class="group">
+            <h4>{{ _('Unique requests') }}</h4>
+            <div class="data">
+                <div class="chart">
+                    <canvas id="uniqueVisitsChart" height="400"></canvas>
+                </div>
+            </div>
+        </div>
+        <div class="group">
+            <h4>{{ _('Hourly requests') }}</h4>
+            <div class="data">
+                <div class="chart">
+                    <canvas id="hourlyRequestsChart" height="400"></canvas>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="group">
+                <h4>{{ _('Utm sources') }}</h4>
+                <div class="data">
+                    <div class="chart">
+                        <canvas id="utmSourcesChart" height="400"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="group">
+                <h4>{{ _('Page visits') }}</h4>
+                <div class="data">
+                    <div class="chart">
+                        <canvas id="pageDistributionChart" height="400"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="group">
+                <h4>{{ _('Region distribution') }}</h4>
+                <div class="data">
+                    <div class="chart">
+                        <canvas id="regionDistributionChart" height="400"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="group">
+                <h4>{{ _('City distribution') }}</h4>
+                <div class="data">
+                    <div class="chart">
+                        <canvas id="cityDistributionChart" height="400"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    {% include 'partials/footer.html' %}
+    <script>
+        const dailyRequests = {{ dailyRequests | tojson }};
+        const dailyUniqueVisits = {{ dailyUniqueVisits | tojson }};
+        const hourlyRequests = {{ hourlyRequests | tojson }};
+        const utmSources = {{ utmSources | tojson }};
+        const pageDistribution = {{ pageDistribution | tojson }};
+        const regionDistribution = {{ regionDistribution | tojson }};
+        const cityDistribution = {{ cityDistribution | tojson }};
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-datalabels/2.2.0/chartjs-plugin-datalabels.min.js"></script>
+    <script src="{{ url_for('static', filename='js/adminCharts.js') }}"></script>
+</body>
+</html>
