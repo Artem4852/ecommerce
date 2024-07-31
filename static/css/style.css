@@ -9,7 +9,7 @@
 }
 @font-face {
   font-family: "IntroScript";
-  src: url("../../static/fonts/introScript.ttf") format("truetype");
+  src: url("../../static/fonts/introScriptB.ttf") format("truetype");
 }
 * {
   margin: 0;
@@ -22,6 +22,15 @@ h1, h2 {
   font-size: 5vw;
   font-weight: 500;
   color: #E352BA;
+  line-height: 1;
+}
+
+html.uk h1, html.uk h2 {
+  font-size: 6vw;
+  font-family: "IntroScript", sans-serif;
+}
+html.uk #hero .textWrapper .text {
+  width: 80vw;
 }
 
 h4 {
@@ -454,6 +463,10 @@ select::-webkit-inner-spin-button, select::-webkit-outer-spin-button {
   margin-bottom: 20px;
 }
 
+html.uk .banner {
+  font-family: "IntroScript", sans-serif;
+}
+
 .banner {
   width: 100%;
   height: auto;
@@ -536,7 +549,7 @@ select::-webkit-inner-spin-button, select::-webkit-outer-spin-button {
   position: relative;
 }
 .banner .content .row:first-child {
-  margin-bottom: 50px;
+  margin-bottom: 20px;
 }
 
 #toShop {
@@ -579,7 +592,7 @@ select::-webkit-inner-spin-button, select::-webkit-outer-spin-button {
 }
 #newsletter .content h2 {
   width: 50vw;
-  margin-bottom: 0;
+  margin-bottom: 10px;
 }
 #newsletter .content input {
   width: 50vw;
@@ -2306,6 +2319,12 @@ select::-webkit-inner-spin-button, select::-webkit-outer-spin-button {
   .desktopOnly {
     display: none !important;
   }
+  html.uk h1, html.uk h2 {
+    font-size: 40px;
+  }
+  html.uk #hero .textWrapper .text {
+    width: 90vw;
+  }
   #header {
     padding: 4vw;
   }
@@ -2430,7 +2449,7 @@ select::-webkit-inner-spin-button, select::-webkit-outer-spin-button {
   }
   #newsletter .content h3, #toShop .content h3 {
     width: 100%;
-    font-size: 32px;
+    font-size: 28px;
     text-align: center;
   }
   #newsletter .content input, #newsletter .content button, #newsletter .content a, #toShop .content input, #toShop .content button, #toShop .content a {

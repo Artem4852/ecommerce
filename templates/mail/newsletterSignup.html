@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ get_locale() }}" class="{{ get_locale() }}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -85,10 +85,10 @@
     </style>
     <div class="main">
         <div class="content">
-            <h1>Hello there</h1>
-            <p>Thanks for signing up to our newsletter!</p>
-            <p>You'll be hearing from us every once in a while.</p>
-            <a href="https://kidsfashionstore.com.ua/newsletterUnsubscribe/{{ data.unsubscribeToken }}">Unsubscribe</a>
+            <h1>{{ _('Hello there') }}</h1>
+            <p>{{ _('Thanks for signing up to our newsletter!') }}</p>
+            <p>{{ _('You\'ll be hearing from us every once in a while.') }}</p>
+            <a href="https://kidsfashionstore.com.ua/newsletterUnsubscribe/{{ data.unsubscribeToken }}">{{ _('Unsubscribe') }}</a>
         </div>
     </div>
 </body>

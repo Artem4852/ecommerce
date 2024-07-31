@@ -2,9 +2,8 @@
 404.html +
 
 admin.html +
-adminProducts.html 
-adminProductAdd.html 
-adminProductEdit.html 
+adminProducts.html +
+adminProductEdit.html +ƒ
 adminOrders.html +
 adminOrder.html +
 
@@ -28,6 +27,21 @@ partials/head.html +
 partials/header.html +
 partials/newsletter.html +
 
+mail/contactMessage.html +
+mail/newsletterSignup.html +
+mail/passwordReset.html +
+mail/saleFavorite.html +
+mail/welcome.html +
+
+legal/cookies.html 
+legal/privacy.html 
+legal/replacementsAndReturns.html 
+legal/shipping.html 
+legal/termsOfUse.html
+
+faq/delivery.html +
+faq/replacementsReturns.html +
+faq/shoeSize.html +
 
 cart.html 
 checkout.html 

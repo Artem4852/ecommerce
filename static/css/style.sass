@@ -20,7 +20,7 @@ $red: #B30A0A
 
 @font-face
     font-family: 'IntroScript'
-    src: url('../../static/fonts/introScript.ttf') format('truetype')
+    src: url('../../static/fonts/introScriptB.ttf') format('truetype')
 
 *
     margin: 0
@@ -32,6 +32,15 @@ h1, h2
     font-size: 5vw
     font-weight: 500
     color: $accent
+    line-height: 1
+
+html.uk
+    h1, h2
+        font-size: 6vw
+        font-family: 'IntroScript', sans-serif
+
+    #hero .textWrapper .text
+        width: 80vw
 
 h4
     font-weight: 500
@@ -452,6 +461,9 @@ select
     h2
         margin-bottom: 20px
 
+html.uk .banner
+    font-family: 'IntroScript', sans-serif
+
 .banner
     width: 100%
     height: auto
@@ -536,7 +548,7 @@ select
             position: relative
 
             &:first-child
-                margin-bottom: 50px
+                margin-bottom: 20px
 
 #toShop
     margin-bottom: 50px
@@ -577,7 +589,7 @@ select
 
         h2
             width: 50vw
-            margin-bottom: 0
+            margin-bottom: 10px
 
         input
             width: 50vw
@@ -2301,6 +2313,13 @@ select
     .desktopOnly
         display: none !important
 
+    html.uk
+        h1, h2
+            font-size: 40px
+
+        #hero .textWrapper .text
+            width: 90vw
+
     #header
         padding: 4vw
 
@@ -2442,7 +2461,7 @@ select
 
             h3
                 width: 100%
-                font-size: 32px
+                font-size: 28px
                 text-align: center
 
             input, button, a

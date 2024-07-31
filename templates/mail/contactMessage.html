@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ get_locale() }}" class="{{ get_locale() }}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=deviceWidth, initialScale=1.0">
-    <title>Contact Us Kids Fashion Store</title>
+    <title>{{ _('Contact Us Kids Fashion Store') }}</title>
 </head>
 <body>
     <style>
@@ -76,11 +76,11 @@
     </style>
     <div class="main">
         <div class="content">
-            <h1>New contact request</h1>
-            <p>From: {{ data.from }}</p>
-            <p>Email: {{ data.email }}</p>
-            <p>Subject: {{ data.subject }}</p>
-            <p>Message: {{ data.message }}</p>
+            <h1>{{ _('New contact request') }}</h1>
+            <p>{{ _('From') }}: {{ data.from }}</p>
+            <p>{{ _('Email') }}: {{ data.email }}</p>
+            <p>{{ _('Subject') }}: {{ data.subject }}</p>
+            <p>{{ _('Message') }}: {{ data.message }}</p>
         </div>
     </div>
 </body>

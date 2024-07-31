@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-07-31 11:39+0200\n"
+"POT-Creation-Date: 2024-07-31 14:55+0200\n"
 "PO-Revision-Date: 2024-07-30 18:44+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -115,22 +115,26 @@ msgid "View pending"
 msgstr "View pending"
 
 #: templates/adminActivity.html:17
+msgid "Unique requests"
+msgstr "Unique requests"
+
+#: templates/adminActivity.html:25
 msgid "Hourly requests"
 msgstr "Hourly requests"
 
-#: templates/adminActivity.html:26
+#: templates/adminActivity.html:34
 msgid "Utm sources"
 msgstr "Utm sources"
 
-#: templates/adminActivity.html:34
+#: templates/adminActivity.html:42
 msgid "Page visits"
 msgstr "Page visits"
 
-#: templates/adminActivity.html:44
+#: templates/adminActivity.html:52
 msgid "Region distribution"
 msgstr "Region distribution"
 
-#: templates/adminActivity.html:52
+#: templates/adminActivity.html:60
 msgid "City distribution"
 msgstr "City distribution"
 
@@ -139,6 +143,7 @@ msgid "View order"
 msgstr "View order"
 
 #: templates/adminOrder.html:14 templates/adminOrders.html:15
+#: templates/adminProductEdit.html:15 templates/adminProducts.html:15
 msgid "Back"
 msgstr "Back"
 
@@ -259,8 +264,10 @@ msgstr "Delete order"
 msgid "Orders Panel"
 msgstr "Orders Panel"
 
-#: templates/adminOrders.html:24 templates/shop.html:13 templates/shop.html:27
-#: templates/shop.html:41 templates/shop.html:55
+#: templates/adminOrders.html:24 templates/adminProducts.html:21
+#: templates/adminProducts.html:35 templates/adminProducts.html:49
+#: templates/adminProducts.html:63 templates/shop.html:13
+#: templates/shop.html:27 templates/shop.html:41 templates/shop.html:55
 msgid "Any"
 msgstr "Any"
 
@@ -285,19 +292,177 @@ msgstr "Type: Address Delivery"
 msgid "Quick order"
 msgstr "Quick order"
 
-#: templates/adminOrders.html:81
-#, fuzzy
+#: templates/adminOrders.html:81 templates/adminProductEdit.html:25
 msgid "Product id"
 msgstr "Product id"
 
-#: templates/adminOrders.html:93 templates/favorites.html:18
-#: templates/shop.html:100
+#: templates/adminOrders.html:93 templates/adminProducts.html:105
+#: templates/favorites.html:18 templates/shop.html:100
 msgid "Page"
 msgstr "Page"
 
 #: templates/adminOrders.html:133
-#, fuzzy
 msgid "No orders found. Try to change filters"
+msgstr "No orders found. Try to change filters."
+
+#: templates/adminProductEdit.html:8
+msgid "Edit"
+msgstr "Edit"
+
+#: templates/adminProductEdit.html:8 templates/adminProductEdit.html:127
+msgid "Add"
+msgstr "Add"
+
+#: templates/adminProductEdit.html:8 templates/adminProductEdit.html:127
+#: templates/adminProductEdit.html:128
+msgid "product"
+msgstr "product"
+
+#: templates/adminProductEdit.html:23 templates/partials/footer.html:3
+msgid "Information"
+msgstr "Information"
+
+#: templates/adminProductEdit.html:29
+msgid "Tags"
+msgstr "Tags"
+
+#: templates/adminProductEdit.html:33 templates/adminProducts.html:33
+#: templates/shop.html:25
+msgid "Category"
+msgstr "Category"
+
+#: templates/adminProductEdit.html:34
+msgid "Sandals"
+msgstr "Sandals"
+
+#: templates/adminProductEdit.html:37
+msgid "Instagram Link"
+msgstr "Instagram Link"
+
+#: templates/adminProductEdit.html:41 templates/adminProducts.html:19
+#: templates/partials/card.html:28 templates/product.html:42
+#: templates/shop.html:11
+msgid "Brand"
+msgstr "Brand"
+
+#: templates/adminProductEdit.html:45
+msgid "Original Price"
+msgstr "Original Price"
+
+#: templates/adminProductEdit.html:49
+msgid "Discount"
+msgstr "Discount"
+
+#: templates/adminProductEdit.html:53 templates/partials/card.html:31
+msgid "Sizes"
+msgstr "Sizes"
+
+#: templates/adminProductEdit.html:57
+msgid "Season"
+msgstr "Season"
+
+#: templates/adminProductEdit.html:58
+msgid "Summer/Autumn"
+msgstr "Summer/Autumn"
+
+#: templates/adminProductEdit.html:61
+msgid "Outer material"
+msgstr "Outer material"
+
+#: templates/adminProductEdit.html:62 templates/adminProductEdit.html:70
+msgid "Leather"
+msgstr "Leather"
+
+#: templates/adminProductEdit.html:65
+msgid "Inner material"
+msgstr "Inner material"
+
+#: templates/adminProductEdit.html:66
+msgid "Fur"
+msgstr "Fur"
+
+#: templates/adminProductEdit.html:69
+msgid "Insole material"
+msgstr "Insole material"
+
+#: templates/adminProductEdit.html:73
+msgid "Insole lengths"
+msgstr "Insole lengths"
+
+#: templates/adminProductEdit.html:74 templates/product.html:137
+msgid "cm"
+msgstr "cm"
+
+#: templates/adminProductEdit.html:77
+msgid "Quantities"
+msgstr "Quantities"
+
+#: templates/adminProductEdit.html:81
+msgid "Warehouses"
+msgstr "Warehouses"
+
+#: templates/adminProductEdit.html:86
+msgid "Images"
+msgstr "Images"
+
+#: templates/adminProductEdit.html:127
+msgid "Update"
+msgstr "Update"
+
+#: templates/adminProductEdit.html:128
+msgid "Unarchive"
+msgstr "Unarchive"
+
+#: templates/adminProductEdit.html:128
+msgid "Archive"
+msgstr "Archive"
+
+#: templates/adminProducts.html:8
+msgid "Products Panel"
+msgstr "Products Panel"
+
+#: templates/adminProducts.html:47 templates/shop.html:39
+msgid "Shoe size"
+msgstr "Shoe size"
+
+#: templates/adminProducts.html:61
+msgid "Tag"
+msgstr "Tag"
+
+#: templates/adminProducts.html:75 templates/product.html:41
+msgid "Product number"
+msgstr "Product number"
+
+#: templates/adminProducts.html:78 templates/shop.html:73
+msgid "Sort by"
+msgstr "Sort by"
+
+#: templates/adminProducts.html:80 templates/shop.html:75
+msgid "No sorting"
+msgstr "No sorting"
+
+#: templates/adminProducts.html:81 templates/shop.html:76
+msgid "Price: low to high"
+msgstr "Price: low to high"
+
+#: templates/adminProducts.html:82 templates/shop.html:77
+msgid "Price: high to low"
+msgstr "Price: high to low"
+
+#: templates/adminProducts.html:83 templates/shop.html:78
+msgid "Discount: high to low"
+msgstr "Discount: high to low"
+
+#: templates/adminProducts.html:84 templates/shop.html:79
+msgid "Discount: low to high"
+msgstr "Discount: low to high"
+
+#: templates/adminProducts.html:100 templates/shop.html:95
+msgid "Show more"
+msgstr "Show more"
+
+#: templates/adminProducts.html:145
+msgid "No products found. Try to change filters"
 msgstr "No products found. Try to change filters."
 
 #: templates/contact.html:8 templates/partials/footer.html:17
@@ -310,8 +475,9 @@ msgid "Get in touch"
 msgstr "Get in touch"
 
 #: templates/contact.html:14 templates/forgotPassword.html:15
-#: templates/login.html:15 templates/partials/footer.html:20
-#: templates/settings.html:28 templates/signup.html:15
+#: templates/login.html:15 templates/mail/contactMessage.html:81
+#: templates/partials/footer.html:20 templates/settings.html:28
+#: templates/signup.html:15
 msgid "Email"
 msgstr "Email"
 
@@ -327,11 +493,11 @@ msgstr "Your Name"
 msgid "Your Email"
 msgstr "Your Email"
 
-#: templates/contact.html:32
+#: templates/contact.html:32 templates/mail/contactMessage.html:82
 msgid "Subject"
 msgstr "Subject"
 
-#: templates/contact.html:33
+#: templates/contact.html:33 templates/mail/contactMessage.html:83
 msgid "Message"
 msgstr "Message"
 
@@ -425,7 +591,6 @@ msgid "Don't have an account?"
 msgstr "Don't have an account?"
 
 #: templates/login.html:28
-#, fuzzy
 msgid "Sing up"
 msgstr "Sign up"
 
@@ -440,15 +605,6 @@ msgstr "You were unsubscribed"
 #: templates/newsletterUnsubscribe.html:8
 msgid "We are sorry to see you go"
 msgstr "We are sorry to see you go"
-
-#: templates/product.html:41
-msgid "Product number"
-msgstr "Product number"
-
-#: templates/partials/card.html:28 templates/product.html:42
-#: templates/shop.html:11
-msgid "Brand"
-msgstr "Brand"
 
 #: templates/product.html:43
 msgid "Price"
@@ -477,9 +633,8 @@ msgid "How can we contact you?"
 msgstr "How can we contact you?"
 
 #: templates/product.html:107
-#, fuzzy
 msgid "Messenger"
-msgstr "Message"
+msgstr "Messenger"
 
 #: templates/product.html:134
 msgid "Additional information"
@@ -488,10 +643,6 @@ msgstr "Additional information"
 #: templates/product.html:135
 msgid "Sizes (insole lengths)"
 msgstr "Sizes (insole lengths)"
-
-#: templates/product.html:137
-msgid "cm"
-msgstr "cm"
 
 #: templates/product.html:154
 msgid "How to select correct shoe size"
@@ -618,45 +769,9 @@ msgstr "Discounts on my favorite products"
 msgid "Catalogue"
 msgstr "Catalogue"
 
-#: templates/shop.html:25
-msgid "Category"
-msgstr "Category"
-
-#: templates/shop.html:39
-msgid "Shoe size"
-msgstr "Shoe size"
-
 #: templates/shop.html:53
 msgid "Price range"
 msgstr "Price range"
-
-#: templates/shop.html:73
-msgid "Sort by"
-msgstr "Sort by"
-
-#: templates/shop.html:75
-msgid "No sorting"
-msgstr "No sorting"
-
-#: templates/shop.html:76
-msgid "Price: low to high"
-msgstr "Price: low to high"
-
-#: templates/shop.html:77
-msgid "Price: high to low"
-msgstr "Price: high to low"
-
-#: templates/shop.html:78
-msgid "Discount: high to low"
-msgstr "Discount: high to low"
-
-#: templates/shop.html:79
-msgid "Discount: low to high"
-msgstr "Discount: low to high"
-
-#: templates/shop.html:95
-msgid "Show more"
-msgstr "Show more"
 
 #: templates/shop.html:140
 msgid "No products found. Try to change filters."
@@ -703,9 +818,550 @@ msgstr "Reset code"
 msgid "Update password"
 msgstr "Update password"
 
-#: templates/partials/card.html:31
-msgid "Sizes"
-msgstr "Sizes"
+#: templates/faq/delivery.html:9
+msgid "Information about the delivery"
+msgstr "Information about the delivery"
+
+#: templates/faq/delivery.html:10
+msgid ""
+"Ensuring your order arrives safely and promptly is our top priority. "
+"Follow these steps to understand our delivery process:"
+msgstr ""
+"Ensuring your order arrives safely and promptly is our top priority. "
+"Follow these steps to understand our delivery process:"
+
+#: templates/faq/delivery.html:11
+msgid "Shipping Areas"
+msgstr "Shipping Areas"
+
+#: templates/faq/delivery.html:12
+msgid ""
+"We provide shipping across Ukraine and selected countries in Europe "
+"through Nova Post (Нова Пошта). Availability,\n"
+"        delivery times, and costs vary based on the destination."
+msgstr ""
+"We provide shipping across Ukraine and selected countries in Europe "
+"through Nova Post (Нова Пошта). Availability,\n"
+"        delivery times, and costs vary based on the destination."
+
+#: templates/faq/delivery.html:14
+msgid "Shipping Times"
+msgstr "Shipping Times"
+
+#: templates/faq/delivery.html:15
+msgid ""
+"Ukraine: 1 to 3 business days. Europe: Varies by country, specified "
+"during checkout. Note: Delivery times are estimates and can be affected "
+"by factors such as customs, weather, and holidays."
+msgstr ""
+"Ukraine: 1 to 3 business days. Europe: Varies by country, specified "
+"during checkout. Note: Delivery times are estimates and can be affected "
+"by factors such as customs, weather, and holidays."
+
+#: templates/faq/delivery.html:16 templates/faq/replacementsReturns.html:23
+msgid "Shipping Costs"
+msgstr "Shipping Costs"
+
+#: templates/faq/delivery.html:17
+msgid ""
+"Calculated based on delivery address and package size/weight. Displayed "
+"during checkout. Customers are responsible\n"
+"        for all shipping costs added to the total order amount."
+msgstr ""
+"Calculated based on delivery address and package size/weight. Displayed "
+"during checkout. Customers are responsible\n"
+"        for all shipping costs added to the total order amount."
+
+#: templates/faq/delivery.html:19
+msgid "Order Processing"
+msgstr "Order Processing"
+
+#: templates/faq/delivery.html:20
+msgid ""
+"Orders are processed and shipped within 1 to 2 business days after "
+"payment confirmation."
+msgstr ""
+"Orders are processed and shipped within 1 to 2 business days after "
+"payment confirmation."
+
+#: templates/faq/delivery.html:21
+msgid "Tracking Information"
+msgstr "Tracking Information"
+
+#: templates/faq/delivery.html:22
+msgid ""
+"Use the tracking number provided in your shipping confirmation email to "
+"track your package with the help of Nova Post app."
+msgstr ""
+"Use the tracking number provided in your shipping confirmation email to "
+"track your package with the help of Nova Post app."
+
+#: templates/faq/delivery.html:23
+msgid "Customs and Duties"
+msgstr "Customs and Duties"
+
+#: templates/faq/delivery.html:24
+msgid ""
+"For international shipments, customs duties, taxes, and fees may apply. "
+"These charges are the recipient's responsibility and will be collected "
+"upon delivery by the local customs authority."
+msgstr ""
+"For international shipments, customs duties, taxes, and fees may apply. "
+"These charges are the recipient's responsibility and will be collected "
+"upon delivery by the local customs authority."
+
+#: templates/faq/delivery.html:25
+msgid "Lost or Damaged Shipments"
+msgstr "Lost or Damaged Shipments"
+
+#: templates/faq/delivery.html:26
+msgid ""
+"We are not responsible for lost or damaged shipments. Contact us "
+"immediately at"
+msgstr ""
+"We are not responsible for lost or damaged shipments. Contact us "
+"immediately at"
+
+#: templates/faq/delivery.html:26 templates/faq/delivery.html:32
+msgid "contactemail"
+msgstr "contact@kidsfashionstore.com.ua"
+
+#: templates/faq/delivery.html:26
+msgid "or "
+msgstr "or "
+
+#: templates/faq/delivery.html:26 templates/faq/delivery.html:32
+msgid "contactphone"
+msgstr "+380 68 901 5672"
+
+#: templates/faq/delivery.html:26
+msgid " for assistance in filing a claim with the shipping carrier."
+msgstr " for assistance in filing a claim with the shipping carrier."
+
+#: templates/faq/delivery.html:27
+msgid "Address Accuracy"
+msgstr "Address Accuracy"
+
+#: templates/faq/delivery.html:28
+msgid ""
+"Ensure accurate and complete shipping information. We are not responsible"
+" for orders shipped to incorrect or\n"
+"        incomplete addresses provided by the customer. Review your "
+"shipping address carefully before submitting your order."
+msgstr ""
+"Ensure accurate and complete shipping information. We are not responsible"
+" for orders shipped to incorrect or\n"
+"        incomplete addresses provided by the customer. Review your "
+"shipping address carefully before submitting your order."
+
+#: templates/faq/delivery.html:30
+msgid "Shipping Restrictions"
+msgstr "Shipping Restrictions"
+
+#: templates/faq/delivery.html:31
+msgid ""
+"We reserve the right to refuse orders due to shipping restrictions "
+"imposed by our carriers."
+msgstr ""
+"We reserve the right to refuse orders due to shipping restrictions "
+"imposed by our carriers."
+
+#: templates/faq/delivery.html:32
+msgid ""
+"For any further questions about our shipping policy, feel free to contact"
+" us at"
+msgstr ""
+"For any further questions about our shipping policy, feel free to contact"
+" us at"
+
+#: templates/faq/delivery.html:32
+msgid "Happy Shopping!"
+msgstr "Happy shopping!"
+
+#: templates/faq/replacementsReturns.html:9
+msgid "Information about Replacements and Returns"
+msgstr "Information about Replacements and Returns"
+
+#: templates/faq/replacementsReturns.html:10
+msgid ""
+"Ensuring that our customers are satisfied with their purchases is our top"
+" priority. We understand that sometimes an item may not meet your "
+"expectations, and you may need to return or replace it. Here's a brief "
+"guide to help you navigate our replacement and return process."
+msgstr ""
+"Ensuring that our customers are satisfied with their purchases is our top"
+" priority. We understand that sometimes an item may not meet your "
+"expectations, and you may need to return or replace it. Here's a brief "
+"guide to help you navigate our replacement and return process."
+
+#: templates/faq/replacementsReturns.html:11
+msgid "Eligibility"
+msgstr "Eligibility"
+
+#: templates/faq/replacementsReturns.html:12
+msgid ""
+"To qualify for a replacement or return, the item must be unused, in the "
+"same condition as when you received it,\n"
+"        and in its original packaging."
+msgstr ""
+"To qualify for a replacement or return, the item must be unused, in the "
+"same condition as when you received it,\n"
+"        and in its original packaging."
+
+#: templates/faq/replacementsReturns.html:14
+msgid "Timeline"
+msgstr "Timeline"
+
+#: templates/faq/replacementsReturns.html:15
+msgid ""
+"You must initiate a replacement or return request within one day of "
+"receiving your order, whether it was delivered to\n"
+"        your home or picked up from the post office."
+msgstr ""
+"You must initiate a replacement or return request within one day of "
+"receiving your order, whether it was delivered to\n"
+"        your home or picked up from the post office."
+
+#: templates/faq/replacementsReturns.html:17
+msgid "Initiating a Replacement or Return"
+msgstr "Initiating a Replacement or Return"
+
+#: templates/faq/replacementsReturns.html:18
+msgid "Contact Customer Service: Email our Customer Service team at"
+msgstr "Contact Customer Service: Email our Customer Service team at"
+
+#: templates/faq/replacementsReturns.html:18
+#: templates/faq/replacementsReturns.html:30
+msgid "customeremail"
+msgstr "customerservice@kidsfashionstore.com.ua"
+
+#: templates/faq/replacementsReturns.html:18
+msgid ""
+"within the one-day timeframe. Provide Order Details: Include your order "
+"id and details about the item you wish to return or replace. Follow "
+"Guidance: Our Customer Service team will guide you through the process."
+msgstr ""
+"within the one-day timeframe. Provide Order Details: Include your order "
+"id and details about the item you wish to return or replace. Follow "
+"Guidance: Our Customer Service team will guide you through the process."
+
+#: templates/faq/replacementsReturns.html:19
+msgid "Conditions for Replacement or Return"
+msgstr "Conditions for Replacement or Return"
+
+#: templates/faq/replacementsReturns.html:20
+msgid ""
+"Unused Items: The item must be in its original condition. Original "
+"Packaging: The item must be returned in its original packaging. "
+"Exclusions: Items not in their original condition, damaged, or missing "
+"parts due to reasons other than our error are not eligible. Additionally,"
+" requests made more than one day after delivery will not be accepted."
+msgstr ""
+"Unused Items: The item must be in its original condition. Original "
+"Packaging: The item must be returned in its original packaging. "
+"Exclusions: Items not in their original condition, damaged, or missing "
+"parts due to reasons other than our error are not eligible. Additionally,"
+" requests made more than one day after delivery will not be accepted."
+
+#: templates/faq/replacementsReturns.html:21
+msgid "Refunds or Replacements"
+msgstr "Refunds or Replacements"
+
+#: templates/faq/replacementsReturns.html:22
+msgid ""
+"Inspection: Once we receive and inspect your returned item, we will "
+"notify you via email about the approval or rejection of your replacement "
+"or refund. Replacements: If approved, replacements will be processed "
+"based on product availability. If the exact item is not available, a "
+"similar product of equal value may be offered. Refunds: If approved, "
+"refunds will be processed to the original method of payment within two "
+"business days."
+msgstr ""
+"Inspection: Once we receive and inspect your returned item, we will "
+"notify you via email about the approval or rejection of your replacement "
+"or refund. Replacements: If approved, replacements will be processed "
+"based on product availability. If the exact item is not available, a "
+"similar product of equal value may be offered. Refunds: If approved, "
+"refunds will be processed to the original method of payment within two "
+"business days."
+
+#: templates/faq/replacementsReturns.html:24
+msgid ""
+"Return Shipping: Shipping costs for returns are nonRefundable. The cost "
+"of return shipping will be deducted from your refund if you receive a "
+"replacement."
+msgstr ""
+"Return Shipping: Shipping costs for returns are nonRefundable. The cost "
+"of return shipping will be deducted from your refund if you receive a "
+"replacement."
+
+#: templates/faq/replacementsReturns.html:25
+msgid "Additional Tips:"
+msgstr "Additional Tips:"
+
+#: templates/faq/replacementsReturns.html:26
+msgid ""
+"Contact Promptly: Ensure you contact our Customer Service within one day "
+"to be eligible for a return or\n"
+"        replacement. Keep Original Packaging: Returning items in their "
+"original packaging helps facilitate the process. Document\n"
+"        Condition: Taking photos of the item before shipping it back can "
+"help resolve any disputes regarding the condition."
+msgstr ""
+"Contact Promptly: Ensure you contact our Customer Service within one day "
+"to be eligible for a return or\n"
+"        replacement. Keep Original Packaging: Returning items in their "
+"original packaging helps facilitate the process. Document\n"
+"        Condition: Taking photos of the item before shipping it back can "
+"help resolve any disputes regarding the condition."
+
+#: templates/faq/replacementsReturns.html:29
+msgid ""
+"By following these steps, you can efficiently handle any replacements or "
+"returns, ensuring a smooth and satisfactory\n"
+"        experience. If you have further questions, feel free to reach out"
+" to us at"
+msgstr ""
+"By following these steps, you can efficiently handle any replacements or "
+"returns, ensuring a smooth and satisfactory\n"
+"        experience. If you have further questions, feel free to reach out"
+" to us at"
+
+#: templates/faq/replacementsReturns.html:31
+msgid "We are here to help!"
+msgstr "We are here to help!"
+
+#: templates/faq/shoeSize.html:8
+msgid "How to Select the Right Shoe Size for Your Child"
+msgstr "How to Select the Right Shoe Size for Your Child"
+
+#: templates/faq/shoeSize.html:9
+msgid ""
+"Choosing the right shoe size for your child is essential for their "
+"comfort and foot health. Follow these simple steps to ensure you get the "
+"perfect fit."
+msgstr ""
+"Choosing the right shoe size for your child is essential for their "
+"comfort and foot health. Follow these simple steps to ensure you get the "
+"perfect fit."
+
+#: templates/faq/shoeSize.html:10
+msgid "Step-by-step Instructions"
+msgstr "Step-by-step Instructions"
+
+#: templates/faq/shoeSize.html:11
+msgid "Prepare the Materials"
+msgstr "Prepare the Materials"
+
+#: templates/faq/shoeSize.html:13
+msgid "A piece of paper"
+msgstr "A piece of paper"
+
+#: templates/faq/shoeSize.html:14
+msgid "A pencil"
+msgstr "A pencil"
+
+#: templates/faq/shoeSize.html:15
+msgid "A ruler"
+msgstr "A ruler"
+
+#: templates/faq/shoeSize.html:19
+msgid "Trace Your Child’s Foot"
+msgstr "Trace Your Child’s Foot"
+
+#: templates/faq/shoeSize.html:21
+msgid "Place the piece of paper on a flat, hard surface."
+msgstr "Place the piece of paper on a flat, hard surface."
+
+#: templates/faq/shoeSize.html:22
+msgid "Have your child stand barefoot on the paper."
+msgstr "Have your child stand barefoot on the paper."
+
+#: templates/faq/shoeSize.html:23
+msgid "Ensure your child’s foot is flat and their weight is evenly distributed."
+msgstr "Ensure your child’s foot is flat and their weight is evenly distributed."
+
+#: templates/faq/shoeSize.html:24
+msgid ""
+"Using the pencil, carefully trace around your child’s foot. Try to keep "
+"the pencil as vertical as possible to get an accurate outline."
+msgstr ""
+"Using the pencil, carefully trace around your child’s foot. Try to keep "
+"the pencil as vertical as possible to get an accurate outline."
+
+#: templates/faq/shoeSize.html:26
+msgid "Measure the Foot Length"
+msgstr "Measure the Foot Length"
+
+#: templates/faq/shoeSize.html:28
+msgid ""
+"Remove the paper and use the ruler to measure the longest distance from "
+"the heel to the tip of the longest toe."
+msgstr ""
+"Remove the paper and use the ruler to measure the longest distance from "
+"the heel to the tip of the longest toe."
+
+#: templates/faq/shoeSize.html:29
+msgid "This measurement is your child’s foot length."
+msgstr "This measurement is your child’s foot length."
+
+#: templates/faq/shoeSize.html:34
+msgid "Compare with Insole Lengths"
+msgstr "Compare with Insole Lengths"
+
+#: templates/faq/shoeSize.html:36
+msgid "On our shop, each shoe size includes the length of the insole."
+msgstr "On our shop, each shoe size includes the length of the insole."
+
+#: templates/faq/shoeSize.html:37
+msgid "Compare your child’s foot length to the insole lengths provided."
+msgstr "Compare your child’s foot length to the insole lengths provided."
+
+#: templates/faq/shoeSize.html:38
+msgid ""
+"Choose the shoe size where the insole length is slightly longer than your"
+" child’s foot length, allowing for some growing room."
+msgstr ""
+"Choose the shoe size where the insole length is slightly longer than your"
+" child’s foot length, allowing for some growing room."
+
+#: templates/faq/shoeSize.html:40
+msgid "Additional Tips"
+msgstr "Additional Tips"
+
+#: templates/faq/shoeSize.html:42
+msgid ""
+"Measure Both Feet: Sometimes one foot is slightly larger than the other. "
+"Use the measurement of the larger foot to ensure comfort"
+msgstr ""
+"Measure Both Feet: Sometimes one foot is slightly larger than the other. "
+"Use the measurement of the larger foot to ensure comfort"
+
+#: templates/faq/shoeSize.html:43
+msgid ""
+"Consider Growth: Kids' feet grow quickly, so it’s a good idea to leave a "
+"little extra room (about one centimeter) for growth"
+msgstr ""
+"Consider Growth: Kids' feet grow quickly, so it’s a good idea to leave a "
+"little extra room (about one centimeter) for growth"
+
+#: templates/faq/shoeSize.html:44
+msgid ""
+"Try Shoes On: If possible, have your child try on the shoes and walk "
+"around to ensure they feel comfortable"
+msgstr ""
+"Try Shoes On: If possible, have your child try on the shoes and walk "
+"around to ensure they feel comfortable"
+
+#: templates/faq/shoeSize.html:45
+msgid ""
+"The shoes should have enough room at the toes and fit snugly around the "
+"heels"
+msgstr ""
+"The shoes should have enough room at the toes and fit snugly around the "
+"heels"
+
+#: templates/faq/shoeSize.html:47
+msgid "Example"
+msgstr "Example"
+
+#: templates/faq/shoeSize.html:49
+msgid ""
+"If your child’s foot length is 18 cm, look for a shoe size with an insole"
+" length of around 18.5 - 19 cm"
+msgstr ""
+"If your child’s foot length is 18 cm, look for a shoe size with an insole"
+" length of around 18.5 - 19 cm"
+
+#: templates/faq/shoeSize.html:51
+msgid ""
+"By following these steps, you can confidently select the correct shoe "
+"size for your child, ensuring they have\n"
+"        comfortable and well fitting shoes. Happy Shopping!"
+msgstr ""
+"By following these steps, you can confidently select the correct shoe "
+"size for your child, ensuring they have\n"
+"        comfortable and well fitting shoes. Happy Shopping!"
+
+#: templates/mail/contactMessage.html:6
+msgid "Contact Us Kids Fashion Store"
+msgstr "Contact Us Kids Fashion Store"
+
+#: templates/mail/contactMessage.html:79
+msgid "New contact request"
+msgstr "New contact request"
+
+#: templates/mail/contactMessage.html:80
+msgid "From"
+msgstr "From"
+
+#: templates/mail/newsletterSignup.html:88
+msgid "Hello there"
+msgstr "Hello there"
+
+#: templates/mail/newsletterSignup.html:89
+msgid "Thanks for signing up to our newsletter!"
+msgstr "Thanks for signing up to our newsletter!"
+
+#: templates/mail/newsletterSignup.html:90
+msgid "You'll be hearing from us every once in a while."
+msgstr "You'll be hearing from us every once in a while."
+
+#: templates/mail/newsletterSignup.html:91
+msgid "Unsubscribe"
+msgstr "Unsubscribe"
+
+#: templates/mail/passwordReset.html:86
+msgid "Password Reset"
+msgstr "Password Reset"
+
+#: templates/mail/passwordReset.html:87
+msgid "The code to reset your password is:"
+msgstr "The code to reset your password is:"
+
+#: templates/mail/passwordReset.html:89
+msgid "It is valid for one hour and will exprite afterwards"
+msgstr "It is valid for one hour and will exprite afterwards"
+
+#: templates/mail/passwordReset.html:90
+msgid ""
+"You should <b>never</b> share this code with anyone, even if the person "
+"says they are from our store."
+msgstr ""
+"You should <b>never</b> share this code with anyone, even if the person "
+"says they are from our store."
+
+#: templates/mail/passwordReset.html:91
+msgid "If you did not request password reset you can safely ignore this message."
+msgstr "If you did not request password reset you can safely ignore this message."
+
+#: templates/mail/saleFavorite.html:86
+msgid "One of your favorites is on sale!"
+msgstr "One of your favorites is on sale!"
+
+#: templates/mail/saleFavorite.html:87
+msgid "is on sale for only"
+msgstr "is on sale for only"
+
+#: templates/mail/saleFavorite.html:88
+msgid "What are you waiting for? Check it out"
+msgstr "What are you waiting for? Check it out"
+
+#: templates/mail/saleFavorite.html:88 templates/mail/welcome.html:80
+msgid "here"
+msgstr "here"
+
+#: templates/mail/welcome.html:79
+msgid "Welcome to our store!"
+msgstr "Welcome to our store!"
+
+#: templates/mail/welcome.html:80
+msgid "Thank you for signing up. You can now log in to your new account"
+msgstr "Thank you for signing up. You can now log in to your new account"
+
+#: templates/mail/welcome.html:81
+msgid "Happy shopping!"
+msgstr "Happy shopping!"
 
 #: templates/partials/card.html:37 templates/partials/card.html:38
 msgid "₴"
@@ -714,10 +1370,6 @@ msgstr "₴"
 #: templates/partials/card.html:53
 msgid "View details"
 msgstr "View details"
-
-#: templates/partials/footer.html:3
-msgid "Information"
-msgstr "Information"
 
 #: templates/partials/footer.html:4
 msgid "Foot measurement"

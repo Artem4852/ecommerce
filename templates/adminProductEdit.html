@@ -1,18 +1,18 @@
 <!DOCTYPE html>
-<html lang="{{ get_locale() }}">
+<html lang="{{ get_locale() }}" class="{{ get_locale() }}">
 {% include 'partials/head.html' %}
 
 <body>
     {% include 'partials/header.html' %}
     <section id="adminProduct">
-        <h2>{% if pageType == 'edit' %}Edit{% else %}Add{% endif %} product</h2>
+        <h2>{% if pageType == 'edit' %}{{ _('Edit') }}{% else %}{{ _('Add') }}{% endif %} {{ _('product') }}</h2>
         <a class="back" href="/admin/products">
             <svg xmlns="http://www.w3.org/2000/svg" width="12" height="21" viewBox="0 0 12 21" fill="none">
                 <path
                     d="M10.1911 1.74921e-06L12 1.86375L3.61783 10.5L12 19.1362L10.1911 21L-9.8941e-07 10.5L10.1911 1.74921e-06Z"
                     fill="#E352BA" />
             </svg>
-            Back
+            {{ _('Back') }}
         </a>
         {% set sortedSizes = product.sizes | sort %}
         {% set sortedSizesCm = product.sizesCm | dictsort %}
@@ -20,70 +20,70 @@
         {% set sortedWarehouses = product.warehouses | dictsort %}
         <div class="row">
             <div class="col">
-                <h4>Information</h4>
+                <h4>{{ _('Information') }}</h4>
                 <div class="input">
-                    <label for="inputProductId">Product id</label>
+                    <label for="inputProductId">{{ _('Product id') }}</label>
                     <input type="number" value="{{ product.id }}" disabled>
                 </div>
                 <div class="input">
-                    <label for="inputTags">Tags</label>
+                    <label for="inputTags">{{ _('Tags') }}</label>
                     <input id="inputTags" type="text" value="{{ product.tags[0] }}{% for tag in product.tags[1:] %}, {{ tag }}{% endfor %}" placeholder="featured, sale">
                 </div>
                 <div class="input">
-                    <label for="inputCategory">Category</label>
-                    <input id="inputCategory" type="text" value="{{ product.category }}" placeholder="Sandals">
+                    <label for="inputCategory">{{ _('Category') }}</label>
+                    <input id="inputCategory" type="text" value="{{ product.category }}" placeholder="{{ _('Sandals') }}">
                 </div>
                 <div class="input">
-                    <label for="inputInstagramUrl">Instagram Link</label>
+                    <label for="inputInstagramUrl">{{ _('Instagram Link') }}</label>
                     <input type="text" id="inputInstagramUrl" placeholder="https://www.instagram.com/p/C7MCwOjtCvC/?img_index=1">
                 </div>
                 <div class="input">
-                    <label for="inputBrand">Brand</label>
+                    <label for="inputBrand">{{ _('Brand') }}</label>
                     <input id="inputBrand" type="text" value="{{ product.brand }}" placeholder="Geox">
                 </div>
                 <div class="input">
-                    <label for="inputPrice">Original Price</label>
+                    <label for="inputPrice">{{ _('Original Price') }}</label>
                     <input id="inputPrice" type="text" value="{{ product.prevPrice }}" placeholder="2999">
                 </div>
                 <div class="input">
-                    <label for="inputDiscount">Discount</label>
+                    <label for="inputDiscount">{{ _('Discount') }}</label>
                     <input id="inputDiscount" type="text" value="{{ product.discount }}%" placeholder="30%">
                 </div>
                 <div class="input">
-                    <label for="inputSizes">Sizes</label>
+                    <label for="inputSizes">{{ _('Sizes') }}</label>
                     <input id="inputSizes" type="text" value="{{ sortedSizes[0] }}{% for size in sortedSizes[1:] %}, {{ size }}{% endfor %}" placeholder="33, 34, 35">
                 </div>
                 <div class="input">
-                    <label for="inputSeason">Season</label>
-                    <input id="inputSeason" type="text" value="{{ product.additionalInformation.season }}" placeholder="Summer/Autumn">
+                    <label for="inputSeason">{{ _('Season') }}</label>
+                    <input id="inputSeason" type="text" value="{{ product.additionalInformation.season }}" placeholder="{{ _('Summer/Autumn') }}">
                 </div>
                 <div class="input">
-                    <label for="inputMaterialOuter">Outer material</label>
-                    <input id="inputMaterialOuter" type="text" value="{{ product.additionalInformation.outerMaterial }}" placeholder="Leather">
+                    <label for="inputMaterialOuter">{{ _('Outer material') }}</label>
+                    <input id="inputMaterialOuter" type="text" value="{{ product.additionalInformation.outerMaterial }}" placeholder="{{ _('Leather') }}">
                 </div>
                 <div class="input">
-                    <label for="inputMaterialInner">Inner material</label>
-                    <input id="inputMaterialInner" type="text" value="{{ product.additionalInformation.innerMaterial }}" placeholder="Fur">
+                    <label for="inputMaterialInner">{{ _('Inner material') }}</label>
+                    <input id="inputMaterialInner" type="text" value="{{ product.additionalInformation.innerMaterial }}" placeholder="{{ _('Fur') }}">
                 </div>
                 <div class="input">
-                    <label for="inputMaterialInsole">Insole material</label>
-                    <input id="inputMaterialInsole" type="text" value="{{ product.additionalInformation.insoleMaterial }}" placeholder="Leather">
+                    <label for="inputMaterialInsole">{{ _('Insole material') }}</label>
+                    <input id="inputMaterialInsole" type="text" value="{{ product.additionalInformation.insoleMaterial }}" placeholder="{{ _('Leather') }}">
                 </div>
                 <div class="input">
-                    <label for="inputInsoleLengths">Insole lengths</label>
-                    <input id="inputInsoleLengths" type="text" value="{% for key, value in sortedSizesCm %}{{ key }} ({{ value }} cm){% if not loop.last %}, {% endif %}{% endfor %}" placeholder="33 (20.5 cm), 34 (21 cm), 35 (21.5 cm)">
+                    <label for="inputInsoleLengths">{{ _('Insole lengths') }}</label>
+                    <input id="inputInsoleLengths" type="text" value="{% for key, value in sortedSizesCm %}{{ key }} ({{ value }} cm){% if not loop.last %}, {% endif %}{% endfor %}" placeholder="33 (20.5 {{ _('cm') }}), 34 (21 {{ _('cm') }}), 35 (21.5 {{ _('cm') }})">
                 </div>
                 <div class="input">
-                    <label for="inputQuantitiesLeft">Quantities</label>
+                    <label for="inputQuantitiesLeft">{{ _('Quantities') }}</label>
                     <input id="inputQuantitiesLeft" type="text" value="{% for key, value in sortedMaxQuantities %}{{ key }} ({{ value }}){% if not loop.last %}, {% endif %}{% endfor %}" placeholder="33 (1), 34 (2), 35 (2)">
                 </div>
                 <div class="input">
-                    <label for="inputWarehouses">Warehouses</label>
+                    <label for="inputWarehouses">{{ _('Warehouses') }}</label>
                     <input id="inputWarehouses" type="text" value="{% for key, value in sortedWarehouses %}{{ key }} ({{ value }}){% if not loop.last %}, {% endif %}{% endfor %}" placeholder="33 (Kyiv), 34 (Ternopil), 35 (Odesa)">
                 </div>
             </div>
             <div class="col">
-                <h4>Images</h4>
+                <h4>{{ _('Images') }}</h4>
                 <div class="images" id="images">
                     {% for img in product.images %}
                     <div class="imageWrapper" id="image{{ img }}" data-index="{{ product.images.index(img) }}">
@@ -124,8 +124,8 @@
             </div>
         </div>
         <div class="row buttons">
-            <button id="buttonUpdateProduct" onclick="updateProduct()">{% if pageType == 'edit' %}Update{% else %}Add{% endif %} product</button>
-            <button id="buttonArchiveProduct" onclick="{% if 'archived' in product['tags'] %}un{% endif %}archiveProduct()">{% if 'archived' in product['tags'] %}Una{% else %}A{% endif %}rchive product</button>
+            <button id="buttonUpdateProduct" onclick="updateProduct()">{% if pageType == 'edit' %}{{ _('Update') }}{% else %}{{ _('Add') }}{% endif %} {{ _('product') }}</button>
+            <button id="buttonArchiveProduct" onclick="{% if 'archived' in product['tags'] %}un{% endif %}archiveProduct()">{% if 'archived' in product['tags'] %}{{ _('Unarchive') }}{% else %}{{ _('Archive') }}{% endif %} {{ _('product') }}</button>
         </div>
     </section>
     <svg id="deleteIcon" class="arrow delete" xmlns="http://www.w3.org/2000/svg" width="36" height="35"
