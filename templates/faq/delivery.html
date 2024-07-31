@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ get_locale() }}" class="{{ get_locale() }}">
 {% include 'partials/head.html' %}
 
 <body>
@@ -29,7 +29,7 @@
         incomplete addresses provided by the customer. Review your shipping address carefully before submitting your order.') }}</p>
         <h4>{{ _('Shipping Restrictions') }}</h4>
         <p>{{ _('We reserve the right to refuse orders due to shipping restrictions imposed by our carriers.') }}</p>
-        <p>{{ _('For any further questions about our shipping policy, feel free to contact us at') }} <a href="mailto:{{ _('contactemail') }}">{{ _('contactemail') }}</a> or <a href="tel:+{{ _('contactphone') }}">{{ _('contactphone') }}</a>.{{ _('Happy Shopping!') }}</p>
+        <p>{{ _('For any further questions about our shipping policy, feel free to contact us at') }} <a href="mailto:{{ _('contactemail') }}">{{ _('contactemail') }}</a> or <a href="tel:+{{ _('contactphone') }}">{{ _('contactphone') }}</a>. {{ _('Happy Shopping!') }}</p>
     </section>
     {% include 'partials/newsletter.html' %}
     {% include 'partials/footer.html' %}

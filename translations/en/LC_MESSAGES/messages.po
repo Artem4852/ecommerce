@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-07-31 14:55+0200\n"
+"POT-Creation-Date: 2024-07-31 17:33+0200\n"
 "PO-Revision-Date: 2024-07-30 18:44+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -893,8 +893,8 @@ msgid ""
 "Use the tracking number provided in your shipping confirmation email to "
 "track your package with the help of Nova Post app."
 msgstr ""
-"Use the tracking number provided in your shipping confirmation email to "
-"track your package with the help of Nova Post app."
+"Use the tracking number provided in your shipping confirmation to track "
+"your package with the help of Nova Post app."
 
 #: templates/faq/delivery.html:23
 msgid "Customs and Duties"
@@ -1086,12 +1086,13 @@ msgstr ""
 "business days."
 
 #: templates/faq/replacementsReturns.html:24
+#, fuzzy
 msgid ""
 "Return Shipping: Shipping costs for returns are nonRefundable. The cost "
 "of return shipping will be deducted from your refund if you receive a "
 "replacement."
 msgstr ""
-"Return Shipping: Shipping costs for returns are nonRefundable. The cost "
+"Return Shipping: Shipping costs for returns are non-refundable. The cost "
 "of return shipping will be deducted from your refund if you receive a "
 "replacement."
 
@@ -1434,4 +1435,12 @@ msgstr "Be the first to find out about the best deals"
 #: templates/partials/newsletter.html:5
 msgid "Sign up for our newsletter"
 msgstr "Sign up for our newsletter"
+
+#: templates/partials/newsletter.html:8
+msgid "your.email@example.com"
+msgstr "your.email@example.com"
+
+#: templates/partials/newsletter.html:9
+msgid "Sign me up"
+msgstr "Sign me up"
 

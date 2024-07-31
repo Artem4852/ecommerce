@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-07-31 14:55+0200\n"
+"POT-Creation-Date: 2024-07-31 17:33+0200\n"
 "PO-Revision-Date: 2024-07-30 18:44+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: uk\n"
@@ -193,45 +193,43 @@ msgstr "Місто"
 
 #: templates/adminOrder.html:31
 msgid "Delivery method"
-msgstr ""
+msgstr "Спосіб доставки"
 
 #: templates/adminOrder.html:31
 msgid "Pick up from Post Office"
-msgstr ""
+msgstr "На відділення Нової Пошти"
 
 #: templates/adminOrder.html:31
 msgid "Address delivery"
-msgstr ""
+msgstr "Адресна доставка"
 
 #: templates/adminOrder.html:32
-#, fuzzy
 msgid "Tracking number"
-msgstr "Артикул"
+msgstr "ТТН"
 
 #: templates/adminOrder.html:34
 msgid "Post Office branch"
-msgstr ""
+msgstr "Відділення"
 
 #: templates/adminOrder.html:36
 msgid "Address"
-msgstr ""
+msgstr "Адреса"
 
 #: templates/adminOrder.html:37
-#, fuzzy
 msgid "Postal code"
-msgstr "Код скидання"
+msgstr "Поштовий індекс"
 
 #: templates/adminOrder.html:39
 msgid "Payment type"
-msgstr ""
+msgstr "Тип оплати"
 
 #: templates/adminOrder.html:39
 msgid "Full Prepayment"
-msgstr ""
+msgstr "Повна передплата"
 
 #: templates/adminOrder.html:39
 msgid "Post Payment"
-msgstr ""
+msgstr "Післяплата"
 
 #: templates/adminOrder.html:41
 #, fuzzy
@@ -256,11 +254,11 @@ msgstr "Звʼязатися"
 
 #: templates/adminOrder.html:57
 msgid "Processed"
-msgstr ""
+msgstr "Опрацьовано"
 
 #: templates/adminOrder.html:61
 msgid "Shipped"
-msgstr ""
+msgstr "Відправлено"
 
 #: templates/adminOrder.html:73
 #, fuzzy
@@ -269,7 +267,7 @@ msgstr "Код скидання"
 
 #: templates/adminOrders.html:8
 msgid "Orders Panel"
-msgstr ""
+msgstr "Панель замовлень"
 
 #: templates/adminOrders.html:24 templates/adminProducts.html:21
 #: templates/adminProducts.html:35 templates/adminProducts.html:49
@@ -280,19 +278,19 @@ msgstr "Будь-який"
 
 #: templates/adminOrders.html:65
 msgid "Warehouse"
-msgstr ""
+msgstr "Склад"
 
 #: templates/adminOrders.html:68
 msgid "To"
-msgstr ""
+msgstr "В"
 
 #: templates/adminOrders.html:71
 msgid "Type: Pick up from Post Office"
-msgstr ""
+msgstr "Тип: відділення Нової Пошти"
 
 #: templates/adminOrders.html:73
 msgid "Type: Address Delivery"
-msgstr ""
+msgstr "Тип: Адресна доставка"
 
 #: templates/adminOrders.html:76 templates/product.html:128
 #: templates/product.html:129
@@ -316,27 +314,24 @@ msgstr "Продукту не знайдено. Спробуйте змінит�
 
 #: templates/adminProductEdit.html:8
 msgid "Edit"
-msgstr ""
+msgstr "Змінити"
 
 #: templates/adminProductEdit.html:8 templates/adminProductEdit.html:127
-#, fuzzy
 msgid "Add"
-msgstr "та"
+msgstr "Додати"
 
 #: templates/adminProductEdit.html:8 templates/adminProductEdit.html:127
 #: templates/adminProductEdit.html:128
-#, fuzzy
 msgid "product"
-msgstr "Змінити продукт"
+msgstr "товар"
 
 #: templates/adminProductEdit.html:23 templates/partials/footer.html:3
 msgid "Information"
 msgstr "Інформація"
 
 #: templates/adminProductEdit.html:29
-#, fuzzy
 msgid "Tags"
-msgstr "Звʼязатися"
+msgstr "Теги"
 
 #: templates/adminProductEdit.html:33 templates/adminProducts.html:33
 #: templates/shop.html:25
@@ -344,14 +339,12 @@ msgid "Category"
 msgstr "Категорія"
 
 #: templates/adminProductEdit.html:34
-#, fuzzy
 msgid "Sandals"
-msgstr "Нові пропозиції"
+msgstr "Sandals"
 
 #: templates/adminProductEdit.html:37
-#, fuzzy
 msgid "Instagram Link"
-msgstr "Імʼя користувача в Instagram"
+msgstr "Посилання Instagram"
 
 #: templates/adminProductEdit.html:41 templates/adminProducts.html:19
 #: templates/partials/card.html:28 templates/product.html:42
@@ -361,88 +354,79 @@ msgstr "Бренд"
 
 #: templates/adminProductEdit.html:45
 msgid "Original Price"
-msgstr ""
+msgstr "Ціна без знижки"
 
 #: templates/adminProductEdit.html:49
 msgid "Discount"
-msgstr ""
+msgstr "Знижка"
 
 #: templates/adminProductEdit.html:53 templates/partials/card.html:31
 msgid "Sizes"
 msgstr "Розміри"
 
 #: templates/adminProductEdit.html:57
-#, fuzzy
 msgid "Season"
-msgstr "Читати"
+msgstr "Сезон"
 
 #: templates/adminProductEdit.html:58
 msgid "Summer/Autumn"
-msgstr ""
+msgstr "Summer/Autumn"
 
 #: templates/adminProductEdit.html:61
-#, fuzzy
 msgid "Outer material"
-msgstr "Ваша е-пошта"
+msgstr "Матеріал - верх"
 
 #: templates/adminProductEdit.html:62 templates/adminProductEdit.html:70
 msgid "Leather"
-msgstr ""
+msgstr "Leather"
 
 #: templates/adminProductEdit.html:65
 msgid "Inner material"
-msgstr ""
+msgstr "Матеріал - всередині"
 
 #: templates/adminProductEdit.html:66
 msgid "Fur"
-msgstr ""
+msgstr "Fur"
 
 #: templates/adminProductEdit.html:69
 msgid "Insole material"
-msgstr ""
+msgstr "Матеріал - устілка"
 
 #: templates/adminProductEdit.html:73
-#, fuzzy
 msgid "Insole lengths"
-msgstr "Розміри (довжини устілок)"
+msgstr "Довжини устілок"
 
 #: templates/adminProductEdit.html:74 templates/product.html:137
 msgid "cm"
 msgstr "см"
 
 #: templates/adminProductEdit.html:77
-#, fuzzy
 msgid "Quantities"
-msgstr "Кількість"
+msgstr "Кількості"
 
 #: templates/adminProductEdit.html:81
 msgid "Warehouses"
-msgstr ""
+msgstr "Склади"
 
 #: templates/adminProductEdit.html:86
-#, fuzzy
 msgid "Images"
-msgstr "Напишіть нам"
+msgstr "Зображення"
 
 #: templates/adminProductEdit.html:127
-#, fuzzy
 msgid "Update"
-msgstr "Сторінка"
+msgstr "Оновити"
 
 #: templates/adminProductEdit.html:128
-#, fuzzy
 msgid "Unarchive"
-msgstr "Заархівовано"
+msgstr "Розархівувати"
 
 #: templates/adminProductEdit.html:128
-#, fuzzy
 msgid "Archive"
-msgstr "Заархівовано"
+msgstr "Заархівувати"
 
 #: templates/adminProducts.html:8
-#, fuzzy
 msgid "Products Panel"
-msgstr "Змінити продукт"
+msgstr "Панель Товарів"
 
 #: templates/adminProducts.html:47 templates/shop.html:39
 msgid "Shoe size"
@@ -450,7 +434,7 @@ msgstr "Розмір"
 
 #: templates/adminProducts.html:61
 msgid "Tag"
-msgstr ""
+msgstr "Тег"
 
 #: templates/adminProducts.html:75 templates/product.html:41
 msgid "Product number"
@@ -849,18 +833,19 @@ msgstr "Оновити пароль"
 
 #: templates/faq/delivery.html:9
 msgid "Information about the delivery"
-msgstr ""
+msgstr "Інформація про доставку"
 
 #: templates/faq/delivery.html:10
 msgid ""
 "Ensuring your order arrives safely and promptly is our top priority. "
 "Follow these steps to understand our delivery process:"
 msgstr ""
+"Забезпечити безпечне та швидке надходження вашого замовлення є нашим "
+"пріоритетом. Перегляньту ці пункти, щоб зрозуміти наш процес доставки:"
 
 #: templates/faq/delivery.html:11
-#, fuzzy
 msgid "Shipping Areas"
-msgstr "Політика доставки"
+msgstr "Зони доставки"
 
 #: templates/faq/delivery.html:12
 msgid ""
@@ -868,11 +853,13 @@ msgid ""
 "through Nova Post (Нова Пошта). Availability,\n"
 "        delivery times, and costs vary based on the destination."
 msgstr ""
+"Ми здійснюємо доставку по Україні та вибраним країнам Європи Новою "
+"Поштою. Доступність,\n"
+"        час доставки, та вартість залежать від пункту призначення."
 
 #: templates/faq/delivery.html:14
-#, fuzzy
 msgid "Shipping Times"
-msgstr "Політика доставки"
+msgstr "Час доставки"
 
 #: templates/faq/delivery.html:15
 msgid ""
@@ -880,11 +867,14 @@ msgid ""
 "during checkout. Note: Delivery times are estimates and can be affected "
 "by factors such as customs, weather, and holidays."
 msgstr ""
+"По Україні: від 1 до 3 робочих днів. По Європі: залежить від країни, "
+"вказується під час оформлення замовлення. Примітка: Терміни доставки "
+"приблизні та можуть залежати від таких факторів, як митниці, погоди, та "
+"свят."
 
 #: templates/faq/delivery.html:16 templates/faq/replacementsReturns.html:23
-#, fuzzy
 msgid "Shipping Costs"
-msgstr "Політика доставки"
+msgstr "Вартість доставки"
 
 #: templates/faq/delivery.html:17
 msgid ""
@@ -892,31 +882,38 @@ msgid ""
 "during checkout. Customers are responsible\n"
 "        for all shipping costs added to the total order amount."
 msgstr ""
+"Вираховується зважаючи на адресу доставки, вагу та розмір посилки. "
+"Відображається під час оформлення замовлення. Клієнт несе "
+"відповідальність\n"
+"        за всі витрати на доставку, додані до загальної суми замовлення.\""
 
 #: templates/faq/delivery.html:19
 msgid "Order Processing"
-msgstr ""
+msgstr "Оброблення замовлень"
 
 #: templates/faq/delivery.html:20
 msgid ""
 "Orders are processed and shipped within 1 to 2 business days after "
 "payment confirmation."
 msgstr ""
+"Замовлення обробляються та відправляються впродовж 1-2 робових днів після"
+" підтвердження оплати."
 
 #: templates/faq/delivery.html:21
-#, fuzzy
 msgid "Tracking Information"
-msgstr "Контактна інформація"
+msgstr "Відслідковування"
 
 #: templates/faq/delivery.html:22
 msgid ""
 "Use the tracking number provided in your shipping confirmation email to "
 "track your package with the help of Nova Post app."
 msgstr ""
+"Використовуйте ТТН, що ви отримаєте після опрацювання замовлення, щоб "
+"відслідковувати вашу посилку в застосунку Нова Пошта."
 
 #: templates/faq/delivery.html:23
 msgid "Customs and Duties"
-msgstr ""
+msgstr "Митниці"
 
 #: templates/faq/delivery.html:24
 msgid ""
@@ -924,38 +921,41 @@ msgid ""
 "These charges are the recipient's responsibility and will be collected "
 "upon delivery by the local customs authority."
 msgstr ""
+"Для міжнародних відправлень можуть стягуватися митні збори та податки. Ці"
+" збори є відповідальністю одержувача та стягуються місцевими митними "
+"органами після доставки."
 
 #: templates/faq/delivery.html:25
 msgid "Lost or Damaged Shipments"
-msgstr ""
+msgstr "Загублені або пошкоджені відправлення"
 
 #: templates/faq/delivery.html:26
 msgid ""
 "We are not responsible for lost or damaged shipments. Contact us "
 "immediately at"
 msgstr ""
+"Ми не відповідаємо за загублені або пошкоджені відправлення. Напишіть нам"
+" на "
 
 #: templates/faq/delivery.html:26 templates/faq/delivery.html:32
-#, fuzzy
 msgid "contactemail"
-msgstr "Контактна інформація"
+msgstr "contact@kidsfashionstore.com.ua"
 
 #: templates/faq/delivery.html:26
 msgid "or "
-msgstr ""
+msgstr "або "
 
 #: templates/faq/delivery.html:26 templates/faq/delivery.html:32
-#, fuzzy
 msgid "contactphone"
-msgstr "Звʼязатися"
+msgstr "+380 68 901 4872"
 
 #: templates/faq/delivery.html:26
 msgid " for assistance in filing a claim with the shipping carrier."
-msgstr ""
+msgstr " для допомоги в оформленні скарги до перевізника."
 
 #: templates/faq/delivery.html:27
 msgid "Address Accuracy"
-msgstr ""
+msgstr "Точність адреси"
 
 #: templates/faq/delivery.html:28
 msgid ""
@@ -964,27 +964,34 @@ msgid ""
 "        incomplete addresses provided by the customer. Review your "
 "shipping address carefully before submitting your order."
 msgstr ""
+"Забезпечуйте точну та повну інформацію про доставку. Ми не несемо "
+"відповідальності за замовлення, доставлені на неправильні або неповні "
+"адреси, надані клієнтом. Уважно перевіряйте свою адресу доставки, перш "
+"ніж підтверджувати замовлення.\""
 
 #: templates/faq/delivery.html:30
-#, fuzzy
 msgid "Shipping Restrictions"
-msgstr "Політика доставки"
+msgstr "Обмеження доставки"
 
 #: templates/faq/delivery.html:31
 msgid ""
 "We reserve the right to refuse orders due to shipping restrictions "
 "imposed by our carriers."
 msgstr ""
+"Ми залишаємо за собою право відхиляти замовлення через обмеження доставки"
+" створені нашими перевізниками."
 
 #: templates/faq/delivery.html:32
 msgid ""
 "For any further questions about our shipping policy, feel free to contact"
 " us at"
 msgstr ""
+"Якщо в вас є будь-які інші питання щодо нашої політики доставки, не "
+"соромтеся писати нам на"
 
 #: templates/faq/delivery.html:32
 msgid "Happy Shopping!"
-msgstr ""
+msgstr "Гарних покупок!"
 
 #: templates/faq/replacementsReturns.html:9
 #, fuzzy
@@ -1241,85 +1248,87 @@ msgstr ""
 
 #: templates/mail/contactMessage.html:6
 msgid "Contact Us Kids Fashion Store"
-msgstr ""
+msgstr "Звʼязатись - Kids Fashion Store"
 
 #: templates/mail/contactMessage.html:79
-#, fuzzy
 msgid "New contact request"
-msgstr "Звʼязатися"
+msgstr "Новий запит"
 
 #: templates/mail/contactMessage.html:80
 msgid "From"
-msgstr ""
+msgstr "Від"
 
 #: templates/mail/newsletterSignup.html:88
 msgid "Hello there"
-msgstr ""
+msgstr "Привіт"
 
 #: templates/mail/newsletterSignup.html:89
-#, fuzzy
 msgid "Thanks for signing up to our newsletter!"
-msgstr "Підпишіться на нашу розсилку"
+msgstr "Дякуємо, що підписались на нашу розлиску!"
 
 #: templates/mail/newsletterSignup.html:90
 msgid "You'll be hearing from us every once in a while."
-msgstr ""
+msgstr "Ви отримуватимете повідомлення від нас час від часу."
 
 #: templates/mail/newsletterSignup.html:91
-#, fuzzy
 msgid "Unsubscribe"
-msgstr "Вашу підписку скасовано"
+msgstr "Відписатись"
 
 #: templates/mail/passwordReset.html:86
-#, fuzzy
 msgid "Password Reset"
-msgstr "Пароль"
+msgstr "Скидання паролю"
 
 #: templates/mail/passwordReset.html:87
 msgid "The code to reset your password is:"
-msgstr ""
+msgstr "Код для скидання вашого паролю:"
 
 #: templates/mail/passwordReset.html:89
 msgid "It is valid for one hour and will exprite afterwards"
-msgstr ""
+msgstr "Він дійсний протягом однієї години."
 
 #: templates/mail/passwordReset.html:90
 msgid ""
 "You should <b>never</b> share this code with anyone, even if the person "
 "says they are from our store."
 msgstr ""
+"Ви <b>ніколи</b> не повинні повідомляти цей код нікому, навіть якщо особа"
+" каже, що вона з нашого магазину."
 
 #: templates/mail/passwordReset.html:91
 msgid "If you did not request password reset you can safely ignore this message."
 msgstr ""
+"Якщо ви не надсилали запит на скидання пароля, ви можете спокійно "
+"проігнорувати це повідомлення."
 
 #: templates/mail/saleFavorite.html:86
 msgid "One of your favorites is on sale!"
-msgstr ""
+msgstr "На одну з ваших улюблених пар знижка!"
 
 #: templates/mail/saleFavorite.html:87
 msgid "is on sale for only"
-msgstr ""
+msgstr "можна купити всього за"
 
 #: templates/mail/saleFavorite.html:88
 msgid "What are you waiting for? Check it out"
-msgstr ""
+msgstr "Чого ж ви чекаєте? Перегляньте її"
 
 #: templates/mail/saleFavorite.html:88 templates/mail/welcome.html:80
 msgid "here"
-msgstr ""
+msgstr "тут"
 
 #: templates/mail/welcome.html:79
 msgid "Welcome to our store!"
-msgstr ""
+msgstr "Ласкаво просимо до нашого магазину!"
 
 #: templates/mail/welcome.html:80
 msgid "Thank you for signing up. You can now log in to your new account"
 msgstr ""
+"Дякуємо за реєстрацію. Тепер ви можете увійти до свого нового облікового "
+"запису"
 
 #: templates/mail/welcome.html:81
 msgid "Happy shopping!"
-msgstr ""
+msgstr "Гарних покупок!"
 
 #: templates/partials/card.html:37 templates/partials/card.html:38
 msgid "₴"
@@ -1392,4 +1401,12 @@ msgstr "Дізнавайтесь першими про найкращі проп
 #: templates/partials/newsletter.html:5
 msgid "Sign up for our newsletter"
 msgstr "Підпишіться на нашу розсилку"
+
+#: templates/partials/newsletter.html:8
+msgid "your.email@example.com"
+msgstr "your.email@example.com"
+
+#: templates/partials/newsletter.html:9
+msgid "Sign me up"
+msgstr "Підписатись"
 

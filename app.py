@@ -17,7 +17,8 @@ characters = ascii_letters + digits
 dotenv.load_dotenv()
 
 def get_locale():
-    return request.accept_languages.best_match(['en'])
+    return 'uk'
+    # return request.accept_languages.best_match(['en', 'uk'])
 
 app = Flask(__name__)
 app.secret_key = os.getenv('SECRET_KEY')

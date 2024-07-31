@@ -51,7 +51,7 @@ function makeGraph(id, dict, type) {
 // const regionDistribution = {{ regionDistribution | tojson }};
 // const cityDistribution = {{ cityDistribution | tojson }};
 
-console.log(utmSources);
+// console.log(utmSources);
 
 document.addEventListener('DOMContentLoaded', (event) => {
     makeGraph('requestsChart', dailyRequests, 'bar');
