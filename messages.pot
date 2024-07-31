@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-07-30 20:50+0200\n"
+"POT-Creation-Date: 2024-07-31 09:34+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -27,10 +27,14 @@ msgid "Get in touch"
 msgstr ""
 
 #: templates/contact.html:13 templates/partials/footer.html:18
+#: templates/product.html:122 templates/settings.html:32
+#: templates/signup.html:23
 msgid "Phone number"
 msgstr ""
 
-#: templates/contact.html:14 templates/partials/footer.html:20
+#: templates/contact.html:14 templates/forgotPassword.html:15
+#: templates/login.html:15 templates/partials/footer.html:20
+#: templates/settings.html:28 templates/signup.html:15
 msgid "Email"
 msgstr ""
 
@@ -73,6 +77,31 @@ msgstr ""
 msgid "Read on"
 msgstr ""
 
+#: templates/favorites.html:8 templates/partials/header.html:26
+#: templates/partials/header.html:56
+msgid "Favorites"
+msgstr ""
+
+#: templates/favorites.html:18 templates/shop.html:100
+msgid "Page"
+msgstr ""
+
+#: templates/favorites.html:58
+msgid "No products in favorites."
+msgstr ""
+
+#: templates/forgotPassword.html:7 templates/login.html:26
+msgid "Forgot password?"
+msgstr ""
+
+#: templates/forgotPassword.html:17
+msgid "We will send you a code that can be used to reset your password."
+msgstr ""
+
+#: templates/forgotPassword.html:18
+msgid "Send reset code"
+msgstr ""
+
 #: templates/index.html:16
 msgid "The biggest variety of brand shoes in Ukraine"
 msgstr ""
@@ -101,12 +130,221 @@ msgstr ""
 msgid "View more"
 msgstr ""
 
-#: templates/shop.html:8
-msgid "Catalogue"
+#: templates/login.html:7 templates/login.html:27
+#: templates/partials/header.html:19 templates/partials/header.html:50
+#: templates/signup.html:44
+msgid "Log in"
 msgstr ""
 
-#: templates/partials/card.html:28 templates/shop.html:11
+#: templates/login.html:23 templates/signup.html:31
+#: templates/updatePassword.html:23
+msgid "Password"
+msgstr ""
+
+#: templates/login.html:28
+msgid "Don't have an account?"
+msgstr ""
+
+#: templates/login.html:28
+msgid "Sing up"
+msgstr ""
+
+#: templates/login.html:28 templates/signup.html:44
+msgid "instead"
+msgstr ""
+
+#: templates/newsletterUnsubscribe.html:7
+msgid "You were unsubscribed"
+msgstr ""
+
+#: templates/newsletterUnsubscribe.html:8
+msgid "We are sorry to see you go"
+msgstr ""
+
+#: templates/newsletterUnsubscribe.html:9
+msgid "Go to homepage"
+msgstr ""
+
+#: templates/product.html:41
+msgid "Product number"
+msgstr ""
+
+#: templates/partials/card.html:28 templates/product.html:42
+#: templates/shop.html:11
 msgid "Brand"
+msgstr ""
+
+#: templates/product.html:43
+msgid "Price"
+msgstr ""
+
+#: templates/product.html:43
+msgid "uah"
+msgstr ""
+
+#: templates/partials/card.html:29 templates/product.html:45
+#: templates/product.html:53
+msgid "Archived"
+msgstr ""
+
+#: templates/product.html:47 templates/product.html:55
+msgid "In stock"
+msgstr ""
+
+#: templates/partials/card.html:33 templates/product.html:49
+#: templates/product.html:57
+msgid "Not in stock"
+msgstr ""
+
+#: templates/product.html:62
+msgid "Size"
+msgstr ""
+
+#: templates/product.html:78
+msgid "Quantity"
+msgstr ""
+
+#: templates/product.html:101
+msgid "Edit product"
+msgstr ""
+
+#: templates/product.html:105
+msgid "How can we contact you?"
+msgstr ""
+
+#: templates/product.html:107
+msgid "Messenger"
+msgstr ""
+
+#: templates/product.html:124
+msgid "Username"
+msgstr ""
+
+#: templates/product.html:128 templates/product.html:129
+msgid "Quick order"
+msgstr ""
+
+#: templates/product.html:134
+msgid "Additional information"
+msgstr ""
+
+#: templates/product.html:135
+msgid "Sizes (insole lengths)"
+msgstr ""
+
+#: templates/product.html:137
+msgid "cm"
+msgstr ""
+
+#: templates/product.html:154
+msgid "How to select correct shoe size"
+msgstr ""
+
+#: templates/product.html:156
+msgid ""
+"Ensuring your child wears the right shoe size is crucial for their "
+"comfort and foot health. Measure their foot length by tracing it on paper"
+" and comparing it to the insole lengths listed for each shoe size on our "
+"site. Choose a size slightly larger than their foot length to allow for "
+"growth. For the full guide on finding the perfect fit,"
+msgstr ""
+
+#: templates/product.html:156 templates/product.html:167
+#: templates/product.html:178
+msgid "click here"
+msgstr ""
+
+#: templates/product.html:167
+msgid ""
+"Understanding our delivery process ensures a smooth shopping experience. "
+"We ship across Ukraine and selected European countries via Nova Post. "
+"Delivery times and costs vary by destination, with processing taking 1-2 "
+"business days. Tracking, customs, and accurate address details are "
+"crucial. For more information on shipping,"
+msgstr ""
+
+#: templates/partials/footer.html:6 templates/product.html:176
+msgid "Replacements and returns"
+msgstr ""
+
+#: templates/product.html:178
+msgid ""
+"If you need to return or replace an item, ensure it's unused and in its "
+"original packaging. Initiate your request within one day of receiving "
+"your order by emailing customerservice@kidsfashionstore.ua. For the full "
+"guide on our replacement and return process,"
+msgstr ""
+
+#: templates/product.html:182
+msgid "You might also like"
+msgstr ""
+
+#: templates/settings.html:7
+msgid "Account settings"
+msgstr ""
+
+#: templates/settings.html:11
+msgid "Personal information"
+msgstr ""
+
+#: templates/settings.html:13
+msgid "First Name"
+msgstr ""
+
+#: templates/settings.html:14
+msgid "First name"
+msgstr ""
+
+#: templates/settings.html:17
+msgid "Last Name"
+msgstr ""
+
+#: templates/settings.html:18
+msgid "Last name"
+msgstr ""
+
+#: templates/settings.html:21
+msgid "Middle Name"
+msgstr ""
+
+#: templates/settings.html:22
+msgid "Middle name"
+msgstr ""
+
+#: templates/settings.html:26
+msgid "Contact information"
+msgstr ""
+
+#: templates/settings.html:40
+msgid "Preferred messenger"
+msgstr ""
+
+#: templates/settings.html:55
+msgid "Instagram username"
+msgstr ""
+
+#: templates/settings.html:175
+msgid "Notification settings"
+msgstr ""
+
+#: templates/settings.html:176
+msgid "Inform me about..."
+msgstr ""
+
+#: templates/settings.html:185
+msgid "New deals"
+msgstr ""
+
+#: templates/settings.html:195
+msgid "Seasonal sales"
+msgstr ""
+
+#: templates/settings.html:205
+msgid "Discounts on my favorite products"
+msgstr ""
+
+#: templates/shop.html:8
+msgid "Catalogue"
 msgstr ""
 
 #: templates/shop.html:13 templates/shop.html:27 templates/shop.html:41
@@ -158,16 +396,49 @@ msgstr ""
 msgid "No products found. Try to change filters."
 msgstr ""
 
-#: templates/partials/card.html:29
-msgid "Archived"
+#: templates/partials/header.html:20 templates/partials/header.html:51
+#: templates/signup.html:7 templates/signup.html:43
+msgid "Sign up"
+msgstr ""
+
+#: templates/signup.html:39 templates/updatePassword.html:31
+msgid "Repeat password"
+msgstr ""
+
+#: templates/signup.html:42
+msgid "By signing up you accept our"
+msgstr ""
+
+#: templates/signup.html:42
+msgid "Terms of Use"
+msgstr ""
+
+#: templates/signup.html:42
+msgid "and"
+msgstr ""
+
+#: templates/signup.html:42
+msgid "Privacy Policy"
+msgstr ""
+
+#: templates/signup.html:44
+msgid "Already registered?"
+msgstr ""
+
+#: templates/updatePassword.html:7
+msgid "Reset password"
+msgstr ""
+
+#: templates/updatePassword.html:15
+msgid "Reset code"
+msgstr ""
+
+#: templates/updatePassword.html:33
+msgid "Update password"
 msgstr ""
 
 #: templates/partials/card.html:31
 msgid "Sizes"
-msgstr ""
-
-#: templates/partials/card.html:33
-msgid "Not in stock"
 msgstr ""
 
 #: templates/partials/card.html:37 templates/partials/card.html:38
@@ -188,10 +459,6 @@ msgstr ""
 
 #: templates/partials/footer.html:5
 msgid "Delivery information"
-msgstr ""
-
-#: templates/partials/footer.html:6
-msgid "Replacements and returns"
 msgstr ""
 
 #: templates/partials/footer.html:9
@@ -230,20 +497,8 @@ msgstr ""
 msgid "Shop"
 msgstr ""
 
-#: templates/partials/header.html:19 templates/partials/header.html:50
-msgid "Log in"
-msgstr ""
-
-#: templates/partials/header.html:20 templates/partials/header.html:51
-msgid "Sign up"
-msgstr ""
-
 #: templates/partials/header.html:23 templates/partials/header.html:54
 msgid "Admin"
-msgstr ""
-
-#: templates/partials/header.html:26 templates/partials/header.html:56
-msgid "Favorites"
 msgstr ""
 
 #: templates/partials/header.html:28 templates/partials/header.html:58

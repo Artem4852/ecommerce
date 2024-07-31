@@ -4,9 +4,9 @@
 <body>
     {% include 'partials/header.html' %}
     <section id="page404">
-        <h2>You were unsubscribed</h2>
-        <h4>We are sorry to see you go</h4>
-        <a href="/">Go to homepage</a>
+        <h2>{{ _('You were unsubscribed') }}</h2>
+        <h4>{{ _('We are sorry to see you go') }}</h4>
+        <a href="/">{{ _('Go to homepage') }}</a>
     </section>
     {% include 'partials/newsletter.html' %}
     {% include 'partials/footer.html' %}

@@ -4,60 +4,60 @@
 <body>
     {% include 'partials/header.html' %}
     <section id="admin">
-        <h2>Control Panel</h2>
+        <h2>{{ _('Control Panel') }}</h2>
         <div class="group">
-            <h4>Activity</h4>
+            <h4>{{ _('Activity') }}</h4>
             <div class="data">
                 <div class="row">
                     <div class="col">
-                        <p>Requests today: {{ requestsToday }}</p>
-                        <p>Unique visits today: {{ uniqueVisitsToday }}</p>
+                        <p>{{ _('Requests today') }}: {{ requestsToday }}</p>
+                        <p>{{ _('Unique visits today') }}: {{ uniqueVisitsToday }}</p>
                     </div>
                     <div class="col">
-                        <p>Average daily requests: {{ averageDailyRequests }}</p>
-                        <p>Average unique visits: {{ averageDailyUniqueVisits }}</p>
+                        <p>{{ _('Average daily requests') }}: {{ averageDailyRequests }}</p>
+                        <p>{{ _('Average unique visits') }}: {{ averageDailyUniqueVisits }}</p>
                     </div>
                 </div>
                 <div class="chart">
-                    <h4>Daily requests:</h4>
+                    <h4>{{ _('Daily requests') }}:</h4>
                     <canvas id="requestsChart" height="400"></canvas>
                 </div>
             </div>
         </div><div class="group">
-            <h4>Products</h4>
+            <h4>{{ _('Products') }}</h4>
             <div class="data">
                 <div class="row">
                     <div class="col">
-                        <p>Items on site: {{ totalProducts }}</p>
-                        <p>Most popular category: Sandals</p>
+                        <p>{{ _('Items on site') }}: {{ totalProducts }}</p>
+                        <p>{{ _('Most popular category') }}: Sandals</p>
                     </div>
                     <div class="col">
-                        <p>In stock: {{ inStock }}</p>
-                        <p>Most common size: 27</p>
+                        <p>{{ _('In stock') }}: {{ inStock }}</p>
+                        <p>{{ _('Most common size') }}: 27</p>
                     </div>
                 </div>
                 <div class="row">
-                    <a href="/admin/products">Edit products</a>
-                    <a href="/admin/products/add">Add product</a>
+                    <a href="/admin/products">{{ _('View products') }}</a>
+                    <a href="/admin/products/add">{{ _('Add product') }}</a>
                 </div>
             </div>
         </div>
         <div class="group">
-            <h4>Orders</h4>
+            <h4>{{ _('Orders') }}</h4>
             <div class="data">
                 <div class="row">
                     <div class="col">
-                        <p>Total: {{ ordersTotal }}</p>
-                        <p>Pending: {{ ordersPending }}</p>
+                        <p>{{ _('Total') }}: {{ ordersTotal }}</p>
+                        <p>{{ _('Pending') }}: {{ ordersPending }}</p>
                     </div>
                     <div class="col">
-                        <p>Today: {{ ordersToday }}</p>
-                        <p>Average: {{ ordersDailyAverage }}</p>
+                        <p>{{ _('Today') }}: {{ ordersToday }}</p>
+                        <p>{{ _('Average') }}: {{ ordersDailyAverage }}</p>
                     </div>
                 </div>
                 <div class="row">
-                    <a href="/admin/orders">View orders</a>
-                    <a href="/admin/orders?orderStatus=pending">View pending</a>
+                    <a href="/admin/orders">{{ _('View orders') }}</a>
+                    <a href="/admin/orders?orderStatus=pending">{{ _('View pending') }}</a>
                 </div>
             </div>
         </div>

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-07-30 20:50+0200\n"
+"POT-Creation-Date: 2024-07-31 09:34+0200\n"
 "PO-Revision-Date: 2024-07-30 18:44+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: uk\n"
@@ -29,10 +29,14 @@ msgid "Get in touch"
 msgstr "Звʼязатися"
 
 #: templates/contact.html:13 templates/partials/footer.html:18
+#: templates/product.html:122 templates/settings.html:32
+#: templates/signup.html:23
 msgid "Phone number"
 msgstr "Телефон"
 
-#: templates/contact.html:14 templates/partials/footer.html:20
+#: templates/contact.html:14 templates/forgotPassword.html:15
+#: templates/login.html:15 templates/partials/footer.html:20
+#: templates/settings.html:28 templates/signup.html:15
 msgid "Email"
 msgstr "Е-пошта"
 
@@ -68,8 +72,8 @@ msgstr ""
 "Якщо в вас є питання/пропозиції, напишіть нам.\n"
 "                Kids Fashion Store завжди прагне допомогти клієнту та "
 "зробити ваші покупки якомога кращими.\n"
-"                Якщо ваше питання стосується скасування/заміни"
-" замовлення або вам потрібна допомога з вибором правильного розміру\n"
+"                Якщо ваше питання стосується скасування/заміни замовлення"
+" або вам потрібна допомога з вибором правильного розміру\n"
 "                взуття, напишіть нам в Instagram або Telegram."
 
 #: templates/faq.html:7 templates/partials/header.html:9
@@ -80,6 +84,31 @@ msgstr "FAQ"
 #: templates/faq.html:16
 msgid "Read on"
 msgstr "Читати"
+
+#: templates/favorites.html:8 templates/partials/header.html:26
+#: templates/partials/header.html:56
+msgid "Favorites"
+msgstr "Улюблені"
+
+#: templates/favorites.html:18 templates/shop.html:100
+msgid "Page"
+msgstr "Сторінка"
+
+#: templates/favorites.html:58
+msgid "No products in favorites."
+msgstr "Немає улюблених."
+
+#: templates/forgotPassword.html:7 templates/login.html:26
+msgid "Forgot password?"
+msgstr "Забули пароль?"
+
+#: templates/forgotPassword.html:17
+msgid "We will send you a code that can be used to reset your password."
+msgstr "Ми надішлемо вам код, який можна використовувати для скидання пароля."
+
+#: templates/forgotPassword.html:18
+msgid "Send reset code"
+msgstr "Відправити код"
 
 #: templates/index.html:16
 msgid "The biggest variety of brand shoes in Ukraine"
@@ -109,13 +138,238 @@ msgstr "Літній розпродаж"
 msgid "View more"
 msgstr "Переглянути ще"
 
+#: templates/login.html:7 templates/login.html:27
+#: templates/partials/header.html:19 templates/partials/header.html:50
+#: templates/signup.html:44
+msgid "Log in"
+msgstr "Увійти"
+
+#: templates/login.html:23 templates/signup.html:31
+#: templates/updatePassword.html:23
+msgid "Password"
+msgstr "Пароль"
+
+#: templates/login.html:28
+msgid "Don't have an account?"
+msgstr "Немає облікового запису?"
+
+#: templates/login.html:28
+#, fuzzy
+msgid "Sing up"
+msgstr "Зареєструватися"
+
+#: templates/login.html:28 templates/signup.html:44
+msgid "instead"
+msgstr "натомість"
+
+#: templates/newsletterUnsubscribe.html:7
+msgid "You were unsubscribed"
+msgstr "Вашу підписку скасовано"
+
+#: templates/newsletterUnsubscribe.html:8
+msgid "We are sorry to see you go"
+msgstr "Нам шкода, що ви відписались"
+
+#: templates/newsletterUnsubscribe.html:9
+msgid "Go to homepage"
+msgstr "На головну"
+
+#: templates/product.html:41
+msgid "Product number"
+msgstr "Артикул"
+
+#: templates/partials/card.html:28 templates/product.html:42
+#: templates/shop.html:11
+msgid "Brand"
+msgstr "Бренд"
+
+#: templates/product.html:43
+#, fuzzy
+msgid "Price"
+msgstr "Ціна"
+
+#: templates/product.html:43
+msgid "uah"
+msgstr "грн"
+
+#: templates/partials/card.html:29 templates/product.html:45
+#: templates/product.html:53
+msgid "Archived"
+msgstr "Заархівовано"
+
+#: templates/product.html:47 templates/product.html:55
+msgid "In stock"
+msgstr "В наявності"
+
+#: templates/partials/card.html:33 templates/product.html:49
+#: templates/product.html:57
+msgid "Not in stock"
+msgstr "Не в наявності"
+
+#: templates/product.html:62
+msgid "Size"
+msgstr "Розмір"
+
+#: templates/product.html:78
+msgid "Quantity"
+msgstr "Кількість"
+
+#: templates/product.html:101
+msgid "Edit product"
+msgstr "Змінити продукт"
+
+#: templates/product.html:105
+msgid "How can we contact you?"
+msgstr "Як з вами зв'язатися?"
+
+#: templates/product.html:107
+msgid "Messenger"
+msgstr "Месенджер"
+
+#: templates/product.html:124
+msgid "Username"
+msgstr "Юзернейм"
+
+#: templates/product.html:128 templates/product.html:129
+msgid "Quick order"
+msgstr "Швидке замовлення"
+
+#: templates/product.html:134
+msgid "Additional information"
+msgstr "Додаткова інформація"
+
+#: templates/product.html:135
+msgid "Sizes (insole lengths)"
+msgstr "Розміри (довжини устілок)"
+
+#: templates/product.html:137
+msgid "cm"
+msgstr "см"
+
+#: templates/product.html:154
+msgid "How to select correct shoe size"
+msgstr "Як обрати правильний розмір взуття?"
+
+#: templates/product.html:156
+msgid ""
+"Ensuring your child wears the right shoe size is crucial for their "
+"comfort and foot health. Measure their foot length by tracing it on paper"
+" and comparing it to the insole lengths listed for each shoe size on our "
+"site. Choose a size slightly larger than their foot length to allow for "
+"growth. For the full guide on finding the perfect fit,"
+msgstr ""
+"Важливо переконатись, що ваша дитина носить правильний розмір взуття, задля її "
+"комфорту та здоровʼя її ніг. Виміряйте довжину стопи, обкресливши її на папері"
+" та порівнявши з довжиною устілок, указаною для кожного розміру взуття на нашому 
+"сайті. Обирайте трохи більший розмір за довжину стопи, адже ніжки швидко ростуть. "
+"Перегляньте повну інструкцію із пошуку ідеального розміру"
+
+#: templates/product.html:156 templates/product.html:167
+#: templates/product.html:178
+msgid "click here"
+msgstr "тут"
+
+#: templates/product.html:167
+msgid ""
+"Understanding our delivery process ensures a smooth shopping experience. "
+"We ship across Ukraine and selected European countries via Nova Post. "
+"Delivery times and costs vary by destination, with processing taking 1-2 "
+"business days. Tracking, customs, and accurate address details are "
+"crucial. For more information on shipping,"
+msgstr ""
+"Кожен покупець має розуміти наш процесу доставки."
+"Ми відправляємо взуття по Україні та в окремі країни Європи Новою поштою. "
+"Час і вартість доставки залежать від пункту призначення, обробка займає 1-2 "
+"робочі дні. Дізнайтесь більше про доставку"
+
+#: templates/partials/footer.html:6 templates/product.html:176
+msgid "Replacements and returns"
+msgstr "Інформація про обмін та повернення"
+
+#: templates/product.html:178
+msgid ""
+"If you need to return or replace an item, ensure it's unused and in its "
+"original packaging. Initiate your request within one day of receiving "
+"your order by emailing customerservice@kidsfashionstore.ua. For the full "
+"guide on our replacement and return process,"
+msgstr ""
+"Якщо вам потрібно повернути або замінити товар, переконайтеся, що він не "
+"використовувався та в є оригінальній упаковці. Надішліть запит протягом одного "
+"дня з моменту отримання замовлення на адресу customerservice@kidsfashionstore.ua. "
+" Дізнайтесь більше про обмін та повернення"
+
+#: templates/product.html:182
+msgid "You might also like"
+msgstr "Вам також може сподобатись"
+
+#: templates/settings.html:7
+#, fuzzy
+msgid "Account settings"
+msgstr "Налаштування"
+
+#: templates/settings.html:11
+msgid "Personal information"
+msgstr "Особиста інформація"
+
+#: templates/settings.html:13
+msgid "First Name"
+msgstr "Імʼя"
+
+#: templates/settings.html:14
+msgid "First name"
+msgstr "Імʼя"
+
+#: templates/settings.html:17
+msgid "Last Name"
+msgstr "Призвіще"
+
+#: templates/settings.html:18
+msgid "Last name"
+msgstr "Призвіще"
+
+#: templates/settings.html:21
+msgid "Middle Name"
+msgstr "По-батькові"
+
+#: templates/settings.html:22
+msgid "Middle name"
+msgstr "По-батькові"
+
+#: templates/settings.html:26
+msgid "Contact information"
+msgstr "Контактна інформація"
+
+#: templates/settings.html:40
+msgid "Preferred messenger"
+msgstr "Месенджер"
+
+#: templates/settings.html:55
+msgid "Instagram username"
+msgstr "Імʼя користувача в Instagram"
+
+#: templates/settings.html:175
+msgid "Notification settings"
+msgstr "Налаштування сповіщень"
+
+#: templates/settings.html:176
+msgid "Inform me about..."
+msgstr "Повідомляйте мені про..."
+
+#: templates/settings.html:185
+msgid "New deals"
+msgstr "Нові пропозиції"
+
+#: templates/settings.html:195
+msgid "Seasonal sales"
+msgstr "Сезонні розпродажі"
+
+#: templates/settings.html:205
+msgid "Discounts on my favorite products"
+msgstr "Знижки на мої улюблені товари"
+
 #: templates/shop.html:8
 msgid "Catalogue"
 msgstr "Каталог"
-
-#: templates/partials/card.html:28 templates/shop.html:11
-msgid "Brand"
-msgstr "Бренд"
 
 #: templates/shop.html:13 templates/shop.html:27 templates/shop.html:41
 #: templates/shop.html:55
@@ -167,17 +421,50 @@ msgstr "Переглянути ще"
 msgid "No products found. Try to change filters."
 msgstr "Продукту не знайдено. Спробуйте змінити фільтри."
 
-#: templates/partials/card.html:29
-msgid "Archived"
-msgstr "Заархівовано"
+#: templates/partials/header.html:20 templates/partials/header.html:51
+#: templates/signup.html:7 templates/signup.html:43
+msgid "Sign up"
+msgstr "Зареєструватися"
+
+#: templates/signup.html:39 templates/updatePassword.html:31
+msgid "Repeat password"
+msgstr "Повторіть пароль"
+
+#: templates/signup.html:42
+msgid "By signing up you accept our"
+msgstr "Реєструючись, ви приймаєте наші"
+
+#: templates/signup.html:42
+msgid "Terms of Use"
+msgstr "Умови використання"
+
+#: templates/signup.html:42
+msgid "and"
+msgstr "та"
+
+#: templates/signup.html:42
+msgid "Privacy Policy"
+msgstr "Політику конфіденційності"
+
+#: templates/signup.html:44
+msgid "Already registered?"
+msgstr "Вже зареєстровані?"
+
+#: templates/updatePassword.html:7
+msgid "Reset password"
+msgstr "Скинути пароль"
+
+#: templates/updatePassword.html:15
+msgid "Reset code"
+msgstr "Код скидання"
+
+#: templates/updatePassword.html:33
+msgid "Update password"
+msgstr "Оновити пароль"
 
 #: templates/partials/card.html:31
 msgid "Sizes"
 msgstr "Розміри"
-
-#: templates/partials/card.html:33
-msgid "Not in stock"
-msgstr "Не в наявності"
 
 #: templates/partials/card.html:37 templates/partials/card.html:38
 msgid "₴"
@@ -198,10 +485,6 @@ msgstr "Вимірювання ноги"
 #: templates/partials/footer.html:5
 msgid "Delivery information"
 msgstr "Інформація про доставку"
-
-#: templates/partials/footer.html:6
-msgid "Replacements and returns"
-msgstr "Інформація про обмін та повернення"
 
 #: templates/partials/footer.html:9
 msgid "Legal"
@@ -239,21 +522,9 @@ msgstr "Головна"
 msgid "Shop"
 msgstr "Каталог"
 
-#: templates/partials/header.html:19 templates/partials/header.html:50
-msgid "Log in"
-msgstr "Увійти"
-
-#: templates/partials/header.html:20 templates/partials/header.html:51
-msgid "Sign up"
-msgstr "Зареєструватися"
-
 #: templates/partials/header.html:23 templates/partials/header.html:54
 msgid "Admin"
 msgstr "Адмін"
-
-#: templates/partials/header.html:26 templates/partials/header.html:56
-msgid "Favorites"
-msgstr "Улюблені"
 
 #: templates/partials/header.html:28 templates/partials/header.html:58
 msgid "Settings"

@@ -1,25 +1,25 @@
 
-404.html 
+404.html +
 
-admin.html 
-adminOrder.html 
-adminOrders.html 
+admin.html +
+adminProducts.html 
 adminProductAdd.html 
 adminProductEdit.html 
-adminProducts.html 
+adminOrders.html +
+adminOrder.html +
 
 index.html +
 shop.html +
-product.html 
+product.html +
 contact.html +
 faq.html +-
-favorites.html 
-signup.html 
-login.html 
-forgotPassword.html 
-updatePassword.html
-settings.html 
-newsletterUnsubscribe.html 
+favorites.html +
+signup.html +
+login.html +
+forgotPassword.html +
+updatePassword.html +
+settings.html +
+newsletterUnsubscribe.html +
 
 partials/base.html +
 partials/card.html +

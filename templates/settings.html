@@ -4,40 +4,40 @@
 <body>
     {% include 'partials/header.html' %}
     <section id="settings">
-        <h2>Account settings</h2>
+        <h2>{{ _('Account settings') }}</h2>
         <div class="row">
             <div class="col col1">
                 <div class="group">
-                    <h4>Personal information</h4>
+                    <h4>{{ _('Personal information') }}</h4>
                     <div class="input">
-                        <label for="inputFirstName">First Name</label>
-                        <input placeholder="First name" name="firstName" type="text" id="inputFirstName" value="{{ userData['shippingData'].firstName }}">
+                        <label for="inputFirstName">{{ _('First Name') }}</label>
+                        <input placeholder="{{ _('First name') }}" name="firstName" type="text" id="inputFirstName" value="{{ userData['shippingData'].firstName }}">
                     </div>
                     <div class="input">
-                        <label for="inputLastName">Last Name</label>
-                        <input placeholder="Last name" name="lastName" type="text" id="inputLastName" value="{{ userData['shippingData'].lastName }}">
+                        <label for="inputLastName">{{ _('Last Name') }}</label>
+                        <input placeholder="{{ _('Last name') }}" name="lastName" type="text" id="inputLastName" value="{{ userData['shippingData'].lastName }}">
                     </div>
                     <div class="input">
-                        <label for="inputMiddleName">Middle Name</label>
-                        <input placeholder="Middle name" name="middleName" type="text" id="inputMiddleName" value="{{ userData['shippingData'].middleName }}">
+                        <label for="inputMiddleName">{{ _('Middle Name') }}</label>
+                        <input placeholder="{{ _('Middle name') }}" name="middleName" type="text" id="inputMiddleName" value="{{ userData['shippingData'].middleName }}">
                     </div>
                 </div>
                 <div class="group">
-                    <h4>Contact information</h4>
+                    <h4>{{ _('Contact information') }}</h4>
                     <div class="input">
-                        <label for="inputEmail">Email</label>
-                        <input name="email" type="email" id="inputEmail" value="{{ userData.email }}">
+                        <label for="inputEmail">{{ _('Email') }}</label>
+                        <input name="email" type="email" id="inputEmail" value="{{ userData.email }}" disabled>
                     </div>
                     <div class="input">
-                        <label for="inputPhone">Phone number</label>
+                        <label for="inputPhone">{{ _('Phone number') }}</label>
                         {% if userData['contactData'].phoneNumber %}
-                            <input name="phoneNumber" onchange="phoneInput()" type="tel" id="inputPhoneNumber" value="{{ userData['contactData'].phoneNumber }}">
+                            <input name="phoneNumber" onchange="phoneInput()" type="tel" id="inputPhoneNumber" value="{{ userData['contactData'].phoneNumber }}" placeholder="+380 50 000 0000">
                         {% else %}
-                            <input name="phoneNumber" onchange="phoneInput()" type="tel" id="inputPhoneNumber" value="{{ userData['phoneNumber'] }}">
+                            <input name="phoneNumber" onchange="phoneInput()" type="tel" id="inputPhoneNumber" value="{{ userData['phoneNumber'] }}" placeholder="+380 50 000 0000">
                         {% endif %}
                     </div>
                     <div class="input">
-                        <label for="inputMessenger">Preferred messenger</label>
+                        <label for="inputMessenger">{{ _('Preferred messenger') }}</label>
                         <div class="select">
                             <select name="messenger" id="inputMessenger">
                                 <option value="telegram" {% if userData['contactData'].contactMessenger == "telegram" %} selected {% endif %}>Telegram</option>
@@ -52,7 +52,7 @@
                         </div>
                     </div>
                     <div class="input">
-                        <label for="inputMessengerUsername">Instagram username</label>
+                        <label for="inputMessengerUsername">{{ _('Instagram username') }}</label>
                         <input placeholder="@username" name="messengerUsername" type="text" id="inputMessengerUsername" value="{{ userData['contactData'].username }}">
                     </div>
                 </div>
@@ -172,8 +172,8 @@
             </div>
             <div class="col col2">
                 <div class="group">
-                    <h4>Notification settings</h4>
-                    <p>Inform me about...</p>
+                    <h4>{{ _('Notification settings') }}</h4>
+                    <p>{{ _('Inform me about...') }}</p>
                     <div class="checkbox">
                         <div class="box" onclick="check('inputCheckNewDeals')">
                             <svg class="{% if not userData.notifications.newDeals %}disabled{% endif %}" id="inputCheckNewDeals" xmlns="http://www.w3.org/2000/svg" width="33" height="24" viewBox="0 0 33 24"
@@ -182,7 +182,7 @@
                                     fill="#F1F1F1" />
                             </svg>
                         </div>
-                        <p>New deals</p>
+                        <p>{{ _('New deals') }}</p>
                     </div>
                     <div class="checkbox">
                         <div class="box" onclick="check('inputCheckSeasonalSales')">
@@ -192,7 +192,7 @@
                                     fill="#F1F1F1" />
                             </svg>
                         </div>
-                        <p>Seasonal sales</p>
+                        <p>{{ _('Seasonal sales') }}</p>
                     </div>
                     <div class="checkbox">
                         <div class="box" onclick="check('inputCheckDiscounts')">
@@ -202,7 +202,7 @@
                                     fill="#F1F1F1" />
                             </svg>
                         </div>
-                        <p>Discounts on my favorite products</p>
+                        <p>{{ _('Discounts on my favorite products') }}</p>
                     </div>
                     <!-- <div class="checkbox">
                         <div class="box" onclick="check('inputCheckPromoCode')">

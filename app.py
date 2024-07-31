@@ -122,7 +122,9 @@ def shop():
     else: page = int(request.args.get('page'))
 
     products = getProducts()
-    products = [p for p in products if p['price'] != "" and len(p['images']) > 0 and 'tags' in p and (not 'archived' in p['tags'] or 'admin' in getUser({'userId': session.get('userId')})['tags'])]
+    user = getUser({'userId': session.get('userId')})
+    tags = user['tags'] if 'tags' in user else []
+    products = [p for p in products if p['price'] != "" and len(p['images']) > 0 and 'tags' in p and (not 'archived' in p['tags'] or 'admin' in tags)]
     brands = sorted(list(set([p['brand'] for p in products if p['brand'] != ""])))
     categories = sorted(list(set([p['category'] for p in products if p['category'] != ""])))
     sizes = sorted(list(set([size for p in products for size in p['sizes'] if size != ""])))
@@ -287,6 +289,7 @@ def favorites():
     favoriteItems = []
     for item in user['favorites']:
         product = database.getProduct({'id': item})
+        if not product or 'tags' in product and 'archived' in product['tags']: continue
         favoriteItems.append(product)
 
     favoriteItems = favoriteItems[(page-1)*12:page*12]
@@ -780,10 +783,12 @@ def admin():
     sortedDailyRequests = sorted(dailyRequests, key=lambda x: x)
     dailyRequests = {n: dailyRequests[n] for n in sortedDailyRequests[-7:]}
 
-    requestsToday = dailyRequests[sortedDailyRequests[-1]]
+    try: requestsToday = dailyRequests[datetime.now().strftime('%d.%m.%Y')]
+    except: requestsToday = 0
 
     dailyUniqueVisits = database.getStats('dailyUniqueVisits')['data']
-    uniqueVisitsToday = len(dailyUniqueVisits[datetime.now().strftime('%d.%m.%Y')])
+    try: uniqueVisitsToday = len(dailyUniqueVisits[datetime.now().strftime('%d.%m.%Y')])
+    except: uniqueVisitsToday = 0
     averageDailyUniqueVisits = int(sum([len(v) for v in dailyUniqueVisits.values()])/len(dailyUniqueVisits))
 
     products = getProducts()

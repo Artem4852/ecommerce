@@ -97,7 +97,7 @@
         {% endif %}
         {% if products and maxPages != 1 %}
         <div class="pagination">
-            <p>Page:
+            <p>{{ _('Page') }}:
                 {% if page != 1 %}
                     <a href="?{% for key, value in request.args.items() if key not in ['page', 'scroll'] %}{{ key }}={{ value }}&{% endfor %}page={{ page-1 }}" class="arrow">
                         <svg xmlns="http://www.w3.org/2000/svg" width="14" height="23" viewBox="0 0 14 23" fill="none">

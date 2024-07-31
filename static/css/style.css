@@ -175,6 +175,7 @@ svg.downArrow {
 }
 .products .card .details .col2 {
   min-width: 55px;
+  width: 30%;
   position: relative;
 }
 .products .card .details .col2 .prevPrice {

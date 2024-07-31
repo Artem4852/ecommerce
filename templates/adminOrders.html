@@ -5,23 +5,23 @@
 <body>
     {% include 'partials/header.html' %}
     <section id="orders" class="admin">
-        <h2>Orders Panel</h2>
+        <h2>{{ _('Orders Panel') }}</h2>
         <a class="back" href="/admin">
             <svg xmlns="http://www.w3.org/2000/svg" width="12" height="21" viewBox="0 0 12 21" fill="none">
                 <path
                     d="M10.1911 1.74921e-06L12 1.86375L3.61783 10.5L12 19.1362L10.1911 21L-9.8941e-07 10.5L10.1911 1.74921e-06Z"
                     fill="#E352BA" />
             </svg>
-            Back
+            {{ _('Back') }}
         </a>
         <div class="filtering">
             <div class="filter">
                 <input type="text" id="orderId" placeholder="Order id" onblur="filterOrders('orderId')" value="{% if orderId %}{{ orderId }}{% endif %}">
             </div>
             <div class="filter">
-                <label for="status">Status</label>
+                <label for="status">{{ _('Status') }}</label>
                 <select id="orderStatus" name="status" onchange="filterOrders('orderStatus')">
-                    <option value="Any" {% if not shoeSize %} selected {% endif %}>Any</option>
+                    <option value="Any" {% if not shoeSize %} selected {% endif %}>{{ _('Any') }}</option>
                     {% for status_option in statuses %}
                     <option value="{{ status_option }}" {% if status_option==status %} selected {% endif %}>{{ status_option | capitalize }}</option>
                     {% endfor %}
@@ -50,37 +50,37 @@
                         </div>
                         <div class="col start" id="card{{ item.id }}">
                             <h4>{{ item.info.category }} {{ item.info.brand }}</h4>
-                            <p class="infoSize">Size: {{ item.size }}</p>
-                            <p class="infoQuantity">Quantity: {{ item.quantity }}</p>
+                            <p class="infoSize">{{ _('Size') }}: {{ item.size }}</p>
+                            <p class="infoQuantity">{{ _('Quantity') }}: {{ item.quantity }}</p>
                         </div>
                     </div>
                     <div class="data">
                         <div class="row">
                             <div class="col start desktopOnly" id="card{{ item.id }}">
                                 <h4>{{ item.info.category }} {{ item.info.brand }}</h4>
-                                <p class="infoSize">Size: {{ item.size }}</p>
-                                <p class="infoQuantity">Quantity: {{ item.quantity }}</p>
+                                <p class="infoSize">{{ _('Size') }}: {{ item.size }}</p>
+                                <p class="infoQuantity">{{ _('Quantity') }}: {{ item.quantity }}</p>
                             </div>
                             <div class="col">
-                                <p>Warehouse: {{ item.info.warehouses[item.size | string] }}</p>
+                                <p>{{ _('Warehouse') }}: {{ item.info.warehouses[item.size | string] }}</p>
                                 {% if order.city %}
                                     <div class="row">
-                                        <p>To: {{ order.city }}</p>
+                                        <p>{{ _('To') }}: {{ order.city }}</p>
                                     </div>
                                     {% if order.deliveryMethod == "pickUpFromPostOffice" %}
-                                    <p>Type: Pick up from Post Office</p>
+                                    <p>{{ _('Type: Pick up from Post Office') }}</p>
                                     {% else %}
-                                    <p>Type: Address Delivery</p>
+                                    <p>{{ _('Type: Address Delivery') }}</p>
                                     {% endif %}
                                 {% else %}
-                                    <p>Quick order</p>
+                                    <p>{{ _('Quick order') }}</p>
                                 {% endif %}
-                                <p class="mobileOnly">Status: {{ order.status | capitalize }}</p>
+                                <p class="mobileOnly">{{ _('Status') }}: {{ order.status | capitalize }}</p>
                             </div>
                             <div class="col">
-                                <p>Product id: {{ item.id }}</p>
-                                <p>Order id: {{ order.orderId }}</p>
-                                <p class="desktopOnly">Status: {{ order.status | capitalize }}</p>
+                                <p>{{ _('Product id') }}: {{ item.id }}</p>
+                                <p>{{ _('Order id') }}: {{ order.orderId }}</p>
+                                <p class="desktopOnly">{{ _('Status') }}: {{ order.status | capitalize }}</p>
                             </div>
                         </div>
                     </div>
@@ -90,7 +90,7 @@
         </div>
         {% if products and maxPages != 1 %}
         <div class="pagination">
-            <p>Page:
+            <p>{{ _('Page') }}:
                 {% if page != 1 %}
                     <a href="?{% for key, value in request.args.items() if key not in ['page', 'scroll'] %}{{ key }}={{ value }}&{% endfor %}page={{ page-1 }}" class="arrow">
                         <svg xmlns="http://www.w3.org/2000/svg" width="14" height="23" viewBox="0 0 14 23" fill="none">
@@ -130,7 +130,7 @@
         </div>
         {% endif %}
         {% if not orders %}
-            <h3 class="noProducts">No orders found. Try to change filters.</h3>
+            <h3 class="noProducts">{{ _('No orders found. Try to change filters') }}.</h3>
         {% endif %}
     </section>
     {% include 'partials/footer.html' %}

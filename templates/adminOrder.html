@@ -4,61 +4,61 @@
 <body>
     {% include 'partials/header.html' %}
     <section id="order" class="admin">
-        <h2>View order</h2>
+        <h2>{{ _('View order') }}</h2>
         <a class="back" href="/admin/orders">
             <svg xmlns="http://www.w3.org/2000/svg" width="12" height="21" viewBox="0 0 12 21" fill="none">
                 <path
                     d="M10.1911 1.74921e-06L12 1.86375L3.61783 10.5L12 19.1362L10.1911 21L-9.8941e-07 10.5L10.1911 1.74921e-06Z"
                     fill="#E352BA" />
             </svg>
-            Back
+            {{ _('Back') }}
         </a>
         <div class="row">
             <div class="col">
-                <h4>Product</h4>
-                <p>Name: {{ order.product.info.category }} {{ order.product.info.brand }}</p>
-                <p>Id: <a href="/product/{{ order.product.productId }}">{{ order.product.productId }}</a></p>
-                <p>Size: {{ order.product.size }}</p>
-                <p>Quantity: {{ order.product.quantity }}</p>
+                <h4>{{ _('Product') }}</h4>
+                <p>{{ _('Name') }}: {{ order.product.info.category }} {{ order.product.info.brand }}</p>
+                <p>{{ _('Id') }}: <a href="/product/{{ order.product.productId }}">{{ order.product.productId }}</a></p>
+                <p>{{ _('Size') }}: {{ order.product.size }}</p>
+                <p>{{ _('Quantity') }}: {{ order.product.quantity }}</p>
             </div>
             <div class="col">
-                <h4>Order</h4>
-                <p>Order id: {{ order.orderId }}</p>
+                <h4>{{ _('Order') }}</h4>
+                <p>{{ _('Order id') }}: {{ order.orderId }}</p>
                 {% if order.city %}
-                    <p>Receiver: {{ order.firstName }} {{ order.lastName }} {{ order.middleName }}</p>
-                    <p>Country: {{ codesCountry[order.country] | capitalize }}</p>
-                    <p>City: {{ order.city }}</p>
-                    <p>Delivery method: {% if order.deliveryMethod == 'pickUpFromPostOffice' %}Pick up from Post Office{% else %}Address delivery{% endif %}</p>
-                    <p>Tracking number: <input id="inputTrackingNumber" onblur="setTrackingNumber()" value="{{ order.trackingNumber }}" {% if not order.trackingNumber %} placeholder="Tracking number" {% endif %}></p>
+                    <p>{{ _('Receiver') }}: {{ order.firstName }} {{ order.lastName }} {{ order.middleName }}</p>
+                    <p>{{ _('Country') }}: {{ codesCountry[order.country] | capitalize }}</p>
+                    <p>{{ _('City') }}: {{ order.city }}</p>
+                    <p>{{ _('Delivery method') }}: {% if order.deliveryMethod == 'pickUpFromPostOffice' %}{{ _('Pick up from Post Office') }}{% else %}{{ _('Address delivery') }}{% endif %}</p>
+                    <p>{{ _('Tracking number') }}: <input id="inputTrackingNumber" onblur="setTrackingNumber()" value="{{ order.trackingNumber }}" {% if not order.trackingNumber %} placeholder="Tracking number" {% endif %}></p>
                     {% if order.deliveryMethod == "pickUpFromPostOffice" %}
-                        <p>Post Office branch: {{ order.postOfficeBranchName }}</p>
+                        <p>{{ _('Post Office branch') }}: {{ order.postOfficeBranchName }}</p>
                     {% else %}
-                        <p>Address: {{ order.address }} {{ order.address2 }}</p>
-                        <p>Postal code: {{ order.postalCode }}</p>
+                        <p>{{ _('Address') }}: {{ order.address }} {{ order.address2 }}</p>
+                        <p>{{ _('Postal code') }}: {{ order.postalCode }}</p>
                     {% endif %}
-                    <p>Payment type: {% if order.paymentMethod == 'fullPrepayment' %}Full Prepayment{% else %}Post Payment{% endif %}</p>
+                    <p>{{ _('Payment type') }}: {% if order.paymentMethod == 'fullPrepayment' %}{{ _('Full Prepayment') }}{% else %}{{ _('Post Payment') }}{% endif %}</p>
                 {% else %}
-                    <p>Contact messenger: {{ order.contactMessenger | capitalize }}</p>
+                    <p>{{ _('Contact messenger') }}: {{ order.contactMessenger | capitalize }}</p>
                     {% if order.contactMessenger == "instagram" %}
-                        <p>Username: {{ order.username }}</p>
+                        <p>{{ _('Username') }}: {{ order.username }}</p>
                     {% else %}
-                        <p>Phone number: {{ order.phoneNumber }}</p>
+                        <p>{{ _('Phone number') }}: {{ order.phoneNumber }}</p>
                     {% endif %}
                 {% endif %}
             </div>
             <div class="col">
-                <h4>Status</h4>
+                <h4>{{ _('Status') }}</h4>
                 <div class="status" onclick="setStatus('Pending')" id="statusPending">
                     <div class="circle {% if order.status == 'pending' %}active{% endif %}"></div>
-                    <p>Pending</p>
+                    <p>{{ _('Pending') }}</p>
                 </div>
                 <div class="status" onclick="setStatus('Processed')" id="statusProcessed">
                     <div class="circle {% if order.status == 'processed' %}active{% endif %}"></div>
-                    <p>Processed</p>
+                    <p>{{ _('Processed') }}</p>
                 </div>
                 <div class="status" onclick="setStatus('Shipped')" id="statusShipped">
                     <div class="circle {% if order.status == 'shipped' %}active{% endif %}"></div>
-                    <p>Shipped</p>
+                    <p>{{ _('Shipped') }}</p>
                 </div>
                 <!-- <div class="status" onclick="setStatus('Arrived')" id="statusArrived">
                     <div class="circle {% if order.status == 'arrived' %}active{% endif %}"></div>
@@ -70,7 +70,7 @@
                 <!-- </div> -->
             </div>
         </div>
-        <button onclick="deleteOrder('{{ order.product.productId }}')">Delete order</button>
+        <button onclick="deleteOrder('{{ order.product.productId }}')">{{ _('Delete order') }}</button>
     </section>
     {% include 'partials/footer.html' %}
     <script src="{{ url_for('static', filename='js/admin.js') }}"></script>

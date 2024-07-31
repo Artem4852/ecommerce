@@ -5,7 +5,7 @@
 <body>
     {% include 'partials/header.html' %}
     <section id="catalogue">
-        <h2>Favorites</h2>
+        <h2>{{ _('Favorites') }}</h2>
         {% if favoriteItems %}
         <div class="products">
             {% for product in favoriteItems %}
@@ -15,7 +15,7 @@
         {% endif %}
         {% if maxPages != 1 %}
         <div class="pagination">
-            <p>Page:
+            <p>{{ _('Page') }}:
                 {% if page != 1 %}
                     <a href="?{% for key, value in request.args.items() if key not in ['page', 'scroll'] %}{{ key }}={{ value }}&{% endfor %}page={{ page-1 }}" class="arrow">
                         <svg xmlns="http://www.w3.org/2000/svg" width="14" height="23" viewBox="0 0 14 23" fill="none">
@@ -55,7 +55,7 @@
         </div>
         {% endif %}
         {% if not favoriteItems %}
-            <h3 class="noProducts">No products in favorites.</h3>
+            <h3 class="noProducts">{{ _('No products in favorites.') }}</h3>
         {% endif %}
     </section>
     {% include 'partials/newsletter.html' %}
