@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-08-01 12:09+0200\n"
+"POT-Creation-Date: 2024-08-01 12:40+0200\n"
 "PO-Revision-Date: 2024-07-30 18:44+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: uk\n"
@@ -36,9 +36,8 @@ msgid "Control Panel"
 msgstr "Панель контролю"
 
 #: templates/admin.html:9
-#, fuzzy
 msgid "Activity"
-msgstr "Кількість"
+msgstr "Активність"
 
 #: templates/admin.html:13
 msgid "Requests today"
@@ -241,7 +240,6 @@ msgid "Post Payment"
 msgstr "Післяплата"
 
 #: templates/adminOrder.html:41
-#, fuzzy
 msgid "Contact messenger"
 msgstr "Месенджер"
 
@@ -258,9 +256,8 @@ msgstr "Телефон"
 
 #: templates/adminOrder.html:50 templates/adminOrders.html:22
 #: templates/adminOrders.html:78 templates/adminOrders.html:83
-#, fuzzy
 msgid "Status"
-msgstr "Звʼязатися"
+msgstr "Статус"
 
 #: templates/adminOrder.html:57
 msgid "Processed"
@@ -271,9 +268,8 @@ msgid "Shipped"
 msgstr "Відправлено"
 
 #: templates/adminOrder.html:73
-#, fuzzy
 msgid "Delete order"
-msgstr "Код скидання"
+msgstr "Видалити замовлення"
 
 #: templates/adminOrders.html:8
 msgid "Orders Panel"
@@ -308,7 +304,6 @@ msgid "Quick order"
 msgstr "Швидке замовлення"
 
 #: templates/adminOrders.html:81 templates/adminProductEdit.html:25
-#, fuzzy
 msgid "Product id"
 msgstr "Артикул"
 
@@ -318,11 +313,10 @@ msgid "Page"
 msgstr "Сторінка"
 
 #: templates/adminOrders.html:133
-#, fuzzy
 msgid "No orders found. Try to change filters"
 msgstr "Продукту не знайдено. Спробуйте змінити фільтри."
 
-#: templates/adminProductEdit.html:8
+#: templates/adminProductEdit.html:8 templates/partials/card.html:46
 msgid "Edit"
 msgstr "Змінити"
 
@@ -426,11 +420,11 @@ msgstr "Зображення"
 msgid "Update"
 msgstr "Оновити"
 
-#: templates/adminProductEdit.html:128
+#: templates/adminProductEdit.html:128 templates/partials/card.html:48
 msgid "Unarchive"
 msgstr "Розархівувати"
 
-#: templates/adminProductEdit.html:128
+#: templates/adminProductEdit.html:128 templates/partials/card.html:48
 msgid "Archive"
 msgstr "Заархівувати"
 
@@ -475,12 +469,10 @@ msgid "Discount: low to high"
 msgstr "Знижка: від меншої до більшої"
 
 #: templates/adminProducts.html:100 templates/shop.html:95
-#, fuzzy
 msgid "Show more"
 msgstr "Переглянути ще"
 
 #: templates/adminProducts.html:145
-#, fuzzy
 msgid "No products found. Try to change filters"
 msgstr "Продукту не знайдено. Спробуйте змінити фільтри."
 
@@ -606,7 +598,6 @@ msgid "Don't have an account?"
 msgstr "Немає облікового запису?"
 
 #: templates/login.html:28
-#, fuzzy
 msgid "Sing up"
 msgstr "Зареєструватися"
 
@@ -623,7 +614,6 @@ msgid "We are sorry to see you go"
 msgstr "Нам шкода, що ви відписались"
 
 #: templates/product.html:43
-#, fuzzy
 msgid "Price"
 msgstr "Ціна"
 
@@ -720,7 +710,6 @@ msgid "You might also like"
 msgstr "Вам також може сподобатись"
 
 #: templates/settings.html:7
-#, fuzzy
 msgid "Account settings"
 msgstr "Налаштування"
 

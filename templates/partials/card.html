@@ -24,7 +24,7 @@
         </div>
         <div class="details">
             <div class="col1">
-                <h3>{{ product['category'] }}</h3>
+                <h3>{{ translationsDb[product['category']|lower][get_locale()] }}</h3>
                 <p>{{ _('Brand') }}: {{ product['brand'] }}</p>
                 <p id="archived{{ product['id'] }}" class="notinstock {% if not 'archived' in product['tags'] %}hidden{% endif %}">{{ _('Archived') }}</p>
                 {% if product['sizes'] %}
@@ -43,9 +43,9 @@
     {% if loggedIn %}
         {% if 'admin' in userData.tags %}
         <div class="links">
-            <a class="viewDetails" href="/admin/products/edit/{{ product['id'] }}">Edit</a>
+            <a class="viewDetails" href="/admin/products/edit/{{ product['id'] }}">{{ _('Edit') }}</a>
             <button id="buttonArchiveProduct{{ product['id'] }}" onclick="archiveProductNoForm('{{ product['id'] }}')">{% if
-            'archived' in product['tags'] %}Una{% else %}A{% endif %}rchive</button>
+            'archived' in product['tags'] %}{{ _('Unarchive') }}{% else %}{{ _('Archive') }}{% endif %}</button>
         </div>
         {% endif %}
     {% endif %}

@@ -5,7 +5,7 @@
 <body>
     {% include 'partials/header.html' %}
     <section id="product">
-        <h1 class="mobileOnly">{{ product.category }} {{ product.brand }}</h1>
+        <h1 class="mobileOnly">{{ translationsDb[product.category|lower][get_locale()] }} {{ product.brand }}</h1>
         <div class="images">
             <div class="mainImg">
                 <img id="mainImg" src="{{ url_for('static', filename='img/products/'+product.id|string+'/'+product.images[0]) }}" alt="{{ product.name }}">
@@ -35,7 +35,7 @@
         <div class="information">
             {% set sortedSizes = product.sizes | sort %}
             {% set sortedSizesCm = product.sizesCm | dictsort %}
-            <h1 class="desktopOnly">{{ product.category }} {{ product.brand }}</h1>
+            <h1 class="desktopOnly">{{ translationsDb[product.category|lower][get_locale()] }} {{ product.brand }}</h1>
             <div class="row">
                 <div class="col">
                     <p>{{ _('Product number') }}: {{ product.id }}</p>
@@ -137,9 +137,19 @@
                         {{ size }} ({{ cm }} {{ _('cm') }}){% if not loop.last %}, {% endif %}
                     {% endfor %}
                 </p>
+                {% if 'season' in product.additionalInformation %}
+                    {% set seasons = product.additionalInformation.season.split('/') %}
+                    {% set translated_seasons = [] %}
+                    {% for season in seasons %}
+                        {% set season = season.strip().lower() %}
+                        {% set translated_season = translationsDb[season][get_locale()] %}
+                        {% set _ = translated_seasons.append(translated_season) %}
+                    {% endfor %}
+                    <p>{{ _('Season') }}: {{ translated_seasons | join('/') }}</p>
+                {% endif %}
                 {% for info, value in product.additionalInformation.items() %}
-                    {% if value != '' %}
-                        <p>{{ info.replace('_', ' ') | capitalize }}: {{ value }}</p>
+                    {% if value != '' and info != 'season' %}
+                        <p>{{ translationsDb[info.replace('_', ' ')|lower][get_locale()]| capitalize }}: {{ translationsDb[value|lower][get_locale()] }}</p>
                     {% endif %}
                 {% endfor %}
             </div>

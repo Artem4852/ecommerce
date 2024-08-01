@@ -101,9 +101,12 @@ def index():
     sale = [p for p in products if 'tags' in p and 'sale' in p['tags'] and len(p['sizes']) > 0]
     random.shuffle(sale)
 
+    translationsDb = database.getTranslations("db")
+    translationsJs = database.getTranslations("js")
+
     logResponse = log('home', request=request)
     if logResponse: return logResponse
-    return render_template('index.html', indexImages=indexImages, productsFeatured=featured[:4], productsSale=sale[:4], userData=user, loggedIn=loggedIn)
+    return render_template('index.html', indexImages=indexImages, productsFeatured=featured[:4], productsSale=sale[:4], userData=user, loggedIn=loggedIn, translationsDb=translationsDb, translationsJs=translationsJs)
 
 # Shop routes
 @app.route('/shop')
@@ -151,9 +154,12 @@ def shop():
 
     loggedIn = session.get('loggedIn', False)
 
+    translationsDb = database.getTranslations("db")
+    translationsJs = database.getTranslations("js")
+
     logResponse = log('shop', request=request)
     if logResponse: return logResponse
-    return render_template('shop.html', products=productsCurrent, userData=user, brand=brand, category=category, shoeSize=shoeSize, priceRange=priceRange, sorting=sorting, productsPerPage=productsPerPage, page=page, maxPages=maxPages, loggedIn=loggedIn, brands=brands, categories=categories, sizes=sizes)
+    return render_template('shop.html', products=productsCurrent, userData=user, brand=brand, category=category, shoeSize=shoeSize, priceRange=priceRange, sorting=sorting, productsPerPage=productsPerPage, page=page, maxPages=maxPages, loggedIn=loggedIn, brands=brands, categories=categories, sizes=sizes, translationsDb=translationsDb, translationsJs=translationsJs)
 
 @app.route('/product/<productId>')
 def product(productId):
@@ -161,8 +167,10 @@ def product(productId):
     product = database.getProduct({'id': int(productId)})
     if not product or not 'tags' in product or ('archived' in product['tags'] and not 'admin' in getUser({'userId': session.get('userId')})['tags']): return abort(404)
 
+    print(product['additionalInformation'])
     additionalInformation = product['additionalInformation'].copy()
     for key, value in additionalInformation.items():
+        if key == re.sub(r'([a-z])([A-Z])', r'\1 \2', key): continue
         product['additionalInformation'][re.sub(r'([a-z])([A-Z])', r'\1 \2', key)] = value
         del product['additionalInformation'][key]
 
@@ -175,9 +183,12 @@ def product(productId):
     if loggedIn: contactData = user['contactData']
     else: contactData = {}
 
+    translationsDb = database.getTranslations("db")
+    translationsJs = database.getTranslations("js")
+
     logResponse = log('product', request=request)
     if logResponse: return logResponse
-    return render_template('product.html', product=product, userData=user, productsFeatured=productsFeatured[:4], loggedIn=loggedIn, contactData=contactData)
+    return render_template('product.html', product=product, userData=user, productsFeatured=productsFeatured[:4], loggedIn=loggedIn, contactData=contactData, translationsDb=translationsDb, translationsJs=translationsJs)
 
 # Static pages
 @app.route('/faq')
@@ -309,9 +320,12 @@ def favorites():
     productsFeatured = [p for p in products if 'tags' in p and 'featured' in p['tags'] and len(p['sizes']) > 0]
     random.shuffle(productsFeatured)
 
+    translationsDb = database.getTranslations("db")
+    translationsJs = database.getTranslations("js")
+
     logResponse = log('shop', request=request)
     if logResponse: return logResponse
-    return render_template('favorites.html', userData=user, favoriteItems=favoriteItems, productsFeatured=productsFeatured[:4], page=page, maxPages=maxPages, loggedIn=loggedIn)
+    return render_template('favorites.html', userData=user, favoriteItems=favoriteItems, productsFeatured=productsFeatured[:4], page=page, maxPages=maxPages, loggedIn=loggedIn, translationsDb=translationsDb, translationsJs=translationsJs)
 
 @app.route('/favorite/<productNumber>', methods=['POST'])
 def favorite(productNumber):
@@ -638,7 +652,6 @@ def updateSettings():
         elif key in ['paymentMethod']: key = 'paymentData.'+key
         elif key in ['contactMessenger', 'username', 'phoneNumber']: key = 'contactData.'+key
         elif key in ['newDeals', 'seasonalSales', 'discounts', 'promoCode']: key = 'notifications.'+key
-        # print(key, value)
         database.updateUser({'userId': session.get('userId')}, {'$set': {key: value}})  
     return jsonify({'success': True})
 
@@ -675,7 +688,6 @@ def login():
     user = getUser({'email': email})
 
     if user and user['password'] == password:
-        # print(user)
         session['userId'] = user['userId']
         session['loggedIn'] = True
         return jsonify({'success': True})
@@ -761,12 +773,10 @@ def updatePasswordPost():
     email = request.json.get('email')
     code = request.json.get('code').replace("-", "")
     password = request.json.get('password')
-    # print(email, code, password)
     user = getUser({'email': email})
     if not user or not user.get('reset'):
         return jsonify({'success': False, 'error': 'User not found'})
     if user['reset']['code'] != int(code) or user['reset']['expires'] < datetime.now().timestamp():
-        # print(user['reset'])
         return jsonify({'success': False, 'error': 'Invalid code'})
     database.updateUser({'email': email}, {'$set': {'password': password}})
     return jsonify({'success': True})
@@ -837,7 +847,6 @@ def adminActivity():
     dailyUniqueVisits = {n: len(dailyUniqueVisits[n]) for n in sortedDailyUniqueVisits[-7:]}
 
     hourlyRequests = database.getStats('hourlyRequests')['data']
-    print(hourlyRequests)
     hourlyRequestsSorted = sorted(hourlyRequests, key=lambda x: x)
     hourlyRequests = {n: hourlyRequests[n] for n in hourlyRequestsSorted}
 
@@ -897,7 +906,10 @@ def adminProducts():
     for n, p in enumerate(productsCurrent):
         productsCurrent[n]['sizes'] = sorted(p['sizes'])
 
-    return render_template('adminProducts.html', userData=user, loggedIn=loggedIn, products=productsCurrent, brand=brand, category=category, shoeSize=shoeSize, sorting=sorting, productsPerPage=productsPerPage, page=page, maxPages=maxPages, brands=brands, categories=categories, sizes=sizes, tags=tags, tag=tag)
+    translationsDb = database.getTranslations("db")
+    translationsJs = database.getTranslations("js")
+
+    return render_template('adminProducts.html', userData=user, loggedIn=loggedIn, products=productsCurrent, brand=brand, category=category, shoeSize=shoeSize, sorting=sorting, productsPerPage=productsPerPage, page=page, maxPages=maxPages, brands=brands, categories=categories, sizes=sizes, tags=tags, tag=tag, translationsDb=translationsDb, translationsJs=translationsJs)
 
 @app.route('/admin/products/edit/<productId>')
 def adminProductEdit(productId):
@@ -1080,11 +1092,14 @@ def adminOrders():
     for order in orders:
         cartItems = []
         for item in order['cart']:
-            # print(item)
             product = database.getProduct({'id': item['productId']})
             cartItems.append({'id': item['productId'], 'size': item['size'], 'quantity': item['quantity'], 'info': product})
         order['cart'] = cartItems
-    return render_template('adminOrders.html', userData=user, loggedIn=loggedIn, orders=orders, statuses=statuses, status=status, orderId=orderId, page=int(page))
+
+    translationsDb = database.getTranslations("db")
+    translationsJs = database.getTranslations("js")
+
+    return render_template('adminOrders.html', userData=user, loggedIn=loggedIn, orders=orders, statuses=statuses, status=status, orderId=orderId, page=int(page), page_size=page_size, translationsDb=translationsDb, translationsJs=translationsJs)
 
 @app.route('/admin/orders/<orderId>/<productId>')
 def adminOrder(orderId, productId):
@@ -1099,7 +1114,11 @@ def adminOrder(orderId, productId):
     except: return redirect('/admin/orders')
     order['product']['info'] = database.getProduct({'id': int(productId)})
     codesCountry = {v: k for k, v in nova.loadCountryCodes().items()}
-    return render_template('adminOrder.html', userData=user, loggedIn=loggedIn, order=order, codesCountry=codesCountry)
+
+    translationsDb = database.getTranslations("db")
+    translationsJs = database.getTranslations("js")
+
+    return render_template('adminOrder.html', userData=user, loggedIn=loggedIn, order=order, codesCountry=codesCountry, translationsDb=translationsDb, translationsJs=translationsJs)
 
 @app.route('/admin/order/status', methods=['POST'])
 def updateOrderStatus():

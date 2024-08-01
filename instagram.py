@@ -56,7 +56,7 @@ def getPost(link, productId):
     rocket = InstagramAPI(token)
     shortCode = link.split("/")[-2]
     post = rocket.get_media_info_by_shortcode(shortCode)
-    # with open(f"post_{productId}.json", "w") as f:
+    # with open(f"json/post_{productId}.json", "w") as f:
     #     json.dump(post, f)
     caption = post["items"][0]['caption']['text']
     sizes, category, brand, sizesCm, price = parsePost(caption)

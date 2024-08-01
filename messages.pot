@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-08-01 12:09+0200\n"
+"POT-Creation-Date: 2024-08-01 12:40+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -314,7 +314,7 @@ msgstr ""
 msgid "No orders found. Try to change filters"
 msgstr ""
 
-#: templates/adminProductEdit.html:8
+#: templates/adminProductEdit.html:8 templates/partials/card.html:46
 msgid "Edit"
 msgstr ""
 
@@ -418,11 +418,11 @@ msgstr ""
 msgid "Update"
 msgstr ""
 
-#: templates/adminProductEdit.html:128
+#: templates/adminProductEdit.html:128 templates/partials/card.html:48
 msgid "Unarchive"
 msgstr ""
 
-#: templates/adminProductEdit.html:128
+#: templates/adminProductEdit.html:128 templates/partials/card.html:48
 msgid "Archive"
 msgstr ""
 

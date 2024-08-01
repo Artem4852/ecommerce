@@ -1,0 +1,246 @@
+{
+    "db": {
+        "demi": {
+            "en": "Demi",
+            "uk": "Демі"
+        },
+        "sneakers": {
+            "en": "Sneakers",
+            "uk": "Кросівки"
+        },
+        "sandals": {
+            "en": "Sandals",
+            "uk": "Сандалі"
+        },
+        "boots": {
+            "en": "Boots",
+            "uk": "Чоботи"
+        },
+        "slippers": {
+            "en": "Slippers",
+            "uk": "Капці"
+        },
+        "shoes": {
+            "en": "Shoes",
+            "uk": "Черевики"
+        },
+
+        "winter": {
+            "en": "Winter",
+            "uk": "Зима"
+        },
+        "spring": {
+            "en": "Spring",
+            "uk": "Весна"
+        },
+        "summer": {
+            "en": "Summer",
+            "uk": "Літо"
+        },
+        "autumn": {
+            "en": "Autumn",
+            "uk": "Осінь"
+        },
+
+        "leather": {
+            "en": "Leather",
+            "uk": "Шкіра"
+        },
+        "textile": {
+            "en": "Textile",
+            "uk": "Текстиль"
+        },
+        "synthetic": {
+            "en": "Synthetic",
+            "uk": "Синтетика"
+        },
+        "rubber": {
+            "en": "Rubber",
+            "uk": "Гума"
+        },
+        "fur": {
+            "en": "Fur",
+            "uk": "Хутро"
+        },
+        "faux fur": {
+            "en": "Faux fur",
+            "uk": "Штучне хутро"
+        },
+        "faux leather": {
+            "en": "Faux leather",
+            "uk": "Штучна шкіра"
+        },
+        "eco leather": {
+            "en": "Eco leather",
+            "uk": "Еко шкіра"
+        },
+        "eco textile": {
+            "en": "Eco textile",
+            "uk": "Еко текстиль"
+        },
+        "eco rubber": {
+            "en": "Eco rubber",
+            "uk": "Еко гума"
+        },
+
+        "kyiv": {
+            "en": "Kyiv",
+            "uk": "Київ"
+        },
+        "poltava": {
+            "en": "Poltava",
+            "uk": "Полтава"
+        },
+        "ternopil": {
+            "en": "Ternopil",
+            "uk": "Тернопіль"
+        },
+        "odesa": {
+            "en": "Odesa",
+            "uk": "Одеса"
+        },
+        "ivano-frankivsk": {
+            "en": "Ivano-Frankivsk",
+            "uk": "Івано-Франківськ"
+        },
+
+        "innerMaterial": {
+            "en": "Inner material",
+            "uk": "Всередині"
+        },
+        "innermaterial": {
+            "en": "Inner material",
+            "uk": "Всередині"
+        },
+        "inner material": {
+            "en": "Inner material",
+            "uk": "Всередині"
+        },
+        "insoleMaterial": {
+            "en": "Insole material",
+            "uk": "Устілка"
+        },
+        "insolematerial": {
+            "en": "Insole material",
+            "uk": "Устілка"
+        },
+        "insole material": {
+            "en": "Insole material",
+            "uk": "Устілка"
+        },
+        "outerMaterial": {
+            "en": "Outer material",
+            "uk": "Верх"
+        },
+        "outermaterial": {
+            "en": "Outer material",
+            "uk": "Верх"
+        },
+        "outer material": {
+            "en": "Outer material",
+            "uk": "Верх"
+        },
+        "season": {
+            "en": "Season",
+            "uk": "Сезон"
+        }
+    },
+    "js": {
+        "saved": {
+            "en": "Saved!",
+            "uk": "Збережено!"
+        },
+        "invalidEmail": {
+            "en": "Please enter a valid email address.",
+            "uk": "Будь ласка, введіть правильну адресу електронної пошти."
+        },
+        "signUp": {
+            "en": "Sign up",
+            "uk": "Зареєструватися"
+        },
+        "invalidPhone": {
+            "en": "Please enter a valid phone number.",
+            "uk": "Будь ласка, введіть правильний номер телефону."
+        },
+        "passwordTooShort": {
+            "en": "Password must be at least 8 characters long.",
+            "uk": "Пароль повинен бути не менше 8 символів."
+        },
+        "passwordsDoNotMatch": {
+            "en": "Passwords do not match.",
+            "uk": "Паролі не співпадають."
+        },
+        "thanksSignUp": {
+            "en": "Thanks for signing up!",
+            "uk": "Дякуємо за реєстрацію!"
+        },
+        "logIn": {
+            "en": "Log in",
+            "uk": "Увійти"
+        },
+        "resetSent": {
+            "en": "Reset code sent!",
+            "uk": "Код для скидання пароля відправлено!"
+        },
+        "sendReset": {
+            "en": "Send reset code",
+            "uk": "Відправити код для скидання"
+        },
+        "invalidCode": {
+            "en": "Please enter a valid reset code.",
+            "uk": "Будь ласка, введіть правильний код для скидання."
+        },
+        "updatePassword": {
+            "en": "Update password",
+            "uk": "Оновити пароль"
+        },
+        "passwordUpdated": {
+            "en": "Password updated!",
+            "uk": "Пароль оновлено!"
+        },
+        "singUpNewsletter": {
+            "en": "Sign me up",
+            "uk": "Підписатися"
+        },
+        "thanksSubscribing": {
+            "en": "Thanks for subscribing!",
+            "uk": "Дякуємо за підписку!"
+        },
+        "quickOrder": {
+            "en": "Quick order",
+            "uk": "Швидке замовлення"
+        },
+        "ordered": {
+            "en": "Ordered!",
+            "uk": "Замовлено!"
+        },
+        "addedToCart": {
+            "en": "Added to cart!",
+            "uk": "Додано в кошик!"
+        },
+        "addToCart": {
+            "en": "Add to cart",
+            "uk": "Додати в кошик"
+        },
+        "save": {
+            "en": "Save",
+            "uk": "Зберегти"
+        },
+        "cancel": {
+            "en": "Cancel",
+            "uk": "Скасувати"
+        },
+        "edit": {
+            "en": "Edit",
+            "uk": "Змінити"
+        },
+        "remove": {
+            "en": "Remove",
+            "uk": "Видалити"
+        },
+        "checkout": {
+            "en": "Checkout",
+            "uk": "Оформити замовлення"
+        }
+    }
+}

@@ -5,7 +5,7 @@ from werkzeug.datastructures import MultiDict
 from datetime import datetime
 from database import Database
 
-with open('regions.json') as f:
+with open('json/regions.json') as f:
     regions = json.load(f)
 regions = {region['properties']['name']: shape(region['geometry']) for region in regions['features']}
 

@@ -1,6 +1,6 @@
 from pymongo.mongo_client import MongoClient
 from bson.objectid import ObjectId
-import os, dotenv, random
+import os, dotenv, random, json
 
 from string import ascii_letters, digits
 characters = ascii_letters + digits
@@ -105,143 +105,16 @@ class Database:
     def updateStats(self, statName, data):
         self.otherDb['statistics'].update_one({'name': statName}, {'$set': data})
 
+    def updateTranslations(self, translations):
+        self.otherDb['translations'].update_one({'name': 'translations'}, {'$set': {'name': 'translations', 'data':translations}}, upsert=True)
+
+    def getTranslations(self, part):
+        return self.otherDb['translations'].find_one({'name': 'translations'})['data'][part]
+
 if __name__ == "__main__":
     database = Database()
-    # for i in range(22, 29):
-    #     data = database.getStats('dailyRequests')['data']
-    #     data[f'{i}.07.2024'] = random.randint(300, 900)
-    #     database.updateStats('dailyRequests', {'data': data})
 
-    # ips = [
-    #     "192.168.1.1",
-    #     "10.0.0.1",
-    #     "172.16.0.1",
-    #     "192.168.0.100",
-    #     "10.0.1.1",
-    #     "172.16.1.1",
-    #     "192.168.1.100",
-    #     "10.0.0.100",
-    #     "172.16.0.100",
-    #     "192.168.0.1",
-    #     "192.168.1.10",
-    #     "10.0.0.10",
-    #     "172.16.0.10",
-    #     "192.168.0.101",
-    #     "10.0.1.10",
-    #     "172.16.1.10",
-    #     "192.168.1.101",
-    #     "10.0.0.101",
-    #     "172.16.0.101",
-    #     "192.168.0.11",
-    #     "192.168.1.11",
-    #     "10.0.0.11",
-    #     "172.16.0.11",
-    #     "192.168.0.102",
-    #     "10.0.1.11",
-    #     "172.16.1.11",
-    #     "192.168.1.102",
-    #     "10.0.0.102",
-    #     "172.16.0.102",
-    #     "192.168.0.12",
-    #     "192.168.1.12",
-    #     "10.0.0.12",
-    #     "172.16.0.12",
-    #     "192.168.0.103",
-    #     "10.0.1.12",
-    #     "172.16.1.12",
-    #     "192.168.1.103",
-    #     "10.0.0.103",
-    #     "172.16.0.103",
-    #     "192.168.0.13",
-    #     "192.168.1.13",
-    #     "10.0.0.13",
-    #     "172.16.0.13",
-    #     "192.168.0.104",
-    #     "10.0.1.13",
-    #     "172.16.1.13",
-    #     "192.168.1.104",
-    #     "10.0.0.104",
-    #     "172.16.0.104",
-    #     "192.168.0.14",
-    #     "192.168.1.14",
-    #     "10.0.0.14",
-    #     "172.16.0.14",
-    #     "192.168.0.105",
-    #     "10.0.1.14",
-    #     "172.16.1.14",
-    #     "192.168.1.105",
-    #     "10.0.0.105",
-    #     "172.16.0.105",
-    #     "192.168.0.15",
-    #     "192.168.1.15",
-    #     "10.0.0.15",
-    #     "172.16.0.15",
-    #     "192.168.0.106",
-    #     "10.0.1.15",
-    #     "172.16.1.15",
-    #     "192.168.1.106",
-    #     "10.0.0.106",
-    #     "172.16.0.106",
-    #     "192.168.0.16",
-    #     "192.168.1.16",
-    #     "10.0.0.16",
-    #     "172.16.0.16",
-    #     "192.168.0.107",
-    #     "10.0.1.16",
-    #     "172.16.1.16",
-    #     "192.168.1.107",
-    #     "10.0.0.107",
-    #     "172.16.0.107",
-    #     "192.168.0.17",
-    #     "192.168.1.17",
-    #     "10.0.0.17",
-    #     "172.16.0.17",
-    #     "192.168.0.108",
-    #     "10.0.1.17",
-    #     "172.16.1.17",
-    #     "192.168.1.108",
-    #     "10.0.0.108",
-    #     "172.16.0.108",
-    #     "192.168.0.18",
-    #     "192.168.1.18",
-    #     "10.0.0.18",
-    #     "172.16.0.18",
-    #     "192.168.0.109",
-    #     "10.0.1.18",
-    #     "172.16.1.18",
-    #     "192.168.1.109",
-    #     "10.0.0.109",
-    #     "172.16.0.109",
-    #     "192.168.0.19",
-    #     "192.168.1.19",
-    #     "10.0.0.19",
-    #     "172.16.0.19",
-    #     "192.168.0.110",
-    #     "10.0.1.19",
-    #     "172.16.1.19",
-    #     "192.168.1.110",
-    #     "10.0.0.110",
-    #     "172.16.0.110",
-    #     "192.168.0.20",
-    #     "192.168.1.20",
-    #     "10.0.0.20",
-    #     "172.16.0.20",
-    #     "192.168.0.111",
-    #     "10.0.1.20",
-    #     "172.16.1.20",
-    #     "192.168.1.111",
-    #     "10.0.0.111",
-    #     "172.16.0.111",
-    # ]
-    # for i in range(22, 29):
-    #     data = database.getStats('dailyUniqueVisits')['data']
-    #     data[f'{i}.07.2024'] = random.sample(ips, random.randint(5, len(ips)))
-    #     database.updateStats('dailyUniqueVisits', {'data': data})
-
-    products = database.getProducts()
-    for n, product in enumerate(products):
-        print(f'{n+1}/{len(products)}')
-        database.editProduct(product['id'], ['tag'])
-        tag = 'sale' if product['discount'] > 20 else ''
-        if tag == '' and random.random() > 0.9: tag = 'featured'
-        database.productsDb['productData'].update_one({'id': product['id']}, {'$set': {'tags': [tag]}})
+    with open("json/translations.json", "r") as f:
+        translations = json.load(f)
+    database.updateTranslations(translations)
+    print(database.getTranslations('db')['demi'])

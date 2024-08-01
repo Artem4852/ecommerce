@@ -32,7 +32,6 @@ class NovaAPI():
         while r.json()['total'] > len(cities):
             r = self.session.get(self.endpoints['europe']+f'divisions?countryCodes[]={countryCode}&divisionCategories[]=PostBranch&limit=100&page={len(cities)//100+1}')
             cities += [c['settlement']['name'] for c in r.json()['items']]
-        print(len(cities))
         cities = list(set(cities))
         return cities
 
@@ -54,13 +53,12 @@ class NovaAPI():
         data['countries'] = ['UA', 'MD', 'PL', 'LT', 'CZ', 'RO', 'DE', 'SK', 'EE', 'LV', 'HU', 'IT', 'GB', 'ES', 'FR']
         data['cities'] = {}
         for country in data['countries']:
-            print(country)
             data['cities'][country] = self.getCities(country)
-        with open('novapost.json', 'w') as f:
+        with open('json/novapost.json', 'w') as f:
             json.dump(data, f)
 
     def loadNovaPostData(self):
-        with open('novapost.json', 'r') as f:
+        with open('json/novapost.json', 'r') as f:
             return json.load(f)
         
     def loadCountryCodes(self):
@@ -75,7 +73,6 @@ class NovaAPI():
         return self.loadNovaPostData()['cities'][countryCode]
     
     def calculateShippingPrice(self, warehouse, destination, products):
-        print(warehouse, destination, products)
         divisionNumber = None
         if warehouse.lower() == 'kyiv': divisionNumber = "11/99"
         elif warehouse.lower() == 'poltava': divisionNumber = "91/3"
@@ -116,7 +113,6 @@ class NovaAPI():
 
             r = self.session.post(self.endpoints['ukraine']+'shipments/calculations', json=form)
 
-            print(r.json())
             totalDeliveryCost += r.json()['services'][0]['cost']
         return totalDeliveryCost
 
@@ -125,7 +121,7 @@ if __name__ == "__main__":
     nova = NovaAPI()
     # print(nova.getBranches('PL', 'Wrockl'))
     # city = 'Poltava'
-    # with open(f'divisions{city}.json', 'w') as f:
+    # with open(f'json/divisions{city}.json', 'w') as f:
     #     json.dump(nova.getBranches('UA', city), f)
     price = nova.calculateShippingPrice('Kyiv', {'countryCode': 'UA', 'branch': '12/8'}, 
                                         [
