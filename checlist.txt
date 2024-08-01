@@ -34,15 +34,16 @@ mail/saleFavorite.html +
 mail/welcome.html +
 
 legal/termsOfUse.html +
-legal/privacy.html 
-legal/cookies.html 
-legal/shipping.html 
-legal/replacementsAndReturns.html 
+legal/privacy.html +
+legal/cookies.html +
+legal/shipping.html +
+legal/replacementsAndReturns.html +
 
 faq/delivery.html +
 faq/replacementsReturns.html +
 faq/shoeSize.html +
 
+- Discountinued
 cart.html 
 checkout.html 
 order.html 

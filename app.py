@@ -236,7 +236,6 @@ def termsofuse():
     if logResponse: return logResponse
     page = database.getLegalPage('termsOfUse')
     return render_template('legalPage.html', loggedIn=loggedIn, userData=userData, page=page)
-    return render_template('legal/termsOfUse.html', loggedIn=loggedIn, userData=userData)
 
 @app.route('/privacypolicy')
 def privacypolicy():
@@ -247,7 +246,8 @@ def privacypolicy():
         userData = {}
     logResponse = log('legal', request=request)
     if logResponse: return logResponse
-    return render_template('legal/privacy.html', loggedIn=loggedIn, userData=userData)
+    page = database.getLegalPage('privacyPolicy')
+    return render_template('legalPage.html', loggedIn=loggedIn, userData=userData, page=page)
 
 @app.route('/cookiespolicy')
 def cookiespolicy():
@@ -258,7 +258,8 @@ def cookiespolicy():
         userData = {}
     logResponse = log('legal', request=request)
     if logResponse: return logResponse
-    return render_template('legal/cookies.html', loggedIn=loggedIn, userData=userData)
+    page = database.getLegalPage('cookiesPolicy')
+    return render_template('legalPage.html', loggedIn=loggedIn, userData=userData, page=page)
 
 @app.route('/shippingpolicy')
 def shippingpolicy():
@@ -269,7 +270,8 @@ def shippingpolicy():
         userData = {}
     logResponse = log('legal', request=request)
     if logResponse: return logResponse
-    return render_template('legal/shipping.html', loggedIn=loggedIn, userData=userData)
+    page = database.getLegalPage('shippingPolicy')
+    return render_template('legalPage.html', loggedIn=loggedIn, userData=userData, page=page)
 
 @app.route('/replacementsandreturnspolicy')
 def replacementsandreturnspolicy():
@@ -280,7 +282,8 @@ def replacementsandreturnspolicy():
         userData = {}
     logResponse = log('legal', request=request)
     if logResponse: return logResponse
-    return render_template('legal/replacementsAndReturns.html', loggedIn=loggedIn, userData=userData)
+    page = database.getLegalPage('replacementsAndReturnsPolicy')
+    return render_template('legalPage.html', loggedIn=loggedIn, userData=userData, page=page)
 
 # Cart + favorites routes
 @app.route('/favorites')

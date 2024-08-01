@@ -343,7 +343,7 @@ select::-webkit-inner-spin-button, select::-webkit-outer-spin-button {
 #header .navbar.mobile {
   display: none;
   position: fixed;
-  width: 50vw;
+  min-width: 50vw;
   height: 100vh;
   top: 0;
   right: 0;
@@ -2033,6 +2033,7 @@ html.uk .banner {
   width: 100%;
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 20px;
   padding: 20px;
   background-color: #E0E0E0;
@@ -2060,6 +2061,9 @@ html.uk .banner {
   background-color: #E2A4D0;
   text-decoration: none;
 }
+#admin .group .data .chart {
+  width: 100%;
+}
 #admin .group .data canvas {
   width: 100%;
   height: 400px;
@@ -2070,6 +2074,7 @@ html.uk .banner {
   flex-direction: row;
   justify-content: flex-start;
   flex-wrap: wrap;
+  width: 100%;
   gap: 20px;
   align-items: flex-start;
 }
@@ -2085,6 +2090,7 @@ html.uk .banner {
   width: 100%;
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   justify-content: space-between;
   gap: 20px;
   height: fit-content;
@@ -2485,6 +2491,19 @@ html.uk .banner {
     width: 100%;
   }
   #admin .group .data .row .col {
+    width: 100%;
+  }
+  #admin.activity .row {
+    margin-bottom: 50px;
+    gap: 0;
+  }
+  #admin.activity .row:last-child .group {
+    margin-bottom: 50px;
+  }
+  #admin.activity .row:last-child .group:last-child {
+    margin-bottom: 0;
+  }
+  #admin.activity .row .group {
     width: 100%;
   }
   #adminProduct .col {

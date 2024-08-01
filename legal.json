@@ -6,199 +6,469 @@
       "uk": "Умови використання"
     },
     "page": [
-        {
-            "type": "title",
-            "en": "Effective Date: 13 July 2024",
-            "uk": "Дата набуття чинності: 13 липня 2024"
-        },
-        {
-            "type": "paragraph",
-            "en": "Welcome to Kids Fashion Store (\"we,\" \"our,\" \"us\"). These Terms of Use (\"Terms\") govern your access to and use of our website, <a href=\"/\">https://kidsfashionstore.ua</a> (the \"Site\"), and any related services (collectively, the \"Services\"). By accessing or using the Site, you agree to be bound by these Terms. If you do not agree to these Terms, please do not use the Site.",
-            "uk": "Ласкаво просимо до Kids Fashion Store (\"ми,\" \"наш,\" \"нас\"). Ці Умови використання (\"Умови\") регулюють ваш доступ до нашого веб-сайту, <a href=\"/\">https://kidsfashionstore.ua</a> (\"Сайт\"), та будь-яких пов'язаних послуг (узагальнено, \"Послуги\"). Користуючись Сайтом, ви погоджуєтеся дотримуватися цих Умов. Якщо ви не погоджуєтеся з цими Умовами, будь ласка, не використовуйте Сайт."
-        },
-        {
-            "type": "title",
-            "en": "1. Acceptance of Terms",
-            "uk": "1. Прийняття Умов"
-        },
-        {
-            "type": "paragraph",
-            "en": "By accessing or using our Site, you confirm that you can form a binding contract with Kids Fashion Store, that you accept these Terms, and that you agree to comply with them. If you do not agree to these Terms, you must not access or use the Site.",
-            "uk": "Користуючись нашим Сайтом, ви підтверджуєте, що можете укласти контракт з Kids Fashion Store, що приймаєте ці Умови та згодні їх дотримуватися. Якщо ви не погоджуєтеся з цими Умовами, ви не повинні використовувати Сайт."
-        },
-        {
-            "type": "title",
-            "en": "2. Changes to Terms",
-            "uk": "2. Зміни Умов"
-        },
-        {
-            "type": "paragraph",
-            "en": "We reserve the right to modify these Terms at any time. Any changes will be effective immediately upon posting on the Site. Your continued use of the Site following the posting of revised Terms means that you accept and agree to the changes.",
-            "uk": "Ми залишаємо за собою право змінювати ці Умови в будь-який час. Будь-які зміни набирають чинності негайно після публікації на Сайті. Ваше подальше використання Сайту після публікації переглянутих Умов означає, що ви приймаєте і згодні з змінами."
-        },
-        {
-            "type": "title",
-            "en": "3. Privacy Policy",
-            "uk": "3. Політика конфіденційності"
-        },
-        {
-            "type": "paragraph",
-            "en": "Your use of the Site is also governed by our Privacy Policy, which can be found at <a href=\"/privacypolicy\">https://kidsfashionstore.ua/privacypolicy</a>. Please review our Privacy Policy to understand our practices regarding the collection, use, and disclosure of your personal information.",
-            "uk": "Ваше користування Сайтом також регулюється нашою Політикою конфіденційності, яку можна знайти за посиланням <a href=\"/privacypolicy\">https://kidsfashionstore.ua/privacypolicy</a>. Будь ласка, ознайомтеся з нашою Політикою конфіденційності, щоб зрозуміти наші практики щодо збору та використання вашої особистої інформації."
-        },
-        {
-            "type": "title",
-            "en": "4. Account Registration",
-            "uk": "4. Реєстрація облікового запису"
-        },
-        {
-            "type": "paragraph",
-            "en": "To access certain features of the Site, you may be required to register an account. You agree to provide accurate, current, and complete information during the registration process and to update such information to keep it accurate, current, and complete. You are responsible for safeguarding your password and for any activities or actions under your account.",
-            "uk": "Для доступу до певних функцій Сайту вам може знадобитися створити обліковий запис. Ви погоджуєтеся надавати точну, актуальну та повну інформацію під час процесу реєстрації та оновлювати таку інформацію, щоб вони залишалась точною, актуальною та повною. Ви несете відповідальність за збереження вашого пароля та за будь-які дії зроблені вашим обліковим записом."
-        },
-        {
-            "type": "title",
-            "en": "5. Use of the Site",
-            "uk": "5. Використання Сайту"
-        },
-        {
-            "type": "paragraph",
-            "class": "noMargin",
-            "en": "You agree to use the Site only for lawful purposes and in accordance with these Terms. You agree not to use the Site:",
-            "uk": "Ви погоджуєтеся використовувати Сайт лише для законних цілей та відповідно до цих Умов. Ви погоджуєтеся не використовувати Сайт:"
-        },
-        {
-            "type": "list",
-            "en": [
-                "In any way that violates any applicable federal, state, local, or international law or regulation.",
-                "To transmit, or procure the sending of, any advertising or promotional material without our prior written consent.",
-                "To impersonate or attempt to impersonate Kids Fashion Store, a Kids Fashion Store employee, another user, or any other person or entity.",
-                "To engage in any other conduct that restricts or inhibits anyone's use or enjoyment of the Site, or which, as determined by us, may harm Kids Fashion Store or users of the Site, or expose them to liability"
-            ],
-            "uk": [
-                "Будь-яким чином, що порушує будь-який чинний федеральний, штатовий, місцевий або міжнародний закон або регулювання.",
-                "Передавати або здійснювати відправку будь-якого рекламного або промоційного матеріалу без нашої попередньої письмової згоди.",
-                "Імітувати або намагатися імітувати Kids Fashion Store, працівника Kids Fashion Store, іншого користувача або будь-яку іншу особу.",
-                "Займатися будь-якою іншою діяльністю, яка обмежує використання або задоволення будь-ким Сайту, або яка, на нашу думку, може завдати шкоди Kids Fashion Store або користувачам Сайту, або створити для них ризик"
-            ]
-        },
-        {
-            "type": "title",
-            "en": "6. Product Descriptions",
-            "uk": "6. Опис продуктів"
-        },
-        {
-            "type": "paragraph",
-            "en": "We attempt to be as accurate as possible in describing our products. However, we do not warrant that product descriptions or other content on the Site are accurate, complete, reliable, current, or error-free.",
-            "uk": "Ми намагаємося бути якомога точнішими у описі наших продуктів. Однак ми не гарантуємо, що описи продуктів або інший контент на Сайті є точними, повними, надійними, актуальними або безпомилковими."
-        },
-        {
-            "type": "title",
-            "en": "7. Pricing",
-            "uk": "7. Ціни"
-        },
-        {
-            "type": "paragraph",
-            "en": "All prices displayed on the Site are subject to change without notice. We reserve the right to modify or discontinue any product or service without notice at any time.",
-            "uk": "Всі ціни, вказані на Сайті, можуть змінюватися без попередження. Ми залишаємо за собою право змінювати або прибирати будь-який продукт або послугу без попередження в будь-який час."
-        },
-        {
-            "type": "title",
-            "en": "8. Orders and Payment",
-            "uk": "8. Замовлення та оплата"
-        },
-        {
-            "type": "paragraph",
-            "en": "By placing an order through the Site, you represent and warrant that you are capable of entering into a legally binding contract and that you agree to pay for all products and services ordered. We reserve the right to refuse any order at our discretion.",
-            "uk": "Подавши замовлення через Сайт, ви підтверджуєте, що здатні укласти юридичний контракт і погоджуєтеся оплатити всі замовлені продукти та послуги. Ми залишаємо за собою право відмовити в будь-якому замовленні на наш розсуд."
-        },
-        {
-            "type": "title",
-            "en": "9. Shipping and Returns",
-            "uk": "9. Доставка та повернення"
-        },
-        {
-            "type": "paragraph",
-            "en": "Please refer to our Shipping Policy as well as Replacement and Return Policy, available at <a href=\"/shippingpolicy\">https://kidsfashionstore.ua/shippingpolicy</a> and <a href=\"/replacementsandreturnspolicy\">https://kidsfashionstore.ua/replacementsandreturnspolicy</a>, for information on our shipping, replacement, and return practices.",
-            "uk": "Будь ласка, зверніться до нашої Політики доставки, а також Політики обміну та повернення, доступних за посиланнями <a href=\"/shippingpolicy\">https://kidsfashionstore.ua/shippingpolicy</a> та <a href=\"/replacementsandreturnspolicy\">https://kidsfashionstore.ua/replacementsandreturnspolicy</a>, для отримання інформації про наші практики доставки, обміну та повернення."
-        },
-        {
-            "type": "title",
-            "en": "10. Intellectual Property",
-            "uk": "10. Інтелектуальна власність"
-        },
-        {
-            "type": "paragraph",
-            "en": "All content on the Site, including text, graphics, logos, images, and software, is the property of Kids Fashion Store or its content suppliers and is protected by international copyright laws. You may not use, reproduce, modify, distribute, or display any content from the Site without our prior written consent.",
-            "uk": "Весь контент на Сайті, включаючи текст, графіку, логотипи, зображення та програмне забезпечення, є власністю Kids Fashion Store або його постачальників контенту і захищений міжнародними законами про авторське право. Ви не можете використовувати, відтворювати, модифікувати, розповсюджувати або відображати будь-який контент з Сайту без нашої попередньої письмової згоди."
-        },
-        {
-            "type": "title",
-            "en": "11. Limitation of Liability",
-            "uk": "11. Обмеження відповідальності"
-        },
-        {
-            "type": "paragraph",
-            "en": "To the fullest extent permitted by law, Kids Fashion Store shall not be liable for any indirect, incidental, special, consequential, or punitive damages, or any loss of profits or revenues, whether incurred directly or indirectly, or any loss of data, use, goodwill, or other intangible losses, resulting from (a) your use or inability to use the Site; (b) any unauthorized access to or use of our servers and/or any personal information stored therein; (c) any interruption or cessation of transmission to or from the Site; (d) any bugs, viruses, trojan horses, or the like that may be transmitted to or through the Site by any third party; or (e) any errors or omissions in any content or for any loss or damage incurred as a result of the use of any content posted, emailed, transmitted, or otherwise made available through the Site.",
-            "uk": "Настільки, наскільки це дозволено законом, Kids Fashion Store не несе відповідальності за будь-які непрямі, випадкові, спеціальні, побічні або покаральні збитки, або будь-які втрати прибутку або доходів, чи то понесені безпосередньо, чи опосередковано, або будь-які втрати даних, використання, доброї волі або інші нематеріальні збитки, що виникають в результаті (a) вашого використання або неможливості використання Сайту; (b) будь-якого несанкціонованого доступу до або використання наших серверів та/або будь-якої особистої інформації, збереженої там; (c) будь-якого переривання або припинення передачі до або з Сайту; (d) будь-яких помилок, вірусів, троянських коней або подібного, які можуть бути передані до або через Сайт будь-якою третьою стороною; або (e) будь-яких помилок або пропусків в будь-якому контенті або будь-яких втрат або збитків, понесених в результаті використання будь-якого контенту, розміщеного, відправленого, переданого або інакше зробленого доступним через Сайт."
-        },
-        {
-            "type": "title",
-            "en": "12. Indemnification",
-            "uk": "12. Відшкодування"
-        },
-        {
-            "type": "paragraph",
-            "en": "You agree to indemnify, defend, and hold harmless Kids Fashion Store, its affiliates, and their respective officers, directors, employees, agents, licensors, and suppliers from and against all claims, losses, expenses, damages, and costs, including reasonable attorneys' fees, resulting from any violation of these Terms or any activity related to your account (including negligent or wrongful conduct) by you or any other person accessing the Site using your account.",
-            "uk": "Ви погоджуєтеся відшкодовувати та захищати Kids Fashion Store, його учасників та їхніх відповідних посадових осіб, директорів, працівників, агентів, ліцензорів та постачальників від будь-яких претензій, втрат, збитків та витрат, включаючи розумні витрати на адвокатів, що виникають в результаті порушення цих Умов або будь-якої діяльності, пов'язаної з вашим обліковим записом (включаючи недбале або неправомірне поводження) вами або будь-якою іншою особою, яка отримує доступ до Сайту за допомогою вашого облікового запису."
-        },
-        {
-            "type": "title",
-            "en": "13. Governing Law",
-            "uk": "13. Регулюючий закон"
-        },
-        {
-            "type": "paragraph",
-            "en": "These Terms and any disputes arising out of or related to these Terms or the Site will be governed by and construed in accordance with the laws of Ukraine, without giving effect to its conflict of laws principles.",
-            "uk": "Ці Умови та будь-які незгоди, що виникають через або пов'язані з цими Умовами або Сайтом, будуть регулюватися та тлумачитися відповідно до законів України, без застосування її принципів конфлікту законів."
-        },
-        {
-            "type": "title",
-            "en": "14. Dispute Resolution",
-            "uk": "14. Вирішення диспутів"
-        },
-        {
-            "type": "paragraph",
-            "en": "Any dispute arising out of or related to these Terms or the Site will be resolved through binding arbitration in accordance with the rules of the The International Commercial Arbitration Court at the Ukrainian Chamber of Commerce and Industry (ICAC) in Ukraine. Judgment on the arbitration award may be entered in any court having jurisdiction. You agree that any dispute resolution proceedings will be conducted only on an individual basis and not in a class, consolidated, or representative action.",
-            "uk": "Будь-який спір, що виникає через або пов'язаний з цими Умовами або Сайтом, буде вирішуватися шляхом обов'язкового арбітражу відповідно до правил Міжнародного комерційного арбітражного суду при Українській торгово-промисловій палаті (ICAC) в Україні. Рішення арбітражу може бути виконане в будь-якому суді, що має юрисдикцію. Ви погоджуєтеся, що будь-які процедури вирішення незгод будуть проводитися лише на індивідуальній основі, а не в рамках колективної, об'єднаної або представницької дії."
-        },
-        {
-            "type": "title",
-            "en": "15. Miscellaneous",
-            "uk": "15. Різне"
-        },
-        {
-            "type": "paragraph",
-            "en": "These Terms constitute the entire agreement between you and Kids Fashion Store regarding the use of the Site. Our failure to exercise or enforce any right or provision of these Terms will not operate as a waiver of such right or provision. If any provision of these Terms is held to be invalid or unenforceable, the remaining provisions will remain in full force and effect.",
-            "uk": "Ці Умови становлять повний договір між вами та Kids Fashion Store щодо використання Сайту. Наша недія або невиконання будь-якого права або положення цих Умов не буде вважатися відмовою від такого права або положення. Якщо будь-яке положення цих Умов виявиться недійсним або невиконуваним, решта положень залишаться в повній силі та ефективності."
-        },
-        {
-            "type": "title",
-            "en": "16. Contact Information",
-            "uk": "16. Контактна інформація"
-        },
-        {
-            "type": "paragraph",
-            "en": "If you have any questions about these Terms, please contact us at <a href=\"mailto:contact@kidsfashionstore.ua\">contact@kidsfashionstore.ua</a> or <a href=\"tel:+380689016787\">+380 68 901 6787</a>.",
-            "uk": "Якщо у вас є питання щодо цих Умов, будь ласка, зв'яжіться з нами за адресою <a href=\"mailto:contact@kidsfashionstore.ua\">contact@kidsfashionstore.ua</a> або <a href=\"tel:+380689016787\">+380 68 901 6787</a>."
-        }
+      {
+        "type": "title",
+        "en": "Effective Date: 13 July 2024",
+        "uk": "Дата набуття чинності: 13 липня 2024"
+      },
+      {
+        "type": "paragraph",
+        "en": "Welcome to Kids Fashion Store (\"we,\" \"our,\" \"us\"). These Terms of Use (\"Terms\") govern your access to and use of our website, <a href=\"/\">https://kidsfashionstore.ua</a> (the \"Site\"), and any related services (collectively, the \"Services\"). By accessing or using the Site, you agree to be bound by these Terms. If you do not agree to these Terms, please do not use the Site.",
+        "uk": "Ласкаво просимо до Kids Fashion Store (\"ми,\" \"наш,\" \"нас\"). Ці Умови використання (\"Умови\") регулюють ваш доступ до нашого веб-сайту, <a href=\"/\">https://kidsfashionstore.ua</a> (\"Сайт\"), та будь-яких пов'язаних послуг (узагальнено, \"Послуги\"). Користуючись Сайтом, ви погоджуєтеся дотримуватися цих Умов. Якщо ви не погоджуєтеся з цими Умовами, будь ласка, не використовуйте Сайт."
+      },
+      {
+        "type": "title",
+        "en": "1. Acceptance of Terms",
+        "uk": "1. Прийняття Умов"
+      },
+      {
+        "type": "paragraph",
+        "en": "By accessing or using our Site, you confirm that you can form a binding contract with Kids Fashion Store, that you accept these Terms, and that you agree to comply with them. If you do not agree to these Terms, you must not access or use the Site.",
+        "uk": "Користуючись нашим Сайтом, ви підтверджуєте, що можете укласти контракт з Kids Fashion Store, що приймаєте ці Умови та згодні їх дотримуватися. Якщо ви не погоджуєтеся з цими Умовами, ви не повинні використовувати Сайт."
+      },
+      {
+        "type": "title",
+        "en": "2. Changes to Terms",
+        "uk": "2. Зміни Умов"
+      },
+      {
+        "type": "paragraph",
+        "en": "We reserve the right to modify these Terms at any time. Any changes will be effective immediately upon posting on the Site. Your continued use of the Site following the posting of revised Terms means that you accept and agree to the changes.",
+        "uk": "Ми залишаємо за собою право змінювати ці Умови в будь-який час. Будь-які зміни набирають чинності негайно після публікації на Сайті. Ваше подальше використання Сайту після публікації переглянутих Умов означає, що ви приймаєте і згодні з змінами."
+      },
+      {
+        "type": "title",
+        "en": "3. Privacy Policy",
+        "uk": "3. Політика конфіденційності"
+      },
+      {
+        "type": "paragraph",
+        "en": "Your use of the Site is also governed by our Privacy Policy, which can be found at <a href=\"/privacypolicy\">https://kidsfashionstore.ua/privacypolicy</a>. Please review our Privacy Policy to understand our practices regarding the collection, use, and disclosure of your personal information.",
+        "uk": "Ваше користування Сайтом також регулюється нашою Політикою конфіденційності, яку можна знайти за посиланням <a href=\"/privacypolicy\">https://kidsfashionstore.ua/privacypolicy</a>. Будь ласка, ознайомтеся з нашою Політикою конфіденційності, щоб зрозуміти наші практики щодо збору та використання вашої особистої інформації."
+      },
+      {
+        "type": "title",
+        "en": "4. Account Registration",
+        "uk": "4. Реєстрація облікового запису"
+      },
+      {
+        "type": "paragraph",
+        "en": "To access certain features of the Site, you may be required to register an account. You agree to provide accurate, current, and complete information during the registration process and to update such information to keep it accurate, current, and complete. You are responsible for safeguarding your password and for any activities or actions under your account.",
+        "uk": "Для доступу до певних функцій Сайту вам може знадобитися створити обліковий запис. Ви погоджуєтеся надавати точну, актуальну та повну інформацію під час процесу реєстрації та оновлювати таку інформацію, щоб вони залишалась точною, актуальною та повною. Ви несете відповідальність за збереження вашого пароля та за будь-які дії зроблені вашим обліковим записом."
+      },
+      {
+        "type": "title",
+        "en": "5. Use of the Site",
+        "uk": "5. Використання Сайту"
+      },
+      {
+        "type": "paragraph",
+        "class": "noMargin",
+        "en": "You agree to use the Site only for lawful purposes and in accordance with these Terms. You agree not to use the Site:",
+        "uk": "Ви погоджуєтеся використовувати Сайт лише для законних цілей та відповідно до цих Умов. Ви погоджуєтеся не використовувати Сайт:"
+      },
+      {
+        "type": "list",
+        "en": [
+          "In any way that violates any applicable federal, state, local, or international law or regulation.",
+          "To transmit, or procure the sending of, any advertising or promotional material without our prior written consent.",
+          "To impersonate or attempt to impersonate Kids Fashion Store, a Kids Fashion Store employee, another user, or any other person or entity.",
+          "To engage in any other conduct that restricts or inhibits anyone's use or enjoyment of the Site, or which, as determined by us, may harm Kids Fashion Store or users of the Site, or expose them to liability"
+        ],
+        "uk": [
+          "Будь-яким чином, що порушує будь-який чинний федеральний, штатовий, місцевий або міжнародний закон або регулювання.",
+          "Передавати або здійснювати відправку будь-якого рекламного або промоційного матеріалу без нашої попередньої письмової згоди.",
+          "Імітувати або намагатися імітувати Kids Fashion Store, працівника Kids Fashion Store, іншого користувача або будь-яку іншу особу.",
+          "Займатися будь-якою іншою діяльністю, яка обмежує використання або задоволення будь-ким Сайту, або яка, на нашу думку, може завдати шкоди Kids Fashion Store або користувачам Сайту, або створити для них ризик"
+        ]
+      },
+      {
+        "type": "title",
+        "en": "6. Product Descriptions",
+        "uk": "6. Опис продуктів"
+      },
+      {
+        "type": "paragraph",
+        "en": "We attempt to be as accurate as possible in describing our products. However, we do not warrant that product descriptions or other content on the Site are accurate, complete, reliable, current, or error-free.",
+        "uk": "Ми намагаємося бути якомога точнішими у описі наших продуктів. Однак ми не гарантуємо, що описи продуктів або інший контент на Сайті є точними, повними, надійними, актуальними або безпомилковими."
+      },
+      {
+        "type": "title",
+        "en": "7. Pricing",
+        "uk": "7. Ціни"
+      },
+      {
+        "type": "paragraph",
+        "en": "All prices displayed on the Site are subject to change without notice. We reserve the right to modify or discontinue any product or service without notice at any time.",
+        "uk": "Всі ціни, вказані на Сайті, можуть змінюватися без попередження. Ми залишаємо за собою право змінювати або прибирати будь-який продукт або послугу без попередження в будь-який час."
+      },
+      {
+        "type": "title",
+        "en": "8. Orders and Payment",
+        "uk": "8. Замовлення та оплата"
+      },
+      {
+        "type": "paragraph",
+        "en": "By placing an order through the Site, you represent and warrant that you are capable of entering into a legally binding contract and that you agree to pay for all products and services ordered. We reserve the right to refuse any order at our discretion.",
+        "uk": "Подавши замовлення через Сайт, ви підтверджуєте, що здатні укласти юридичний контракт і погоджуєтеся оплатити всі замовлені продукти та послуги. Ми залишаємо за собою право відмовити в будь-якому замовленні на наш розсуд."
+      },
+      {
+        "type": "title",
+        "en": "9. Shipping and Returns",
+        "uk": "9. Доставка та повернення"
+      },
+      {
+        "type": "paragraph",
+        "en": "Please refer to our Shipping Policy as well as Replacement and Return Policy, available at <a href=\"/shippingpolicy\">https://kidsfashionstore.ua/shippingpolicy</a> and <a href=\"/replacementsandreturnspolicy\">https://kidsfashionstore.ua/replacementsandreturnspolicy</a>, for information on our shipping, replacement, and return practices.",
+        "uk": "Будь ласка, зверніться до нашої Політики доставки, а також Політики обміну та повернення, доступних за посиланнями <a href=\"/shippingpolicy\">https://kidsfashionstore.ua/shippingpolicy</a> та <a href=\"/replacementsandreturnspolicy\">https://kidsfashionstore.ua/replacementsandreturnspolicy</a>, для отримання інформації про наші практики доставки, обміну та повернення."
+      },
+      {
+        "type": "title",
+        "en": "10. Intellectual Property",
+        "uk": "10. Інтелектуальна власність"
+      },
+      {
+        "type": "paragraph",
+        "en": "All content on the Site, including text, graphics, logos, images, and software, is the property of Kids Fashion Store or its content suppliers and is protected by international copyright laws. You may not use, reproduce, modify, distribute, or display any content from the Site without our prior written consent.",
+        "uk": "Весь контент на Сайті, включаючи текст, графіку, логотипи, зображення та програмне забезпечення, є власністю Kids Fashion Store або його постачальників контенту і захищений міжнародними законами про авторське право. Ви не можете використовувати, відтворювати, модифікувати, розповсюджувати або відображати будь-який контент з Сайту без нашої попередньої письмової згоди."
+      },
+      {
+        "type": "title",
+        "en": "11. Limitation of Liability",
+        "uk": "11. Обмеження відповідальності"
+      },
+      {
+        "type": "paragraph",
+        "en": "To the fullest extent permitted by law, Kids Fashion Store shall not be liable for any indirect, incidental, special, consequential, or punitive damages, or any loss of profits or revenues, whether incurred directly or indirectly, or any loss of data, use, goodwill, or other intangible losses, resulting from (a) your use or inability to use the Site; (b) any unauthorized access to or use of our servers and/or any personal information stored therein; (c) any interruption or cessation of transmission to or from the Site; (d) any bugs, viruses, trojan horses, or the like that may be transmitted to or through the Site by any third party; or (e) any errors or omissions in any content or for any loss or damage incurred as a result of the use of any content posted, emailed, transmitted, or otherwise made available through the Site.",
+        "uk": "Настільки, наскільки це дозволено законом, Kids Fashion Store не несе відповідальності за будь-які непрямі, випадкові, спеціальні, побічні або покаральні збитки, або будь-які втрати прибутку або доходів, чи то понесені безпосередньо, чи опосередковано, або будь-які втрати даних, використання, доброї волі або інші нематеріальні збитки, що виникають в результаті (a) вашого використання або неможливості використання Сайту; (b) будь-якого несанкціонованого доступу до або використання наших серверів та/або будь-якої особистої інформації, збереженої там; (c) будь-якого переривання або припинення передачі до або з Сайту; (d) будь-яких помилок, вірусів, троянських коней або подібного, які можуть бути передані до або через Сайт будь-якою третьою стороною; або (e) будь-яких помилок або пропусків в будь-якому контенті або будь-яких втрат або збитків, понесених в результаті використання будь-якого контенту, розміщеного, відправленого, переданого або інакше зробленого доступним через Сайт."
+      },
+      {
+        "type": "title",
+        "en": "12. Indemnification",
+        "uk": "12. Відшкодування"
+      },
+      {
+        "type": "paragraph",
+        "en": "You agree to indemnify, defend, and hold harmless Kids Fashion Store, its affiliates, and their respective officers, directors, employees, agents, licensors, and suppliers from and against all claims, losses, expenses, damages, and costs, including reasonable attorneys' fees, resulting from any violation of these Terms or any activity related to your account (including negligent or wrongful conduct) by you or any other person accessing the Site using your account.",
+        "uk": "Ви погоджуєтеся відшкодовувати та захищати Kids Fashion Store, його учасників та їхніх відповідних посадових осіб, директорів, працівників, агентів, ліцензорів та постачальників від будь-яких претензій, втрат, збитків та витрат, включаючи розумні витрати на адвокатів, що виникають в результаті порушення цих Умов або будь-якої діяльності, пов'язаної з вашим обліковим записом (включаючи недбале або неправомірне поводження) вами або будь-якою іншою особою, яка отримує доступ до Сайту за допомогою вашого облікового запису."
+      },
+      {
+        "type": "title",
+        "en": "13. Governing Law",
+        "uk": "13. Регулюючий закон"
+      },
+      {
+        "type": "paragraph",
+        "en": "These Terms and any disputes arising out of or related to these Terms or the Site will be governed by and construed in accordance with the laws of Ukraine, without giving effect to its conflict of laws principles.",
+        "uk": "Ці Умови та будь-які незгоди, що виникають через або пов'язані з цими Умовами або Сайтом, будуть регулюватися та тлумачитися відповідно до законів України, без застосування її принципів конфлікту законів."
+      },
+      {
+        "type": "title",
+        "en": "14. Dispute Resolution",
+        "uk": "14. Вирішення диспутів"
+      },
+      {
+        "type": "paragraph",
+        "en": "Any dispute arising out of or related to these Terms or the Site will be resolved through binding arbitration in accordance with the rules of the The International Commercial Arbitration Court at the Ukrainian Chamber of Commerce and Industry (ICAC) in Ukraine. Judgment on the arbitration award may be entered in any court having jurisdiction. You agree that any dispute resolution proceedings will be conducted only on an individual basis and not in a class, consolidated, or representative action.",
+        "uk": "Будь-який спір, що виникає через або пов'язаний з цими Умовами або Сайтом, буде вирішуватися шляхом обов'язкового арбітражу відповідно до правил Міжнародного комерційного арбітражного суду при Українській торгово-промисловій палаті (ICAC) в Україні. Рішення арбітражу може бути виконане в будь-якому суді, що має юрисдикцію. Ви погоджуєтеся, що будь-які процедури вирішення незгод будуть проводитися лише на індивідуальній основі, а не в рамках колективної, об'єднаної або представницької дії."
+      },
+      {
+        "type": "title",
+        "en": "15. Miscellaneous",
+        "uk": "15. Різне"
+      },
+      {
+        "type": "paragraph",
+        "en": "These Terms constitute the entire agreement between you and Kids Fashion Store regarding the use of the Site. Our failure to exercise or enforce any right or provision of these Terms will not operate as a waiver of such right or provision. If any provision of these Terms is held to be invalid or unenforceable, the remaining provisions will remain in full force and effect.",
+        "uk": "Ці Умови становлять повний договір між вами та Kids Fashion Store щодо використання Сайту. Наша недія або невиконання будь-якого права або положення цих Умов не буде вважатися відмовою від такого права або положення. Якщо будь-яке положення цих Умов виявиться недійсним або невиконуваним, решта положень залишаться в повній силі та ефективності."
+      },
+      {
+        "type": "title",
+        "en": "16. Contact Information",
+        "uk": "16. Контактна інформація"
+      },
+      {
+        "type": "paragraph",
+        "en": "If you have any questions about these Terms, please contact us at <a href=\"mailto:contact@kidsfashionstore.ua\">contact@kidsfashionstore.ua</a> or <a href=\"tel:+380689016787\">+380 68 901 6787</a>.",
+        "uk": "Якщо у вас є питання щодо цих Умов, будь ласка, зв'яжіться з нами за адресою <a href=\"mailto:contact@kidsfashionstore.ua\">contact@kidsfashionstore.ua</a> або <a href=\"tel:+380689016787\">+380 68 901 6787</a>."
+      }
     ]
   },
   {
     "name": "privacyPolicy",
     "title": {
-        "en": "Privacy Policy",
-        "uk": "Політика конфіденційності"
+      "en": "Privacy Policy",
+      "uk": "Політика конфіденційності"
+    },
+    "page": [
+      {
+        "type": "title",
+        "en": "Effective Date: 14 July 2024",
+        "uk": "Дата набуття чинності: 14 липня 2024"
+      },
+      {
+        "type": "paragraph",
+        "en": "Kids Fashion Store (\"we,\" \"our,\" \"us\") respects your privacy and is committed to protecting your personal information. This Privacy Policy describes how we collect, use, and safeguard your information when you visit our website, <a href=\"/\">https://kidsfashionstore.ua</a> (the \"Site\"), and any related services (collectively, the \"Services\"). By using the Site, you agree to the collection and use of information in accordance with this Privacy Policy.",
+        "uk": "Kids Fashion Store (\"ми,\" \"наш,\" \"нас\") поважає вашу конфіденційність та зобов'язується захищати вашу особисту інформацію. Ця Політика конфіденційності описує, як ми збираємо, використовуємо та захищаємо вашу інформацію при відвідуванні нашого веб-сайту, <a href=\"/\">https://kidsfashionstore.ua</a> (\"Сайт\"), та будь-яких пов'язаних послуг (узагальнено, \"Послуги\"). Користуючись Сайтом, ви погоджуєтеся зі збором та використанням інформації відповідно до цієї Політики конфіденційності."
+      },
+      {
+        "type": "title",
+        "en": "1. Information We Collect",
+        "uk": "1. Інформація, яку ми збираємо"
+      },
+      {
+        "type": "paragraph",
+        "class": "noMargin",
+        "en": "We may collect the following types of information when you visit or use our Site:",
+        "uk": "Ми можемо збирати наступні типи інформації під час відвідування або використання нашого Сайту:"
+      },
+      {
+        "type": "list",
+        "en": [
+          "Personal Information: Information that can be used to identify you personally, such as your name, email address, shipping address, billing address, phone number, and payment information.",
+          "Usage Data: Information about how you use the Site, including your IP address, browser type, browsing history, and pages viewed."
+        ],
+        "uk": [
+          "Особиста інформація: Інформація, яка може бути використана для ідентифікації вас особисто, така як ваше ім'я, адреса електронної пошти, адреса доставки, адреса оплати, номер телефону та інформація про оплату.",
+          "Дані використання: Інформація про те, як ви використовуєте Сайт, включаючи вашу IP-адресу, тип браузера, історію перегляду та переглянуті сторінки."
+        ]
+      },
+      {
+        "type": "title",
+        "en": "2. How We Use Your Information",
+        "uk": "2. Як ми використовуємо вашу інформацію"
+      },
+      {
+        "type": "paragraph",
+        "class": "noMargin",
+        "en": "We use the information we collect for the following purposes:",
+        "uk": "Ми використовуємо зібрану інформацію для наступних цілей:"
+      },
+      {
+        "type": "list",
+        "en": [
+          "To Process Data: We use your personal information to process orders, manage payments, and deliver products and services.",
+          "To Improve Our Services: We use usage data to understand how our Site is used, identify issues, and make improvements.",
+          "To Communicate with You: We use your personal information to send order confirmations, updates, and other communications related to your transactions or our Services.",
+          "To Provide Customer Support: We use your personal information to respond to your inquiries and provide support."
+        ],
+        "uk": [
+          "Для обробки даних: Ми використовуємо вашу особисту інформацію для обробки замовлень, управління платежами та доставки продуктів та послуг.",
+          "Для покращення наших послуг: Ми використовуємо дані використання для розуміння того, як використовується наш Сайт, виявлення проблем та внесення покращень.",
+          "Для зв'язку з вами: Ми використовуємо вашу особисту інформацію для відправлення підтверджень замовлень, оновлень та інших комунікацій, пов'язаних з вашими транзакціями або нашими послугами.",
+          "Для надання підтримки клієнтам: Ми використовуємо вашу особисту інформацію для відповіді на ваші запитання та надання підтримки."
+        ]
+      },
+      {
+        "type": "title",
+        "en": "3. How We Protect Your Information",
+        "uk": "3. Як ми захищаємо вашу інформацію"
+      },
+      {
+        "type": "paragraph",
+        "class": "noMargin",
+        "en": "We implement a variety of security measures to maintain the safety of your personal information, including:",
+        "uk": "Ми впроваджуємо різноманітні заходи безпеки для забезпечення безпеки вашої особистої інформації, включаючи:"
+      },
+      {
+        "type": "list",
+        "en": [
+          "Encryption: We use secure socket layer (SSL) technology to encrypt your personal information during transmission.",
+          "Access Controls: We limit access to your personal information to authorized employees and contractors who need to know that information in order to process it."
+        ],
+        "uk": [
+          "Шифрування: Ми використовуємо технологію безпечного сокетного рівня (SSL) для шифрування вашої особистої інформації під час передачі.",
+          "Контроль доступу: Ми обмежуємо доступ до вашої особистої інформації для авторизованих співробітників та підрядників, які повинні знати цю інформацію для її обробки."
+        ]
+      },
+      {
+        "type": "title",
+        "en": "4. Cookies and Tracking Technologies",
+        "uk": "4. Cookies та технології відстеження"
+      },
+      {
+        "type": "paragraph",
+        "en": "We use cookies and similar tracking technologies to enhance your experience on our Site. Cookies are small data files that are placed on your device when you visit a website. You can set your browser to refuse cookies or to alert you when cookies are being sent. However, if you disable cookies, some parts of the Site may not function properly.",
+        "uk": "Ми використовуємо файли cookie та подібні технології відстеження для покращення вашого досвіду на нашому Сайті. Файли cookie - це невеликі файли даних, які розміщуються на вашому пристрої під час відвідування веб-сайту. Ви можете налаштувати свій браузер на відмову від файлів cookie або на сповіщення вас про відправку файлів cookie. Однак, якщо ви вимкнете файли cookie, деякі частини Сайту можуть не працювати належним чином."
+      },
+      {
+        "type": "title",
+        "en": "5. Children's Privacy",
+        "uk": "5. Конфіденційність дітей"
+      },
+      {
+        "type": "paragraph",
+        "en": "Our Site is not intended for use by children under the age of 13. We do not knowingly collect personal information from children under 13. If we become aware that we have inadvertently received personal information from a child under the age of 13, we will delete such information from our records.",
+        "uk": "Наш Сайт не призначений для використання дітьми віком до 13 років. Ми не намагаємося навмисно збирати особисту інформацію від дітей віком до 13 років. Якщо ми дізнаємося, що ненавмисно отримали особисту інформацію від дитини віком до 13 років, ми видалимо таку інформацію з наших записів."
+      },
+      {
+        "type": "title",
+        "en": "6. Your Rights",
+        "uk": "6. Ваші права"
+      },
+      {
+        "type": "paragraph",
+        "class": "noMargin",
+        "en": "You have the following rights regarding your personal information:",
+        "uk": "У вас є наступні права щодо вашої особистої інформації:"
+      },
+      {
+        "type": "list",
+        "class": "noMargin",
+        "en": [
+          "Access: You have the right to request a copy of the personal information we hold about you.",
+          "Correction: You have the right to request that we correct any inaccuracies in your personal information.",
+          "Deletion: You have the right to request that we delete your personal information, subject to certain exceptions.",
+          "Objection: You have the right to object to the processing of your personal information in certain circumstances.",
+          "Withdrawal of Consent: If you have provided consent for the processing of your personal information, you have the right to withdraw your consent at any time."
+        ],
+        "uk": [
+          "Доступ: У вас є право запитати копію особистої інформації, яку ми зберігаємо про вас.",
+          "Виправлення: У вас є право вимагати, щоб ми виправили будь-які неточності в вашій особистій інформації.",
+          "Видалення: У вас є право вимагати, щоб ми видалили вашу особисту інформацію, за винятком певних випадків.",
+          "Заперечення: У вас є право висловити протест проти обробки вашої особистої інформації в певних обставинах.",
+          "Відкликання згоди: Якщо ви надали згоду на обробку вашої особистої інформації, у вас є право відкликати свою згоду у будь-який час."
+        ]
+      },
+      {
+        "type": "paragraph",
+        "en": "To exercise any of these rights, please contact us at <a href=\"mailto:contact@kidsfashionstore.ua\">contact@kidsfashionstore.ua</a> or <a href=\"tel:+380689016787\">+380 68 901 6787</a>.",
+        "uk": "Для використання будь-якого з цих прав, будь ласка, зв'яжіться з нами за адресою <a href=\"mailto:contact@kidsfashionstore.ua\">contact@kidsfashionstore.ua</a> або <a href=\"tel:+380689016787\">+380 68 901 6787</a>."
+      },
+      {
+        "type": "title",
+        "en": "7. Changes to This Privacy Policy",
+        "uk": "7. Зміни в цій Політиці конфіденційності"
+      },
+      {
+        "type": "paragraph",
+        "en": "We may update this Privacy Policy from time to time. Any changes will be effective immediately upon posting on the Site. Your continued use of the Site following the posting of revised Privacy Policy means that you accept and agree to the changes.",
+        "uk": "Ми можемо час від часу оновлювати цю Політику конфіденційності. Будь-які зміни набувають чинності негайно після публікації на Сайті. Ваше подальше використання Сайту після публікації переглянутої Політики конфіденційності означає, що ви приймаєте та погоджуєтеся зі змінами."
+      },
+      {
+        "type": "title",
+        "en": "8. Contact Us",
+        "uk": "8. Зв'язатись з нами"
+      },
+      {
+        "type": "paragraph",
+        "class": "noMargin",
+        "en": "If you have any questions about this Privacy Policy, please contact us at:",
+        "uk": "Якщо у вас є питання щодо цієї Політики конфіденційності, будь ласка, зв'яжіться з нами за адресою:"
+      },
+      {
+        "type": "list",
+        "en": [
+          "Email: <a href=\"mailto:contact@kidsfashionstore.ua\">contact@kidsfashionstore.ua</a>",
+          "Phone: <a href=\"tel:+380689016787\">+380 68 901 6787</a>"
+        ],
+        "uk": [
+          "Електронна пошта: <a href=\"mailto:contact@kidsfashionstore.ua\">contact@kidsfashionstore.ua</a>",
+          "Телефон: <a href=\"tel:+380689016787\">+380 68 901 6787</a>"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "cookiesPolicy",
+    "title": {
+      "en": "Cookies Policy",
+      "uk": "Політика щодо файлів cookie"
+    },
+    "page": [
+      {
+        "type": "title",
+        "en": "Effective Date: 14 July 2024",
+        "uk": "Дата набуття чинності: 14 липня 2024"
+      },
+      {
+        "type": "paragraph",
+        "en": "Kids Fashion Store (\"we,\" \"our,\" \"us\") uses cookies on <a href=\"/\">https://kidsfashionstore.ua</a> (the \"Site\"). By using the Site, you consent to the use of cookies in accordance with this Cookies Policy.",
+        "uk": "Kids Fashion Store (\"ми,\" \"наш,\" \"нас\") використовує файли cookie на <a href=\"/\">https://kidsfashionstore.ua</a> (\"Сайт\"). Користуючись Сайтом, ви погоджуєтеся з використанням файлів cookie відповідно до цієї Політики використання файлів cookie."
+      },
+      {
+        "type": "title",
+        "en": "1. What Are Cookies?",
+        "uk": "1. Що таке файли cookie?"
+      },
+      {
+        "type": "paragraph",
+        "en": "Cookies are small text files that are placed on your computer or mobile device when you visit a website. They are widely used to make websites work, or work more efficiently, as well as to provide information to the website owners.",
+        "uk": "Файли cookie - це невеликі текстові файли, які розміщуються на вашому комп'ютері або мобільному пристрої під час відвідування веб-сайту. Вони широко використовуються для того, щоб зробити веб-сайти працюючими, або працюючими більш ефективно, а також для надання інформації власникам веб-сайтів."
+      },
+        {
+            "type": "title",
+            "en": "2. How We Use Cookies",
+            "uk": "2. Як ми використовуємо файли cookie"
+        },
+        {
+            "type": "paragraph",
+            "class": "noMargin",
+            "en": "We use cookies to improve your browsing experience on our Site. The cookies we use do not collect any personal information and are not used to identify you. We do not share any information collected through cookies with third parties. Specifically, we use cookies for the following purposes:",
+            "uk": "Ми використовуємо файли cookie для покращення вашого досвіду перегляду нашого Сайту. Використовувані нами файли cookie не збирають жодної особистої інформації та не використовуються для ідентифікації вас. Ми не передаємо жодної інформації, зібраної за допомогою файлів cookie, третім сторонам. Зокрема, ми використовуємо файли cookie для наступних цілей:"
+        },
+        {
+            "type": "list",
+            "en": [
+            "Essential Cookies: These cookies are necessary for the functioning of the Site. They allow you to navigate the Site and use its features, such as accessing secure areas of the Site."
+            ],
+            "uk": [
+            "Необхідні файли cookie: Ці файли cookie необхідні для роботи Сайту. Вони дозволяють вам переміщатись по Сайту та використовувати його функції, такі як доступ до захищених областей Сайту."
+            ]
+        },
+        {
+            "type": "title",
+            "en": "3. Types of Cookies We Use",
+            "uk": "3. Типи файлів cookie, які ми використовуємо"
+        },
+        {
+            "type": "list",
+            "en": [
+            "Session Cookies: These are temporary cookies that remain on your device until you leave the Site. They are deleted from your device once you close your browser.",
+            "Persistent Cookies: These cookies remain on your device for a longer period or until you manually delete them. The length of time the cookie stays on your device depends on the duration or \"lifetime\" of the specific cookie and your browser settings."
+            ],
+            "uk": [
+            "Сеансові файли cookie: Це тимчасові файли cookie, які залишаються на вашому пристрої до тих пір, поки ви не покинете Сайт. Вони видаляються з вашого пристрою, як тільки ви закриєте свій браузер.",
+            "Постійні файли cookie: Ці файли cookie залишаються на вашому пристрої протягом тривалішого періоду або до тих пір, поки ви не видалите їх вручну. Тривалість перебування файлу cookie на вашому пристрої залежить від \"тривалості життя\" конкретного файлу cookie та налаштувань вашого браузера."
+            ]
+        },
+        {
+            "type": "title",
+            "en": "4. Managing Cookies",
+            "uk": "4. Управління файлами cookie"
+        },
+        {
+            "type": "paragraph",
+            "en": "You can manage cookies through your web browser settings. Most browsers allow you to refuse or accept cookies, delete existing cookies, and set preferences for certain websites. Please note that if you disable or refuse cookies, some parts of the Site may become inaccessible or not function properly.",
+            "uk": "Ви можете керувати файлами cookie через налаштування вашого веб-браузера. Більшість браузерів дозволяють вам відмовитися або прийняти файли cookie, видалити існуючі файли cookie та встановити налаштування для певних веб-сайтів. Зверніть увагу, що якщо ви вимкнете або відмовитеся від файлів cookie, деякі частини Сайту можуть стати недоступними або не працювати належним чином."
+        },
+        {
+            "type": "title",
+            "en": "5. Changes to This Cookies Policy",
+            "uk": "5. Зміни в цій Політиці використання файлів cookie"
+        },
+        {
+            "type": "paragraph",
+            "en": "We may update our Cookies Policy from time to time. We will notify you of any changes by posting the new Cookies Policy on this page. You are advised to review this Cookies Policy periodically for any changes. Changes to this Cookies Policy are effective when they are posted on this page.",
+            "uk": "Ми можемо час від часу оновлювати нашу Політику використання файлів cookie. Ми повідомимо вас про будь-які зміни, розмістивши нову Політику використання файлів cookie на цій сторінці. Вам рекомендується періодично переглядати цю Політику використання файлів cookie для ознайомлення з будь-якими змінами. Зміни в цій Політиці використання файлів cookie набирають чинності з моменту їх публікації на цій сторінці."
+        },
+        {
+            "type": "title",
+            "en": "6. Contact Us",
+            "uk": "6. Зв'язатись з нами"
+        },
+        {
+            "type": "paragraph",
+            "en": "If you have any questions about this Cookies Policy, please contact us at <a href=\"mailto:contact@kidsfashionstore.ua\">contact@kidsfashionstore.ua</a> or <a href=\"tel:+380689016787\">+380 68 901 6787</a>.",
+            "uk": "Якщо у вас є питання щодо цієї Політики використання файлів cookie, будь ласка, зв'яжіться з нами за адресою <a href=\"mailto:contact@kidsfashionstore.ua\">contact@kidsfashionstore.ua</a> або <a href=\"tel:+380689016787\">+380 68 901 6787</a>."
+        }
+    ]
+  },
+  {
+    "name": "shippingPolicy",
+    "title": {
+      "en": "Shipping Policy",
+      "uk": "Політика доставки"
     },
     "page": [
         {
@@ -208,110 +478,284 @@
         },
         {
             "type": "paragraph",
-            "en": "Kids Fashion Store (\"we,\" \"our,\" \"us\") respects your privacy and is committed to protecting your personal information. This Privacy Policy describes how we collect, use, and safeguard your information when you visit our website, <a href=\"/\">https://kidsfashionstore.ua</a> (the \"Site\"), and any related services (collectively, the \"Services\"). By using the Site, you agree to the collection and use of information in accordance with this Privacy Policy.",
-            "uk": "Kids Fashion Store (\"ми,\" \"наш,\" \"нас\") поважає вашу конфіденційність та зобов'язується захищати вашу особисту інформацію. Ця Політика конфіденційності описує, як ми збираємо, використовуємо та захищаємо вашу інформацію при відвідуванні нашого веб-сайту, <a href=\"/\">https://kidsfashionstore.ua</a> (\"Сайт\"), та будь-яких пов'язаних послуг (узагальнено, \"Послуги\"). Користуючись Сайтом, ви погоджуєтеся зі збором та використанням інформації відповідно до цієї Політики конфіденційності."
+            "en": "Welcome to Kids Fashion Store (\"we,\" \"our,\" \"us\"). This Shipping Policy describes the terms and conditions under which we offer shipping services for our products purchased through our website, <a href=\"/\">https://kidsfashionstore.ua</a> (the \"Site\").",
+            "uk": "Ласкаво просимо до Kids Fashion Store (\"ми,\" \"наш,\" \"нас\"). Ця Політика доставки описує умови, за яких ми надаємо послуги доставки для наших продуктів, придбаних через наш веб-сайт, <a href=\"/\">https://kidsfashionstore.ua</a> (\"Сайт\")."
         },
         {
             "type": "title",
-            "en": "1. Information We Collect",
-            "uk": "1. Інформація, яку ми збираємо"
+            "en": "1. Shipping Areas",
+            "uk": "1. Області доставки"
+        },
+        {
+            "type": "paragraph",
+            "en": "We offer shipping to addresses across Ukraine and selected countries in Europe using Nova Post (Нова Пошта). Please note that shipping availability, times, and costs may vary depending on the destination and are subject to change.",
+            "uk": "Ми пропонуємо доставку на адреси по всій Україні та в обраних країнах Європи за допомогою Нової Пошти. Зверніть увагу, що доступність, час та вартість доставки можуть залежати від місця призначення та можуть змінюватися."
+        },
+        {
+            "type": "title",
+            "en": "2. Shipping Times",
+            "uk": "2. Час доставки"
         },
         {
             "type": "paragraph",
             "class": "noMargin",
-            "en": "We may collect the following types of information when you visit or use our Site:",
-            "uk": "Ми можемо збирати наступні типи інформації під час відвідування або використання нашого Сайту:"
+            "en": "Shipping times will vary based on the destination:",
+            "uk": "Час доставки буде відрізнятися в залежності від місця призначення:"
         },
         {
             "type": "list",
             "en": [
-                "Personal Information: Information that can be used to identify you personally, such as your name, email address, shipping address, billing address, phone number, and payment information.",
-                "Usage Data: Information about how you use the Site, including your IP address, browser type, browsing history, and pages viewed."
+                "Ukraine: Delivery times typically range from 1 to 3 business days.",
+                "Europe: Delivery times to European countries may vary and will be specified during checkout."
             ],
             "uk": [
-                "Особиста інформація: Інформація, яка може бути використана для ідентифікації вас особисто, така як ваше ім'я, адреса електронної пошти, адреса доставки, адреса оплати, номер телефону та інформація про оплату.",
-                "Дані використання: Інформація про те, як ви використовуєте Сайт, включаючи вашу IP-адресу, тип браузера, історію перегляду та переглянуті сторінки."
+                "Україна: Зазвичай час доставки коливається від 1 до 3 робочих днів.",
+                "Європа: Час доставки до країн Європи може відрізнятися і буде вказаний під час оформлення замовлення."
             ]
         },
         {
+            "type": "paragraph",
+            "en": "Please note that delivery times are estimates and are not guaranteed. Factors such as customs processing, weather conditions, and holidays may affect delivery times.",
+            "uk": "Зверніть увагу, що час доставки є приблизним і не гарантується. Фактори, такі як митниця, погодні умови та свята, можуть впливати на час доставки."
+        },
+        {
             "type": "title",
-            "en": "2. How We Use Your Information",
-            "uk": "2. Як ми використовуємо вашу інформацію"
+            "en": "3. Shipping Costs",
+            "uk": "3. Вартість доставки"
         },
         {
             "type": "paragraph",
             "class": "noMargin",
-            "en": "We use the information we collect for the following purposes:",
-            "uk": "Ми використовуємо зібрану інформацію для наступних цілей:"
+            "en": "Shipping costs are calculated based on the delivery address and the size/weight of the package. Costs may vary as follows:",
+            "uk": "Вартість доставки розраховується на основі адреси доставки та розміру/ваги посилки. Вартість може відрізнятися наступним чином:"
         },
         {
             "type": "list",
+            "class": "noMargin",
             "en": [
-                "To Process Data: We use your personal information to process orders, manage payments, and deliver products and services.",
-                "To Improve Our Services: We use usage data to understand how our Site is used, identify issues, and make improvements.",
-                "To Communicate with You: We use your personal information to send order confirmations, updates, and other communications related to your transactions or our Services.",
-                "To Provide Customer Support: We use your personal information to respond to your inquiries and provide support."
+                "Big Cities: Shipping costs may be lower.",
+                "Small Villages: Shipping costs may be higher due to longer transit times and additional handling fees."
+                
             ],
             "uk": [
-                "Для обробки даних: Ми використовуємо вашу особисту інформацію для обробки замовлень, управління платежами та доставки продуктів та послуг.",
-                "Для покращення наших послуг: Ми використовуємо дані використання для розуміння того, як використовується наш Сайт, виявлення проблем та внесення покращень.",
-                "Для зв'язку з вами: Ми використовуємо вашу особисту інформацію для відправлення підтверджень замовлень, оновлень та інших комунікацій, пов'язаних з вашими транзакціями або нашими послугами.",
-                "Для надання підтримки клієнтам: Ми використовуємо вашу особисту інформацію для відповіді на ваші запитання та надання підтримки."
+                "Міста: Вартість доставки може бути нижчою.",
+                "Села: Вартість доставки може бути вищою через більший час транзиту та додаткові витрати на обробку."
             ]
         },
         {
-            "type": "title",
-            "en": "3. How We Protect Your Information",
-            "uk": "3. Як ми захищаємо вашу інформацію"
-        },
-        {
             "type": "paragraph",
-            "class": "noMargin",
-            "en": "We implement a variety of security measures to maintain the safety of your personal information, including:",
-            "uk": "Ми впроваджуємо різноманітні заходи безпеки для забезпечення безпеки вашої особистої інформації, включаючи:"
-        },
-        {
-            "type": "list",
-            "en": [
-                "Encryption: We use secure socket layer (SSL) technology to encrypt your personal information during transmission.",
-                "Access Controls: We limit access to your personal information to authorized employees and contractors who need to know that information in order to process it."
-            ],
-            "uk": [
-                "Шифрування: Ми використовуємо технологію безпечного сокетного рівня (SSL) для шифрування вашої особистої інформації під час передачі.",
-                "Контроль доступу: Ми обмежуємо доступ до вашої особистої інформації для авторизованих співробітників та підрядників, які повинні знати цю інформацію для її обробки."
-            ]
+            "en": "Shipping costs will be calculated and displayed during the checkout process. Customers are responsible for all shipping costs, which will be added to the total order amount.",
+            "uk": "Вартість доставки буде розрахована та відображена під час процесу оформлення замовлення. Клієнти несуть відповідальність за всі витрати на доставку, які будуть додані до загальної суми замовлення."
         },
         {
             "type": "title",
-            "en": "4. Cookies and Tracking Technologies",
-            "uk": "4. Cookies та технології відстеження"
+            "en": "4. Order Processing",
+            "uk": "4. Обробка замовлення"
         },
         {
             "type": "paragraph",
-            "en": "We use cookies and similar tracking technologies to enhance your experience on our Site. Cookies are small data files that are placed on your device when you visit a website. You can set your browser to refuse cookies or to alert you when cookies are being sent. However, if you disable cookies, some parts of the Site may not function properly.",
-            "uk": "Ми використовуємо файли cookie та подібні технології відстеження для покращення вашого досвіду на нашому Сайті. Файли cookie - це невеликі файли даних, які розміщуються на вашому пристрої під час відвідування веб-сайту. Ви можете налаштувати свій браузер на відмову від файлів cookie або на сповіщення вас про відправку файлів cookie. Однак, якщо ви вимкнете файли cookie, деякі частини Сайту можуть не працювати належним чином."
+            "en": "Orders are typically processed and shipped within 1 to 2 business days of payment confirmation. Once your order has shipped, you will receive a shipping confirmation with tracking information.",
+            "uk": "Замовлення зазвичай обробляються та відправляються протягом 1-2 робочих днів після підтвердження оплати. Після відправлення вашого замовлення ви отримаєте підтвердження відправлення з інформацією для відстеження."
         },
         {
             "type": "title",
-            "en": "5. Children's Privacy",
-            "uk": "5. Конфіденційність дітей"
+            "en": "5. Tracking Information",
+            "uk": "5. Інформація для відстеження"
         },
         {
             "type": "paragraph",
-            "en": "Our Site is not intended for use by children under the age of 13. We do not knowingly collect personal information from children under 13. If we become aware that we have inadvertently received personal information from a child under the age of 13, we will delete such information from our records.",
-            "uk": "Наш Сайт не призначений для використання дітьми віком до 13 років. Ми не намагаємося навмисно збирати особисту інформацію від дітей віком до 13 років. Якщо ми дізнаємося, що ненавмисно отримали особисту інформацію від дитини віком до 13 років, ми видалимо таку інформацію з наших записів."
+            "en": "Once your order has shipped, you can track your package using the tracking number provided in your shipping confirmation.",
+            "uk": "Після відправлення вашого замовлення ви можете відстежувати вашу посилку за допомогою номера відстеження, наданого в підтвердженні відправлення."
         },
         {
             "type": "title",
-            "en": "6. Your Rights",
-            "uk": "6. Ваші права"
+            "en": "6. Customs and Duties",
+            "uk": "6. Митниці"
         },
         {
             "type": "paragraph",
-            "class": "noMargin",
-            "en": "You have the following rights regarding your personal information:",
-            "uk": "У вас є наступні права щодо вашої особистої інформації:"
+            "en": "For international shipments outside of Ukraine, customs duties, taxes, and fees may apply. These charges are the responsibility of the recipient and will be collected upon delivery by the local customs authority. Customs policies vary widely from country to country, so please contact your local customs office for more information.",
+            "uk": "Для міжнародних відправлень за межами України можуть стягуватись митні збори та податки. Ці витрати несе отримувач і вони будуть збиратися при доставці місцевим митним органом. Митні правила сильно відрізняються в залежності від країни, тому зверніться до місцевого митного офісу для отримання додаткової інформації."
+        },
+        {
+            "type": "title",
+            "en": "7. Lost or Damaged Shipments",
+            "uk": "7. Втрачені або пошкоджені відправлення"
+        },
+        {
+            "type": "paragraph",
+            "en": "We are not responsible for lost or damaged shipments. However, if your package is lost or damaged during transit, please contact us immediately at <a href=\"mailto:contact@kidsfashionstore.ua\">contact@kidsfashionstore.ua</a> or <a href=\"tel:+380689016787\">+380 68 901 6787</a> so that we can assist you in filing a claim with the shipping carrier.",
+            "uk": "Ми не несемо відповідальності за втрачені або пошкоджені відправлення. Однак, якщо ваша посилка втрачена або пошкоджена під час транспортування, будь ласка, негайно зв'яжіться з нами за адресою <a href=\"mailto:contact@kidsfashionstore.ua\">contact@kidsfashionstore.ua</a> або <a href=\"tel:+380689016787\">+380 68 901 6787</a>, щоб ми могли допомогти вам подати заяву на компенсацію від перевізника."
+        },
+        {
+            "type": "title",
+            "en": "8. Address Accuracy",
+            "uk": "8. Точність адреси"
+        },
+        {
+            "type": "paragraph",
+            "en": "It is the customer's responsibility to provide accurate and complete shipping information. We are not responsible for orders shipped to incorrect or incomplete addresses provided by the customer. Please review your shipping address carefully before submitting your order.",
+            "uk": "Клієнт несе відповідальність за надання точної та повної інформації для доставки. Ми не несемо відповідальності за замовлення, відправлені на неправильні або неповні адреси, надані клієнтом. Будь ласка, уважно перевірте вашу адресу доставки перед поданням замовлення."
+        },
+        {
+            "type": "title",
+            "en": "9. Shipping Restrictions",
+            "uk": "9. Обмеження доставки"
+        },
+        {
+            "type": "paragraph",
+            "en": "We reserve the right to refuse orders for any reason, including shipping restrictions imposed by our shipping carriers.",
+            "uk": "Ми залишаємо за собою право відмовити в замовленнях з будь-якої причини, включаючи обмеження доставки, накладені нашими перевізниками."
+        },
+        {
+            "type": "title",
+            "en": "10. Contact Information",
+            "uk": "10. Контактна інформація"
+        },
+        {
+            "type": "paragraph",
+            "en": "If you have any questions about our Shipping Policy, please contact us at <a href=\"mailto:contact@kidsfashionstore.ua\">contact@kidsfashionstore.ua</a> or <a href=\"tel:+380689016787\">+380 68 901 6787</a>.",
+            "uk": "Якщо у вас є питання щодо нашої Політики доставки, будь ласка, зв'яжіться з нами за адресою <a href=\"mailto:contact@kidsfashionstore.ua\">contact@kidsfashionstore.ua</a> або <a href=\"tel:+380689016787\">+380 68 901 6787</a>."
         }
     ]
-    }
+  },
+  {
+    "name": "replacementsAndReturnsPolicy",
+    "title": {
+      "en": "Replacements and Returns Policy",
+      "uk": "Політика обміну та повернення"
+    },
+    "page": [
+        {
+            "type": "title",
+            "en": "Effective Date: 14 July 2024",
+            "uk": "Дата набуття чинності: 14 липня 2024"
+        },
+        {
+            "type": "paragraph",
+            "en": "Thank you for shopping at Kids Fashion Store. We want you to be completely satisfied with your purchase. If you are not entirely satisfied with your purchase, we're here to help.",
+            "uk": "Дякуємо за покупки в Kids Fashion Store. Ми хочемо, щоб ви були повністю задоволені своєю покупкою. Якщо ви не повністю задоволені своєю покупкою, ми тут, щоб допомогти."
+        },
+        {
+            "type": "title",
+            "en": "1. Eligibility",
+            "uk": "1. Право на обмін або повернення"
+        },
+        {
+            "type": "paragraph",
+            "en": "To be eligible for a replacement or return, your item must be unused and in the same condition that you received it. It must also be in the original packaging.",
+            "uk": "Для того, щоб мати право на обмін або повернення, ваш товар повинен бути не використаним і в тому ж стані, в якому ви його отримали. Він також повинен бути в оригінальній упаковці."
+        },
+        {
+            "type": "title",
+            "en": "2. Timeline",
+            "uk": "2. Терміни"
+        },
+        {
+            "type": "paragraph",
+            "en": "You have <b>one day</b> from the date you receive your order (either by picking it up from the post office or receiving it via delivery) to initiate a replacement or return request.",
+            "uk": "У вас є <b>один день</b> з моменту отримання вашого замовлення (чи то ви його забираєте з поштового відділення, чи отримуєте його з доставкою) для ініціювання запиту на обмін або повернення."
+        },
+        {
+            "type": "title",
+            "en": "3. How to Initiate a Replacement or Return",
+            "uk": "3. Як ініціювати обмін або повернення"
+        },
+        {
+            "type": "paragraph",
+            "class": "noMargin",
+            "en": "To initiate a replacement or return, please follow these steps:",
+            "uk": "Для того, щоб ініціювати обмін або повернення, будь ласка, дотримуйтесь цих кроків:"
+        },
+        {
+            "type": "list",
+            "en": [
+                "Contact our Customer Service team at <a href=\"mailto:customerservice@kidsfashionstore.com.ua\">customerservice@kidsfashionstore.com.ua</a> within the one-day timeframe to notify us of your request.",
+                "Provide your order number and details about the item you wish to replace or return.",
+                "Our Customer Service team will guide you through the process."
+            ],
+            "uk": [
+                "Зверніться до нашої служби підтримки клієнтів за адресою <a href=\"mailto:customerservice@kidsfashionstore.com.ua\">customerservice@kidsfashionstore.com.ua</a> протягом одного дня, щоб повідомити нас про ваш запит.",
+                "Надайте номер вашого замовлення та деталі про товар, який ви хочете обміняти або повернути.",
+                "Наша служба підтримки клієнтів допоможе вам пройти процес."
+            ]
+        },
+        {
+            "type": "title",
+            "en": "4. Conditions of Replacement or Return",
+            "uk": "4. Умови обміну або повернення"
+        },
+        {
+            "type": "list",
+            "class": "noMargin",
+            "en": [
+                "Items must be unused and in the same condition that you received them.",
+                "Items must be in their original packaging."
+            ],
+            "uk": [
+                "Товари повинні бути не використані і в тому ж стані, в якому ви їх отримали.",
+                "Товари повинні бути в оригінальній упаковці."
+            ]
+        },
+        {
+            "type": "paragraph",
+            "class": "noMargin",
+            "en": "Items not eligible for replacement or return include:",
+            "uk": "Товари, які не підлягають обміну або поверненню, включають:"
+        },
+        {
+            "type": "list",
+            "en": [
+                "Items that are not in their original condition, damaged, or missing parts for reasons not due to our error.",
+                "Items returned more than one day after delivery."
+            ],
+            "uk": [
+                "Товари, які не знаходяться в оригінальному стані, пошкоджені або мають відсутні частини з причин, не пов’язаних з нашою помилкою.",
+                "Товари, повернені пізніше одного дня після доставки."
+            ]
+        },
+        {
+            "type": "title",
+            "en": "5. Refunds or Replacements",
+            "uk": "5. Повернення або обміни"
+        },
+        {
+            "type": "paragraph",
+            "class": "noMargin",
+            "en": "Once your return is received and inspected, we will send you an email to notify you that we have received your returned item. We will also notify you of the approval or rejection of your replacement or refund.",
+            "uk": "Після отримання та перевірки вашого повернення ми надішлемо вам електронного листа, щоб повідомити вас, що ми отримали ваш повернений товар. Ми також повідомимо вас про схвалення або відхилення вашого обміну або повернення."
+        },
+        {
+            "type": "list",
+            "en": [
+                "If approved, replacements will be processed based on product availability. If the same product is not available, a similar product of equal value may be offered.",
+                "If approved, refunds will be processed to the original method of payment within 2 business days."
+            ],
+            "uk": [
+                "Якщо схвалено, обміни будуть оброблені на основі наявності продукту. Якщо такий самий продукт недоступний, може бути запропонований аналогічний продукт такої ж вартості.",
+                "Якщо схвалено, грошові повернення будуть оброблені на оригінальний метод оплати протягом 2 робочих днів."
+            ]
+        },
+        {
+            "type": "title",
+            "en": "6. Shipping Costs",
+            "uk": "6. Вартість доставки"
+        },
+        {
+            "type": "paragraph",
+            "en": "Shipping costs for returns are non-refundable. If you make a return, the cost of return shipping will be deducted from your refund.",
+            "uk": "Вартість доставки для повернень не повертається. Якщо ви повертаєте товар, вартість доставки буде вирахована з вашого повернення."
+        },
+        {
+            "type": "title",
+            "en": "7. Contact Us",
+            "uk": "7. Зв'яжіться з нами"
+        },
+        {
+            "type": "paragraph",
+            "en": "If you have any questions about our Replacement and Return Policy, please contact us at <a href=\"mailto:contact@kidsfashionstore.ua\">contact@kidsfashionstore.ua</a> or <a href=\"tel:+380689016787\">+380 68 901 6787</a>.",
+            "uk": "Якщо у вас є питання щодо нашої Політики обміну та повернення, будь ласка, зв'яжіться з нами за адресою <a href=\"mailto:contact@kidsfashionstore.ua\">contact@kidsfashionstore.ua</a> або <a href=\"tel:+380689016787\">+380 68 901 6787</a>."
+        }
+    ]
+  }
 ]

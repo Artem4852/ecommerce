@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-08-01 10:21+0200\n"
+"POT-Creation-Date: 2024-08-01 12:09+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -29,7 +29,7 @@ msgstr ""
 msgid "Go to homepage"
 msgstr ""
 
-#: templates/admin.html:7 templates/adminActivity.html:7
+#: templates/admin.html:7
 msgid "Control Panel"
 msgstr ""
 
@@ -53,97 +53,106 @@ msgstr ""
 msgid "Average unique visits"
 msgstr ""
 
-#: templates/admin.html:22 templates/adminActivity.html:9
+#: templates/admin.html:22 templates/adminActivity.html:17
 msgid "Daily requests"
 msgstr ""
 
-#: templates/admin.html:27
+#: templates/admin.html:25 templates/index.html:47
+msgid "View more"
+msgstr ""
+
+#: templates/admin.html:28
 msgid "Products"
 msgstr ""
 
-#: templates/admin.html:31
+#: templates/admin.html:32
 msgid "Items on site"
 msgstr ""
 
-#: templates/admin.html:32
+#: templates/admin.html:33
 msgid "Most popular category"
 msgstr ""
 
-#: templates/admin.html:35 templates/product.html:47 templates/product.html:55
+#: templates/admin.html:36 templates/product.html:47 templates/product.html:55
 msgid "In stock"
 msgstr ""
 
-#: templates/admin.html:36
+#: templates/admin.html:37
 msgid "Most common size"
 msgstr ""
 
-#: templates/admin.html:40
+#: templates/admin.html:41
 msgid "View products"
 msgstr ""
 
-#: templates/admin.html:41
+#: templates/admin.html:42
 msgid "Add product"
 msgstr ""
 
-#: templates/admin.html:46
+#: templates/admin.html:47
 msgid "Orders"
 msgstr ""
 
-#: templates/admin.html:50
+#: templates/admin.html:51
 msgid "Total"
 msgstr ""
 
-#: templates/admin.html:51 templates/adminOrder.html:53
+#: templates/admin.html:52 templates/adminOrder.html:53
 msgid "Pending"
 msgstr ""
 
-#: templates/admin.html:54
+#: templates/admin.html:55
 msgid "Today"
 msgstr ""
 
-#: templates/admin.html:55
+#: templates/admin.html:56
 msgid "Average"
 msgstr ""
 
-#: templates/admin.html:59
+#: templates/admin.html:60
 msgid "View orders"
 msgstr ""
 
-#: templates/admin.html:60
+#: templates/admin.html:61
 msgid "View pending"
 msgstr ""
 
-#: templates/adminActivity.html:17
-msgid "Unique requests"
+#: templates/adminActivity.html:7
+msgid "Activity Panel"
+msgstr ""
+
+#: templates/adminActivity.html:14 templates/adminOrder.html:14
+#: templates/adminOrders.html:15 templates/adminProductEdit.html:15
+#: templates/adminProducts.html:15
+msgid "Back"
 msgstr ""
 
 #: templates/adminActivity.html:25
+msgid "Unique requests"
+msgstr ""
+
+#: templates/adminActivity.html:33
 msgid "Hourly requests"
 msgstr ""
 
-#: templates/adminActivity.html:34
+#: templates/adminActivity.html:42
 msgid "Utm sources"
 msgstr ""
 
-#: templates/adminActivity.html:42
+#: templates/adminActivity.html:50
 msgid "Page visits"
 msgstr ""
 
-#: templates/adminActivity.html:52
+#: templates/adminActivity.html:60
 msgid "Region distribution"
 msgstr ""
 
-#: templates/adminActivity.html:60
+#: templates/adminActivity.html:68
 msgid "City distribution"
 msgstr ""
 
 #: templates/adminOrder.html:7
 msgid "View order"
-msgstr ""
-
-#: templates/adminOrder.html:14 templates/adminOrders.html:15
-#: templates/adminProductEdit.html:15 templates/adminProducts.html:15
-msgid "Back"
 msgstr ""
 
 #: templates/adminOrder.html:18
@@ -238,7 +247,8 @@ msgstr ""
 
 #: templates/adminOrder.html:45 templates/contact.html:13
 #: templates/partials/footer.html:18 templates/product.html:122
-#: templates/settings.html:32 templates/signup.html:23
+#: templates/product.html:123 templates/settings.html:32
+#: templates/signup.html:23
 msgid "Phone number"
 msgstr ""
 
@@ -562,10 +572,6 @@ msgstr ""
 
 #: templates/index.html:41
 msgid "Summer sale"
-msgstr ""
-
-#: templates/index.html:47
-msgid "View more"
 msgstr ""
 
 #: templates/login.html:7 templates/login.html:27

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-07-31 17:33+0200\n"
+"POT-Creation-Date: 2024-08-01 12:09+0200\n"
 "PO-Revision-Date: 2024-07-30 18:44+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: uk\n"
@@ -31,7 +31,7 @@ msgstr "Дивно, ми не змогли знайти таку сторінк�
 msgid "Go to homepage"
 msgstr "На головну"
 
-#: templates/admin.html:7 templates/adminActivity.html:7
+#: templates/admin.html:7
 msgid "Control Panel"
 msgstr "Панель контролю"
 
@@ -56,98 +56,107 @@ msgstr "В середньому запитів на день"
 msgid "Average unique visits"
 msgstr "В середньоому особливих відвідувань на день"
 
-#: templates/admin.html:22 templates/adminActivity.html:9
+#: templates/admin.html:22 templates/adminActivity.html:17
 msgid "Daily requests"
 msgstr "Щоденні запити"
 
-#: templates/admin.html:27
+#: templates/admin.html:25 templates/index.html:47
+msgid "View more"
+msgstr "Переглянути ще"
+
+#: templates/admin.html:28
 msgid "Products"
 msgstr "Товари"
 
-#: templates/admin.html:31
+#: templates/admin.html:32
 msgid "Items on site"
 msgstr "Товарів на сайті"
 
-#: templates/admin.html:32
+#: templates/admin.html:33
 msgid "Most popular category"
 msgstr "Найпопулярніша категорія"
 
-#: templates/admin.html:35 templates/product.html:47 templates/product.html:55
+#: templates/admin.html:36 templates/product.html:47 templates/product.html:55
 msgid "In stock"
 msgstr "В наявності"
 
-#: templates/admin.html:36
+#: templates/admin.html:37
 msgid "Most common size"
 msgstr "Найчастіший розмір"
 
-#: templates/admin.html:40
+#: templates/admin.html:41
 msgid "View products"
 msgstr "Переглянути товари"
 
-#: templates/admin.html:41
+#: templates/admin.html:42
 msgid "Add product"
 msgstr "Додати товар"
 
-#: templates/admin.html:46
+#: templates/admin.html:47
 msgid "Orders"
 msgstr "Замовлення"
 
-#: templates/admin.html:50
+#: templates/admin.html:51
 msgid "Total"
 msgstr "Всього"
 
-#: templates/admin.html:51 templates/adminOrder.html:53
+#: templates/admin.html:52 templates/adminOrder.html:53
 msgid "Pending"
 msgstr "Необроблені"
 
-#: templates/admin.html:54
+#: templates/admin.html:55
 msgid "Today"
 msgstr "Сьогодні"
 
-#: templates/admin.html:55
+#: templates/admin.html:56
 msgid "Average"
 msgstr "В середньому"
 
-#: templates/admin.html:59
+#: templates/admin.html:60
 msgid "View orders"
 msgstr "Переглянути замовлення"
 
-#: templates/admin.html:60
+#: templates/admin.html:61
 msgid "View pending"
 msgstr "Переглянути необроблені"
 
-#: templates/adminActivity.html:17
+#: templates/adminActivity.html:7
+msgid "Activity Panel"
+msgstr "Панель Активності"
+
+#: templates/adminActivity.html:14 templates/adminOrder.html:14
+#: templates/adminOrders.html:15 templates/adminProductEdit.html:15
+#: templates/adminProducts.html:15
+msgid "Back"
+msgstr "Назад"
+
+#: templates/adminActivity.html:25
 msgid "Unique requests"
 msgstr "Особливі відвідування"
 
-#: templates/adminActivity.html:25
+#: templates/adminActivity.html:33
 msgid "Hourly requests"
 msgstr "Погодинні запити"
 
-#: templates/adminActivity.html:34
+#: templates/adminActivity.html:42
 msgid "Utm sources"
 msgstr "Джерела utm"
 
-#: templates/adminActivity.html:42
+#: templates/adminActivity.html:50
 msgid "Page visits"
 msgstr "Відвідування сторінок"
 
-#: templates/adminActivity.html:52
+#: templates/adminActivity.html:60
 msgid "Region distribution"
 msgstr "Поділ за регіонами"
 
-#: templates/adminActivity.html:60
+#: templates/adminActivity.html:68
 msgid "City distribution"
 msgstr "Поділ за містами"
 
 #: templates/adminOrder.html:7
 msgid "View order"
 msgstr "Переглянути замовлення"
-
-#: templates/adminOrder.html:14 templates/adminOrders.html:15
-#: templates/adminProductEdit.html:15 templates/adminProducts.html:15
-msgid "Back"
-msgstr "Назад"
 
 #: templates/adminOrder.html:18
 msgid "Product"
@@ -242,7 +251,8 @@ msgstr "Юзернейм"
 
 #: templates/adminOrder.html:45 templates/contact.html:13
 #: templates/partials/footer.html:18 templates/product.html:122
-#: templates/settings.html:32 templates/signup.html:23
+#: templates/product.html:123 templates/settings.html:32
+#: templates/signup.html:23
 msgid "Phone number"
 msgstr "Телефон"
 
@@ -580,10 +590,6 @@ msgstr "В каталог"
 msgid "Summer sale"
 msgstr "Літній розпродаж"
 
-#: templates/index.html:47
-msgid "View more"
-msgstr "Переглянути ще"
-
 #: templates/login.html:7 templates/login.html:27
 #: templates/partials/header.html:19 templates/partials/header.html:50
 #: templates/signup.html:44
@@ -830,421 +836,6 @@ msgstr "Код скидання"
 #: templates/updatePassword.html:33
 msgid "Update password"
 msgstr "Оновити пароль"
-
-#: templates/faq/delivery.html:9
-msgid "Information about the delivery"
-msgstr "Інформація про доставку"
-
-#: templates/faq/delivery.html:10
-msgid ""
-"Ensuring your order arrives safely and promptly is our top priority. "
-"Follow these steps to understand our delivery process:"
-msgstr ""
-"Забезпечити безпечне та швидке надходження вашого замовлення є нашим "
-"пріоритетом. Перегляньту ці пункти, щоб зрозуміти наш процес доставки:"
-
-#: templates/faq/delivery.html:11
-msgid "Shipping Areas"
-msgstr "Зони доставки"
-
-#: templates/faq/delivery.html:12
-msgid ""
-"We provide shipping across Ukraine and selected countries in Europe "
-"through Nova Post (Нова Пошта). Availability,\n"
-"        delivery times, and costs vary based on the destination."
-msgstr ""
-"Ми здійснюємо доставку по Україні та вибраним країнам Європи Новою "
-"Поштою. Доступність,\n"
-"        час доставки, та вартість залежать від пункту призначення."
-
-#: templates/faq/delivery.html:14
-msgid "Shipping Times"
-msgstr "Час доставки"
-
-#: templates/faq/delivery.html:15
-msgid ""
-"Ukraine: 1 to 3 business days. Europe: Varies by country, specified "
-"during checkout. Note: Delivery times are estimates and can be affected "
-"by factors such as customs, weather, and holidays."
-msgstr ""
-"По Україні: від 1 до 3 робочих днів. По Європі: залежить від країни, "
-"вказується під час оформлення замовлення. Примітка: Терміни доставки "
-"приблизні та можуть залежати від таких факторів, як митниці, погоди, та "
-"свят."
-
-#: templates/faq/delivery.html:16 templates/faq/replacementsReturns.html:23
-msgid "Shipping Costs"
-msgstr "Вартість доставки"
-
-#: templates/faq/delivery.html:17
-msgid ""
-"Calculated based on delivery address and package size/weight. Displayed "
-"during checkout. Customers are responsible\n"
-"        for all shipping costs added to the total order amount."
-msgstr ""
-"Вираховується зважаючи на адресу доставки, вагу та розмір посилки. "
-"Відображається під час оформлення замовлення. Клієнт несе "
-"відповідальність\n"
-"        за всі витрати на доставку, додані до загальної суми замовлення.\""
-
-#: templates/faq/delivery.html:19
-msgid "Order Processing"
-msgstr "Оброблення замовлень"
-
-#: templates/faq/delivery.html:20
-msgid ""
-"Orders are processed and shipped within 1 to 2 business days after "
-"payment confirmation."
-msgstr ""
-"Замовлення обробляються та відправляються впродовж 1-2 робових днів після"
-" підтвердження оплати."
-
-#: templates/faq/delivery.html:21
-msgid "Tracking Information"
-msgstr "Відслідковування"
-
-#: templates/faq/delivery.html:22
-msgid ""
-"Use the tracking number provided in your shipping confirmation email to "
-"track your package with the help of Nova Post app."
-msgstr ""
-"Використовуйте ТТН, що ви отримаєте після опрацювання замовлення, щоб "
-"відслідковувати вашу посилку в застосунку Нова Пошта."
-
-#: templates/faq/delivery.html:23
-msgid "Customs and Duties"
-msgstr "Митниці"
-
-#: templates/faq/delivery.html:24
-msgid ""
-"For international shipments, customs duties, taxes, and fees may apply. "
-"These charges are the recipient's responsibility and will be collected "
-"upon delivery by the local customs authority."
-msgstr ""
-"Для міжнародних відправлень можуть стягуватися митні збори та податки. Ці"
-" збори є відповідальністю одержувача та стягуються місцевими митними "
-"органами після доставки."
-
-#: templates/faq/delivery.html:25
-msgid "Lost or Damaged Shipments"
-msgstr "Загублені або пошкоджені відправлення"
-
-#: templates/faq/delivery.html:26
-msgid ""
-"We are not responsible for lost or damaged shipments. Contact us "
-"immediately at"
-msgstr ""
-"Ми не відповідаємо за загублені або пошкоджені відправлення. Напишіть нам"
-" на "
-
-#: templates/faq/delivery.html:26 templates/faq/delivery.html:32
-msgid "contactemail"
-msgstr "contact@kidsfashionstore.com.ua"
-
-#: templates/faq/delivery.html:26
-msgid "or "
-msgstr "або "
-
-#: templates/faq/delivery.html:26 templates/faq/delivery.html:32
-msgid "contactphone"
-msgstr "+380 68 901 4872"
-
-#: templates/faq/delivery.html:26
-msgid " for assistance in filing a claim with the shipping carrier."
-msgstr " для допомоги в оформленні скарги до перевізника."
-
-#: templates/faq/delivery.html:27
-msgid "Address Accuracy"
-msgstr "Точність адреси"
-
-#: templates/faq/delivery.html:28
-msgid ""
-"Ensure accurate and complete shipping information. We are not responsible"
-" for orders shipped to incorrect or\n"
-"        incomplete addresses provided by the customer. Review your "
-"shipping address carefully before submitting your order."
-msgstr ""
-"Забезпечуйте точну та повну інформацію про доставку. Ми не несемо "
-"відповідальності за замовлення, доставлені на неправильні або неповні "
-"адреси, надані клієнтом. Уважно перевіряйте свою адресу доставки, перш "
-"ніж підтверджувати замовлення.\""
-
-#: templates/faq/delivery.html:30
-msgid "Shipping Restrictions"
-msgstr "Обмеження доставки"
-
-#: templates/faq/delivery.html:31
-msgid ""
-"We reserve the right to refuse orders due to shipping restrictions "
-"imposed by our carriers."
-msgstr ""
-"Ми залишаємо за собою право відхиляти замовлення через обмеження доставки"
-" створені нашими перевізниками."
-
-#: templates/faq/delivery.html:32
-msgid ""
-"For any further questions about our shipping policy, feel free to contact"
-" us at"
-msgstr ""
-"Якщо в вас є будь-які інші питання щодо нашої політики доставки, не "
-"соромтеся писати нам на"
-
-#: templates/faq/delivery.html:32
-msgid "Happy Shopping!"
-msgstr "Гарних покупок!"
-
-#: templates/faq/replacementsReturns.html:9
-#, fuzzy
-msgid "Information about Replacements and Returns"
-msgstr "Інформація про обмін та повернення"
-
-#: templates/faq/replacementsReturns.html:10
-msgid ""
-"Ensuring that our customers are satisfied with their purchases is our top"
-" priority. We understand that sometimes an item may not meet your "
-"expectations, and you may need to return or replace it. Here's a brief "
-"guide to help you navigate our replacement and return process."
-msgstr ""
-
-#: templates/faq/replacementsReturns.html:11
-msgid "Eligibility"
-msgstr ""
-
-#: templates/faq/replacementsReturns.html:12
-msgid ""
-"To qualify for a replacement or return, the item must be unused, in the "
-"same condition as when you received it,\n"
-"        and in its original packaging."
-msgstr ""
-
-#: templates/faq/replacementsReturns.html:14
-msgid "Timeline"
-msgstr ""
-
-#: templates/faq/replacementsReturns.html:15
-msgid ""
-"You must initiate a replacement or return request within one day of "
-"receiving your order, whether it was delivered to\n"
-"        your home or picked up from the post office."
-msgstr ""
-
-#: templates/faq/replacementsReturns.html:17
-#, fuzzy
-msgid "Initiating a Replacement or Return"
-msgstr "Інформація про обмін та повернення"
-
-#: templates/faq/replacementsReturns.html:18
-msgid "Contact Customer Service: Email our Customer Service team at"
-msgstr ""
-
-#: templates/faq/replacementsReturns.html:18
-#: templates/faq/replacementsReturns.html:30
-#, fuzzy
-msgid "customeremail"
-msgstr "Ваша е-пошта"
-
-#: templates/faq/replacementsReturns.html:18
-msgid ""
-"within the one-day timeframe. Provide Order Details: Include your order "
-"id and details about the item you wish to return or replace. Follow "
-"Guidance: Our Customer Service team will guide you through the process."
-msgstr ""
-
-#: templates/faq/replacementsReturns.html:19
-#, fuzzy
-msgid "Conditions for Replacement or Return"
-msgstr "Інформація про обмін та повернення"
-
-#: templates/faq/replacementsReturns.html:20
-msgid ""
-"Unused Items: The item must be in its original condition. Original "
-"Packaging: The item must be returned in its original packaging. "
-"Exclusions: Items not in their original condition, damaged, or missing "
-"parts due to reasons other than our error are not eligible. Additionally,"
-" requests made more than one day after delivery will not be accepted."
-msgstr ""
-
-#: templates/faq/replacementsReturns.html:21
-msgid "Refunds or Replacements"
-msgstr ""
-
-#: templates/faq/replacementsReturns.html:22
-msgid ""
-"Inspection: Once we receive and inspect your returned item, we will "
-"notify you via email about the approval or rejection of your replacement "
-"or refund. Replacements: If approved, replacements will be processed "
-"based on product availability. If the exact item is not available, a "
-"similar product of equal value may be offered. Refunds: If approved, "
-"refunds will be processed to the original method of payment within two "
-"business days."
-msgstr ""
-
-#: templates/faq/replacementsReturns.html:24
-msgid ""
-"Return Shipping: Shipping costs for returns are nonRefundable. The cost "
-"of return shipping will be deducted from your refund if you receive a "
-"replacement."
-msgstr ""
-
-#: templates/faq/replacementsReturns.html:25
-#, fuzzy
-msgid "Additional Tips:"
-msgstr "Додаткова інформація"
-
-#: templates/faq/replacementsReturns.html:26
-msgid ""
-"Contact Promptly: Ensure you contact our Customer Service within one day "
-"to be eligible for a return or\n"
-"        replacement. Keep Original Packaging: Returning items in their "
-"original packaging helps facilitate the process. Document\n"
-"        Condition: Taking photos of the item before shipping it back can "
-"help resolve any disputes regarding the condition."
-msgstr ""
-
-#: templates/faq/replacementsReturns.html:29
-msgid ""
-"By following these steps, you can efficiently handle any replacements or "
-"returns, ensuring a smooth and satisfactory\n"
-"        experience. If you have further questions, feel free to reach out"
-" to us at"
-msgstr ""
-
-#: templates/faq/replacementsReturns.html:31
-msgid "We are here to help!"
-msgstr ""
-
-#: templates/faq/shoeSize.html:8
-#, fuzzy
-msgid "How to Select the Right Shoe Size for Your Child"
-msgstr "Як обрати правильний розмір взуття?"
-
-#: templates/faq/shoeSize.html:9
-msgid ""
-"Choosing the right shoe size for your child is essential for their "
-"comfort and foot health. Follow these simple steps to ensure you get the "
-"perfect fit."
-msgstr ""
-
-#: templates/faq/shoeSize.html:10
-msgid "Step-by-step Instructions"
-msgstr ""
-
-#: templates/faq/shoeSize.html:11
-msgid "Prepare the Materials"
-msgstr ""
-
-#: templates/faq/shoeSize.html:13
-msgid "A piece of paper"
-msgstr ""
-
-#: templates/faq/shoeSize.html:14
-msgid "A pencil"
-msgstr ""
-
-#: templates/faq/shoeSize.html:15
-msgid "A ruler"
-msgstr ""
-
-#: templates/faq/shoeSize.html:19
-msgid "Trace Your Child’s Foot"
-msgstr ""
-
-#: templates/faq/shoeSize.html:21
-msgid "Place the piece of paper on a flat, hard surface."
-msgstr ""
-
-#: templates/faq/shoeSize.html:22
-msgid "Have your child stand barefoot on the paper."
-msgstr ""
-
-#: templates/faq/shoeSize.html:23
-msgid "Ensure your child’s foot is flat and their weight is evenly distributed."
-msgstr ""
-
-#: templates/faq/shoeSize.html:24
-msgid ""
-"Using the pencil, carefully trace around your child’s foot. Try to keep "
-"the pencil as vertical as possible to get an accurate outline."
-msgstr ""
-
-#: templates/faq/shoeSize.html:26
-msgid "Measure the Foot Length"
-msgstr ""
-
-#: templates/faq/shoeSize.html:28
-msgid ""
-"Remove the paper and use the ruler to measure the longest distance from "
-"the heel to the tip of the longest toe."
-msgstr ""
-
-#: templates/faq/shoeSize.html:29
-msgid "This measurement is your child’s foot length."
-msgstr ""
-
-#: templates/faq/shoeSize.html:34
-#, fuzzy
-msgid "Compare with Insole Lengths"
-msgstr "Розміри (довжини устілок)"
-
-#: templates/faq/shoeSize.html:36
-msgid "On our shop, each shoe size includes the length of the insole."
-msgstr ""
-
-#: templates/faq/shoeSize.html:37
-msgid "Compare your child’s foot length to the insole lengths provided."
-msgstr ""
-
-#: templates/faq/shoeSize.html:38
-msgid ""
-"Choose the shoe size where the insole length is slightly longer than your"
-" child’s foot length, allowing for some growing room."
-msgstr ""
-
-#: templates/faq/shoeSize.html:40
-#, fuzzy
-msgid "Additional Tips"
-msgstr "Додаткова інформація"
-
-#: templates/faq/shoeSize.html:42
-msgid ""
-"Measure Both Feet: Sometimes one foot is slightly larger than the other. "
-"Use the measurement of the larger foot to ensure comfort"
-msgstr ""
-
-#: templates/faq/shoeSize.html:43
-msgid ""
-"Consider Growth: Kids' feet grow quickly, so it’s a good idea to leave a "
-"little extra room (about one centimeter) for growth"
-msgstr ""
-
-#: templates/faq/shoeSize.html:44
-msgid ""
-"Try Shoes On: If possible, have your child try on the shoes and walk "
-"around to ensure they feel comfortable"
-msgstr ""
-
-#: templates/faq/shoeSize.html:45
-msgid ""
-"The shoes should have enough room at the toes and fit snugly around the "
-"heels"
-msgstr ""
-
-#: templates/faq/shoeSize.html:47
-msgid "Example"
-msgstr ""
-
-#: templates/faq/shoeSize.html:49
-msgid ""
-"If your child’s foot length is 18 cm, look for a shoe size with an insole"
-" length of around 18.5 - 19 cm"
-msgstr ""
-
-#: templates/faq/shoeSize.html:51
-msgid ""
-"By following these steps, you can confidently select the correct shoe "
-"size for your child, ensuring they have\n"
-"        comfortable and well fitting shoes. Happy Shopping!"
-msgstr ""
 
 #: templates/mail/contactMessage.html:6
 msgid "Contact Us Kids Fashion Store"

@@ -120,7 +120,7 @@
                     </div>
                     <div class="input">
                         <label {% if contactData.contactMessenger=="instagram" %}class="disabled" {% endif %} id="labelPhoneNumber">{{ _('Phone number') }}:</label>
-                        <input {% if contactData.contactMessenger=="instagram" %}class="disabled" {% endif %} oninput="phoneInput()" type="text" id="inputPhoneNumber" placeholder="Phone number" value="{% if not contactData.phoneNumber %}{{ userData['phoneNumber'] }}{% else %}{{ contactData.phoneNumber }}{% endif %}">
+                        <input {% if contactData.contactMessenger=="instagram" %}class="disabled" {% endif %} oninput="phoneInput()" type="text" id="inputPhoneNumber" placeholder="{{ _('Phone number') }}" value="{% if not contactData.phoneNumber %}{{ userData['phoneNumber'] }}{% else %}{{ contactData.phoneNumber }}{% endif %}">
                         <label {% if contactData.contactMessenger !="instagram" %}class="disabled" {% endif %} id="labelUsername" >{{ _('Username') }}:</label>
                         <input {% if contactData.contactMessenger !="instagram" %}class="disabled" {% endif %} type="text" id="inputUsername" placeholder="@username" value="{{ contactData.username }}">
                     </div>

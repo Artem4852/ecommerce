@@ -340,7 +340,7 @@ select
     .navbar.mobile
         display: none
         position: fixed
-        width: 50vw
+        min-width: 50vw
         height: 100vh
         top: 0
         right: 0
@@ -2028,6 +2028,7 @@ html.uk .banner
             width: 100%
             display: flex
             flex-direction: column
+            align-items: center
             gap: 20px
             padding: 20px
             background-color: $grey
@@ -2055,6 +2056,9 @@ html.uk .banner
                     background-color: $accent-light
                     text-decoration: none
 
+            .chart
+                width: 100%
+
             canvas
                 width: 100%
                 height: 400px
@@ -2065,6 +2069,7 @@ html.uk .banner
                 flex-direction: row
                 justify-content: flex-start
                 flex-wrap: wrap
+                width: 100%
                 gap: 20px
                 align-items: flex-start
 
@@ -2080,6 +2085,7 @@ html.uk .banner
         width: 100%
         display: flex
         flex-direction: row
+        flex-wrap: wrap
         justify-content: space-between
         gap: 20px
         height: fit-content
@@ -2500,6 +2506,19 @@ html.uk .banner
             width: 100%
 
         .row .col
+            width: 100%
+
+    #admin.activity .row
+        margin-bottom: 50px
+        gap: 0
+
+        &:last-child .group
+            margin-bottom: 50px
+
+            &:last-child
+                margin-bottom: 0
+
+        .group
             width: 100%
 
     #adminProduct
