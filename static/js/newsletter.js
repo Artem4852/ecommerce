@@ -1,13 +1,13 @@
 function newsletterSignUp() {
     email = document.getElementById("newsletterEmail").value;
     if (email == "" || !email.includes("@") || !email.includes(".")) {
-        document.getElementById("newsletterButton").innerHTML = "Please enter a valid email address.";
+        document.getElementById("newsletterButton").innerHTML = translations['invalidEmail'][lang];
         setTimeout(function () {
-            document.getElementById("newsletterButton").innerHTML = "Sign me up";
+            document.getElementById("newsletterButton").innerHTML = translations['singUpNewsletter'][lang];
         }, 2000);
     }
     else {
-        document.getElementById("newsletterButton").innerHTML = "Sign me up";
+        document.getElementById("newsletterButton").innerHTML = translations['singUpNewsletter'][lang];
         document.getElementById("newsletterEmail").value = "";
         fetch("/newsletterSignup", {
             method: "POST",
@@ -22,9 +22,9 @@ function newsletterSignUp() {
             throw new Error("Request failed.");
         }).then(data => {
             if (data.success) {
-                document.getElementById("newsletterButton").innerHTML = "Thanks for subscribing!";
+                document.getElementById("newsletterButton").innerHTML = translations['thanksSubscribing'][lang];
                 setTimeout(function () {
-                    document.getElementById("newsletterButton").innerHTML = "Sign me up";
+                    document.getElementById("newsletterButton").innerHTML = translations['singUpNewsletter'][lang];
                 }, 2000);
             }
         })

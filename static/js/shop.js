@@ -39,9 +39,9 @@ function quickOrder(productId) {
 
     if (contactMessenger !== 'instagram') {
         if (phoneNumber == "" || phoneNumber.length < 12) {
-        document.getElementById("buttonQuickOrder").innerHTML = "Invalid phone number";
+        document.getElementById("buttonQuickOrder").innerHTML = translations['invalidPhone'][lang];
         setTimeout(function () {
-            document.getElementById("buttonQuickOrder").innerHTML = "Quick order";
+            document.getElementById("buttonQuickOrder").innerHTML = translations['quickOrder'][lang];
         }, 2000);
             return;
     }
@@ -59,9 +59,9 @@ function quickOrder(productId) {
         .then(data => {
             if (data.success) {
                 const cartButton = document.getElementById('buttonQuickOrder');
-                cartButton.innerText = "Ordered!";
+                cartButton.innerText = translations['ordered'][lang];
                 setTimeout(function () {
-                    cartButton.innerHTML = "Quick order";
+                    cartButton.innerHTML = translations['quickOrder'][lang];
                     hideQuickOrderMenu();
                 }, 2000);
             }
@@ -82,9 +82,9 @@ function addToCart(productId) {
         .then(data => {
             if (data.success) {
                 const cartButton = document.getElementById('cartButton' + productId);
-                cartButton.innerText = "Added to cart!";
+                cartButton.innerText = translations['addedToCart'][lang];
                 setTimeout(function () {
-                    cartButton.innerHTML = "Add to cart";
+                    cartButton.innerHTML = translations['addToCart'][lang];
                 }, 2000);
             }
         });
@@ -121,9 +121,9 @@ function editCart(productId) {
     const buttonLeft = document.getElementById('buttonLeft' + productId);
     const buttonRight = document.getElementById('buttonRight' + productId);
     buttonLeft.setAttribute('onclick', 'saveCart("' + productId + '")');
-    buttonLeft.innerHTML = 'Save';
+    buttonLeft.innerHTML = translations['save'][lang];
     buttonRight.setAttribute('onclick', 'cancelCart("' + productId + '")');
-    buttonRight.innerHTML = 'Cancel';
+    buttonRight.innerHTML = translations['cancel'][lang];
 }
 
 function saveCart(productId) {
@@ -161,9 +161,9 @@ function cancelCart(productId) {
     const buttonLeft = document.getElementById('buttonLeft' + productId);
     const buttonRight = document.getElementById('buttonRight' + productId);
     buttonRight.setAttribute('onclick', 'editCart("' + productId + '")');
-    buttonRight.innerHTML = 'Edit';
+    buttonRight.innerHTML = translations['edit'][lang];
     buttonLeft.setAttribute('onclick', `removeFromCart("${productId}", "${infoSize.innerHTML.replace('Size: ', '')}", "${infoQuantity.innerHTML.replace('Quantity: ', '')}")`);
-    buttonLeft.innerHTML = 'Remove';
+    buttonLeft.innerHTML = translations['remove'][lang];
 }
 
 function filterShoes(criterion) {
@@ -613,7 +613,7 @@ async function checkout() {
     if (error !== '') {
         document.getElementById('buttonCheckout').innerHTML = error;
         setTimeout(function () {
-            document.getElementById('buttonCheckout').innerHTML = 'Checkout';
+            document.getElementById('buttonCheckout').innerHTML = translations['checkout'][lang];
         }, 5000);
         return;
     }

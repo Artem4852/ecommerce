@@ -144,7 +144,7 @@ function updateProduct() {
     if (error !== '') {
         document.getElementById('buttonUpdateProduct').innerText = error;
         setTimeout(() => {
-            document.getElementById('buttonUpdateProduct').innerText = 'Update product';
+            document.getElementById('buttonUpdateProduct').innerText = translations['updateProduct'][lang];
         }, 2000);
         return;
     }
@@ -191,9 +191,9 @@ function archiveProduct() {
     const inputTags = document.getElementById('inputTags');
     inputTags.value = 'archived, ' + inputTags.value;
     const buttonArchiveProduct = document.getElementById('buttonArchiveProduct');
-    buttonArchiveProduct.innerText = 'Archived!';
+    buttonArchiveProduct.innerText = translations['archived'][lang];
     setTimeout(() => {
-        buttonArchiveProduct.innerText = 'Unarchive product';
+        buttonArchiveProduct.innerText = translations['unarchiveProduct'][lang];
         buttonArchiveProduct.setAttribute('onclick', 'unarchiveProduct()');
     }, 2000);
 }
@@ -202,9 +202,9 @@ function unarchiveProduct() {
     const inputTags = document.getElementById('inputTags');
     inputTags.value = inputTags.value.replace('archived, ', '').replace(', archived', '');
     const buttonArchiveProduct = document.getElementById('buttonArchiveProduct');
-    buttonArchiveProduct.innerText = 'Unarchived!';
+    buttonArchiveProduct.innerText = translations['unarchived'][lang];
     setTimeout(() => {
-        buttonArchiveProduct.innerText = 'Archive product';
+        buttonArchiveProduct.innerText = translations['archiveProduct'][lang];
         buttonArchiveProduct.setAttribute('onclick', 'archiveProduct()');
     }, 2000);
 }
@@ -223,10 +223,10 @@ function archiveProductNoForm(productId) {
                 document.getElementById('archived'+productId).classList.toggle('hidden');
                 document.getElementById('sizes'+productId).classList.toggle('hidden');
                 button = document.getElementById('buttonArchiveProduct'+productId);
-                if (button.innerText === 'Archive') {
-                    button.innerText = 'Unarchive';
+                if (button.innerText === translations['archive'][lang]) {
+                    button.innerText = translations['unarchive'][lang];
                 } else {
-                    button.innerText = 'Archive';
+                    button.innerText = translations['archive'][lang];
                 }
             }
             else {
@@ -413,7 +413,7 @@ function setTrackingNumber() {
         .then(response => response.json())
         .then(data => {
             if (data.success) {
-                document.getElementById('inputTrackingNumber').value = 'Saved!';
+                document.getElementById('inputTrackingNumber').value = translations['saved'][lang];
                 setTimeout(() => {
                     document.getElementById('inputTrackingNumber').value = trackingNumber;
                 }, 2000);

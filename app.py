@@ -17,7 +17,12 @@ characters = ascii_letters + digits
 dotenv.load_dotenv()
 
 def get_locale():
-    return 'uk'
+    host = request.host
+    if '.ua' in host:
+        return 'uk'
+    elif '.eu' in host:
+        return 'en'
+    return 'en'
     # return request.accept_languages.best_match(['en', 'uk'])
 
 app = Flask(__name__)
@@ -42,6 +47,37 @@ app.config['MAIL_USERNAME'] = '49eeff352c2a4d'
 app.config['MAIL_PASSWORD'] = 'edb53d7d51b475'
 app.config['MAIL_DEFAULT_SENDER'] = 'noreply@kidsfashionstore.ua'
 mail = Mail(app)
+
+translations = {
+    "promoCodeUsed": {
+        "en": "You have already used a promo code",
+        "uk": "Ви вже використали промокод"
+    },
+    "invalidPromoCode": {
+        "en": "Invalid promo code",
+        "uk": "Невірний промокод"
+    },
+    "errorFetchingBranches": {
+        "en": "Error fetching branches",
+        "uk": "Помилка при отриманні відділень"
+    },
+    "incorrectEmailOrPassword": {
+        "en": "Incorrect email or password",
+        "uk": "Невірний email або пароль"
+    },
+    "userExists": {
+        "en": "User with this email already exists",
+        "uk": "Користувач з такою е-поштою вже існує"
+    },
+    "userNotFound": {
+        "en": "User not found",
+        "uk": "Користувача не знайдено"
+    },
+    "invalidCode": {
+        "en": "Invalid code",
+        "uk": "Невірний код"
+    }
+}
 
 # Helper functions
 def sendEmail(subject, recipient, body=None, html=None, data=None):
@@ -200,8 +236,12 @@ def faq():
     else:
         userData = {}
     logResponse = log('faq', request=request)
+
+    translationsDb = database.getTranslations("db")
+    translationsJs = database.getTranslations("js")
+
     if logResponse: return logResponse
-    return render_template('faq.html', faqPosts=faq, loggedIn=loggedIn, userData=userData)
+    return render_template('faq.html', faqPosts=faq, loggedIn=loggedIn, userData=userData, translationsDb=translationsDb, translationsJs=translationsJs)
 
 @app.route('/faq/<faqName>')
 def faqPost(faqName):
@@ -215,14 +255,10 @@ def faqPost(faqName):
     faq = database.getFaq()
     posts = [post for post in faq if faqName in post['name']]
     if not posts: return abort(404)
-    else: return render_template('faqPage.html', faq=posts[0], loggedIn=loggedIn, userData=userData)
-
-    if faqName == 'shoeSize':
-        return render_template('faq/shoeSize.html', loggedIn=loggedIn, userData=userData)
-    elif faqName == 'delivery':
-        return render_template('faq/delivery.html', loggedIn=loggedIn, userData=userData)
-    elif faqName == 'replacementsReturns':
-        return render_template('faq/replacementsReturns.html', loggedIn=loggedIn, userData=userData)
+    else: 
+        translationsDb = database.getTranslations("db")
+        translationsJs = database.getTranslations("js")
+        return render_template('faqPage.html', faq=posts[0], loggedIn=loggedIn, userData=userData, translationsDb=translationsDb, translationsJs=translationsJs)
     
 @app.route('/contact')
 def contact():
@@ -233,7 +269,11 @@ def contact():
         userData = {}
     logResponse = log('contact', request=request)
     if logResponse: return logResponse
-    return render_template('contact.html', loggedIn=loggedIn, userData=userData)
+
+    translationsDb = database.getTranslations("db")
+    translationsJs = database.getTranslations("js")
+
+    return render_template('contact.html', loggedIn=loggedIn, userData=userData, translationsDb=translationsDb, translationsJs=translationsJs)
 
 # Legal routes
 @app.route('/termsofuse')
@@ -246,7 +286,11 @@ def termsofuse():
     logResponse = log('legal', request=request)
     if logResponse: return logResponse
     page = database.getLegalPage('termsOfUse')
-    return render_template('legalPage.html', loggedIn=loggedIn, userData=userData, page=page)
+
+    translationsDb = database.getTranslations("db")
+    translationsJs = database.getTranslations("js")
+
+    return render_template('legalPage.html', loggedIn=loggedIn, userData=userData, page=page, translationsDb=translationsDb, translationsJs=translationsJs)
 
 @app.route('/privacypolicy')
 def privacypolicy():
@@ -258,7 +302,11 @@ def privacypolicy():
     logResponse = log('legal', request=request)
     if logResponse: return logResponse
     page = database.getLegalPage('privacyPolicy')
-    return render_template('legalPage.html', loggedIn=loggedIn, userData=userData, page=page)
+
+    translationsDb = database.getTranslations("db")
+    translationsJs = database.getTranslations("js")
+    
+    return render_template('legalPage.html', loggedIn=loggedIn, userData=userData, page=page, translationsDb=translationsDb, translationsJs=translationsJs)
 
 @app.route('/cookiespolicy')
 def cookiespolicy():
@@ -270,7 +318,11 @@ def cookiespolicy():
     logResponse = log('legal', request=request)
     if logResponse: return logResponse
     page = database.getLegalPage('cookiesPolicy')
-    return render_template('legalPage.html', loggedIn=loggedIn, userData=userData, page=page)
+
+    translationsDb = database.getTranslations("db")
+    translationsJs = database.getTranslations("js")
+    
+    return render_template('legalPage.html', loggedIn=loggedIn, userData=userData, page=page, translationsDb=translationsDb, translationsJs=translationsJs)
 
 @app.route('/shippingpolicy')
 def shippingpolicy():
@@ -282,7 +334,11 @@ def shippingpolicy():
     logResponse = log('legal', request=request)
     if logResponse: return logResponse
     page = database.getLegalPage('shippingPolicy')
-    return render_template('legalPage.html', loggedIn=loggedIn, userData=userData, page=page)
+
+    translationsDb = database.getTranslations("db")
+    translationsJs = database.getTranslations("js")
+    
+    return render_template('legalPage.html', loggedIn=loggedIn, userData=userData, page=page, translationsDb=translationsDb, translationsJs=translationsJs)
 
 @app.route('/replacementsandreturnspolicy')
 def replacementsandreturnspolicy():
@@ -294,7 +350,11 @@ def replacementsandreturnspolicy():
     logResponse = log('legal', request=request)
     if logResponse: return logResponse
     page = database.getLegalPage('replacementsAndReturnsPolicy')
-    return render_template('legalPage.html', loggedIn=loggedIn, userData=userData, page=page)
+
+    translationsDb = database.getTranslations("db")
+    translationsJs = database.getTranslations("js")
+    
+    return render_template('legalPage.html', loggedIn=loggedIn, userData=userData, page=page, translationsDb=translationsDb, translationsJs=translationsJs)
 
 # Cart + favorites routes
 @app.route('/favorites')
@@ -325,6 +385,7 @@ def favorites():
 
     logResponse = log('shop', request=request)
     if logResponse: return logResponse
+    
     return render_template('favorites.html', userData=user, favoriteItems=favoriteItems, productsFeatured=productsFeatured[:4], page=page, maxPages=maxPages, loggedIn=loggedIn, translationsDb=translationsDb, translationsJs=translationsJs)
 
 @app.route('/favorite/<productNumber>', methods=['POST'])
@@ -433,9 +494,9 @@ def editCart(productId):
 def checkPromoCode():
     promoCode = request.json.get('promoCode')
     current_user = getUser({'userId': session.get('userId')})
-    if current_user['promoCodeUsed']: return jsonify({'success': False, 'error': 'You have already used a promo code'})
+    if current_user['promoCodeUsed']: return jsonify({'success': False, 'error': translations['promoCodeUsed'][get_locale()]})
     user = getUser({'promoCode': promoCode})
-    if not user: return jsonify({'success': False, 'error': 'Invalid promo code'})
+    if not user: return jsonify({'success': False, 'error': translations['invalidPromoCode'][get_locale()]})
     else:
         # database.updateUser({'userId': session.get('userId')}, {'$set': {'promoCodeUsed': True}})
         # database.updateUser({'promoCode': promoCode}, {'$set': {'discount': int(user['discount']+1)}})
@@ -542,7 +603,7 @@ def getBranches():
         branches = nova.getBranches(countryCode, city)
         branches = sorted(branches, key=lambda x: int(x['number'].split("/")[-1]))
     except:
-        return jsonify({'success': False, 'error': 'Error fetching branches'})
+        return jsonify({'success': False, 'error': translations['errorFetchingBranches'][get_locale()]})
     return jsonify({'success': True, 'branches': branches})
 
 # @app.route('/getShippingPrice', methods=['POST'])
@@ -638,7 +699,11 @@ def settings():
 
     logResponse = log('home', request=request)
     if logResponse: return logResponse
-    return render_template('settings.html', userData=user, loggedIn=loggedIn, codesCountry=codesCountry, deliveryCountries=deliveryCountries, deliveryCities=deliveryCities)
+
+    translationsDb = database.getTranslations("db")
+    translationsJs = database.getTranslations("js")
+    
+    return render_template('settings.html', userData=user, loggedIn=loggedIn, codesCountry=codesCountry, deliveryCountries=deliveryCountries, deliveryCities=deliveryCities, translationsDb=translationsDb, translationsJs=translationsJs)
 
 @app.route('/updateSettings', methods=['POST'])
 def updateSettings():
@@ -671,7 +736,11 @@ def newsletterUnsubscribe(unsubscribeToken):
             user = getUser({'userId': session.get('userId')})
         else:
             user = {}
-        return render_template('newsletterUnsubscribe.html', loggedIn=loggedIn, userData=user)
+
+        translationsDb = database.getTranslations("db")
+        translationsJs = database.getTranslations("js")
+        
+        return render_template('newsletterUnsubscribe.html', loggedIn=loggedIn, userData=user, translationsDb=translationsDb, translationsJs=translationsJs)
     return abort(404)
 
 # Auth routes
@@ -681,7 +750,11 @@ def login():
         loggedIn = session.get('loggedIn', False)
         if loggedIn:
             return redirect('/')
-        return render_template('login.html', loggedIn=loggedIn)
+
+        translationsDb = database.getTranslations("db")
+        translationsJs = database.getTranslations("js")
+        
+        return render_template('login.html', loggedIn=loggedIn, translationsDb=translationsDb, translationsJs=translationsJs)
         
     email = request.json.get('email')
     password = request.json.get('password')
@@ -692,7 +765,7 @@ def login():
         session['loggedIn'] = True
         return jsonify({'success': True})
 
-    return jsonify({'success': False, 'error': 'Incorrect email or password'})
+    return jsonify({'success': False, 'error': translations['incorrectEmailOrPassword'][get_locale()]})
 
 @app.route('/logout')
 def logout():
@@ -706,7 +779,11 @@ def signup():
         loggedIn = session.get('loggedIn', False)
         if loggedIn:
             return redirect('/')
-        return render_template('signup.html', loggedIn=loggedIn)
+
+        translationsDb = database.getTranslations("db")
+        translationsJs = database.getTranslations("js")
+        
+        return render_template('signup.html', loggedIn=loggedIn, translationsDb=translationsDb, translationsJs=translationsJs)
     
     email = request.json.get('email')
     phoneNumber = request.json.get('phone')
@@ -714,7 +791,7 @@ def signup():
 
     user = getUser({'email': email})
     if user:
-        return jsonify({'success': False, 'error': 'User already exists'})
+        return jsonify({'success': False, 'error': translations['userExists'][get_locale()]})
     
     database.addUser({
         'email': email, 
@@ -745,21 +822,29 @@ def forgotPassword():
     loggedIn = session.get('loggedIn', False)
     if loggedIn:
         return redirect('/')
-    return render_template('forgotPassword.html', loggedIn=loggedIn)
+
+    translationsDb = database.getTranslations("db")
+    translationsJs = database.getTranslations("js")
+    
+    return render_template('forgotPassword.html', loggedIn=loggedIn, translationsDb=translationsDb, translationsJs=translationsJs)
 
 @app.route('/updatePassword', methods=['GET'])
 def updatePassword():
     loggedIn = session.get('loggedIn', False)
     if loggedIn:
         return redirect('/')
-    return render_template('updatePassword.html', loggedIn=loggedIn)
+    
+    translationsDb = database.getTranslations("db")
+    translationsJs = database.getTranslations("js")
+    
+    return render_template('updatePassword.html', loggedIn=loggedIn, translationsDb=translationsDb, translationsJs=translationsJs)
 
 @app.route('/resetPassword', methods=['POST'])
 def resetPassword():
     email = request.json.get('email')
     user = getUser({'email': email})
     if not user:
-        return jsonify({'success': False, 'error': 'User not found'})
+        return jsonify({'success': False, 'error': translations['userNotFound'][get_locale()]})
     reset = {
         'code': random.randint(100000, 999999),
         'expires': datetime.now().timestamp()+3600
@@ -775,9 +860,9 @@ def updatePasswordPost():
     password = request.json.get('password')
     user = getUser({'email': email})
     if not user or not user.get('reset'):
-        return jsonify({'success': False, 'error': 'User not found'})
+        return jsonify({'success': False, 'error': translations['userNotFound'][get_locale()]})
     if user['reset']['code'] != int(code) or user['reset']['expires'] < datetime.now().timestamp():
-        return jsonify({'success': False, 'error': 'Invalid code'})
+        return jsonify({'success': False, 'error': translations['invalidCode'][get_locale()]})
     database.updateUser({'email': email}, {'$set': {'password': password}})
     return jsonify({'success': True})
 
@@ -827,7 +912,10 @@ def admin():
             days.append(day)
     ordersDailyAverage = len(orders)//len(days)
 
-    return render_template('admin.html', userData=user, loggedIn=loggedIn, averageDailyRequests=averageDailyRequests, dailyRequests=dailyRequests, requestsToday=requestsToday, averageDailyUniqueVisits=averageDailyUniqueVisits, uniqueVisitsToday=uniqueVisitsToday, totalProducts=totalProducts, inStock=inStock, orders=orders, ordersTotal=ordersTotal, ordersPending=ordersPending, ordersToday=ordersToday, ordersDailyAverage=ordersDailyAverage)
+    translationsDb = database.getTranslations("db")
+    translationsJs = database.getTranslations("js")
+    
+    return render_template('admin.html', userData=user, loggedIn=loggedIn, averageDailyRequests=averageDailyRequests, dailyRequests=dailyRequests, requestsToday=requestsToday, averageDailyUniqueVisits=averageDailyUniqueVisits, uniqueVisitsToday=uniqueVisitsToday, totalProducts=totalProducts, inStock=inStock, orders=orders, ordersTotal=ordersTotal, ordersPending=ordersPending, ordersToday=ordersToday, ordersDailyAverage=ordersDailyAverage, translationsDb=translationsDb, translationsJs=translationsJs)
 
 @app.route('/admin/activity')
 def adminActivity():
@@ -858,7 +946,10 @@ def adminActivity():
 
     cityDistribution = database.getStats('cityDistribution')['data']
 
-    return render_template('adminActivity.html', userData=user, loggedIn=loggedIn, dailyRequests=dailyRequests, dailyUniqueVisits=dailyUniqueVisits, hourlyRequests=hourlyRequests, utmSources=utmSources, pageDistribution=pageDistribution, regionDistribution=regionDistribution, cityDistribution=cityDistribution)
+    translationsDb = database.getTranslations("db")
+    translationsJs = database.getTranslations("js")
+    
+    return render_template('adminActivity.html', userData=user, loggedIn=loggedIn, dailyRequests=dailyRequests, dailyUniqueVisits=dailyUniqueVisits, hourlyRequests=hourlyRequests, utmSources=utmSources, pageDistribution=pageDistribution, regionDistribution=regionDistribution, cityDistribution=cityDistribution, translationsDb=translationsDb, translationsJs=translationsJs)
 
 @app.route('/admin/products')
 def adminProducts():
@@ -922,7 +1013,11 @@ def adminProductEdit(productId):
     product = database.getProduct({'id': int(productId)})
     if not product:
         return redirect('/admin/products')
-    return render_template('adminProductEdit.html', userData=user, loggedIn=loggedIn, product=product, pageType='edit')
+
+    translationsDb = database.getTranslations("db")
+    translationsJs = database.getTranslations("js")
+    
+    return render_template('adminProductEdit.html', userData=user, loggedIn=loggedIn, product=product, pageType='edit', translationsDb=translationsDb, translationsJs=translationsJs)
 
 @app.route('/admin/product/image', methods=['POST'])
 def adminProductImage():
@@ -1033,7 +1128,11 @@ def adminProductAdd():
             "addedBy": user['userId']
         }
         database.addProduct(product)
-        return render_template('adminProductEdit.html', userData=user, loggedIn=loggedIn, product=product, pageType='add')
+
+        translationsDb = database.getTranslations("db")
+        translationsJs = database.getTranslations("js")
+        
+        return render_template('adminProductEdit.html', userData=user, loggedIn=loggedIn, product=product, pageType='add', translationsDb=translationsDb, translationsJs=translationsJs)
     elif request.method == 'POST':
         productData = request.json.get('data')
         productData['sizes'] = [int(size) for size in productData['sizes'].split(',')]

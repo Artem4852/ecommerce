@@ -51,30 +51,30 @@ function validateForm() {
     const confirmPassword = document.getElementById('inputPasswordConfirm').value;
 
     if (email == "" || !email.includes("@") || !email.includes(".")) {
-        document.getElementById("signupButton").innerHTML = "Please enter a valid email address.";
+        document.getElementById("signupButton").innerHTML = translations['invalidEmail'][lang];
         setTimeout(function () {
-            document.getElementById("signupButton").innerHTML = "Sign up";
+            document.getElementById("signupButton").innerHTML = translations['signUp'][lang];
         }, 2000);
         return false;
     }
     else if (phone == "" || phone.length < 12) {
-        document.getElementById("signupButton").innerHTML = "Please enter a valid phone number.";
+        document.getElementById("signupButton").innerHTML = translations['invalidPhone'][lang];
         setTimeout(function () {
-            document.getElementById("signupButton").innerHTML = "Sign up";
+            document.getElementById("signupButton").innerHTML = translations['signUp'][lang];
         }, 2000);
         return false;
     }
     else if (password == "" || password.length < 8) {
-        document.getElementById("signupButton").innerHTML = "Password must be at least 8 characters long.";
+        document.getElementById("signupButton").innerHTML = translations['passwordTooShort'][lang];
         setTimeout(function () {
-            document.getElementById("signupButton").innerHTML = "Sign up";
+            document.getElementById("signupButton").innerHTML = translations['signUp'][lang];
         }, 2000);
         return false;
     }
     else if (password != confirmPassword) {
-        document.getElementById("signupButton").innerHTML = "Passwords do not match.";
+        document.getElementById("signupButton").innerHTML = translations['passwordsDoNotMatch'][lang];
         setTimeout(function () {
-            document.getElementById("signupButton").innerHTML = "Sign up";
+            document.getElementById("signupButton").innerHTML = translations['signUp'][lang];
         }, 2000);
         return false;
     }
@@ -86,7 +86,7 @@ function signup() {
     if (output[0]) {
         const hashedPassword = CryptoJS.SHA256(output[3]).toString();
 
-        document.getElementById("signupButton").innerHTML = "Sign up";
+        document.getElementById("signupButton").innerHTML = translations['signUp'][lang];
         document.getElementById("inputEmail").value = "";
         document.getElementById("inputPhoneNumber").value = "";
         document.getElementById("inputPassword").value = "";
@@ -112,7 +112,7 @@ function signup() {
             }
         }).then(data => {
             if (data.success) {
-                document.getElementById("signupButton").innerHTML = "Thanks for signing up!";
+                document.getElementById("signupButton").innerHTML = translations['thanksSignUp'][lang];
                 setTimeout(function () {
                     location.href = "/login?next=" + next;
                 }, 2000);
@@ -120,7 +120,7 @@ function signup() {
             else {
                 document.getElementById("signupButton").innerHTML = data.error;
                 setTimeout(function () {
-                    document.getElementById("signupButton").innerHTML = "Sign up";
+                    document.getElementById("signupButton").innerHTML = translations['signUp'][lang];
                 }, 5000);
             }
         })
@@ -156,7 +156,7 @@ function login() {
         else {
             document.getElementById("loginButton").innerHTML = data.error;
             setTimeout(function () {
-                document.getElementById("loginButton").innerHTML = "Log in";
+                document.getElementById("loginButton").innerHTML = translations['logIn'][lang];
             }, 5000);
         }
     });
@@ -179,7 +179,7 @@ function sendResetCode() {
         }
     }).then(data => {
         if (data.success) {
-            document.getElementById("resetButton").innerHTML = "Reset code sent!";
+            document.getElementById("resetButton").innerHTML = translations['resetSent'][lang];
             setTimeout(function () {
                 location.href = "/updatePassword?email=" + email;
             }, 2000);
@@ -187,7 +187,7 @@ function sendResetCode() {
         else {
             document.getElementById("resetButton").innerHTML = data.error;
             setTimeout(function () {
-                document.getElementById("resetButton").innerHTML = "Send reset code";
+                document.getElementById("resetButton").innerHTML = translations['sendReset'][lang];
             }, 5000);
         }
     });
@@ -199,23 +199,23 @@ function validateReset() {
     const confirmPassword = document.getElementById('inputPasswordConfirm').value;
 
     if (code == "" || code.length < 6) {
-        document.getElementById("resetButton").innerHTML = "Please enter a valid reset code.";
+        document.getElementById("resetButton").innerHTML = translations['invalidCode'][lang];
         setTimeout(function () {
-            document.getElementById("resetButton").innerHTML = "Update password";
+            document.getElementById("resetButton").innerHTML = translations['updatePassword'][lang];
         }, 2000);
         return false;
     }
     else if (password == "" || password.length < 8) {
-        document.getElementById("resetButton").innerHTML = "Password must be at least 8 characters long.";
+        document.getElementById("resetButton").innerHTML = translations['passwordTooShort'][lang];
         setTimeout(function () {
-            document.getElementById("resetButton").innerHTML = "Update password";
+            document.getElementById("resetButton").innerHTML = translations['updatePassword'][lang];
         }, 2000);
         return false;
     }
     else if (password != confirmPassword) {
-        document.getElementById("resetButton").innerHTML = "Passwords do not match.";
+        document.getElementById("resetButton").innerHTML = translations['passwordsDoNotMatch'][lang];
         setTimeout(function () {
-            document.getElementById("resetButton").innerHTML = "Update password";
+            document.getElementById("resetButton").innerHTML = translations['updatePassword'][lang];
         }, 2000);
         return false;
     }
@@ -230,9 +230,9 @@ function updatePassword() {
     const password = document.getElementById('inputPassword').value;
     const confirmPassword = document.getElementById('inputPasswordConfirm').value;
     if (password != confirmPassword) {
-        document.getElementById("resetButton").innerHTML = "Passwords do not match.";
+        document.getElementById("resetButton").innerHTML = translations['passwordsDoNotMatch'][lang];
         setTimeout(function () {
-            document.getElementById("resetButton").innerHTML = "Update password";
+            document.getElementById("resetButton").innerHTML = translations['updatePassword'][lang];
         }, 2000);
         return;
     }
@@ -255,7 +255,7 @@ function updatePassword() {
         }
     }).then(data => {
         if (data.success) {
-            document.getElementById("resetButton").innerHTML = "Password updated!";
+            document.getElementById("resetButton").innerHTML = translations['passwordUpdated'][lang];
             setTimeout(function () {
                 location.href = "/login";
             }, 2000);
@@ -263,7 +263,7 @@ function updatePassword() {
         else {
             document.getElementById("resetButton").innerHTML = data.error;
             setTimeout(function () {
-                document.getElementById("resetButton").innerHTML = "Update password";
+                document.getElementById("resetButton").innerHTML = translations['updatePassword'][lang];
             }, 5000);
         }
     });

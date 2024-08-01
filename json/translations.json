@@ -74,13 +74,17 @@
             "en": "Eco leather",
             "uk": "Еко шкіра"
         },
-        "eco textile": {
-            "en": "Eco textile",
-            "uk": "Еко текстиль"
+        "felt": {
+            "en": "Felt",
+            "uk": "Войлок"
         },
-        "eco rubber": {
-            "en": "Eco rubber",
-            "uk": "Еко гума"
+        "suede": {
+            "en": "Suede leather",
+            "uk": "Замшева шкіра"
+        },
+        "fleece": {
+            "en": "Fleece",
+            "uk": "Фліс"
         },
 
         "kyiv": {
@@ -146,6 +150,34 @@
         }
     },
     "js": {
+        "updateProduct": {
+            "en": "Update product",
+            "uk": "Оновити товар"
+        },
+        "archived": {
+            "en": "Archived!",
+            "uk": "Заархівовано!"
+        },
+        "unarchived": {
+            "en": "Unarchived!",
+            "uk": "Розархівовано!"
+        },
+        "archive": {
+            "en": "Archive",
+            "uk": "Заархівувати"
+        },
+        "unarchive": {
+            "en": "Unarchive",
+            "uk": "Розархівувати"
+        },
+        "archiveProduct": {
+            "en": "Archive product",
+            "uk": "Архівувати товар"
+        },
+        "unarchiveProduct": {
+            "en": "Unarchive product",
+            "uk": "Розархівувати товар"
+        },
         "saved": {
             "en": "Saved!",
             "uk": "Збережено!"
