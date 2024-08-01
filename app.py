@@ -234,6 +234,8 @@ def termsofuse():
         userData = {}
     logResponse = log('legal', request=request)
     if logResponse: return logResponse
+    page = database.getLegalPage('termsOfUse')
+    return render_template('legalPage.html', loggedIn=loggedIn, userData=userData, page=page)
     return render_template('legal/termsOfUse.html', loggedIn=loggedIn, userData=userData)
 
 @app.route('/privacypolicy')

@@ -10,8 +10,8 @@ database = Database()
 # with open('faq.json', 'w') as f:
 #     json.dump(faq, f)
 
-with open('faq.json', 'r') as f:
+with open('legal.json', 'r') as f:
     faq = json.load(f)
 
 for f in faq:
-    database.updateFaq(f)
+    database.updateLegalPage(f)

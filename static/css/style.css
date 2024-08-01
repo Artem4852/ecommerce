@@ -1113,6 +1113,7 @@ html.uk .banner {
 #faqPage ul li, #legalPage ul li {
   font-size: 18px;
   margin-left: 25px;
+  font-weight: 500;
 }
 #faqPage .row, #legalPage .row {
   display: flex;
@@ -1128,10 +1129,10 @@ html.uk .banner {
   background-color: #E0E0E0;
   object-fit: contain;
 }
-#faqPage .row .text, #legalPage .row .text {
+#faqPage .row .text, #faqPage .row .col, #legalPage .row .text, #legalPage .row .col {
   width: calc(65% - 15px);
 }
-#faqPage .row .text *, #legalPage .row .text * {
+#faqPage .row .text *, #faqPage .row .col *, #legalPage .row .text *, #legalPage .row .col * {
   width: 100%;
 }
 #faqPage.nolists p, #legalPage.nolists p {
@@ -2410,10 +2411,10 @@ html.uk .banner {
     flex-direction: column;
     gap: 0;
   }
-  #faqPage .row .text, #faqPage .row img {
+  #faqPage .row .text, #faqPage .row .col, #faqPage .row img {
     width: 100%;
   }
-  #faqPage .row .text *, #faqPage .row img * {
+  #faqPage .row .text *, #faqPage .row .col *, #faqPage .row img * {
     width: auto;
   }
   #contact form {

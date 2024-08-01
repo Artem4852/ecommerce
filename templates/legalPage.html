@@ -3,52 +3,51 @@
 {% include 'partials/head.html' %}
 <body>
     {% include 'partials/header.html' %}
-    <section id="faqPage">
-        <h2>FAQ</h2>
-        <h3>{{ faq.title[get_locale()] }}</h3>
-        {% for line in faq.page %}
+    <section id="legalPage" class="nolists">
+        <h2>{{ page.title[get_locale()] }}</h2>
+        {% for line in page.page %}
             {% if line.type == 'title' %}
-                <h4>{{ line[get_locale()] }}</h4>
+                <h4 {% if 'class' in line %}class="{{ line.class }}"{% endif %}>{{ line[get_locale()] }}</h4>
             {% elif line.type == 'paragraph' %}
-                <p>{{ line[get_locale()] | safe }}</p>
+                <p {% if 'class' in line %}class="{{ line.class }}"{% endif %}>{{ line[get_locale()] | safe }}</p>
             {% elif line.type == 'list' %}
-                <ul>
+                <ul {% if 'class' in line %}class="{{ line.class }}"{% endif %}>
                     {% for item in line[get_locale()] %}
-                        <li>{{ item | safe }}</li>
+                        <li {% if 'class' in line %}class="{{ line.class }}"{% endif %}>{{ item | safe }}</li>
                     {% endfor %}
                 </ul>
             {% elif line.type == 'img' %}
-                <img src="{{ url_for('static', filename=line.src) }}" alt="">
+                <img {% if 'class' in line %}class="{{ line.class }}"{% endif %} src="{{ url_for('static', filename=line.src) }}" alt="">
             {% elif line.type == 'row' %}
                 <div class="row">
                     {% for rowItem in line.content %}
                         {% if rowItem.type == 'title' %}
-                            <h4>{{ rowItem[get_locale()] }}</h4>
+                            <h4 {% if 'class' in line %}class="{{ line.class }}"{% endif %}>{{ rowItem[get_locale()] }}</h4>
                         {% elif rowItem.type == 'paragraph' %}
-                            <p>{{ rowItem[get_locale()] | safe }}</p>
+                            <p {% if 'class' in line %}class="{{ line.class }}"{% endif %}>{{ rowItem[get_locale()] | safe }}</p>
                         {% elif rowItem.type == 'list' %}
-                            <ul>
+                            <ul {% if 'class' in line %}class="{{ line.class }}"{% endif %}>
                                 {% for item in rowItem[get_locale()] %}
-                                    <li>{{ item | safe }}</li>
+                                    <li {% if 'class' in line %}class="{{ line.class }}"{% endif %}>{{ item | safe }}</li>
                                 {% endfor %}
                             </ul>
                         {% elif rowItem.type == 'img' %}
-                            <img src="{{ url_for('static', filename=rowItem.src) }}" alt="">
+                            <img {% if 'class' in line %}class="{{ line.class }}"{% endif %} src="{{ url_for('static', filename=rowItem.src) }}" alt="">
                         {% elif rowItem.type == 'col' %}
                             <div class="col">
                                 {% for colItem in rowItem.content %}
                                     {% if colItem.type == 'title' %}
-                                        <h4>{{ colItem[get_locale()] }}</h4>
+                                        <h4 {% if 'class' in line %}class="{{ line.class }}"{% endif %}>{{ colItem[get_locale()] }}</h4>
                                     {% elif colItem.type == 'paragraph' %}
-                                        <p>{{ colItem[get_locale()] | safe }}</p>
+                                        <p {% if 'class' in line %}class="{{ line.class }}"{% endif %}>{{ colItem[get_locale()] | safe }}</p>
                                     {% elif colItem.type == 'list' %}
-                                        <ul>
+                                        <ul {% if 'class' in line %}class="{{ line.class }}"{% endif %}>
                                             {% for item in colItem[get_locale()] %}
-                                                <li>{{ item | safe }}</li>
+                                                <li {% if 'class' in line %}class="{{ line.class }}"{% endif %}>{{ item | safe }}</li>
                                             {% endfor %}
                                         </ul>
                                     {% elif colItem.type == 'img' %}
-                                        <img src="{{ url_for('static', filename=colItem.src) }}" alt="">
+                                        <img {% if 'class' in line %}class="{{ line.class }}"{% endif %} src="{{ url_for('static', filename=colItem.src) }}" alt="">
                                     {% endif %}
                                 {% endfor %}
                             </div>

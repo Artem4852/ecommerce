@@ -3,7 +3,7 @@
 
 admin.html +
 adminProducts.html +
-adminProductEdit.html +ƒ
+adminProductEdit.html +
 adminOrders.html +
 adminOrder.html +
 
@@ -11,7 +11,7 @@ index.html +
 shop.html +
 product.html +
 contact.html +
-faq.html +-
+faq.html +
 favorites.html +
 signup.html +
 login.html +
@@ -33,11 +33,11 @@ mail/passwordReset.html +
 mail/saleFavorite.html +
 mail/welcome.html +
 
-legal/cookies.html 
+legal/termsOfUse.html +
 legal/privacy.html 
-legal/replacementsAndReturns.html 
+legal/cookies.html 
 legal/shipping.html 
-legal/termsOfUse.html
+legal/replacementsAndReturns.html 
 
 faq/delivery.html +
 faq/replacementsReturns.html +

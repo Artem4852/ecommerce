@@ -93,6 +93,12 @@ class Database:
     def getFaq(self):
         return list(self.otherDb['faq'].find())
     
+    def getLegalPage(self, page):
+        return self.otherDb['legal'].find_one({'name': page})
+    
+    def updateLegalPage(self, page):
+        self.otherDb['legal'].update_one({'name': page['name']}, {'$set': page}, upsert=True)
+    
     def getStats(self, statName):
         return self.otherDb['statistics'].find_one({'name': statName})
 
