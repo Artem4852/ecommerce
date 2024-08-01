@@ -273,6 +273,22 @@
         "checkout": {
             "en": "Checkout",
             "uk": "Оформити замовлення"
+        },
+        "fillAllFields": {
+            "en": "Please fill all fields",
+            "uk": "Будь ласка, заповніть всі поля"
+        },
+        "sendMessage": {
+            "en": "Send message",
+            "uk": "Надіслати повідомлення"
+        },
+        "errorOccured": {
+            "en": "An error occured",
+            "uk": "Сталася помилка"
+        },
+        "messageSent": {
+            "en": "Message sent!",
+            "uk": "Повідомлення відправлено!"
         }
     }
 }

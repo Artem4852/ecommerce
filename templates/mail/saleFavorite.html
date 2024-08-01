@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ get_locale() }}" class="{{ get_locale() }}">
+<html lang="{{ lang }}" class="{{ lang }}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -36,6 +36,7 @@
             color: #E352BA;
             width: 100%;
             margin-bottom: 20px;
+            line-height: 1;
         }
     
         p {
@@ -84,8 +85,8 @@
     <div class="main">
         <div class="content">
             <h1>{{ _('One of your favorites is on sale!') }}</h1>
-            <p>{{ data.name }} {{ _('is on sale for only') }} {{ data.price }}</p>
-            <p>{{ _('What are you waiting for? Check it out') }} <a href="https://kidsfashionstore.com.ua/product/{{ data.id }}">{{ _('here') }}</a>.</p>
+            <p>{{ translationsDb[data.category|lower][lang] }} {{ data.brand }} {{ _('is on sale for only') }} {{ data.price }} {{ _('uah') }}</p>
+            <p>{{ _('What are you waiting for? Check it out') }} <a href="https://kidsfashionstore.com.ua/product/{{ data.productId }}">{{ _('here') }}</a>.</p>
         </div>
     </div>
 </body>

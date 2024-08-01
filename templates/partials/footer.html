@@ -27,8 +27,14 @@
         <p>Instagram:</p>
         <a href="https://instagram.com/kidsfashionstore" target="Blank">@kidsfashionstore</a>
     </div>
+    <div class="col">
+        <h3>{{ _('Language') }}</h3>
+        <a onclick="changeLanguage('uk')">Українська 🇺🇦</a>
+        <a onclick="changeLanguage('en')">English 🇺🇸</a>
+    </div>
 </section>
 <script>
     const translations = {{ translationsJs | tojson }};
     const lang = '{{ get_locale() }}';
 </script>
+<script src="{{ url_for('static', filename='js/footer.js') }}"></script>

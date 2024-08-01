@@ -121,6 +121,7 @@ svg.downArrow {
   justify-content: space-between;
   width: 100%;
   min-width: 0;
+  max-width: 25vw;
   padding: 15px;
   border-radius: 20px;
   position: relative;
@@ -2319,6 +2320,11 @@ html.uk .banner {
     display: none !important;
   }
 }
+@media screen and (max-width: 600px) {
+  #header .logo {
+    width: 70% !important;
+  }
+}
 @media screen and (max-width: 800px) {
   .mobileOnly {
     display: block;
@@ -2336,7 +2342,7 @@ html.uk .banner {
     padding: 4vw;
   }
   #header .logo {
-    width: 70%;
+    width: 50%;
   }
   #header img {
     width: 100%;
@@ -2405,6 +2411,9 @@ html.uk .banner {
   }
   #productFaq div.info p {
     font-size: 18px;
+  }
+  .products .card {
+    max-width: 100%;
   }
   #faq .posts {
     align-items: center;

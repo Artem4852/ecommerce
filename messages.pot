@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-08-01 12:40+0200\n"
+"POT-Creation-Date: 2024-08-01 19:05+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -366,7 +366,7 @@ msgstr ""
 msgid "Sizes"
 msgstr ""
 
-#: templates/adminProductEdit.html:57
+#: templates/adminProductEdit.html:57 templates/product.html:148
 msgid "Season"
 msgstr ""
 
@@ -484,7 +484,7 @@ msgid "Get in touch"
 msgstr ""
 
 #: templates/contact.html:14 templates/forgotPassword.html:15
-#: templates/login.html:15 templates/mail/contactMessage.html:81
+#: templates/login.html:15 templates/mail/contactMessage.html:82
 #: templates/partials/footer.html:20 templates/settings.html:28
 #: templates/signup.html:15
 msgid "Email"
@@ -502,12 +502,16 @@ msgstr ""
 msgid "Your Email"
 msgstr ""
 
-#: templates/contact.html:32 templates/mail/contactMessage.html:82
+#: templates/contact.html:32 templates/mail/contactMessage.html:83
 msgid "Subject"
 msgstr ""
 
-#: templates/contact.html:33 templates/mail/contactMessage.html:83
+#: templates/contact.html:33 templates/mail/contactMessage.html:84
 msgid "Message"
+msgstr ""
+
+#: templates/contact.html:34
+msgid "Send Message"
 msgstr ""
 
 #: templates/contact.html:36
@@ -609,7 +613,7 @@ msgstr ""
 msgid "Price"
 msgstr ""
 
-#: templates/product.html:43
+#: templates/mail/saleFavorite.html:88 templates/product.html:43
 msgid "uah"
 msgstr ""
 
@@ -643,11 +647,11 @@ msgstr ""
 msgid "Sizes (insole lengths)"
 msgstr ""
 
-#: templates/product.html:154
+#: templates/product.html:164
 msgid "How to select correct shoe size"
 msgstr ""
 
-#: templates/product.html:156
+#: templates/product.html:166
 msgid ""
 "Ensuring your child wears the right shoe size is crucial for their "
 "comfort and foot health. Measure their foot length by tracing it on paper"
@@ -656,12 +660,12 @@ msgid ""
 "growth. For the full guide on finding the perfect fit,"
 msgstr ""
 
-#: templates/product.html:156 templates/product.html:167
-#: templates/product.html:178
+#: templates/product.html:166 templates/product.html:177
+#: templates/product.html:188
 msgid "click here"
 msgstr ""
 
-#: templates/product.html:167
+#: templates/product.html:177
 msgid ""
 "Understanding our delivery process ensures a smooth shopping experience. "
 "We ship across Ukraine and selected European countries via Nova Post. "
@@ -670,11 +674,11 @@ msgid ""
 "crucial. For more information on shipping,"
 msgstr ""
 
-#: templates/partials/footer.html:6 templates/product.html:176
+#: templates/partials/footer.html:6 templates/product.html:186
 msgid "Replacements and returns"
 msgstr ""
 
-#: templates/product.html:178
+#: templates/product.html:188
 msgid ""
 "If you need to return or replace an item, ensure it's unused and in its "
 "original packaging. Initiate your request within one day of receiving "
@@ -682,7 +686,7 @@ msgid ""
 "guide on our replacement and return process,"
 msgstr ""
 
-#: templates/product.html:182
+#: templates/product.html:192
 msgid "You might also like"
 msgstr ""
 
@@ -807,77 +811,77 @@ msgstr ""
 msgid "Contact Us Kids Fashion Store"
 msgstr ""
 
-#: templates/mail/contactMessage.html:79
+#: templates/mail/contactMessage.html:80
 msgid "New contact request"
 msgstr ""
 
-#: templates/mail/contactMessage.html:80
+#: templates/mail/contactMessage.html:81
 msgid "From"
 msgstr ""
 
-#: templates/mail/newsletterSignup.html:88
+#: templates/mail/newsletterSignup.html:89
 msgid "Hello there"
 msgstr ""
 
-#: templates/mail/newsletterSignup.html:89
+#: templates/mail/newsletterSignup.html:90
 msgid "Thanks for signing up to our newsletter!"
 msgstr ""
 
-#: templates/mail/newsletterSignup.html:90
+#: templates/mail/newsletterSignup.html:91
 msgid "You'll be hearing from us every once in a while."
 msgstr ""
 
-#: templates/mail/newsletterSignup.html:91
+#: templates/mail/newsletterSignup.html:92
 msgid "Unsubscribe"
 msgstr ""
 
-#: templates/mail/passwordReset.html:86
+#: templates/mail/passwordReset.html:87
 msgid "Password Reset"
 msgstr ""
 
-#: templates/mail/passwordReset.html:87
+#: templates/mail/passwordReset.html:88
 msgid "The code to reset your password is:"
 msgstr ""
 
-#: templates/mail/passwordReset.html:89
+#: templates/mail/passwordReset.html:90
 msgid "It is valid for one hour and will exprite afterwards"
 msgstr ""
 
-#: templates/mail/passwordReset.html:90
+#: templates/mail/passwordReset.html:91
 msgid ""
 "You should <b>never</b> share this code with anyone, even if the person "
 "says they are from our store."
 msgstr ""
 
-#: templates/mail/passwordReset.html:91
+#: templates/mail/passwordReset.html:92
 msgid "If you did not request password reset you can safely ignore this message."
 msgstr ""
 
-#: templates/mail/saleFavorite.html:86
+#: templates/mail/saleFavorite.html:87
 msgid "One of your favorites is on sale!"
 msgstr ""
 
-#: templates/mail/saleFavorite.html:87
+#: templates/mail/saleFavorite.html:88
 msgid "is on sale for only"
 msgstr ""
 
-#: templates/mail/saleFavorite.html:88
+#: templates/mail/saleFavorite.html:89
 msgid "What are you waiting for? Check it out"
 msgstr ""
 
-#: templates/mail/saleFavorite.html:88 templates/mail/welcome.html:80
+#: templates/mail/saleFavorite.html:89 templates/mail/welcome.html:81
 msgid "here"
 msgstr ""
 
-#: templates/mail/welcome.html:79
+#: templates/mail/welcome.html:80
 msgid "Welcome to our store!"
 msgstr ""
 
-#: templates/mail/welcome.html:80
+#: templates/mail/welcome.html:81
 msgid "Thank you for signing up. You can now log in to your new account"
 msgstr ""
 
-#: templates/mail/welcome.html:81
+#: templates/mail/welcome.html:82
 msgid "Happy shopping!"
 msgstr ""
 
@@ -923,6 +927,10 @@ msgstr ""
 
 #: templates/partials/footer.html:24
 msgid "Our social media"
+msgstr ""
+
+#: templates/partials/footer.html:31
+msgid "Language"
 msgstr ""
 
 #: templates/partials/header.html:7 templates/partials/header.html:43

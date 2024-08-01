@@ -31,7 +31,7 @@
                     <input id="inputEmail" type="email" placeholder="{{ _('Your Email') }}" required form="contact">
                     <input id="inputSubject" type="text" placeholder="{{ _('Subject') }}" required form="contact">
                     <textarea id="inputMessage" type="text" placeholder="{{ _('Message') }}" required form="contact"></textarea>
-                    <button id="formContactButton" onclick="submitMessage()" type="button">Send</button>
+                    <button id="buttonContact" onclick="submitMessage()" type="button">{{ _('Send Message') }}</button>
                 </form>
                 <p>{{ _('If you have any questions/suggestions, don’t hesitate to message us.
                 Kids Fashion Store always aims to help the customer and make your shopping experience as good as possible.
@@ -43,6 +43,7 @@
     {% include 'partials/newsletter.html' %}
     {% include 'partials/footer.html' %}
     <script src="{{ url_for('static', filename='js/home.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/contact.js') }}"></script>
     <script src="{{ url_for('static', filename='js/shop.js') }}"></script>
 </body>
 

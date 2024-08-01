@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-08-01 12:40+0200\n"
+"POT-Creation-Date: 2024-08-01 19:05+0200\n"
 "PO-Revision-Date: 2024-07-30 18:44+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: uk\n"
@@ -368,7 +368,7 @@ msgstr "Знижка"
 msgid "Sizes"
 msgstr "Розміри"
 
-#: templates/adminProductEdit.html:57
+#: templates/adminProductEdit.html:57 templates/product.html:148
 msgid "Season"
 msgstr "Сезон"
 
@@ -486,7 +486,7 @@ msgid "Get in touch"
 msgstr "Контакти"
 
 #: templates/contact.html:14 templates/forgotPassword.html:15
-#: templates/login.html:15 templates/mail/contactMessage.html:81
+#: templates/login.html:15 templates/mail/contactMessage.html:82
 #: templates/partials/footer.html:20 templates/settings.html:28
 #: templates/signup.html:15
 msgid "Email"
@@ -504,13 +504,17 @@ msgstr "Ваше імʼя"
 msgid "Your Email"
 msgstr "Ваша е-пошта"
 
-#: templates/contact.html:32 templates/mail/contactMessage.html:82
+#: templates/contact.html:32 templates/mail/contactMessage.html:83
 msgid "Subject"
 msgstr "Тема"
 
-#: templates/contact.html:33 templates/mail/contactMessage.html:83
+#: templates/contact.html:33 templates/mail/contactMessage.html:84
 msgid "Message"
 msgstr "Повідомлення"
+
+#: templates/contact.html:34
+msgid "Send Message"
+msgstr "Відправити повідомлення"
 
 #: templates/contact.html:36
 msgid ""
@@ -617,7 +621,7 @@ msgstr "Нам шкода, що ви відписались"
 msgid "Price"
 msgstr "Ціна"
 
-#: templates/product.html:43
+#: templates/mail/saleFavorite.html:88 templates/product.html:43
 msgid "uah"
 msgstr "грн"
 
@@ -651,11 +655,11 @@ msgstr "Додаткова інформація"
 msgid "Sizes (insole lengths)"
 msgstr "Розміри (довжини устілок)"
 
-#: templates/product.html:154
+#: templates/product.html:164
 msgid "How to select correct shoe size"
 msgstr "Як обрати правильний розмір взуття?"
 
-#: templates/product.html:156
+#: templates/product.html:166
 msgid ""
 "Ensuring your child wears the right shoe size is crucial for their "
 "comfort and foot health. Measure their foot length by tracing it on paper"
@@ -670,12 +674,12 @@ msgstr ""
 "довжину стопи, адже ніжки швидко ростуть. Перегляньте повну інструкцію із"
 " пошуку ідеального розміру"
 
-#: templates/product.html:156 templates/product.html:167
-#: templates/product.html:178
+#: templates/product.html:166 templates/product.html:177
+#: templates/product.html:188
 msgid "click here"
 msgstr "тут"
 
-#: templates/product.html:167
+#: templates/product.html:177
 msgid ""
 "Understanding our delivery process ensures a smooth shopping experience. "
 "We ship across Ukraine and selected European countries via Nova Post. "
@@ -688,11 +692,11 @@ msgstr ""
 "доставки залежать від пункту призначення, обробка займає 1-2 робочі дні. "
 "Дізнайтесь більше про доставку"
 
-#: templates/partials/footer.html:6 templates/product.html:176
+#: templates/partials/footer.html:6 templates/product.html:186
 msgid "Replacements and returns"
 msgstr "Інформація про обмін та повернення"
 
-#: templates/product.html:178
+#: templates/product.html:188
 msgid ""
 "If you need to return or replace an item, ensure it's unused and in its "
 "original packaging. Initiate your request within one day of receiving "
@@ -705,7 +709,7 @@ msgstr ""
 "customerservice@kidsfashionstore.ua.  Дізнайтесь більше про обмін та "
 "повернення"
 
-#: templates/product.html:182
+#: templates/product.html:192
 msgid "You might also like"
 msgstr "Вам також може сподобатись"
 
@@ -830,43 +834,43 @@ msgstr "Оновити пароль"
 msgid "Contact Us Kids Fashion Store"
 msgstr "Звʼязатись - Kids Fashion Store"
 
-#: templates/mail/contactMessage.html:79
+#: templates/mail/contactMessage.html:80
 msgid "New contact request"
 msgstr "Новий запит"
 
-#: templates/mail/contactMessage.html:80
+#: templates/mail/contactMessage.html:81
 msgid "From"
 msgstr "Від"
 
-#: templates/mail/newsletterSignup.html:88
+#: templates/mail/newsletterSignup.html:89
 msgid "Hello there"
 msgstr "Привіт"
 
-#: templates/mail/newsletterSignup.html:89
+#: templates/mail/newsletterSignup.html:90
 msgid "Thanks for signing up to our newsletter!"
 msgstr "Дякуємо, що підписались на нашу розлиску!"
 
-#: templates/mail/newsletterSignup.html:90
+#: templates/mail/newsletterSignup.html:91
 msgid "You'll be hearing from us every once in a while."
 msgstr "Ви отримуватимете повідомлення від нас час від часу."
 
-#: templates/mail/newsletterSignup.html:91
+#: templates/mail/newsletterSignup.html:92
 msgid "Unsubscribe"
 msgstr "Відписатись"
 
-#: templates/mail/passwordReset.html:86
+#: templates/mail/passwordReset.html:87
 msgid "Password Reset"
 msgstr "Скидання паролю"
 
-#: templates/mail/passwordReset.html:87
+#: templates/mail/passwordReset.html:88
 msgid "The code to reset your password is:"
 msgstr "Код для скидання вашого паролю:"
 
-#: templates/mail/passwordReset.html:89
+#: templates/mail/passwordReset.html:90
 msgid "It is valid for one hour and will exprite afterwards"
 msgstr "Він дійсний протягом однієї години."
 
-#: templates/mail/passwordReset.html:90
+#: templates/mail/passwordReset.html:91
 msgid ""
 "You should <b>never</b> share this code with anyone, even if the person "
 "says they are from our store."
@@ -874,39 +878,39 @@ msgstr ""
 "Ви <b>ніколи</b> не повинні повідомляти цей код нікому, навіть якщо особа"
 " каже, що вона з нашого магазину."
 
-#: templates/mail/passwordReset.html:91
+#: templates/mail/passwordReset.html:92
 msgid "If you did not request password reset you can safely ignore this message."
 msgstr ""
 "Якщо ви не надсилали запит на скидання пароля, ви можете спокійно "
 "проігнорувати це повідомлення."
 
-#: templates/mail/saleFavorite.html:86
+#: templates/mail/saleFavorite.html:87
 msgid "One of your favorites is on sale!"
 msgstr "На одну з ваших улюблених пар знижка!"
 
-#: templates/mail/saleFavorite.html:87
+#: templates/mail/saleFavorite.html:88
 msgid "is on sale for only"
 msgstr "можна купити всього за"
 
-#: templates/mail/saleFavorite.html:88
+#: templates/mail/saleFavorite.html:89
 msgid "What are you waiting for? Check it out"
 msgstr "Чого ж ви чекаєте? Перегляньте її"
 
-#: templates/mail/saleFavorite.html:88 templates/mail/welcome.html:80
+#: templates/mail/saleFavorite.html:89 templates/mail/welcome.html:81
 msgid "here"
 msgstr "тут"
 
-#: templates/mail/welcome.html:79
+#: templates/mail/welcome.html:80
 msgid "Welcome to our store!"
 msgstr "Ласкаво просимо до нашого магазину!"
 
-#: templates/mail/welcome.html:80
+#: templates/mail/welcome.html:81
 msgid "Thank you for signing up. You can now log in to your new account"
 msgstr ""
 "Дякуємо за реєстрацію. Тепер ви можете увійти до свого нового облікового "
 "запису"
 
-#: templates/mail/welcome.html:81
+#: templates/mail/welcome.html:82
 msgid "Happy shopping!"
 msgstr "Гарних покупок!"
 
@@ -954,6 +958,10 @@ msgstr "Політика обміну та повернення"
 msgid "Our social media"
 msgstr "Наші соц. мережі"
 
+#: templates/partials/footer.html:31
+msgid "Language"
+msgstr ""
+
 #: templates/partials/header.html:7 templates/partials/header.html:43
 msgid "Home"
 msgstr "Головна"
@@ -989,4 +997,7 @@ msgstr "your.email@example.com"
 #: templates/partials/newsletter.html:9
 msgid "Sign me up"
 msgstr "Підписатись"
+
+#~ msgid "Send"
+#~ msgstr "Відправити"
 

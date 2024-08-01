@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ get_locale() }}" class="{{ get_locale() }}">
+<html lang="{{ lang }}" class="{{ lang }}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=deviceWidth, initialScale=1.0">
@@ -37,6 +37,7 @@
             color: #E352BA;
             width: 100%;
             margin-bottom: 20px;
+            line-height: 1;
         }
     
         p {
@@ -77,7 +78,7 @@
     <div class="main">
         <div class="content">
             <h1>{{ _('New contact request') }}</h1>
-            <p>{{ _('From') }}: {{ data.from }}</p>
+            <p>{{ _('From') }}: {{ data.name }}</p>
             <p>{{ _('Email') }}: {{ data.email }}</p>
             <p>{{ _('Subject') }}: {{ data.subject }}</p>
             <p>{{ _('Message') }}: {{ data.message }}</p>

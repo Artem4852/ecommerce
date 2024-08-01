@@ -1,11 +1,12 @@
 from flask import Flask, request, abort, jsonify, render_template, session, redirect
-from flask_babel import Babel, gettext
+from flask_babel import Babel, gettext, force_locale
 from flask_mail import Mail, Message
 from database import Database
 import os, random, math, dotenv, re
 from bs4 import BeautifulSoup
 from datetime import datetime
 from string import ascii_letters, digits
+import threading
 
 from novapost import NovaAPI
 from telegramAPI import sendMessage
@@ -80,17 +81,29 @@ translations = {
 }
 
 # Helper functions
-def sendEmail(subject, recipient, body=None, html=None, data=None):
+def sendEmailBG(subject, recipient, body=None, html=None, data=None):
+    print("Sending")
     with app.app_context():
-        if html: 
-            htmlContent = render_template('mail/'+html+'.html', data=data)
-            if not body:
-                soup = BeautifulSoup(htmlContent, 'html.parser')
-                body = soup.get_text()
+        if "@kidsfashionstore.com.ua" in recipient: lang = 'en'
         else:
-            htmlContent = None
-        msg = Message(subject, recipients=[recipient], body=body, html=htmlContent)
-        mail.send(msg)
+            user = getUser({'email': recipient})
+            lang = user['lang'] if user else get_locale()
+
+        with force_locale(lang):
+            if html: 
+                translationsDb = database.getTranslations("db")
+                htmlContent = render_template('mail/'+html+'.html', data=data, translationsDb=translationsDb, lang=lang)
+                if not body:
+                    soup = BeautifulSoup(htmlContent, 'html.parser')
+                    body = soup.get_text()
+            else:
+                htmlContent = None
+            msg = Message(subject, recipients=[recipient], body=body, html=htmlContent)
+            mail.send(msg)
+            print("Sent!")
+
+def sendEmail(subject, recipient, body=None, html=None, data=None):
+    threading.Thread(target=sendEmailBG, args=(subject, recipient, body, html, data)).start()
 
 def getProducts():
     return database.getProducts()
@@ -107,7 +120,7 @@ def notifyFavorites(productId, brand, category, price):
         if 'favorites' in user and productId in user['favorites'] and user['notifications']['discounts']:
             toSend.append(user)
     for user in toSend:
-        sendEmail('New discount on your favorite product', user['email'], html='saleFavorite', data={'productId': productId, 'name': f"{category} {brand}", 'price': price})
+        sendEmail('New discount on your favorite product', user['email'], html='saleFavorite', data={'productId': productId, 'category': category, 'brand': brand, 'price': price})
 
 # Babel
 @app.context_processor
@@ -143,6 +156,14 @@ def index():
     logResponse = log('home', request=request)
     if logResponse: return logResponse
     return render_template('index.html', indexImages=indexImages, productsFeatured=featured[:4], productsSale=sale[:4], userData=user, loggedIn=loggedIn, translationsDb=translationsDb, translationsJs=translationsJs)
+
+@app.route('/changeLanguage', methods=['POST'])
+def changeLanguage():
+    lang = request.json.get('lang')
+    session['lang'] = lang
+    user = getUser({'userId': session.get('userId')})
+    if user: database.updateUser({'userId': session.get('userId')}, {'$set': {'lang': lang}})
+    return jsonify({'success': True})
 
 # Shop routes
 @app.route('/shop')
@@ -274,6 +295,12 @@ def contact():
     translationsJs = database.getTranslations("js")
 
     return render_template('contact.html', loggedIn=loggedIn, userData=userData, translationsDb=translationsDb, translationsJs=translationsJs)
+
+@app.route('/submitMessage', methods=['POST'])
+def submitMessage():
+    data = request.json
+    sendEmail('New message to Kids Fashion Store', 'contact@kidsfashionstore.com.ua', html='contactMessage', data=data)
+    return jsonify({'success': True})
 
 # Legal routes
 @app.route('/termsofuse')
@@ -812,7 +839,8 @@ def signup():
         },
         'discount': 0,
         'promoCodeUsed': False,
-        "tags": []
+        "tags": [],
+        "lang": get_locale()
     })
     sendEmail('Welcome to Kids Fashion Store', email, body="Welcome to our store!\nThank you for signing up. You can now log in to your new account.\nHappy shopping!", html='welcome')
     return jsonify({'success': True})
