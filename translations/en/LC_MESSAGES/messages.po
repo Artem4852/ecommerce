@@ -1108,7 +1108,7 @@ msgstr "Sign me up"
 #~ " at"
 
 #~ msgid "contactemail"
-#~ msgstr "contact@kidsfashionstore.com.ua"
+#~ msgstr "contact@kidsfashionstore.ua"
 
 #~ msgid "or "
 #~ msgstr "or "
@@ -1224,7 +1224,7 @@ msgstr "Sign me up"
 #~ msgstr "Contact Customer Service: Email our Customer Service team at"
 
 #~ msgid "customeremail"
-#~ msgstr "customerservice@kidsfashionstore.com.ua"
+#~ msgstr "customerservice@kidsfashionstore.ua"
 
 #~ msgid ""
 #~ "within the one-day timeframe. Provide"

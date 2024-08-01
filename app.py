@@ -84,7 +84,7 @@ translations = {
 def sendEmailBG(subject, recipient, body=None, html=None, data=None):
     print("Sending")
     with app.app_context():
-        if "@kidsfashionstore.com.ua" in recipient: lang = 'en'
+        if "@kidsfashionstore.ua" in recipient: lang = 'en'
         else:
             user = getUser({'email': recipient})
             lang = user['lang'] if user else get_locale()
@@ -299,7 +299,7 @@ def contact():
 @app.route('/submitMessage', methods=['POST'])
 def submitMessage():
     data = request.json
-    sendEmail('New message to Kids Fashion Store', 'contact@kidsfashionstore.com.ua', html='contactMessage', data=data)
+    sendEmail('New message to Kids Fashion Store', 'contact@kidsfashionstore.ua', html='contactMessage', data=data)
     return jsonify({'success': True})
 
 # Legal routes
@@ -471,7 +471,7 @@ def quickOrder():
     
     contactInfo = phoneNumber if contactMessenger in ['telegram', 'viber'] else username
 
-    sendMessage(f"<b>New order:</b> <a href='https://kidsfashionstore.com.ua/admin/orders?orderId={data['orderId']}'>{data['orderId']}</a>. Product id: <a href='https://kidsfashionstore.com.ua/product/{productId}'>{productId}</a>. Size: {size}, quantity: {quantity}. Contact customer: on {messenger}, {contactInfo}.")
+    sendMessage(f"<b>New order:</b> <a href='https://kidsfashionstore.ua/admin/orders?orderId={data['orderId']}'>{data['orderId']}</a>. Product id: <a href='https://kidsfashionstore.ua/product/{productId}'>{productId}</a>. Size: {size}, quantity: {quantity}. Contact customer: on {messenger}, {contactInfo}.")
 
     return jsonify({'success': True})
 
@@ -618,7 +618,7 @@ def checkout():
         elif data['contactMessenger'] == 'instagram':
             messenger = f"<a href='https://instagram.com/{data['username']}'>Instagram</a>"
 
-        sendMessage(f"<b>New order:</b> <a href='https://kidsfashionstore.com.ua/admin/orders?orderId={data['orderId']}'>{data['orderId']}</a>. Customer: {data['firstName']} {data['lastName']}, on " + messenger)
+        sendMessage(f"<b>New order:</b> <a href='https://kidsfashionstore.ua/admin/orders?orderId={data['orderId']}'>{data['orderId']}</a>. Customer: {data['firstName']} {data['lastName']}, on " + messenger)
 
         return jsonify({'success': True})
 
