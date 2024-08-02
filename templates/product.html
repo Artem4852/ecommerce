@@ -137,12 +137,16 @@
                         {{ size }} ({{ cm }} {{ _('cm') }}){% if not loop.last %}, {% endif %}
                     {% endfor %}
                 </p>
-                {% if 'season' in product.additionalInformation %}
+                {% if 'season' in product.additionalInformation and product.additionalInformation.season != '' %}
                     {% set seasons = product.additionalInformation.season.split('/') %}
                     {% set translated_seasons = [] %}
                     {% for season in seasons %}
                         {% set season = season.strip().lower() %}
-                        {% set translated_season = translationsDb[season][get_locale()] %}
+                        {% if season in translationsDb %}
+                            {% set translated_season = translationsDb[season][get_locale()] %}
+                        {% else %}
+                            {% set translated_season = season %}
+                        {% endif %}
                         {% set _ = translated_seasons.append(translated_season) %}
                     {% endfor %}
                     <p>{{ _('Season') }}: {{ translated_seasons | join('/') }}</p>
@@ -185,7 +189,7 @@
                 </svg>
                 <h3>{{ _('Replacements and returns') }}</h3>
             </div>
-            <p>{{ _('If you need to return or replace an item, ensure it\'s unused and in its original packaging. Initiate your request within one day of receiving your order by emailing customerservice@kidsfashionstore.ua. For the full guide on our replacement and return process,') }} <a href="/faq/replacementsReturns">{{ _('click here') }}</a>.</p>
+            <p>{{ _('If you need to return or replace an item, ensure it\'s unused and in its original packaging. Initiate your request within one day of receiving your order by emailing contact@kidsfashionstore.com.ua. For the full guide on our replacement and return process,') }} <a href="/faq/replacementsReturns">{{ _('click here') }}</a>.</p>
         </div>
     </section>
     <section id="featured" class="product">

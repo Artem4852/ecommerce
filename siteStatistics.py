@@ -17,6 +17,7 @@ def getRegion(coords):
     return None
 
 def log(page, request=None, ip=None):
+    return
     db = Database()
 
     utmSource = request.args.get('utmSource')

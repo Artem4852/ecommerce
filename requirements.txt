@@ -1,5 +1,6 @@
-flask
-flask_mail
+flask==3.0.1
+flask-babel==4.0.0
+Flask-Mail==0.10.0
 bs4
 pymongo
 python-dotenv
@@ -7,4 +8,4 @@ rocketapi
 requests
 shapely
 werkzeug
-telegram
+python-telegram-bot

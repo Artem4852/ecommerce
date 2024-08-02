@@ -35,18 +35,18 @@ app.config['BABEL_TRANSLATION_DIRECTORIES'] = 'translations'
 
 babel = Babel(app, locale_selector=get_locale)
 
-# Database
+# Databases
 database = Database()
-
 nova = NovaAPI()
 
 # Setup mail
-app.config['MAIL_SERVER'] = 'sandbox.smtp.mailtrap.io'
-app.config['MAIL_PORT'] = 2525
-app.config['MAIL_USETLS'] = True
-app.config['MAIL_USERNAME'] = '49eeff352c2a4d'
-app.config['MAIL_PASSWORD'] = 'edb53d7d51b475'
-app.config['MAIL_DEFAULT_SENDER'] = 'noreply@kidsfashionstore.ua'
+app.config['MAIL_SERVER'] = 'smtppro.zoho.eu'
+app.config['MAIL_PORT'] = 465
+app.config['MAIL_USE_SSL'] = True
+app.config['MAIL_USE_TLS'] = False
+app.config['MAIL_USERNAME'] = 'noreply@kidsfashionstore.com.ua'
+app.config['MAIL_PASSWORD'] = os.getenv('MAIL_PASSWORD')
+app.config['MAIL_DEFAULT_SENDER'] = 'noreply@kidsfashionstore.com.ua'
 mail = Mail(app)
 
 translations = {
@@ -84,7 +84,7 @@ translations = {
 def sendEmailBG(subject, recipient, body=None, html=None, data=None):
     print("Sending")
     with app.app_context():
-        if "@kidsfashionstore.ua" in recipient: lang = 'en'
+        if "@kidsfashionstore.com.ua" in recipient: lang = 'en'
         else:
             user = getUser({'email': recipient})
             lang = user['lang'] if user else get_locale()
@@ -133,7 +133,7 @@ def inject_locale():
 
 # Index route
 @app.route('/')
-def index():
+def index():    
     session['lang'] = request.args.get('lang', 'uk')
     indexImages = [im for im in os.listdir('static/img/covers') if im.endswith('.jpg')]
     random.shuffle(indexImages)
@@ -299,7 +299,7 @@ def contact():
 @app.route('/submitMessage', methods=['POST'])
 def submitMessage():
     data = request.json
-    sendEmail('New message to Kids Fashion Store', 'contact@kidsfashionstore.ua', html='contactMessage', data=data)
+    sendEmail('New message to Kids Fashion Store', 'contact@kidsfashionstore.com.ua', html='contactMessage', data=data)
     return jsonify({'success': True})
 
 # Legal routes
@@ -471,7 +471,7 @@ def quickOrder():
     
     contactInfo = phoneNumber if contactMessenger in ['telegram', 'viber'] else username
 
-    sendMessage(f"<b>New order:</b> <a href='https://kidsfashionstore.ua/admin/orders?orderId={data['orderId']}'>{data['orderId']}</a>. Product id: <a href='https://kidsfashionstore.ua/product/{productId}'>{productId}</a>. Size: {size}, quantity: {quantity}. Contact customer: on {messenger}, {contactInfo}.")
+    sendMessage(f"<b>New order:</b> <a href='https://kidsfashionstore.com.ua/admin/orders?orderId={data['orderId']}'>{data['orderId']}</a>. Product id: <a href='https://kidsfashionstore.com.ua/product/{productId}'>{productId}</a>. Size: {size}, quantity: {quantity}. Contact customer: on {messenger}, {contactInfo}.")
 
     return jsonify({'success': True})
 
@@ -618,7 +618,7 @@ def checkout():
         elif data['contactMessenger'] == 'instagram':
             messenger = f"<a href='https://instagram.com/{data['username']}'>Instagram</a>"
 
-        sendMessage(f"<b>New order:</b> <a href='https://kidsfashionstore.ua/admin/orders?orderId={data['orderId']}'>{data['orderId']}</a>. Customer: {data['firstName']} {data['lastName']}, on " + messenger)
+        sendMessage(f"<b>New order:</b> <a href='https://kidsfashionstore.com.ua/admin/orders?orderId={data['orderId']}'>{data['orderId']}</a>. Customer: {data['firstName']} {data['lastName']}, on " + messenger)
 
         return jsonify({'success': True})
 
@@ -1278,6 +1278,5 @@ def page_not_found(e):
     return render_template('404.html'), 404
 
 if __name__ == "__main__":
-    # sendEmail('Welcome to Kids Fashion Store', "test@kids.com", body="Welcome to our store!\nThank you for signing up. You can now log in to your new account.\nHappy shopping!", html='welcome')
     app.run(debug=True, port=8080)
     # logResponse = log('home', None)

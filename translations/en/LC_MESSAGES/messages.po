@@ -700,12 +700,12 @@ msgstr "Replacements and returns"
 msgid ""
 "If you need to return or replace an item, ensure it's unused and in its "
 "original packaging. Initiate your request within one day of receiving "
-"your order by emailing customerservice@kidsfashionstore.ua. For the full "
+"your order by emailing contact@kidsfashionstore.com.ua. For the full "
 "guide on our replacement and return process,"
 msgstr ""
 "If you need to return or replace an item, ensure it's unused and in its "
 "original packaging. Initiate your request within one day of receiving "
-"your order by emailing customerservice@kidsfashionstore.ua. For the full "
+"your order by emailing contact@kidsfashionstore.com.ua. For the full "
 "guide on our replacement and return process,"
 
 #: templates/product.html:192
@@ -1108,13 +1108,13 @@ msgstr "Sign me up"
 #~ " at"
 
 #~ msgid "contactemail"
-#~ msgstr "contact@kidsfashionstore.ua"
+#~ msgstr "contact@kidsfashionstore.com.ua"
 
 #~ msgid "or "
 #~ msgstr "or "
 
 #~ msgid "contactphone"
-#~ msgstr "+380 68 901 5672"
+#~ msgstr "+380 (50) 617 6180"
 
 #~ msgid " for assistance in filing a claim with the shipping carrier."
 #~ msgstr " for assistance in filing a claim with the shipping carrier."
@@ -1224,7 +1224,7 @@ msgstr "Sign me up"
 #~ msgstr "Contact Customer Service: Email our Customer Service team at"
 
 #~ msgid "customeremail"
-#~ msgstr "customerservice@kidsfashionstore.ua"
+#~ msgstr "contact@kidsfashionstore.com.ua"
 
 #~ msgid ""
 #~ "within the one-day timeframe. Provide"
