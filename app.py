@@ -88,6 +88,7 @@ def sendEmailBG(subject, recipient, body=None, html=None, data=None):
         else:
             user = getUser({'email': recipient})
             lang = user['lang'] if user else get_locale()
+        print("Lang is " + lang)
 
         with force_locale(lang):
             if html: 
@@ -96,9 +97,12 @@ def sendEmailBG(subject, recipient, body=None, html=None, data=None):
                 if not body:
                     soup = BeautifulSoup(htmlContent, 'html.parser')
                     body = soup.get_text()
+                print("HTML generated")
             else:
                 htmlContent = None
+            print("Making message")
             msg = Message(subject, recipients=[recipient], body=body, html=htmlContent)
+            print("Sending email")
             mail.send(msg)
             print("Sent!")
 
