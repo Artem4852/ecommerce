@@ -143,10 +143,10 @@ def index():
     user = getUser({'userId': session.get('userId')})
     loggedIn = session.get('loggedIn', False)
 
-    featured = [p for p in products if 'tags' in p and 'featured' in p['tags'] and p['discount'] == 0 and len(p['sizes']) > 0 and (not 'archived' in p['tags'] or 'admin' in user['tags'])]
+    featured = [p for p in products if 'tags' in p and 'featured' in p['tags'] and p['discount'] == 0 and len(p['sizes']) > 0 and (not 'archived' in p['tags'] and (not 'tags' in user or 'admin' in user['tags']))]
     random.shuffle(featured)
 
-    sale = [p for p in products if 'tags' in p and 'sale' in p['tags'] and len(p['sizes']) > 0 and (not 'archived' in p['tags'] or 'admin' in user['tags'])]
+    sale = [p for p in products if 'tags' in p and 'sale' in p['tags'] and len(p['sizes']) > 0 and (not 'archived' in p['tags'] and (not 'tags' in user or 'admin' in user['tags']))]
     random.shuffle(sale)
 
     translationsDb = database.getTranslations("db")
@@ -233,7 +233,7 @@ def product(productId):
     user = getUser({'userId': session.get('userId')})
     loggedIn = session.get('loggedIn', False)
 
-    productsFeatured = [p for p in products if 'tags' in p and 'featured' in p['tags'] and len(p['sizes']) > 0 and p['id'] != int(productId) and (not 'archived' in p['tags'] or 'admin' in user['tags'])]
+    productsFeatured = [p for p in products if 'tags' in p and 'featured' in p['tags'] and len(p['sizes']) > 0 and p['id'] != int(productId) and (not 'archived' in p['tags'] and (not 'tags' in user or 'admin' in user['tags']))]
     random.shuffle(productsFeatured)
 
     if loggedIn: contactData = user['contactData']
@@ -403,7 +403,7 @@ def favorites():
     favoriteItems = favoriteItems[(page-1)*12:page*12]
     maxPages = math.ceil(len(user['favorites'])/12)
 
-    productsFeatured = [p for p in products if 'tags' in p and 'featured' in p['tags'] and len(p['sizes']) > 0 and (not 'archived' in p['tags'] or 'admin' in user['tags'])]
+    productsFeatured = [p for p in products if 'tags' in p and 'featured' in p['tags'] and len(p['sizes']) > 0 and (not 'archived' in p['tags'] and (not 'tags' in user or 'admin' in user['tags']))]
     random.shuffle(productsFeatured)
 
     translationsDb = database.getTranslations("db")
