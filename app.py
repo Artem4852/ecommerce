@@ -30,7 +30,7 @@ app = Flask(__name__)
 app.secret_key = os.getenv('SECRET_KEY')
 
 # babel
-app.config['BABEL_DEFAULT_LOCALE'] = 'en'
+app.config['BABEL_DEFAULT_LOCALE'] = 'uk'
 app.config['BABEL_TRANSLATION_DIRECTORIES'] = 'translations'
 
 babel = Babel(app, locale_selector=get_locale)
@@ -81,14 +81,11 @@ translations = {
 }
 
 # Helper functions
-def sendEmailBG(subject, recipient, body=None, html=None, data=None):
-    print("Sending")
+def sendEmailBG(subject, recipient, body=None, html=None, data=None, user=None, lang=None):
     with app.app_context():
-        if "@kidsfashionstore.com.ua" in recipient: lang = 'en'
-        else:
-            user = getUser({'email': recipient})
-            lang = user['lang'] if user else get_locale()
-        print("Lang is " + lang)
+        if not lang:
+            if "@kidsfashionstore.com.ua" in recipient: lang = 'en'
+            else: lang = user['lang'] if user else 'uk'
 
         with force_locale(lang):
             if html: 
@@ -97,17 +94,15 @@ def sendEmailBG(subject, recipient, body=None, html=None, data=None):
                 if not body:
                     soup = BeautifulSoup(htmlContent, 'html.parser')
                     body = soup.get_text()
-                print("HTML generated")
             else:
                 htmlContent = None
-            print("Making message")
             msg = Message(subject, recipients=[recipient], body=body, html=htmlContent)
-            print("Sending email")
             mail.send(msg)
-            print("Sent!")
 
 def sendEmail(subject, recipient, body=None, html=None, data=None):
-    threading.Thread(target=sendEmailBG, args=(subject, recipient, body, html, data)).start()
+    user = getUser({'email': recipient})
+    lang = user['lang'] if user else get_locale()
+    threading.Thread(target=sendEmailBG, args=(subject, recipient, body, html, data, user, lang)).start()
 
 def getProducts():
     return database.getProducts()
