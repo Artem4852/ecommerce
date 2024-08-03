@@ -32,6 +32,8 @@ def parsePost(caption):
     brand = ""
     if "італійського" in caption.split("\n")[0].lower(): brand = "Geox"
     elif "австрійського" in caption.split("\n")[0].lower(): brand = "Superfit"
+    elif "німецького" in caption.split("\n")[0].lower(): brand = "Adidas"
+    elif "данського" in caption.split("\n")[0].lower(): brand = "Ecco"
     return sizes, category, brand, sizesCm, price
 
 def loadImage(url, productId, index):
