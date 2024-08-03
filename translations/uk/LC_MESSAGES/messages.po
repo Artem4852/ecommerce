@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-08-01 19:05+0200\n"
+"POT-Creation-Date: 2024-08-03 18:37+0200\n"
 "PO-Revision-Date: 2024-07-30 18:44+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: uk\n"
@@ -278,7 +278,7 @@ msgstr "Панель замовлень"
 #: templates/adminOrders.html:24 templates/adminProducts.html:21
 #: templates/adminProducts.html:35 templates/adminProducts.html:49
 #: templates/adminProducts.html:63 templates/shop.html:13
-#: templates/shop.html:27 templates/shop.html:41 templates/shop.html:55
+#: templates/shop.html:56
 msgid "Any"
 msgstr "Будь-який"
 
@@ -308,7 +308,7 @@ msgid "Product id"
 msgstr "Артикул"
 
 #: templates/adminOrders.html:93 templates/adminProducts.html:105
-#: templates/favorites.html:18 templates/shop.html:100
+#: templates/favorites.html:18 templates/shop.html:113
 msgid "Page"
 msgstr "Сторінка"
 
@@ -320,12 +320,12 @@ msgstr "Продукту не знайдено. Спробуйте змінит�
 msgid "Edit"
 msgstr "Змінити"
 
-#: templates/adminProductEdit.html:8 templates/adminProductEdit.html:127
+#: templates/adminProductEdit.html:8 templates/adminProductEdit.html:142
 msgid "Add"
 msgstr "Додати"
 
-#: templates/adminProductEdit.html:8 templates/adminProductEdit.html:127
-#: templates/adminProductEdit.html:128
+#: templates/adminProductEdit.html:8 templates/adminProductEdit.html:142
+#: templates/adminProductEdit.html:143
 msgid "product"
 msgstr "товар"
 
@@ -368,63 +368,80 @@ msgstr "Знижка"
 msgid "Sizes"
 msgstr "Розміри"
 
-#: templates/adminProductEdit.html:57 templates/product.html:148
+#: templates/adminProductEdit.html:57 templates/product.html:140
+#: templates/shop.html:39
+msgid "Sex"
+msgstr "Стать"
+
+#: templates/adminProductEdit.html:60
+msgid "Boy"
+msgstr "Хлопчик"
+
+#: templates/adminProductEdit.html:61
+msgid "Girl"
+msgstr "Дівчинка"
+
+#: templates/adminProductEdit.html:63
+msgid "Unisex"
+msgstr ""
+
+#: templates/adminProductEdit.html:72 templates/product.html:153
 msgid "Season"
 msgstr "Сезон"
 
-#: templates/adminProductEdit.html:58
+#: templates/adminProductEdit.html:73
 msgid "Summer/Autumn"
 msgstr "Summer/Autumn"
 
-#: templates/adminProductEdit.html:61
+#: templates/adminProductEdit.html:76
 msgid "Outer material"
 msgstr "Матеріал - верх"
 
-#: templates/adminProductEdit.html:62 templates/adminProductEdit.html:70
+#: templates/adminProductEdit.html:77 templates/adminProductEdit.html:85
 msgid "Leather"
 msgstr "Leather"
 
-#: templates/adminProductEdit.html:65
+#: templates/adminProductEdit.html:80
 msgid "Inner material"
 msgstr "Матеріал - всередині"
 
-#: templates/adminProductEdit.html:66
+#: templates/adminProductEdit.html:81
 msgid "Fur"
 msgstr "Fur"
 
-#: templates/adminProductEdit.html:69
+#: templates/adminProductEdit.html:84
 msgid "Insole material"
 msgstr "Матеріал - устілка"
 
-#: templates/adminProductEdit.html:73
+#: templates/adminProductEdit.html:88
 msgid "Insole lengths"
 msgstr "Довжини устілок"
 
-#: templates/adminProductEdit.html:74 templates/product.html:137
+#: templates/adminProductEdit.html:89 templates/product.html:137
 msgid "cm"
 msgstr "см"
 
-#: templates/adminProductEdit.html:77
+#: templates/adminProductEdit.html:92
 msgid "Quantities"
 msgstr "Кількості"
 
-#: templates/adminProductEdit.html:81
+#: templates/adminProductEdit.html:96
 msgid "Warehouses"
 msgstr "Склади"
 
-#: templates/adminProductEdit.html:86
+#: templates/adminProductEdit.html:101
 msgid "Images"
 msgstr "Зображення"
 
-#: templates/adminProductEdit.html:127
+#: templates/adminProductEdit.html:142
 msgid "Update"
 msgstr "Оновити"
 
-#: templates/adminProductEdit.html:128 templates/partials/card.html:48
+#: templates/adminProductEdit.html:143 templates/partials/card.html:48
 msgid "Unarchive"
 msgstr "Розархівувати"
 
-#: templates/adminProductEdit.html:128 templates/partials/card.html:48
+#: templates/adminProductEdit.html:143 templates/partials/card.html:48
 msgid "Archive"
 msgstr "Заархівувати"
 
@@ -432,7 +449,7 @@ msgstr "Заархівувати"
 msgid "Products Panel"
 msgstr "Панель Товарів"
 
-#: templates/adminProducts.html:47 templates/shop.html:39
+#: templates/adminProducts.html:47 templates/shop.html:54
 msgid "Shoe size"
 msgstr "Розмір"
 
@@ -444,31 +461,31 @@ msgstr "Тег"
 msgid "Product number"
 msgstr "Артикул"
 
-#: templates/adminProducts.html:78 templates/shop.html:73
+#: templates/adminProducts.html:78 templates/shop.html:86
 msgid "Sort by"
 msgstr "Сортування"
 
-#: templates/adminProducts.html:80 templates/shop.html:75
+#: templates/adminProducts.html:80 templates/shop.html:88
 msgid "No sorting"
 msgstr "Без сортування"
 
-#: templates/adminProducts.html:81 templates/shop.html:76
+#: templates/adminProducts.html:81 templates/shop.html:89
 msgid "Price: low to high"
 msgstr "Ціна: від меншої до більшої"
 
-#: templates/adminProducts.html:82 templates/shop.html:77
+#: templates/adminProducts.html:82 templates/shop.html:90
 msgid "Price: high to low"
 msgstr "Ціна: від більшої до меншої"
 
-#: templates/adminProducts.html:83 templates/shop.html:78
+#: templates/adminProducts.html:83 templates/shop.html:91
 msgid "Discount: high to low"
 msgstr "Знижка: від більшої до меншої"
 
-#: templates/adminProducts.html:84 templates/shop.html:79
+#: templates/adminProducts.html:84 templates/shop.html:92
 msgid "Discount: low to high"
 msgstr "Знижка: від меншої до більшої"
 
-#: templates/adminProducts.html:100 templates/shop.html:95
+#: templates/adminProducts.html:100 templates/shop.html:108
 msgid "Show more"
 msgstr "Переглянути ще"
 
@@ -479,7 +496,7 @@ msgstr "Продукту не знайдено. Спробуйте змінит�
 #: templates/contact.html:8 templates/partials/footer.html:17
 #: templates/partials/header.html:10 templates/partials/header.html:46
 msgid "Contact us"
-msgstr "Звʼязатися"
+msgstr "Звʼязатись"
 
 #: templates/contact.html:10
 msgid "Get in touch"
@@ -603,7 +620,7 @@ msgstr "Немає облікового запису?"
 
 #: templates/login.html:28
 msgid "Sing up"
-msgstr "Зареєструватися"
+msgstr "Зареєструватись"
 
 #: templates/login.html:28 templates/signup.html:44
 msgid "instead"
@@ -641,7 +658,7 @@ msgstr "Змінити продукт"
 
 #: templates/product.html:105
 msgid "How can we contact you?"
-msgstr "Як з вами зв'язатися?"
+msgstr "Як з вами зв'язатись?"
 
 #: templates/product.html:107
 msgid "Messenger"
@@ -655,11 +672,11 @@ msgstr "Додаткова інформація"
 msgid "Sizes (insole lengths)"
 msgstr "Розміри (довжини устілок)"
 
-#: templates/product.html:164
+#: templates/product.html:169
 msgid "How to select correct shoe size"
 msgstr "Як обрати правильний розмір взуття?"
 
-#: templates/product.html:166
+#: templates/product.html:171
 msgid ""
 "Ensuring your child wears the right shoe size is crucial for their "
 "comfort and foot health. Measure their foot length by tracing it on paper"
@@ -674,12 +691,12 @@ msgstr ""
 "довжину стопи, адже ніжки швидко ростуть. Перегляньте повну інструкцію із"
 " пошуку ідеального розміру"
 
-#: templates/product.html:166 templates/product.html:177
-#: templates/product.html:188
+#: templates/product.html:171 templates/product.html:182
+#: templates/product.html:193
 msgid "click here"
 msgstr "тут"
 
-#: templates/product.html:177
+#: templates/product.html:182
 msgid ""
 "Understanding our delivery process ensures a smooth shopping experience. "
 "We ship across Ukraine and selected European countries via Nova Post. "
@@ -692,24 +709,24 @@ msgstr ""
 "доставки залежать від пункту призначення, обробка займає 1-2 робочі дні. "
 "Дізнайтесь більше про доставку"
 
-#: templates/partials/footer.html:6 templates/product.html:186
+#: templates/partials/footer.html:6 templates/product.html:191
 msgid "Replacements and returns"
 msgstr "Інформація про обмін та повернення"
 
-#: templates/product.html:188
+#: templates/product.html:193
 msgid ""
 "If you need to return or replace an item, ensure it's unused and in its "
 "original packaging. Initiate your request within one day of receiving "
 "your order by emailing contact@kidsfashionstore.com.ua. For the full "
 "guide on our replacement and return process,"
 msgstr ""
-"Якщо вам потрібно повернути або замінити товар, переконайтеся, що він не "
+"Якщо вам потрібно повернути або замінити товар, переконайтесь, що він не "
 "використовувався та в є оригінальній упаковці. Надішліть запит протягом "
 "одного дня з моменту отримання замовлення на адресу "
 "contact@kidsfashionstore.com.ua.  Дізнайтесь більше про обмін та "
 "повернення"
 
-#: templates/product.html:192
+#: templates/product.html:197
 msgid "You might also like"
 msgstr "Вам також може сподобатись"
 
@@ -781,18 +798,22 @@ msgstr "Знижки на мої улюблені товари"
 msgid "Catalogue"
 msgstr "Каталог"
 
-#: templates/shop.html:53
+#: templates/shop.html:27 templates/shop.html:41 templates/shop.html:70
+msgid "AnyF"
+msgstr "Будь-яка"
+
+#: templates/shop.html:68
 msgid "Price range"
 msgstr "Ціна"
 
-#: templates/shop.html:140
+#: templates/shop.html:153
 msgid "No products found. Try to change filters."
 msgstr "Продукту не знайдено. Спробуйте змінити фільтри."
 
 #: templates/partials/header.html:20 templates/partials/header.html:51
 #: templates/signup.html:7 templates/signup.html:43
 msgid "Sign up"
-msgstr "Зареєструватися"
+msgstr "Зареєструватись"
 
 #: templates/signup.html:39 templates/updatePassword.html:31
 msgid "Repeat password"

@@ -149,10 +149,6 @@ class Database:
 if __name__ == "__main__":
     database = Database()
 
-    # with open("json/translations.json", "r") as f:
-    #     translations = json.load(f)
-    # database.updateTranslations(translations)
-    products = database.getProducts()
-    for n, product in enumerate(products):
-        print(n, "/", len(products), product['id'])
-        database.removeProduct(product['id'])
+    with open("json/translations.json", "r") as f:
+        translations = json.load(f)
+    database.updateTranslations(translations)

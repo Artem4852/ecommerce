@@ -54,6 +54,21 @@
                     <input id="inputSizes" type="text" value="{{ sortedSizes[0] }}{% for size in sortedSizes[1:] %}, {{ size }}{% endfor %}" placeholder="33, 34, 35">
                 </div>
                 <div class="input">
+                    <label for="inputSex">{{ _('Sex') }}</label>
+                    <select name="sex" id="inputSex">
+                        <option value="boy" {% if not product.sex or product.sex=="boy" %}
+                            selected {% endif %}>{{ _('Boy') }}</option>
+                        <option {% if product.sex=="girl" %} selected {% endif %} value="girl">{{ _('Girl') }}
+                        </option>
+                        <option {% if product.sex=="unisex" %} selected {% endif %} value="unisex">{{ _('Unisex') }}</option>
+                    </select>
+                    <svg class="downArrow" xmlns="http://www.w3.org/2000/svg" width="23" height="15" viewBox="0 0 23 15" fill="none">
+                        <path
+                            d="M-9.22487e-08 2.13579L2.04125 0.0253897L11.5 9.80458L20.9587 0.0253905L23 2.13579L11.5 14.0254L-9.22487e-08 2.13579Z"
+                            fill="#F1F1F1" />
+                    </svg>
+                </div>
+                <div class="input">
                     <label for="inputSeason">{{ _('Season') }}</label>
                     <input id="inputSeason" type="text" value="{{ product.additionalInformation.season }}" placeholder="{{ _('Summer/Autumn') }}">
                 </div>

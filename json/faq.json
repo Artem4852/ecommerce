@@ -60,8 +60,8 @@
                             "uk": [
                                 "Покладіть листок паперу на пласку, тверду поверхню.",
                                 "Нехай ваша дитина встане босоніж на папір",
-                                "Переконайтеся, що стопа вашої дитини рівна, а її вага рівномірно розподілена",
-                                "За допомогою олівця обережно обведіть стопу вашої дитини. Намагайтеся тримати олівець максимально вертикально, щоб отримати точний контур."
+                                "Переконайтесь, що стопа вашої дитини рівна, а її вага рівномірно розподілена",
+                                "За допомогою олівця обережно обведіть стопу вашої дитини. Намагайтесь тримати олівець максимально вертикально, щоб отримати точний контур."
                             ]
                         },
                         {
@@ -122,7 +122,7 @@
             "uk": [
                 "Виміряйте обидві стопи: іноді одна стопа трохи більша за іншу. Використовуйте вимірювання більшої стопи, щоб забезпечити комфорт.",
                 "Враховуйте зростання: стопи дітей швидко ростуть, тому добре залишити трохи додаткового місця (близько одного сантиметра) для зростання.",
-                "Приміряйте взуття: якщо це можливо, дозвольте вашій дитині приміряти взуття і пройтися, щоб переконатися, що вони відчувають себе комфортно.",
+                "Приміряйте взуття: якщо це можливо, дозвольте вашій дитині приміряти взуття і пройтись, щоб переконатись, що вони відчувають себе комфортно.",
                 "Взуття повинно мати достатньо місця на пальцях і щільно облягати п'ятку."
             ]
         },
@@ -156,7 +156,7 @@
     },
     "content": {
       "en": "Our shop uses Nova Post to deliver your purchased shoes. Because of that, the delivery time just like it’s price varies based on the region where you live. Find out information about the delivery to your region in this post.",
-      "uk": "Наш магазин здійснює доставку купленого Вами взуття через «Нову пошту». У звʼязку з цим, час доставки, як і ціна, залежить від регіону вашого проживання. Дізнайтеся більше про доставку в цьому пості."
+      "uk": "Наш магазин здійснює доставку купленого Вами взуття через «Нову пошту». У звʼязку з цим, час доставки, як і ціна, залежить від регіону вашого проживання. Дізнайтесь більше про доставку в цьому пості."
     },
     "page": [
         {
@@ -222,7 +222,7 @@
         {
             "type": "paragraph",
             "en": "For international shipments, customs duties, taxes, and fees may apply. These charges are the recipient's responsibility and will be collected upon delivery by the local customs authority.",
-            "uk": "Для міжнародних відправлень можуть стягуватися податки та збори. Ці витрати оплачує отримувач і вони будуть зібрані при доставці місцевим митним органом."
+            "uk": "Для міжнародних відправлень можуть стягуватись податки та збори. Ці витрати оплачує отримувач і вони будуть зібрані при доставці місцевим митним органом."
         },
         {
             "type": "title",
@@ -232,7 +232,7 @@
         {
             "type": "paragraph",
             "en": "We are not responsible for lost or damaged shipments. Contact us immediately at <a href=\"mailto:contact@kidsfashionstore.com.ua\">contact@kidsfashionstore.com.ua</a> or <a tel:\"+380506176180\">+380 (50) 617 61 80</a> for assistance in filing a claim with the shipping carrier.",
-            "uk": "Ми не несемо відповідальності за втрачені або пошкоджені посилки. Звертайтеся до нас негайно за адресою <a href=\"mailto:contact@kidsfashionstore.com.ua\">contact@kidsfashionstore.com.ua</a> або <a tel:\"+380506176180\">+380 (50) 617 61 80</a> для отримання допомоги у поданні заяви до перевізника."
+            "uk": "Ми не несемо відповідальності за втрачені або пошкоджені посилки. Звертайтесь до нас негайно за адресою <a href=\"mailto:contact@kidsfashionstore.com.ua\">contact@kidsfashionstore.com.ua</a> або <a tel:\"+380506176180\">+380 (50) 617 61 80</a> для отримання допомоги у поданні заяви до перевізника."
         },
         {
             "type": "title",
@@ -242,7 +242,7 @@
         {
             "type": "paragraph",
             "en": "Ensure accurate and complete shipping information. We are not responsible for orders shipped to incorrect or incomplete addresses provided by the customer. Review your shipping address carefully before submitting your order.",
-            "uk": "Переконайтеся в точності та повноті інформації про доставку. Ми не несемо відповідальності за замовлення, відправлені на неправильні або неповні адреси, надані клієнтом. Уважно перевірте вашу адресу доставки перед поданням замовлення."
+            "uk": "Переконайтесь в точності та повноті інформації про доставку. Ми не несемо відповідальності за замовлення, відправлені на неправильні або неповні адреси, надані клієнтом. Уважно перевірте вашу адресу доставки перед поданням замовлення."
         },
         {
             "type": "title",
@@ -257,7 +257,7 @@
         {
             "type": "paragraph",
             "en": "For any further questions about our shipping policy, feel free to contact us at <a href=\"mailto:contact@kidsfashionstore.com.ua\">contact@kidsfashionstore.com.ua</a> or <a tel:\"+380506176180\">+380 (50) 617 61 80</a>. Happy Shopping!",
-            "uk": "Якщо у вас є додаткові питання щодо нашої політики доставки, не соромтеся звертатися до нас за адресою <a href=\"mailto:contact@kidsfashionstore.com.ua\">contact@kidsfashionstore.com.ua</a> або <a tel:\"+380506176180\">+380 (50) 617 61 80</a>. Гарних покупок!"
+            "uk": "Якщо у вас є додаткові питання щодо нашої політики доставки, не соромтесь звертатись до нас за адресою <a href=\"mailto:contact@kidsfashionstore.com.ua\">contact@kidsfashionstore.com.ua</a> або <a tel:\"+380506176180\">+380 (50) 617 61 80</a>. Гарних покупок!"
         }
     ],
     "name": "delivery"
@@ -270,13 +270,13 @@
     },
     "content": {
       "en": "Our shop offers replacements and returns in case the chosen pair of shoes doesn’t fit your child well.\nCustomer satisfaction is our first priority and we will be happy to help you. Find out how to organize a replacement or return in this post.",
-      "uk": "Наш магазин пропонує заміну та повернення, якщо обрана пара взуття не підходить вашій дитині.\nЗадоволеність клієнтів є нашим першочерговим пріоритетом, і ми будемо раді вам допомогти. Дізнайтеся, як організувати заміну або повернення, у цій публікації."
+      "uk": "Наш магазин пропонує заміну та повернення, якщо обрана пара взуття не підходить вашій дитині.\nЗадоволеність клієнтів є нашим першочерговим пріоритетом, і ми будемо раді вам допомогти. Дізнайтесь, як організувати заміну або повернення, у цій публікації."
     },
     "page": [
         {
             "type": "title",
             "en": "Ensuring that our customers are satisfied with their purchases is our top priority. We understand that sometimes an item may not meet your expectations, and you may need to return or replace it. Here's a brief guide to help you navigate our replacement and return process.",
-            "uk": "Забезпечення задоволення наших клієнтів є нашим першочерговим пріоритетом. Ми розуміємо, що іноді товар може не відповідати вашим очікуванням, і вам може знадобитися повернути або замінити його. Ось короткий посібник, який допоможе вам зорієнтуватися в нашому процесі заміни та повернення."
+            "uk": "Забезпечення задоволення наших клієнтів є нашим першочерговим пріоритетом. Ми розуміємо, що іноді товар може не відповідати вашим очікуванням, і вам може знадобитися повернути або замінити його. Ось короткий посібник, який допоможе вам зорієнтуватись в нашому процесі заміни та повернення."
         },
         {
             "type": "title",
@@ -346,12 +346,12 @@
         {
             "type": "paragraph",
             "en": "Contact Promptly: Ensure you contact our Customer Service within one day to be eligible for a return or replacement. Keep Original Packaging: Returning items in their original packaging helps facilitate the process. Document Condition: Taking photos of the item before shipping it back can help resolve any disputes regarding the condition.",
-            "uk": "Зв'яжіться негайно: Переконайтеся, що ви зв'язалися з нашою командою протягом одного дня, щоб мати право на повернення або заміну. Зберігайте оригінальну упаковку: Повернення товарів в оригінальній упаковці допомагає спростити процес. Документуйте стан: Фотографування товару перед відправкою назад може допомогти вирішити будь-які незгоди щодо стану."
+            "uk": "Зв'яжіться негайно: Переконайтесь, що ви зв'язались з нашою командою протягом одного дня, щоб мати право на повернення або заміну. Зберігайте оригінальну упаковку: Повернення товарів в оригінальній упаковці допомагає спростити процес. Документуйте стан: Фотографування товару перед відправкою назад може допомогти вирішити будь-які незгоди щодо стану."
         },
         {
             "type": "paragraph",
             "en": "By following these steps, you can efficiently handle any replacements or returns, ensuring a smooth and satisfactory experience. If you have further questions, feel free to reach out to us at <a href=\"mailto:contact@kidsfashionstore.com.ua\">contact@kidsfashionstore.com.ua</a> or <a tel:\"+380506176180\">+380 (50) 617 61 80</a>. We are here to help!",
-            "uk": "Дотримуючись цих кроків, ви можете ефективно вирішити будь-які обміни або повернення, забезпечивши гладкий і задовільний досвід. Якщо у вас є додаткові питання, не соромтеся звертатися до нас за адресою <a href=\"mailto:contact@kidsfashionstore.com.ua\">contact@kidsfashionstore.com.ua</a> або <a tel:\"+380506176180\">+380 (50) 617 61 80</a>. Ми тут, щоб допомогти!"
+            "uk": "Дотримуючись цих кроків, ви можете ефективно вирішити будь-які обміни або повернення, забезпечивши гладкий і задовільний досвід. Якщо у вас є додаткові питання, не соромтеся звертатись до нас за адресою <a href=\"mailto:contact@kidsfashionstore.com.ua\">contact@kidsfashionstore.com.ua</a> або <a tel:\"+380506176180\">+380 (50) 617 61 80</a>. Ми тут, щоб допомогти!"
         }
     ],
     "name": "replacementsReturns"

@@ -18,13 +18,12 @@ characters = ascii_letters + digits
 dotenv.load_dotenv()
 
 def get_locale():
-    host = request.host
-    if '.ua' in host:
-        return 'uk'
-    elif '.eu' in host:
-        return 'en'
-    return 'en'
-    # return request.accept_languages.best_match(['en', 'uk'])
+    # host = request.host
+    # if '.ua' in host:
+    #     return 'uk'
+    # elif '.eu' in host:
+    #     return 'en'
+    return 'uk'
 
 app = Flask(__name__)
 app.secret_key = os.getenv('SECRET_KEY')
@@ -170,6 +169,7 @@ def shop():
     brand = request.args.get('brand')
     category = request.args.get('category')
     shoeSize = request.args.get('shoeSize')
+    sex = request.args.get('sex')
     if shoeSize: shoeSize = int(shoeSize)
     priceRange = request.args.get('priceRange')
     priceMin = int(priceRange.split('-')[0]) if priceRange else None
@@ -188,10 +188,12 @@ def shop():
     brands = sorted(list(set([p['brand'] for p in products if p['brand'] != ""])))
     categories = sorted(list(set([p['category'] for p in products if p['category'] != ""])))
     sizes = sorted(list(set([size for p in products for size in p['sizes'] if size != ""])))
+    sexes = sorted(list(set([p['sex'] for p in products if sex != ""])))
 
     if brand: products = [p for p in products if p['brand'] == brand]
     if category: products = [p for p in products if p['category'] == category]
     if shoeSize: products = [p for p in products if int(shoeSize) in p['sizes']]
+    if sex: products = [p for p in products if p['sex'] == sex]
     if priceRange: products = [p for p in products if priceMin<=int(p['price'])<=priceMax]
 
     if sorting == 'priceLowToHigh': products = sorted(products, key=lambda x: int(x['price']))
@@ -215,7 +217,7 @@ def shop():
 
     logResponse = log('shop', request=request)
     if logResponse: return logResponse
-    return render_template('shop.html', products=productsCurrent, userData=user, brand=brand, category=category, shoeSize=shoeSize, priceRange=priceRange, sorting=sorting, productsPerPage=productsPerPage, page=page, maxPages=maxPages, loggedIn=loggedIn, brands=brands, categories=categories, sizes=sizes, translationsDb=translationsDb, translationsJs=translationsJs)
+    return render_template('shop.html', products=productsCurrent, userData=user, brand=brand, category=category, shoeSize=shoeSize, sex=sex, priceRange=priceRange, sorting=sorting, productsPerPage=productsPerPage, page=page, maxPages=maxPages, loggedIn=loggedIn, brands=brands, categories=categories, sizes=sizes, sexes=sexes, translationsDb=translationsDb, translationsJs=translationsJs)
 
 @app.route('/product/<productId>')
 def product(productId):
@@ -989,6 +991,7 @@ def adminProducts():
     brand = request.args.get('brand')
     category = request.args.get('category')
     shoeSize = request.args.get('shoeSize')
+    sex = request.args.get('sex')
     tag = request.args.get('tag')
     sorting = request.args.get('sorting')
 
@@ -1001,12 +1004,14 @@ def adminProducts():
     products = [p for p in products if p['price'] != "" and len(p['images']) > 0]
     brands = sorted(list(set([p['brand'] for p in products if p['brand'] != ""])))
     categories = sorted(list(set([p['category'] for p in products if p['category'] != ""])))
+    sexes = sorted(list(set([p['sex'] for p in products if p['sex'] != ""])))
     sizes = sorted(list(set([size for p in products for size in p['sizes'] if size != ""])))
     tags = sorted(list(set([tag for p in products for tag in p['tags'] if tag != ""])))
 
     if brand: products = [p for p in products if p['brand'] == brand]
     if category: products = [p for p in products if p['category'] == category]
     if shoeSize: products = [p for p in products if int(shoeSize) in p['sizes']]
+    if sex: products = [p for p in products if p['sex'] == sex]
     if tag: products = [p for p in products if tag in p['tags']]
 
     if sorting == 'priceLowToHigh': products = sorted(products, key=lambda x: int(x['price']))
@@ -1026,7 +1031,7 @@ def adminProducts():
     translationsDb = database.getTranslations("db")
     translationsJs = database.getTranslations("js")
 
-    return render_template('adminProducts.html', userData=user, loggedIn=loggedIn, products=productsCurrent, brand=brand, category=category, shoeSize=shoeSize, sorting=sorting, productsPerPage=productsPerPage, page=page, maxPages=maxPages, brands=brands, categories=categories, sizes=sizes, tags=tags, tag=tag, translationsDb=translationsDb, translationsJs=translationsJs)
+    return render_template('adminProducts.html', userData=user, loggedIn=loggedIn, products=productsCurrent, brand=brand, category=category, sex=sex, shoeSize=shoeSize, sorting=sorting, productsPerPage=productsPerPage, page=page, maxPages=maxPages, brands=brands, categories=categories, sexes=sexes, sizes=sizes, tags=tags, tag=tag, translationsDb=translationsDb, translationsJs=translationsJs)
 
 @app.route('/admin/products/edit/<productId>')
 def adminProductEdit(productId):
@@ -1087,6 +1092,7 @@ def adminProductLoad():
     if not productId or not instagramUrl:
         return jsonify({'success': False, 'error': 'No product id or instagram url'})
     sizes, category, brand, sizesCm, price, imagesSrcs = getPost(instagramUrl, productId)
+    database.updateProduct(int(productId), {'instagramUrl': instagramUrl})
     return jsonify({'success': True, 'sizes': sizes, 'category': category, 'brand': brand, 'sizesCm': sizesCm, 'price': price, 'images': imagesSrcs})
 
 @app.route('/admin/product/update', methods=['POST'])
@@ -1138,6 +1144,7 @@ def adminProductAdd():
             "category": "",
             "price": "",
             "prevPrice": "",
+            "sex": "",
             "discount": 0,
             "sizes": [],
             "tags": [],
@@ -1178,7 +1185,7 @@ def adminProductAdd():
         del productData['outerMaterial']
         del productData['season']
 
-        database.addProduct(productData)
+        database.editProduct(int(productData['id']), productData)
         return jsonify({'success': True})
     
 @app.route('/admin/product/archive', methods=['POST'])

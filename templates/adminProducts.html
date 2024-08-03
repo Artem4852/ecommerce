@@ -30,9 +30,25 @@
                 </svg>
             </div>
             <div class="filter">
+                <label for="sex">{{ _('Sex') }}</label>
+                <select id="sex" name="sex" onchange="filterShoes('sex')">
+                    <option value="Any" {% if not sex %} selected {% endif %}>{{ _('AnyF') }}</option>
+                    {% for sex_option in sexes %}
+                    <option value="{{ sex_option }}" {% if sex_option==sex %} selected {% endif %}>{{
+                        translationsDb[sex_option|lower][get_locale()]
+                        }}</option>
+                    {% endfor %}
+                </select>
+                <svg class="downArrow" xmlns="http://www.w3.org/2000/svg" width="24" height="14" viewBox="0 0 24 14" fill="none">
+                    <path
+                        d="M0.321533 2.1104L2.36278 -9.16136e-07L11.8215 9.77919L21.2803 -8.92259e-08L23.3215 2.1104L11.8215 14L0.321533 2.1104Z"
+                        fill="#F1F1F1" />
+                </svg>
+            </div>
+            <div class="filter">
                 <label for="category">{{ _('Category') }}</label>
                 <select id="category" name="category" onchange="filterShoes('category')">
-                    <option value="Any" {% if not category %} selected {% endif %}>{{ _('Any') }}</option>
+                    <option value="Any" {% if not category %} selected {% endif %}>{{ _('AnyF') }}</option>
                     {% for category_option in categories %}
                         <option value="{{ category_option }}" {% if category_option==category %} selected {% endif %}>{{ category_option }}</option>
                     {% endfor %}

@@ -147,6 +147,18 @@
         "season": {
             "en": "Season",
             "uk": "Сезон"
+        },
+        "boy": {
+            "en": "Boy",
+            "uk": "Хлопчик"
+        },
+        "girl": {
+            "en": "Girl",
+            "uk": "Дівчинка"
+        },
+        "unisex": {
+            "en": "Unisex",
+            "uk": "Унісекс"
         }
     },
     "js": {
@@ -188,7 +200,7 @@
         },
         "signUp": {
             "en": "Sign up",
-            "uk": "Зареєструватися"
+            "uk": "Зареєструватись"
         },
         "invalidPhone": {
             "en": "Please enter a valid phone number.",
@@ -232,7 +244,7 @@
         },
         "singUpNewsletter": {
             "en": "Sign me up",
-            "uk": "Підписатися"
+            "uk": "Підписатись"
         },
         "thanksSubscribing": {
             "en": "Thanks for subscribing!",
@@ -284,7 +296,7 @@
         },
         "errorOccured": {
             "en": "An error occured",
-            "uk": "Сталася помилка"
+            "uk": "Сталась помилка"
         },
         "messageSent": {
             "en": "Message sent!",

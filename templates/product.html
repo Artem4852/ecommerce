@@ -137,6 +137,7 @@
                         {{ size }} ({{ cm }} {{ _('cm') }}){% if not loop.last %}, {% endif %}
                     {% endfor %}
                 </p>
+                <p>{{ _('Sex') }}: {{ translationsDb[product.sex|lower][get_locale()] }}</p>
                 {% if 'season' in product.additionalInformation and product.additionalInformation.season != '' %}
                     {% set seasons = product.additionalInformation.season.split('/') %}
                     {% set translated_seasons = [] %}

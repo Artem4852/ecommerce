@@ -121,6 +121,9 @@ function validateProduct() {
     const brand = document.getElementById('inputBrand').value;
     if (brand === '') return 'Invalid brand';
 
+    const sex = document.getElementById('inputSex').value;
+    if (sex === '') return
+
     const price = document.getElementById('inputPrice').value;
     if (price === '') return 'Invalid price';
 
@@ -156,6 +159,7 @@ function updateProduct() {
         brand: document.getElementById('inputBrand').value,
         prevPrice: document.getElementById('inputPrice').value,
         discount: document.getElementById('inputDiscount').value,
+        sex: document.getElementById('inputSex').value,
         sizes: document.getElementById('inputSizes').value,
         season: document.getElementById('inputSeason').value,
         outerMaterial: document.getElementById('inputMaterialOuter').value,

@@ -2129,11 +2129,15 @@ html.uk .banner {
 #adminProduct input::placeholder {
   color: #E0E0E0;
 }
+#adminProduct select {
+  width: 60%;
+}
 #adminProduct .input {
   width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  position: relative;
 }
 #adminProduct .row {
   display: flex;
