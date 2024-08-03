@@ -152,4 +152,7 @@ if __name__ == "__main__":
     # with open("json/translations.json", "r") as f:
     #     translations = json.load(f)
     # database.updateTranslations(translations)
-    print(database.getTranslations('db')['demi'])
+    products = database.getProducts()
+    for n, product in enumerate(products):
+        print(n, "/", len(products), product['id'])
+        database.removeProduct(product['id'])

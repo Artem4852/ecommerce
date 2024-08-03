@@ -264,7 +264,7 @@ inputs.forEach(input => {
                     } else if (currentInput === 'QuantitiesLeft') {
                         toAdd.push(`${size} (1)`);
                     } else {
-                        toAdd.push(`${size} ()`);
+                        toAdd.push(`${size} (Kyiv)`);
                     }
                 }
             });

@@ -143,7 +143,7 @@ def index():
     user = getUser({'userId': session.get('userId')})
     loggedIn = session.get('loggedIn', False)
 
-    featured = [p for p in products if 'tags' in p and 'featured' in p['tags'] and p['discount'] == 0 and len(p['sizes']) > 0 and (not 'archived' in p['tags'] and (not 'tags' in user or 'admin' in user['tags']))]
+    featured = [p for p in products if 'tags' in p and 'featured' in p['tags'] and len(p['sizes']) > 0 and (not 'archived' in p['tags'] and (not 'tags' in user or 'admin' in user['tags']))]
     random.shuffle(featured)
 
     sale = [p for p in products if 'tags' in p and 'sale' in p['tags'] and len(p['sizes']) > 0 and (not 'archived' in p['tags'] and (not 'tags' in user or 'admin' in user['tags']))]
@@ -223,7 +223,6 @@ def product(productId):
     product = database.getProduct({'id': int(productId)})
     if not product or not 'tags' in product or ('archived' in product['tags'] and not 'admin' in getUser({'userId': session.get('userId')})['tags']): return abort(404)
 
-    print(product['additionalInformation'])
     additionalInformation = product['additionalInformation'].copy()
     for key, value in additionalInformation.items():
         if key == re.sub(r'([a-z])([A-Z])', r'\1 \2', key): continue
