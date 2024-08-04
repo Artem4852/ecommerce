@@ -395,7 +395,7 @@ msgstr "Summer/Autumn"
 
 #: templates/adminProductEdit.html:76
 msgid "Outer material"
-msgstr "Матеріал - верх"
+msgstr "Верх"
 
 #: templates/adminProductEdit.html:77 templates/adminProductEdit.html:85
 msgid "Leather"
@@ -403,7 +403,7 @@ msgstr "Leather"
 
 #: templates/adminProductEdit.html:80
 msgid "Inner material"
-msgstr "Матеріал - всередині"
+msgstr "Всередині"
 
 #: templates/adminProductEdit.html:81
 msgid "Fur"
@@ -411,7 +411,7 @@ msgstr "Fur"
 
 #: templates/adminProductEdit.html:84
 msgid "Insole material"
-msgstr "Матеріал - устілка"
+msgstr "Устілка"
 
 #: templates/adminProductEdit.html:88
 msgid "Insole lengths"

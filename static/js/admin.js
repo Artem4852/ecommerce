@@ -298,6 +298,7 @@ document.getElementById('inputInstagramUrl').addEventListener('blur', () => {
         .then(data => {
             console.log(data);
             if (data.success) {
+                document.getElementById('instagramCaption').innerHTML = data.caption.replace(/\n/g, '<br>');
                 document.getElementById('inputSizes').value = data.sizes.join(', ');
                 document.getElementById('inputInsoleLengths').value = Object.entries(data.sizesCm)
                     .map(([size, value]) => `${size} (${value} cm)`)

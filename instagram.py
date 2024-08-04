@@ -71,7 +71,7 @@ def getPost(link, productId):
     for n, image in enumerate(images):
         imagesSrcs.append(loadImage(image, productId, n))
     
-    return sizes, category, brand, sizesCm, price, imagesSrcs
+    return caption, sizes, category, brand, sizesCm, price, imagesSrcs
 
 if __name__ == "__main__":
     print(getPost("https://www.instagram.com/p/C95Svt0NLGg/?img_index=1", 1))

@@ -1091,9 +1091,9 @@ def adminProductLoad():
     instagramUrl = request.json.get('url')
     if not productId or not instagramUrl:
         return jsonify({'success': False, 'error': 'No product id or instagram url'})
-    sizes, category, brand, sizesCm, price, imagesSrcs = getPost(instagramUrl, productId)
+    caption, sizes, category, brand, sizesCm, price, imagesSrcs = getPost(instagramUrl, productId)
     database.updateProduct(int(productId), {'instagramUrl': instagramUrl})
-    return jsonify({'success': True, 'sizes': sizes, 'category': category, 'brand': brand, 'sizesCm': sizesCm, 'price': price, 'images': imagesSrcs})
+    return jsonify({'success': True, 'caption': caption, 'sizes': sizes, 'category': category, 'brand': brand, 'sizesCm': sizesCm, 'price': price, 'images': imagesSrcs})
 
 @app.route('/admin/product/update', methods=['POST'])
 def adminProductUpdate():
