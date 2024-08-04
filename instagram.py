@@ -7,13 +7,16 @@ def parsePost(caption):
     sizes = []
     for line in caption.split("\n"):
         if "Розмір" in line:
-            sizes.append(line.split(" ")[1].split("/")[1])
+            try: sizes.append(line.split(" ")[1].split("/")[1])
+            except: sizes.append(line.split(" ")[1])
 
     sizesCm = {}
     for size in sizes:
         for line in caption.split("\n"):
             if (f'Розмір ' + size) in line:
-                sizesCm[str(size)] = line.split(" ")[-2].replace("(", "")
+                try: sizesCm[str(size)] = line.split(" ")[-2].replace("(", "").split("/")[1]
+                except: sizesCm[str(size)] = line.split(" ")[-2].replace("(", "")
+
 
     price = 0
     for line in caption.split("\n"):

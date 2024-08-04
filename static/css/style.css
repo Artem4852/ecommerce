@@ -2101,6 +2101,9 @@ html.uk .banner {
   margin-top: 20px;
   margin-bottom: 50px;
 }
+#adminProduct p#instagramCaption {
+  line-height: 1;
+}
 #adminProduct h2 {
   width: 100%;
   text-align: center;
@@ -2131,6 +2134,7 @@ html.uk .banner {
 }
 #adminProduct select {
   width: 60%;
+  font-size: 18px;
 }
 #adminProduct .input {
   width: 100%;
