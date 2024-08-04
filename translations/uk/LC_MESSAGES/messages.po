@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-08-03 18:37+0200\n"
+"POT-Creation-Date: 2024-08-04 15:30+0200\n"
 "PO-Revision-Date: 2024-07-30 18:44+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: uk\n"
@@ -276,9 +276,8 @@ msgid "Orders Panel"
 msgstr "Панель замовлень"
 
 #: templates/adminOrders.html:24 templates/adminProducts.html:21
-#: templates/adminProducts.html:35 templates/adminProducts.html:49
-#: templates/adminProducts.html:63 templates/shop.html:13
-#: templates/shop.html:56
+#: templates/adminProducts.html:65 templates/adminProducts.html:79
+#: templates/shop.html:13 templates/shop.html:56
 msgid "Any"
 msgstr "Будь-який"
 
@@ -307,7 +306,7 @@ msgstr "Швидке замовлення"
 msgid "Product id"
 msgstr "Артикул"
 
-#: templates/adminOrders.html:93 templates/adminProducts.html:105
+#: templates/adminOrders.html:93 templates/adminProducts.html:121
 #: templates/favorites.html:18 templates/shop.html:113
 msgid "Page"
 msgstr "Сторінка"
@@ -320,12 +319,12 @@ msgstr "Продукту не знайдено. Спробуйте змінит�
 msgid "Edit"
 msgstr "Змінити"
 
-#: templates/adminProductEdit.html:8 templates/adminProductEdit.html:142
+#: templates/adminProductEdit.html:8 templates/adminProductEdit.html:144
 msgid "Add"
 msgstr "Додати"
 
-#: templates/adminProductEdit.html:8 templates/adminProductEdit.html:142
-#: templates/adminProductEdit.html:143
+#: templates/adminProductEdit.html:8 templates/adminProductEdit.html:144
+#: templates/adminProductEdit.html:145
 msgid "product"
 msgstr "товар"
 
@@ -337,7 +336,7 @@ msgstr "Інформація"
 msgid "Tags"
 msgstr "Теги"
 
-#: templates/adminProductEdit.html:33 templates/adminProducts.html:33
+#: templates/adminProductEdit.html:33 templates/adminProducts.html:49
 #: templates/shop.html:25
 msgid "Category"
 msgstr "Категорія"
@@ -368,8 +367,8 @@ msgstr "Знижка"
 msgid "Sizes"
 msgstr "Розміри"
 
-#: templates/adminProductEdit.html:57 templates/product.html:140
-#: templates/shop.html:39
+#: templates/adminProductEdit.html:57 templates/adminProducts.html:33
+#: templates/product.html:140 templates/shop.html:39
 msgid "Sex"
 msgstr "Стать"
 
@@ -433,15 +432,19 @@ msgstr "Склади"
 msgid "Images"
 msgstr "Зображення"
 
-#: templates/adminProductEdit.html:142
+#: templates/adminProductEdit.html:139
+msgid "Caption"
+msgstr "Підпис"
+
+#: templates/adminProductEdit.html:144
 msgid "Update"
 msgstr "Оновити"
 
-#: templates/adminProductEdit.html:143 templates/partials/card.html:48
+#: templates/adminProductEdit.html:145 templates/partials/card.html:48
 msgid "Unarchive"
 msgstr "Розархівувати"
 
-#: templates/adminProductEdit.html:143 templates/partials/card.html:48
+#: templates/adminProductEdit.html:145 templates/partials/card.html:48
 msgid "Archive"
 msgstr "Заархівувати"
 
@@ -449,47 +452,52 @@ msgstr "Заархівувати"
 msgid "Products Panel"
 msgstr "Панель Товарів"
 
-#: templates/adminProducts.html:47 templates/shop.html:54
+#: templates/adminProducts.html:35 templates/adminProducts.html:51
+#: templates/shop.html:27 templates/shop.html:41 templates/shop.html:70
+msgid "AnyF"
+msgstr "Будь-яка"
+
+#: templates/adminProducts.html:63 templates/shop.html:54
 msgid "Shoe size"
 msgstr "Розмір"
 
-#: templates/adminProducts.html:61
+#: templates/adminProducts.html:77
 msgid "Tag"
 msgstr "Тег"
 
-#: templates/adminProducts.html:75 templates/product.html:41
+#: templates/adminProducts.html:91 templates/product.html:41
 msgid "Product number"
 msgstr "Артикул"
 
-#: templates/adminProducts.html:78 templates/shop.html:86
+#: templates/adminProducts.html:94 templates/shop.html:86
 msgid "Sort by"
 msgstr "Сортування"
 
-#: templates/adminProducts.html:80 templates/shop.html:88
+#: templates/adminProducts.html:96 templates/shop.html:88
 msgid "No sorting"
 msgstr "Без сортування"
 
-#: templates/adminProducts.html:81 templates/shop.html:89
+#: templates/adminProducts.html:97 templates/shop.html:89
 msgid "Price: low to high"
 msgstr "Ціна: від меншої до більшої"
 
-#: templates/adminProducts.html:82 templates/shop.html:90
+#: templates/adminProducts.html:98 templates/shop.html:90
 msgid "Price: high to low"
 msgstr "Ціна: від більшої до меншої"
 
-#: templates/adminProducts.html:83 templates/shop.html:91
+#: templates/adminProducts.html:99 templates/shop.html:91
 msgid "Discount: high to low"
 msgstr "Знижка: від більшої до меншої"
 
-#: templates/adminProducts.html:84 templates/shop.html:92
+#: templates/adminProducts.html:100 templates/shop.html:92
 msgid "Discount: low to high"
 msgstr "Знижка: від меншої до більшої"
 
-#: templates/adminProducts.html:100 templates/shop.html:108
+#: templates/adminProducts.html:116 templates/shop.html:108
 msgid "Show more"
 msgstr "Переглянути ще"
 
-#: templates/adminProducts.html:145
+#: templates/adminProducts.html:161
 msgid "No products found. Try to change filters"
 msgstr "Продукту не знайдено. Спробуйте змінити фільтри."
 
@@ -797,10 +805,6 @@ msgstr "Знижки на мої улюблені товари"
 #: templates/shop.html:8
 msgid "Catalogue"
 msgstr "Каталог"
-
-#: templates/shop.html:27 templates/shop.html:41 templates/shop.html:70
-msgid "AnyF"
-msgstr "Будь-яка"
 
 #: templates/shop.html:68
 msgid "Price range"
