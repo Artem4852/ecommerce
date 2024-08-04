@@ -7,7 +7,7 @@ def parsePost(caption):
     sizes = []
     for line in caption.split("\n"):
         if "Розмір" in line:
-            sizes.append(line.split(" ")[1])
+            sizes.append(line.split(" ")[1].split("/")[1])
 
     sizesCm = {}
     for size in sizes:
