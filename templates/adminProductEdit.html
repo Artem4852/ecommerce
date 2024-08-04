@@ -86,15 +86,15 @@
                 </div>
                 <div class="input">
                     <label for="inputInsoleLengths">{{ _('Insole lengths') }}</label>
-                    <input id="inputInsoleLengths" type="text" value="{% for key, value in sortedSizesCm %}{{ key }} ({{ value }} cm){% if not loop.last %}, {% endif %}{% endfor %}" placeholder="33 (20.5 {{ _('cm') }}), 34 (21 {{ _('cm') }}), 35 (21.5 {{ _('cm') }})">
+                    <textarea id="inputInsoleLengths" type="text" placeholder="33 (20.5 {{ _('cm') }}), 34 (21 {{ _('cm') }}), 35 (21.5 {{ _('cm') }})">{% for key, value in sortedSizesCm %}{{ key }} ({{ value }} cm){% if not loop.last %}, {% endif %}{% endfor %}</textarea>
                 </div>
                 <div class="input">
                     <label for="inputQuantitiesLeft">{{ _('Quantities') }}</label>
-                    <input id="inputQuantitiesLeft" type="text" value="{% for key, value in sortedMaxQuantities %}{{ key }} ({{ value }}){% if not loop.last %}, {% endif %}{% endfor %}" placeholder="33 (1), 34 (2), 35 (2)">
+                    <textarea id="inputQuantitiesLeft" type="text" placeholder="33 (1), 34 (2), 35 (2)">{% for key, value in sortedMaxQuantities %}{{ key }} ({{ value }}){% if not loop.last %}, {% endif %}{% endfor %}</textarea>
                 </div>
                 <div class="input">
                     <label for="inputWarehouses">{{ _('Warehouses') }}</label>
-                    <input id="inputWarehouses" type="text" value="{% for key, value in sortedWarehouses %}{{ key }} ({{ value }}){% if not loop.last %}, {% endif %}{% endfor %}" placeholder="33 (Kyiv), 34 (Ternopil), 35 (Odesa)">
+                    <textarea id="inputWarehouses" type="text" placeholder="33 (Kyiv), 34 (Ternopil), 35 (Odesa)">{% for key, value in sortedWarehouses %}{{ key }} ({{ value }}){% if not loop.last %}, {% endif %}{% endfor %}</textarea>
                 </div>
             </div>
             <div class="col">

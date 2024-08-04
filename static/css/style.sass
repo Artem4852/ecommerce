@@ -2137,7 +2137,26 @@ html.uk .banner
         border: none
         font-size: 18px
         background-color: $grey-dark
+        font-family: 'Open Sans', sans-serif
         color: $white
+
+        &:focus
+            outline: none
+
+        &::placeholder
+            color: $grey
+
+    textarea
+        width: 60%
+        padding: 4px 8px
+        border-radius: 5px
+        border: none
+        font-size: 18px
+        background-color: $grey-dark
+        color: $white
+        resize: none
+        font-family: 'Open Sans', sans-serif
+        height: auto
 
         &:focus
             outline: none
@@ -2148,6 +2167,7 @@ html.uk .banner
     select
         width: 60%
         font-size: 18px
+        font-family: 'Open Sans', sans-serif
 
     .input
         width: 100%

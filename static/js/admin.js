@@ -260,25 +260,32 @@ inputs.forEach(input => {
             const toAdd = [];
             sizesArray.forEach(size => {
                 if (size === '' || size === '()') return;
-                if (!input.value.includes(size)) {
-                    if (currentInput === 'Sizes') {
-                        toAdd.push(size);
-                    } else if (currentInput === 'InsoleLengths') {
-                        toAdd.push(`${size} ( cm)`);
-                    } else if (currentInput === 'QuantitiesLeft') {
-                        toAdd.push(`${size} (1)`);
-                    } else {
-                        toAdd.push(`${size} (Kyiv)`);
-                    }
+
+                if (currentInput === 'Sizes') {
+                    toAdd.push(size);
+                } else if (currentInput === 'InsoleLengths') {
+                    toAdd.push(`${size} ( cm)`);
+                } else if (currentInput === 'QuantitiesLeft') {
+                    toAdd.push(`${size} (1)`);
+                } else {
+                    toAdd.push(`${size} (Kyiv)`);
                 }
             });
 
-            if (input.value === '' && toAdd.length > 0) {
+            input.value = '';
+            if (toAdd.length > 0) {
                 input.value += toAdd.join(', ');
-            } else if (toAdd.length > 0) {
-                input.value += ', ' + toAdd.join(', ');
             }
+            input.dispatchEvent(new Event('input'));
         });
+    });
+});
+
+const textareas = document.querySelectorAll('textarea');
+textareas.forEach(textarea => {
+    textarea.addEventListener('input', () => {
+        textarea.style.height = 'auto';
+        textarea.style.height = textarea.scrollHeight + 'px';
     });
 });
 
@@ -286,6 +293,13 @@ document.getElementById('inputInstagramUrl').addEventListener('blur', () => {
     const url = document.getElementById('inputInstagramUrl').value;
     console.log(productId, url)
     if (url === '') return;
+
+    document.getElementById('instagramCaption').innerHTML = 'Loading...';
+    document.getElementById('inputSizes').value = 'Loading...';
+    document.getElementById('inputInsoleLengths').value = 'Loading...';
+    document.getElementById('inputPrice').value = 'Loading...';
+    document.getElementById('inputBrand').value = 'Loading...';
+    document.getElementById('inputCategory').value = 'Loading...';
 
     fetch('/admin/product/load', {
         method: 'POST',

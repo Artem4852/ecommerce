@@ -2124,6 +2124,7 @@ html.uk .banner {
   border: none;
   font-size: 18px;
   background-color: #999999;
+  font-family: "Open Sans", sans-serif;
   color: #f1f1f1;
 }
 #adminProduct input:focus {
@@ -2132,9 +2133,28 @@ html.uk .banner {
 #adminProduct input::placeholder {
   color: #E0E0E0;
 }
+#adminProduct textarea {
+  width: 60%;
+  padding: 4px 8px;
+  border-radius: 5px;
+  border: none;
+  font-size: 18px;
+  background-color: #999999;
+  color: #f1f1f1;
+  resize: none;
+  font-family: "Open Sans", sans-serif;
+  height: auto;
+}
+#adminProduct textarea:focus {
+  outline: none;
+}
+#adminProduct textarea::placeholder {
+  color: #E0E0E0;
+}
 #adminProduct select {
   width: 60%;
   font-size: 18px;
+  font-family: "Open Sans", sans-serif;
 }
 #adminProduct .input {
   width: 100%;

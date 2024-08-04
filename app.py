@@ -1108,10 +1108,10 @@ def adminProductUpdate():
     productData['price'] = str(int(productData['prevPrice']) * (1 - productData['discount'] / 100))[:2]+'99'
 
     productData['additionalInformation'] = {
-        "innerMaterial": productData['innerMaterial'],
-        "insoleMaterial": productData['insoleMaterial'],
-        "outerMaterial": productData['outerMaterial'],
-        "season": productData['season'],
+        "innerMaterial": productData['innerMaterial'].strip(),
+        "insoleMaterial": productData['insoleMaterial'].strip(),
+        "outerMaterial": productData['outerMaterial'].strip(),
+        "season": productData['season'].strip(),
     }
     del productData['innerMaterial']
     del productData['insoleMaterial']
