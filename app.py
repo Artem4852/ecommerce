@@ -133,8 +133,8 @@ def inject_locale():
 @app.route('/')
 def index():    
     session['lang'] = request.args.get('lang', 'uk')
-    covers = [im for im in os.listdir('static/img/covers') if im.endswith('.jpg')]
-    products = [p['images'][0] for p in getProducts() if len(p['images']) > 0]
+    covers = ['..static/img/covers/'+im for im in os.listdir('static/img/covers') if im.endswith('.jpg')]
+    products = ['..static/img/products/'+p['id']+'/'+p['images'][0] for p in getProducts() if len(p['images']) > 0]
     indexImages = products + covers
     indexImages = indexImages[:8*10]
     random.shuffle(indexImages)
