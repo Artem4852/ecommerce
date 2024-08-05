@@ -257,7 +257,7 @@ inputs.forEach(input => {
 
         currentInputs.forEach(currentInput => {
             const input = document.getElementById('input' + currentInput);
-            const toAdd = [];
+            let toAdd = [];
             sizesArray.forEach(size => {
                 if (size === '' || size === '()') return;
 
@@ -272,9 +272,40 @@ inputs.forEach(input => {
                 }
             });
 
+            newToAdd = [];
+            console.log(toAdd, currentInput);
+            let existing = input.value.split(',').map(size => size.trim());
+            if (currentInput == 'InsoleLengths') {
+                for (let i = 0; i < existing.length; i++) {
+                    if (existing[i].includes('cm')) {
+                        const size = existing[i].split(' ')[0].trim();
+                        if (sizesArray.includes(size)) {
+                            newToAdd.push(existing[i]);
+                            toAdd = toAdd.filter(s => s.split(' ')[0].trim() !== size);
+                        }
+                    }
+                }
+            } else {
+                for (let i = 0; i < existing.length; i++) {
+                    size = existing[i].split(' ')[0].trim();
+                    if (sizesArray.includes(size)) {
+                        newToAdd.push(existing[i]);
+                        toAdd = toAdd.filter(s => s.split(' ')[0].trim() !== size);
+                    }
+                }
+                // existing = input.value.split(',').map(size => size.trim());
+            }
+            console.log(newToAdd);
+            newToAdd = newToAdd.concat(toAdd);
+
+            // existing = existing.filter(size => toAdd.includes(size));
+            // toAdd = toAdd.filter(size => !existing.includes(size));
+
+            // toAdd = existing.concat(toAdd);
+
             input.value = '';
-            if (toAdd.length > 0) {
-                input.value += toAdd.join(', ');
+            if (newToAdd.length > 0) {
+                input.value += newToAdd.join(', ');
             }
             input.dispatchEvent(new Event('input'));
         });
@@ -312,6 +343,7 @@ document.getElementById('inputInstagramUrl').addEventListener('blur', () => {
         .then(data => {
             console.log(data);
             if (data.success) {
+                console.log(data);
                 document.getElementById('instagramCaption').innerHTML = data.caption.replace(/\n/g, '<br>');
                 document.getElementById('inputSizes').value = data.sizes.join(', ');
                 document.getElementById('inputInsoleLengths').value = Object.entries(data.sizesCm)
@@ -321,7 +353,6 @@ document.getElementById('inputInstagramUrl').addEventListener('blur', () => {
                 document.getElementById('inputPrice').value = data.price;
                 document.getElementById('inputBrand').value = data.brand;
                 document.getElementById('inputCategory').value = data.category;
-                // delete previous images
                 document.getElementById('images').innerHTML = '';
                 for (let i = 0; i < data.images.length; i++) {
                     const wrapper = document.createElement('div');

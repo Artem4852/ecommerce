@@ -1,28 +1,62 @@
 from rocketapi import InstagramAPI
-import dotenv, os, random, json, requests
+import dotenv, os, random, json, requests, re
 
 # https://www.instagram.com/p/C95Svt0NLGg/?img_index=1
 
-def parsePost(caption):
+def parsePost(caption, username):
     sizes = []
     for line in caption.split("\n"):
-        if "Розмір" in line:
-            try: sizes.append(line.split(" ")[1].split("/")[1])
-            except: sizes.append(line.split(" ")[1])
+        if username == 'marynahavrykova':
+            if 'см' in line:
+                size = line.split("-")[0].strip()
+                size = re.sub(r'[^\d]', '', size)
+                try: sizes.append(size.split("/")[1])
+                except: sizes.append(size)
+
+        elif username == 'kids_premium_shoes':
+            if ' р ' in line:
+                size = line.split(" ")[0]
+                size = re.sub(r'[^\d]', '', size)
+                try: sizes.append(size.split("/")[1])
+                except: sizes.append(size)
+        else:
+            if "Розмір" in line:
+                size = line.split(" ")[1]
+                size = re.sub(r'[^\d]', '', size)
+                try: sizes.append(size.split("/")[1])
+                except: sizes.append(size)
 
     sizesCm = {}
     for size in sizes:
         for line in caption.split("\n"):
-            if (f'Розмір ' + size) in line:
-                try: sizesCm[str(size)] = line.split(" ")[-2].replace("(", "").split("/")[1]
-                except: sizesCm[str(size)] = line.split(" ")[-2].replace("(", "")
+            if username == 'marynahavrykova':
+                if (size in line and 'см' in line):
+                    sizesCm[str(size)] = line.split("-")[1].strip().split(" ")[0].replace(",", ".")
+            elif username == 'kids_premium_shoes':
+                if (size + ' р ') in line:
+                    line = line[:line.index('см')]
+                    try: sizesCm[str(size)] = line.split(" ")[-2].replace("(", "").split("/")[1]
+                    except: sizesCm[str(size)] = line.split(" ")[-2].replace("(", "")
+            else:
+                if ('Розмір ' + size) in line:
+                    try: sizesCm[str(size)] = line.split(" ")[-2].replace("(", "").split("/")[1]
+                    except: sizesCm[str(size)] = line.split(" ")[-2].replace("(", "")
 
 
     price = 0
     for line in caption.split("\n"):
-        if line.startswith("Ціна"):
-            if int(line.split(" ")[1]) > price:
-                price = int(line.split(" ")[1])
+        if username == 'kids_premium_shoes':
+            if 'Ціна' in line:
+                if int(line.split(" ")[1]) > price:
+                    price = int(line.split(" ")[1])
+        else:
+            if line.startswith("Ціна"):
+                if username == 'marynahavrykova':
+                    new_price = int(line.split(" ")[-2])
+                else:    
+                    new_price = int(line.split(" ")[1])
+                if new_price > price:
+                    price = new_price
 
     category = ""
     if "демі" in caption.split("\n")[0].lower(): category = "Demi"
@@ -37,6 +71,7 @@ def parsePost(caption):
     elif "австрійського" in caption.split("\n")[0].lower(): brand = "Superfit"
     elif "німецького" in caption.split("\n")[0].lower(): brand = "Adidas"
     elif "данського" in caption.split("\n")[0].lower(): brand = "Ecco"
+
     return sizes, category, brand, sizesCm, price
 
 def loadImage(url, productId, index):
@@ -64,7 +99,8 @@ def getPost(link, productId):
     # with open(f"json/post_{productId}.json", "w") as f:
     #     json.dump(post, f)
     caption = post["items"][0]['caption']['text']
-    sizes, category, brand, sizesCm, price = parsePost(caption)
+    username = post["items"][0]['user']['username']
+    sizes, category, brand, sizesCm, price = parsePost(caption, username)
 
     images = []
     for image in post['items'][0]['carousel_media']:

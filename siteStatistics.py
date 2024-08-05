@@ -4,6 +4,7 @@ from shapely.geometry import shape, Point
 from werkzeug.datastructures import MultiDict
 from datetime import datetime
 from database import Database
+import threading
 
 with open('json/regions.json') as f:
     regions = json.load(f)
@@ -16,8 +17,7 @@ def getRegion(coords):
             return region
     return None
 
-def log(page, request=None, ip=None):
-    return
+def logBG(page, request=None, ip=None):
     db = Database()
 
     utmSource = request.args.get('utmSource')
@@ -86,6 +86,9 @@ def log(page, request=None, ip=None):
         cityDistribution['data'][city] = 0
     cityDistribution['data'][city] += 1
     db.updateStats('cityDistribution', cityDistribution)
+
+def log(page, request=None, ip=None):
+    threading.Thread(target=logBG, args=(page, request, ip)).start()
 
 if __name__ == '__main__':
     print(getRegion((37.2768, 49.2070)))
