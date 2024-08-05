@@ -50,7 +50,7 @@
                 <select id="category" name="category" onchange="filterShoes('category')">
                     <option value="Any" {% if not category %} selected {% endif %}>{{ _('AnyF') }}</option>
                     {% for category_option in categories %}
-                        <option value="{{ category_option }}" {% if category_option==category %} selected {% endif %}>{{ category_option }}</option>
+                        <option value="{{ category_option }}" {% if category_option==category %} selected {% endif %}>{{ translationsDb[category_option|lower][get_locale()] }}</option>
                     {% endfor %}
                 </select>
                 <svg class="downArrow" xmlns="http://www.w3.org/2000/svg" width="24" height="14" viewBox="0 0 24 14" fill="none">
