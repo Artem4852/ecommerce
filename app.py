@@ -153,7 +153,7 @@ def index():
     translationsDb = database.getTranslations("db")
     translationsJs = database.getTranslations("js")
 
-    logResponse = log('home', request=request)
+    logResponse = log(app, 'home', request=request)
     if logResponse: return logResponse
     return render_template('index.html', indexImages=indexImages, productsFeatured=featured[:4], productsSale=sale[:4], userData=user, loggedIn=loggedIn, translationsDb=translationsDb, translationsJs=translationsJs)
 
@@ -217,7 +217,7 @@ def shop():
     translationsDb = database.getTranslations("db")
     translationsJs = database.getTranslations("js")
 
-    logResponse = log('shop', request=request)
+    logResponse = log(app, 'shop', request=request)
     if logResponse: return logResponse
     return render_template('shop.html', products=productsCurrent, userData=user, brand=brand, category=category, shoeSize=shoeSize, sex=sex, priceRange=priceRange, sorting=sorting, productsPerPage=productsPerPage, page=page, maxPages=maxPages, loggedIn=loggedIn, brands=brands, categories=categories, sizes=sizes, sexes=sexes, translationsDb=translationsDb, translationsJs=translationsJs)
 
@@ -245,7 +245,7 @@ def product(productId):
     translationsDb = database.getTranslations("db")
     translationsJs = database.getTranslations("js")
 
-    logResponse = log('product', request=request)
+    logResponse = log(app, 'product', request=request)
     if logResponse: return logResponse
     return render_template('product.html', product=product, userData=user, productsFeatured=productsFeatured[:4], loggedIn=loggedIn, contactData=contactData, translationsDb=translationsDb, translationsJs=translationsJs)
 
@@ -258,7 +258,7 @@ def faq():
         userData = getUser({'userId': session.get('userId')})
     else:
         userData = {}
-    logResponse = log('faq', request=request)
+    logResponse = log(app, 'faq', request=request)
 
     translationsDb = database.getTranslations("db")
     translationsJs = database.getTranslations("js")
@@ -273,7 +273,7 @@ def faqPost(faqName):
         userData = getUser({'userId': session.get('userId')})
     else:
         userData = {}
-    logResponse = log('faq', request=request)
+    logResponse = log(app, 'faq', request=request)
     if logResponse: return logResponse
     faq = database.getFaq()
     posts = [post for post in faq if faqName in post['name']]
@@ -290,7 +290,7 @@ def contact():
         userData = getUser({'userId': session.get('userId')})
     else:
         userData = {}
-    logResponse = log('contact', request=request)
+    logResponse = log(app, 'contact', request=request)
     if logResponse: return logResponse
 
     translationsDb = database.getTranslations("db")
@@ -312,7 +312,7 @@ def termsofuse():
         userData = getUser({'userId': session.get('userId')})
     else:
         userData = {}
-    logResponse = log('legal', request=request)
+    logResponse = log(app, 'legal', request=request)
     if logResponse: return logResponse
     page = database.getLegalPage('termsOfUse')
 
@@ -328,7 +328,7 @@ def privacypolicy():
         userData = getUser({'userId': session.get('userId')})
     else:
         userData = {}
-    logResponse = log('legal', request=request)
+    logResponse = log(app, 'legal', request=request)
     if logResponse: return logResponse
     page = database.getLegalPage('privacyPolicy')
 
@@ -344,7 +344,7 @@ def cookiespolicy():
         userData = getUser({'userId': session.get('userId')})
     else:
         userData = {}
-    logResponse = log('legal', request=request)
+    logResponse = log(app, 'legal', request=request)
     if logResponse: return logResponse
     page = database.getLegalPage('cookiesPolicy')
 
@@ -360,7 +360,7 @@ def shippingpolicy():
         userData = getUser({'userId': session.get('userId')})
     else:
         userData = {}
-    logResponse = log('legal', request=request)
+    logResponse = log(app, 'legal', request=request)
     if logResponse: return logResponse
     page = database.getLegalPage('shippingPolicy')
 
@@ -376,7 +376,7 @@ def replacementsandreturnspolicy():
         userData = getUser({'userId': session.get('userId')})
     else:
         userData = {}
-    logResponse = log('legal', request=request)
+    logResponse = log(app, 'legal', request=request)
     if logResponse: return logResponse
     page = database.getLegalPage('replacementsAndReturnsPolicy')
 
@@ -412,7 +412,7 @@ def favorites():
     translationsDb = database.getTranslations("db")
     translationsJs = database.getTranslations("js")
 
-    logResponse = log('shop', request=request)
+    logResponse = log(app, 'shop', request=request)
     if logResponse: return logResponse
     
     return render_template('favorites.html', userData=user, favoriteItems=favoriteItems, productsFeatured=productsFeatured[:4], page=page, maxPages=maxPages, loggedIn=loggedIn, translationsDb=translationsDb, translationsJs=translationsJs)
@@ -493,7 +493,7 @@ def cart():
 
     productsFeatured = [p for p in products if 'tags' in p and 'featured' in p['tags'] and len(p['sizes']) > 0]
 
-    logResponse = log('shop', request=request)
+    logResponse = log(app, 'shop', request=request)
     if logResponse: return logResponse
     return render_template('cart.html', userData=user, cartItems=cartItems, subtotal=subtotal, productsFeatured=productsFeatured[:4], loggedIn=loggedIn)
 
@@ -562,7 +562,7 @@ def checkout():
         productsFeatured = [p for p in products if 'tags' in p and 'featured' in p['tags'] and len(p['sizes']) > 0]
         random.shuffle(productsFeatured)
 
-        logResponse = log('shop', request=request)
+        logResponse = log(app, 'shop', request=request)
         if logResponse: return logResponse
         return render_template('checkout.html', userData=user, cartItems=cartItems, subtotal=subtotal, productsFeatured=productsFeatured[:4], loggedIn=loggedIn, deliveryCountries=deliveryCountries, deliveryCities=deliveryCities, featuredProducts=productsFeatured, countryCodes=countryCodes, codesCountry=codesCountry, shippingData=shippingData, paymentData=paymentData, contactData=contactData)
     elif request.method == 'POST':
@@ -666,7 +666,7 @@ def orderConfirmation():
     productsFeatured = [p for p in products if 'tags' in p and 'featured' in p['tags'] and len(p['sizes']) > 0]
     random.shuffle(productsFeatured)
 
-    logResponse = log('shop', request=request)
+    logResponse = log(app, 'shop', request=request)
     if logResponse: return logResponse
     return render_template('orderConfirmation.html', userData=user, loggedIn=loggedIn, productsFeatured=productsFeatured[:4])
 
@@ -688,7 +688,7 @@ def orders():
     productsFeatured = [p for p in products if 'tags' in p and 'featured' in p['tags'] and len(p['sizes']) > 0]
     random.shuffle(productsFeatured)
 
-    logResponse = log('orders', request=request)
+    logResponse = log(app, 'orders', request=request)
     if logResponse: return logResponse
     return render_template('orders.html', userData=user, orders=orders, loggedIn=loggedIn, productsFeatured=productsFeatured[:4])
 
@@ -710,7 +710,7 @@ def order(orderId, productId):
     productsFeatured = [p for p in products if 'tags' in p and 'featured' in p['tags'] and len(p['sizes']) > 0]
     random.shuffle(productsFeatured)
 
-    logResponse = log('orders', request=request)
+    logResponse = log(app, 'orders', request=request)
     if logResponse: return logResponse
     return render_template('order.html', userData=user, order=order, loggedIn=loggedIn, productsFeatured=productsFeatured[:4], codesCountry=codesCountry)
 
@@ -726,7 +726,7 @@ def settings():
     deliveryCities = nova.loadCities()
     codesCountry = {v: k for k, v in nova.loadCountryCodes().items()}
 
-    logResponse = log('home', request=request)
+    logResponse = log(app, 'home', request=request)
     if logResponse: return logResponse
 
     translationsDb = database.getTranslations("db")
@@ -1287,4 +1287,4 @@ def page_not_found(e):
 
 if __name__ == "__main__":
     app.run(debug=True, port=8080)
-    # logResponse = log('home', None)
+    # logResponse = log(app, 'home', None)
