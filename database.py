@@ -121,6 +121,8 @@ class Database:
     def getFaq(self):
         self.connect()
         return list(self.otherDb['faq'].find())
+        # with open('json/faq.json', 'r') as f:
+        #     return json.load(f)
     
     def getLegalPage(self, page):
         self.connect()
@@ -145,6 +147,9 @@ class Database:
     def getTranslations(self, part):
         self.connect()
         return self.otherDb['translations'].find_one({'name': 'translations'})['data'][part]
+        # with open('json/translations.json', 'r') as f:
+        #     translations = json.load(f)[part]
+        # return translations
 
 if __name__ == "__main__":
     database = Database()

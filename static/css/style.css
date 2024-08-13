@@ -1087,6 +1087,7 @@ html.uk .banner {
 }
 #faqPage p, #legalPage p {
   font-size: 18px;
+  margin-bottom: 20px;
 }
 #faqPage p.subheading, #legalPage p.subheading {
   font-size: 20px;
@@ -1101,6 +1102,14 @@ html.uk .banner {
   margin-left: 25px;
   font-weight: 500;
 }
+#faqPage img, #legalPage img {
+  width: calc(35% - 15px);
+  padding: 15px;
+  border-radius: 10px;
+  background-color: #E0E0E0;
+  object-fit: contain;
+  margin-bottom: 20px;
+}
 #faqPage .row, #legalPage .row {
   display: flex;
   flex-direction: row;
@@ -1109,11 +1118,7 @@ html.uk .banner {
   gap: 30px;
 }
 #faqPage .row img, #legalPage .row img {
-  width: calc(35% - 15px);
-  padding: 15px;
-  border-radius: 10px;
-  background-color: #E0E0E0;
-  object-fit: contain;
+  margin-bottom: 0;
 }
 #faqPage .row .text, #faqPage .row .col, #legalPage .row .text, #legalPage .row .col {
   width: calc(65% - 15px);
@@ -2432,6 +2437,9 @@ html.uk .banner {
     align-items: center;
   }
   #faq .posts .card {
+    width: 100%;
+  }
+  #faqPage img {
     width: 100%;
   }
   #faqPage .row {

@@ -1104,6 +1104,7 @@ html.uk .banner
 
     p
         font-size: 18px
+        margin-bottom: 20px
 
     p.subheading
         font-size: 20px
@@ -1118,6 +1119,14 @@ html.uk .banner
             margin-left: 25px
             font-weight: 500
 
+    img
+        width: calc( 35% - 15px )
+        padding: 15px
+        border-radius: 10px
+        background-color: $grey
+        object-fit: contain
+        margin-bottom: 20px
+
     .row
         display: flex
         flex-direction: row
@@ -1126,11 +1135,7 @@ html.uk .banner
         gap: 30px
 
         img
-            width: calc( 35% - 15px )
-            padding: 15px
-            border-radius: 10px
-            background-color: $grey
-            object-fit: contain
+            margin-bottom: 0
 
         .text, .col
             width: calc( 65% - 15px )
@@ -2458,6 +2463,9 @@ html.uk .banner
                 width: 100%
 
     #faqPage
+        img
+            width: 100%
+
         .row
             margin-bottom: 20px
             flex-direction: column

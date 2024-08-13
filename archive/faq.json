@@ -12,22 +12,99 @@
     "page": [
         {
             "type": "title",
-            "en": "Choosing the right shoe size for your child is essential for their comfort and foot health.",
-            "uk": "Вибір правильного розміру взуття для вашої дитини є важливим для її комфорту та здоров'я стопи."
+            "en": "Choosing the right shoe size for your child is essential for their comfort and foot health. Follow these simple steps to ensure you get the perfect fit.",
+            "uk": "Вибір правильного розміру взуття для вашої дитини є важливим для її комфорту та здоров'я стопи. Дотримуйтесь цих простих кроків, щоб знайти ідеальну пару."
         },
         {
             "type": "title",
             "en": "Step-by-step Instructions",
-            "uk": "Виміряйте ніжку таким чином:"
+            "uk": "Покрокові інструкції"
         },
         {
             "type": "paragraph",
-            "en": "Have your child stand on a piece of paper. Trace the foot with a pencil and measure the outline.",
-            "uk": "Нехай дитина стане на лист паперу, обведіть ніжку олівцем та виміряйте слід."
+            "en": "1. Prepare the Materials",
+            "uk": "1. Підготуйте матеріали"
         },
         {
-            "type": "img",
-            "src": "../static/img/feetMeasurement.png"
+            "type": "list",
+            "en": [
+                "A piece of paper",
+                "A pencil",
+                "A ruler"
+            ],
+            "uk": [
+                "Аркуш паперу",
+                "Олівець",
+                "Лінійка"
+            ]
+        },
+        {
+            "type": "row",
+            "content": [
+                {
+                    "type": "col",
+                    "content": [
+                        {
+                            "type": "paragraph",
+                            "en": "2. Trace Your Child’s Foot",
+                            "uk": "2. Намалюйте стопу вашої дитини"
+                        },
+                        {
+                            "type": "list",
+                            "en": [
+                                "Place the piece of paper on a flat, hard surface.",
+                                "Have your child stand barefoot on the paper.",
+                                "Ensure your child’s foot is flat and their weight is evenly distributed.",
+                                "Using the pencil, carefully trace around your child’s foot. Try to keep the pencil as vertical as possible to get an accurate outline."
+                            ],
+                            "uk": [
+                                "Покладіть листок паперу на пласку, тверду поверхню.",
+                                "Нехай ваша дитина встане босоніж на папір",
+                                "Переконайтесь, що стопа вашої дитини рівна, а її вага рівномірно розподілена",
+                                "За допомогою олівця обережно обведіть стопу вашої дитини. Намагайтесь тримати олівець максимально вертикально, щоб отримати точний контур."
+                            ]
+                        },
+                        {
+                            "type": "paragraph",
+                            "en": "3. Measure the Foot Length",
+                            "uk": "3. Виміряйте довжину стопи"
+                        },
+                        {
+                            "type": "list",
+                            "en": [
+                                "Remove the paper and use the ruler to measure the longest distance from the heel to the tip of the longest toe.",
+                                "This measurement is your child’s foot length."
+                            ],
+                            "uk": [
+                                "Візьміть папір і виміряйте найбільшу відстань від п'ятки до кінчика найбільшого пальця.",
+                                "Цей вимір - довжина стопи вашої дитини."
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "img",
+                    "src": "../static/img/feetMeasurement.png"
+                }
+            ]  
+        },
+        {
+            "type": "paragraph",
+            "en": "4. Compare with Insole Lengths",
+            "uk": "4. Порівняйте з довжиною устілки"
+        },
+        {
+            "type": "list",
+            "en": [
+                "On our shop, each shoe size includes the length of the insole.",
+                "Compare your child’s foot length to the insole lengths provided.",
+                "Choose the shoe size where the insole length is slightly longer than your child’s foot length, allowing for some growing room."
+            ],
+            "uk": [
+                "У нашому магазині кожний розмір взуття має довжину устілки.",
+                "Порівняйте довжину стопи вашої дитини з наданими довжинами устілок.",
+                "Виберіть розмір взуття, де довжина устілки трохи більша за довжину стопи вашої дитини, що дозволяє залишити деякий запас для зростання."
+            ]
         },
         {
             "type": "title",
@@ -37,12 +114,30 @@
         {
             "type": "list",
             "en": [
-                "Measure Both Feet: Sometimes one foot is slightly larger/smaller than the other.",
-                "Manufacturers recommend an extra space of 0.5 - 1 cm for sandals and 1 - 1.5 cm for demi-season/winter shoes."
+                "Measure Both Feet: Sometimes one foot is slightly larger than the other. Use the measurement of the larger foot to ensure comfort.",
+                "Consider Growth: Kids' feet grow quickly, so it’s a good idea to leave a little extra room (about one centimeter) for growth.",
+                "Try Shoes On: If possible, have your child try on the shoes and walk around to ensure they feel comfortable.",
+                "The shoes should have enough room at the toes and fit snugly around the heels."
             ],
             "uk": [
-                "Виміряйте обидві стопи: іноді одна стопа трохи більша/менша за іншу.",
-                "Виробники радять запас 0.5 - 1 см для літнього взуття та 1 - 1.5 см для демісезонного/зимового взуття."
+                "Виміряйте обидві стопи: іноді одна стопа трохи більша за іншу. Використовуйте вимірювання більшої стопи, щоб забезпечити комфорт.",
+                "Враховуйте зростання: стопи дітей швидко ростуть, тому добре залишити трохи додаткового місця (близько одного сантиметра) для зростання.",
+                "Приміряйте взуття: якщо це можливо, дозвольте вашій дитині приміряти взуття і пройтись, щоб переконатись, що вони відчувають себе комфортно.",
+                "Взуття повинно мати достатньо місця на пальцях і щільно облягати п'ятку."
+            ]
+        },
+        {
+            "type": "paragraph",
+            "en": "Example:",
+            "uk": "Приклад:"
+        },
+        {
+            "type": "list",
+            "en": [
+                "If your child’s foot length is 18 cm, look for a shoe size with an insole length of around 18.5 - 19 cm."
+            ],
+            "uk": [
+                "Якщо довжина стопи вашої дитини становить 18 см, шукайте розмір взуття з довжиною устілки приблизно 18,5 - 19 см."
             ]
         },
         {
@@ -66,8 +161,8 @@
     "page": [
         {
             "type": "title",
-            "en": "Ensuring your order arrives safely and promptly is our top priority.",
-            "uk": "Забезпечити безпечну та швидку доставку вашого замовлення є нашим пріоритетом."
+            "en": "Ensuring your order arrives safely and promptly is our top priority. Follow these steps to understand our delivery process:",
+            "uk": "Забезпечити безпечне та швидке надходження вашого замовлення є нашим пріоритетом. Перегляньту ці пункти, щоб зрозуміти наш процес доставки:"
         },
         {
             "type": "title",
@@ -77,7 +172,7 @@
         {
             "type": "paragraph",
             "en": "We provide shipping across Ukraine and selected countries in Europe through Nova Post (Нова Пошта). Availability, delivery times, and costs vary based on the destination.",
-            "uk": "Ми здійснюємо доставку по всій Україні та в обрані країни Європи Новою Поштою. Доступність, час доставки та вартість залежать від місця призначення."
+            "uk": "Ми здійснюємо доставку по всій Україні та в обрані країни Європи через Нову Пошту. Доступність, час доставки та вартість залежать від місця призначення."
         },
         {
             "type": "title",
@@ -96,8 +191,8 @@
         },
         {
             "type": "paragraph",
-            "en": "Calculated based on delivery address and package size/weight. Displayed during checkout.",
-            "uk": "Розраховується на основі адреси доставки та розміру/ваги посилки. Відображається під час оформлення замовлення."
+            "en": "Calculated based on delivery address and package size/weight. Displayed during checkout. Customers are responsible for all shipping costs added to the total order amount.",
+            "uk": "Розраховується на основі адреси доставки та розміру/ваги посилки. Відображається під час оформлення замовлення. Клієнти несуть відповідальність за всі витрати на доставку, додані до загальної суми замовлення."
         },
         {
             "type": "title",
@@ -136,8 +231,8 @@
         },
         {
             "type": "paragraph",
-            "en": "When sending the order, we always input the full price of the product, so that in the case if a package is lost/damaged the sum will be compensated by Nova Post. In case of any questions about shipping contact us at <a href=\"mailto:contact@kidsfashionstore.com.ua\">contact@kidsfashionstore.com.ua</a> or <a tel:\"+380506176180\">+380 (50) 617 61 80</a>.",
-            "uk": "При відпраці замовлення ми завжди вказуємо повну варстість товару, оскільки в разі пошкодження/втрати посилки ця сума буде компенсована Новою Поштою. В разі виникнення будь-яких питань з приводу доставки, звертайтесь до нас за адресою <a href=\"mailto:contact@kidsfashionstore.com.ua\">contact@kidsfashionstore.com.ua</a> або <a tel:\"+380506176180\">+380 (50) 617 61 80</a>."
+            "en": "We are not responsible for lost or damaged shipments. Contact us immediately at <a href=\"mailto:contact@kidsfashionstore.com.ua\">contact@kidsfashionstore.com.ua</a> or <a tel:\"+380506176180\">+380 (50) 617 61 80</a> for assistance in filing a claim with the shipping carrier.",
+            "uk": "Ми не несемо відповідальності за втрачені або пошкоджені посилки. Звертайтесь до нас негайно за адресою <a href=\"mailto:contact@kidsfashionstore.com.ua\">contact@kidsfashionstore.com.ua</a> або <a tel:\"+380506176180\">+380 (50) 617 61 80</a> для отримання допомоги у поданні заяви до перевізника."
         },
         {
             "type": "title",
@@ -180,8 +275,8 @@
     "page": [
         {
             "type": "title",
-            "en": "Ensuring that our customers are satisfied with their purchases is our top priority.",
-            "uk": "Забезпечення задоволення наших клієнтів є нашим першочерговим пріоритетом."
+            "en": "Ensuring that our customers are satisfied with their purchases is our top priority. We understand that sometimes an item may not meet your expectations, and you may need to return or replace it. Here's a brief guide to help you navigate our replacement and return process.",
+            "uk": "Забезпечення задоволення наших клієнтів є нашим першочерговим пріоритетом. Ми розуміємо, що іноді товар може не відповідати вашим очікуванням, і вам може знадобитися повернути або замінити його. Ось короткий посібник, який допоможе вам зорієнтуватись в нашому процесі заміни та повернення."
         },
         {
             "type": "title",
@@ -191,7 +286,7 @@
         {
             "type": "paragraph",
             "en": "To qualify for a replacement or return, the item must be unused, in the same condition as when you received it, and in its original packaging.",
-            "uk": "Для того, щоб мати право на обмін або повернення, товар повинен бути невикористаним, в тому ж стані, що і при отриманні та в оригінальній упаковці."
+            "uk": "Для того щоб мати право на обмін або повернення, товар повинен бути невикористаним, в тому ж стані, що і при отриманні, та в оригінальній упаковці."
         },
         {
             "type": "title",
@@ -210,8 +305,8 @@
         },
         {
             "type": "paragraph",
-            "en": "To organize a replacement or return, send a request at <a href=\"mailto:contact@kidsfashionstore.com.ua\">contact@kidsfashionstore.com.ua</a> or <a tel:\"+380506176180\">+380 (50) 617 61 80</a> within the one-day timeframe. Provide Order Details: include about the item you wish to return or replace.",
-            "uk": "Для оформлення обміну чи повернення надішліть запит за адресою <a href=\"mailto:contact@kidsfashionstore.com.ua\">contact@kidsfashionstore.com.ua</a> або <a tel:\"+380506176180\">+380 (50) 617 61 80</a> протягом одного дня після отримання товару. Надайте дані про замовлення: вкажіть деталі про товар, який ви хочете повернути або замінити."
+            "en": "Contact Customer Service: Email our Customer Service team at <a href=\"mailto:contact@kidsfashionstore.com.ua\">contact@kidsfashionstore.com.ua</a> within the one-day timeframe. Provide Order Details: Include your order id and details about the item you wish to return or replace. Follow Guidance: Our Customer Service team will guide you through the process.",
+            "uk": "Зв'яжіться з обслуговуванням клієнтів: Надішліть лист нашій службі підтримки клієнтів за адресою <a href=\"mailto:contact@kidsfashionstore.com.ua\">contact@kidsfashionstore.com.ua</a> протягом одного дня. Надайте дані про замовлення: Вкажіть свій ідентифікатор замовлення та деталі про товар, який ви хочете повернути або замінити. Дотримуйтесь вказівок: Наша команда допоможе вам пройти процес."
         },
         {
             "type": "title",
@@ -220,8 +315,8 @@
         },
         {
             "type": "paragraph",
-            "en": "To initiate a replacement or return the product must be returned in its original condition with all tags and original packaging intact. Items not in their original condition, damaged, or missing parts due to reasons other than our error are not eligible. Additionally, requests made more than one day after delivery will not be accepted.",
-            "uk": "Для оформлення обміну чи повернення товар повинен залишатись в стані нового, включаючи ярлики та оригінальну коробку. Товари, які не знаходяться в оригінальному стані, пошкоджені або не мають частин з будь-якої причини окірм нашої помилки, не підлягають обміну або поверненню. Крім того, запити, подані пізніше одного дня після доставки, не будуть прийняті."
+            "en": "Unused Items: The item must be in its original condition. Original Packaging: The item must be returned in its original packaging. Exclusions: Items not in their original condition, damaged, or missing parts due to reasons other than our error are not eligible. Additionally, requests made more than one day after delivery will not be accepted.",
+            "uk": "Невикористантй товар: товар повинен бути в оригінальному стані. Оригінальна упаковка: товар повинен бути повернений в оригінальній упаковці. Товари, які не знаходяться в оригінальному стані, пошкоджені або не мають частин з будь-якої причини окірм нашої помилки, не підлягають обміну або поверненню. Крім того, запити, подані пізніше одного дня після доставки, не будуть прийняті."
         },
         {
             "type": "title",

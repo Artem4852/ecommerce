@@ -8,7 +8,7 @@ from datetime import datetime
 from string import ascii_letters, digits
 import threading
 
-from novapost import NovaAPI
+# from novapost import NovaAPI
 from telegramAPI import sendMessage
 from instagram import getPost
 from siteStatistics import log
@@ -36,7 +36,7 @@ babel = Babel(app, locale_selector=get_locale)
 
 # Databases
 database = Database()
-nova = NovaAPI()
+# nova = NovaAPI()
 
 # Setup mail
 app.config['MAIL_SERVER'] = 'smtppro.zoho.eu'
@@ -90,12 +90,14 @@ def sendEmailBG(subject, recipient, body=None, html=None, data=None, user=None, 
             if html: 
                 translationsDb = database.getTranslations("db")
                 htmlContent = render_template('mail/'+html+'.html', data=data, translationsDb=translationsDb, lang=lang)
-                if not body:
-                    soup = BeautifulSoup(htmlContent, 'html.parser')
-                    body = soup.get_text()
+                msg = Message(subject, recipients=[recipient], html=htmlContent)
+                # if not body:
+                #     soup = BeautifulSoup(htmlContent, 'html.parser')
+                #     body = soup.get_text()
             else:
                 htmlContent = None
-            msg = Message(subject, recipients=[recipient], body=body, html=htmlContent)
+                msg = Message(subject, recipients=[recipient], body=body)
+
             mail.send(msg)
 
 def sendEmail(subject, recipient, body=None, html=None, data=None):
@@ -1288,3 +1290,4 @@ def page_not_found(e):
 if __name__ == "__main__":
     app.run(debug=True, port=8080)
     # logResponse = log(app, 'home', None)
+    # sendEmail("Test", "kovalevskyi.artem@gmail.com", "Test")

@@ -1,86 +1,29 @@
 <!DOCTYPE html>
 <html lang="{{ lang }}" class="{{ lang }}">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=deviceWidth, initialScale=1.0">
     <title>Kids Fashion Store</title>
 </head>
+
 <body>
-    <style>
-        @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300..800&display=swap");
-    
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: borderBox;
-        }
-    
-        div.main {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            width: 100%;
-            background-color: #eee;
-            padding: 50px;
-        }
-    
-        img {
-            width: 200px;
-            margin: 20px;
-        }
-    
-        h1 {
-            font-family: 'Open Sans', sans-serif;
-            font-size: 48px;
-            font-weight: 400;
-            color: #E352BA;
-            width: 100%;
-            margin-bottom: 20px;
-            line-height: 1;
-        }
-    
-        p {
-            font-family: "Open Sans", sans-serif;
-            font-size: 16px;
-            font-weight: 400;
-            color: #333;
-            width: 100%;
-        }
-    
-        .content {
-            padding: 20px;
-            background-color: #E0E0E0;
-            text-align: center;
-            border-radius: 20px;
-        }
-    
-        a {
-            color: #E352BA;
-            text-decoration: none;
-        }
-    
-        a:hover {
-            text-decoration: underline;
-        }
-    
-        div.code {
-            font-family: "Open Sans", sansSerif;
-            font-size: 18px;
-            font-weight: 700;
-            color: #E352BA;
-            background-color: #fff;
-            padding: 10px;
-            border-radius: 10px;
-            margin: 20px;
-        }
-    </style>
-    <div class="main">
-        <div class="content">
-            <h1>{{ _('Welcome to our store!') }}</h1>
-            <p>{{ _('Thank you for signing up. You can now log in to your new account') }} <a href="{{ url_for('login') }}">{{ _('here') }}</a>.</p>
-            <p>{{ _('Happy shopping!') }}</p>
+
+    <div class="main"
+        style="display: flex;flex-direction: column;justify-content: center;align-items: center;width: 100%;background-color: #eee;padding: 50px;">
+        <div class="content" style="padding: 20px;background-color: #E0E0E0;text-align: center;border-radius: 20px;">
+            <h1
+                style="font-family: 'Open Sans', sans-serif;font-size: 48px;font-weight: 400;color: #E352BA;width: 100%;margin-bottom: 20px;line-height: 1;">
+                {{ _('Welcome to our store!') }}</h1>
+            <p
+                style="font-family: 'Open Sans', sans-serif;font-size: 16px;font-weight: 400;color: #333;width: 100%;">
+                {{ _('Thank you for signing up. You can now log in to your new account') }} <a
+                    href="{{ url_for('login') }}" style="color: #E352BA;text-decoration: none;">{{ _('here') }}</a>.</p>
+            <p
+                style="font-family: 'Open Sans', sans-serif;font-size: 16px;font-weight: 400;color: #333;width: 100%;">
+                {{ _('Happy shopping!') }}</p>
         </div>
     </div>
 </body>
+
 </html>
