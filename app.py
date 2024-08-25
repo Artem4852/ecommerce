@@ -921,7 +921,7 @@ def admin():
     dailyRequests = database.getStats('dailyRequests')['data']
     averageDailyRequests = int(sum(dailyRequests.values())/len(dailyRequests))
 
-    sortedDailyRequests = sorted(dailyRequests, key=lambda x: x)
+    sortedDailyRequests = sorted(dailyRequests, key=lambda x: datetime.strptime(x, '%d.%m.%Y'))
     dailyRequests = {n: dailyRequests[n] for n in sortedDailyRequests[-7:]}
 
     try: requestsToday = dailyRequests[datetime.now().strftime('%d.%m.%Y')]
@@ -962,11 +962,11 @@ def adminActivity():
         abort(404)
 
     dailyRequests = database.getStats('dailyRequests')['data']
-    sortedDailyRequests = sorted(dailyRequests, key=lambda x: x)
+    sortedDailyRequests = sorted(dailyRequests, key=lambda x: datetime.strptime(x, '%d.%m.%Y'))
     dailyRequests = {n: dailyRequests[n] for n in sortedDailyRequests[-7:]}
 
     dailyUniqueVisits = database.getStats('dailyUniqueVisits')['data']
-    sortedDailyUniqueVisits = sorted(dailyUniqueVisits, key=lambda x: x)
+    sortedDailyUniqueVisits = sorted(dailyUniqueVisits, key=lambda x: datetime.strptime(x, '%d.%m.%Y'))
     dailyUniqueVisits = {n: len(dailyUniqueVisits[n]) for n in sortedDailyUniqueVisits[-7:]}
 
     hourlyRequests = database.getStats('hourlyRequests')['data']
