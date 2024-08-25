@@ -17,11 +17,10 @@ def getRegion(coords):
             return region
     return None
 
-def logBG(app, page, request=None, ip=None):
+def logBG(app, page, utmSource, headers, ip=None):
     db = Database()
 
-    with app.context():
-        utmSource = request.args.get('utmSource')
+    with app.app_context():
         if utmSource:
             utmSources = db.getStats('utmSources')
             if not utmSource in utmSources['data']:
@@ -29,13 +28,13 @@ def logBG(app, page, request=None, ip=None):
             utmSources['data'][utmSource] += 1
             db.updateStats('utmSources', utmSources)
 
-            args = MultiDict(request.args)
+            args = MultiDict(headers)
             args.pop('utmSource')
-            return redirect(url_for(request.endpoint, **args))
+            return redirect(url_for(page, **args))
 
         if ip: userIp = ip
-        elif request.headers.get('X-Forwarded-For'): userIp = request.headers.get('X-Forwarded-For').split(',')[0]
-        else: userIp = request.remote_addr
+        elif headers.get('X-Forwarded-For'): userIp = headers.get('X-Forwarded-For').split(',')[0]
+        else: userIp = headers.get('Remote-Addr')
         try: ipData = requests.get(f'http://ipinfo.io/{userIp}/json').json()
         except: return
         if "bogon" in ipData: return
@@ -89,7 +88,9 @@ def logBG(app, page, request=None, ip=None):
         db.updateStats('cityDistribution', cityDistribution)
 
 def log(app, page, request=None, ip=None):
-    threading.Thread(target=logBG, args=(app, page, request, ip)).start()
+    utmSource = request.args.get('utmSource') if request else None
+    headers = request.headers if request else {}
+    threading.Thread(target=logBG, args=(app, page, utmSource, headers, ip)).start()
 
 if __name__ == '__main__':
     print(getRegion((37.2768, 49.2070)))
