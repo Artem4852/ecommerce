@@ -12,10 +12,12 @@
                 <select id="brand" name="brand" onchange="filterShoes('brand')">
                     <option value="Any" {% if not brand %} selected {% endif %}>{{ _('Any') }}</option>
                     {% for brand_option in brands %}
-                        <option value="{{ brand_option }}" {% if brand_option==brand %} selected {% endif %}>{{ brand_option }}</option>
+                    <option value="{{ brand_option }}" {% if brand_option==brand %} selected {% endif %}>{{ brand_option
+                        }}</option>
                     {% endfor %}
                 </select>
-                <svg class="downArrow" xmlns="http://www.w3.org/2000/svg" width="24" height="14" viewBox="0 0 24 14" fill="none">
+                <svg class="downArrow" xmlns="http://www.w3.org/2000/svg" width="24" height="14" viewBox="0 0 24 14"
+                    fill="none">
                     <path
                         d="M0.321533 2.1104L2.36278 -9.16136e-07L11.8215 9.77919L21.2803 -8.92259e-08L23.3215 2.1104L11.8215 14L0.321533 2.1104Z"
                         fill="#F1F1F1" />
@@ -26,10 +28,12 @@
                 <select id="category" name="category" onchange="filterShoes('category')">
                     <option value="Any" {% if not category %} selected {% endif %}>{{ _('AnyF') }}</option>
                     {% for category_option in categories %}
-                        <option value="{{ category_option }}" {% if category_option==category %} selected {% endif %}>{{ translationsDb[category_option|lower][get_locale()] }}</option>
+                    <option value="{{ category_option }}" {% if category_option==category %} selected {% endif %}>{{
+                        translationsDb[category_option|lower][get_locale()] }}</option>
                     {% endfor %}
                 </select>
-                <svg class="downArrow" xmlns="http://www.w3.org/2000/svg" width="24" height="14" viewBox="0 0 24 14" fill="none">
+                <svg class="downArrow" xmlns="http://www.w3.org/2000/svg" width="24" height="14" viewBox="0 0 24 14"
+                    fill="none">
                     <path
                         d="M0.321533 2.1104L2.36278 -9.16136e-07L11.8215 9.77919L21.2803 -8.92259e-08L23.3215 2.1104L11.8215 14L0.321533 2.1104Z"
                         fill="#F1F1F1" />
@@ -40,11 +44,13 @@
                 <select id="sex" name="sex" onchange="filterShoes('sex')">
                     <option value="Any" {% if not sex %} selected {% endif %}>{{ _('AnyF') }}</option>
                     {% for sex_option in sexes %}
-                    <option value="{{ sex_option }}" {% if sex_option==sex %} selected {% endif %}>{{ translationsDb[sex_option|lower][get_locale()]
+                    <option value="{{ sex_option }}" {% if sex_option==sex %} selected {% endif %}>{{
+                        translationsDb[sex_option|lower][get_locale()]
                         }}</option>
                     {% endfor %}
                 </select>
-                <svg class="downArrow" xmlns="http://www.w3.org/2000/svg" width="24" height="14" viewBox="0 0 24 14" fill="none">
+                <svg class="downArrow" xmlns="http://www.w3.org/2000/svg" width="24" height="14" viewBox="0 0 24 14"
+                    fill="none">
                     <path
                         d="M0.321533 2.1104L2.36278 -9.16136e-07L11.8215 9.77919L21.2803 -8.92259e-08L23.3215 2.1104L11.8215 14L0.321533 2.1104Z"
                         fill="#F1F1F1" />
@@ -55,10 +61,12 @@
                 <select id="shoeSize" name="shoeSize" onchange="filterShoes('shoeSize')">
                     <option value="Any" {% if not shoeSize %} selected {% endif %}>{{ _('Any') }}</option>
                     {% for size_option in sizes %}
-                        <option value="{{ size_option }}" {% if size_option==shoeSize %} selected {% endif %}>{{ size_option }}</option>
+                    <option value="{{ size_option }}" {% if size_option==shoeSize %} selected {% endif %}>{{ size_option
+                        }}</option>
                     {% endfor %}
                 </select>
-                <svg class="downArrow" xmlns="http://www.w3.org/2000/svg" width="24" height="14" viewBox="0 0 24 14" fill="none">
+                <svg class="downArrow" xmlns="http://www.w3.org/2000/svg" width="24" height="14" viewBox="0 0 24 14"
+                    fill="none">
                     <path
                         d="M0.321533 2.1104L2.36278 -9.16136e-07L11.8215 9.77919L21.2803 -8.92259e-08L23.3215 2.1104L11.8215 14L0.321533 2.1104Z"
                         fill="#F1F1F1" />
@@ -76,7 +84,8 @@
                     <option value="3500-4000" {% if priceRange=="3500-4000" %} selected {% endif %}>3500-4000</option>
                     <option value="4000+" {% if priceRange=="4000+" %} selected {% endif %}>4000+</option>
                 </select>
-                <svg class="downArrow" xmlns="http://www.w3.org/2000/svg" width="24" height="14" viewBox="0 0 24 14" fill="none">
+                <svg class="downArrow" xmlns="http://www.w3.org/2000/svg" width="24" height="14" viewBox="0 0 24 14"
+                    fill="none">
                     <path
                         d="M0.321533 2.1104L2.36278 -9.16136e-07L11.8215 9.77919L21.2803 -8.92259e-08L23.3215 2.1104L11.8215 14L0.321533 2.1104Z"
                         fill="#F1F1F1" />
@@ -86,12 +95,17 @@
                 <label for="sorting">{{ _('Sort by') }}</label>
                 <select id="sorting" name="sorting" onchange="filterShoes('sorting')">
                     <option value="noSorting" {% if not sorting %} selected {% endif %}>{{ _('No sorting') }}</option>
-                    <option value="priceLowToHigh" {% if sorting=="priceLowToHigh" %} selected {% endif %}>{{ _('Price: low to high') }}</option>
-                    <option value="priceHighToLow" {% if sorting=="priceHighToLow" %} selected {% endif %}>{{ _('Price: high to low') }}</option>
-                    <option value="discountHighToLow" {% if sorting=="discountHighToLow" %} selected {% endif %}>{{ _('Discount: high to low') }}</option>
-                    <option value="discountLowToHigh" {% if sorting=="discountLowToHigh" %} selected {% endif %}>{{ _('Discount: low to high') }}</option>
+                    <option value="priceLowToHigh" {% if sorting=="priceLowToHigh" %} selected {% endif %}>{{ _('Price:
+                        low to high') }}</option>
+                    <option value="priceHighToLow" {% if sorting=="priceHighToLow" %} selected {% endif %}>{{ _('Price:
+                        high to low') }}</option>
+                    <option value="discountHighToLow" {% if sorting=="discountHighToLow" %} selected {% endif %}>{{
+                        _('Discount: high to low') }}</option>
+                    <option value="discountLowToHigh" {% if sorting=="discountLowToHigh" %} selected {% endif %}>{{
+                        _('Discount: low to high') }}</option>
                 </select>
-                <svg class="downArrow" xmlns="http://www.w3.org/2000/svg" width="24" height="14" viewBox="0 0 24 14" fill="none">
+                <svg class="downArrow" xmlns="http://www.w3.org/2000/svg" width="24" height="14" viewBox="0 0 24 14"
+                    fill="none">
                     <path
                         d="M0.321533 2.1104L2.36278 -9.16136e-07L11.8215 9.77919L21.2803 -8.92259e-08L23.3215 2.1104L11.8215 14L0.321533 2.1104Z"
                         fill="#F1F1F1" />
@@ -101,56 +115,64 @@
         {% if products %}
         <div class="products">
             {% for product in products %}
-                {% include 'partials/card.html' %}
+            {% include 'partials/card.html' %}
             {% endfor %}
         </div>
-            {% if page == 1 and maxPages != 1 %} 
-                <a onclick="loadMore()" class="viewMore">{{ _('Show more') }}</a>
-            {% endif %}
+        {% if page == 1 and maxPages != 1 %}
+        <a onclick="loadMore()" class="viewMore">{{ _('Show more') }}</a>
+        {% endif %}
         {% endif %}
         {% if products and maxPages != 1 %}
         <div class="pagination">
             <p>{{ _('Page') }}:
                 {% if page != 1 %}
-                    <a href="?{% for key, value in request.args.items() if key not in ['page', 'scroll'] %}{{ key }}={{ value }}&{% endfor %}page={{ page-1 }}" class="arrow">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="23" viewBox="0 0 14 23" fill="none">
-                            <path d="M11.8896 -1.84497e-07L14 2.04125L4.22081 11.5L14 20.9587L11.8896 23L5.16875e-08 11.5L11.8896 -1.84497e-07Z" fill="#111111"/>
-                        </svg>
-                    </a>
-                    <a href="?{% for key, value in request.args.items() if key not in ['page', 'scroll'] %}{{ key }}={{ value }}&{% endfor %}">1</a>
+                <a href="?{% for key, value in request.args.items() if key not in ['page', 'scroll'] %}{{ key }}={{ value }}&{% endfor %}page={{ page-1 }}"
+                    class="arrow">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="23" viewBox="0 0 14 23" fill="none">
+                        <path
+                            d="M11.8896 -1.84497e-07L14 2.04125L4.22081 11.5L14 20.9587L11.8896 23L5.16875e-08 11.5L11.8896 -1.84497e-07Z"
+                            fill="#111111" />
+                    </svg>
+                </a>
+                <a
+                    href="?{% for key, value in request.args.items() if key not in ['page', 'scroll'] %}{{ key }}={{ value }}&{% endfor %}">1</a>
                 {% else %}
-                    <span>1</span>
+                <span>1</span>
                 {% endif %}
                 {% if page > 3 %}
-                    <span class="dots">...</span>
+                <span class="dots">...</span>
                 {% endif %}
                 {% for i in range(page-1, page+2) %}
-                    {% if i > 1 and i < maxPages %}
-                        {% if i == page %}
-                            <span>{{ i }}</span>
-                        {% else %}
-                            <a href="?{% for key, value in request.args.items() if key not in ['page', 'scroll'] %}{{ key }}={{ value }}&{% endfor %}page={{ i }}">{{ i }}</a>
-                        {% endif %}
+                {% if i > 1 and i < maxPages %} {% if i==page %} <span>{{ i }}</span>
+                    {% else %}
+                    <a
+                        href="?{% for key, value in request.args.items() if key not in ['page', 'scroll'] %}{{ key }}={{ value }}&{% endfor %}page={{ i }}">{{
+                        i }}</a>
                     {% endif %}
-                {% endfor %}
-                {% if page < maxPages-2 %} 
-                    <span class="dots">...</span>
-                {% endif %}
-                {% if page != maxPages %}
-                    <a href="?{% for key, value in request.args.items() if key not in ['page', 'scroll'] %}{{ key }}={{ value }}&{% endfor %}page={{ maxPages }}">{{ maxPages }}</a>
-                    <a href="?{% for key, value in request.args.items() if key not in ['page', 'scroll'] %}{{ key }}={{ value }}&{% endfor %}page={{ page+1 }}" class="arrow">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="23" viewBox="0 0 14 23" fill="none">
-                        <path d="M2.1104 23L0 20.9587L9.77919 11.5L0 2.04125L2.1104 0L14 11.5L2.1104 23Z" fill="#111111"/>
-                    </svg>
-                    </a>
-                {% else %}
-                    <span>{{ maxPages }}</span>
-                {% endif %}
+                    {% endif %}
+                    {% endfor %}
+                    {% if page < maxPages-2 %} <span class="dots">...</span>
+                        {% endif %}
+                        {% if page != maxPages %}
+                        <a
+                            href="?{% for key, value in request.args.items() if key not in ['page', 'scroll'] %}{{ key }}={{ value }}&{% endfor %}page={{ maxPages }}">{{
+                            maxPages }}</a>
+                        <a href="?{% for key, value in request.args.items() if key not in ['page', 'scroll'] %}{{ key }}={{ value }}&{% endfor %}page={{ page+1 }}"
+                            class="arrow">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="23" viewBox="0 0 14 23"
+                                fill="none">
+                                <path d="M2.1104 23L0 20.9587L9.77919 11.5L0 2.04125L2.1104 0L14 11.5L2.1104 23Z"
+                                    fill="#111111" />
+                            </svg>
+                        </a>
+                        {% else %}
+                        <span>{{ maxPages }}</span>
+                        {% endif %}
             </p>
         </div>
         {% endif %}
         {% if not products %}
-            <h3 class="noProducts">{{ _('No products found. Try to change filters.') }}</h3>
+        <h3 class="noProducts">{{ _('No products found. Try to change filters.') }}</h3>
         {% endif %}
     </section>
     {% include 'partials/newsletter.html' %}
@@ -160,4 +182,5 @@
     {% endif %}
     <script src="{{ url_for('static', filename='js/shop.js') }}"></script>
 </body>
+
 </html>

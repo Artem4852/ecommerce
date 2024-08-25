@@ -193,11 +193,14 @@ def shop():
     categories = sorted(list(set([p['category'] for p in products if p['category'] != ""])))
     sizes = sorted(list(set([size for p in products for size in p['sizes'] if size != ""])))
     sexes = sorted(list(set([p['sex'] for p in products if sex != ""])))
+    sexes.remove('unisex')
 
     if brand: products = [p for p in products if p['brand'] == brand]
     if category: products = [p for p in products if p['category'] == category]
     if shoeSize: products = [p for p in products if int(shoeSize) in p['sizes']]
-    if sex: products = [p for p in products if p['sex'] == sex]
+    if sex: 
+        if sex in ["boy", "girl"]: products = [p for p in products if p['sex'] == sex or p['sex'] == 'unisex']
+        else: products = [p for p in products if p['sex'] == sex]
     if priceRange: products = [p for p in products if priceMin<=int(p['price'])<=priceMax]
 
     if sorting == 'priceLowToHigh': products = sorted(products, key=lambda x: int(x['price']))
