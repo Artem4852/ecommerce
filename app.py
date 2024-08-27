@@ -1115,7 +1115,7 @@ def adminProductUpdate():
     productData['sizesCm'] = {size.strip().split(" ")[0].strip(): float(size.strip().split(" ")[1].replace("cm", "").replace("(", "").replace(")", "").strip()) for size in productData['sizesCm'].split(',')}
     productData['warehouses'] = {warehouse.strip().split(" ")[0].strip(): warehouse.strip().split(" ")[1].replace("(", "").replace(")", "").strip() for warehouse in productData['warehouses'].split(',')}
 
-    productData['discount'] = int(productData['discount'].replace("%", ""))
+    productData['discount'] = int(productData['discount'].replace("%", "")) if productData['discount'] != "" else 0
     productData['price'] = str(int(productData['prevPrice']) * (1 - productData['discount'] / 100))[:2]+'99'
     productData['prevPrice'] = str(productData['prevPrice'])[:2]+'99'
 
