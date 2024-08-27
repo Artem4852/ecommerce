@@ -150,7 +150,8 @@ def index():
     featured = [p for p in products if 'tags' in p and 'featured' in p['tags'] and len(p['sizes']) > 0 and (not 'archived' in p['tags'] and (not 'tags' in user or 'admin' in user['tags']))]
     random.shuffle(featured)
 
-    sale = [p for p in products if 'tags' in p and 'sale' in p['tags'] and len(p['sizes']) > 0 and (not 'archived' in p['tags'] and (not 'tags' in user or 'admin' in user['tags']))]
+    sale = [p for p in products if 'discount' in p and p['discount'] != 0 and len(p['sizes']) > 0 and (not 'archived' in p['tags'] and (not 'tags' in user or 'admin' in user['tags']))]
+    # sale = [p for p in products if 'tags' in p and 'sale' in p['tags'] and len(p['sizes']) > 0 and (not 'archived' in p['tags'] and (not 'tags' in user or 'admin' in user['tags']))]
     random.shuffle(sale)
 
     translationsDb = database.getTranslations("db")
@@ -1116,6 +1117,12 @@ def adminProductUpdate():
 
     productData['discount'] = int(productData['discount'].replace("%", ""))
     productData['price'] = str(int(productData['prevPrice']) * (1 - productData['discount'] / 100))[:2]+'99'
+    productData['prevPrice'] = str(productData['prevPrice'])[:2]+'99'
+
+    print(productData['price'], productData['prevPrice'], productData['discount'])
+    if productData['price'] == productData['prevPrice'] and productData['discount'] != 0:
+        print(productData['price'][:2])
+        productData['price'] = str(int(productData['price'][:2])-1) + '99'
 
     productData['additionalInformation'] = {
         "innerMaterial": productData['innerMaterial'].strip(),
