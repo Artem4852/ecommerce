@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html lang="{{ get_locale() }}" class="{{ get_locale() }}">
 {% include 'partials/head.html' %}
+
 <body>
     {% include 'partials/header.html' %}
     <section id="hero">
         {% for group in indexImages %}
-            <div class="imagecol">
-                {% for image in group %}
-                    <div class="img" style="background-image: url('{{ image }}')"></div>
-                {% endfor %}
-            </div>
+        <div class="imagecol">
+            {% for image in group %}
+            <div class="img" style="background-image: url('{{ image }}')"></div>
+            {% endfor %}
+        </div>
         {% endfor %}
         <div class="textWrapper">
             <div class="text">
@@ -23,7 +24,7 @@
         <h2>{{ _('Featured') }}</h2>
         <div class="products">
             {% for product in productsFeatured %}
-                {% include 'partials/card.html' %}
+            {% include 'partials/card.html' %}
             {% endfor %}
         </div>
     </section>
@@ -41,7 +42,7 @@
         <h2>{{ _('Summer sale') }}</h2>
         <div class="products">
             {% for product in productsSale %}
-                {% include 'partials/card.html' %}
+            {% include 'partials/card.html' %}
             {% endfor %}
         </div>
         <a href="/shop" class="viewMore">{{ _('View more') }}</a>
@@ -54,4 +55,5 @@
     <script src="{{ url_for('static', filename='js/home.js') }}"></script>
     <script src="{{ url_for('static', filename='js/shop.js') }}"></script>
 </body>
+
 </html>

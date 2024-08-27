@@ -7,6 +7,7 @@ from bs4 import BeautifulSoup
 from datetime import datetime
 from string import ascii_letters, digits
 import threading
+from collections import OrderedDict
 
 # from novapost import NovaAPI
 from telegramAPI import sendMessage
@@ -921,8 +922,9 @@ def admin():
     dailyRequests = database.getStats('dailyRequests')['data']
     averageDailyRequests = int(sum(dailyRequests.values())/len(dailyRequests))
 
+
     sortedDailyRequests = sorted(dailyRequests, key=lambda x: datetime.strptime(x, '%d.%m.%Y').timestamp())
-    dailyRequests = {n: dailyRequests[n] for n in sortedDailyRequests[-7:]}
+    dailyRequests = OrderedDict({n: dailyRequests[n] for n in sortedDailyRequests[-7:]})
 
     try: requestsToday = dailyRequests[datetime.now().strftime('%d.%m.%Y')]
     except: requestsToday = 0
@@ -950,6 +952,7 @@ def admin():
     translationsDb = database.getTranslations("db")
     translationsJs = database.getTranslations("js")
     
+    print(dailyRequests)
     return render_template('admin.html', userData=user, loggedIn=loggedIn, averageDailyRequests=averageDailyRequests, dailyRequests=dailyRequests, requestsToday=requestsToday, averageDailyUniqueVisits=averageDailyUniqueVisits, uniqueVisitsToday=uniqueVisitsToday, totalProducts=totalProducts, inStock=inStock, orders=orders, ordersTotal=ordersTotal, ordersPending=ordersPending, ordersToday=ordersToday, ordersDailyAverage=ordersDailyAverage, translationsDb=translationsDb, translationsJs=translationsJs)
 
 @app.route('/admin/activity')

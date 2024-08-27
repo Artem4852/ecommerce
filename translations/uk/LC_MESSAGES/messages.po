@@ -609,7 +609,7 @@ msgstr "В каталог"
 
 #: templates/index.html:41
 msgid "Summer sale"
-msgstr "Літній розпродаж"
+msgstr "Акційні пропозиції"
 
 #: templates/login.html:7 templates/login.html:27
 #: templates/partials/header.html:19 templates/partials/header.html:50
