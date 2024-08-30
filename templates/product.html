@@ -8,12 +8,20 @@
         <h1 class="mobileOnly">{{ translationsDb[product.category|lower][get_locale()] }} {{ product.brand }}</h1>
         <div class="images">
             <div class="mainImg">
-                <img id="mainImg" src="{{ url_for('static', filename='img/products/'+product.id|string+'/'+product.images[0]) }}" alt="{{ product.name }}">
-                <svg onclick="imgBack()" class="left" xmlns="http://www.w3.org/2000/svg" width="65" height="65" viewBox="0 0 65 65" fill="none">
-                    <path d="M0 32.5C0 50.4493 14.5507 65 32.5 65C50.4493 65 65 50.4493 65 32.5C65 14.5507 50.4493 0 32.5 0C14.5507 0 0 14.5507 0 32.5Z" fill="#D9D9D9" />
-                    <path d="M38.6518 47.9762L41.3988 45.2292L28.6696 32.5L41.3988 19.7708L38.6518 17.0238L23.1756 32.5L38.6518 47.9762Z" fill="#1C1B1F" />
+                <img id="mainImg"
+                    src="{{ url_for('static', filename='img/products/'+product.id|string+'/'+product.images[0]) }}"
+                    alt="{{ product.name }}">
+                <svg onclick="imgBack()" class="left" xmlns="http://www.w3.org/2000/svg" width="65" height="65"
+                    viewBox="0 0 65 65" fill="none">
+                    <path
+                        d="M0 32.5C0 50.4493 14.5507 65 32.5 65C50.4493 65 65 50.4493 65 32.5C65 14.5507 50.4493 0 32.5 0C14.5507 0 0 14.5507 0 32.5Z"
+                        fill="#D9D9D9" />
+                    <path
+                        d="M38.6518 47.9762L41.3988 45.2292L28.6696 32.5L41.3988 19.7708L38.6518 17.0238L23.1756 32.5L38.6518 47.9762Z"
+                        fill="#1C1B1F" />
                 </svg>
-                <svg onclick="imgForward()" class="right" xmlns="http://www.w3.org/2000/svg" width="65" height="65" viewBox="0 0 65 65" fill="none">
+                <svg onclick="imgForward()" class="right" xmlns="http://www.w3.org/2000/svg" width="65" height="65"
+                    viewBox="0 0 65 65" fill="none">
                     <path
                         d="M65 32.5C65 50.4493 50.4493 65 32.5 65C14.5507 65 0 50.4493 0 32.5C0 14.5507 14.5507 0 32.5 0C50.4493 0 65 14.5507 65 32.5Z"
                         fill="#D9D9D9" />
@@ -23,12 +31,18 @@
                 </svg>
             </div>
             <div id="others">
-                <img onclick="setSelected(0)" class="selected" dataIndex="0" src="{{ url_for('static', filename='img/products/'+product.id|string+'/'+product.images[0]) }}" alt="">
+                <img onclick="setSelected(0)" class="selected" dataIndex="0"
+                    src="{{ url_for('static', filename='img/products/'+product.id|string+'/'+product.images[0]) }}"
+                    alt="">
                 {% for image in product.images[1:4] %}
-                    <img onclick="setSelected({{ product.images.index(image) }})" dataIndex="{{ product.images.index(image) }}" src="{{ url_for('static', filename='img/products/'+product.id|string+'/'+image) }}" alt="">
+                <img onclick="setSelected({{ product.images.index(image) }})"
+                    dataIndex="{{ product.images.index(image) }}"
+                    src="{{ url_for('static', filename='img/products/'+product.id|string+'/'+image) }}" alt="">
                 {% endfor %}
                 {% for image in product.images[4:] %}
-                    <img onclick="setSelected({{ product.images.index(image) }})" dataIndex="{{ product.images.index(image) }}" class="inactive" src="{{ url_for('static', filename='img/products/'+product.id|string+'/'+image) }}" alt="">
+                <img onclick="setSelected({{ product.images.index(image) }})"
+                    dataIndex="{{ product.images.index(image) }}" class="inactive"
+                    src="{{ url_for('static', filename='img/products/'+product.id|string+'/'+image) }}" alt="">
                 {% endfor %}
             </div>
         </div>
@@ -42,19 +56,19 @@
                     <p>{{ _('Brand') }}: {{ product.brand }}</p>
                     <p>{{ _('Price') }}: {{ product.price }} {{ _('uah') }}</p>
                     {% if 'archived' in product.tags %}
-                        <p class="mobileOnly notinstock">{{ _('Archived') }}</p>
+                    <p class="mobileOnly notinstock">{{ _('Archived') }}</p>
                     {% elif sortedSizes %}
-                        <p class="mobileOnly instock">{{ _('In stock') }}</p>
+                    <p class="mobileOnly instock">{{ _('In stock') }}</p>
                     {% else %}
-                        <p class="mobileOnly notinstock">{{ _('Not in stock') }}</p>
+                    <p class="mobileOnly notinstock">{{ _('Not in stock') }}</p>
                     {% endif %}
                 </div>
                 {% if 'archived' in product.tags %}
-                    <p class="desktopOnly notinstock">{{ _('Archived') }}</p>
+                <p class="desktopOnly notinstock">{{ _('Archived') }}</p>
                 {% elif sortedSizes %}
-                    <p class="desktopOnly instock">{{ _('In stock') }}</p>
+                <p class="desktopOnly instock">{{ _('In stock') }}</p>
                 {% else %}
-                    <p class="desktopOnly notinstock">{{ _('Not in stock') }}</p>
+                <p class="desktopOnly notinstock">{{ _('Not in stock') }}</p>
                 {% endif %}
             </div>
             <div class="selectCol">
@@ -62,13 +76,14 @@
                     <label for="size">{{ _('Size') }}:</label>
                     <select id="size" name="size" onchange="selectSize()">
                         {% if sortedSizes %}
-                            <option value="{{ sortedSizes[0] }}" selected>{{ sortedSizes[0] }}</option>
+                        <option value="{{ sortedSizes[0] }}" selected>{{ sortedSizes[0] }}</option>
                         {% endif %}
                         {% for size in sortedSizes[1:] %}
-                            <option value="{{ size }}">{{ size }}</option>
+                        <option value="{{ size }}">{{ size }}</option>
                         {% endfor %}
                     </select>
-                    <svg class="downArrow" xmlns="http://www.w3.org/2000/svg" width="24" height="14" viewBox="0 0 24 14" fill="none">
+                    <svg class="downArrow" xmlns="http://www.w3.org/2000/svg" width="24" height="14" viewBox="0 0 24 14"
+                        fill="none">
                         <path
                             d="M0.321533 2.1104L2.36278 -9.16136e-07L11.8215 9.77919L21.2803 -8.92259e-08L23.3215 2.1104L11.8215 14L0.321533 2.1104Z"
                             fill="#F1F1F1" />
@@ -78,19 +93,20 @@
                     <label for="quantity">{{ _('Quantity') }}:</label>
                     <select class="quantity" id="quantity{{ sortedSizes[0] }}" name="quantity">
                         {% if product.maxQuantities %}
-                            {% for n in range(product.maxQuantities[sortedSizes[0] | string]) %}
-                                <option value="{{ n+1 }}">{{ n+1 }}</option>
-                            {% endfor %}
+                        {% for n in range(product.maxQuantities[sortedSizes[0] | string]) %}
+                        <option value="{{ n+1 }}">{{ n+1 }}</option>
+                        {% endfor %}
                         {% endif %}
                     </select>
                     {% for size in sortedSizes[1:] %}
-                        <select class="quantity" disabled style="display: none;" id="quantity{{ size }}" name="quantity">
-                            {% for n in range(product.maxQuantities[size | string]) %}
-                                <option value="{{ n+1 }}">{{ n+1 }}</option>
-                            {% endfor %}
-                        </select>
+                    <select class="quantity" disabled style="display: none;" id="quantity{{ size }}" name="quantity">
+                        {% for n in range(product.maxQuantities[size | string]) %}
+                        <option value="{{ n+1 }}">{{ n+1 }}</option>
+                        {% endfor %}
+                    </select>
                     {% endfor %}
-                    <svg class="downArrow" xmlns="http://www.w3.org/2000/svg" width="24" height="14" viewBox="0 0 24 14" fill="none">
+                    <svg class="downArrow" xmlns="http://www.w3.org/2000/svg" width="24" height="14" viewBox="0 0 24 14"
+                        fill="none">
                         <path
                             d="M0.321533 2.1104L2.36278 -9.16136e-07L11.8215 9.77919L21.2803 -8.92259e-08L23.3215 2.1104L11.8215 14L0.321533 2.1104Z"
                             fill="#F1F1F1" />
@@ -98,64 +114,74 @@
                 </div>
             </div>
             {% if loggedIn and 'admin' in userData.tags %}
-                <a href="/admin/products/edit/{{ product['id'] }}">{{ _('Edit product') }}</a>
+            <a href="/admin/products/edit/{{ product['id'] }}">{{ _('Edit product') }}</a>
             {% else %}
-                <!-- <button {% if not sortedSizes %}disabled class="inactive" {% endif %} id="buttonShowMenu" onclick="showQuickOrderMenu()">Quick order</button> -->
-                <div id="quickOrderMenu" class="quickorder hidden">
-                    <h4>{{ _('How can we contact you?') }}</h4>
-                    <div class="select">
-                        <label for="">{{ _('Messenger') }}:</label>
-                        <select onchange="selectMessenger()" name="messenger" id="inputContactMessenger">
-                            <option value="telegram" {% if not contactData.contactMessenger or contactData.contactMessenger=="telegram" %}
-                                selected {% endif %}>Telegram</option>
-                            <option {% if contactData.contactMessenger=="instagram" %} selected {% endif %} value="instagram">Instagram
-                            </option>
-                            <option {% if contactData.contactMessenger=="viber" %} selected {% endif %} value="viber">Viber</option>
-                        </select>
-                        <svg class="downArrow" xmlns="http://www.w3.org/2000/svg" width="23" height="15" viewBox="0 0 23 15" fill="none">
-                            <path
-                                d="M-9.22487e-08 2.13579L2.04125 0.0253897L11.5 9.80458L20.9587 0.0253905L23 2.13579L11.5 14.0254L-9.22487e-08 2.13579Z"
-                                fill="#F1F1F1" />
-                        </svg>
-                    </div>
-                    <div class="input">
-                        <label {% if contactData.contactMessenger=="instagram" %}class="disabled" {% endif %} id="labelPhoneNumber">{{ _('Phone number') }}:</label>
-                        <input {% if contactData.contactMessenger=="instagram" %}class="disabled" {% endif %} oninput="phoneInput()" type="text" id="inputPhoneNumber" placeholder="{{ _('Phone number') }}" value="{% if not contactData.phoneNumber %}{{ userData['phoneNumber'] }}{% else %}{{ contactData.phoneNumber }}{% endif %}">
-                        <label {% if contactData.contactMessenger !="instagram" %}class="disabled" {% endif %} id="labelUsername" >{{ _('Username') }}:</label>
-                        <input {% if contactData.contactMessenger !="instagram" %}class="disabled" {% endif %} type="text" id="inputUsername" placeholder="@username" value="{{ contactData.username }}">
-                    </div>
-                    <button {% if not sortedSizes %}disabled class="inactive" {% endif %} id="buttonShowMenu"
-                        onclick="showQuickOrderMenu()">{{ _('Quick order') }}</button>
-                    <button {% if not sortedSizes %}disabled class="inactive" {% endif %} id="buttonQuickOrder" onclick="quickOrder('{{ product['id'] }}')">{{ _('Quick order') }}</button>
+            <!-- <button {% if not sortedSizes %}disabled class="inactive" {% endif %} id="buttonShowMenu" onclick="showQuickOrderMenu()">Quick order</button> -->
+            <div id="quickOrderMenu" class="quickorder hidden">
+                <h4>{{ _('How can we contact you?') }}</h4>
+                <div class="select">
+                    <label for="">{{ _('Messenger') }}:</label>
+                    <select onchange="selectMessenger()" name="messenger" id="inputContactMessenger">
+                        <option value="telegram" {% if not contactData.contactMessenger or
+                            contactData.contactMessenger=="telegram" %} selected {% endif %}>Telegram</option>
+                        <option {% if contactData.contactMessenger=="instagram" %} selected {% endif %}
+                            value="instagram">Instagram
+                        </option>
+                        <option {% if contactData.contactMessenger=="viber" %} selected {% endif %} value="viber">Viber
+                        </option>
+                    </select>
+                    <svg class="downArrow" xmlns="http://www.w3.org/2000/svg" width="23" height="15" viewBox="0 0 23 15"
+                        fill="none">
+                        <path
+                            d="M-9.22487e-08 2.13579L2.04125 0.0253897L11.5 9.80458L20.9587 0.0253905L23 2.13579L11.5 14.0254L-9.22487e-08 2.13579Z"
+                            fill="#F1F1F1" />
+                    </svg>
                 </div>
-                <!-- <button {% if not sortedSizes %}disabled class="inactive" {% endif %} id="cartButton{{ product['id'] }}" onclick="addToCart('{{ product['id'] }}')">Add to cart</button> -->
+                <div class="input">
+                    <label {% if contactData.contactMessenger=="instagram" %}class="disabled" {% endif %}
+                        id="labelPhoneNumber">{{ _('Phone number') }}:</label>
+                    <input {% if contactData.contactMessenger=="instagram" %}class="disabled" {% endif %}
+                        oninput="phoneInput()" type="text" id="inputPhoneNumber" placeholder="{{ _('Phone number') }}"
+                        value="{% if not contactData.phoneNumber %}{{ userData['phoneNumber'] }}{% else %}{{ contactData.phoneNumber }}{% endif %}">
+                    <label {% if contactData.contactMessenger !="instagram" %}class="disabled" {% endif %}
+                        id="labelUsername">{{ _('Username') }}:</label>
+                    <input {% if contactData.contactMessenger !="instagram" %}class="disabled" {% endif %} type="text"
+                        id="inputUsername" placeholder="@username" value="{{ contactData.username }}">
+                </div>
+                <button {% if not sortedSizes %}disabled class="inactive" {% endif %} id="buttonShowMenu"
+                    onclick="showQuickOrderMenu()">{{ _('Quick order') }}</button>
+                <button {% if not sortedSizes %}disabled class="inactive" {% endif %} id="buttonQuickOrder"
+                    onclick="quickOrder('{{ product['id'] }}')">{{ _('Quick order') }}</button>
+            </div>
+            <!-- <button {% if not sortedSizes %}disabled class="inactive" {% endif %} id="cartButton{{ product['id'] }}" onclick="addToCart('{{ product['id'] }}')">Add to cart</button> -->
             {% endif %}
             <div class="additional">
                 <h2>{{ _('Additional information') }}</h2>
-                <p>{{ _('Sizes (insole lengths)') }}: 
+                <p>{{ _('Sizes (insole lengths)') }}:
                     {% for size, cm in sortedSizesCm %}
-                        {{ size }} ({{ cm }} {{ _('cm') }}){% if not loop.last %}, {% endif %}
+                    {{ size }} ({{ cm }} {{ _('cm') }}){% if not loop.last %}, {% endif %}
                     {% endfor %}
                 </p>
                 <p>{{ _('Sex') }}: {{ translationsDb[product.sex|lower][get_locale()] }}</p>
                 {% if 'season' in product.additionalInformation and product.additionalInformation.season != '' %}
-                    {% set seasons = product.additionalInformation.season.split('/') %}
-                    {% set translated_seasons = [] %}
-                    {% for season in seasons %}
-                        {% set season = season.strip().lower() %}
-                        {% if season in translationsDb %}
-                            {% set translated_season = translationsDb[season][get_locale()] %}
-                        {% else %}
-                            {% set translated_season = season %}
-                        {% endif %}
-                        {% set _ = translated_seasons.append(translated_season) %}
-                    {% endfor %}
-                    <p>{{ _('Season') }}: {{ translated_seasons | join('/') }}</p>
+                {% set seasons = product.additionalInformation.season.split('/') %}
+                {% set translated_seasons = [] %}
+                {% for season in seasons %}
+                {% set season = season.strip().lower() %}
+                {% if season in translationsDb %}
+                {% set translated_season = translationsDb[season][get_locale()] %}
+                {% else %}
+                {% set translated_season = season %}
+                {% endif %}
+                {% set _ = translated_seasons.append(translated_season) %}
+                {% endfor %}
+                <p>{{ _('Season') }}: {{ translated_seasons | join('/') }}</p>
                 {% endif %}
                 {% for info, value in product.additionalInformation.items() %}
-                    {% if value != '' and info != 'season' %}
-                        <p>{{ translationsDb[info.replace('_', ' ')|lower][get_locale()]| capitalize }}: {{ translationsDb[value|lower][get_locale()] }}</p>
-                    {% endif %}
+                {% if value != '' and info != 'season' %}
+                <p>{{ translationsDb[info.replace('_', ' ')|lower][get_locale()]| capitalize }}: {{
+                    translationsDb[value|lower][get_locale()] }}</p>
+                {% endif %}
                 {% endfor %}
             </div>
         </div>
@@ -164,11 +190,16 @@
         <div id="faqShoeSize" class="info">
             <div class="head" onclick="toggleFaq('ShoeSize')">
                 <svg xmlns="http://www.w3.org/2000/svg" width="33" height="20" viewBox="0 0 33 20" fill="none">
-                    <path d="M-1.31784e-07 3.01486L2.92875 -1.31446e-06L16.5 13.9703L30.0712 -1.2802e-07L33 3.01486L16.5 20L-1.31784e-07 3.01486Z" fill="#111111"/>
+                    <path
+                        d="M-1.31784e-07 3.01486L2.92875 -1.31446e-06L16.5 13.9703L30.0712 -1.2802e-07L33 3.01486L16.5 20L-1.31784e-07 3.01486Z"
+                        fill="#111111" />
                 </svg>
                 <h3>{{ _('How to select correct shoe size') }}</h3>
             </div>
-            <p>{{ _('Ensuring your child wears the right shoe size is crucial for their comfort and foot health. Measure their foot length by tracing it on paper and comparing it to the insole lengths listed for each shoe size on our site. Choose a size slightly larger than their foot length to allow for growth. For the full guide on finding the perfect fit,') }} <a href="/faq/shoeSize">{{ _('click here') }}</a>.</p>
+            <p>{{ _('Ensuring your child wears the right shoe size is crucial for their comfort and foot health. Measure
+                their foot length by tracing it on paper and comparing it to the insole lengths listed for each shoe
+                size on our site. Choose a size slightly larger than their foot length to allow for growth. For the full
+                guide on finding the perfect fit,') }} <a href="/faq/shoeSize">{{ _('click here') }}</a>.</p>
         </div>
         <div id="faqDelivery" class="info">
             <div class="head" onclick="toggleFaq('Delivery')">
@@ -177,9 +208,12 @@
                         d="M-1.31784e-07 3.01486L2.92875 -1.31446e-06L16.5 13.9703L30.0712 -1.2802e-07L33 3.01486L16.5 20L-1.31784e-07 3.01486Z"
                         fill="#111111" />
                 </svg>
-                <h3>Delivery information</h3>
+                <h3>{{ _('Delivery information') }}</h3>
             </div>
-            <p>{{ _('Understanding our delivery process ensures a smooth shopping experience. We ship across Ukraine and selected European countries via Nova Post. Delivery times and costs vary by destination, with processing taking 1-2 business days. Tracking, customs, and accurate address details are crucial. For more information on shipping,') }} <a href="/faq/delivery">{{ _('click here') }}</a>.</p>
+            <p>{{ _('Understanding our delivery process ensures a smooth shopping experience. We ship across Ukraine and
+                selected European countries via Nova Post. Delivery times and costs vary by destination, with processing
+                taking 1-2 business days. Tracking, customs, and accurate address details are crucial. For more
+                information on shipping,') }} <a href="/faq/delivery">{{ _('click here') }}</a>.</p>
         </div>
         <div id="faqReplacementsReturns" class="info">
             <div class="head" onclick="toggleFaq('ReplacementsReturns')">
@@ -190,7 +224,10 @@
                 </svg>
                 <h3>{{ _('Replacements and returns') }}</h3>
             </div>
-            <p>{{ _('If you need to return or replace an item, ensure it\'s unused and in its original packaging. Initiate your request within one day of receiving your order by emailing contact@kidsfashionstore.com.ua. For the full guide on our replacement and return process,') }} <a href="/faq/replacementsReturns">{{ _('click here') }}</a>.</p>
+            <p>{{ _('If you need to return or replace an item, ensure it\'s unused and in its original packaging.
+                Initiate your request within one day of receiving your order by emailing
+                contact@kidsfashionstore.com.ua. For the full guide on our replacement and return process,') }} <a
+                    href="/faq/replacementsReturns">{{ _('click here') }}</a>.</p>
         </div>
     </section>
     <section id="featured" class="product">
@@ -207,4 +244,5 @@
     <script src="{{ url_for('static', filename='js/forms.js') }}"></script>
     <script src="{{ url_for('static', filename='js/admin.js') }}"></script>
 </body>
+
 </html>

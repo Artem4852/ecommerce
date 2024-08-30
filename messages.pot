@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-08-04 15:30+0200\n"
+"POT-Creation-Date: 2024-08-30 14:09+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -57,7 +57,7 @@ msgstr ""
 msgid "Daily requests"
 msgstr ""
 
-#: templates/admin.html:25 templates/index.html:47
+#: templates/admin.html:25 templates/index.html:48
 msgid "View more"
 msgstr ""
 
@@ -73,7 +73,7 @@ msgstr ""
 msgid "Most popular category"
 msgstr ""
 
-#: templates/admin.html:36 templates/product.html:47 templates/product.html:55
+#: templates/admin.html:36 templates/product.html:61 templates/product.html:69
 msgid "In stock"
 msgstr ""
 
@@ -168,12 +168,12 @@ msgid "Id"
 msgstr ""
 
 #: templates/adminOrder.html:21 templates/adminOrders.html:53
-#: templates/adminOrders.html:61 templates/product.html:62
+#: templates/adminOrders.html:61 templates/product.html:76
 msgid "Size"
 msgstr ""
 
 #: templates/adminOrder.html:22 templates/adminOrders.html:54
-#: templates/adminOrders.html:62 templates/product.html:78
+#: templates/adminOrders.html:62 templates/product.html:93
 msgid "Quantity"
 msgstr ""
 
@@ -241,13 +241,13 @@ msgstr ""
 msgid "Contact messenger"
 msgstr ""
 
-#: templates/adminOrder.html:43 templates/product.html:124
+#: templates/adminOrder.html:43 templates/product.html:147
 msgid "Username"
 msgstr ""
 
 #: templates/adminOrder.html:45 templates/contact.html:13
-#: templates/partials/footer.html:18 templates/product.html:122
-#: templates/product.html:123 templates/settings.html:32
+#: templates/partials/footer.html:18 templates/product.html:142
+#: templates/product.html:144 templates/settings.html:32
 #: templates/signup.html:23
 msgid "Phone number"
 msgstr ""
@@ -275,7 +275,7 @@ msgstr ""
 
 #: templates/adminOrders.html:24 templates/adminProducts.html:21
 #: templates/adminProducts.html:65 templates/adminProducts.html:79
-#: templates/shop.html:13 templates/shop.html:56
+#: templates/shop.html:13 templates/shop.html:62
 msgid "Any"
 msgstr ""
 
@@ -295,8 +295,8 @@ msgstr ""
 msgid "Type: Address Delivery"
 msgstr ""
 
-#: templates/adminOrders.html:76 templates/product.html:128
-#: templates/product.html:129
+#: templates/adminOrders.html:76 templates/product.html:152
+#: templates/product.html:154
 msgid "Quick order"
 msgstr ""
 
@@ -305,7 +305,7 @@ msgid "Product id"
 msgstr ""
 
 #: templates/adminOrders.html:93 templates/adminProducts.html:121
-#: templates/favorites.html:18 templates/shop.html:113
+#: templates/favorites.html:18 templates/shop.html:127
 msgid "Page"
 msgstr ""
 
@@ -335,7 +335,7 @@ msgid "Tags"
 msgstr ""
 
 #: templates/adminProductEdit.html:33 templates/adminProducts.html:49
-#: templates/shop.html:25
+#: templates/shop.html:27
 msgid "Category"
 msgstr ""
 
@@ -348,7 +348,7 @@ msgid "Instagram Link"
 msgstr ""
 
 #: templates/adminProductEdit.html:41 templates/adminProducts.html:19
-#: templates/partials/card.html:28 templates/product.html:42
+#: templates/partials/card.html:28 templates/product.html:56
 #: templates/shop.html:11
 msgid "Brand"
 msgstr ""
@@ -366,7 +366,7 @@ msgid "Sizes"
 msgstr ""
 
 #: templates/adminProductEdit.html:57 templates/adminProducts.html:33
-#: templates/product.html:140 templates/shop.html:39
+#: templates/product.html:165 templates/shop.html:43
 msgid "Sex"
 msgstr ""
 
@@ -382,7 +382,7 @@ msgstr ""
 msgid "Unisex"
 msgstr ""
 
-#: templates/adminProductEdit.html:72 templates/product.html:153
+#: templates/adminProductEdit.html:72 templates/product.html:178
 msgid "Season"
 msgstr ""
 
@@ -414,7 +414,7 @@ msgstr ""
 msgid "Insole lengths"
 msgstr ""
 
-#: templates/adminProductEdit.html:89 templates/product.html:137
+#: templates/adminProductEdit.html:89 templates/product.html:162
 msgid "cm"
 msgstr ""
 
@@ -451,11 +451,11 @@ msgid "Products Panel"
 msgstr ""
 
 #: templates/adminProducts.html:35 templates/adminProducts.html:51
-#: templates/shop.html:27 templates/shop.html:41 templates/shop.html:70
+#: templates/shop.html:29 templates/shop.html:45 templates/shop.html:78
 msgid "AnyF"
 msgstr ""
 
-#: templates/adminProducts.html:63 templates/shop.html:54
+#: templates/adminProducts.html:63 templates/shop.html:60
 msgid "Shoe size"
 msgstr ""
 
@@ -463,35 +463,35 @@ msgstr ""
 msgid "Tag"
 msgstr ""
 
-#: templates/adminProducts.html:91 templates/product.html:41
+#: templates/adminProducts.html:91 templates/product.html:55
 msgid "Product number"
 msgstr ""
 
-#: templates/adminProducts.html:94 templates/shop.html:86
+#: templates/adminProducts.html:94 templates/shop.html:95
 msgid "Sort by"
 msgstr ""
 
-#: templates/adminProducts.html:96 templates/shop.html:88
+#: templates/adminProducts.html:96 templates/shop.html:97
 msgid "No sorting"
 msgstr ""
 
-#: templates/adminProducts.html:97 templates/shop.html:89
+#: templates/adminProducts.html:97
 msgid "Price: low to high"
 msgstr ""
 
-#: templates/adminProducts.html:98 templates/shop.html:90
+#: templates/adminProducts.html:98
 msgid "Price: high to low"
 msgstr ""
 
-#: templates/adminProducts.html:99 templates/shop.html:91
+#: templates/adminProducts.html:99 templates/shop.html:103
 msgid "Discount: high to low"
 msgstr ""
 
-#: templates/adminProducts.html:100 templates/shop.html:92
+#: templates/adminProducts.html:100 templates/shop.html:105
 msgid "Discount: low to high"
 msgstr ""
 
-#: templates/adminProducts.html:116 templates/shop.html:108
+#: templates/adminProducts.html:116 templates/shop.html:122
 msgid "Show more"
 msgstr ""
 
@@ -509,7 +509,7 @@ msgid "Get in touch"
 msgstr ""
 
 #: templates/contact.html:14 templates/forgotPassword.html:15
-#: templates/login.html:15 templates/mail/contactMessage.html:82
+#: templates/login.html:15 templates/mail/contactMessage.html:13
 #: templates/partials/footer.html:20 templates/settings.html:28
 #: templates/signup.html:15
 msgid "Email"
@@ -527,11 +527,11 @@ msgstr ""
 msgid "Your Email"
 msgstr ""
 
-#: templates/contact.html:32 templates/mail/contactMessage.html:83
+#: templates/contact.html:32 templates/mail/contactMessage.html:14
 msgid "Subject"
 msgstr ""
 
-#: templates/contact.html:33 templates/mail/contactMessage.html:84
+#: templates/contact.html:33 templates/mail/contactMessage.html:15
 msgid "Message"
 msgstr ""
 
@@ -579,27 +579,27 @@ msgstr ""
 msgid "Send reset code"
 msgstr ""
 
-#: templates/index.html:16
+#: templates/index.html:17
 msgid "The biggest variety of brand shoes in Ukraine"
 msgstr ""
 
-#: templates/index.html:23
+#: templates/index.html:24
 msgid "Featured"
 msgstr ""
 
-#: templates/index.html:32
+#: templates/index.html:33
 msgid "Find a perfect pair of shoes for your child"
 msgstr ""
 
-#: templates/index.html:33
+#: templates/index.html:34
 msgid "Choose among popular brands, like Ecco, Geox, and Superfit"
 msgstr ""
 
-#: templates/index.html:34
+#: templates/index.html:35
 msgid "Visit shop"
 msgstr ""
 
-#: templates/index.html:41
+#: templates/index.html:42
 msgid "Summer sale"
 msgstr ""
 
@@ -634,84 +634,94 @@ msgstr ""
 msgid "We are sorry to see you go"
 msgstr ""
 
-#: templates/product.html:43
+#: templates/product.html:57
 msgid "Price"
 msgstr ""
 
-#: templates/mail/saleFavorite.html:88 templates/product.html:43
+#: templates/mail/saleFavorite.html:19 templates/product.html:57
 msgid "uah"
 msgstr ""
 
-#: templates/partials/card.html:29 templates/product.html:45
-#: templates/product.html:53
+#: templates/partials/card.html:29 templates/product.html:59
+#: templates/product.html:67
 msgid "Archived"
 msgstr ""
 
-#: templates/partials/card.html:33 templates/product.html:49
-#: templates/product.html:57
+#: templates/partials/card.html:33 templates/product.html:63
+#: templates/product.html:71
 msgid "Not in stock"
 msgstr ""
 
-#: templates/product.html:101
+#: templates/product.html:117
 msgid "Edit product"
 msgstr ""
 
-#: templates/product.html:105
+#: templates/product.html:121
 msgid "How can we contact you?"
 msgstr ""
 
-#: templates/product.html:107
+#: templates/product.html:123
 msgid "Messenger"
 msgstr ""
 
-#: templates/product.html:134
+#: templates/product.html:159
 msgid "Additional information"
 msgstr ""
 
-#: templates/product.html:135
+#: templates/product.html:160
 msgid "Sizes (insole lengths)"
 msgstr ""
 
-#: templates/product.html:169
+#: templates/product.html:197
 msgid "How to select correct shoe size"
 msgstr ""
 
-#: templates/product.html:171
+#: templates/product.html:199
 msgid ""
 "Ensuring your child wears the right shoe size is crucial for their "
-"comfort and foot health. Measure their foot length by tracing it on paper"
-" and comparing it to the insole lengths listed for each shoe size on our "
-"site. Choose a size slightly larger than their foot length to allow for "
-"growth. For the full guide on finding the perfect fit,"
+"comfort and foot health. Measure\n"
+"                their foot length by tracing it on paper and comparing it"
+" to the insole lengths listed for each shoe\n"
+"                size on our site. Choose a size slightly larger than "
+"their foot length to allow for growth. For the full\n"
+"                guide on finding the perfect fit,"
 msgstr ""
 
-#: templates/product.html:171 templates/product.html:182
-#: templates/product.html:193
+#: templates/product.html:202 templates/product.html:216
+#: templates/product.html:230
 msgid "click here"
 msgstr ""
 
-#: templates/product.html:182
-msgid ""
-"Understanding our delivery process ensures a smooth shopping experience. "
-"We ship across Ukraine and selected European countries via Nova Post. "
-"Delivery times and costs vary by destination, with processing taking 1-2 "
-"business days. Tracking, customs, and accurate address details are "
-"crucial. For more information on shipping,"
+#: templates/partials/footer.html:5 templates/product.html:211
+msgid "Delivery information"
 msgstr ""
 
-#: templates/partials/footer.html:6 templates/product.html:191
+#: templates/product.html:213
+msgid ""
+"Understanding our delivery process ensures a smooth shopping experience. "
+"We ship across Ukraine and\n"
+"                selected European countries via Nova Post. Delivery times"
+" and costs vary by destination, with processing\n"
+"                taking 1-2 business days. Tracking, customs, and accurate"
+" address details are crucial. For more\n"
+"                information on shipping,"
+msgstr ""
+
+#: templates/partials/footer.html:6 templates/product.html:225
 msgid "Replacements and returns"
 msgstr ""
 
-#: templates/product.html:193
+#: templates/product.html:227
 msgid ""
 "If you need to return or replace an item, ensure it's unused and in its "
-"original packaging. Initiate your request within one day of receiving "
-"your order by emailing contact@kidsfashionstore.com.ua. For the full "
-"guide on our replacement and return process,"
+"original packaging.\n"
+"                Initiate your request within one day of receiving your "
+"order by emailing\n"
+"                contact@kidsfashionstore.com.ua. For the full guide on "
+"our replacement and return process,"
 msgstr ""
 
-#: templates/product.html:197
+#: templates/product.html:234
 msgid "You might also like"
 msgstr ""
 
@@ -783,11 +793,23 @@ msgstr ""
 msgid "Catalogue"
 msgstr ""
 
-#: templates/shop.html:68
+#: templates/shop.html:76
 msgid "Price range"
 msgstr ""
 
-#: templates/shop.html:153
+#: templates/shop.html:98
+msgid ""
+"Price:\n"
+"                        low to high"
+msgstr ""
+
+#: templates/shop.html:100
+msgid ""
+"Price:\n"
+"                        high to low"
+msgstr ""
+
+#: templates/shop.html:175
 msgid "No products found. Try to change filters."
 msgstr ""
 
@@ -836,77 +858,74 @@ msgstr ""
 msgid "Contact Us Kids Fashion Store"
 msgstr ""
 
-#: templates/mail/contactMessage.html:80
+#: templates/mail/contactMessage.html:11
 msgid "New contact request"
 msgstr ""
 
-#: templates/mail/contactMessage.html:81
+#: templates/mail/contactMessage.html:12
 msgid "From"
 msgstr ""
 
-#: templates/mail/newsletterSignup.html:89
+#: templates/mail/newsletterSignup.html:15
 msgid "Hello there"
 msgstr ""
 
-#: templates/mail/newsletterSignup.html:90
+#: templates/mail/newsletterSignup.html:18
 msgid "Thanks for signing up to our newsletter!"
 msgstr ""
 
-#: templates/mail/newsletterSignup.html:91
+#: templates/mail/newsletterSignup.html:21
 msgid "You'll be hearing from us every once in a while."
 msgstr ""
 
-#: templates/mail/newsletterSignup.html:92
+#: templates/mail/newsletterSignup.html:24
 msgid "Unsubscribe"
 msgstr ""
 
-#: templates/mail/passwordReset.html:87
+#: templates/mail/passwordReset.html:17
 msgid "Password Reset"
 msgstr ""
 
-#: templates/mail/passwordReset.html:88
+#: templates/mail/passwordReset.html:23
 msgid "The code to reset your password is:"
 msgstr ""
 
-#: templates/mail/passwordReset.html:90
-msgid "It is valid for one hour and will exprite afterwards"
+#: templates/mail/passwordReset.html:37
+msgid "It is valid for one hour and will expire afterwards"
 msgstr ""
 
-#: templates/mail/passwordReset.html:91
+#: templates/mail/passwordReset.html:43
 msgid ""
 "You should <b>never</b> share this code with anyone, even if the person "
-"says they are from our store."
+"says they are from\n"
+"                            our store."
 msgstr ""
 
-#: templates/mail/passwordReset.html:92
-msgid "If you did not request password reset you can safely ignore this message."
-msgstr ""
-
-#: templates/mail/saleFavorite.html:87
+#: templates/mail/saleFavorite.html:15
 msgid "One of your favorites is on sale!"
 msgstr ""
 
-#: templates/mail/saleFavorite.html:88
+#: templates/mail/saleFavorite.html:18
 msgid "is on sale for only"
 msgstr ""
 
-#: templates/mail/saleFavorite.html:89
+#: templates/mail/saleFavorite.html:22
 msgid "What are you waiting for? Check it out"
 msgstr ""
 
-#: templates/mail/saleFavorite.html:89 templates/mail/welcome.html:81
+#: templates/mail/saleFavorite.html:24 templates/mail/welcome.html:21
 msgid "here"
 msgstr ""
 
-#: templates/mail/welcome.html:80
+#: templates/mail/welcome.html:17
 msgid "Welcome to our store!"
 msgstr ""
 
-#: templates/mail/welcome.html:81
+#: templates/mail/welcome.html:20
 msgid "Thank you for signing up. You can now log in to your new account"
 msgstr ""
 
-#: templates/mail/welcome.html:82
+#: templates/mail/welcome.html:24
 msgid "Happy shopping!"
 msgstr ""
 
@@ -920,10 +939,6 @@ msgstr ""
 
 #: templates/partials/footer.html:4
 msgid "Foot measurement"
-msgstr ""
-
-#: templates/partials/footer.html:5
-msgid "Delivery information"
 msgstr ""
 
 #: templates/partials/footer.html:9
